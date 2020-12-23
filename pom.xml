@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.chemcool.school</groupId>
+    <artifactId>chemcool</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <!--TODO надо подумать об архитектуре проекта.        -->
+        <module>tasks</module>
+        <module>api-gateway</module>
+        <module>authorization</module>
+        <module>news</module>
+        <module>registration</module>
+        <module>service-discovery</module>
+        <module>theory</module>
+    </modules>
+
+</project>
