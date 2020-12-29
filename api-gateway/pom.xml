@@ -53,4 +53,9 @@
     </build>
 
 
+    <modules>
+        <module>service-discovery</module>
+        <module>web-api-gateway</module>
+    </modules>
+
 </project>

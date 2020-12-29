@@ -12,7 +12,6 @@
         <module>api-gateway</module>
         <module>authorization</module>
         <module>registration</module>
-        <module>service-discovery</module>
         <module>theory</module>
     </modules>
 
