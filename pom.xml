@@ -8,11 +8,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <!--TODO надо подумать об архитектуре проекта.        -->
         <module>tasks</module>
         <module>api-gateway</module>
         <module>authorization</module>
-        <module>news</module>
         <module>registration</module>
         <module>service-discovery</module>
         <module>theory</module>
