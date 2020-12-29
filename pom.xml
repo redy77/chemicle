@@ -8,11 +8,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>tasks</module>
         <module>api-gateway</module>
-        <module>authorization</module>
-        <module>registration</module>
-        <module>theory</module>
+        <module>security-package</module>
+        <module>business-package</module>
     </modules>
 
 </project>

@@ -6,9 +6,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.chemcool.school</groupId>
-    <artifactId>authorization</artifactId>
+    <artifactId>theory</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
+
 
     <properties>
         <java.version>11</java.version>
@@ -53,5 +54,10 @@
         </pluginManagement>
     </build>
 
+    <modules>
+        <module>theory-application</module>
+        <module>theory-service</module>
+        <module>theory-web-api</module>
+    </modules>
 
 </project>

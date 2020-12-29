@@ -6,8 +6,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.chemcool.school</groupId>
-    <artifactId>theory</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>registration</artifactId>
+    <packaging>jar</packaging>
     <version>1.0.0</version>
 
 
@@ -54,11 +54,5 @@
         </pluginManagement>
     </build>
 
-    <modules>
-        <module>firstchapter</module>
-        <module>secondchapter</module>
-        <module>thirdchapter</module>
-        <module>fourthchapter</module>
-    </modules>
 
 </project>

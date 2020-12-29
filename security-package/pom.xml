@@ -6,10 +6,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.chemcool.school</groupId>
-    <artifactId>registration</artifactId>
+    <artifactId>security-package</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
-
 
     <properties>
         <java.version>11</java.version>
@@ -54,5 +53,9 @@
         </pluginManagement>
     </build>
 
+    <modules>
+        <module>authorization</module>
+        <module>registration</module>
+    </modules>
 
 </project>

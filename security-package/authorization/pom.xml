@@ -3,18 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <parent>
-        <groupId>com.chemcool.school</groupId>
-        <artifactId>api-gateway</artifactId>
-        <version>1.0.0</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.chemcool.school.app</groupId>
-    <artifactId>service-discovery</artifactId>
+    <groupId>com.chemcool.school</groupId>
+    <artifactId>authorization</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
-    <name>service-discovery-${version}</name>
 
     <properties>
         <java.version>11</java.version>
@@ -25,7 +19,6 @@
 
         <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
-        <main-class>com.chemcool.school.app.ServiceDiscovery</main-class>
     </properties>
 
     <dependencyManagement>
@@ -48,38 +41,7 @@
         </dependencies>
     </dependencyManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-        </dependency>
-    </dependencies>
-
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <finalName>${project.artifactId}</finalName>
-                    <mainClass>${main-class}</mainClass>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.springframework.boot</groupId>
-                            <artifactId>spring-boot-configuration-processor</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -90,7 +52,6 @@
             </plugins>
         </pluginManagement>
     </build>
-
 
 
 </project>
