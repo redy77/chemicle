@@ -12,7 +12,7 @@
     <artifactId>tasks-application</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>tasks-application-${version}</name>
+    <name>${artifactId}-${version}</name>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>

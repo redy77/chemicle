@@ -40,7 +40,7 @@
         <dependency>
             <groupId>com.chemcool.school.community</groupId>
             <artifactId>community-web-api</artifactId>
-            <version>${community.module.version}</version>
+            <scope>compile</scope>
         </dependency>
 
 
