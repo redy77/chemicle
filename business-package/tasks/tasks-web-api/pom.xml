@@ -9,7 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.chemcool.school</groupId>
     <artifactId>tasks-web-api</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
@@ -24,6 +23,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+
+        <dependency>
+            <groupId>com.chemcool.school</groupId>
+            <artifactId>tasks-service</artifactId>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 

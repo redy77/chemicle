@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.chemcool.school.tasks</groupId>
-    <artifactId>tasks</artifactId>
+    <groupId>com.chemcool.school.community</groupId>
+    <artifactId>community</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
@@ -15,7 +15,6 @@
 
         <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
-        <tasks.modules.version>1.0.0</tasks.modules.version>
     </properties>
 
     <dependencyManagement>
@@ -36,17 +35,6 @@
                 <scope>import</scope>
             </dependency>
 
-            <dependency>
-                <groupId>com.chemcool.school</groupId>
-                <artifactId>tasks-service</artifactId>
-                <version>1.0.0</version>
-            </dependency>
-            <dependency>
-                <groupId>com.chemcool.school</groupId>
-                <artifactId>tasks-web-api</artifactId>
-                <version>${tasks.modules.version}</version>
-            </dependency>
-
         </dependencies>
     </dependencyManagement>
 
@@ -63,9 +51,9 @@
     </build>
 
     <modules>
-        <module>tasks-application</module>
-        <module>tasks-service</module>
-        <module>tasks-web-api</module>
+        <module>community-application</module>
+        <module>community-service</module>
+        <module>community-web-api</module>
     </modules>
 
 </project>

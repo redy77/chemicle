@@ -3,16 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.chemcool.school.tasks</groupId>
-        <artifactId>tasks</artifactId>
+        <groupId>com.chemcool.school.community</groupId>
+        <artifactId>community</artifactId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>tasks-application</artifactId>
+    <artifactId>community-application</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>tasks-application-${version}</name>
+    <name>${artifactId}-${version}</name>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -20,8 +20,8 @@
         <spring.boot.version>2.3.3.RELEASE</spring.boot.version>
 
         <flayway.version>7.3.1</flayway.version>
-
-        <start-class>com.chemcool.school.app.TasksApplication</start-class>
+        <community.module.version>1.0.0</community.module.version>
+        <start-class>com.chemcool.school.community.app.CommunityApplication</start-class>
     </properties>
 
     <dependencies>
@@ -38,9 +38,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.chemcool.school</groupId>
-            <artifactId>tasks-web-api</artifactId>
-            <scope>compile</scope>
+            <groupId>com.chemcool.school.community</groupId>
+            <artifactId>community-web-api</artifactId>
+            <version>${community.module.version}</version>
         </dependency>
 
 
