@@ -25,7 +25,7 @@
 
 
         <dependency>
-            <groupId>com.chemcool.school</groupId>
+            <groupId>com.chemcool.school.tasks</groupId>
             <artifactId>tasks-service</artifactId>
             <scope>compile</scope>
         </dependency>

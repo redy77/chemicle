@@ -38,7 +38,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.chemcool.school</groupId>
+            <groupId>com.chemcool.school.tasks</groupId>
             <artifactId>tasks-web-api</artifactId>
             <scope>compile</scope>
         </dependency>

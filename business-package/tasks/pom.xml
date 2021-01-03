@@ -37,12 +37,12 @@
             </dependency>
 
             <dependency>
-                <groupId>com.chemcool.school</groupId>
+                <groupId>com.chemcool.school.tasks</groupId>
                 <artifactId>tasks-service</artifactId>
-                <version>1.0.0</version>
+                <version>${tasks.modules.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.chemcool.school</groupId>
+                <groupId>com.chemcool.school.tasks</groupId>
                 <artifactId>tasks-web-api</artifactId>
                 <version>${tasks.modules.version}</version>
             </dependency>
