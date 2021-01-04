@@ -11,11 +11,11 @@ public class Collate {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "question_id", referencedColumnName = "id")
-    private QuestionAndAnswer questionId;
+    private Question questionId;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "answer_id", referencedColumnName = "id")
-    private QuestionAndAnswer answerId;
+    private Answer answerId;
 
 //    @OneToMany(mappedBy="chapterId")
 //    private Set<Chapter> chapterSet;
@@ -31,19 +31,19 @@ public class Collate {
         this.id = id;
     }
 
-    public QuestionAndAnswer getQuestionId() {
+    public Question getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(QuestionAndAnswer questionId) {
+    public void setQuestionId(Question questionId) {
         this.questionId = questionId;
     }
 
-    public QuestionAndAnswer getAnswerId() {
+    public Answer getAnswerId() {
         return answerId;
     }
 
-    public void setAnswerId(QuestionAndAnswer answerId) {
+    public void setAnswerId(Answer answerId) {
         this.answerId = answerId;
     }
 }
