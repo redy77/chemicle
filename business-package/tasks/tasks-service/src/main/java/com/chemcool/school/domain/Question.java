@@ -1,44 +1,24 @@
 package com.chemcool.school.domain;
 
-import javax.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
+@Data
+@NoArgsConstructor
 public class Question {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
 
-    @Column(name = "questions")
-    private String questions;
+    @Column(name = "question")
+    private String question;
 
     @OneToOne(mappedBy = "questionId")
     private Collate collateByQuestion;
-
-    public Question() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(String questonAndAnswer) {
-        this.questions = questonAndAnswer;
-    }
-
-    public Collate getCollateByQuestion() {
-        return collateByQuestion;
-    }
-
-    public void setCollateByQuestion(Collate collateByQuestion) {
-        this.collateByQuestion = collateByQuestion;
-    }
 }
