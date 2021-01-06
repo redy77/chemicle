@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.UUID;
 
 @Data
 @Entity
@@ -29,6 +30,17 @@ public class ChemistryLessonPage {
     private String lessonReferences;
 
 
+    public static ChemistryLessonPage createLesson(
+            ChemistryLessonExample example
+    ) {
+        return new ChemistryLessonPage(
+                UUID.randomUUID().toString(),
+                example.getLessonExampleName(),
+                example.getLessonExampleDescription(),
+                example.getLessonExampleChapter(),
+                example.getLessonExampleReferences()
+        );
+    }
 
 
 }

@@ -13,3 +13,11 @@ spring:
     password: mick
     platform: postgres
     driver-class-name: org.postgresql.Driver
+
+server:
+  port: 0
+  servlet:
+    context-path: /chemistry-lesson/
+
+swagger:
+  host: http://localhost:8080/
