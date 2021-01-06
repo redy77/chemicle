@@ -5,7 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.chemcool.school</groupId>
+    <groupId>com.chemcool.school.theory</groupId>
     <artifactId>theory</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
@@ -20,6 +20,7 @@
 
         <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+        <theory.modules.version>1.0.0</theory.modules.version>
     </properties>
 
     <dependencyManagement>
@@ -39,6 +40,22 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>com.chemcool.school.theory</groupId>
+                <artifactId>theory-service</artifactId>
+                <version>${theory.modules.version}</version>
+                <type>jar</type>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.chemcool.school.theory</groupId>
+                <artifactId>theory-web-api</artifactId>
+                <version>${theory.modules.version}</version>
+                <type>jar</type>
+                <scope>provided</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
