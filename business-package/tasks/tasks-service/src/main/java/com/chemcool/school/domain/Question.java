@@ -3,14 +3,12 @@ package com.chemcool.school.domain;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "questions")
 public class Question {
 
     @Id
@@ -19,6 +17,7 @@ public class Question {
     @Column(name = "question")
     private String question;
 
-    @OneToOne(mappedBy = "questionId")
-    private Collate collateByQuestion;
+//    @ManyToOne
+//    @JoinColumn(name = "chapter_id")
+//    private Chapter chapter;
 }
