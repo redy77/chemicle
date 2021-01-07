@@ -13,13 +13,13 @@ public class ChemistryLessonPresentation {
 
     private final ChemistryLessonPageService service;
 
-    public String createExample(LessonExample example) {
+    public String createChemistryLessonExample(LessonExample example) {
         if (
                 example.getLessonExampleName().isEmpty() ||
                         example.getLessonExampleReferences().isEmpty() ||
                         example.getLessonExampleChapter().isEmpty()
         ) {
-            throw new ChemistryLessonEmptyException("Необходимы поля пустые, проверьте пожалуйста бланк заполнения темы.");
+            throw new ChemistryLessonEmptyException("Необходимые поля пустые, проверьте пожалуйста бланк заполнения темы.");
         } else {
             return service.manageLesson(
                     new ChemistryLessonExample(

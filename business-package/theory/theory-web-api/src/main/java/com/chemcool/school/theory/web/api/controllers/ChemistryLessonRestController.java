@@ -21,8 +21,8 @@ public class ChemistryLessonRestController {
     public String createLessonExample(
             @RequestBody LessonExample lessonExample
     ) {
-        log.info("Вызван контроллер для добавления новой темы: " + "[" + lessonExample.getLessonExampleName() + "]");
-        return presentation.createExample(lessonExample);
+        log.info("Вызван контроллер для добавления новой темы с названием: " + "[" + lessonExample.getLessonExampleName() + "]");
+        return presentation.createChemistryLessonExample(lessonExample);
     }
 
 
