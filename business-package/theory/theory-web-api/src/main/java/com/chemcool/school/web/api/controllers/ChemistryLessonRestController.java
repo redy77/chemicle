@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping("/chemistry-lesson")
+@RequestMapping("/lesson")
 @RequiredArgsConstructor
 public class ChemistryLessonRestController {
 
@@ -31,6 +31,11 @@ public class ChemistryLessonRestController {
         ));
     }
 
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello World!";
+    }
 
 
 
