@@ -1,4 +1,4 @@
-package com.chemcool.school.web.api.dto;
+package com.chemcool.school.theory.web.api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

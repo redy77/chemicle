@@ -1,6 +1,6 @@
-package com.chemcool.school.storage;
+package com.chemcool.school.theory.storage;
 
-import com.chemcool.school.domain.ChemistryLessonPage;
+import com.chemcool.school.theory.domain.ChemistryLessonPage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;

@@ -27,12 +27,8 @@ zuul:
       enabled: true
   sensitive-headers: Cookie,Set-Cookie
   routes:
-    authorization:
-      path: /authorization/**
-      service-id: authorization
-      stripPrefix: false
 
-    theory-application:
+    theory-application-service:
       path: /theory-application/**
       service-id: theory-application-service
       stripPrefix: false

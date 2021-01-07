@@ -6,7 +6,7 @@ spring:
     database: postgresql
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
   datasource:
     url: jdbc:postgresql://localhost:5432/theory
     username: mick
@@ -17,4 +17,4 @@ spring:
 server:
   port: 0
   servlet:
-    context-path: /chemistry-lessons/
+    context-path: /theory-application/

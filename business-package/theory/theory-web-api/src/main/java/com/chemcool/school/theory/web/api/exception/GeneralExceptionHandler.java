@@ -1,4 +1,4 @@
-package com.chemcool.school.web.api;
+package com.chemcool.school.theory.web.api.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

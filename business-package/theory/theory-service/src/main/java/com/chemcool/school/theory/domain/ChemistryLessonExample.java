@@ -1,4 +1,4 @@
-package com.chemcool.school.domain;
+package com.chemcool.school.theory.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

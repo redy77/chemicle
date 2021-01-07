@@ -1,8 +1,9 @@
-package com.chemcool.school.domain;
+package com.chemcool.school.theory.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,16 +22,22 @@ public class ChemistryLessonPage {
     private String lessonId;
 
     @Column(name = "lesson_name")
+    @NonNull
     private String lessonName;
+
     @Column(name = "lesson_descprtion")
     private String lessonDescription;
+
+    @NonNull
     @Column(name = "lesson_chapter")
     private String lessonChapter;
+
+    @NonNull
     @Column(name = "lesson_references")
     private String lessonReferences;
 
 
-    public static ChemistryLessonPage createLesson(
+    public static ChemistryLessonPage manageChemistryLesson(
             ChemistryLessonExample example
     ) {
         return new ChemistryLessonPage(

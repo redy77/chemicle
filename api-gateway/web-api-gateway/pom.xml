@@ -6,7 +6,7 @@
 
     <groupId>com.chemcool.school</groupId>
     <artifactId>web-api-gateway</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <version>1.0.0</version>
 
     <properties>
@@ -59,15 +59,15 @@
             </dependency>
 
             <dependency>
-                <groupId>com.crowdsourcing</groupId>
+                <groupId>com.chemcool.school</groupId>
                 <artifactId>web-api-gateway-application</artifactId>
-                <version>${web-api-gateway.modules.version}</version>
+                <version>1.0.0</version>
                 <type>jar</type>
                 <scope>provided</scope>
             </dependency>
 
             <dependency>
-                <groupId>com.crowdsourcing</groupId>
+                <groupId>com.chemcool.school</groupId>
                 <artifactId>web-api-gateway-service</artifactId>
                 <version>${web-api-gateway.modules.version}</version>
                 <type>jar</type>

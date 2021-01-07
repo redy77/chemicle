@@ -1,9 +1,9 @@
-package com.chemcool.school.service;
+package com.chemcool.school.theory.service;
 
 
-import com.chemcool.school.domain.ChemistryLessonPage;
-import com.chemcool.school.domain.ChemistryLessonExample;
-import com.chemcool.school.storage.LessonRepository;
+import com.chemcool.school.theory.domain.ChemistryLessonPage;
+import com.chemcool.school.theory.domain.ChemistryLessonExample;
+import com.chemcool.school.theory.storage.LessonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class ChemistryLessonPageService {
     private final LessonRepository repository;
 
     public String manageLesson(ChemistryLessonExample example) {
-        ChemistryLessonPage lessonPage = ChemistryLessonPage.createLesson(example);
+        ChemistryLessonPage lessonPage = ChemistryLessonPage.manageChemistryLesson(example);
         repository.save(lessonPage);
         return lessonPage.getLessonId();
     }
