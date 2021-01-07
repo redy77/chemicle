@@ -25,16 +25,20 @@ public class ChemistryLesson {
     @NonNull
     private String lessonName;
 
-    @Column(name = "lesson_descprtion")
+    @Column(
+            name = "lesson_descprtion",
+            length = 10000
+    )
     private String lessonDescription;
 
     @NonNull
     @Column(name = "lesson_chapter")
-    private String lessonChapter;
+    private Integer lessonChapter;
 
     @NonNull
+
     @Column(name = "lesson_references")
-    private String lessonReferences;
+    private Integer lessonReferences;
 
 
     public static ChemistryLesson createChemistryLesson(

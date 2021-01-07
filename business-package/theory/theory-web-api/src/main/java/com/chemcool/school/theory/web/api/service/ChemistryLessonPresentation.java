@@ -15,9 +15,7 @@ public class ChemistryLessonPresentation {
 
     public String createChemistryLessonExample(LessonExample example) {
         if (
-                example.getLessonExampleName().isEmpty() ||
-                        example.getLessonExampleReferences().isEmpty() ||
-                        example.getLessonExampleChapter().isEmpty()
+                example.getLessonExampleName().isEmpty()
         ) {
             throw new ChemistryLessonEmptyException("Необходимые поля пустые, проверьте пожалуйста бланк заполнения темы.");
         } else {
