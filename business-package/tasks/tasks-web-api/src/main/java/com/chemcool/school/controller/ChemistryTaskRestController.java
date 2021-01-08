@@ -5,11 +5,15 @@ import com.chemcool.school.domain.TaskOne;
 import com.chemcool.school.domain.TaskTwo;
 import com.chemcool.school.domain.TaskType;
 import com.chemcool.school.service.ChemistryTaskService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import static java.util.UUID.randomUUID;
@@ -30,18 +34,20 @@ public class ChemistryTaskRestController {
     }
 
     @PostMapping
-    public ChemistryTask createNewTask(@RequestBody ChemistryTask task){
-        ChemistryTask newTask = null;
-        if (task.getTaskType() == TaskType.TASK_1) {
-            newTask = task;
-            ((TaskOne) newTask).setId(randomUUID());
-            ((TaskOne) newTask).setOne("one 11");
-        } else if (task.getTaskType() == TaskType.TASK_2) {
-            newTask = task;
-            ((TaskTwo) newTask).setId(randomUUID());
-            ((TaskTwo) newTask).setTwo("two 22");
+    public String createNewTask(@RequestBody String json) throws JsonProcessingException {
+
+        JacksonJsonParser jsonParser = new JacksonJsonParser();
+        Map<String, Object> map = jsonParser.parseMap(json);
+        String type = (String) map.get("taskType");
+        if ( type.equals( TaskType.TASK_1.toString() ) ) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            TaskOne task = objectMapper.readValue(json, TaskOne.class);
+            task.setId( UUID.randomUUID() );
+            task.setOne( task.getOne() + "1");
+            return "====== " + task;
         }
-        return newTask; //todo убрать заглушку
+
+        return "newTask " + json; //todo убрать заглушку
     }
 
 }
