@@ -21,7 +21,7 @@
 
         <flayway.version>7.3.1</flayway.version>
 
-        <start-class>com.chemcool.school.app.TasksApplication</start-class>
+        <start-class>com.chemcool.school.tasks.app.TasksApplication</start-class>
     </properties>
 
     <dependencies>
