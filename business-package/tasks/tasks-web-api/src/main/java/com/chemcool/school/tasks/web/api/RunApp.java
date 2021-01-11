@@ -1,4 +1,4 @@
-package com.chemcool.school;
+package com.chemcool.school.tasks.web.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

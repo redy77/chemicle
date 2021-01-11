@@ -1,10 +1,10 @@
-package com.chemcool.school.controller;
+package com.chemcool.school.tasks.web.api.controller;
 
-import com.chemcool.school.domain.ChemistryTask;
-import com.chemcool.school.domain.TaskOne;
-import com.chemcool.school.domain.TaskTwo;
-import com.chemcool.school.domain.TypeOfTask;
-import com.chemcool.school.service.ChemistryTaskService;
+import com.chemcool.school.tasks.web.api.domain.ChemistryTask;
+import com.chemcool.school.tasks.web.api.domain.TaskOne;
+import com.chemcool.school.tasks.web.api.domain.TaskTwo;
+import com.chemcool.school.tasks.web.api.domain.TypeOfTask;
+import com.chemcool.school.tasks.web.api.service.ChemistryTaskService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +57,11 @@ public class ChemistryTaskRestController {
         // И т.д...
 
         return "newTask " + json; //todo убрать заглушку
+    }
+
+    @GetMapping("/hello_task")
+    public String hello() {
+        return "Hello Task!";
     }
 
 }

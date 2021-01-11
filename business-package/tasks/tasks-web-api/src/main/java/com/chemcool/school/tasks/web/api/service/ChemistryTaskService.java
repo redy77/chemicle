@@ -1,4 +1,4 @@
-package com.chemcool.school.service;
+package com.chemcool.school.tasks.web.api.service;
 
 import org.springframework.stereotype.Service;
 
