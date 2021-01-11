@@ -10,13 +10,14 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TaskTwo implements ChemistryTask {
-    private UUID id;
-    private String common;
-    private String two;
-    private TaskType taskType;
+    private UUID id; //Одинаковое поле для всех классов
+    private String common; //Одинаковое поле для всех классов
+    private TypeOfTask typeOfTask;  //Одинаковое поле для всех классов
 
-    @Override
-    public TaskType getTaskType() {
-        return taskType;
+    private String two1; //Уникальное поле класса
+    private String two2; //Уникальное поле класса
+
+    public TypeOfTask getTypeOfTask() {
+        return typeOfTask;
     }
 }

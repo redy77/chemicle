@@ -1,6 +1,6 @@
 package com.chemcool.school.domain;
 
-public enum TaskType {
+public enum TypeOfTask {
     TASK_1,
     TASK_2,
     TASK_3,
