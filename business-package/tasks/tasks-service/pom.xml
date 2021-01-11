@@ -16,6 +16,7 @@
     <properties>
         <hibernate-core.version>5.4.22.Final</hibernate-core.version>
         <lombok.version>1.18.16</lombok.version>
+        <spring-data-jpa.version>2.3.2.RELEASE</spring-data-jpa.version>
     </properties>
 
     <dependencies>
@@ -31,6 +32,12 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data-jpa.version}</version>
         </dependency>
 
     </dependencies>

@@ -1,13 +1,16 @@
-package com.chemcool.school.domain.chemequation;
+package com.chemcool.school.domain.tasks.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "questions")
 public class Question {
 
@@ -17,7 +20,8 @@ public class Question {
     @Column(name = "question")
     private String question;
 
-//    @ManyToOne
-//    @JoinColumn(name = "chapter_id")
-//    private Chapter chapter;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "question_id")
+    private List<Couple> couples;
+
 }
