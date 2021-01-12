@@ -1,6 +1,7 @@
-package com.chemcool.school.domain.questions;
+package com.chemcool.school.domain.tasks.domain;
 
-import com.chemcool.school.domain.Chapter;
+
+import com.chemcool.school.domain.TypeOfTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,28 +23,18 @@ public class SingleSelectQuestion {
     @Column(unique=true)
     private String uuid;
 
-    /**
-     * Тема:
-     * Органические вещества
-     * Химические элементы и пр.
-     *
-     * Выводится в заголовке задачи
-     */
-    private String theme;
-
     @Column(length = 5000)
     private String description;
 
-    /**
-     * Количество очком в зависимости от сложности 1-4 к примеру
-     */
-    private int mark;
-
     private String rightAnswer;
+
+    private String ChapterId;
+
+    private TypeOfTask typeOfTask;
+
     private String incorrectAnswer1;
     private String incorrectAnswer2;
     private String incorrectAnswer3;
 
-    @Enumerated(EnumType.STRING)
-    private Chapter chapter;     // Название раздела, которому принадлежит задача (число, имя, enum)
+
 }
