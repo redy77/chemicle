@@ -12,14 +12,14 @@ import java.util.UUID;
 @AllArgsConstructor
 public class TaskOne implements ChemistryTask {
     private UUID id; //Одинаковое поле для всех классов
-    private String common; //Одинаковое поле для всех классов
+    private String description; //Одинаковое поле для всех классов
     private TypeOfTask typeOfTask;  //Одинаковое поле для всех классов
 
     private String one; //Уникальное поле класса
 
     public TaskOne(TasksDto dto) {
         this.id = dto.getId();
-        this.common = dto.getCommon();
+        this.description = dto.getDescription();
         this.typeOfTask = dto.getTypeOfTask();
         this.one = dto.getOne();
     }

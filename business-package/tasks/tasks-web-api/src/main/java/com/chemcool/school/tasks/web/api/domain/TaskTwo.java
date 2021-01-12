@@ -12,7 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class TaskTwo implements ChemistryTask {
     private UUID id; //Одинаковое поле для всех классов
-    private String common; //Одинаковое поле для всех классов
+    private String description; //Одинаковое поле для всех классов
     private TypeOfTask typeOfTask;  //Одинаковое поле для всех классов
 
     private String two1; //Уникальное поле класса
@@ -20,7 +20,7 @@ public class TaskTwo implements ChemistryTask {
 
     public TaskTwo(TasksDto dto) {
         this.id = dto.getId();
-        this.common = dto.getCommon();
+        this.description = dto.getDescription();
         this.typeOfTask = dto.getTypeOfTask();
         this.two1 = dto.getTwo1();
         this.two2 = dto.getTwo2();
