@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.web.api.domain;
+package com.chemcool.school.tasks.domain;
 
 public enum TypeOfTask {
     TASK_1,
