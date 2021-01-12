@@ -59,7 +59,7 @@ public class ChemistryTaskRestController {
         return "newTask " + json; //todo убрать заглушку
     }
 
-    @GetMapping("/hello_task")
+    @GetMapping("/hello")
     public String hello() {
         return "Hello Task!";
     }
