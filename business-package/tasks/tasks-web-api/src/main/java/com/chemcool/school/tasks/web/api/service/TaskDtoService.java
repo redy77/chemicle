@@ -1,6 +1,7 @@
 package com.chemcool.school.tasks.web.api.service;
 
 import com.chemcool.school.tasks.web.api.domain.TaskOne;
+import com.chemcool.school.tasks.web.api.domain.TaskThree;
 import com.chemcool.school.tasks.web.api.domain.TaskTwo;
 import com.chemcool.school.tasks.web.api.domain.TypeOfTask;
 import com.chemcool.school.tasks.web.api.dto.TasksDto;
@@ -20,6 +21,9 @@ public class TaskDtoService {
     @Autowired
     public TaskTwoService taskTwoService;
 
+    @Autowired
+    public TaskThreeService taskThreeService;
+
     public TasksDto getTaskDtoById(UUID id) {
         TaskOne taskOne = taskOneService.getTaskById(id);
         if (taskOne != null) {
@@ -28,6 +32,10 @@ public class TaskDtoService {
         TaskTwo taskTwo = taskTwoService.getTaskById(id);
         if (taskTwo != null) {
             return new TasksDto(taskTwo);
+        }
+        TaskThree taskThree = taskThreeService.getTaskById(id);
+        if (taskThree != null) {
+            return new TasksDto(taskThree);
         }
         return null; //todo return null, возможно поменять на выброс ексепшна
     }
@@ -40,15 +48,20 @@ public class TaskDtoService {
         for (TaskTwo task : taskTwoService.getAllTasks()) {
             list.add(new TasksDto(task));
         }
+        for (TaskThree task : taskThreeService.getAllTasks()) {
+            list.add(new TasksDto(task));
+        }
         return list;
     }
 
-    public void add(TasksDto task) {
-        task.setId( UUID.randomUUID() );
-        if (task.getTypeOfTask() == TypeOfTask.TASK_1) {
-            taskOneService.add(new TaskOne(task));
-        } else if (task.getTypeOfTask() == TypeOfTask.TASK_2) {
-            taskTwoService.add(new TaskTwo(task));
+    public void add(TasksDto dto) {
+        dto.setId( UUID.randomUUID() );//todo заглушка
+        if (dto.getTypeOfTask() == TypeOfTask.TASK_1) {
+            taskOneService.add(new TaskOne(dto));
+        } else if (dto.getTypeOfTask() == TypeOfTask.TASK_2) {
+            taskTwoService.add(new TaskTwo(dto));
+        } else if (dto.getTypeOfTask() == TypeOfTask.TASK_3) {
+            taskThreeService.add(new TaskThree(dto));
         }
     }
 }

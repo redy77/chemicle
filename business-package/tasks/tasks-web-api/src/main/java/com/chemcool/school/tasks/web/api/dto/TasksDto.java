@@ -1,10 +1,7 @@
 package com.chemcool.school.tasks.web.api.dto;
 
 import com.chemcool.school.domain.chemequation.Couple;
-import com.chemcool.school.tasks.web.api.domain.ChemistryTask;
-import com.chemcool.school.tasks.web.api.domain.TaskOne;
-import com.chemcool.school.tasks.web.api.domain.TaskTwo;
-import com.chemcool.school.tasks.web.api.domain.TypeOfTask;
+import com.chemcool.school.tasks.web.api.domain.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -40,6 +37,11 @@ public class TasksDto implements ChemistryTask {
         this(task.getId(), task.getDescription(), task.getTypeOfTask());
         this.two1 = task.getTwo1();
         this.two2 = task.getTwo2();
+    }
+
+    public TasksDto(TaskThree task) {
+        this(task.getId(), task.getDescription(), task.getTypeOfTask());
+        this.list = task.getList();
     }
 
     @Override
