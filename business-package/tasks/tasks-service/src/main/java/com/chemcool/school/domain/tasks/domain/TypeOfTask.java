@@ -1,11 +1,11 @@
-package com.chemcool.school.domain;
+package com.chemcool.school.domain.tasks.domain;
 
 /**
  * Перечисление уровня, возможно I-IV
  */
 public enum TypeOfTask {
-    I,
-    II,
-    III,
-    IV
+    Task_1,
+    Task_2,
+    Task_3,
+    Task_4
 }

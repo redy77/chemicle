@@ -1,7 +1,6 @@
 package com.chemcool.school.domain.tasks.domain;
 
 
-import com.chemcool.school.domain.TypeOfTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,11 +29,13 @@ public class SingleSelectQuestion {
 
     private String ChapterId;
 
+    @Enumerated(EnumType.STRING)
     private TypeOfTask typeOfTask;
 
     private String incorrectAnswer1;
     private String incorrectAnswer2;
     private String incorrectAnswer3;
+
 
 
 }
