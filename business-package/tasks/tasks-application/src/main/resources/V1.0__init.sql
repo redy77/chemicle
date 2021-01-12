@@ -2,12 +2,14 @@
 DROP TABLE if exists theory;
 DROP TABLE if exists fixed_answer;
 DROP TABLE if exists choise_of_answer;
-DROP TABLE if exists couples;
+DROP TABLE if exists matching;
+DROP TABLE if exists chemistry_equation_task;
+
 
 -- Table: theory
 CREATE TABLE theory
 (
-    id       INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id       VARCHAR(255) NOT NULL,
     name_of_theme    VARCHAR(255) NOT NULL,
     description    CHAR NOT NULL,
     number_of_chapter INT NOT NULL,
@@ -28,22 +30,30 @@ CREATE TABLE fixedAnswer
 -- Table: choise_of_answer
 CREATE TABLE choise_of_answer
 (
-    id   INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    shortName VARCHAR(255) ,
+    id   VARCHAR(255) PRIMARY KEY,
     description    CHAR NOT NULL,
     mark INT ,-- Сложность в баллах числом
     right_answer VARCHAR(255) ,
     incorrectAnswer1 VARCHAR(255),
     incorrectAnswer2 VARCHAR(255),
     incorrectAnswer3 VARCHAR(255),
-    chapter INT NOT NULL
+    chapter VARCHAR(255) NOT NULL
+
 )
--- Table: couples
-CREATE TABLE couples
+
+-- Table: matching
+CREATE TABLE matching
 (
-    id       VARCHAR(255)      NOT NULL PRIMARY KEY,
-    couple_left    VARCHAR(255) NOT NULL,
-    couple_right    VARCHAR(255) NOT NULL,
+    id   VARCHAR(255)  PRIMARY KEY,
+    question    VARCHAR(255) NOT NULL,
+)
+
+-- Table: chemistry_equation_task
+CREATE TABLE chemistry_equation_task
+(
+    uuid   VARCHAR(255)  PRIMARY KEY,
+    description    VARCHAR(255) NOT NULL,
+    right_products    VARCHAR(255) NOT NULL,
     number_of_chapter INT NOT NULL,
-    number_of_inset INT NOT NULL
+    type_of_tasks VARCHAR(255)
 )
