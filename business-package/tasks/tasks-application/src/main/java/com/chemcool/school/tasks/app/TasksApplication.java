@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication(
-        scanBasePackages = {"com.chemcool.school.tasks.app"}
+        scanBasePackages = {"com.chemcool.school.tasks"}
 )
 @EnableEurekaClient
 public class TasksApplication {
