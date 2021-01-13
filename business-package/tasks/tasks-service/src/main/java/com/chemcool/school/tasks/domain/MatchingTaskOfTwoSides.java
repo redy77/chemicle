@@ -1,4 +1,5 @@
 package com.chemcool.school.tasks.domain;
+
 import com.chemcool.school.tasks.dto.TaskDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
