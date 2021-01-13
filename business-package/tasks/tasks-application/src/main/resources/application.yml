@@ -2,6 +2,18 @@ spring:
   application:
     name: tasks-application-service
 
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tasks
+    username: mick
+    password: mick
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+
 server:
   port: 0
   servlet:
