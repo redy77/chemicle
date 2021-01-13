@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class ChemistryLessonExample {
     private String lessonExampleName;
     private String lessonExampleDescription;
-    private String lessonExampleChapter;
-    private String lessonExampleReferences;
+    private Integer lessonExampleChapter;
+    private Integer lessonExampleReferences;
 }
