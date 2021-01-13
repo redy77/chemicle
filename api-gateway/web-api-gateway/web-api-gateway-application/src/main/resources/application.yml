@@ -33,6 +33,11 @@ zuul:
       service-id: theory-application-service
       stripPrefix: false
 
+    tasks-application-service:
+      path: /tasks-application/**
+      service-id: tasks-application-service
+      stripPrefix: false
+
   ignored-services: '*'
   retryable: true
 
