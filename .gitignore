@@ -7,6 +7,9 @@
 node_modules/
 dist/
 
+# project iml files
+*.iml
+
 # Compiled Java class files
 *.class
 
