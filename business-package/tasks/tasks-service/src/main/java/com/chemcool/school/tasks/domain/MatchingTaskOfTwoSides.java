@@ -1,6 +1,5 @@
 package com.chemcool.school.tasks.domain;
 
-import com.chemcool.school.tasks.dto.TaskDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,11 +30,4 @@ public class MatchingTaskOfTwoSides {
     @JoinColumn(name = "question_id")
     private List<CoupleForMatchingTask> coupleForMatchingTasks;
 
-    public MatchingTaskOfTwoSides(TaskDto dto) {
-        this.id = dto.getId();
-        this.description = dto.getDescription();
-        this.chapterId = dto.getChapterId();
-        this.typeOfTask = dto.getTypeOfTask();
-        this.coupleForMatchingTasks = dto.getCoupleForMatchingTasks();
-    }
 }
