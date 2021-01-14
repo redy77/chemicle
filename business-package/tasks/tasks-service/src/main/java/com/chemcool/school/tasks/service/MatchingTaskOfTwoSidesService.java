@@ -19,8 +19,9 @@ public class MatchingTaskOfTwoSidesService implements TaskService<MatchingTaskOf
     }
 
     @Override
-    public void add(MatchingTaskOfTwoSides matchingTaskOfTwoSides) {
+    public String add(MatchingTaskOfTwoSides matchingTaskOfTwoSides) {
         matchingTaskOfTwoSidesRepository.save(matchingTaskOfTwoSides);
+        return "";
     }
 
     @Override
