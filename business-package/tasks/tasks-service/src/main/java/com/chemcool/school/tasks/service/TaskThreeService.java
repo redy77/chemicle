@@ -25,16 +25,18 @@ public class TaskThreeService {
         id = randomUUID();
         this.map.put(id, new TaskThree( id, "task 32", TypeOfTask.TASK_3, list) );
     }
-    public List<TaskThree> getAllTasks() {
+    public List<TaskThree> getAll() {
         return map.values().stream().collect(Collectors.toList());
     }
 
-    public TaskThree getTaskById(UUID id) {
-        return map.get(id);
+    public Optional<TaskThree> getById(UUID id) {
+        return Optional.ofNullable( map.get(id) );
     }
 
-    public void add(TaskThree task) {
+    public UUID add(TaskThree task) {
+        task.setId( UUID.randomUUID() );
         map.put(task.getId(), task);
+        return task.getId();
     }
 
 }

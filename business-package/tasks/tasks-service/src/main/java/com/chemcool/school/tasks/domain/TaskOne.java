@@ -1,6 +1,5 @@
 package com.chemcool.school.tasks.domain;
 
-import com.chemcool.school.tasks.dto.TasksDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,13 +15,6 @@ public class TaskOne implements ChemistryTask {
     private TypeOfTask typeOfTask;  //Одинаковое поле для всех классов
 
     private String one; //Уникальное поле класса
-
-    public TaskOne(TasksDto dto) {
-        this.id = dto.getId();
-        this.description = dto.getDescription();
-        this.typeOfTask = dto.getTypeOfTask();
-        this.one = dto.getOne();
-    }
 
     @Override
     public TypeOfTask getTypeOfTask() {

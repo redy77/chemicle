@@ -1,15 +1,16 @@
-package com.chemcool.school.tasks.dto;
+package com.chemcool.school.tasks.web.api.dto;
 
 import com.chemcool.school.tasks.domain.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Data
 @NoArgsConstructor
-public class TasksDto implements ChemistryTask {
+public class TasksDto {
     private UUID id; //Одинаковое поле для всех классов
     private String description; //Одинаковое поле для всех классов
     private TypeOfTask typeOfTask;  //Одинаковое поле для всех классов
@@ -43,8 +44,7 @@ public class TasksDto implements ChemistryTask {
         this.list = task.getList();
     }
 
-    @Override
-    public TypeOfTask getTypeOfTask() {
-        return typeOfTask;
+    public Optional<TypeOfTask> getTypeOfTask() {
+        return Optional.ofNullable(typeOfTask);
     }
 }

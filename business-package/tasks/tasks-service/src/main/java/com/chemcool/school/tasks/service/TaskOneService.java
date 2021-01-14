@@ -4,16 +4,13 @@ import com.chemcool.school.tasks.domain.TaskOne;
 import com.chemcool.school.tasks.domain.TypeOfTask;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.util.UUID.randomUUID;
 
 @Service
-public class TaskOneService {
+public class TaskOneService {// implements TaskService<TaskOne> {
     private Map<UUID, TaskOne> map = new HashMap<>();
 
     public TaskOneService() {
@@ -26,12 +23,13 @@ public class TaskOneService {
         id = randomUUID();
         this.map.put(id, new TaskOne( id, "task 14", TypeOfTask.TASK_1, "one") );
     }
-    public List<TaskOne> getAllTasks() {
+//    @Override
+    public List<TaskOne> getAll() {
         return map.values().stream().collect(Collectors.toList());
     }
-
-    public TaskOne getTaskById(UUID id) {
-        return map.get(id);
+//    @Override
+    public Optional<TaskOne> getById(UUID id) {
+        return Optional.ofNullable( map.get(id) );
     }
 
     public void add(TaskOne task) {

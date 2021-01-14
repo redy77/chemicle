@@ -1,7 +1,8 @@
 package com.chemcool.school.tasks.web.api.controllers;
 
-import com.chemcool.school.tasks.dto.TasksDto;
-import com.chemcool.school.tasks.service.TaskDtoService;
+import com.chemcool.school.tasks.web.api.dto.TasksDto;
+import com.chemcool.school.tasks.web.api.service.TaskDtoService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,12 +27,15 @@ public class ChemistryTaskRestController {
     }
 
     @PostMapping
+    @ApiOperation("Создает задание для одной из четырех сущностей заданий по химии.")
+    @ResponseBody
     public String createNewTask(@RequestBody TasksDto task) {
         service.add(task);
         return "new task UUID: " + task.getId(); //todo убрать заглушку
     }
 
     @GetMapping("/hello")
+    @ApiOperation("Просто тестовый Hello.")
     public String hello() {
         return "Hello Task!";
     }

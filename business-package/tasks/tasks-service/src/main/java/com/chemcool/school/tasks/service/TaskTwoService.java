@@ -4,10 +4,7 @@ import com.chemcool.school.tasks.domain.TaskTwo;
 import com.chemcool.school.tasks.domain.TypeOfTask;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.util.UUID.randomUUID;
@@ -27,15 +24,17 @@ public class TaskTwoService {
         this.map.put(id, new TaskTwo( id, "task 24", TypeOfTask.TASK_2, "two", "2") );
     }
 
-    public List<TaskTwo> getAllTasks() {
+    public List<TaskTwo> getAll() {
         return map.values().stream().collect(Collectors.toList());
     }
 
-    public TaskTwo getTaskById(UUID id) {
-        return map.get(id);
+    public Optional<TaskTwo> getById(UUID id) {
+        return Optional.ofNullable( map.get(id) );
     }
 
-    public void add(TaskTwo task) {
+    public UUID add(TaskTwo task) {
+        task.setId( UUID.randomUUID() );
         map.put(task.getId(), task);
+        return task.getId();
     }
 }
