@@ -26,7 +26,7 @@ public class FixedAnswer implements ChemistryTask {
 
     @Column(name = "chapter_id")
     @NonNull
-    private int chapterId;
+    private String chapterId;
 
     @Column(name = "type_of_task")
     @Enumerated(EnumType.STRING)
