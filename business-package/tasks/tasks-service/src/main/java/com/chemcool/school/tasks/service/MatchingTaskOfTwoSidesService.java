@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class MatchingTaskOfTwoSidesService implements TaskService<MatchingTaskOfTwoSides> {
@@ -20,8 +21,10 @@ public class MatchingTaskOfTwoSidesService implements TaskService<MatchingTaskOf
 
     @Override
     public String add(MatchingTaskOfTwoSides matchingTaskOfTwoSides) {
+        UUID id = UUID.randomUUID();
+        matchingTaskOfTwoSides.setId(id.toString());
         matchingTaskOfTwoSidesRepository.save(matchingTaskOfTwoSides);
-        return "";
+        return id.toString();
     }
 
     @Override
