@@ -16,8 +16,10 @@ public class TaskServiceImpl implements TaskService<ChemistryEquationTask> {
     private final ChemistryEquationTaskRepository repository;
 
     @Override
-    public void add(ChemistryEquationTask chemistryEquationTask) {
+    public String add(ChemistryEquationTask chemistryEquationTask) {
+        chemistryEquationTask.setUUID(UUID.randomUUID().toString());
         repository.save(chemistryEquationTask);
+        return chemistryEquationTask.getUUID();
     }
 
     @Override

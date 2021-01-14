@@ -43,15 +43,4 @@ public class ChemistryEquationTask implements ChemistryTask {
     @Column(name = "wrong_products_3")
     private String wrongProducts3;
 
-    public ChemistryEquationTask(TaskDto dto) {
-        this.UUID = dto.getUUID();
-        this.description = dto.getDescription();
-        this.rightProducts = dto.getRightProducts();
-        this.chapterId = dto.getChapterId();
-        this.typeOfTask = dto.getTypeOfTask();
-        this.reagents = dto.getReagents();
-        this.wrongProducts1 = dto.getWrongProducts1();
-        this.wrongProducts2 = dto.getWrongProducts2();
-        this.wrongProducts3 = dto.getWrongProducts3();
-    }
 }
