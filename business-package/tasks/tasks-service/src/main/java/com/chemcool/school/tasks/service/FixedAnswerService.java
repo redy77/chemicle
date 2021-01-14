@@ -18,7 +18,7 @@ public class FixedAnswerService implements TaskService {
 
     @Override
     public String add(Object o) {
-        FixedAnswer fixedAnswer = FixedAnswer.createFixedAnswer((FixedAnswer) o);
+        FixedAnswer fixedAnswer = (FixedAnswer) o;
         repository.save(fixedAnswer);
         return fixedAnswer.getId();
     }

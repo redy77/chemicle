@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -33,15 +32,4 @@ public class FixedAnswer {
     @Enumerated(EnumType.STRING)
     @NonNull
     private TypeOfTask typeOfTask;
-
-    public static FixedAnswer createFixedAnswer(FixedAnswer fixedAnswer){
-        return new FixedAnswer(
-                UUID.randomUUID().toString(),
-                fixedAnswer.getDescription(),
-                fixedAnswer.getRightAnswer(),
-                fixedAnswer.getNumberOfChapter(),
-                fixedAnswer.getTypeOfTask()
-        );
-
-    }
 }
