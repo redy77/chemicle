@@ -20,7 +20,7 @@ public class SingleSelectQuestion implements ChemistryTask{
     /** Не гаррантирует уникального id, если база будет создана вручную */
     @Id
     @Column(unique=true)
-    private String uuid;
+    private String id;
 
     @Column(length = 5000)
     private String description;

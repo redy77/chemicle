@@ -1,6 +1,5 @@
 package com.chemcool.school.tasks.domain;
 
-import com.chemcool.school.tasks.dto.TaskDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,8 +14,8 @@ import javax.persistence.*;
 public class ChemistryEquationTask implements ChemistryTask {
 
     @Id
-    @Column(name = "UUID")
-    private String UUID;
+    @Column(name = "id")
+    private String id;
 
     @Column(name = "description")
     private String description;

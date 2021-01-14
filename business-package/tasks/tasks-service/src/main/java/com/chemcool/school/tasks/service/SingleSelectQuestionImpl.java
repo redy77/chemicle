@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public class SingleSelectQuestionImpl implements TaskService<SingleSelectQuestion>{
 
@@ -14,8 +15,10 @@ public class SingleSelectQuestionImpl implements TaskService<SingleSelectQuestio
     SingleSelectQuestionRepository repository;
 
     @Override
-    public void add(SingleSelectQuestion singleSelectQuestion) {
+    public String add(SingleSelectQuestion singleSelectQuestion) {
+        singleSelectQuestion.setId(UUID.randomUUID().toString());
         repository.save(singleSelectQuestion);
+        return singleSelectQuestion.getId();
     }
 
     @Override
