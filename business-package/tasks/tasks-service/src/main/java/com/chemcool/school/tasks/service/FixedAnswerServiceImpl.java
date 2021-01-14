@@ -9,39 +9,39 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
-public class FixedAnswerService implements TaskService {
+public class FixedAnswerServiceImpl implements TaskService<FixedAnswer> {
 
     @Autowired
     FixedAnswerRepository repository;
 
     @Override
-    public String add(Object o) {
-        FixedAnswer fixedAnswer = (FixedAnswer) o;
+    public String add(FixedAnswer fixedAnswer) {
+        fixedAnswer.setId(UUID.randomUUID().toString());
         repository.save(fixedAnswer);
         return fixedAnswer.getId();
     }
 
     @Override
-    public Optional getById(String id) {
-        Optional<FixedAnswer> fixedAnswer = repository.findById(id);
-        return fixedAnswer;
+    public Optional<FixedAnswer> getById(String id) {
+        return repository.findById(id);
     }
 
     @Override
-    public List getAll() {
+    public List<FixedAnswer> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public List getAllByChapterId(String id) { // ??????
-        return null;
+    public List<FixedAnswer> getAllByChapterId(String id) { // ??????
+        return repository.findAllByChapterId(id);
     }
 
     @Override
-    public void update(Object o) {
-        repository.save((FixedAnswer) o);
+    public void update(FixedAnswer fixedAnswer) {
+        repository.save(fixedAnswer);
     }
 
     @Override
