@@ -34,7 +34,7 @@ public class SingleSelectQuestionImpl implements TaskService<SingleSelectQuestio
 
     @Override
     public List<SingleSelectQuestionTask> getAllByChapterId(String id) {
-        return repository.findAllByChapterId(id);
+        return repository.getAllByChapterId(id);
     }
 
     @Override
