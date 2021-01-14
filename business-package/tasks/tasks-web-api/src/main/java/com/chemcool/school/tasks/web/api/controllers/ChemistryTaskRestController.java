@@ -22,7 +22,7 @@ public class ChemistryTaskRestController {
     }
 
     @GetMapping("/{id}")
-    public TasksDto getTaskById(@PathVariable UUID id) {
+    public TasksDto getTaskById(@PathVariable String id) {
         return service.getTaskDtoById(id);
     }
 

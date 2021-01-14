@@ -3,11 +3,13 @@ package com.chemcool.school.tasks.service;
 import com.chemcool.school.tasks.domain.SingleSelectQuestionTask;
 import com.chemcool.school.tasks.storage.SingleSelectQuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Service
 public class SingleSelectQuestionImpl implements TaskService<SingleSelectQuestionTask>{
 
     @Autowired
