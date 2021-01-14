@@ -1,12 +1,6 @@
 package com.chemcool.school.tasks.web.api.service;
 
-import com.chemcool.school.tasks.domain.TaskOne;
-import com.chemcool.school.tasks.domain.TaskThree;
-import com.chemcool.school.tasks.domain.TaskTwo;
 import com.chemcool.school.tasks.domain.TypeOfTask;
-import com.chemcool.school.tasks.service.TaskOneService;
-import com.chemcool.school.tasks.service.TaskThreeService;
-import com.chemcool.school.tasks.service.TaskTwoService;
 import com.chemcool.school.tasks.web.api.dto.TasksDto;
 import com.chemcool.school.tasks.web.api.exception.ChemistryTaskEmptyException;
 import org.springframework.beans.factory.annotation.Autowired;

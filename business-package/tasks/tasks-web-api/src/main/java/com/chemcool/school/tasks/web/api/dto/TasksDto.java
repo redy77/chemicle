@@ -4,6 +4,7 @@ import com.chemcool.school.tasks.domain.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -11,38 +12,41 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 public class TasksDto {
-    private UUID id; //Одинаковое поле для всех классов
-    private String description; //Одинаковое поле для всех классов
-    private TypeOfTask typeOfTask;  //Одинаковое поле для всех классов
 
-    private String one; //Уникальное поле класса 1
+    @Id
+    @Column(name = "id")
+    private String id;
 
-    private String two1; //Уникальное поле класса 2
-    private String two2; //Уникальное поле класса 2
+    @Column(name = "description")
+    private String description;
 
-    private List<Couple> list; //Уникальное поле класса 3
+    @Column(name = "right_products")
+    private String rightProducts;
 
-    public TasksDto(UUID id, String description, TypeOfTask typeOfTask) {
-        this.id = id;
-        this.description = description;
-        this.typeOfTask = typeOfTask;
-    }
+    @Column(name = "chapter_id")
+    private String chapterId;
 
-    public TasksDto(TaskOne task) {
-        this(task.getId(), task.getDescription(), task.getTypeOfTask());
-        this.one = task.getOne();
-    }
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type_of_task")
+    private TypeOfTask typeOfTask;
 
-    public TasksDto(TaskTwo task) {
-        this(task.getId(), task.getDescription(), task.getTypeOfTask());
-        this.two1 = task.getTwo1();
-        this.two2 = task.getTwo2();
-    }
+    @Column(name = "reagents")
+    private String reagents;
 
-    public TasksDto(TaskThree task) {
-        this(task.getId(), task.getDescription(), task.getTypeOfTask());
-        this.list = task.getList();
-    }
+    @Column(name = "wrong_products_1")
+    private String wrongProducts1;
+
+    @Column(name = "wrong_products_2")
+    private String wrongProducts2;
+
+    @Column(name = "wrong_products_3")
+    private String wrongProducts3;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "question_id")
+    private List<CoupleForMatchingTask> coupleForMatchingTasks;
+
+
 
     public Optional<TypeOfTask> getTypeOfTask() {
         return Optional.ofNullable(typeOfTask);
