@@ -12,7 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "fixed_answer")
-public class FixedAnswer implements ChemistryTask {
+public class FixedAnswerTask implements ChemistryTask {
 
     @Id
     private String id;
@@ -26,7 +26,7 @@ public class FixedAnswer implements ChemistryTask {
 
     @Column(name = "chapter_id")
     @NonNull
-    private int numberOfChapter;
+    private String chapterId;
 
     @Column(name = "type_of_task")
     @Enumerated(EnumType.STRING)

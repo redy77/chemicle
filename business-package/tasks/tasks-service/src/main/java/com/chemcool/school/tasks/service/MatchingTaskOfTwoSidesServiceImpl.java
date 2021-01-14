@@ -1,6 +1,6 @@
 package com.chemcool.school.tasks.service;
 
-import com.chemcool.school.tasks.domain.MatchingTaskOfTwoSides;
+import com.chemcool.school.tasks.domain.MatchingOfTwoSidesTask;
 import com.chemcool.school.tasks.storage.MatchingTaskOfTwoSidesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class MatchingTaskOfTwoSidesServiceImpl implements TaskService<MatchingTaskOfTwoSides> {
+public class MatchingTaskOfTwoSidesServiceImpl implements TaskService<MatchingOfTwoSidesTask> {
 
     private final MatchingTaskOfTwoSidesRepository matchingTaskOfTwoSidesRepository;
 
@@ -20,30 +20,30 @@ public class MatchingTaskOfTwoSidesServiceImpl implements TaskService<MatchingTa
     }
 
     @Override
-    public String add(MatchingTaskOfTwoSides matchingTaskOfTwoSides) {
-        matchingTaskOfTwoSides.setId(UUID.randomUUID().toString());
-        matchingTaskOfTwoSidesRepository.save(matchingTaskOfTwoSides);
-        return matchingTaskOfTwoSides.getId();
+    public String add(MatchingOfTwoSidesTask matchingOfTwoSidesTask) {
+        matchingOfTwoSidesTask.setId(UUID.randomUUID().toString());
+        matchingTaskOfTwoSidesRepository.save(matchingOfTwoSidesTask);
+        return matchingOfTwoSidesTask.getId();
     }
 
     @Override
-    public Optional<MatchingTaskOfTwoSides> getById(String id) {
+    public Optional<MatchingOfTwoSidesTask> getById(String id) {
         return matchingTaskOfTwoSidesRepository.findById(id);
     }
 
     @Override
-    public List<MatchingTaskOfTwoSides> getAll() {
+    public List<MatchingOfTwoSidesTask> getAll() {
         return matchingTaskOfTwoSidesRepository.findAll();
     }
 
     @Override
-    public List<MatchingTaskOfTwoSides> getAllByChapterId(String id) {
+    public List<MatchingOfTwoSidesTask> getAllByChapterId(String id) {
         return matchingTaskOfTwoSidesRepository.findByChapterId(id);
     }
 
     @Override
-    public void update(MatchingTaskOfTwoSides matchingTaskOfTwoSides) {
-        matchingTaskOfTwoSidesRepository.save(matchingTaskOfTwoSides);
+    public void update(MatchingOfTwoSidesTask matchingOfTwoSidesTask) {
+        matchingTaskOfTwoSidesRepository.save(matchingOfTwoSidesTask);
     }
 
     @Override

@@ -1,10 +1,8 @@
 package com.chemcool.school.tasks.service;
 
-import com.chemcool.school.tasks.domain.FixedAnswer;
+import com.chemcool.school.tasks.domain.FixedAnswerTask;
 import com.chemcool.school.tasks.storage.FixedAnswerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.quartz.QuartzDataSource;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,36 +10,36 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class FixedAnswerServiceImpl implements TaskService<FixedAnswer> {
+public class FixedAnswerServiceImpl implements TaskService<FixedAnswerTask> {
 
     @Autowired
     FixedAnswerRepository repository;
 
     @Override
-    public String add(FixedAnswer fixedAnswer) {
-        fixedAnswer.setId(UUID.randomUUID().toString());
-        repository.save(fixedAnswer);
-        return fixedAnswer.getId();
+    public String add(FixedAnswerTask fixedAnswerTask) {
+        fixedAnswerTask.setId(UUID.randomUUID().toString());
+        repository.save(fixedAnswerTask);
+        return fixedAnswerTask.getId();
     }
 
     @Override
-    public Optional<FixedAnswer> getById(String id) {
+    public Optional<FixedAnswerTask> getById(String id) {
         return repository.findById(id);
     }
 
     @Override
-    public List<FixedAnswer> getAll() {
+    public List<FixedAnswerTask> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public List<FixedAnswer> getAllByChapterId(String id) { // ??????
+    public List<FixedAnswerTask> getAllByChapterId(String id) { // ??????
         return repository.findAllByChapterId(id);
     }
 
     @Override
-    public void update(FixedAnswer fixedAnswer) {
-        repository.save(fixedAnswer);
+    public void update(FixedAnswerTask fixedAnswerTask) {
+        repository.save(fixedAnswerTask);
     }
 
     @Override
