@@ -19,11 +19,9 @@ public class CoupleForMatchingTask {
     @Id
     private String id;
 
-    //Вопрос
     @Column(name = "left_couple")
     private String leftCouple;
 
-    //Ответ
     @Column(name = "right_couple")
     private String rightCouple;
 
