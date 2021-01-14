@@ -9,14 +9,14 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table("chemistry_equation_task")
+@Table(name = "chemistry_equation_task")
 @NoArgsConstructor
 @AllArgsConstructor
 public class ChemistryEquationTask implements ChemistryTask {
 
     @Id
-    @Column(name = "UUID")
-    private String UUID;
+    @Column(name = "id")
+    private String id;
 
     @Column(name = "description")
     private String description;

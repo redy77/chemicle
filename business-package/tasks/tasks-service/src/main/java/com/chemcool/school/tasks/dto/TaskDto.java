@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class TaskDto {
-    private String UUID;
+    private String id;
     private String description;
     private String rightProducts;
     private String chapterId;
