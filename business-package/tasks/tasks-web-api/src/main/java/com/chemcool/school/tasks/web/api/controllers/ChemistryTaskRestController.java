@@ -30,8 +30,7 @@ public class ChemistryTaskRestController {
     @ApiOperation("Создает задание для одной из четырех сущностей заданий по химии.")
     @ResponseBody
     public String createNewTask(@RequestBody TasksDto task) {
-        service.add(task);
-        return "new task UUID: " + task.getId(); //todo убрать заглушку
+        return "new task UUID: " + service.add(task);
     }
 
     @GetMapping("/hello")

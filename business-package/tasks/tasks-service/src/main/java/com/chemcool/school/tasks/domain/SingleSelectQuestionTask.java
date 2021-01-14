@@ -27,7 +27,7 @@ public class SingleSelectQuestionTask implements ChemistryTask{
 
     private String rightAnswer;
 
-    private String ChapterId;
+    private String chapterId;
 
     @Enumerated(EnumType.STRING)
     private TypeOfTask typeOfTask;
