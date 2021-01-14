@@ -11,15 +11,15 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class TaskServiceImpl implements TaskService<ChemistryEquationTask> {
+public class ChemistryEquationTaskServiceImpl implements TaskService<ChemistryEquationTask> {
 
     private final ChemistryEquationTaskRepository repository;
 
     @Override
     public String add(ChemistryEquationTask chemistryEquationTask) {
-        chemistryEquationTask.setUUID(UUID.randomUUID().toString());
+        chemistryEquationTask.setId(UUID.randomUUID().toString());
         repository.save(chemistryEquationTask);
-        return chemistryEquationTask.getUUID();
+        return chemistryEquationTask.getId();
     }
 
     @Override

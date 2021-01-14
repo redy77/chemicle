@@ -10,21 +10,20 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class MatchingTaskOfTwoSidesService implements TaskService<MatchingTaskOfTwoSides> {
+public class MatchingTaskOfTwoSidesServiceImpl implements TaskService<MatchingTaskOfTwoSides> {
 
     private final MatchingTaskOfTwoSidesRepository matchingTaskOfTwoSidesRepository;
 
     @Autowired
-    public MatchingTaskOfTwoSidesService(MatchingTaskOfTwoSidesRepository matchingTaskOfTwoSidesRepository) {
+    public MatchingTaskOfTwoSidesServiceImpl(MatchingTaskOfTwoSidesRepository matchingTaskOfTwoSidesRepository) {
         this.matchingTaskOfTwoSidesRepository = matchingTaskOfTwoSidesRepository;
     }
 
     @Override
     public String add(MatchingTaskOfTwoSides matchingTaskOfTwoSides) {
-        UUID id = UUID.randomUUID();
-        matchingTaskOfTwoSides.setId(id.toString());
+        matchingTaskOfTwoSides.setId(UUID.randomUUID().toString());
         matchingTaskOfTwoSidesRepository.save(matchingTaskOfTwoSides);
-        return id.toString();
+        return matchingTaskOfTwoSides.getId();
     }
 
     @Override

@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table("chemistry_equation_task")
+@Table(name = "chemistry_equation_task")
 @NoArgsConstructor
 @AllArgsConstructor
 public class ChemistryEquationTask implements ChemistryTask {
