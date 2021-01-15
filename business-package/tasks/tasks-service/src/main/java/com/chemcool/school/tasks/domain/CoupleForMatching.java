@@ -3,11 +3,9 @@ package com.chemcool.school.tasks.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -17,6 +15,9 @@ import javax.persistence.Table;
 public class CoupleForMatching {
 
     @Id
+    @Column(name = "id", unique = true)
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String id;
 
     @Column(name = "left_couple")
