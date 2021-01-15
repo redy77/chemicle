@@ -4,7 +4,8 @@ import com.chemcool.school.tasks.domain.ChemistrySingleSelectTask;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.UUID;
 
-public interface ChemistrySingleSelectTaskRepository extends JpaRepository<ChemistrySingleSelectTask, String> {
+public interface ChemistrySingleSelectTaskRepository extends JpaRepository<ChemistrySingleSelectTask, UUID> {
     List<ChemistrySingleSelectTask> getAllByChapterId(String id);
 }

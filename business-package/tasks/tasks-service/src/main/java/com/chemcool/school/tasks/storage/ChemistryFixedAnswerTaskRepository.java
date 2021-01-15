@@ -6,8 +6,9 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
-public interface ChemistryFixedAnswerTaskRepository extends JpaRepository<ChemistryFixedAnswerTask, String>, JpaSpecificationExecutor<ChemistryFixedAnswerTask> {
+public interface ChemistryFixedAnswerTaskRepository extends JpaRepository<ChemistryFixedAnswerTask, UUID>, JpaSpecificationExecutor<ChemistryFixedAnswerTask> {
     List<ChemistryFixedAnswerTask> findAllByChapterId(String id);
 }
