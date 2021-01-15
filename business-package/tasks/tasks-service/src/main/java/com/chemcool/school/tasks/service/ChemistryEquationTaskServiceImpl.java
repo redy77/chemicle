@@ -24,7 +24,7 @@ public class ChemistryEquationTaskServiceImpl implements ChemistryTaskService<Ch
 
     @Override
     public Optional<ChemistryEquationTask> getById(String id) {
-        return repository.findById(UUID.fromString(id));
+        return repository.findById(id);
     }
 
     @Override
@@ -44,6 +44,6 @@ public class ChemistryEquationTaskServiceImpl implements ChemistryTaskService<Ch
 
     @Override
     public void deleteById(String id) {
-        repository.deleteById(UUID.fromString(id));
+        repository.deleteById(id);
     }
 }
