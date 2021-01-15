@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface CoupleForMatchingRepository extends JpaRepository<CoupleForMatching, UUID> {
+public interface CoupleForMatchingRepository extends JpaRepository<CoupleForMatching, String> {
 }
