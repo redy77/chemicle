@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "matching_task_of_two_sides")
-public class MatchingTaskOfTwoSides {
+public class ChemistryMatchingTask {
 
     @Id
     private String id;
@@ -23,11 +23,12 @@ public class MatchingTaskOfTwoSides {
     @Column(name = "chapter_id")
     private String chapterId;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "type_of_task")
     private TypeOfTask typeOfTask;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "question_id")
-    private List<CoupleForMatchingTask> coupleForMatchingTasks;
+    private List<CoupleForMatching> coupleForMatchingList;
 
 }

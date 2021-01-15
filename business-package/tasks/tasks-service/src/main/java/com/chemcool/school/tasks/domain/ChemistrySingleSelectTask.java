@@ -16,7 +16,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class SingleSelectQuestion implements ChemistryTask{
+public class ChemistrySingleSelectTask implements ChemistryTask{
     /** Не гаррантирует уникального id, если база будет создана вручную */
     @Id
     @Column(unique=true)
@@ -27,7 +27,7 @@ public class SingleSelectQuestion implements ChemistryTask{
 
     private String rightAnswer;
 
-    private String ChapterId;
+    private String chapterId;
 
     @Enumerated(EnumType.STRING)
     private TypeOfTask typeOfTask;

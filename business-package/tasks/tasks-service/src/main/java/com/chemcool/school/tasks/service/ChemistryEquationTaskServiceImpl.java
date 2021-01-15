@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class ChemistryEquationTaskServiceImpl implements TaskService<ChemistryEquationTask> {
+public class ChemistryEquationTaskServiceImpl implements ChemistryTaskService<ChemistryEquationTask> {
 
     private final ChemistryEquationTaskRepository repository;
 
@@ -24,7 +24,7 @@ public class ChemistryEquationTaskServiceImpl implements TaskService<ChemistryEq
 
     @Override
     public Optional<ChemistryEquationTask> getById(String id) {
-        return repository.findById(UUID.fromString(id));
+        return repository.findById(id);
     }
 
     @Override
@@ -33,8 +33,8 @@ public class ChemistryEquationTaskServiceImpl implements TaskService<ChemistryEq
     }
 
     @Override
-    public List<ChemistryEquationTask> getAllByChapterId(String id) {
-        return repository.getAllByChapterId(id);
+    public List<ChemistryEquationTask> getAllByChapterId(String chapterId) {
+        return repository.getAllByChapterId(chapterId);
     }
 
     @Override
@@ -44,6 +44,6 @@ public class ChemistryEquationTaskServiceImpl implements TaskService<ChemistryEq
 
     @Override
     public void deleteById(String id) {
-        repository.deleteById(UUID.fromString(id));
+        repository.deleteById(id);
     }
 }

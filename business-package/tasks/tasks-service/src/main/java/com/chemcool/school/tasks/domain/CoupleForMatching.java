@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "couples")
-public class CoupleForMatchingTask {
+public class CoupleForMatching {
 
     @Id
     private String id;
