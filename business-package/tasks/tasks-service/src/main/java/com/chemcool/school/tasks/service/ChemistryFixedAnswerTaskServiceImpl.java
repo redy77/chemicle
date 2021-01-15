@@ -33,8 +33,8 @@ public class ChemistryFixedAnswerTaskServiceImpl implements ChemistryTaskService
     }
 
     @Override
-    public List<ChemistryFixedAnswerTask> getAllByChapterId(String id) { // ??????
-        return repository.findAllByChapterId(id);
+    public List<ChemistryFixedAnswerTask> getAllByChapterId(String chapterId) { // ??????
+        return repository.findAllByChapterId(chapterId);
     }
 
     @Override

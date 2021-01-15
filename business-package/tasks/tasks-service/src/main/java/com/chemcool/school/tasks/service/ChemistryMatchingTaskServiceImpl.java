@@ -37,8 +37,8 @@ public class ChemistryMatchingTaskServiceImpl implements ChemistryTaskService<Ch
     }
 
     @Override
-    public List<ChemistryMatchingTask> getAllByChapterId(String id) {
-        return chemistryMatchingTaskRepository.findByChapterId(id);
+    public List<ChemistryMatchingTask> getAllByChapterId(String chapterId) {
+        return chemistryMatchingTaskRepository.findByChapterId(chapterId);
     }
 
     @Override

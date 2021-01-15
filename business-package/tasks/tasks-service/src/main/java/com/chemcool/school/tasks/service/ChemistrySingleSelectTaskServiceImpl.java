@@ -33,8 +33,8 @@ public class ChemistrySingleSelectTaskServiceImpl implements ChemistryTaskServic
     }
 
     @Override
-    public List<ChemistrySingleSelectTask> getAllByChapterId(String id) {
-        return repository.getAllByChapterId(id);
+    public List<ChemistrySingleSelectTask> getAllByChapterId(String chapterId) {
+        return repository.getAllByChapterId(chapterId);
     }
 
     @Override

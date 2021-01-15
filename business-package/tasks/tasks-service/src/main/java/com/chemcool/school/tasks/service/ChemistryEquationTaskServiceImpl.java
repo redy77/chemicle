@@ -33,8 +33,8 @@ public class ChemistryEquationTaskServiceImpl implements ChemistryTaskService<Ch
     }
 
     @Override
-    public List<ChemistryEquationTask> getAllByChapterId(String id) {
-        return repository.getAllByChapterId(id);
+    public List<ChemistryEquationTask> getAllByChapterId(String chapterId) {
+        return repository.getAllByChapterId(chapterId);
     }
 
     @Override

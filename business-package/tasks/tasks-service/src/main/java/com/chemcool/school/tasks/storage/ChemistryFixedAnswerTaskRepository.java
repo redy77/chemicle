@@ -10,5 +10,5 @@ import java.util.UUID;
 
 @Repository
 public interface ChemistryFixedAnswerTaskRepository extends JpaRepository<ChemistryFixedAnswerTask, String>, JpaSpecificationExecutor<ChemistryFixedAnswerTask> {
-    List<ChemistryFixedAnswerTask> findAllByChapterId(String id);
+    List<ChemistryFixedAnswerTask> findAllByChapterId(String chapterId);
 }

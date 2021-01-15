@@ -24,7 +24,6 @@ public class TaskDtoService {
     public ChemistryFixedAnswerTaskServiceImpl fixedAnswerTaskService;
 
     @Autowired
-
     public ChemistryMatchingTaskServiceImpl matchingTaskService;
 
     @Autowired
@@ -66,7 +65,7 @@ public class TaskDtoService {
 
     public String add(TasksDto dto) {
         if (dto.getTypeOfTask().isEmpty()) {
-            throw new ChemistryTaskEmptyException(""); //todo ексепшн
+            throw new ChemistryTaskEmptyException("Поле typeOfTask не может быть пустым");
         }
         TypeOfTask type = dto.getTypeOfTask().get();
 

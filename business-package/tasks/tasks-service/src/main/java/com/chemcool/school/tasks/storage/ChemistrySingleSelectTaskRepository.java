@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ChemistrySingleSelectTaskRepository extends JpaRepository<ChemistrySingleSelectTask, String> {
-    List<ChemistrySingleSelectTask> getAllByChapterId(String id);
+    List<ChemistrySingleSelectTask> getAllByChapterId(String chapterId);
 }

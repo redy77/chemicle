@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ChemistryEquationTaskRepository extends JpaRepository<ChemistryEquationTask, String> {
-    public List<ChemistryEquationTask> getAllByChapterId(String id);
+    public List<ChemistryEquationTask> getAllByChapterId(String chapterId);
 }
