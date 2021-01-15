@@ -12,7 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "fixed_answer")
-public class FixedAnswerTask implements ChemistryTask {
+public class ChemistryFixedAnswerTask implements ChemistryTask {
 
     @Id
     private String id;

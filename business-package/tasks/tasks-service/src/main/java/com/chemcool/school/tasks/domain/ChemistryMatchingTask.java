@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "matching_task_of_two_sides")
-public class MatchingOfTwoSidesTask {
+public class ChemistryMatchingTask {
 
     @Id
     private String id;
@@ -28,6 +28,6 @@ public class MatchingOfTwoSidesTask {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "question_id")
-    private List<CoupleForMatching> coupleForMatchings;
+    private List<CoupleForMatching> coupleForMatchingList;
 
 }

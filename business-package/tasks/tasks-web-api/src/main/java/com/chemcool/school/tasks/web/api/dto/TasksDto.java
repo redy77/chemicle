@@ -31,7 +31,7 @@ public class TasksDto {
     private String incorrectAnswer2;
     private String incorrectAnswer3;
 
-    private List<CoupleForMatching> coupleForMatchings;
+    private List<CoupleForMatching> coupleForMatchingList;
 
     public TasksDto(String id, String description, String rightAnswer, String chapterId, TypeOfTask typeOfTask) {
         this.id = id;
@@ -41,7 +41,7 @@ public class TasksDto {
         this.typeOfTask = typeOfTask;
     }
 
-    public TasksDto(FixedAnswerTask task) {
+    public TasksDto(ChemistryFixedAnswerTask task) {
         this(
                 task.getId(),
                 task.getDescription(),
@@ -66,7 +66,7 @@ public class TasksDto {
         this.wrongProducts3 = task.getWrongProducts3();
     }
 
-    public TasksDto(MatchingOfTwoSidesTask task) {
+    public TasksDto(ChemistryMatchingTask task) {
         this(
                 task.getId(),
                 task.getDescription(),
@@ -74,10 +74,10 @@ public class TasksDto {
                 task.getChapterId(),
                 task.getTypeOfTask()
         );
-        this.coupleForMatchings = coupleForMatchings;
+        this.coupleForMatchingList = task.getCoupleForMatchingList();
     }
 
-    public TasksDto(SingleSelectQuestionTask task) {
+    public TasksDto(ChemistrySingleSelectTask task) {
         this(
                 task.getId(),
                 task.getDescription(),

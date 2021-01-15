@@ -2,9 +2,9 @@ package com.chemcool.school.tasks.web.api.service;
 
 import com.chemcool.school.tasks.domain.*;
 import com.chemcool.school.tasks.service.ChemistryEquationTaskServiceImpl;
-import com.chemcool.school.tasks.service.FixedAnswerServiceImpl;
-import com.chemcool.school.tasks.service.MatchingTaskOfTwoSidesServiceImpl;
-import com.chemcool.school.tasks.service.SingleSelectQuestionImpl;
+import com.chemcool.school.tasks.service.ChemistryFixedAnswerTaskServiceImpl;
+import com.chemcool.school.tasks.service.ChemistryMatchingTaskServiceImpl;
+import com.chemcool.school.tasks.service.ChemistrySingleSelectTaskServiceImpl;
 import com.chemcool.school.tasks.web.api.dto.TasksDto;
 import com.chemcool.school.tasks.web.api.exception.ChemistryTaskEmptyException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,49 +18,47 @@ import java.util.Optional;
 public class TaskDtoService {
 
     @Autowired
-    public ChemistryEquationTaskServiceImpl taskOneService;
+    public ChemistryEquationTaskServiceImpl equationTaskService;
 
     @Autowired
-    public FixedAnswerServiceImpl taskTwoService;
+    public ChemistryFixedAnswerTaskServiceImpl fixedAnswerTaskService;
 
     @Autowired
-    public MatchingTaskOfTwoSidesServiceImpl taskThreeService;
+
+    public ChemistryMatchingTaskServiceImpl matchingTaskService;
 
     @Autowired
-    public SingleSelectQuestionImpl singleSelectQuestionService;
+    public ChemistrySingleSelectTaskServiceImpl singleSelectTaskService;
 
     public TasksDto getTaskDtoById(String id) {
-        Optional<ChemistryEquationTask> taskOne = taskOneService.getById(id);
+        Optional<ChemistryEquationTask> taskOne = equationTaskService.getById(id);
         if (taskOne.isPresent()) {
             return new TasksDto(taskOne.get());
         }
-        Optional<FixedAnswerTask> taskTwo = taskTwoService.getById(id);
+        Optional<ChemistryFixedAnswerTask> taskTwo = fixedAnswerTaskService.getById(id);
         if (taskTwo.isPresent()) {
             return new TasksDto(taskTwo.get());
         }
-        Optional<MatchingOfTwoSidesTask> taskThree = taskThreeService.getById(id);
+        Optional<ChemistryMatchingTask> taskThree = matchingTaskService.getById(id);
         if (taskThree.isPresent()) {
             return new TasksDto(taskThree.get());
         }
-        Optional<SingleSelectQuestionTask> taskFour = singleSelectQuestionService.getById(id);
-        if (taskFour.isPresent()) {
-            return new TasksDto(taskFour.get());
-        }
-        return null;
+        Optional<ChemistrySingleSelectTask> taskFour = singleSelectTaskService.getById(id);
+        return taskFour.map(TasksDto::new).orElse(null);
     }
 
     public List<TasksDto> getAllTasks() {
         List<TasksDto> list = new ArrayList<>();
-        for (ChemistryEquationTask task : taskOneService.getAll()) {
+        for (ChemistryEquationTask task : equationTaskService.getAll()) {
             list.add(new TasksDto(task));
         }
-        for (FixedAnswerTask task : taskTwoService.getAll()) {
+        for (ChemistryFixedAnswerTask task : fixedAnswerTaskService.getAll()) {
             list.add(new TasksDto(task));
         }
-        for (MatchingOfTwoSidesTask task : taskThreeService.getAll()) {
+        for (ChemistryMatchingTask task : matchingTaskService.getAll()) {
             list.add(new TasksDto(task));
         }
-        for (SingleSelectQuestionTask task : singleSelectQuestionService.getAll()) {
+        for (ChemistrySingleSelectTask task : singleSelectTaskService.getAll()) {
             list.add(new TasksDto(task));
         }
         return list;
@@ -74,7 +72,7 @@ public class TaskDtoService {
 
         String resultId = "";
         if (type == TypeOfTask.CHEMISTRY_EQUATION) {
-            resultId = taskOneService.add(
+            resultId = equationTaskService.add(
                     new ChemistryEquationTask(
                             dto.getId(),
                             dto.getDescription(),
@@ -87,26 +85,26 @@ public class TaskDtoService {
                             dto.getWrongProducts3()
                     ));
         } else if (type == TypeOfTask.FIXED_ANSWER) {
-            resultId = taskTwoService.add(
-                    new FixedAnswerTask(
+            resultId = fixedAnswerTaskService.add(
+                    new ChemistryFixedAnswerTask(
                             dto.getId(),
                             dto.getDescription(),
                             dto.getRightAnswer(),
                             dto.getChapterId(),
                             type
                     ));
-        } else if (type == TypeOfTask.MATCHING_TASK_OF_TWO_SIDES) {
-            resultId = taskThreeService.add(
-                    new MatchingOfTwoSidesTask(
+        } else if (type == TypeOfTask.MATCHING) {
+            resultId = matchingTaskService.add(
+                    new ChemistryMatchingTask(
                             dto.getId(),
                             dto.getDescription(),
                             dto.getChapterId(),
                             type,
-                            dto.getCoupleForMatchings()
+                            dto.getCoupleForMatchingList()
                     ));
-        } else if (type == TypeOfTask.COMPARISON) {
-            resultId = singleSelectQuestionService.add(
-                    new SingleSelectQuestionTask(
+        } else if (type == TypeOfTask.SINGLE_SELECT) {
+            resultId = singleSelectTaskService.add(
+                    new ChemistrySingleSelectTask(
                             dto.getId(),
                             dto.getDescription(),
                             dto.getRightAnswer(),

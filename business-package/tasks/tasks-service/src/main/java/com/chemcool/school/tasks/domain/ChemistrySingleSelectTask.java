@@ -16,7 +16,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class SingleSelectQuestionTask implements ChemistryTask{
+public class ChemistrySingleSelectTask implements ChemistryTask{
     /** Не гаррантирует уникального id, если база будет создана вручную */
     @Id
     @Column(unique=true)
