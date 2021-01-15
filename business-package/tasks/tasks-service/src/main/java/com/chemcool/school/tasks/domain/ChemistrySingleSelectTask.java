@@ -19,8 +19,8 @@ import javax.persistence.*;
 public class ChemistrySingleSelectTask implements ChemistryTask{
     /** Не гаррантирует уникального id, если база будет создана вручную */
     @Id
-    @Column(unique=true)
-    private String id;
+    @Column(unique=true, name = "chemistry_single_select_task_uuid")
+    private String chemistrySingleSelectTaskUuid;
 
     @Column(length = 5000)
     private String description;

@@ -15,7 +15,8 @@ import java.util.List;
 public class ChemistryMatchingTask {
 
     @Id
-    private String id;
+    @Column(name = "chemistry_matching_task_uuid")
+    private String chemistryMatchingTaskUuid;
 
     @Column(name = "description")
     private String description;

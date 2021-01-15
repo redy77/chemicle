@@ -17,9 +17,9 @@ public class ChemistryEquationTaskServiceImpl implements ChemistryTaskService<Ch
 
     @Override
     public String add(ChemistryEquationTask chemistryEquationTask) {
-        chemistryEquationTask.setId(UUID.randomUUID().toString());
+        chemistryEquationTask.setChemistryEquationTaskUuid(UUID.randomUUID().toString());
         repository.save(chemistryEquationTask);
-        return chemistryEquationTask.getId();
+        return chemistryEquationTask.getChemistryEquationTaskUuid();
     }
 
     @Override

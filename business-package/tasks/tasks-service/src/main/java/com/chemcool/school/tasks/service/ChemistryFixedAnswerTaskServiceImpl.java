@@ -17,9 +17,9 @@ public class ChemistryFixedAnswerTaskServiceImpl implements ChemistryTaskService
 
     @Override
     public String add(ChemistryFixedAnswerTask chemistryFixedAnswerTask) {
-        chemistryFixedAnswerTask.setId(UUID.randomUUID().toString());
+        chemistryFixedAnswerTask.setChemistryFixedAnswerTaskUuid(UUID.randomUUID().toString());
         repository.save(chemistryFixedAnswerTask);
-        return chemistryFixedAnswerTask.getId();
+        return chemistryFixedAnswerTask.getChemistryFixedAnswerTaskUuid();
     }
 
     @Override

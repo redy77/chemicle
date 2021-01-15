@@ -14,8 +14,8 @@ import javax.persistence.*;
 public class ChemistryEquationTask implements ChemistryTask {
 
     @Id
-    @Column(name = "id")
-    private String id;
+    @Column(name = "chemistry_equation_task_uuid")
+    private String chemistryEquationTaskUuid;
 
     @Column(name = "description")
     private String description;

@@ -17,9 +17,9 @@ public class ChemistrySingleSelectTaskServiceImpl implements ChemistryTaskServic
 
     @Override
     public String add(ChemistrySingleSelectTask chemistrySingleSelectTask) {
-        chemistrySingleSelectTask.setId(UUID.randomUUID().toString());
+        chemistrySingleSelectTask.setChemistrySingleSelectTaskUuid(UUID.randomUUID().toString());
         repository.save(chemistrySingleSelectTask);
-        return chemistrySingleSelectTask.getId();
+        return chemistrySingleSelectTask.getChemistrySingleSelectTaskUuid();
     }
 
     @Override

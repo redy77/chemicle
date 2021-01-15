@@ -43,7 +43,7 @@ public class TasksDto {
 
     public TasksDto(ChemistryFixedAnswerTask task) {
         this(
-                task.getId(),
+                task.getChemistryFixedAnswerTaskUuid(),
                 task.getDescription(),
                 task.getRightAnswer(),
                 task.getChapterId(),
@@ -53,7 +53,7 @@ public class TasksDto {
 
     public TasksDto(ChemistryEquationTask task) {
         this(
-                task.getId(),
+                task.getChemistryEquationTaskUuid(),
                 task.getDescription(),
                 null,
                 task.getChapterId(),
@@ -68,7 +68,7 @@ public class TasksDto {
 
     public TasksDto(ChemistryMatchingTask task) {
         this(
-                task.getId(),
+                task.getChemistryMatchingTaskUuid(),
                 task.getDescription(),
                 null,
                 task.getChapterId(),
@@ -79,7 +79,7 @@ public class TasksDto {
 
     public TasksDto(ChemistrySingleSelectTask task) {
         this(
-                task.getId(),
+                task.getChemistrySingleSelectTaskUuid(),
                 task.getDescription(),
                 task.getRightAnswer(),
                 task.getChapterId(),

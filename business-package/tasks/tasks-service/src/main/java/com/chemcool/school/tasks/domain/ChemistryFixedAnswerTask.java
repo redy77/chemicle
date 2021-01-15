@@ -15,7 +15,8 @@ import javax.persistence.*;
 public class ChemistryFixedAnswerTask implements ChemistryTask {
 
     @Id
-    private String id;
+    @Column(name = "chemistry_fixed_answer_task_uuid")
+    private String chemistryFixedAnswerTaskUuid;
 
     @Column(name = "description", length = 5000)
     private String description;
