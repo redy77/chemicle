@@ -27,19 +27,19 @@ public class ChemistryEquationTask implements ChemistryTask {
     private String chapterId;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "type_of_tasks")
+    @Column(name = "type_of_task")
     private TypeOfTask typeOfTask;
 
     @Column(name = "reagents")
     private String reagents;
 
-    @Column(name = "wrong_products_1")
+    @Column(name = "wrong_products1")
     private String wrongProducts1;
 
-    @Column(name = "wrong_products_2")
+    @Column(name = "wrong_products2")
     private String wrongProducts2;
 
-    @Column(name = "wrong_products_3")
+    @Column(name = "wrong_products3")
     private String wrongProducts3;
 
 }
