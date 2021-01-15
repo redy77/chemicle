@@ -23,6 +23,7 @@ public class ChemistryMatchingTask {
     @Column(name = "chapter_id")
     private String chapterId;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "type_of_task")
     private TypeOfTask typeOfTask;
 
