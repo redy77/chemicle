@@ -63,6 +63,23 @@ public class TaskDtoService {
         return list;
     }
 
+    public List<TasksDto> getAllTasksByChapterId(String chapterId) {
+        List<TasksDto> list = new ArrayList<>();
+        for (ChemistryEquationTask task : equationTaskService.getAllByChapterId(chapterId) ) {
+            list.add(new TasksDto(task));
+        }
+        for (ChemistryFixedAnswerTask task : fixedAnswerTaskService.getAllByChapterId(chapterId) ) {
+            list.add(new TasksDto(task));
+        }
+        for (ChemistryMatchingTask task : matchingTaskService.getAllByChapterId(chapterId) ) {
+            list.add(new TasksDto(task));
+        }
+        for (ChemistrySingleSelectTask task : singleSelectTaskService.getAllByChapterId(chapterId) ) {
+            list.add(new TasksDto(task));
+        }
+        return list;
+    }
+
     public String add(TasksDto dto) {
         if (dto.getTypeOfTask().isEmpty()) {
             throw new ChemistryTaskEmptyException("Поле typeOfTask не может быть пустым");
@@ -115,5 +132,28 @@ public class TaskDtoService {
                     ));
         }
         return resultId;
+    }
+
+    public void deleteById(String id) {
+        TasksDto dto = getTaskDtoById(id);
+
+        if (dto.getTypeOfTask().isEmpty()) {
+            throw new ChemistryTaskEmptyException("Поле typeOfTask не может быть пустым");
+        }
+        TypeOfTask type = dto.getTypeOfTask().get();
+
+        deleteByIdAndType(id, type);
+    }
+
+    public void deleteByIdAndType(String id, TypeOfTask type) {
+        if (type == TypeOfTask.CHEMISTRY_EQUATION) {
+             equationTaskService.deleteById(id);
+        } else if (type == TypeOfTask.FIXED_ANSWER) {
+            fixedAnswerTaskService.deleteById(id);
+        } else if (type == TypeOfTask.MATCHING) {
+            matchingTaskService.deleteById(id);
+        } else if (type == TypeOfTask.SINGLE_SELECT) {
+            singleSelectTaskService.deleteById(id);
+        }
     }
 }
