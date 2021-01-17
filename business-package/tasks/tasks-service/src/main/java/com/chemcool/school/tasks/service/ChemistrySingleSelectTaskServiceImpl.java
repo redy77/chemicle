@@ -24,26 +24,26 @@ public class ChemistrySingleSelectTaskServiceImpl implements ChemistryTaskServic
     public String add(ChemistrySingleSelectTaskExample exampleTask) {
         ChemistrySingleSelectTask task = ChemistrySingleSelectTaskFactory.createTask(exampleTask);
         repository.save(task);
-        log.info("Добавление сущности задания " + this.getClass().getName() +
+        log.info("Добавление сущности задания " + task.getClass().getName() +
                 " прошло  успешно. UUID = " + task.getChemistrySingleSelectTaskUuid() );
         return task.getChemistrySingleSelectTaskUuid();
     }
 
     @Override
     public Optional<ChemistrySingleSelectTask> getById(String id) {
-        log.info("====getById===="); //todo логи
+        log.info("Ищем сущность задания ChemistrySingleSelectTask по UUID = " + id);
         return repository.findById(id);
     }
 
     @Override
     public List<ChemistrySingleSelectTask> getAll() {
-        log.info("====getAll===="); //todo логи
+        log.info("Ищем все сущности заданий ChemistrySingleSelectTask.");
         return repository.findAll();
     }
 
     @Override
     public List<ChemistrySingleSelectTask> getAllByChapterId(String chapterId) {
-        log.info("====getAllByChapter===="); //todo логи
+        log.info("Ищем все сущности заданий ChemistrySingleSelectTask по chapterID = " + chapterId);
         return repository.getAllByChapterId(chapterId);
     }
 
@@ -58,7 +58,7 @@ public class ChemistrySingleSelectTaskServiceImpl implements ChemistryTaskServic
 
     @Override
     public void deleteById(String id) {
-        log.info("====delete===="); //todo логи
+        log.info("Удаляем сущность задания ChemistrySingleSelectTask.");
         repository.deleteById(id);
     }
 }
