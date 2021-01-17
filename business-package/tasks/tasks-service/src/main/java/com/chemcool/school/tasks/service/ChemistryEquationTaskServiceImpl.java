@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class ChemistryEquationTaskServiceImpl implements ChemistryTaskService<ChemistryEquationTask> {
+public class ChemistryEquationTaskServiceImpl implements ChemistryTaskService<ChemistryEquationTask,ChemistryEquationTask> {
 
     private final ChemistryEquationTaskRepository repository;
 
