@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 /**
  * Класс выбора фиксированного ответа.
@@ -36,6 +37,18 @@ public class ChemistrySingleSelectTask implements ChemistryTask{
     private String incorrectAnswer2;
     private String incorrectAnswer3;
 
-
-
+    public static ChemistrySingleSelectTask createChemistrySingleSelectTask(
+            ChemistrySingleSelectTaskExample example
+    ) {
+        return new ChemistrySingleSelectTask(
+                UUID.randomUUID().toString(),
+                example.getDescriptionExample(),
+                example.getRightAnswerExample(),
+                example.getChapterIdExample(),
+                example.getTypeOfTaskExample(),
+                example.getIncorrectAnswer1Example(),
+                example.getIncorrectAnswer2Example(),
+                example.getIncorrectAnswer3Example()
+        );
+    }
 }
