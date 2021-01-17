@@ -120,8 +120,8 @@ public class TaskDtoService {
                     ));
         } else if (type == TypeOfTask.SINGLE_SELECT) {
             resultId = singleSelectTaskService.add(
-                    new ChemistrySingleSelectTask(
-                            dto.getId(),
+                    new ChemistrySingleSelectTaskExample(
+//                            dto.getId(),
                             dto.getDescription(),
                             dto.getRightAnswer(),
                             dto.getChapterId(),
