@@ -25,12 +25,28 @@ public class ChemistryLessonRestController {
         return presentation.createChemistryLessonExample(lessonExample);
     }
 
+    @PutMapping(value = "/update")
+    @ResponseBody
+    public String updateLessonExample(
+            @RequestBody LessonExample lessonExample
+    ) {
+        log.info("Вызван контроллер для изменения темы с названием: " + "[" + lessonExample.getLessonExampleName() + "]");
+        return presentation.updateChemistryLessonExample(lessonExample);
+    }
+
+    @DeleteMapping(value = "/delete")
+    @ResponseBody
+    public void deleteLessonExample(
+            @RequestBody LessonExample lessonExample
+//            или через @PathVariable(name = "id") String id ???
+    ) {
+        log.info("Вызван контроллер для удаления темы с названием: " + "[" + lessonExample.getLessonExampleName() + "]");
+        presentation.deleteChemistryLessonExample(lessonExample);
+    }
 
     @GetMapping("/hello")
     public String hello() {
         return "Hello World!";
     }
-
-
 
 }
