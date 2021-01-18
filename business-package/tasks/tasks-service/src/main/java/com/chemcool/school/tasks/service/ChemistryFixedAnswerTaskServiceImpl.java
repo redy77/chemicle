@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class ChemistryFixedAnswerTaskServiceImpl implements ChemistryTaskService<ChemistryFixedAnswerTask> {
+public class ChemistryFixedAnswerTaskServiceImpl implements ChemistryTaskService<ChemistryFixedAnswerTask, ChemistryFixedAnswerTask> {
 
     @Autowired
     ChemistryFixedAnswerTaskRepository repository;
