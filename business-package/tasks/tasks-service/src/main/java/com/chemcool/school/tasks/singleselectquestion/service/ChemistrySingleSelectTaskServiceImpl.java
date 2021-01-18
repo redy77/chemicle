@@ -1,17 +1,14 @@
-package com.chemcool.school.tasks.service;
+package com.chemcool.school.tasks.singleselectquestion.service;
 
-import com.chemcool.school.tasks.domain.ChemistrySingleSelectTask;
-import com.chemcool.school.tasks.domain.ChemistrySingleSelectTaskExample;
-import com.chemcool.school.tasks.domain.ChemistrySingleSelectTaskFactory;
-import com.chemcool.school.tasks.exeption.ChemistrySingleSelectTaskFormatException;
-import com.chemcool.school.tasks.storage.ChemistrySingleSelectTaskRepository;
+import com.chemcool.school.tasks.singleselectquestion.domain.ChemistrySingleSelectTask;
+import com.chemcool.school.tasks.singleselectquestion.domain.ChemistrySingleSelectTaskExample;
+import com.chemcool.school.tasks.singleselectquestion.domain.ChemistrySingleSelectTaskFactory;
+import com.chemcool.school.tasks.singleselectquestion.storage.ChemistrySingleSelectTaskRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor

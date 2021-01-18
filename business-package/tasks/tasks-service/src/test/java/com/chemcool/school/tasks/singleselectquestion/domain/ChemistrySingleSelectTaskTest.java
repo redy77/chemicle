@@ -1,5 +1,8 @@
-package com.chemcool.school.tasks.domain;
+package com.chemcool.school.tasks.singleselectquestion.domain;
 
+import com.chemcool.school.tasks.domain.TypeOfTask;
+import com.chemcool.school.tasks.singleselectquestion.domain.ChemistrySingleSelectTask;
+import com.chemcool.school.tasks.singleselectquestion.domain.ChemistrySingleSelectTaskExample;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ChemistrySingleSelectTaskTest {
 
-    public ChemistrySingleSelectTaskExample example;
-    ChemistrySingleSelectTask task;
+    private ChemistrySingleSelectTaskExample example;
+    private ChemistrySingleSelectTask task;
 
     @BeforeEach
     public void init(){

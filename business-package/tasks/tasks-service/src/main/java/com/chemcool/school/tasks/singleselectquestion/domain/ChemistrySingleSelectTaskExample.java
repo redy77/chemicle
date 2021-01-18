@@ -1,6 +1,7 @@
-package com.chemcool.school.tasks.domain;
+package com.chemcool.school.tasks.singleselectquestion.domain;
 
 
+import com.chemcool.school.tasks.domain.TypeOfTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

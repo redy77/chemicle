@@ -1,6 +1,8 @@
-package com.chemcool.school.tasks.domain;
+package com.chemcool.school.tasks.singleselectquestion.domain;
 
 
+import com.chemcool.school.tasks.domain.ChemistryTask;
+import com.chemcool.school.tasks.domain.TypeOfTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +19,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class ChemistrySingleSelectTask implements ChemistryTask{
+public class ChemistrySingleSelectTask {
     /** Не гаррантирует уникального id, если база будет создана вручную */
     @Id
     @Column(unique=true, name = "chemistry_single_select_task_uuid")
