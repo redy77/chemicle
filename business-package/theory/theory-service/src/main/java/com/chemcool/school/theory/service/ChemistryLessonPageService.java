@@ -20,4 +20,8 @@ public class ChemistryLessonPageService {
         return lessonPage.getLessonId();
     }
 
+    public void deleteLesson(ChemistryLessonExample example) {
+        ChemistryLesson lessonPage = ChemistryLessonFactory.createLesson(example);
+        repository.delete(lessonPage);
+    }
 }
