@@ -30,4 +30,25 @@ public class ChemistryLessonPresentation {
         }
     }
 
+    public void deleteChemistryLessonExample(LessonExample example) {
+        service.deleteLesson(
+                new ChemistryLessonExample(
+                        example.getLessonExampleName(),
+                        example.getLessonExampleDescription(),
+                        example.getLessonExampleChapter(),
+                        example.getLessonExampleReferences()
+                )
+        );
+    }
+
+    public String updateChemistryLessonExample(LessonExample example) {
+        return service.manageLesson(
+                new ChemistryLessonExample(
+                        example.getLessonExampleName(),
+                        example.getLessonExampleDescription(),
+                        example.getLessonExampleChapter(),
+                        example.getLessonExampleReferences()
+                )
+        );
+    }
 }
