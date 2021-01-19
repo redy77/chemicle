@@ -14,69 +14,29 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ChemistrySingleSelectTaskPresentation {
 
-    private final ChemistrySingleSelectTaskServiceImpl service;
+    private final ChemistrySingleSelectTaskServiceLayer service;
 
     public ChemistrySingleSelectTaskDto getTaskDtoById(String id) {
-        return service.getById(id).map(ChemistrySingleSelectTaskDto::new).orElse(null);
+        return service.getTaskDtoById(id);
     }
 
     public List<ChemistrySingleSelectTaskDto> getAllTasks() {
-        List<ChemistrySingleSelectTaskDto> list = new ArrayList<>();
-        for (ChemistrySingleSelectTask task : service.getAll()) {
-            list.add(new ChemistrySingleSelectTaskDto(task));
-        }
-        return list;
+        return service.getAllTasks();
     }
 
     public List<ChemistrySingleSelectTaskDto> getAllTasksByChapterId(String chapterId) {
-        List<ChemistrySingleSelectTaskDto> list = new ArrayList<>();
-        for (ChemistrySingleSelectTask task : service.getAllByChapterId(chapterId)) {
-            list.add(new ChemistrySingleSelectTaskDto(task));
-        }
-        return list;
+        return service.getAllTasksByChapterId(chapterId);
     }
 
     public String add(ChemistrySingleSelectTaskDto dto) {
-        validate(dto);
-        return service.add(
-                new ChemistrySingleSelectTaskExample(
-                        dto.getChemistrySingleSelectTaskUuid(),
-                        dto.getDescription(),
-                        dto.getRightAnswer(),
-                        dto.getChapterId(),
-                        dto.getTypeOfTask(),
-                        dto.getIncorrectAnswer1(),
-                        dto.getIncorrectAnswer2(),
-                        dto.getIncorrectAnswer3()
-                )
-        );
+        return service.add(dto);
     }
 
     public void update(ChemistrySingleSelectTaskDto dto) {
-        validate(dto);
-        service.update(
-                new ChemistrySingleSelectTaskExample( //todo может быть всё-таки через ChemistrySingleSelectTask
-                        dto.getChemistrySingleSelectTaskUuid(),
-                        dto.getDescription(),
-                        dto.getRightAnswer(),
-                        dto.getChapterId(),
-                        dto.getTypeOfTask(),
-                        dto.getIncorrectAnswer1(),
-                        dto.getIncorrectAnswer2(),
-                        dto.getIncorrectAnswer3()
-                )
-        );
+        service.update(dto);
     }
 
     public void deleteById(String id) {
         service.deleteById(id);
-    }
-
-    private void validate(ChemistrySingleSelectTaskDto dto) {
-        if (
-                dto.getDescription().isEmpty() //todo добавить все обязательные поля для проверки заполнения
-        ) {
-            throw new ChemistryTaskEmptyException("Необходимые поля пустые, проверьте пожалуйста бланк заполнения задания.");
-        }
     }
 }
