@@ -1,11 +1,14 @@
-package com.chemcool.school.tasks.domain;
+package com.chemcool.school.tasks.fixedanswer.domain;
 
+import com.chemcool.school.tasks.domain.ChemistryTask;
+import com.chemcool.school.tasks.domain.TypeOfTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -33,4 +36,16 @@ public class ChemistryFixedAnswerTask implements ChemistryTask {
     @Enumerated(EnumType.STRING)
     @NonNull
     private TypeOfTask typeOfTask;
+
+    public static ChemistryFixedAnswerTask createChemistryFixedAnswerTask(
+            ChemistryFixedAnswerTaskExample task
+    ){
+        return new ChemistryFixedAnswerTask(
+                UUID.randomUUID().toString(),
+                task.getDescription(),
+                task.getRightAnswer(),
+                task.getChapterId(),
+                task.getTypeOfTask()
+        );
+    }
 }
