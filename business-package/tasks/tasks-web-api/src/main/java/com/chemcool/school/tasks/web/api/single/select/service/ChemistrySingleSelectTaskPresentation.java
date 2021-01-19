@@ -1,13 +1,9 @@
 package com.chemcool.school.tasks.web.api.single.select.service;
 
-import com.chemcool.school.tasks.domain.*;
-import com.chemcool.school.tasks.service.ChemistrySingleSelectTaskServiceImpl;
 import com.chemcool.school.tasks.web.api.single.select.dto.ChemistrySingleSelectTaskDto;
-import com.chemcool.school.tasks.web.api.exception.ChemistryTaskEmptyException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
