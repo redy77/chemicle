@@ -3,11 +3,12 @@ package com.chemcool.school.tasks.service;
 import java.util.List;
 import java.util.Optional;
 
-public interface TaskService<T> {
-    void add(T t);
+public interface ChemistryTaskService<T, E> {
+    String add(E e);
     Optional<T> getById(String id);
     List<T> getAll();
-    List<T> getAllByChapterId(String id);
-    void update(T t);
+    List<T> getAllByChapterId(String chapterId);
+    void update(E e);
     void deleteById(String id);
 }
+

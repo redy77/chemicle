@@ -7,6 +7,9 @@
 node_modules/
 dist/
 
+# project iml files
+*.iml
+
 # Compiled Java class files
 *.class
 
@@ -25,6 +28,8 @@ dist/
 
 # JetBrains IDE
 .idea/
+*.iml
+*.iws
 
 # Unit test reports
 TEST*.xml
