@@ -1,43 +1,64 @@
-package com.chemcool.school.tasks.singleselectquestion.service;
+package com.chemcool.school.tasks.service;
 
-import com.chemcool.school.tasks.singleselectquestion.domain.ChemistrySingleSelectTask;
-import com.chemcool.school.tasks.singleselectquestion.domain.ChemistrySingleSelectTaskExample;
-import com.chemcool.school.tasks.singleselectquestion.domain.ChemistrySingleSelectTaskFactory;
-import com.chemcool.school.tasks.singleselectquestion.storage.ChemistrySingleSelectTaskRepository;
+import com.chemcool.school.tasks.domain.ChemistrySingleSelectTask;
+import com.chemcool.school.tasks.domain.ChemistrySingleSelectTaskExample;
+import com.chemcool.school.tasks.domain.ChemistrySingleSelectTaskFactory;
+import com.chemcool.school.tasks.storage.ChemistrySingleSelectTaskRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
-public class ChemistrySingleSelectTaskServiceImpl {
+public class ChemistrySingleSelectTaskServiceImpl implements ChemistryTaskService<ChemistrySingleSelectTask, ChemistrySingleSelectTaskExample> {
+
     private final ChemistrySingleSelectTaskRepository repository;
 
-    public String add(ChemistrySingleSelectTaskExample task) {
-        ChemistrySingleSelectTask chemistrySingleSelectTask = ChemistrySingleSelectTaskFactory.createTask(task);
-        repository.save(chemistrySingleSelectTask);
-        return chemistrySingleSelectTask.getChemistrySingleSelectTaskUuid();
+    @Override
+    public String add(ChemistrySingleSelectTaskExample exampleTask) {
+        ChemistrySingleSelectTask task = ChemistrySingleSelectTaskFactory.createTask(exampleTask);
+        repository.save(task);
+        log.info("Добавление сущности задания " + task.getClass().getName() +
+                " прошло  успешно. UUID = " + task.getChemistrySingleSelectTaskUuid() );
+        return task.getChemistrySingleSelectTaskUuid();
     }
 
+    @Override
     public Optional<ChemistrySingleSelectTask> getById(String id) {
+        log.info("Ищем сущность задания ChemistrySingleSelectTask по UUID = " + id);
         return repository.findById(id);
     }
 
+    @Override
     public List<ChemistrySingleSelectTask> getAll() {
+        log.info("Ищем все сущности заданий ChemistrySingleSelectTask.");
         return repository.findAll();
     }
 
+    @Override
     public List<ChemistrySingleSelectTask> getAllByChapterId(String chapterId) {
+        log.info("Ищем все сущности заданий ChemistrySingleSelectTask по chapterID = " + chapterId);
         return repository.getAllByChapterId(chapterId);
     }
 
-    public void update(ChemistrySingleSelectTask chemistrySingleSelectTask) {
-        repository.save(chemistrySingleSelectTask);
+    @Override
+    public void update(ChemistrySingleSelectTaskExample exampleTask) {
+        ChemistrySingleSelectTask task = ChemistrySingleSelectTaskFactory.createTask(exampleTask);//todo сделал как и add через фабрику, может не нужно?
+        task.setChemistrySingleSelectTaskUuid( exampleTask.getChemistrySingleSelectTaskUuid() );
+        repository.save(task);
+        log.info("Обновление сущности задания " + this.getClass().getName() +
+                " прошло  успешно. UUID = " + task.getChemistrySingleSelectTaskUuid() );
     }
 
+    @Override
     public void deleteById(String id) {
+        log.info("Удаляем сущность задания ChemistrySingleSelectTask.");
         repository.deleteById(id);
     }
 }
