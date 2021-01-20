@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class ChemistrySingleSelectTaskFactory {
 
     public static ChemistrySingleSelectTask createTask(ChemistrySingleSelectTaskExample example){
-        
+
         if (Integer.parseInt(example.getChapterIdExample()) < 1 || Integer.parseInt(example.getChapterIdExample()) > 4) {
             throw new ChemistrySingleSelectTaskFormatException("Уровень химии не может быть меньше 1 или больше 4.");
         }
