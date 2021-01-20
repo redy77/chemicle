@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -13,7 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "matching_task_of_two_sides")
 public class ChemistryMatchingTask {
-
     @Id
     @Column(name = "chemistry_matching_task_uuid")
     private String chemistryMatchingTaskUuid;
@@ -32,4 +32,15 @@ public class ChemistryMatchingTask {
     @JoinColumn(name = "question_id")
     private List<CoupleForMatching> coupleForMatchingList;
 
+    public static ChemistryMatchingTask createChemistryMatchingTask(
+            ChemistryMatchingTaskExample example
+    ){
+        return new ChemistryMatchingTask(
+                UUID.randomUUID().toString(),
+                example.getDescription(),
+                example.getChapterId(),
+                example.getTypeOfTask(),
+                example.getCoupleForMatchingList()
+        );
+    }
 }
