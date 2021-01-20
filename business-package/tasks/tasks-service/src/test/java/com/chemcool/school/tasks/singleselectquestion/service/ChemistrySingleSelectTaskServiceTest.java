@@ -13,7 +13,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ChemistrySingleSelectTaskServiceImplTest {
+class ChemistrySingleSelectTaskServiceTest {
 
     private ArrayList<ChemistrySingleSelectTask> testBase = new ArrayList<>();
 

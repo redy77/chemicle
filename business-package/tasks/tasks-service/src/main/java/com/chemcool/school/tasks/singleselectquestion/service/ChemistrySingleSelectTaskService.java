@@ -1,22 +1,21 @@
-package com.chemcool.school.tasks.service;
+package com.chemcool.school.tasks.singleselectquestion.service;
 
-import com.chemcool.school.tasks.domain.ChemistrySingleSelectTask;
-import com.chemcool.school.tasks.domain.ChemistrySingleSelectTaskExample;
-import com.chemcool.school.tasks.domain.ChemistrySingleSelectTaskFactory;
-import com.chemcool.school.tasks.storage.ChemistrySingleSelectTaskRepository;
+
+import com.chemcool.school.tasks.singleselectquestion.domain.ChemistrySingleSelectTask;
+import com.chemcool.school.tasks.singleselectquestion.domain.ChemistrySingleSelectTaskExample;
+import com.chemcool.school.tasks.singleselectquestion.domain.ChemistrySingleSelectTaskFactory;
+import com.chemcool.school.tasks.singleselectquestion.storage.ChemistrySingleSelectTaskRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class ChemistrySingleSelectTaskServiceImpl implements ChemistryTaskService<ChemistrySingleSelectTask, ChemistrySingleSelectTaskExample> {
+public class ChemistrySingleSelectTaskService implements ChemistryTaskService<ChemistrySingleSelectTask, ChemistrySingleSelectTaskExample> {
 
     private final ChemistrySingleSelectTaskRepository repository;
 
@@ -48,9 +47,7 @@ public class ChemistrySingleSelectTaskServiceImpl implements ChemistryTaskServic
     }
 
     @Override
-    public void update(ChemistrySingleSelectTaskExample exampleTask) {
-        ChemistrySingleSelectTask task = ChemistrySingleSelectTaskFactory.createTask(exampleTask);//todo сделал как и add через фабрику, может не нужно?
-        task.setChemistrySingleSelectTaskUuid( exampleTask.getChemistrySingleSelectTaskUuid() );
+    public void update(ChemistrySingleSelectTask task) {
         repository.save(task);
         log.info("Обновление сущности задания " + this.getClass().getName() +
                 " прошло  успешно. UUID = " + task.getChemistrySingleSelectTaskUuid() );
