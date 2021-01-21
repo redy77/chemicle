@@ -1,6 +1,8 @@
-package com.chemcool.school.tasks.domain;
+package com.chemcool.school.tasks.singleselectquestion.domain;
 
 
+import com.chemcool.school.tasks.domain.ChemistryTask;
+import com.chemcool.school.tasks.domain.TypeOfTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +11,7 @@ import javax.persistence.*;
 import java.util.UUID;
 
 /**
- * Класс выбора фиксированного ответа.
+ * Класс вопрос с одним выбором ответа.
  * Один правильный ответ, три неправильных. *
  *
  */
@@ -42,14 +44,13 @@ public class ChemistrySingleSelectTask {
     ) {
         return new ChemistrySingleSelectTask(
                 UUID.randomUUID().toString(),
-                example.getDescription(),
-                example.getRightAnswer(),
-                example.getChapterId(),
-                example.getTypeOfTask(),
-                example.getIncorrectAnswer1(),
-                example.getIncorrectAnswer2(),
-                example.getIncorrectAnswer3()
+                example.getDescriptionExample(),
+                example.getRightAnswerExample(),
+                example.getChapterIdExample(),
+                example.getTypeOfTaskExample(),
+                example.getIncorrectAnswer1Example(),
+                example.getIncorrectAnswer2Example(),
+                example.getIncorrectAnswer3Example()
         );
     }
-
 }
