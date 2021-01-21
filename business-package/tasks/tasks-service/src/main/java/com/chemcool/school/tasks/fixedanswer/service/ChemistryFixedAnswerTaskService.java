@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ChemistryFixedAnswerTaskServiceImpl implements ChemistryTaskService<ChemistryFixedAnswerTask, ChemistryFixedAnswerTaskExample> {
+public class ChemistryFixedAnswerTaskService implements ChemistryTaskService<ChemistryFixedAnswerTask, ChemistryFixedAnswerTaskExample> {
 
     @Autowired
     ChemistryFixedAnswerTaskRepository repository;

@@ -1,7 +1,7 @@
 package com.chemcool.school.tasks.fixedanswer.domain;
 
-import com.chemcool.school.tasks.domain.ChemistryTask;
-import com.chemcool.school.tasks.domain.TypeOfTask;
+import com.chemcool.school.tasks.ChemistryTask;
+import com.chemcool.school.tasks.TypeOfTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
