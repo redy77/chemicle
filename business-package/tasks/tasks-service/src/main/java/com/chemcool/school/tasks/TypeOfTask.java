@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.domain;
+package com.chemcool.school.tasks;
 
 public enum TypeOfTask {
     CHEMISTRY_EQUATION,
