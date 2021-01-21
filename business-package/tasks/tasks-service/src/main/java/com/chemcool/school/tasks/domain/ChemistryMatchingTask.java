@@ -1,5 +1,6 @@
 package com.chemcool.school.tasks.domain;
 
+import com.chemcool.school.tasks.TypeOfTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
