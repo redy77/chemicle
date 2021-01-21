@@ -12,4 +12,19 @@ public class ChemistryLessonExample {
     private String lessonExampleDescription;
     private Integer lessonExampleChapter;
     private Integer lessonExampleReferences;
+
+    public static ChemistryLessonExample fromLessonExample(
+            String name,
+            String description,
+            Integer chapter,
+            Integer references
+    ) {
+        return new ChemistryLessonExample(
+                name,
+                description,
+                chapter,
+                references
+        );
+    }
+
 }
