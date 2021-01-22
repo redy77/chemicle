@@ -34,6 +34,7 @@ services:
     - 8080:8080
 
   theory-application:
+    image: theory-application
     build:
       context: ../../../business-package/theory/theory-application
       dockerfile: Dockerfile
