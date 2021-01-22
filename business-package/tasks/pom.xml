@@ -84,9 +84,7 @@
     </build>
 
     <modules>
-        <module>tasks-application</module>
-        <module>tasks-service</module>
-        <module>tasks-web-api</module>
+<!--        todo надо добавить новые модули-->
     </modules>
 
 </project>
