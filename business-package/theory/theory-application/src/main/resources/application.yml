@@ -1,14 +1,13 @@
 spring:
   application:
-    name: theory-application-service
-
+    name: theory-application
   jpa:
     database: postgresql
     show-sql: true
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/theory
+    url: jdbc:postgresql://localhost:5432/theory_application
     username: mick
     password: mick
     platform: postgres

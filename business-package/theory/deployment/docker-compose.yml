@@ -1,6 +1,5 @@
 version: '3'
 
-
 services:
 
   service-discovery:
@@ -34,14 +33,12 @@ services:
     ports:
     - 8080:8080
 
-  theory-aplication:
-    image: theory-aplication
-    container_name: theory-aplication
-    hostname: theory-aplication
+  theory-application:
     build:
       context: ../../../business-package/theory/theory-application
       dockerfile: Dockerfile
     environment:
+      - SPRING_PROFILES_ACTIVE=default
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
     volumes:
       - ../../../../test_sercets:/run/secrets

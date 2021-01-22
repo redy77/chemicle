@@ -4,8 +4,8 @@ EXPOSE 8761
 
 RUN adduser --system --home /var/cache/bootapp --shell /sbin/nologin bootapp;
 
-COPY /theory-application/target/theory.jar /opt/theory.jar
+COPY /target/theory.jar /opt/theory-application.jar
 
 USER bootapp
 
-ENTRYPOINT java -jar /opt/theory.jar
+ENTRYPOINT java -jar /opt/theory-application.jar
