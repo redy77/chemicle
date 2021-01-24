@@ -55,19 +55,6 @@
                 <version>${swagger2.version}</version>
             </dependency>
 
-
-
-            <dependency>
-                <groupId>com.chemcool.school.tasks</groupId>
-                <artifactId>tasks-service</artifactId>
-                <version>${tasks.modules.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.chemcool.school.tasks</groupId>
-                <artifactId>tasks-web-api</artifactId>
-                <version>${tasks.modules.version}</version>
-            </dependency>
-
         </dependencies>
     </dependencyManagement>
 
@@ -84,7 +71,10 @@
     </build>
 
     <modules>
-<!--        todo надо добавить новые модули-->
+        <module>chemequitaion</module>
+        <module>chemmatches</module>
+        <module>chemfixedanswer</module>
+        <module>chemsingleselect</module>
     </modules>
 
 </project>
