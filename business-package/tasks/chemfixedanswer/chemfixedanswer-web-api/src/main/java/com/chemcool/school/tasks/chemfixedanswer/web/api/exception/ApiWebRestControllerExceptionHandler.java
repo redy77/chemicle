@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemfixedanswer.web.api.controllers.exception;
+package com.chemcool.school.tasks.chemfixedanswer.web.api.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

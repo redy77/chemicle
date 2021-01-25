@@ -12,8 +12,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan("com.chemcool.school.tasks.chemfixedanswer")
 @EnableJpaRepositories("com.chemcool.school.tasks.chemfixedanswer")
 @EnableEurekaClient
-public class ChemfixedanswerTasksApplication {
+public class ChemFixedAnswerTasksApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ChemfixedanswerTasksApplication.class, args);
+        SpringApplication.run(ChemFixedAnswerTasksApplication.class, args);
     }
 }

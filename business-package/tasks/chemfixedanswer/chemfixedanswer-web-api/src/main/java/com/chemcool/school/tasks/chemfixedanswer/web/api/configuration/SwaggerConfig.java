@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemfixedanswer.web.api.controllers.configuration;
+package com.chemcool.school.tasks.chemfixedanswer.web.api.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

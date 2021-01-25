@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemfixedanswer.web.api.controllers.exception;
+package com.chemcool.school.tasks.chemfixedanswer.web.api.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
