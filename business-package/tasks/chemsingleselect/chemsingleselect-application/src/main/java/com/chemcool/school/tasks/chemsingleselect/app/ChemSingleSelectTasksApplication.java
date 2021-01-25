@@ -8,13 +8,13 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(
-        scanBasePackages = {"com.chemcool.school.tasks"}
+        scanBasePackages = {"com.chemcool.school.tasks.chemsingleselect"}
 )
-@EntityScan("com.chemcool.school.tasks")
-@EnableJpaRepositories("com.chemcool.school.tasks")
+@EntityScan("com.chemcool.school.tasks.chemsingleselect")
+@EnableJpaRepositories("com.chemcool.school.tasks.chemsingleselect")
 @EnableEurekaClient
-public class TasksApplication {
+public class ChemSingleSelectTasksApplication {
     public static void main(String[] args) {
-        SpringApplication.run(TasksApplication.class, args);
+        SpringApplication.run(ChemSingleSelectTasksApplication.class, args);
     }
 }
