@@ -12,7 +12,7 @@
     <artifactId>theory-web-api</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
-
+    <name>${artifactId}-${version}</name>
 
     <properties>
 

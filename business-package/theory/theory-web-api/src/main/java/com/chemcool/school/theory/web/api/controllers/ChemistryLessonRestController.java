@@ -28,10 +28,11 @@ public class ChemistryLessonRestController {
     @PutMapping(value = "/update")
     @ResponseBody
     public String updateLessonExample(
-            @RequestBody LessonExample lessonExample
+            @RequestParam String lessonExampleId,
+            @RequestBody LessonExample example
     ) {
-        log.info("Вызван контроллер для изменения темы с названием: " + "[" + lessonExample.getLessonExampleName() + "]");
-        return presentation.updateChemistryLessonExample(lessonExample);
+        log.info("Вызван контроллер для изменения темы с названием: " + "[" + example.getLessonExampleName() + "]");
+        return presentation.updateChemistryLessonExample(lessonExampleId, example);
     }
 
     @DeleteMapping(value = "/delete")

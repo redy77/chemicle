@@ -24,4 +24,23 @@ public class ChemistryLessonPageService {
         ChemistryLesson lessonPage = ChemistryLessonFactory.createLesson(example);
         repository.delete(lessonPage);
     }
+
+    public String updateLesson(String lessonId, ChemistryLessonExample chemistryLessonExample) {
+
+        //  TODO проверить на то, что lessonId не пустой.
+        if (lessonId.isEmpty() || lessonId == null) {
+            throw new RuntimeException("lessonId параметр пустой, проверьте конфигурацию.");
+        }
+
+        repository.updateLesson(
+                lessonId,
+                chemistryLessonExample.getLessonExampleName(),
+                chemistryLessonExample.getLessonExampleChapter(),
+                chemistryLessonExample.getLessonExampleDescription(),
+                chemistryLessonExample.getLessonExampleReferences()
+        );
+
+        return lessonId;
+    }
+
 }

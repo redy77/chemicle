@@ -41,14 +41,13 @@ public class ChemistryLessonPresentation {
         );
     }
 
-    public String updateChemistryLessonExample(LessonExample example) {
-        return service.manageLesson(
-                new ChemistryLessonExample(
-                        example.getLessonExampleName(),
-                        example.getLessonExampleDescription(),
-                        example.getLessonExampleChapter(),
-                        example.getLessonExampleReferences()
-                )
+    public String updateChemistryLessonExample(String lessonId, LessonExample example) {
+        ChemistryLessonExample chemistryLessonExample = ChemistryLessonExample.fromLessonExample(
+                example.getLessonExampleName(),
+                example.getLessonExampleDescription(),
+                example.getLessonExampleChapter(),
+                example.getLessonExampleReferences()
         );
+        return service.updateLesson(lessonId, chemistryLessonExample);
     }
 }
