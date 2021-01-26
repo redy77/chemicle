@@ -4,6 +4,11 @@
     <groupId>com.chemcool.school.tasks</groupId>
     <artifactId>chemmatches</artifactId>
     <version>1.0.0</version>
+    <modules>
+        <module>chemmatches-application</module>
+        <module>chemmatches-service</module>
+        <module>chemmatches-web-api</module>
+    </modules>
     <packaging>pom</packaging>
 
 
