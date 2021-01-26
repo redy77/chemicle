@@ -10,6 +10,59 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>chemmatches-application</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.0</version>
+    <name>${artifactId}-${version}</name>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <spring.boot.version>2.3.3.RELEASE</spring.boot.version>
+
+        <flayway.version>5.2.3</flayway.version>
+
+        <start-class>com.chemcool.school.chemmatches.app.ChemMatchesApplication</start-class>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.chemcool.school.chemmatches</groupId>
+            <artifactId>chemmatches-web-api</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flayway.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <finalName>${project.parent.artifactId}</finalName>
+                    <mainClass>${start-class}</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>
