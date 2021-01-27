@@ -1,6 +1,6 @@
 spring:
   application:
-    name: tasks-chemsingleselect-application-service
+    name: tasks-chemsingleselect-application
 
   jpa:
     database: postgresql
