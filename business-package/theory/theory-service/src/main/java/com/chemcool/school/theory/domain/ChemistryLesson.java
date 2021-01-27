@@ -26,7 +26,7 @@ public class ChemistryLesson {
     private String lessonName;
 
     @Column(
-            name = "lesson_descprtion",
+            name = "lesson_description",
             length = 10000
     )
     private String lessonDescription;
@@ -36,7 +36,6 @@ public class ChemistryLesson {
     private Integer lessonChapter;
 
     @NonNull
-
     @Column(name = "lesson_references")
     private Integer lessonReferences;
 
@@ -52,6 +51,5 @@ public class ChemistryLesson {
                 example.getLessonExampleReferences()
         );
     }
-
 
 }

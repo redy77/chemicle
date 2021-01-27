@@ -13,6 +13,7 @@
     <artifactId>theory-service</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
+    <name>${artifactId}-${version}</name>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
