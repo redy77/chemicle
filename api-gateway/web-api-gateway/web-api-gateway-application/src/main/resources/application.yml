@@ -38,9 +38,9 @@ zuul:
       service-id: tasks-application-service
       stripPrefix: false
 
-    chemmatches-application-service:
+    chemmatches-application:
       path: /chemmatches-application/**
-      service-id: chemmatches-application-service
+      service-id: chemmatches-application
       stripPrefix: false
 
   ignored-services: '*'
