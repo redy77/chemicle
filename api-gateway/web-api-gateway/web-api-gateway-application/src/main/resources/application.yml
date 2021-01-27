@@ -28,14 +28,14 @@ zuul:
   sensitive-headers: Cookie,Set-Cookie
   routes:
 
-    theory-application-service:
+    theory-application:
       path: /theory-application/**
-      service-id: theory-application-service
+      service-id: theory-application
       stripPrefix: false
 
-    tasks-application-service:
-      path: /tasks-application/**
-      service-id: tasks-application-service
+    tasks-chemsingleselect-application:
+      path: /tasks-chemsingleselect-application/**
+      service-id: tasks-chemsingleselect-application
       stripPrefix: false
 
   ignored-services: '*'
