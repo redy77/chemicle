@@ -8,6 +8,8 @@ import com.chemcool.school.theory.storage.LessonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class ChemistryLessonPageService {
@@ -41,6 +43,15 @@ public class ChemistryLessonPageService {
         );
 
         return lessonId;
+    }
+
+    public  ChemistryLesson findLessonById(String lessonId){
+        //  TODO проверить на то, что lessonId не пустой.
+        if (lessonId.isEmpty() || lessonId == null) {
+            throw new RuntimeException("lessonId параметр пустой, проверьте конфигурацию.");
+        }
+        return repository.findByLessonId(lessonId);
+
     }
 
 }

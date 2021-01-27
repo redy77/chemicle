@@ -35,4 +35,7 @@ public interface LessonRepository extends JpaRepository<ChemistryLesson, UUID>, 
             @Param("lessonReferences") int lessonReferences
     );
 
+    ChemistryLesson findByLessonId(String lessonId);
+
+
 }

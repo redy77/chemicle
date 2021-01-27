@@ -1,6 +1,6 @@
 spring:
   application:
-    name: web-api-gateway-service
+    name: web-api-gateway
 
 server:
   port: ${SERVER_PORT:8080}
@@ -30,12 +30,12 @@ zuul:
 
     theory-application-service:
       path: /theory-application/**
-      service-id: theory-application-service
+      service-id: theory-application
       stripPrefix: false
 
     tasks-application-service:
       path: /tasks-application/**
-      service-id: tasks-application-service
+      service-id: tasks-application
       stripPrefix: false
 
   ignored-services: '*'

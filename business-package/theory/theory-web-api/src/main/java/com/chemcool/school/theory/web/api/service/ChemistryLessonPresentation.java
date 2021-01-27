@@ -1,5 +1,6 @@
 package com.chemcool.school.theory.web.api.service;
 
+import com.chemcool.school.theory.domain.ChemistryLesson;
 import com.chemcool.school.theory.domain.ChemistryLessonExample;
 import com.chemcool.school.theory.service.ChemistryLessonPageService;
 import com.chemcool.school.theory.web.api.dto.LessonExample;
@@ -50,4 +51,10 @@ public class ChemistryLessonPresentation {
         );
         return service.updateLesson(lessonId, chemistryLessonExample);
     }
+
+    public ChemistryLesson getLessonById(String lessonId){
+        return service.findLessonById(lessonId);
+    }
+
+
 }
