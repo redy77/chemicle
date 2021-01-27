@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "couples")
+@Table(name = "couples_for_matching")
 public class CoupleForMatching {
 
     @Id

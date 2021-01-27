@@ -13,7 +13,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "matching_task_of_two_sides")
+@Table(name = "chemistry_matching_task")
 public class ChemistryMatchingTask {
 
     @Id
