@@ -34,8 +34,8 @@ zuul:
       stripPrefix: false
 
     tasks-application-service:
-      path: /tasks-application/**
-      service-id: tasks-application-service
+      path: /tasks-chemsingleselect-application/**
+      service-id: tasks-chemsingleselect-application-service
       stripPrefix: false
 
   ignored-services: '*'

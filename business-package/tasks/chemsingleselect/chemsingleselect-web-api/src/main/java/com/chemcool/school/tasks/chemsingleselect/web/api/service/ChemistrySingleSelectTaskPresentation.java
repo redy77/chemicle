@@ -10,29 +10,29 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ChemistrySingleSelectTaskPresentation {
 
-    private final ChemistrySingleSelectTaskPresentation presentation;
+    private final ChemistrySingleSelectTaskServiceLayer serviceLayer;
 
     public ChemistrySingleSelectTaskDto getTaskDtoById(String id) {
-        return presentation.getTaskDtoById(id);
+        return serviceLayer.getTaskDtoById(id);
     }
 
     public List<ChemistrySingleSelectTaskDto> getAllTasks() {
-        return presentation.getAllTasks();
+        return serviceLayer.getAllTasks();
     }
 
     public List<ChemistrySingleSelectTaskDto> getAllTasksByChapterId(String chapterId) {
-        return presentation.getAllTasksByChapterId(chapterId);
+        return serviceLayer.getAllTasksByChapterId(chapterId);
     }
 
     public String add(ChemistrySingleSelectTaskDto dto) {
-        return presentation.add(dto);
+        return serviceLayer.add(dto);
     }
 
     public void update(ChemistrySingleSelectTaskDto dto) {
-        presentation.update(dto);
+        serviceLayer.update(dto);
     }
 
     public void deleteById(String id) {
-        presentation.deleteById(id);
+        serviceLayer.deleteById(id);
     }
 }
