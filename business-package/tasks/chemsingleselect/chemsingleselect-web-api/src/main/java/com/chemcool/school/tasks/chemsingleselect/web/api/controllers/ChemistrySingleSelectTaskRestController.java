@@ -39,7 +39,7 @@ public class ChemistrySingleSelectTaskRestController {
     @ResponseBody
     public String updateTask(@RequestBody ChemistrySingleSelectTaskDto task) {
         presentation.update(task);
-        return "Update task UUID: " + task.getChemistrySingleSelectTaskUuid();
+        return "Update task UUID: " + task.getTaskDtoId();
     }
 
     @DeleteMapping("/{uuid}")
