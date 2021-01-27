@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/tasks/chemmatches")
+@RequestMapping("/v1.0/tasks/matching")
 @RequiredArgsConstructor
 public class ChemistryMatchingTaskRestController {
     private final ChemistryMatchingTaskPresentation presentation;
