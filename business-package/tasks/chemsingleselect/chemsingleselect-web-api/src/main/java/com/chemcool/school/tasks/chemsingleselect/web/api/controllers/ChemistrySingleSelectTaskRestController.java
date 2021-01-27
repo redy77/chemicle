@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/tasks/single_select")
+@RequestMapping("/tasks")
 @RequiredArgsConstructor
 public class ChemistrySingleSelectTaskRestController {
 
