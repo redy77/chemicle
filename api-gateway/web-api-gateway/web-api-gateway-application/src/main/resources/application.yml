@@ -33,6 +33,11 @@ zuul:
       service-id: theory-application
       stripPrefix: false
 
+    tasks-chemfixedanswer-application:
+      path: /tasks-chemfixedanswer-application/**
+      service-id: tasks-chemfixedanswer-application
+      stripPrefix: false
+
     tasks-chemsingleselect-application:
       path: /tasks-chemsingleselect-application/**
       service-id: tasks-chemsingleselect-application
