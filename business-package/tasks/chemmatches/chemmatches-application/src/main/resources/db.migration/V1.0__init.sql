@@ -10,17 +10,17 @@ create table if not exists chemistry_matching_task_event(
 );
 
 create table if not exists chemistry_matching_task(
-    chemistry_matching_task_uuid varchar(255) not null primary key,
-    chapter_id                   varchar(255) not null,
-    description                  varchar(10000) not null,
-    type_of_task                 varchar(255) not null
+    task_id                      varchar(255) not null primary key,
+    chapter_id                   integer not null,
+    reference_id                 integer not null,
+    description                  varchar(10000) not null
 );
 
 create table if not exists couples_for_matching(
-    couple_for_matching_uuid varchar(255) not null primary key,
+    couple_id                bigint not null primary key,
     left_couple              varchar(255) not null,
     right_couple             varchar(255) not null,
-    question_id              varchar(255) not null
-        constraint fka8s958flt0ucxdnfde8hkmquq
+    task_id                  varchar(255) not null
+    constraint               fkqrg9epawfu7v3uju9daokxa08
             references chemistry_matching_task
 );
