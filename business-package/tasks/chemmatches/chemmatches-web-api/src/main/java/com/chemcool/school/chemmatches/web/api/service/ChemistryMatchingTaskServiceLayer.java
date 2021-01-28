@@ -41,7 +41,7 @@ public class ChemistryMatchingTaskServiceLayer {
         validate(dto);
         return service.add(
                 new ChemistryMatchingTaskExample(
-                        dto.getChemistryMatchingTaskUuid(),
+                        dto.getTaskId(),
                         dto.getDescription(),
                         dto.getChapterId(),
                         dto.getReferenceId(),
@@ -54,7 +54,7 @@ public class ChemistryMatchingTaskServiceLayer {
         validate(dto);
         service.update(
                 new ChemistryMatchingTask(
-                        dto.getChemistryMatchingTaskUuid(),
+                        dto.getTaskId(),
                         dto.getDescription(),
                         dto.getChapterId(),
                         dto.getReferenceId(),

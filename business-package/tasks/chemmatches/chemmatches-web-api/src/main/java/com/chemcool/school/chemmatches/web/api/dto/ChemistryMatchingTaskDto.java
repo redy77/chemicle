@@ -12,14 +12,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ChemistryMatchingTaskDto {
-    private String chemistryMatchingTaskUuid;
+    private String taskId;
     private String description;
     private Integer chapterId;
     private Integer referenceId;
     private List<CoupleForMatching> coupleForMatchingList;
 
     public ChemistryMatchingTaskDto(ChemistryMatchingTask task) {
-        this.chemistryMatchingTaskUuid = task.getTaskId();
+        this.taskId = task.getTaskId();
         this.description = task.getDescription();
         this.chapterId = task.getChapterId();
         this.referenceId = task.getReferenceId();
