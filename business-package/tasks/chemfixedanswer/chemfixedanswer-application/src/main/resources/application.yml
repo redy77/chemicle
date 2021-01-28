@@ -1,13 +1,13 @@
 spring:
   application:
-    name: chemfixedanswer-application
+    name: tasks-chemfixedanswer-application
   jpa:
     database: postgresql
     show-sql: true
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/tasks_application
+    url: jdbc:postgresql://localhost:5432/tasks_fixed_answer
     username: mick
     password: mick
     platform: postgres

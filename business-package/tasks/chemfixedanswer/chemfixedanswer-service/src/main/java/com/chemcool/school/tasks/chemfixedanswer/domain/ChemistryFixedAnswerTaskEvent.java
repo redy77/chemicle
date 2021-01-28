@@ -24,7 +24,7 @@ import java.util.UUID;
 public class ChemistryFixedAnswerTaskEvent {
 
     @Id
-    @Column(name = "chem_fixed_answer_task_event_uuid")
+    @Column(name = "chem_fixed_answer_task_event_id")
     private String chemFixedAnswerTaskEventId;
 
     @Column(name = "chem_fixed_answer_task_event_author_id")
@@ -58,7 +58,7 @@ public class ChemistryFixedAnswerTaskEvent {
                 LocalDateTime.now(),
                 ChemistryFixedAnswerTaskEventType.CREATE,
                 "1.0",
-                lesson.getChemistryFixedAnswerTaskUuid(),
+                lesson.getTaskId(),
                 lesson
         );
     }

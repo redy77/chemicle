@@ -30,12 +30,13 @@ zuul:
 
     theory-application:
       path: /theory-application/**
-      service-id: theory-application-service
+      service-id: theory-application
       stripPrefix: false
 
-    chemfixedanswer-tasks-application:
-      path: /chemfixedanswer-application/**
-      service-id: chemfixedanswer-application
+    tasks-chemfixedanswer-application:
+      path: /tasks-chemfixedanswer-application/**
+      service-id: tasks-chemfixedanswer-application
+      stripPrefix: false
 
     tasks-chemsingleselect-application:
       path: /tasks-chemsingleselect-application/**

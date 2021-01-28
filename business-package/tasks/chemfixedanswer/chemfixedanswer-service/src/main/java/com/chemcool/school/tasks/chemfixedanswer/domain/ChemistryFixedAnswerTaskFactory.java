@@ -15,7 +15,7 @@ public class ChemistryFixedAnswerTaskFactory {
 //            throw new ChemistryFixedAnswerTaskException("Ошибка! Поле " + "Глава " + "имеет значение от 1 до 4 ");
 //        }
 
-        log.info("Попытка создать урок " + example.getTypeOfTask());
+        log.info("Попытка создать урок.");
         return ChemistryFixedAnswerTask.createChemistryFixedAnswerTask(example);
     }
 }

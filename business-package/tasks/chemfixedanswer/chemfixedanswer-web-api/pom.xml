@@ -39,21 +39,11 @@
             <artifactId>springfox-swagger-ui</artifactId>
         </dependency>
 
-
-
-
         <dependency>
             <groupId>com.chemcool.school.tasks</groupId>
             <artifactId>chemfixedanswer-service</artifactId>
             <scope>compile</scope>
         </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>com.chemcool.school.tasks</groupId>-->
-<!--            <artifactId>chemfixedanswer-application</artifactId>-->
-<!--            <scope>compile</scope>-->
-<!--        </dependency>-->
-
 
     </dependencies>
 
