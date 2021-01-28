@@ -1,6 +1,5 @@
 package com.chemcool.school.tasks.chemfixedanswer.web.api.dto;
 
-import com.chemcool.school.tasks.chemfixedanswer.TypeOfTask;
 import com.chemcool.school.tasks.chemfixedanswer.domain.ChemistryFixedAnswerTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,17 +9,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ChemistryFixedAnswerTaskDto {
-    private String chemistryFixedAnswerTaskUuid;
+    private String taskId;
     private String description;
     private String rightAnswer;
-    private String chapterId;
-    private TypeOfTask typeOfTask;
+    private int chapterId;
 
     public ChemistryFixedAnswerTaskDto(ChemistryFixedAnswerTask task) {
-        this.chemistryFixedAnswerTaskUuid = task.getChemistryFixedAnswerTaskUuid();
+        this.taskId = task.getTaskId();
         this.description = task.getDescription();
         this.rightAnswer = task.getRightAnswer();
         this.chapterId = task.getChapterId();
-        this.typeOfTask = task.getTypeOfTask();
     }
 }

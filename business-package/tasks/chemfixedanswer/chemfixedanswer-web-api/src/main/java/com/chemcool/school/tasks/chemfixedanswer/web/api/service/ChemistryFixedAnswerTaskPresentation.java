@@ -36,8 +36,7 @@ public class ChemistryFixedAnswerTaskPresentation {
                 new ChemistryFixedAnswerTaskExample(
                         taskDto.getDescription(),
                         taskDto.getRightAnswer(),
-                        taskDto.getChapterId(),
-                        taskDto.getTypeOfTask()
+                        taskDto.getChapterId()
                 )
         );
     }
@@ -45,11 +44,10 @@ public class ChemistryFixedAnswerTaskPresentation {
     public void updateFixedAnswerTask(ChemistryFixedAnswerTaskDto taskDto){
         service.update(
                 new ChemistryFixedAnswerTask(
-                        taskDto.getChemistryFixedAnswerTaskUuid(),
+                        taskDto.getTaskId(),
                         taskDto.getDescription(),
                         taskDto.getRightAnswer(),
-                        taskDto.getChapterId(),
-                        taskDto.getTypeOfTask()
+                        taskDto.getChapterId()
                 )
         );
     }

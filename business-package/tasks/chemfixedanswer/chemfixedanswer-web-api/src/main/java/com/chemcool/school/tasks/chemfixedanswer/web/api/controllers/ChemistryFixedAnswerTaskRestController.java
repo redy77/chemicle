@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/tasks/fixed_answer")
+@RequestMapping("/v.1.0/tasks/fixed-answer")
 @RequiredArgsConstructor
 public class ChemistryFixedAnswerTaskRestController {
 
@@ -42,7 +42,7 @@ public class ChemistryFixedAnswerTaskRestController {
     @ApiOperation("Сохраняет существующую сущность задания типа \"Фиксированный ответ\" по химии")
     public String update(@RequestBody ChemistryFixedAnswerTaskDto taskDto){
         presentation.updateFixedAnswerTask(taskDto);
-        return taskDto.getChemistryFixedAnswerTaskUuid();
+        return taskDto.getTaskId();
     }
 
     @DeleteMapping("/{id}")

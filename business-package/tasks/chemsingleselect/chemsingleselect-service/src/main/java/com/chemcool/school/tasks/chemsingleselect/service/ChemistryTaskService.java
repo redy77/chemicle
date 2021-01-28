@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemfixedanswer.service;
+package com.chemcool.school.tasks.chemsingleselect.service;
 
 import java.util.List;
 import java.util.Optional;
