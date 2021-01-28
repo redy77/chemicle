@@ -38,6 +38,11 @@ zuul:
       service-id: tasks-chemsingleselect-application
       stripPrefix: false
 
+    chemmatches-application:
+      path: /chemmatches-application/**
+      service-id: chemmatches-application
+      stripPrefix: false
+
   ignored-services: '*'
   retryable: true
 
