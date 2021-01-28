@@ -12,7 +12,7 @@ create table if not exists chemistry_matching_task_event(
 create table if not exists chemistry_matching_task(
     chemistry_matching_task_uuid varchar(255) not null primary key,
     chapter_id                   varchar(255) not null,
-    description                  varchar(255) not null,
+    description                  varchar(10000) not null,
     type_of_task                 varchar(255) not null
 );
 

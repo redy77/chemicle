@@ -44,7 +44,7 @@ public class ChemistryMatchingTaskServiceLayer {
                         dto.getChemistryMatchingTaskUuid(),
                         dto.getDescription(),
                         dto.getChapterId(),
-                        dto.getTypeOfTask(),
+                        dto.getReferenceId(),
                         dto.getCoupleForMatchingList()
                 )
         );
@@ -57,7 +57,7 @@ public class ChemistryMatchingTaskServiceLayer {
                         dto.getChemistryMatchingTaskUuid(),
                         dto.getDescription(),
                         dto.getChapterId(),
-                        dto.getTypeOfTask(),
+                        dto.getReferenceId(),
                         dto.getCoupleForMatchingList()
                 )
         );
@@ -68,7 +68,7 @@ public class ChemistryMatchingTaskServiceLayer {
     }
 
     private void validate(ChemistryMatchingTaskDto dto) {
-        if (dto.getDescription().isEmpty()){
+        if (dto.getDescription().isEmpty()) {
             throw new ChemistryTaskEmptyException("Необходимые поля пустые, проверьте пожалуйста бланк заполнения задания.");
         }
     }

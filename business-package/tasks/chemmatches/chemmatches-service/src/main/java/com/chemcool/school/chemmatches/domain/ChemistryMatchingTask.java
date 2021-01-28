@@ -1,6 +1,5 @@
 package com.chemcool.school.chemmatches.domain;
 
-import com.chemcool.school.chemmatches.TypeOfTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,21 +16,16 @@ import java.util.UUID;
 public class ChemistryMatchingTask {
 
     @Id
-    @Column(name = "chemistry_matching_task_uuid")
-    private String chemistryMatchingTaskUuid;
+    @Column(unique=true, name = "task_id")
+    private String taskId;
 
-    @Column(name = "description")
+    @Column(length = 10000)
     private String description;
-
-    @Column(name = "chapter_id")
-    private String chapterId;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type_of_task")
-    private TypeOfTask typeOfTask;
+    private Integer chapterId;
+    private Integer referenceId;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn(name = "question_id")
+    @JoinColumn(name = "task_id")
     private List<CoupleForMatching> coupleForMatchingList;
 
     public static ChemistryMatchingTask createChemistryMatchingTask(ChemistryMatchingTaskExample chemistryMatchingTaskExample) {
@@ -39,7 +33,7 @@ public class ChemistryMatchingTask {
                 UUID.randomUUID().toString(),
                 chemistryMatchingTaskExample.getDescription(),
                 chemistryMatchingTaskExample.getChapterId(),
-                chemistryMatchingTaskExample.getTypeOfTask(),
+                chemistryMatchingTaskExample.getReferenceId(),
                 chemistryMatchingTaskExample.getCoupleForMatchingList()
         );
     }

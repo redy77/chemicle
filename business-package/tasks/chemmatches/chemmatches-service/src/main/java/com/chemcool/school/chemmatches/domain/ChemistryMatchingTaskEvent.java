@@ -49,7 +49,7 @@ public class ChemistryMatchingTaskEvent {
                 LocalDateTime.now(),
                 ChemistryMatchingTaskEventType.CREATED,
                 "1.0",
-                task.getChemistryMatchingTaskUuid(),
+                task.getTaskId(),
                 task
         );
     }

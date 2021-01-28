@@ -2,7 +2,6 @@ package com.chemcool.school.chemmatches.web.api.dto;
 
 import com.chemcool.school.chemmatches.domain.ChemistryMatchingTask;
 import com.chemcool.school.chemmatches.domain.CoupleForMatching;
-import com.chemcool.school.chemmatches.TypeOfTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,15 +14,15 @@ import java.util.List;
 public class ChemistryMatchingTaskDto {
     private String chemistryMatchingTaskUuid;
     private String description;
-    private String chapterId;
-    private TypeOfTask typeOfTask;
+    private Integer chapterId;
+    private Integer referenceId;
     private List<CoupleForMatching> coupleForMatchingList;
 
     public ChemistryMatchingTaskDto(ChemistryMatchingTask task) {
-        this.chemistryMatchingTaskUuid = task.getChemistryMatchingTaskUuid();
+        this.chemistryMatchingTaskUuid = task.getTaskId();
         this.description = task.getDescription();
         this.chapterId = task.getChapterId();
-        this.typeOfTask = task.getTypeOfTask();
+        this.referenceId = task.getReferenceId();
         this.coupleForMatchingList = task.getCoupleForMatchingList();
     }
 
