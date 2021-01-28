@@ -34,7 +34,7 @@ public class ChemistryMatchingTaskRestController {
     }
 
     @PutMapping
-    @ApiOperation("Сохраняет существующую сущность задания типа \"matching(сопоставления)\" по химии.")
+    @ApiOperation("Обновляет существующую сущность задания типа \"matching(сопоставления)\" по химии.")
     @ResponseBody
     public String updateTask(@RequestBody ChemistryMatchingTaskDto task) {
         presentation.update(task);
