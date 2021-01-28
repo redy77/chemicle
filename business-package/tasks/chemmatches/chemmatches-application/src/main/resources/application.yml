@@ -7,7 +7,7 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/chemmatches_application
+    url: jdbc:postgresql://localhost:5432/tasks_matches
     username: mick
     password: mick
     platform: postgres
@@ -17,3 +17,8 @@ server:
   port: 0
   servlet:
     context-path: /chemmatches-application/
+
+    eureka:
+      client:
+        service-url:
+          defaultZone: http://localhost:8761/eureka/
