@@ -4,51 +4,47 @@ import com.chemcool.school.chemmatches.domain.ChemistryMatchingTask;
 import com.chemcool.school.chemmatches.domain.ChemistryMatchingTaskExample;
 import com.chemcool.school.chemmatches.domain.ChemistryMatchingTaskFactory;
 import com.chemcool.school.chemmatches.storage.ChemistryMatchingTaskRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
-public class ChemistryMatchingTaskService implements ChemistryTaskService<ChemistryMatchingTask, ChemistryMatchingTaskExample> {
+@RequiredArgsConstructor
+public class ChemistryMatchingTaskService {
 
-    private final ChemistryMatchingTaskRepository chemistryMatchingTaskRepository;
+    private final ChemistryMatchingTaskRepository repository;
 
-    @Autowired
-    public ChemistryMatchingTaskService(ChemistryMatchingTaskRepository chemistryMatchingTaskRepository) {
-        this.chemistryMatchingTaskRepository = chemistryMatchingTaskRepository;
+    public String add(ChemistryMatchingTaskExample taskExample) {
+        ChemistryMatchingTask task = ChemistryMatchingTaskFactory.createChemistryMatchingTask(taskExample);
+        repository.save(task);
+        log.info("Добавлена с задача с id: " + task.getTaskId());
+        return task.getTaskId();
     }
 
-    @Override
-    public String add(ChemistryMatchingTaskExample chemistryMatchingTaskExample) {
-        ChemistryMatchingTask newChemistryMatchingTask = ChemistryMatchingTaskFactory.createChemistryMatchingTask(chemistryMatchingTaskExample);
-        chemistryMatchingTaskRepository.save(newChemistryMatchingTask);
-        return newChemistryMatchingTask.getChemistryMatchingTaskUuid();
-    }
-
-    @Override
     public Optional<ChemistryMatchingTask> getById(String id) {
-        return chemistryMatchingTaskRepository.findById(id);
+        return repository.findById(id);
     }
 
-    @Override
     public List<ChemistryMatchingTask> getAll() {
-        return chemistryMatchingTaskRepository.findAll();
+        return repository.findAll();
     }
 
-    @Override
     public List<ChemistryMatchingTask> getAllByChapterId(String chapterId) {
-        return chemistryMatchingTaskRepository.findByChapterId(chapterId);
+        log.info("Поиск всех задааний по chapterId = " + chapterId);
+        return repository.findByChapterId(chapterId);
     }
 
-    @Override
-    public void update(ChemistryMatchingTask chemistryMatchingTask) {
-        chemistryMatchingTaskRepository.save(chemistryMatchingTask);
+    public void update(ChemistryMatchingTask task) {
+        repository.save(task);
+        log.info("Обновлена с задача с id: " + task.getTaskId());
     }
 
-    @Override
     public void deleteById(String id) {
-        chemistryMatchingTaskRepository.deleteById(id);
+        repository.deleteById(id);
+        log.info("Удалена с задача с id: " + id);
     }
 }

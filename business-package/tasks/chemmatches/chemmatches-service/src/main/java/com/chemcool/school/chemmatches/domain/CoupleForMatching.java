@@ -15,10 +15,8 @@ import javax.persistence.*;
 public class CoupleForMatching {
 
     @Id
-    @Column(name = "couple_for_matching_uuid", unique = true)
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
-    private String coupleForMatchingUuid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long coupleId;
 
     @Column(name = "left_couple")
     private String leftCouple;
