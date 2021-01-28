@@ -16,7 +16,7 @@ import java.util.UUID;
 public class ChemistryFixedAnswerTask {
 
     @Id
-    @Column(name = "chemistry_fixed_answer_task_uuid")
+    @Column(name = "task_id")
     private String taskId;
 
     @Column(name = "description", length = 10000)

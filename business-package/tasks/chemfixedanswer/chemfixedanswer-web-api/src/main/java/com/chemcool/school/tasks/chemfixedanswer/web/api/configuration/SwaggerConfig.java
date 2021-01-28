@@ -19,9 +19,8 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.chemcool.school.tasks.chemfixedanswer.web.api"))
-                .paths(regex("/chemfixedanswer-application.*"))
+                .paths(regex("/tasks-chemfixedanswer-application.*"))
                 .build();
     }
-
 }
 

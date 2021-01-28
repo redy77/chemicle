@@ -1,5 +1,5 @@
 create table if not exists chemistry_fixed_answer_task (
-    chemistry_fixed_answer_task_uuid varchar(255) not null primary key,
+    task_id varchar(255) not null primary key,
     description VARCHAR(10000),
     right_answer VARCHAR(255),
     chapter_id int
