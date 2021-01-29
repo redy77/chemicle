@@ -22,34 +22,29 @@ public class ChemSingleSelectTaskService {
     public String add(ChemSingleSelectTaskExample exampleTask) {
         ChemSingleSelectTask task = ChemSingleSelectTaskFactory.createTask(exampleTask);
         repository.save(task);
-        log.info("Добавление сущности задания " + task.getClass().getName() +
-                " прошло  успешно. UUID = " + task.getTaskId() );
+        log.info("Добавлена задача с UUID = " + task.getTaskId() );
         return task.getTaskId();
     }
 
     public Optional<ChemSingleSelectTask> getById(String id) {
-        log.info("Ищем сущность задания ChemSingleSelectTask по UUID = " + id);
         return repository.findById(id);
     }
 
     public List<ChemSingleSelectTask> getAll() {
-        log.info("Ищем все сущности заданий ChemSingleSelectTask.");
         return repository.findAll();
     }
 
     public List<ChemSingleSelectTask> getAllByChapterId(String chapterId) {
-        log.info("Ищем все сущности заданий ChemSingleSelectTask по chapterID = " + chapterId);
         return repository.getAllByChapterId(chapterId);
     }
 
     public void update(ChemSingleSelectTask task) {
+        log.info("Обновлена задача с UUID = " + task.getTaskId() );
         repository.save(task);
-        log.info("Обновление сущности задания " + this.getClass().getName() +
-                " прошло  успешно. UUID = " + task.getTaskId() );
     }
 
     public void deleteById(String id) {
-        log.info("Удаляем сущность задания ChemSingleSelectTask.");
+        log.info("Удалена задачу с UUID = " + id);
         repository.deleteById(id);
     }
 }
