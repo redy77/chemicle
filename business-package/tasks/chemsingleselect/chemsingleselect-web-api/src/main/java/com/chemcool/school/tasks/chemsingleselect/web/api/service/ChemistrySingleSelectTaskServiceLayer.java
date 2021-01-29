@@ -29,7 +29,7 @@ public class ChemistrySingleSelectTaskServiceLayer {
         return list;
     }
 
-    public List<ChemistrySingleSelectTaskDto> getAllTasksByChapterId(String chapterId) {
+    public List<ChemistrySingleSelectTaskDto> getAllTasksByChapterId(int chapterId) {
         List<ChemistrySingleSelectTaskDto> list = new ArrayList<>();
         for (ChemSingleSelectTask task : service.getAllByChapterId(chapterId)) {
             list.add(new ChemistrySingleSelectTaskDto(task));

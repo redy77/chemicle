@@ -34,7 +34,7 @@ public class ChemSingleSelectTaskService {
         return repository.findAll();
     }
 
-    public List<ChemSingleSelectTask> getAllByChapterId(String chapterId) {
+    public List<ChemSingleSelectTask> getAllByChapterId(int chapterId) {
         return repository.getAllByChapterId(chapterId);
     }
 
