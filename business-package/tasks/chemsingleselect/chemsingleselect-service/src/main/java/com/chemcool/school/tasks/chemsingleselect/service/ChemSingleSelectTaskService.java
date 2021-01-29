@@ -18,9 +18,11 @@ import java.util.Optional;
 public class ChemSingleSelectTaskService {
 
     private final ChemSingleSelectTaskRepository repository;
+    private final ChemSingleSelectTaskEventService event;
 
     public String add(ChemSingleSelectTaskExample exampleTask) {
         ChemSingleSelectTask task = ChemSingleSelectTaskFactory.createTask(exampleTask);
+        event.save(task);
         repository.save(task);
         log.info("Добавлена задача с UUID = " + task.getTaskId() );
         return task.getTaskId();
@@ -40,6 +42,7 @@ public class ChemSingleSelectTaskService {
 
     public void update(ChemSingleSelectTask task) {
         log.info("Обновлена задача с UUID = " + task.getTaskId() );
+        event.update(task);
         repository.save(task);
     }
 
