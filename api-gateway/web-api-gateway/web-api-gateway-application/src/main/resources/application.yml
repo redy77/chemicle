@@ -1,6 +1,6 @@
 spring:
   application:
-    name: web-api-gateway
+    name: web-api-gateway-service
 
 server:
   port: ${SERVER_PORT:8080}
@@ -28,14 +28,24 @@ zuul:
   sensitive-headers: Cookie,Set-Cookie
   routes:
 
-    theory-application-service:
+    theory-application:
       path: /theory-application/**
       service-id: theory-application
       stripPrefix: false
 
-    tasks-application-service:
-      path: /tasks-application/**
-      service-id: tasks-application
+    tasks-chemfixedanswer-application:
+      path: /tasks-chemfixedanswer-application/**
+      service-id: tasks-chemfixedanswer-application
+      stripPrefix: false
+
+    tasks-chemsingleselect-application:
+      path: /tasks-chemsingleselect-application/**
+      service-id: tasks-chemsingleselect-application
+      stripPrefix: false
+
+    chemmatches-application:
+      path: /chemmatches-application/**
+      service-id: chemmatches-application
       stripPrefix: false
 
   ignored-services: '*'
