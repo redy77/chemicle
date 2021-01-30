@@ -24,22 +24,31 @@ import java.util.UUID;
         @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 )
 public class ChemistryLessonEvent {
-
     @Id
+    @Column(name = "event_id")
     private String eventId;
+
+    @Column(name = "event_author_id")
     private String eventAuthorId;
+
+    @Column(name = "event_occurring_context")
     private String eventOccurringContext;
+
+    @Column(name = "event_occurring_context_time")
     private LocalDateTime eventOccurringContextTime;
+
     private ChemistryLessonEventType eventType;
+
     private String version;
-    private String eventEntityId;
+
+    private String EventEntityId;
+
 
     @Type(type = "jsonb")
     @Column(name = "event_payload", columnDefinition = "jsonb")
-    private ChemistryLesson eventPayload;
+    private ChemistryLesson event_payload;
 
-
-    public static ChemistryLessonEvent createEvent(ChemistryLessonExample lessonExample) {
+    private static ChemistryLessonEvent createEvent(ChemistryLessonExample lessonExample) {
         ChemistryLesson lesson = ChemistryLessonFactory.createLesson(lessonExample);
         return new ChemistryLessonEvent(
                 UUID.randomUUID().toString(),
@@ -52,6 +61,4 @@ public class ChemistryLessonEvent {
                 lesson
         );
     }
-
-
 }
