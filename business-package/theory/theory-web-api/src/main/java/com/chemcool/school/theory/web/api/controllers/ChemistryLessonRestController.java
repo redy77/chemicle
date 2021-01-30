@@ -40,7 +40,6 @@ public class ChemistryLessonRestController {
     @ResponseBody
     public void deleteLessonExample(
             @RequestBody LessonExample lessonExample
-//            или через @PathVariable(name = "id") String id ???
     ) {
         log.info("Вызван контроллер для удаления темы с названием: " + "[" + lessonExample.getLessonExampleName() + "]");
         presentation.deleteChemistryLessonExample(lessonExample);
@@ -50,6 +49,7 @@ public class ChemistryLessonRestController {
     public String hello() {
         return "Hello World!";
     }
+
 
     @GetMapping("/getBy/{id}")
     public ChemistryLesson getLessonExampleById(@PathVariable(name = "id") String id) {

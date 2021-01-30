@@ -47,7 +47,7 @@ public class ChemistryLessonPageService {
 
     public  ChemistryLesson findLessonById(String lessonId){
         //  TODO проверить на то, что lessonId не пустой.
-        if (lessonId.isEmpty() || lessonId == null) {
+        if (  lessonId == null || lessonId.isEmpty()) {
             throw new RuntimeException("lessonId параметр пустой, проверьте конфигурацию.");
         }
         return repository.findByLessonId(lessonId);
