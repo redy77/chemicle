@@ -20,7 +20,7 @@ public class ChemistrySingleSelectTaskPresentation {
         return serviceLayer.getAllTasks();
     }
 
-    public List<ChemistrySingleSelectTaskDto> getAllTasksByChapterId(String chapterId) {
+    public List<ChemistrySingleSelectTaskDto> getAllTasksByChapterId(int chapterId) {
         return serviceLayer.getAllTasksByChapterId(chapterId);
     }
 
