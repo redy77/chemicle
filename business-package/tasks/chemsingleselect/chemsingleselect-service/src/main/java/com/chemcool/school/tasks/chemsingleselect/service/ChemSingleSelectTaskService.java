@@ -2,8 +2,10 @@ package com.chemcool.school.tasks.chemsingleselect.service;
 
 
 import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTask;
+import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskEvent;
 import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskExample;
 import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskFactory;
+import com.chemcool.school.tasks.chemsingleselect.storage.ChemSingleSelectTaskEventJournal;
 import com.chemcool.school.tasks.chemsingleselect.storage.ChemSingleSelectTaskRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +21,7 @@ public class ChemSingleSelectTaskService {
 
     private final ChemSingleSelectTaskRepository repository;
     private final ChemSingleSelectTaskEventService event;
+    private final ChemSingleSelectTaskEventJournal journal;
 
     public String add(ChemSingleSelectTaskExample exampleTask) {
         ChemSingleSelectTask task = ChemSingleSelectTaskFactory.createTask(exampleTask);
@@ -50,4 +53,9 @@ public class ChemSingleSelectTaskService {
         log.info("Удалена задачу с UUID = " + id);
         repository.deleteById(id);
     }
+
+    public void handleEvent(ChemSingleSelectTaskEvent event) {
+        journal.save(event);
+    }
+
 }

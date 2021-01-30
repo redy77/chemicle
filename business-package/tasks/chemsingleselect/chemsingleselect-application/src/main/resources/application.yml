@@ -8,9 +8,9 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/tasks-single-select
-    username: mick
-    password: mick
+    url: jdbc:postgresql://localhost:5432/tasks_single_select
+    username: crowd
+    password: crowd
     platform: postgres
     driver-class-name: org.postgresql.Driver
 
