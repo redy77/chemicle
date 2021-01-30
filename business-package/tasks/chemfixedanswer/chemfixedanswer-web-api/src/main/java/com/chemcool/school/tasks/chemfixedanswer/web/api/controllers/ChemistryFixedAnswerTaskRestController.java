@@ -2,11 +2,13 @@ package com.chemcool.school.tasks.chemfixedanswer.web.api.controllers;
 
 
 import com.chemcool.school.tasks.chemfixedanswer.domain.ChemistryFixedAnswerTask;
+import com.chemcool.school.tasks.chemfixedanswer.domain.ChemistryFixedAnswerTaskEvent;
 import com.chemcool.school.tasks.chemfixedanswer.web.api.dto.ChemistryFixedAnswerTaskDto;
 import com.chemcool.school.tasks.chemfixedanswer.web.api.service.ChemistryFixedAnswerTaskPresentation;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +21,9 @@ public class ChemistryFixedAnswerTaskRestController {
 
     @Autowired
     private final ChemistryFixedAnswerTaskPresentation presentation;
+
+    @Autowired
+    private KafkaTemplate<String, ChemistryFixedAnswerTaskEvent> kafkaTemplate;
 
     @GetMapping
     @ApiOperation("Возвращает сущности задания типа \"Фиксированный ответ\" по химии")
@@ -49,5 +54,11 @@ public class ChemistryFixedAnswerTaskRestController {
     @ApiOperation("Удалеят существующую сущность задания типа \"Фиксированный ответ\" по химии")
     public void deleteFixedAnswerTask(@PathVariable String id){
         presentation.deleteFixedAnswerTask(id);
+    }
+
+    @PostMapping("/kafka-test-message")
+    @ApiOperation("Kafka: test message")
+    public void kafkaMsg(String msgId, @RequestBody ChemistryFixedAnswerTaskEvent message) {
+        kafkaTemplate.send("msg", msgId, message);
     }
 }
