@@ -35,6 +35,7 @@ services:
 
   theory-application:
     image: theory-application
+    container_name: theory-application
     build:
       context: ../../../business-package/theory/theory-application
       dockerfile: Dockerfile
@@ -52,6 +53,7 @@ services:
   postgres:
     image: postgres
     restart: always
+    container_name: postgres
     ports:
       - 5432:5432
     volumes:
@@ -62,6 +64,7 @@ services:
 
   manager:
     image: 'sheepkiller/kafka-manager'
+    container_name: manager-kafka
     ports:
       - '9000:9000'
     environment:
@@ -76,6 +79,7 @@ services:
 
   kafka:
     image: wurstmeister/kafka
+    container_name: kafka
     ports:
       - 9092:9092
     depends_on:
