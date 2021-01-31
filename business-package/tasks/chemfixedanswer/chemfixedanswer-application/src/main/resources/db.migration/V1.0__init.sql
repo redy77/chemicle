@@ -6,7 +6,7 @@ create table if not exists chemistry_fixed_answer_task (
 );
 
 create table if not exists chemistry_fixed_answer_tast_event (
-    chem_fixed_answer_task_event_uuid VARCHAR(255) not null primary,
+    chem_fixed_answer_task_event_uuid VARCHAR(255) not null primary key,
     chem_fixed_answer_task_event_author_id VARCHAR(255) not null,
     chem_fixed_answer_task_event_occuring_comtext VARCHAR(255) not null,
     chem_fixed_answer_task_event_occuring_context_time TIMESTAMP not null,
