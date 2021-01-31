@@ -55,10 +55,4 @@ public class ChemistryFixedAnswerTaskRestController {
     public void deleteFixedAnswerTask(@PathVariable String id){
         presentation.deleteFixedAnswerTask(id);
     }
-
-    @PostMapping("/kafka-test-message")
-    @ApiOperation("Kafka: test message")
-    public void kafkaMsg(String msgId, @RequestBody ChemistryFixedAnswerTaskEvent message) {
-        kafkaTemplate.send("msg", msgId, message);
-    }
 }
