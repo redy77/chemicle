@@ -50,7 +50,6 @@ public class ChemFixedAnswerTaskEvent {
     private ChemFixedAnswerTask chemFixedAnswerTaskEventPayload;
 
     public static ChemFixedAnswerTaskEvent createEvent(ChemFixedAnswerTask task, ChemFixedAnswerTaskEventType eventType){
-//        ChemistryFixedAnswerTask lesson = ChemistryFixedAnswerTask.createChemistryFixedAnswerTask(task);
         return new ChemFixedAnswerTaskEvent(
                 UUID.randomUUID().toString(),
                 "321",
