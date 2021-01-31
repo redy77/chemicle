@@ -1,9 +1,9 @@
 package com.chemcool.school.tasks.chemfixedanswer.web.api.service;
 
-import com.chemcool.school.tasks.chemfixedanswer.domain.ChemistryFixedAnswerTask;
-import com.chemcool.school.tasks.chemfixedanswer.domain.ChemistryFixedAnswerTaskExample;
-import com.chemcool.school.tasks.chemfixedanswer.service.ChemistryFixedAnswerTaskService;
-import com.chemcool.school.tasks.chemfixedanswer.web.api.dto.ChemistryFixedAnswerTaskDto;
+import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
+import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskExample;
+import com.chemcool.school.tasks.chemfixedanswer.service.ChemFixedAnswerTaskService;
+import com.chemcool.school.tasks.chemfixedanswer.web.api.dto.ChemFixedAnswerTaskDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,23 +17,23 @@ import java.util.Optional;
 public class ChemistryFixedAnswerTaskPresentation {
 
     @Autowired
-    private final ChemistryFixedAnswerTaskService service;
+    private final ChemFixedAnswerTaskService service;
 
-    public List<ChemistryFixedAnswerTaskDto> getAllChemistryFixedAnswerDto () {
-        List<ChemistryFixedAnswerTaskDto> list = new ArrayList<>();
-        for(ChemistryFixedAnswerTask task : service.getAll()){
-            list.add(new ChemistryFixedAnswerTaskDto(task));
+    public List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerDto () {
+        List<ChemFixedAnswerTaskDto> list = new ArrayList<>();
+        for(ChemFixedAnswerTask task : service.getAll()){
+            list.add(new ChemFixedAnswerTaskDto(task));
         }
         return list;
     }
 
-    public Optional<ChemistryFixedAnswerTask> getFixedAnswerTaskById(String id) {
+    public Optional<ChemFixedAnswerTask> getFixedAnswerTaskById(String id) {
         return service.getById(id);
     }
 
-    public String createNewFixedAnswerTask(ChemistryFixedAnswerTaskDto taskDto){
+    public String createNewFixedAnswerTask(ChemFixedAnswerTaskDto taskDto){
         return service.add(
-                new ChemistryFixedAnswerTaskExample(
+                new ChemFixedAnswerTaskExample(
                         taskDto.getDescription(),
                         taskDto.getRightAnswer(),
                         taskDto.getChapterId()
@@ -41,9 +41,9 @@ public class ChemistryFixedAnswerTaskPresentation {
         );
     }
 
-    public void updateFixedAnswerTask(ChemistryFixedAnswerTaskDto taskDto){
+    public void updateFixedAnswerTask(ChemFixedAnswerTaskDto taskDto){
         service.update(
-                new ChemistryFixedAnswerTask(
+                new ChemFixedAnswerTask(
                         taskDto.getTaskId(),
                         taskDto.getDescription(),
                         taskDto.getRightAnswer(),

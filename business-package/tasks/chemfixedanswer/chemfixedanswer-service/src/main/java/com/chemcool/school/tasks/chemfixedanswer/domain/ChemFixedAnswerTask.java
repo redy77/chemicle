@@ -13,7 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Table(name = "fixed_answer")
-public class ChemistryFixedAnswerTask {
+public class ChemFixedAnswerTask {
 
     @Id
     @Column(name = "task_id")
@@ -30,10 +30,10 @@ public class ChemistryFixedAnswerTask {
     @NonNull
     private int chapterId;
 
-    public static ChemistryFixedAnswerTask createChemistryFixedAnswerTask(
-            ChemistryFixedAnswerTaskExample task
+    public static ChemFixedAnswerTask createChemistryFixedAnswerTask(
+            ChemFixedAnswerTaskExample task
     ){
-        return new ChemistryFixedAnswerTask(
+        return new ChemFixedAnswerTask(
                 UUID.randomUUID().toString(),
                 task.getDescription(),
                 task.getRightAnswer(),

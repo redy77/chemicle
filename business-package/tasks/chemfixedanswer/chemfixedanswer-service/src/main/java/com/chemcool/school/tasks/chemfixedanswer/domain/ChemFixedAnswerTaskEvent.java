@@ -21,7 +21,7 @@ import java.util.UUID;
 @TypeDefs(
         @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 )
-public class ChemistryFixedAnswerTaskEvent {
+public class ChemFixedAnswerTaskEvent {
 
     @Id
     @Column(name = "chem_fixed_answer_task_event_id")
@@ -37,7 +37,7 @@ public class ChemistryFixedAnswerTaskEvent {
     private LocalDateTime chemFixedAnswerTaskEventOccuringContextTime;
 
     @Column(name = "chem_fixed_answer_task_event_type")
-    private ChemistryFixedAnswerTaskEventType chemFixedAnswerTaskEventType;
+    private ChemFixedAnswerTaskEventType chemFixedAnswerTaskEventType;
 
     @Column(name = "chem_fixed_answer_task_event_version")
     private String chemFixedAnswerTaskEventVersion;
@@ -47,19 +47,19 @@ public class ChemistryFixedAnswerTaskEvent {
 
     @Type(type = "jsonb")
     @Column(name = "chem_fixed_answer_task_event_payload", columnDefinition = "jsonb")
-    private ChemistryFixedAnswerTask chemFixedAnswerTaskEventPayload;
+    private ChemFixedAnswerTask chemFixedAnswerTaskEventPayload;
 
-    public static ChemistryFixedAnswerTaskEvent createEvent(ChemistryFixedAnswerTaskExample example){
-        ChemistryFixedAnswerTask lesson = ChemistryFixedAnswerTask.createChemistryFixedAnswerTask(example);
-        return new ChemistryFixedAnswerTaskEvent(
+    public static ChemFixedAnswerTaskEvent createEvent(ChemFixedAnswerTask task, ChemFixedAnswerTaskEventType eventType){
+//        ChemistryFixedAnswerTask lesson = ChemistryFixedAnswerTask.createChemistryFixedAnswerTask(task);
+        return new ChemFixedAnswerTaskEvent(
                 UUID.randomUUID().toString(),
-                "777",
-                "ChemistryFixedAnswerTaskEvent",
+                "321",
+                "ChemFixedAnswerTaskEvent",
                 LocalDateTime.now(),
-                ChemistryFixedAnswerTaskEventType.CREATE,
+                eventType,
                 "1.0",
-                lesson.getTaskId(),
-                lesson
+                task.getTaskId(),
+                task
         );
     }
 }
