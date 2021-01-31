@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1.0/tasks/single_select")
+@RequestMapping("/v1/tasks/single-select")
 @RequiredArgsConstructor
 public class ChemistrySingleSelectTaskRestController {
 
@@ -39,7 +39,7 @@ public class ChemistrySingleSelectTaskRestController {
     @ResponseBody
     public String updateTask(@RequestBody ChemistrySingleSelectTaskDto task) {
         presentation.update(task);
-        return "Update task UUID: " + task.getChemistrySingleSelectTaskUuid();
+        return "Update task UUID: " + task.getTaskDtoId();
     }
 
     @DeleteMapping("/{uuid}")

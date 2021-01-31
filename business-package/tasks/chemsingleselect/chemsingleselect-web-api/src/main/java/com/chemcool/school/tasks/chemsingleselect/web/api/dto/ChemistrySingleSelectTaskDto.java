@@ -1,38 +1,34 @@
 package com.chemcool.school.tasks.chemsingleselect.web.api.dto;
 
 
-import com.chemcool.school.tasks.chemsingleselect.domain.ChemistrySingleSelectTask;
-import com.chemcool.school.tasks.chemsingleselect.domain.TypeOfTask;
+import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * Класс выбора фиксированного ответа.
- * Один правильный ответ, три неправильных. *
- *
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ChemistrySingleSelectTaskDto {
-    private String chemistrySingleSelectTaskUuid;
+    private String taskDtoId;
     private String description;
-    private String rightAnswer;
-    private String chapterId;
-    private TypeOfTask typeOfTask;
-    private String incorrectAnswer1;
-    private String incorrectAnswer2;
-    private String incorrectAnswer3;
+    private String correctAnswer;
+    private int chapterId;
+    private int referenceId;
+    private String incorrectAnswerOne;
+    private String incorrectAnswerTwo;
+    private String incorrectAnswerThree;
+    private String incorrectAnswerFour;
 
-    public ChemistrySingleSelectTaskDto(ChemistrySingleSelectTask task) {
-        this.chemistrySingleSelectTaskUuid = task.getChemistrySingleSelectTaskUuid();
+    public ChemistrySingleSelectTaskDto(ChemSingleSelectTask task) {
+        this.taskDtoId = task.getTaskId();
         this.description = task.getDescription();
-        this.rightAnswer = task.getRightAnswer();
+        this.correctAnswer = task.getCorrectAnswer();
         this.chapterId = task.getChapterId();
-        this.typeOfTask = task.getTypeOfTask();
-        this.incorrectAnswer1 = task.getIncorrectAnswer1();
-        this.incorrectAnswer2 = task.getIncorrectAnswer2();
-        this.incorrectAnswer3 = task.getIncorrectAnswer3();
+        this.referenceId = task.getReferenceId();
+        this.incorrectAnswerOne = task.getIncorrectAnswerOne();
+        this.incorrectAnswerTwo = task.getIncorrectAnswerTwo();
+        this.incorrectAnswerThree = task.getIncorrectAnswerThree();
+        this.incorrectAnswerFour = task.getIncorrectAnswerFour();
     }
 }
