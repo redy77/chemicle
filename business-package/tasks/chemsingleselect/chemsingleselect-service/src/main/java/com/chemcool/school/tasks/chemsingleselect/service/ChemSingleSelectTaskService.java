@@ -2,6 +2,7 @@ package com.chemcool.school.tasks.chemsingleselect.service;
 
 
 import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTask;
+import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskEvent;
 import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskExample;
 import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskFactory;
 import com.chemcool.school.tasks.chemsingleselect.storage.ChemSingleSelectTaskRepository;

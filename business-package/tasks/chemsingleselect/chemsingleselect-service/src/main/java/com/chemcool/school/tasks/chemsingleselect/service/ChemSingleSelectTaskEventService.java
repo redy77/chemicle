@@ -39,4 +39,8 @@ public class ChemSingleSelectTaskEventService {
         kafkaSend("ChemSingleSelectTask", "1", event );
         journal.save(event);
     }
+
+    public void handleEvent(ChemSingleSelectTaskEvent event) {
+        journal.save(event);
+    }
 }
