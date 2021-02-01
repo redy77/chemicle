@@ -39,15 +39,15 @@ public class ChemistryMatchingTaskEvent {
     private ChemistryMatchingTask chemistryMatchingTaskEventPayload;
 
 
-    public static ChemistryMatchingTaskEvent createEvent(ChemistryMatchingTaskExample example){
-        ChemistryMatchingTask task =
-                ChemistryMatchingTaskFactory.createChemistryMatchingTask(example);
+    public static ChemistryMatchingTaskEvent createEvent(ChemistryMatchingTask task, ChemistryMatchingTaskEventType type){
+//        ChemistryMatchingTask task =
+//                ChemistryMatchingTaskFactory.createChemistryMatchingTask(example);
         return new ChemistryMatchingTaskEvent(
                 UUID.randomUUID().toString(),
                 "123",
                 "ChemistryMatchingTaskEvent",
                 LocalDateTime.now(),
-                ChemistryMatchingTaskEventType.CREATED,
+                type,
                 "1.0",
                 task.getTaskId(),
                 task
