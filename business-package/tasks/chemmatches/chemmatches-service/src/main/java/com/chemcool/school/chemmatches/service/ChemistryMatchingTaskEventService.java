@@ -16,6 +16,7 @@ import org.springframework.util.concurrent.ListenableFuture;
 public class ChemistryMatchingTaskEventService {
 
     private final KafkaTemplate<String, ChemistryMatchingTaskEvent> kafkaTemplate;
+    private final ChemistryMatchingTaskEventJournal journal;
 
     private void kafkaSend(String topic, String msgId, ChemistryMatchingTaskEvent event) {
         ListenableFuture<SendResult<String, ChemistryMatchingTaskEvent>> future = kafkaTemplate.send(topic, msgId, event);
@@ -33,5 +34,9 @@ public class ChemistryMatchingTaskEventService {
         //todo написать реализацию
         ChemistryMatchingTaskEvent event = ChemistryMatchingTaskEvent.createEvent(task, ChemistryMatchingTaskEventType.UPDATED);
         kafkaSend("matching-task", "1", event);
+    }
+
+    public void handleEvent(ChemistryMatchingTaskEvent event){
+        journal.save(event);
     }
 }
