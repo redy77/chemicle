@@ -35,8 +35,4 @@ public class ChemistryMatchingTaskEventService {
         ChemistryMatchingTaskEvent event = ChemistryMatchingTaskEvent.createEvent(task, ChemistryMatchingTaskEventType.UPDATED);
         kafkaSend("matching-task", "1", event);
     }
-
-    public void handleEvent(ChemistryMatchingTaskEvent event){
-        journal.save(event);
-    }
 }

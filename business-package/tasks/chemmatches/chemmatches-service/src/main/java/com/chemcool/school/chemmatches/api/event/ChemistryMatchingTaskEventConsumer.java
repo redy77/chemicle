@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 @EnableTransactionManagement
 public class ChemistryMatchingTaskEventConsumer {
 
-    private final ChemistryMatchingTaskEventService eventService;
+    private final ChemistryMatchingTaskService eventService;
 
     @KafkaHandler
     @KafkaListener(topics = "matching-task")

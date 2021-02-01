@@ -20,6 +20,7 @@ public class ChemistryMatchingTaskService {
 
     private final ChemistryMatchingTaskRepository repository;
     private final ChemistryMatchingTaskEventService eventService;
+    private final ChemistryMatchingTaskEventJournal journal;
 
 
     public String add(ChemistryMatchingTaskExample taskExample) {
@@ -53,5 +54,7 @@ public class ChemistryMatchingTaskService {
         repository.deleteById(id);
         log.info("Удалена с задача с id: " + id);
     }
-
+    public void handleEvent(ChemistryMatchingTaskEvent event){
+        journal.save(event);
+    }
 }
