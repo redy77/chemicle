@@ -2,19 +2,23 @@ package com.chemcool.school.theory.service;
 
 
 import com.chemcool.school.theory.domain.ChemistryLesson;
+import com.chemcool.school.theory.domain.ChemistryLessonEvent;
 import com.chemcool.school.theory.domain.ChemistryLessonExample;
 import com.chemcool.school.theory.domain.ChemistryLessonFactory;
+import com.chemcool.school.theory.storage.ChemistryLessonEventJournal;
 import com.chemcool.school.theory.storage.LessonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+
 @Service
 @RequiredArgsConstructor
 public class ChemistryLessonPageService {
 
     private final LessonRepository repository;
+    private final ChemistryLessonEventJournal journal;
 
     public String manageLesson(ChemistryLessonExample example) {
         ChemistryLesson lessonPage = ChemistryLessonFactory.createLesson(example);
@@ -52,6 +56,11 @@ public class ChemistryLessonPageService {
         }
         return repository.findByLessonId(lessonId);
 
+    }
+
+
+    public void handleEvent(ChemistryLessonEvent event){
+        journal.save(event);
     }
 
 }

@@ -37,10 +37,13 @@ public class ChemistryLessonEvent {
     @Column(name = "event_occurring_context_time")
     private LocalDateTime eventOccurringContextTime;
 
+    @Column(name = "event_type")
     private ChemistryLessonEventType eventType;
 
+    @Column(name = "version")
     private String version;
 
+    @Column(name = "event_eentity_id")
     private String EventEntityId;
 
 
