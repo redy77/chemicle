@@ -16,7 +16,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ChemistryFixedAnswerTaskPresentation {
 
-    @Autowired
     private final ChemFixedAnswerTaskService service;
 
     public List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerDto () {
