@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ChemistryTheoryExample {
-    private String lessonExampleName;
-    private String lessonExampleDescription;
-    private Integer lessonExampleChapter;
-    private Integer lessonExampleReferences;
+    private String theoryExampleName;
+    private String theoryExampleDescription;
+    private Integer theoryExampleChapter;
+    private Integer theoryExampleReferences;
 
-    public static ChemistryTheoryExample fromLessonExample(
+    public static ChemistryTheoryExample fromTheoryExample(
             String name,
             String description,
             Integer chapter,

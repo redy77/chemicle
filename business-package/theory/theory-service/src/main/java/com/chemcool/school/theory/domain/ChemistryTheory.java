@@ -13,42 +13,42 @@ import java.util.UUID;
 
 @Data
 @Entity
-@Table(name = "chemistry_lesson_page")
+@Table(name = "chemistry_theory_page")
 @NoArgsConstructor
 @AllArgsConstructor
 public class ChemistryTheory {
 
     @Id
-    private String lessonId;
+    private String theoryId;
 
-    @Column(name = "lesson_name")
+    @Column(name = "theory_name")
     @NonNull
-    private String lessonName;
+    private String theoryName;
 
     @Column(
-            name = "lesson_description",
+            name = "theory_description",
             length = 10000
     )
-    private String lessonDescription;
+    private String theoryDescription;
 
     @NonNull
-    @Column(name = "lesson_chapter")
-    private Integer lessonChapter;
+    @Column(name = "theory_chapter")
+    private Integer theoryChapter;
 
     @NonNull
-    @Column(name = "lesson_references")
-    private Integer lessonReferences;
+    @Column(name = "theory_references")
+    private Integer theoryReferences;
 
 
-    public static ChemistryTheory createChemistryLesson(
+    public static ChemistryTheory createChemistryTheory(
             ChemistryTheoryExample example
     ) {
         return new ChemistryTheory(
                 UUID.randomUUID().toString(),
-                example.getLessonExampleName(),
-                example.getLessonExampleDescription(),
-                example.getLessonExampleChapter(),
-                example.getLessonExampleReferences()
+                example.getTheoryExampleName(),
+                example.getTheoryExampleDescription(),
+                example.getTheoryExampleChapter(),
+                example.getTheoryExampleReferences()
         );
     }
 

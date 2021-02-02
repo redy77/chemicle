@@ -20,45 +20,45 @@ public class ChemistryTheoryPageService {
     private final ChemistryTheoryEventService pageService;
 
 
-    public String manageLesson(ChemistryTheoryExample example) {
-        ChemistryTheory lessonPage = ChemistryTheoryFactory.createLesson(example);
-        pageService.save(lessonPage);
-        repository.save(lessonPage);
-        return lessonPage.getLessonId();
+    public String manageTheory(ChemistryTheoryExample example) {
+        ChemistryTheory theoryPage = ChemistryTheoryFactory.createTheory(example);
+        pageService.save(theoryPage);
+        repository.save(theoryPage);
+        return theoryPage.getTheoryId();
     }
 
-    public void deleteLesson(ChemistryTheoryExample example) {
-        ChemistryTheory lessonPage = ChemistryTheoryFactory.createLesson(example);
-        repository.delete(lessonPage);
+    public void deleteTheory(ChemistryTheoryExample example) {
+        ChemistryTheory theoryPage = ChemistryTheoryFactory.createTheory(example);
+        repository.delete(theoryPage);
     }
 
-    public String updateLesson(String lessonId, ChemistryTheoryExample chemistryTheoryExample) {
+    public String updateTheory(String theoryId, ChemistryTheoryExample chemistryTheoryExample) {
 
         //  TODO проверить на то, что lessonId не пустой.
-        if (lessonId == null || lessonId.isEmpty()) {
-            throw new RuntimeException("lessonId параметр пустой, проверьте конфигурацию.");
+        if (theoryId == null || theoryId.isEmpty()) {
+            throw new RuntimeException("theoryId параметр пустой, проверьте конфигурацию.");
         }
 
-        pageService.update(ChemistryTheory.createChemistryLesson(
+        pageService.update(ChemistryTheory.createChemistryTheory(
                 chemistryTheoryExample
         ));
-        repository.updateLesson(
-                lessonId,
-                chemistryTheoryExample.getLessonExampleName(),
-                chemistryTheoryExample.getLessonExampleChapter(),
-                chemistryTheoryExample.getLessonExampleDescription(),
-                chemistryTheoryExample.getLessonExampleReferences()
+        repository.updateTheory(
+                theoryId,
+                chemistryTheoryExample.getTheoryExampleName(),
+                chemistryTheoryExample.getTheoryExampleChapter(),
+                chemistryTheoryExample.getTheoryExampleDescription(),
+                chemistryTheoryExample.getTheoryExampleReferences()
         );
 
-        return lessonId;
+        return theoryId;
     }
 
-    public ChemistryTheory findLessonById(String lessonId) {
+    public ChemistryTheory findTheoryById(String theoryId) {
         //  TODO проверить на то, что lessonId не пустой.
-        if (lessonId == null || lessonId.isEmpty()) {
-            throw new RuntimeException("lessonId параметр пустой, проверьте конфигурацию.");
+        if (theoryId == null || theoryId.isEmpty()) {
+            throw new RuntimeException("theoryId параметр пустой, проверьте конфигурацию.");
         }
-        return repository.findByLessonId(lessonId);
+        return repository.findByTheoryId(theoryId);
 
     }
 

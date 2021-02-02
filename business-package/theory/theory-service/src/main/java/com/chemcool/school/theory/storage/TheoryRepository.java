@@ -20,22 +20,22 @@ public interface TheoryRepository extends JpaRepository<ChemistryTheory, UUID>, 
     @Modifying
     @Query(
             value = "UPDATE " + tableName + " SET " +
-                    " lesson_chapter = :lessonChapter, " +
-                    " lesson_name = :lessonName, " +
-                    " lesson_description = :lessonDescription, " +
-                    " lesson_references = :lessonReferences " +
-                    " WHERE lesson_id = :lessonId",
+                    " theory_chapter = :theoryChapter, " +
+                    " theory_name = :theoryName, " +
+                    " theory_description = :theoryDescription, " +
+                    " theory_references = :theoryReferences " +
+                    " WHERE theory_id = :theoryId",
             nativeQuery = true
     )
-    void updateLesson(
-            @Param("lessonId") String lessonId,
-            @Param("lessonName") String lessonName,
-            @Param("lessonChapter") int lessonChapter,
-            @Param("lessonDescription") String lessonDescription,
-            @Param("lessonReferences") int lessonReferences
+    void updateTheory(
+            @Param("theoryId") String theoryId,
+            @Param("theoryName") String theoryName,
+            @Param("theoryChapter") int theoryChapter,
+            @Param("theoryDescription") String theoryDescription,
+            @Param("theoryReferences") int theoryReferences
     );
 
-    ChemistryTheory findByLessonId(String lessonId);
+    ChemistryTheory findByTheoryId(String theoryId);
 
 
 }
