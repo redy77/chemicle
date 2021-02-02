@@ -1,50 +1,45 @@
 package com.chemcool.school.tasks.chemsingleselect.service;
 
-
 import com.chemcool.school.tasks.chemsingleselect.api.event.ChemSingleSelectTaskEventProducer;
 import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTask;
-import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskEvent;
 import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskExample;
 import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskFactory;
-import com.chemcool.school.tasks.chemsingleselect.storage.ChemSingleSelectTaskRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Slf4j
 @Service
 @RequiredArgsConstructor
-public class ChemSingleSelectTaskService {
+public class ChemSingleSelectTaskProxyService {
 
-    private final ChemSingleSelectTaskRepository repository;
+    private final ChemSingleSelectTaskEventProducer eventProducer;
+    private final ChemSingleSelectTaskService taskService;
 
-    public void save(ChemSingleSelectTask task) {
-        repository.save(task);
-        log.info("Добавлена задача с UUID = " + task.getTaskId() );
+    public String add(ChemSingleSelectTaskExample exampleTask) {
+        ChemSingleSelectTask task = ChemSingleSelectTaskFactory.createTask(exampleTask);
+        eventProducer.save(task);
+        return task.getTaskId();
     }
 
     public Optional<ChemSingleSelectTask> getById(String id) {
-        return repository.findById(id);
+        return taskService.getById(id);
     }
 
     public List<ChemSingleSelectTask> getAll() {
-        return repository.findAll();
+        return taskService.getAll();
     }
 
     public List<ChemSingleSelectTask> getAllByChapterId(int chapterId) {
-        return repository.getAllByChapterId(chapterId);
+        return taskService.getAllByChapterId(chapterId);
     }
 
     public void update(ChemSingleSelectTask task) {
-        log.info("Обновлена задача с UUID = " + task.getTaskId() );
-        repository.save(task);
+        eventProducer.update(task);
     }
 
     public void deleteById(String id) {
-        log.info("Удалена задачу с UUID = " + id);
-        repository.deleteById(id);
+        taskService.deleteById(id);
     }
 }
