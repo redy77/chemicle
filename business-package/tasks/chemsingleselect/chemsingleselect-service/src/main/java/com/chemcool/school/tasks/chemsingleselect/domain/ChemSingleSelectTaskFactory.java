@@ -13,7 +13,7 @@ public class ChemSingleSelectTaskFactory {
         if (example.getTaskExampleChapterId() < 1 || example.getTaskExampleChapterId() > 4) {
             throw new ChemSingleSelectTaskFormatException("Уровень химии не может быть меньше 1 или больше 4.");
         }
-        log.info("Попытка создать задачу с ВЫБОРОМ ФИКСИРОВАННОГО ОТВЕТА");
+        log.info("Попытка создать задачу с ВЫБОРОМ ОДНОГО ОТВЕТА ИЗ МНОЖЕСТВА");
         return ChemSingleSelectTask.createChemistrySingleSelectTask(example);
     }
 }
