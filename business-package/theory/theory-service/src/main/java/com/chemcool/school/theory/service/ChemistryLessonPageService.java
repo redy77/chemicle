@@ -19,9 +19,12 @@ public class ChemistryLessonPageService {
 
     private final LessonRepository repository;
     private final ChemistryLessonEventJournal journal;
+    private final ChemistryLessonEventService pageService;
+
 
     public String manageLesson(ChemistryLessonExample example) {
         ChemistryLesson lessonPage = ChemistryLessonFactory.createLesson(example);
+        pageService.save(lessonPage);
         repository.save(lessonPage);
         return lessonPage.getLessonId();
     }
@@ -38,6 +41,9 @@ public class ChemistryLessonPageService {
             throw new RuntimeException("lessonId параметр пустой, проверьте конфигурацию.");
         }
 
+        pageService.update(ChemistryLesson.createChemistryLesson(
+                chemistryLessonExample
+        ));
         repository.updateLesson(
                 lessonId,
                 chemistryLessonExample.getLessonExampleName(),

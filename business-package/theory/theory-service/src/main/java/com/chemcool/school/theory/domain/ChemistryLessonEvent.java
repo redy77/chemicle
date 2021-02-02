@@ -51,14 +51,14 @@ public class ChemistryLessonEvent {
     @Column(name = "event_payload", columnDefinition = "jsonb")
     private ChemistryLesson event_payload;
 
-    private static ChemistryLessonEvent createEvent(ChemistryLessonExample lessonExample) {
-        ChemistryLesson lesson = ChemistryLessonFactory.createLesson(lessonExample);
+    public static ChemistryLessonEvent createEvent(ChemistryLesson lesson, ChemistryLessonEventType type) {
+       // ChemistryLesson lesson = ChemistryLessonFactory.createLesson(lessonExample);
         return new ChemistryLessonEvent(
                 UUID.randomUUID().toString(),
                 "123",
                 "ChemistryLessonEvent",
                 LocalDateTime.now(),
-                ChemistryLessonEventType.CREATED,
+                type,
                 "1.0",
                 lesson.getLessonId(),
                 lesson
