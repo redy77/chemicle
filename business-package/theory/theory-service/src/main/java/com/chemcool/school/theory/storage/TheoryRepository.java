@@ -1,6 +1,6 @@
 package com.chemcool.school.theory.storage;
 
-import com.chemcool.school.theory.domain.ChemistryLesson;
+import com.chemcool.school.theory.domain.ChemistryTheory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
 import java.util.UUID;
 
 @Repository
-public interface LessonRepository extends JpaRepository<ChemistryLesson, UUID>, JpaSpecificationExecutor<ChemistryLesson> {
+public interface TheoryRepository extends JpaRepository<ChemistryTheory, UUID>, JpaSpecificationExecutor<ChemistryTheory> {
 
     String tableName = "chemistry_lesson_page";
 
@@ -35,7 +35,7 @@ public interface LessonRepository extends JpaRepository<ChemistryLesson, UUID>, 
             @Param("lessonReferences") int lessonReferences
     );
 
-    ChemistryLesson findByLessonId(String lessonId);
+    ChemistryTheory findByLessonId(String lessonId);
 
 
 }

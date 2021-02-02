@@ -1,7 +1,6 @@
 package com.chemcool.school.theory.configuration.properties;
 
-import com.chemcool.school.theory.domain.ChemistryLessonEvent;
-import com.chemcool.school.theory.domain.ChemistryLessonEventType;
+import com.chemcool.school.theory.domain.ChemistryTheoryEvent;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 @Slf4j
-public class ChemistryLessonDeserializer implements Deserializer<ChemistryLessonEvent> {
+public class ChemistryTheoryDeserializer implements Deserializer<ChemistryTheoryEvent> {
     private final ObjectMapper mapper = new ObjectMapper()
             .registerModule(new JavaTimeModule());
 
@@ -22,9 +21,9 @@ public class ChemistryLessonDeserializer implements Deserializer<ChemistryLesson
     }
 
     @Override
-    public ChemistryLessonEvent deserialize(String s, byte[] event){
+    public ChemistryTheoryEvent deserialize(String s, byte[] event){
         try {
-            return mapper.readValue(new String(event, StandardCharsets.UTF_8), ChemistryLessonEvent.class);
+            return mapper.readValue(new String(event, StandardCharsets.UTF_8), ChemistryTheoryEvent.class);
         }catch (Exception exception){
             log.error("Unable to deserialize message {}" ,event, exception);
             return null;

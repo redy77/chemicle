@@ -1,6 +1,6 @@
 package com.chemcool.school.theory.web.api.controllers;
 
-import com.chemcool.school.theory.domain.ChemistryLesson;
+import com.chemcool.school.theory.domain.ChemistryTheory;
 import com.chemcool.school.theory.web.api.dto.LessonExample;
 import com.chemcool.school.theory.web.api.service.ChemistryLessonPresentation;
 import io.swagger.annotations.ApiOperation;
@@ -52,7 +52,7 @@ public class ChemistryLessonRestController {
 
 
     @GetMapping("/getBy/{id}")
-    public ChemistryLesson getLessonExampleById(@PathVariable(name = "id") String id) {
+    public ChemistryTheory getLessonExampleById(@PathVariable(name = "id") String id) {
         log.info("вызван контроллер для получения урока по id : " + "[" + id + "]");
         return presentation.getLessonById(id);
     }

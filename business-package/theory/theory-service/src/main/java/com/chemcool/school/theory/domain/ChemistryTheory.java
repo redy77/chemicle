@@ -16,7 +16,7 @@ import java.util.UUID;
 @Table(name = "chemistry_lesson_page")
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChemistryLesson {
+public class ChemistryTheory {
 
     @Id
     private String lessonId;
@@ -40,10 +40,10 @@ public class ChemistryLesson {
     private Integer lessonReferences;
 
 
-    public static ChemistryLesson createChemistryLesson(
-            ChemistryLessonExample example
+    public static ChemistryTheory createChemistryLesson(
+            ChemistryTheoryExample example
     ) {
-        return new ChemistryLesson(
+        return new ChemistryTheory(
                 UUID.randomUUID().toString(),
                 example.getLessonExampleName(),
                 example.getLessonExampleDescription(),

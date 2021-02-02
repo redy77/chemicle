@@ -1,8 +1,8 @@
 package com.chemcool.school.theory.web.api.service;
 
-import com.chemcool.school.theory.domain.ChemistryLesson;
-import com.chemcool.school.theory.domain.ChemistryLessonExample;
-import com.chemcool.school.theory.service.ChemistryLessonPageService;
+import com.chemcool.school.theory.domain.ChemistryTheory;
+import com.chemcool.school.theory.domain.ChemistryTheoryExample;
+import com.chemcool.school.theory.service.ChemistryTheoryPageService;
 import com.chemcool.school.theory.web.api.dto.LessonExample;
 import com.chemcool.school.theory.web.api.exception.ChemistryLessonEmptyException;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ChemistryLessonPresentation {
 
-    private final ChemistryLessonPageService service;
+    private final ChemistryTheoryPageService service;
 
     public String createChemistryLessonExample(LessonExample example) {
         if (
@@ -21,7 +21,7 @@ public class ChemistryLessonPresentation {
             throw new ChemistryLessonEmptyException("Необходимые поля пустые, проверьте пожалуйста бланк заполнения темы.");
         } else {
             return service.manageLesson(
-                    new ChemistryLessonExample(
+                    new ChemistryTheoryExample(
                             example.getLessonExampleName(),
                             example.getLessonExampleDescription(),
                             example.getLessonExampleChapter(),
@@ -33,7 +33,7 @@ public class ChemistryLessonPresentation {
 
     public void deleteChemistryLessonExample(LessonExample example) {
         service.deleteLesson(
-                new ChemistryLessonExample(
+                new ChemistryTheoryExample(
                         example.getLessonExampleName(),
                         example.getLessonExampleDescription(),
                         example.getLessonExampleChapter(),
@@ -43,16 +43,16 @@ public class ChemistryLessonPresentation {
     }
 
     public String updateChemistryLessonExample(String lessonId, LessonExample example) {
-        ChemistryLessonExample chemistryLessonExample = ChemistryLessonExample.fromLessonExample(
+        ChemistryTheoryExample chemistryTheoryExample = ChemistryTheoryExample.fromLessonExample(
                 example.getLessonExampleName(),
                 example.getLessonExampleDescription(),
                 example.getLessonExampleChapter(),
                 example.getLessonExampleReferences()
         );
-        return service.updateLesson(lessonId, chemistryLessonExample);
+        return service.updateLesson(lessonId, chemistryTheoryExample);
     }
 
-    public ChemistryLesson getLessonById(String lessonId){
+    public ChemistryTheory getLessonById(String lessonId){
         return service.findLessonById(lessonId);
     }
 

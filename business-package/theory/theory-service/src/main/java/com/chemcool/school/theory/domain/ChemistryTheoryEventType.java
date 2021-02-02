@@ -1,6 +1,6 @@
 package com.chemcool.school.theory.domain;
 
-public enum ChemistryLessonEventType {
+public enum ChemistryTheoryEventType {
     CREATED,
     UPDATED
 }

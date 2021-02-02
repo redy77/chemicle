@@ -1,6 +1,6 @@
 package com.chemcool.school.theory.configuration.properties;
 
-import com.chemcool.school.theory.domain.ChemistryLessonEvent;
+import com.chemcool.school.theory.domain.ChemistryTheoryEvent;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -10,7 +10,7 @@ import org.apache.kafka.common.serialization.Serializer;
 import java.util.Map;
 
 @Slf4j
-public class ChemistryLessonSerializer implements Serializer<ChemistryLessonEvent> {
+public class ChemistryTheorySerializer implements Serializer<ChemistryTheoryEvent> {
     private final ObjectMapper mapper= new ObjectMapper()
             .registerModule(new JavaTimeModule());
 
@@ -20,7 +20,7 @@ public class ChemistryLessonSerializer implements Serializer<ChemistryLessonEven
     }
 
     @Override
-    public byte[] serialize(String s, ChemistryLessonEvent event) {
+    public byte[] serialize(String s, ChemistryTheoryEvent event) {
         try {
             return mapper.writeValueAsBytes(event);
         }catch (JsonProcessingException exception){

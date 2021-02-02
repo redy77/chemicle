@@ -1,10 +1,9 @@
 package com.chemcool.school.theory.configuration;
 
-import com.chemcool.school.theory.configuration.properties.ChemistryLessonSerializer;
-import com.chemcool.school.theory.domain.ChemistryLessonEvent;
+import com.chemcool.school.theory.configuration.properties.ChemistryTheorySerializer;
+import com.chemcool.school.theory.domain.ChemistryTheoryEvent;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.common.protocol.types.Field;
 import com.chemcool.school.theory.configuration.properties.KafkaProperties;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -29,17 +28,17 @@ public class KafkaProducerConfiguration {
         Map<String, Object> properties = new HashMap<>();
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServer());
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ChemistryLessonSerializer.class);
+        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ChemistryTheorySerializer.class);
         return properties;
     }
 
     @Bean
-    public ProducerFactory<String, ChemistryLessonEvent> producerFactory() {
+    public ProducerFactory<String, ChemistryTheoryEvent> producerFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfig());
     }
 
     @Bean
-    public KafkaTemplate<String, ChemistryLessonEvent> kafkaTemplate() {
+    public KafkaTemplate<String, ChemistryTheoryEvent> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }

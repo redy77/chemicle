@@ -1,7 +1,7 @@
 package com.chemcool.school.theory.api.event;
 
-import com.chemcool.school.theory.domain.ChemistryLessonEvent;
-import com.chemcool.school.theory.service.ChemistryLessonPageService;
+import com.chemcool.school.theory.domain.ChemistryTheoryEvent;
+import com.chemcool.school.theory.service.ChemistryTheoryPageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -15,15 +15,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @EnableKafka
 @RequiredArgsConstructor
-public class ChemLessonEventConsumer {
+public class ChemTheoryEventConsumer {
 
-    private final ChemistryLessonPageService service;
+    private final ChemistryTheoryPageService service;
 
     @KafkaHandler
     @KafkaListener(topics = "chemistry-lesson")
     @Transactional
-    public void handleChemistryLesson(ConsumerRecord<String, ChemistryLessonEvent> record){
-        ChemistryLessonEvent event = record.value();
+    public void handleChemistryLesson(ConsumerRecord<String, ChemistryTheoryEvent> record){
+        ChemistryTheoryEvent event = record.value();
         log.info("Пойман журнал для логгирования: " + event.getEventId());
         service.handleEvent(event);
     }

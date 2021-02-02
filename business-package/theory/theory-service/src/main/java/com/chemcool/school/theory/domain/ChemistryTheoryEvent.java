@@ -23,7 +23,7 @@ import java.util.UUID;
 @TypeDefs(
         @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 )
-public class ChemistryLessonEvent {
+public class ChemistryTheoryEvent {
     @Id
     @Column(name = "event_id")
     private String eventId;
@@ -38,7 +38,7 @@ public class ChemistryLessonEvent {
     private LocalDateTime eventOccurringContextTime;
 
     @Column(name = "event_type")
-    private ChemistryLessonEventType eventType;
+    private ChemistryTheoryEventType eventType;
 
     @Column(name = "version")
     private String version;
@@ -49,11 +49,11 @@ public class ChemistryLessonEvent {
 
     @Type(type = "jsonb")
     @Column(name = "event_payload", columnDefinition = "jsonb")
-    private ChemistryLesson event_payload;
+    private ChemistryTheory event_payload;
 
-    public static ChemistryLessonEvent createEvent(ChemistryLesson lesson, ChemistryLessonEventType type) {
+    public static ChemistryTheoryEvent createEvent(ChemistryTheory lesson, ChemistryTheoryEventType type) {
        // ChemistryLesson lesson = ChemistryLessonFactory.createLesson(lessonExample);
-        return new ChemistryLessonEvent(
+        return new ChemistryTheoryEvent(
                 UUID.randomUUID().toString(),
                 "123",
                 "ChemistryLessonEvent",
