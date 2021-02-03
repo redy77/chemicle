@@ -26,4 +26,4 @@ eureka:
 
 kafka:
   server: http://localhost:9092
-  groupId: single-select-task.1
+  groupId: tasks-single-select-service.1

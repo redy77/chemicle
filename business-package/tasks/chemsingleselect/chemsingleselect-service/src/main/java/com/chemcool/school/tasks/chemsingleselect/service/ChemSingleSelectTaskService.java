@@ -1,11 +1,7 @@
 package com.chemcool.school.tasks.chemsingleselect.service;
 
 
-import com.chemcool.school.tasks.chemsingleselect.api.event.ChemSingleSelectTaskEventProducer;
 import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTask;
-import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskEvent;
-import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskExample;
-import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskFactory;
 import com.chemcool.school.tasks.chemsingleselect.storage.ChemSingleSelectTaskRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
