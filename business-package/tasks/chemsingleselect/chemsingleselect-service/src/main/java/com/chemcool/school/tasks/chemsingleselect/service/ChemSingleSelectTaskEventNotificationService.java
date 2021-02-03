@@ -1,6 +1,5 @@
 package com.chemcool.school.tasks.chemsingleselect.service;
 
-import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTask;
 import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskEvent;
 
 public interface ChemSingleSelectTaskEventNotificationService {

@@ -18,7 +18,7 @@ import java.util.UUID;
 public class KafkaChemSingleSelectTaskEventNotificationService implements ChemSingleSelectTaskEventNotificationService {
 
     private final KafkaTemplate<String, ChemSingleSelectTaskEvent> kafkaTemplate;
-    private static final String TOPIC = "tasks--single-select";
+    private static final String TOPIC = "tasks-single-select";
 
     @Override
     public void send(ChemSingleSelectTaskEvent event) {
