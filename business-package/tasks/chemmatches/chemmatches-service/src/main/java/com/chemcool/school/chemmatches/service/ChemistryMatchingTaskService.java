@@ -17,7 +17,7 @@ public class ChemistryMatchingTaskService {
 
     private final ChemistryMatchingTaskRepository repository;
 
-    public void save(ChemistryMatchingTask task) {
+    public void handleTask(ChemistryMatchingTask task) {
         repository.save(task);
         log.info("Добавлена задача с UUID = " + task.getTaskId() );
     }

@@ -28,6 +28,6 @@ public class ChemistryMatchingTaskConsumer {
         ChemistryMatchingTaskEvent event = record.value();
         log.info("Пойман журнал для логирования: " + event.getChemistryMatchingTaskEventId());
         eventService.handleEvent(event);
-        taskService.save(event.getChemistryMatchingTaskEventPayload());
+        taskService.handleTask(event.getChemistryMatchingTaskEventPayload());
     }
 }
