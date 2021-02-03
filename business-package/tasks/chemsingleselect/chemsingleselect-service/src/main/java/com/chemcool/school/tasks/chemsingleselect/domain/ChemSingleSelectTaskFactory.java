@@ -1,6 +1,6 @@
 package com.chemcool.school.tasks.chemsingleselect.domain;
 
-import com.chemcool.school.tasks.chemsingleselect.exeption.ChemSingleSelectTaskFormatException;
+import com.chemcool.school.tasks.chemsingleselect.exception.ChemSingleSelectTaskFormatException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

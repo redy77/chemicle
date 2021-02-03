@@ -1,9 +1,6 @@
 package com.chemcool.school.tasks.chemsingleselect.service;
 
-import com.chemcool.school.tasks.chemsingleselect.api.event.ChemSingleSelectTaskEventProducer;
-import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTask;
-import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskExample;
-import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskFactory;
+import com.chemcool.school.tasks.chemsingleselect.domain.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +11,14 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ChemSingleSelectTaskProxyService {
 
-    private final ChemSingleSelectTaskEventProducer eventProducer;
+    private final ChemSingleSelectTaskEventNotificationService notificationService;
     private final ChemSingleSelectTaskService taskService;
 
     public String add(ChemSingleSelectTaskExample exampleTask) {
         ChemSingleSelectTask task = ChemSingleSelectTaskFactory.createTask(exampleTask);
-        eventProducer.save(task);
+        notificationService.send(
+                ChemSingleSelectTaskEventFactory.createEvent(task, ChemTaskEventType.CREATE)
+        );
         return task.getTaskId();
     }
 
@@ -36,7 +35,9 @@ public class ChemSingleSelectTaskProxyService {
     }
 
     public void update(ChemSingleSelectTask task) {
-        eventProducer.update(task);
+        notificationService.send(
+                ChemSingleSelectTaskEventFactory.createEvent(task, ChemTaskEventType.UPDATE)
+        );
     }
 
     public void deleteById(String id) {

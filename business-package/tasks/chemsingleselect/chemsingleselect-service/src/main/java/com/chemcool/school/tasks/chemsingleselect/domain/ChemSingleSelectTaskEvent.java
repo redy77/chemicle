@@ -11,6 +11,7 @@ import org.hibernate.annotations.TypeDefs;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -21,6 +22,7 @@ import java.util.UUID;
 @TypeDefs(
         @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 )
+@Table(name = "chemistry_single_select_task_event")
 public class ChemSingleSelectTaskEvent {
 
     @Id
@@ -49,11 +51,11 @@ public class ChemSingleSelectTaskEvent {
     @Column(name = "payload", columnDefinition = "jsonb")
     private ChemSingleSelectTask payload;
 
-    public static ChemSingleSelectTaskEvent createEvent(ChemSingleSelectTask task, ChemTaskEventType eventType){
+    public static ChemSingleSelectTaskEvent createEvent(ChemSingleSelectTask task, String authorId, ChemTaskEventType eventType){
 //        ChemSingleSelectTask task = ChemSingleSelectTask.createChemistrySingleSelectTask(example);
         return new ChemSingleSelectTaskEvent(
                 UUID.randomUUID().toString(),
-                "777",
+                authorId,
                 "ChemSingleSelectTaskEvent",
                 LocalDateTime.now(),
                 eventType,
