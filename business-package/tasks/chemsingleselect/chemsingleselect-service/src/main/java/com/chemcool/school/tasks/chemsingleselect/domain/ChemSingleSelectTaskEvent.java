@@ -51,11 +51,11 @@ public class ChemSingleSelectTaskEvent {
     @Column(name = "payload", columnDefinition = "jsonb")
     private ChemSingleSelectTask payload;
 
-    public static ChemSingleSelectTaskEvent createEvent(ChemSingleSelectTask task, ChemTaskEventType eventType){
+    public static ChemSingleSelectTaskEvent createEvent(ChemSingleSelectTask task, String authorId, ChemTaskEventType eventType){
 //        ChemSingleSelectTask task = ChemSingleSelectTask.createChemistrySingleSelectTask(example);
         return new ChemSingleSelectTaskEvent(
                 UUID.randomUUID().toString(),
-                "777",
+                authorId,
                 "ChemSingleSelectTaskEvent",
                 LocalDateTime.now(),
                 eventType,

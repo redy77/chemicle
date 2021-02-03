@@ -16,8 +16,9 @@ public class ChemSingleSelectTaskProxyService {
 
     public String add(ChemSingleSelectTaskExample exampleTask) {
         ChemSingleSelectTask task = ChemSingleSelectTaskFactory.createTask(exampleTask);
-        ChemSingleSelectTaskEvent event = ChemSingleSelectTaskEvent.createEvent(task, ChemTaskEventType.CREATE);
-        notificationService.send(event );
+        notificationService.send(
+                ChemSingleSelectTaskEventFactory.createEvent(task, ChemTaskEventType.CREATE)
+        );
         return task.getTaskId();
     }
 
@@ -34,8 +35,9 @@ public class ChemSingleSelectTaskProxyService {
     }
 
     public void update(ChemSingleSelectTask task) {
-        ChemSingleSelectTaskEvent event = ChemSingleSelectTaskEvent.createEvent(task, ChemTaskEventType.UPDATE);
-        notificationService.send(event );
+        notificationService.send(
+                ChemSingleSelectTaskEventFactory.createEvent(task, ChemTaskEventType.UPDATE)
+        );
     }
 
     public void deleteById(String id) {
