@@ -2,7 +2,7 @@ package com.chemcool.school.chemmatches.web.api.service;
 
 import com.chemcool.school.chemmatches.domain.ChemistryMatchingTask;
 import com.chemcool.school.chemmatches.domain.ChemistryMatchingTaskExample;
-import com.chemcool.school.chemmatches.service.ChemistryMatchingTaskService;
+import com.chemcool.school.chemmatches.service.ChemistryMatchingTaskProxyService;
 import com.chemcool.school.chemmatches.web.api.exception.ChemistryTaskEmptyException;
 import com.chemcool.school.chemmatches.web.api.dto.ChemistryMatchingTaskDto;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ChemistryMatchingTaskServiceLayer {
 
-    private final ChemistryMatchingTaskService service;
+    private final ChemistryMatchingTaskProxyService service;
 
     public ChemistryMatchingTaskDto getTaskDtoById(String id) {
         return service.getById(id).map(ChemistryMatchingTaskDto::new).orElse(null);
@@ -29,7 +29,7 @@ public class ChemistryMatchingTaskServiceLayer {
         return list;
     }
 
-    public List<ChemistryMatchingTaskDto> getAllTasksByChapterId(String chapterId) {
+    public List<ChemistryMatchingTaskDto> getAllTasksByChapterId(Integer chapterId) {
         List<ChemistryMatchingTaskDto> list = new ArrayList<>();
         for (ChemistryMatchingTask task : service.getAllByChapterId(chapterId)) {
             list.add(new ChemistryMatchingTaskDto(task));

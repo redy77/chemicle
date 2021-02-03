@@ -11,23 +11,23 @@ import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
 @EnableKafka
-@RequiredArgsConstructor
 @EnableTransactionManagement
-public class ChemistryMatchingTaskEventConsumer {
+@RequiredArgsConstructor
+public class ChemistryMatchingTaskConsumer {
 
-    private final ChemistryMatchingTaskService eventService;
+    private final ChemistryMatchingTaskEventService eventService;
+    private final ChemistryMatchingTaskService taskService;
 
+    @KafkaListener(topics = "tasks-matching")
     @KafkaHandler
-    @KafkaListener(topics = "matching-task")
-    @Transactional
-    public void handleChemistryMatchingTask(ConsumerRecord<String, ChemistryMatchingTaskEvent> record) {
+    public void handleChemSingleSelectTask(ConsumerRecord<String, ChemistryMatchingTaskEvent> record) {
         ChemistryMatchingTaskEvent event = record.value();
         log.info("Пойман журнал для логирования: " + event.getChemistryMatchingTaskEventId());
         eventService.handleEvent(event);
+        taskService.save(event.getChemistryMatchingTaskEventPayload());
     }
 }
