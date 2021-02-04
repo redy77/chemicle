@@ -30,6 +30,10 @@ public class ChemFixedAnswerTask {
     @NonNull
     private int chapterId;
 
+    @Column(name = "reference_id")
+    @NonNull
+    private int referenceId;
+
     public static ChemFixedAnswerTask createChemistryFixedAnswerTask(
             ChemFixedAnswerTaskExample task
     ){
@@ -37,7 +41,8 @@ public class ChemFixedAnswerTask {
                 UUID.randomUUID().toString(),
                 task.getDescription(),
                 task.getRightAnswer(),
-                task.getChapterId()
+                task.getChapterId(),
+                task.getReferenceId()
         );
     }
 }

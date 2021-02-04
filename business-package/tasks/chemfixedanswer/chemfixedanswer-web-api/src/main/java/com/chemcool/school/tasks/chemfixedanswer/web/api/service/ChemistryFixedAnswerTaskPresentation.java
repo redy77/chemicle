@@ -1,14 +1,10 @@
 package com.chemcool.school.tasks.chemfixedanswer.web.api.service;
 
 import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
-import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskExample;
-import com.chemcool.school.tasks.chemfixedanswer.service.ChemFixedAnswerTaskService;
 import com.chemcool.school.tasks.chemfixedanswer.web.api.dto.ChemFixedAnswerTaskDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,42 +12,26 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ChemistryFixedAnswerTaskPresentation {
 
-    private final ChemFixedAnswerTaskService service;
 
-    public List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerDto () {
-        List<ChemFixedAnswerTaskDto> list = new ArrayList<>();
-        for(ChemFixedAnswerTask task : service.getAll()){
-            list.add(new ChemFixedAnswerTaskDto(task));
-        }
-        return list;
+    private final ChemistryFixedAnswerTaskServiceLayer serviceLayer;
+
+    public List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerDto(){
+        return serviceLayer.getAllChemistryFixedAnswerDto();
     }
 
-    public Optional<ChemFixedAnswerTask> getFixedAnswerTaskById(String id) {
-        return service.getById(id);
+    public Optional<ChemFixedAnswerTask> getFixedAnswerTaskById(String id){
+        return serviceLayer.getFixedAnswerTaskById(id);
     }
 
     public String createNewFixedAnswerTask(ChemFixedAnswerTaskDto taskDto){
-        return service.add(
-                new ChemFixedAnswerTaskExample(
-                        taskDto.getDescription(),
-                        taskDto.getRightAnswer(),
-                        taskDto.getChapterId()
-                )
-        );
+        return serviceLayer.createNewFixedAnswerTask(taskDto);
     }
 
-    public void updateFixedAnswerTask(ChemFixedAnswerTaskDto taskDto){
-        service.update(
-                new ChemFixedAnswerTask(
-                        taskDto.getTaskId(),
-                        taskDto.getDescription(),
-                        taskDto.getRightAnswer(),
-                        taskDto.getChapterId()
-                )
-        );
-    }
+//    public void updateFixedAnswerTask(ChemFixedAnswerTaskDto taskDto){
+//        serviceLayer.updateFixedAnswerTask(taskDto);
+//    }
 
     public void deleteFixedAnswerTask(String id){
-        service.deleteById(id);
+        serviceLayer.deleteFixedAnswerTask(id);
     }
 }
