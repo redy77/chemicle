@@ -17,6 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "chemistry_single_select_task")
 public class ChemSingleSelectTask {
     @Id
     @Column(name = "id", unique=true)
