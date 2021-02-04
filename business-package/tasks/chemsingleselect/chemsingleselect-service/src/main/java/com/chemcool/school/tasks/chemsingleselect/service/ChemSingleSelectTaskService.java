@@ -2,8 +2,6 @@ package com.chemcool.school.tasks.chemsingleselect.service;
 
 
 import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTask;
-import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskExample;
-import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskFactory;
 import com.chemcool.school.tasks.chemsingleselect.storage.ChemSingleSelectTaskRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,14 +16,10 @@ import java.util.Optional;
 public class ChemSingleSelectTaskService {
 
     private final ChemSingleSelectTaskRepository repository;
-    private final ChemSingleSelectTaskEventService event;
 
-    public String add(ChemSingleSelectTaskExample exampleTask) {
-        ChemSingleSelectTask task = ChemSingleSelectTaskFactory.createTask(exampleTask);
-        event.save(task);
+    public void save(ChemSingleSelectTask task) {
         repository.save(task);
         log.info("Добавлена задача с UUID = " + task.getTaskId() );
-        return task.getTaskId();
     }
 
     public Optional<ChemSingleSelectTask> getById(String id) {
@@ -42,7 +36,6 @@ public class ChemSingleSelectTaskService {
 
     public void update(ChemSingleSelectTask task) {
         log.info("Обновлена задача с UUID = " + task.getTaskId() );
-        event.update(task);
         repository.save(task);
     }
 

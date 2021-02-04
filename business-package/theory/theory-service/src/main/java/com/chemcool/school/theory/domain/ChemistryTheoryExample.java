@@ -7,19 +7,19 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChemistryLessonExample {
-    private String lessonExampleName;
-    private String lessonExampleDescription;
-    private Integer lessonExampleChapter;
-    private Integer lessonExampleReferences;
+public class ChemistryTheoryExample {
+    private String theoryExampleName;
+    private String theoryExampleDescription;
+    private Integer theoryExampleChapter;
+    private Integer theoryExampleReferences;
 
-    public static ChemistryLessonExample fromLessonExample(
+    public static ChemistryTheoryExample fromTheoryExample(
             String name,
             String description,
             Integer chapter,
             Integer references
     ) {
-        return new ChemistryLessonExample(
+        return new ChemistryTheoryExample(
                 name,
                 description,
                 chapter,
