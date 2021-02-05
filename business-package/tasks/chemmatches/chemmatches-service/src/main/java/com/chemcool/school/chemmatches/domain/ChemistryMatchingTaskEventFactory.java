@@ -14,7 +14,7 @@ public class ChemistryMatchingTaskEventFactory {
             //todo реализовать логику для фабрики события создания таски
             throw new ChemistryMatchingTaskException("Что-то не получилось для создания ивента");
         }
-        log.info("Попытка создать событие {} при создании таски с ВЫБОРОМ ОДНОГО ОТВЕТА ИЗ МНОЖЕСТВА", eventType);
+        log.info("Попытка создать событие {} при создании таски с СОПОСТАВЛЕНИЕМ", eventType);
         return ChemistryMatchingTaskEvent.createEvent(task, "777", eventType);
     }
 }

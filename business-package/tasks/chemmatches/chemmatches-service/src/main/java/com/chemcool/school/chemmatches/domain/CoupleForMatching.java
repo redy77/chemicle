@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "couples_for_matching")
 public class CoupleForMatching {
 
@@ -24,4 +23,8 @@ public class CoupleForMatching {
     @Column(name = "right_couple")
     private String rightCouple;
 
+    public CoupleForMatching(String leftCouple, String rightCouple) {
+        this.leftCouple = leftCouple;
+        this.rightCouple = rightCouple;
+    }
 }
