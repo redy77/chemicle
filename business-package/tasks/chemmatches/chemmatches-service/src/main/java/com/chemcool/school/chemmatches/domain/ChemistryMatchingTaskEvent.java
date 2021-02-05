@@ -8,10 +8,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -30,7 +27,7 @@ public class ChemistryMatchingTaskEvent {
     private String chemistryMatchingTaskEventAuthorId;
     private String chemistryMatchingTaskEventOccurringContext;
     private LocalDateTime chemistryMatchingTaskEventOccurringContextTime;
-    private ChemistryMatchingTaskEventType chemistryMatchingTaskEventType;
+    private String chemistryMatchingTaskEventType;
     private String version;
     private String chemistryMatchingTaskEventEntityId;
 
@@ -40,14 +37,12 @@ public class ChemistryMatchingTaskEvent {
 
 
     public static ChemistryMatchingTaskEvent createEvent(ChemistryMatchingTask task, String authorId, ChemistryMatchingTaskEventType type){
-//        ChemistryMatchingTask task =
-//                ChemistryMatchingTaskFactory.createChemistryMatchingTask(example);
         return new ChemistryMatchingTaskEvent(
                 UUID.randomUUID().toString(),
                 authorId,
                 "ChemistryMatchingTaskEvent",
                 LocalDateTime.now(),
-                type,
+                type.toString(),
                 "1.0",
                 task.getTaskId(),
                 task
