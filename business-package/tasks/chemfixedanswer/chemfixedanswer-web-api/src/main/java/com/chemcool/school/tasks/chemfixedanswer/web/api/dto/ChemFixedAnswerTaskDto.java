@@ -13,11 +13,13 @@ public class ChemFixedAnswerTaskDto {
     private String description;
     private String rightAnswer;
     private int chapterId;
+    private int referenceId;
 
     public ChemFixedAnswerTaskDto(ChemFixedAnswerTask task) {
         this.taskId = task.getTaskId();
         this.description = task.getDescription();
         this.rightAnswer = task.getRightAnswer();
         this.chapterId = task.getChapterId();
+        this.referenceId = task.getReferenceId();
     }
 }

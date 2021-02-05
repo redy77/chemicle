@@ -14,10 +14,10 @@ import org.springframework.util.concurrent.ListenableFuture;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class ChemFixedAnswerTaskEventSlaveLayer {
+public class ChemFixedAnswerTaskEventServiceLayer {
 
     private final ChemFixedAnswerTaskEventJournal journal;
-    private final KafkaTemplate<String, ChemFixedAnswerTaskEventService> kafkaTemplate;
+    private final KafkaTemplate<String, ChemFixedAnswerTaskEvent> kafkaTemplate;
 
     private void kafkaSend(String topic, String msgId, ChemFixedAnswerTaskEvent event){
         ListenableFuture<SendResult<String, ChemFixedAnswerTaskEvent>> future = kafkaTemplate.send(topic, msgId, event);
@@ -29,7 +29,7 @@ public class ChemFixedAnswerTaskEventSlaveLayer {
         ChemFixedAnswerTaskEvent event = ChemFixedAnswerTaskEvent.createEvent(task, ChemFixedAnswerTaskEventType.CREATE);
         kafkaSend("ChemFixedAnswerTask", "1", event);
         journal.save(event);
-        log.info("Cоздано и сохранено событие с ID " + event.getChemFixedAnswerTaskEventId());
+        log.info("Cоздано и сохранено событие с ID " + event.getEventId());
 
     }
 

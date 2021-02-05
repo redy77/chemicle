@@ -8,13 +8,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ChemFixedAnswerTaskEventService {
 
-    private final ChemFixedAnswerTaskEventSlaveLayer eventSlaveLayer;
+    private final ChemFixedAnswerTaskEventServiceLayer eventServiceLayer;
 
-    public void save(ChemFixedAnswerTask task) {
-        eventSlaveLayer.save(task);
+    public void handleEvent(ChemFixedAnswerTask task) {
+        eventServiceLayer.save(task);
     }
 
-    public void update(ChemFixedAnswerTask task) {
-        eventSlaveLayer.update(task);
-    }
 }

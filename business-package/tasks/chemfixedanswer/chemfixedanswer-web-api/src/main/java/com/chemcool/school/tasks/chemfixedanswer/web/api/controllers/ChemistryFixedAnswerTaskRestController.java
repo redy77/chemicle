@@ -34,14 +34,14 @@ public class ChemistryFixedAnswerTaskRestController {
 
     @PostMapping
     @ApiOperation("Создает новую сущность задания типа \"Фиксированный ответ\" по химии")
-    public String createNewFixedAnswerTask(@RequestBody ChemFixedAnswerTaskDto taskDto){
+    public String saveNewFixedAnswerTask(@RequestBody ChemFixedAnswerTaskDto taskDto){
         return presentation.createNewFixedAnswerTask(taskDto);
     }
 
     @PutMapping
     @ApiOperation("Сохраняет существующую сущность задания типа \"Фиксированный ответ\" по химии")
-    public String update(@RequestBody ChemFixedAnswerTaskDto taskDto){
-        presentation.updateFixedAnswerTask(taskDto);
+    public String saveFixedAnswerTask(@RequestBody ChemFixedAnswerTaskDto taskDto){
+        presentation.createNewFixedAnswerTask(taskDto);
         return taskDto.getTaskId();
     }
 

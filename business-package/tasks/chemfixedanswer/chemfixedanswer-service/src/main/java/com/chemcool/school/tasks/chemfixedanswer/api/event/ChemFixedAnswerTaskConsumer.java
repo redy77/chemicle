@@ -24,7 +24,7 @@ public class ChemFixedAnswerTaskConsumer {
     @KafkaHandler
     public void handleChemFixedAnswerTask(ConsumerRecord<String, ChemFixedAnswerTaskEvent> record) {
         ChemFixedAnswerTaskEvent event = record.value();
-        log.info("Пойман журнал для логирования " + event.getChemFixedAnswerTaskEventId());
+        log.info("Пойман журнал для логирования " + event.getEventId());
         service.handleEvent(event);
     }
 }

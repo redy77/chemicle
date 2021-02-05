@@ -11,6 +11,7 @@ import org.hibernate.annotations.TypeDefs;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -21,33 +22,34 @@ import java.util.UUID;
 @TypeDefs(
         @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 )
+@Table(name = "fixed_answer_task_event")
 public class ChemFixedAnswerTaskEvent {
 
     @Id
-    @Column(name = "chem_fixed_answer_task_event_id")
-    private String chemFixedAnswerTaskEventId;
+    @Column(name = "event_id")
+    private String eventId;
 
-    @Column(name = "chem_fixed_answer_task_event_author_id")
-    private String chemFixedAnswerTaskEventAuthorId;
+    @Column(name = "event_author_id")
+    private String eventAuthorId;
 
-    @Column(name = "chem_fixed_answer_task_event_occuring_comtext")
-    private String chemFixedAnswerTaskEventOccuringContext;
+    @Column(name = "event_occuring_comtext")
+    private String eventOccuringContext;
 
-    @Column(name = "chem_fixed_answer_task_event_occuring_context_time")
-    private LocalDateTime chemFixedAnswerTaskEventOccuringContextTime;
+    @Column(name = "event_occuring_context_time")
+    private LocalDateTime eventOccuringContextTime;
 
-    @Column(name = "chem_fixed_answer_task_event_type")
-    private ChemFixedAnswerTaskEventType chemFixedAnswerTaskEventType;
+    @Column(name = "event_type")
+    private ChemFixedAnswerTaskEventType eventType;
 
-    @Column(name = "chem_fixed_answer_task_event_version")
-    private String chemFixedAnswerTaskEventVersion;
+    @Column(name = "event_version")
+    private String eventVersion;
 
-    @Column(name = "chem_fixed_answer_task_event_entity_id")
-    private String chemFixedAnswerTaskEventEntityId;
+    @Column(name = "event_entity_id")
+    private String eventEntityId;
 
     @Type(type = "jsonb")
-    @Column(name = "chem_fixed_answer_task_event_payload", columnDefinition = "jsonb")
-    private ChemFixedAnswerTask chemFixedAnswerTaskEventPayload;
+    @Column(name = "event_payload", columnDefinition = "jsonb")
+    private ChemFixedAnswerTask eventPayload;
 
     public static ChemFixedAnswerTaskEvent createEvent(ChemFixedAnswerTask task, ChemFixedAnswerTaskEventType eventType){
         return new ChemFixedAnswerTaskEvent(
