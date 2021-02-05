@@ -1,6 +1,8 @@
 package com.chemcool.school.tasks.chemfixedanswer.service;
 
 import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
+import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskEvent;
+import com.chemcool.school.tasks.chemfixedanswer.storage.ChemFixedAnswerTaskEventJournal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -8,10 +10,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ChemFixedAnswerTaskEventService {
 
-    private final ChemFixedAnswerTaskEventServiceLayer eventServiceLayer;
+    private final ChemFixedAnswerTaskEventJournal eventJournal;
 
-    public void handleEvent(ChemFixedAnswerTask task) {
-        eventServiceLayer.save(task);
+    public void handleEvent(ChemFixedAnswerTaskEvent task) {
+        eventJournal.save(task);
     }
 
 }

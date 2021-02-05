@@ -27,9 +27,9 @@ public class ChemistryFixedAnswerTaskPresentation {
         return serviceLayer.createNewFixedAnswerTask(taskDto);
     }
 
-//    public void updateFixedAnswerTask(ChemFixedAnswerTaskDto taskDto){
-//        serviceLayer.updateFixedAnswerTask(taskDto);
-//    }
+    public void updateFixedAnswerTask(ChemFixedAnswerTaskDto taskDto){
+        serviceLayer.updateFixedAnswerTask(taskDto);
+    }
 
     public void deleteFixedAnswerTask(String id){
         serviceLayer.deleteFixedAnswerTask(id);

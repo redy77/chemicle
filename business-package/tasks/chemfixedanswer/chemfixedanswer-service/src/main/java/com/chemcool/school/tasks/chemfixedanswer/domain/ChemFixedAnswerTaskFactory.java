@@ -12,6 +12,9 @@ public class ChemFixedAnswerTaskFactory {
         if (example.getChapterId() < 1 || example.getChapterId() > 4) {
             throw new ChemFixedAnswerTaskException("Ошибка! Поле " + "Глава " + "имеет значение от 1 до 4 ");
         }
+        if (example.getReferenceId() < 1 || example.getReferenceId() > 4) {
+            throw new ChemFixedAnswerTaskException("Ошибка! Поле " + "Раздел " + "имеет значение от 1 до 4 ");
+        }
         log.info("Попытка создать урок.");
         return ChemFixedAnswerTask.createChemistryFixedAnswerTask(example);
     }

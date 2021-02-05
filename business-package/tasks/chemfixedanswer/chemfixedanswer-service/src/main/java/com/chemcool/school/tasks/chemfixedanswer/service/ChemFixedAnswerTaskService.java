@@ -19,12 +19,10 @@ import java.util.Optional;
 public class ChemFixedAnswerTaskService {
 
     private final ChemFixedAnswerTaskRepository repository;
-    private final ChemFixedAnswerTaskEventService event;
     private final ChemFixedAnswerTaskEventJournal journal;
 
     public String add(ChemFixedAnswerTaskExample example) {
         ChemFixedAnswerTask task = ChemFixedAnswerTaskFactory.createChemistryFixedAnswerTask(example);
-        event.handleEvent(task);
         repository.save(task);
         log.info("Добавлена задача с ID: " + task.getTaskId());
         return task.getTaskId();
@@ -42,11 +40,10 @@ public class ChemFixedAnswerTaskService {
         return repository.findAllByChapterId(chapterId);
     }
 
-//    public void update(ChemFixedAnswerTask task) {
-//        event.update(task);
-//        repository.save(task);
-//        log.info("Обновлена задача с ID: " + task.getTaskId());
-//    }
+    public void update(ChemFixedAnswerTask task) {
+        repository.save(task);
+        log.info("Обновлена задача с ID: " + task.getTaskId());
+    }
 
     public void deleteById(String id) {
         repository.deleteById(id);

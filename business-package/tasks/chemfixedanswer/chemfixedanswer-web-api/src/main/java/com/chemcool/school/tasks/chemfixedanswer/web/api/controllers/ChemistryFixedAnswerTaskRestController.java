@@ -17,7 +17,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ChemistryFixedAnswerTaskRestController {
 
-    @Autowired
     private final ChemistryFixedAnswerTaskPresentation presentation;
 
     @GetMapping
@@ -41,7 +40,7 @@ public class ChemistryFixedAnswerTaskRestController {
     @PutMapping
     @ApiOperation("Сохраняет существующую сущность задания типа \"Фиксированный ответ\" по химии")
     public String saveFixedAnswerTask(@RequestBody ChemFixedAnswerTaskDto taskDto){
-        presentation.createNewFixedAnswerTask(taskDto);
+        presentation.updateFixedAnswerTask(taskDto);
         return taskDto.getTaskId();
     }
 

@@ -36,22 +36,22 @@ public class ChemistryFixedAnswerTaskServiceLayer {
                         taskDto.getDescription(),
                         taskDto.getRightAnswer(),
                         taskDto.getChapterId(),
-                        taskDto.getChapterId()
+                        taskDto.getReferenceId()
                 )
         );
     }
 
-//    public void updateFixedAnswerTask(ChemFixedAnswerTaskDto taskDto){
-//        service.update(
-//                new ChemFixedAnswerTask(
-//                        taskDto.getTaskId(),
-//                        taskDto.getDescription(),
-//                        taskDto.getRightAnswer(),
-//                        taskDto.getChapterId(),
-//                        taskDto.getChapterId()
-//                )
-//        );
-//    }
+    public void updateFixedAnswerTask(ChemFixedAnswerTaskDto taskDto){
+        service.update(
+                new ChemFixedAnswerTask(
+                        taskDto.getTaskId(),
+                        taskDto.getDescription(),
+                        taskDto.getRightAnswer(),
+                        taskDto.getChapterId(),
+                        taskDto.getReferenceId()
+                )
+        );
+    }
 
     public void deleteFixedAnswerTask(String id){
         service.deleteById(id);
