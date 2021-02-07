@@ -3,7 +3,7 @@ spring:
     name: tasks-chemsingleselect-application
   cloud:
     config:
-      uri: http://config:8888
+      uri: http://localhost:8888 #todo в тестовом примере вместо localhost было config:8888
       fail-fast: true
       password: ${CONFIG_SERVICE_PASSWORD}
       username: user
