@@ -1,10 +1,6 @@
 package com.chemcool.school.tasks.chemfixedanswer.service;
 
 import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
-import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskEvent;
-import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskExample;
-import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskFactory;
-import com.chemcool.school.tasks.chemfixedanswer.storage.ChemFixedAnswerTaskEventJournal;
 import com.chemcool.school.tasks.chemfixedanswer.storage.ChemFixedAnswerTaskRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,12 +15,10 @@ import java.util.Optional;
 public class ChemFixedAnswerTaskService {
 
     private final ChemFixedAnswerTaskRepository repository;
-    private final ChemFixedAnswerTaskEventJournal journal;
 
-    public String add(ChemFixedAnswerTaskExample example) {
-        ChemFixedAnswerTask task = ChemFixedAnswerTaskFactory.createChemistryFixedAnswerTask(example);
+    public String save(ChemFixedAnswerTask task) {
         repository.save(task);
-        log.info("Добавлена задача с ID: " + task.getTaskId());
+        log.info("Задача с ID: " + task.getTaskId() + " сохранена.");
         return task.getTaskId();
     }
 
@@ -40,16 +34,7 @@ public class ChemFixedAnswerTaskService {
         return repository.findAllByChapterId(chapterId);
     }
 
-    public void update(ChemFixedAnswerTask task) {
-        repository.save(task);
-        log.info("Обновлена задача с ID: " + task.getTaskId());
-    }
-
     public void deleteById(String id) {
         repository.deleteById(id);
-    }
-
-    public void handleEvent(ChemFixedAnswerTaskEvent event) {
-        journal.save(event);
     }
 }

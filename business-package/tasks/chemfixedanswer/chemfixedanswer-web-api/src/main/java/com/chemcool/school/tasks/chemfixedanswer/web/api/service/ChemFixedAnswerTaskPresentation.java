@@ -10,10 +10,10 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ChemistryFixedAnswerTaskPresentation {
+public class ChemFixedAnswerTaskPresentation {
 
 
-    private final ChemistryFixedAnswerTaskServiceLayer serviceLayer;
+    private final ChemFixedAnswerTaskServiceLayer serviceLayer;
 
     public List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerDto(){
         return serviceLayer.getAllChemistryFixedAnswerDto();

@@ -30,6 +30,5 @@ public class ChemFixeadAnswerTaskSerialize implements Serializer<ChemFixedAnswer
 
     @Override
     public void close() {
-
     }
 }

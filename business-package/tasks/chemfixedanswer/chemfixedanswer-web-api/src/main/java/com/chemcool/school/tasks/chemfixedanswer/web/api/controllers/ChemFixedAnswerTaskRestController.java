@@ -3,10 +3,9 @@ package com.chemcool.school.tasks.chemfixedanswer.web.api.controllers;
 
 import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
 import com.chemcool.school.tasks.chemfixedanswer.web.api.dto.ChemFixedAnswerTaskDto;
-import com.chemcool.school.tasks.chemfixedanswer.web.api.service.ChemistryFixedAnswerTaskPresentation;
+import com.chemcool.school.tasks.chemfixedanswer.web.api.service.ChemFixedAnswerTaskPresentation;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,9 +14,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/v.1.0/tasks/fixed-answer")
 @RequiredArgsConstructor
-public class ChemistryFixedAnswerTaskRestController {
+public class ChemFixedAnswerTaskRestController {
 
-    private final ChemistryFixedAnswerTaskPresentation presentation;
+    private final ChemFixedAnswerTaskPresentation presentation;
 
     @GetMapping
     @ApiOperation("Возвращает сущности задания типа \"Фиксированный ответ\" по химии")
