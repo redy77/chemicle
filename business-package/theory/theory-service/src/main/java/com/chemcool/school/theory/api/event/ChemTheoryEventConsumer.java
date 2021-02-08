@@ -1,6 +1,7 @@
 package com.chemcool.school.theory.api.event;
 
 import com.chemcool.school.theory.domain.ChemistryTheoryEvent;
+import com.chemcool.school.theory.service.ChemistryTheoryEventService;
 import com.chemcool.school.theory.service.ChemistryTheoryPageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,14 +18,17 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ChemTheoryEventConsumer {
 
-    private final ChemistryTheoryPageService service;
+    private final ChemistryTheoryPageService theoryPageService;
+    private final ChemistryTheoryEventService eventService;
 
     @KafkaHandler
-    @KafkaListener(topics = "chemistry-theory")
+    @KafkaListener(topics = "lesson-theory")
     @Transactional
     public void handleChemistryTheory(ConsumerRecord<String, ChemistryTheoryEvent> record){
         ChemistryTheoryEvent event = record.value();
         log.info("Пойман журнал для логгирования: " + event.getEventId());
-        service.handleEvent(event);
+       // theoryPageService.handleEvent(event);
+        eventService.handleEvent(event);
+        theoryPageService.save(event.getEvent_payload());
     }
 }

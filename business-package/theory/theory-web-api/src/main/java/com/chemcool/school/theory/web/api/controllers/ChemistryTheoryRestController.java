@@ -1,7 +1,7 @@
 package com.chemcool.school.theory.web.api.controllers;
 
 import com.chemcool.school.theory.domain.ChemistryTheory;
-import com.chemcool.school.theory.web.api.dto.TheoryExample;
+import com.chemcool.school.theory.web.api.dto.TheoryDto;
 import com.chemcool.school.theory.web.api.service.ChemistryTheoryPresentation;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -20,29 +20,31 @@ public class ChemistryTheoryRestController {
     @ApiOperation("Создает главу для сущность урока по химии.")
     @ResponseBody
     public String createLessonExample(
-            @RequestBody TheoryExample theoryExample
+            @RequestBody TheoryDto theoryDto
     ) {
-        log.info("Вызван контроллер для добавления новой темы с названием: " + "[" + theoryExample.getTheoryExampleName() + "]");
-        return presentation.createChemistryTheoryExample(theoryExample);
+        log.info("Вызван контроллер для добавления новой темы с названием: " + "[" + theoryDto.getTheoryName() + "]");
+        return presentation.createChemistryTheoryDto(theoryDto);
     }
 
     @PutMapping(value = "/update")
     @ResponseBody
-    public String updateLessonExample(
-            @RequestParam String lessonExampleId,
-            @RequestBody TheoryExample example
+    public void updateLessonExample(
+         //   @RequestParam String lessonExampleId,
+            @RequestBody TheoryDto dto
     ) {
-        log.info("Вызван контроллер для изменения темы с названием: " + "[" + example.getTheoryExampleName() + "]");
-        return presentation.updateChemistryTheoryExample(lessonExampleId, example);
+        log.info("Вызван контроллер для изменения темы с названием: " + "[" + dto.getTheoryName() + "]");
+        presentation.updateChemistryTheoryDto(dto);
+        //return presentation.updateChemistryTheoryExample(lessonExampleId, dto);
     }
 
     @DeleteMapping(value = "/delete")
     @ResponseBody
     public void deleteLessonExample(
-            @RequestBody TheoryExample theoryExample
+            @RequestBody TheoryDto theoryDto
     ) {
-        log.info("Вызван контроллер для удаления темы с названием: " + "[" + theoryExample.getTheoryExampleName() + "]");
-        presentation.deleteChemistryTheoryExample(theoryExample);
+        log.info("Вызван контроллер для удаления темы с названием: " + "[" + theoryDto.getTheoryName() + "]");
+        presentation.deleteChemistryTheoryDto(theoryDto);
+        // presentation.deleteChemistryTheoryExample(theoryDto);
     }
 
     @GetMapping("/hello")

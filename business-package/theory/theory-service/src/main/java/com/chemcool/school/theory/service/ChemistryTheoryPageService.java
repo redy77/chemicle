@@ -2,55 +2,52 @@ package com.chemcool.school.theory.service;
 
 
 import com.chemcool.school.theory.domain.ChemistryTheory;
-import com.chemcool.school.theory.domain.ChemistryTheoryEvent;
-import com.chemcool.school.theory.domain.ChemistryTheoryExample;
-import com.chemcool.school.theory.domain.ChemistryTheoryFactory;
-import com.chemcool.school.theory.storage.ChemistryTheoryEventJournal;
 import com.chemcool.school.theory.storage.TheoryRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ChemistryTheoryPageService {
 
     private final TheoryRepository repository;
-    private final ChemistryTheoryEventJournal journal;
-    private final ChemistryTheoryEventService pageService;
+   // private final ChemistryTheoryEventJournal journal;
+   // private final ChemistryTheoryEventService pageService;
 
 
-    public String manageTheory(ChemistryTheoryExample example) {
-        ChemistryTheory theoryPage = ChemistryTheoryFactory.createTheory(example);
-        pageService.save(theoryPage);
-        repository.save(theoryPage);
-        return theoryPage.getTheoryId();
+    public String save(ChemistryTheory theory) {
+        repository.save(theory);
+        log.info("Сохранил теорию c UUID" + theory.getTheoryId());
+        return theory.getTheoryId();
     }
 
-    public void deleteTheory(ChemistryTheoryExample example) {
-        ChemistryTheory theoryPage = ChemistryTheoryFactory.createTheory(example);
-        repository.delete(theoryPage);
+    public void delete(ChemistryTheory theory) {
+        log.info("Удалена теория = " + theory);
+        repository.delete(theory);
     }
 
-    public String updateTheory(String theoryId, ChemistryTheoryExample chemistryTheoryExample) {
+    public void update(ChemistryTheory chemistry) {
 
         //  TODO проверить на то, что lessonId не пустой.
-        if (theoryId == null || theoryId.isEmpty()) {
-            throw new RuntimeException("theoryId параметр пустой, проверьте конфигурацию.");
-        }
-
-        pageService.update(ChemistryTheory.createChemistryTheory(
-                chemistryTheoryExample
-        ));
-        repository.updateTheory(
-                theoryId,
-                chemistryTheoryExample.getTheoryExampleName(),
-                chemistryTheoryExample.getTheoryExampleChapter(),
-                chemistryTheoryExample.getTheoryExampleDescription(),
-                chemistryTheoryExample.getTheoryExampleReferences()
-        );
-
-        return theoryId;
+//        if (theoryId == null || theoryId.isEmpty()) {
+//            throw new RuntimeException("theoryId параметр пустой, проверьте конфигурацию.");
+//        }
+////
+//        pageService.update(ChemistryTheory.createChemistryTheory(
+//                chemistryTheoryExample
+//        ));
+//        repository.updateTheory(
+//                theoryId,
+//                chemistry.getTheoryName(),
+//                chemistry.getTheoryChapter(),
+//                chemistry.getTheoryDescription(),
+//                chemistry.getTheoryReferences()
+//        );
+        //return theoryId;
+        log.info("Обновлена задача с UUID = " + chemistry.getTheoryId() );
+        repository.save(chemistry);
     }
 
     public ChemistryTheory findTheoryById(String theoryId) {
@@ -62,9 +59,8 @@ public class ChemistryTheoryPageService {
 
     }
 
-
-    public void handleEvent(ChemistryTheoryEvent event) {
-        journal.save(event);
-    }
+//    public void handleEvent(ChemistryTheoryEvent event) {
+//        journal.save(event);
+//    }
 
 }
