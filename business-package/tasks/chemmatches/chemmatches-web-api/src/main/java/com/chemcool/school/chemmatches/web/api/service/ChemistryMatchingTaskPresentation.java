@@ -20,7 +20,7 @@ public class ChemistryMatchingTaskPresentation {
         return service.getAllTasks();
     }
 
-    public List<ChemistryMatchingTaskDto> getAllTasksByChapterId(String chapterId) {
+    public List<ChemistryMatchingTaskDto> getAllTasksByChapterId(Integer chapterId) {
         return service.getAllTasksByChapterId(chapterId);
     }
 

@@ -5,7 +5,7 @@ create table if not exists chemistry_matching_task_event(
     chemistry_matching_task_event_occurring_context      varchar(255) not null,
     chemistry_matching_task_event_occurring_context_time timestamp not null,
     chemistry_matching_task_event_payload                jsonb not null,
-    chemistry_matching_task_event_type                   integer not null,
+    chemistry_matching_task_event_type                   varchar(255) null,
     version                                              varchar(255) not null
 );
 
