@@ -1,14 +1,27 @@
+server:
+  port: ${SERVER_PORT:8888}
+
 spring:
+  application:
+    name: config-server
   cloud:
     config:
       server:
-        native:
-          search-locations: classpath:/shared
-  profiles:
-    active: native
+        git:
+          uri: https://github.com/StanislavPal/chemcool_config_properties
+#        native:
+#          search-locations: classpath:/shared
+#  profiles:
+#    active: native
   security:
     user:
       password: ${CONFIG_SERVICE_PASSWORD}
 
-server:
-  port: 8888
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka}
