@@ -22,12 +22,11 @@ public class ChemTheoryEventConsumer {
     private final ChemistryTheoryEventService eventService;
 
     @KafkaHandler
-    @KafkaListener(topics = "lesson-theory")
+    @KafkaListener(topics = "chemistry-theory")
     @Transactional
     public void handleChemistryTheory(ConsumerRecord<String, ChemistryTheoryEvent> record){
         ChemistryTheoryEvent event = record.value();
         log.info("Пойман журнал для логгирования: " + event.getEventId());
-       // theoryPageService.handleEvent(event);
         eventService.handleEvent(event);
         theoryPageService.save(event.getEvent_payload());
     }

@@ -13,8 +13,6 @@ import org.springframework.stereotype.Service;
 public class ChemistryTheoryPageService {
 
     private final TheoryRepository repository;
-   // private final ChemistryTheoryEventJournal journal;
-   // private final ChemistryTheoryEventService pageService;
 
 
     public String save(ChemistryTheory theory) {
@@ -29,23 +27,6 @@ public class ChemistryTheoryPageService {
     }
 
     public void update(ChemistryTheory chemistry) {
-
-        //  TODO проверить на то, что lessonId не пустой.
-//        if (theoryId == null || theoryId.isEmpty()) {
-//            throw new RuntimeException("theoryId параметр пустой, проверьте конфигурацию.");
-//        }
-////
-//        pageService.update(ChemistryTheory.createChemistryTheory(
-//                chemistryTheoryExample
-//        ));
-//        repository.updateTheory(
-//                theoryId,
-//                chemistry.getTheoryName(),
-//                chemistry.getTheoryChapter(),
-//                chemistry.getTheoryDescription(),
-//                chemistry.getTheoryReferences()
-//        );
-        //return theoryId;
         log.info("Обновлена задача с UUID = " + chemistry.getTheoryId() );
         repository.save(chemistry);
     }
@@ -56,11 +37,5 @@ public class ChemistryTheoryPageService {
             throw new RuntimeException("theoryId параметр пустой, проверьте конфигурацию.");
         }
         return repository.findByTheoryId(theoryId);
-
     }
-
-//    public void handleEvent(ChemistryTheoryEvent event) {
-//        journal.save(event);
-//    }
-
 }

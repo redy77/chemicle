@@ -35,6 +35,5 @@ public class ChemistryTheoryProxyService {
         }
         return pageService.findTheoryById(theoryId);
     }
-
 }
 
