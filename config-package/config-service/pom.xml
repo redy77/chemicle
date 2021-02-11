@@ -3,17 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <name>config</name>
+    <name>config-service</name>
     <description>Configuration Server</description>
 
     <parent>
-        <artifactId>chemcool</artifactId>
+        <artifactId>config-package</artifactId>
         <groupId>com.chemcool.school</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>configuration</artifactId>
+    <artifactId>config-service</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
