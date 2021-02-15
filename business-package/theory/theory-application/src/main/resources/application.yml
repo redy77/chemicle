@@ -20,4 +20,4 @@ server:
 
 kafka:
   server: http://localhost:9092
-  groupId: theory-lesson.1
+  groupId: chemistry-theory.1

@@ -14,7 +14,8 @@ import java.util.UUID;
 @Repository
 public interface TheoryRepository extends JpaRepository<ChemistryTheory, UUID>, JpaSpecificationExecutor<ChemistryTheory> {
 
-    String tableName = "chemistry_lesson_page";
+
+    String tableName = "chemistry_page";
 
     @Transactional
     @Modifying
