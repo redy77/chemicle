@@ -17,3 +17,7 @@ server:
   port: 0
   servlet:
     context-path: /theory-application/
+
+kafka:
+  server: http://localhost:9092
+  groupId: chemistry-theory.1
