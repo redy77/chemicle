@@ -1,4 +1,4 @@
-create table if not exists chemistry_lesson_event (
+create table if not exists chemistry_theory_event (
             event_id varchar(255) not null primary key,
             event_author varchar(255) not null,
             event_occurring_context varchar (255) not null ,
@@ -6,7 +6,7 @@ create table if not exists chemistry_lesson_event (
             event_payload jsonb not null
 );
 
-create table if not exists chemistry_lesson_page (
+create table if not exists chemistry_theory_page (
             theory_id varchar(255) not null primary key,
             theory_name varchar(255) not null,
             theory_description varchar(10000),

@@ -32,7 +32,6 @@ public class ChemistryTheoryServiceLayer {
                 dto.getTheoryChapter(),
                 dto.getTheoryReferences()
         ));
-       //service.delete(dto);
     }
 
     public void update(TheoryDto dto){
