@@ -43,7 +43,7 @@ zuul:
       service-id: tasks-chemsingleselect-application
       stripPrefix: false
 
-    chemmatches-application:
+    tasks-chemmatches-application:
       path: /chemmatches-application/**
       service-id: chemmatches-application
       stripPrefix: false
