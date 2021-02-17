@@ -1,6 +1,6 @@
 spring:
   application:
-    name: theory-application
+    name: registration-application
   cloud:
     config:
       uri: http://localhost:8888
