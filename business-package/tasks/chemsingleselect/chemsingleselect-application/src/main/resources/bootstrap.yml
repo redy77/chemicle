@@ -6,6 +6,6 @@ spring:
       uri: http://localhost:8888 #todo в тестовом примере вместо localhost было config:8888
       fail-fast: true
       password: ${CONFIG_SERVICE_PASSWORD}
-      username: user
+      username: ${CONFIG_SERVICE_USER}
       test:
         message: Это тестовое сообщение для проверки работы Spring Cloud Config Server храниться в файле bootstrap.yml в модуле chemsingleselect-application

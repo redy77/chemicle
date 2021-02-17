@@ -13,7 +13,7 @@ spring:
   cloud:
     config:
       test:
-        message: Это тестовое сообщение для проверки работы Spring Cloud Config Server храниться в /shared в модуле configuration
+        message: Это тестовое сообщение для проверки работы Spring Cloud Config Server храниться в CONFIG-REPO-ENV в модуле configuration
 
 
 server:

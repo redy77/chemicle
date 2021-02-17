@@ -8,11 +8,10 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/StanislavPal/chemcool_config_properties/config-repo
-          searchPaths: config-repo
+          uri: file:///${CONFIG-REPO-ENV}
           clone-on-start: true
           force-pull: true
-  #        native:
+#        native:
 #          search-locations: classpath:/shared
 #  profiles:
 #    active: native
