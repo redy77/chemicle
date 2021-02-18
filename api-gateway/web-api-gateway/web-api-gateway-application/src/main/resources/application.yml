@@ -1,0 +1,69 @@
+spring:
+  application:
+    name: web-api-gateway-service
+
+server:
+  port: ${SERVER_PORT:8091}
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka}
+
+authentication:
+  token:
+    key: ${AUTHENTICATION_TOKEN_KEY:test}
+
+zuul:
+  #  SendErrorFilter:
+  #    error:
+  #      disable: true
+  ribbon:
+    eager-load:
+      enabled: true
+  sensitive-headers: Cookie,Set-Cookie
+  routes:
+
+    theory-application:
+      path: /theory-application/**
+      service-id: theory-application
+      stripPrefix: false
+
+    tasks-chemfixedanswer-application:
+      path: /tasks-chemfixedanswer-application/**
+      service-id: tasks-chemfixedanswer-application
+      stripPrefix: false
+
+    tasks-chemsingleselect-application:
+      path: /tasks-chemsingleselect-application/**
+      service-id: tasks-chemsingleselect-application
+      stripPrefix: false
+
+    chemmatches-application:
+      path: /chemmatches-application/**
+      service-id: chemmatches-application
+      stripPrefix: false
+
+    auth-application:
+      path: /authorization-application/**
+      service-id: authorization-application
+      stripPrefix: false
+
+
+  ignored-services: '*'
+  retryable: true
+
+ribbon:
+  ConnectTimeout: 1500
+  ReadTimeout: 7500
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000

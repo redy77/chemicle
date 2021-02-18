@@ -17,7 +17,7 @@ spring:
     locations: classpath:db.migration
 
 server:
-  port: 8082
+  port: 0
   servlet:
     context-path: /authorization-application/
 
