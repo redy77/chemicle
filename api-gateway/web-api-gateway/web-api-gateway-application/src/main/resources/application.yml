@@ -3,7 +3,7 @@ spring:
     name: web-api-gateway-service
 
 server:
-  port: ${SERVER_PORT:8080}
+  port: ${SERVER_PORT:8091}
 
 eureka:
   instance:
@@ -47,6 +47,12 @@ zuul:
       path: /chemmatches-application/**
       service-id: chemmatches-application
       stripPrefix: false
+
+    auth-application:
+      path: /authorization-application/**
+      service-id: authorization-application
+      stripPrefix: false
+
 
   ignored-services: '*'
   retryable: true
