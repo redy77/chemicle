@@ -13,7 +13,7 @@
     <artifactId>theory-service</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
-    <name>${artifactId}-${version}</name>
+    <name>${project.artifactId}-${project.version}</name>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -45,6 +45,14 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+
+
+
         <!--END SPRING-->
 
         <!--        Database-->
