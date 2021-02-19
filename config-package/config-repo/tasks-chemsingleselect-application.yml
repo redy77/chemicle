@@ -1,18 +1,20 @@
 spring:
-  application:
-    name: tasks-chemsingleselect-application
-
   jpa:
     database: postgresql
     show-sql: true
-#    hibernate:
-#      ddl-auto: update
+  #    hibernate:
+  #      ddl-auto: update
   datasource:
     url: jdbc:postgresql://localhost:5432/tasks_single_select
     username: mick
     password: mick
     platform: postgres
     driver-class-name: org.postgresql.Driver
+  cloud:
+    config:
+      test:
+        message: Это тестовое сообщение для проверки работы Spring Cloud Config Server храниться в CONFIG-REPO-ENV в модуле configuration
+
 
 server:
   port: 0
