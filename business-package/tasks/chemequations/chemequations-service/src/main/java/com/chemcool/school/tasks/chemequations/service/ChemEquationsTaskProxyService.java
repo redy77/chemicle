@@ -17,6 +17,7 @@ public class ChemEquationsTaskProxyService {
     private final ChemEquationsTaskEventNotificationService notificationService;
     private final ChemEquationsTaskService taskService;
 
+
     public String add(ChemEquationsTaskExample exampleTask) {
         ChemEquationsTask task = ChemEquationsTaskFactory.createChemEquationsTask(exampleTask);
         notificationService.send(ChemEquationsTaskEventFactory.createTaskEvent(task, ChemEquationsTaskEventType.CREATE));
