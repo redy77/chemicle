@@ -11,6 +11,7 @@
         <module>api-gateway</module>
         <module>security-package</module>
         <module>business-package</module>
+        <module>comments-service</module>
     </modules>
 
 </project>
