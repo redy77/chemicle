@@ -3,7 +3,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.chemcool.school</groupId>
-    <artifactId>security</artifactId>
+    <artifactId>chemcool</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
@@ -11,7 +11,7 @@
         <module>api-gateway</module>
         <module>security-package</module>
         <module>business-package</module>
-        <module>config-package</module>
+        <module>comments-service</module>
     </modules>
 
 </project>
