@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ChemEquationsTaskExample {
 
-    private String description;
-    private String rightAnswer;
-    private int chapterId;
-    private int referenceId;
+    private String description; //задание
+    private String equations; //уравнение
+    private String rightAnswer; //правильный ответ
+    private int chapterId; //id главы
+    private int referenceId; //id раздела
 }
