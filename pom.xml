@@ -12,7 +12,6 @@
         <module>security-package</module>
         <module>business-package</module>
         <module>configuration</module>
-        <module>config-package</module>
     </modules>
 
 </project>
