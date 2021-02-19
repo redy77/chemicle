@@ -40,6 +40,10 @@ public class ChemEquationsTaskProxyService {
         return taskService.getAllByChapterId(chapterId);
     }
 
+    public List<ChemEquationsTask> getAllByPrId (int referenceId){
+        return taskService.getAllByReferenceId(referenceId);
+    }
+
     public void deleteById(String id) {
         taskService.deleteById(id);
     }
