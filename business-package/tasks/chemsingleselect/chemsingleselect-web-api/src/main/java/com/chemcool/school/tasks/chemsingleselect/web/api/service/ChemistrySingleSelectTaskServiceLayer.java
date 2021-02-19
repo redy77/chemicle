@@ -2,7 +2,7 @@ package com.chemcool.school.tasks.chemsingleselect.web.api.service;
 
 import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTask;
 import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskExample;
-import com.chemcool.school.tasks.chemsingleselect.service.ChemSingleSelectTaskService;
+import com.chemcool.school.tasks.chemsingleselect.service.ChemSingleSelectTaskProxyService;
 import com.chemcool.school.tasks.chemsingleselect.web.api.dto.ChemistrySingleSelectTaskDto;
 import com.chemcool.school.tasks.chemsingleselect.web.api.exception.ChemistryTaskEmptyException;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ChemistrySingleSelectTaskServiceLayer {
 
-    private final ChemSingleSelectTaskService service;
+    private final ChemSingleSelectTaskProxyService service;
 
     public ChemistrySingleSelectTaskDto getTaskDtoById(String id) {
         return service.getById(id).map(ChemistrySingleSelectTaskDto::new).orElse(null);
