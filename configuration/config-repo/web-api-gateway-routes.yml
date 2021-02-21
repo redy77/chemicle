@@ -1,11 +1,8 @@
 zuul:
-  #  SendErrorFilter:
-  #    error:
-  #      disable: true
   ribbon:
     eager-load:
       enabled: true
-  sensitive-headers: Cookie,Set-Cookie
+  sensitive-headers:
   routes:
 
     theory-application:
@@ -18,8 +15,8 @@ zuul:
       service-id: tasks-chemfixedanswer-application
       stripPrefix: false
 
-    tasks-chemsingleselect-application:
-      path: /tasks-chemsingleselect-application/**
+    chemsingleselect-application:
+      path: /chemsingleselect-application/**
       service-id: tasks-chemsingleselect-application
       stripPrefix: false
 
