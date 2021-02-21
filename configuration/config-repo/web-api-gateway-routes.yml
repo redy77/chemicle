@@ -1,23 +1,3 @@
-spring:
-  application:
-    name: web-api-gateway-service
-
-server:
-  port: ${SERVER_PORT:8080}
-
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka}
-
-authentication:
-  token:
-    key: ${AUTHENTICATION_TOKEN_KEY:test}
-
 zuul:
   #  SendErrorFilter:
   #    error:
@@ -55,14 +35,3 @@ zuul:
 
   ignored-services: '*'
   retryable: true
-
-ribbon:
-  ConnectTimeout: 1500
-  ReadTimeout: 7500
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 20000

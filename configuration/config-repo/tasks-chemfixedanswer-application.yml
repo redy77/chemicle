@@ -5,7 +5,7 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/tasks_fixed_answer
+    url: jdbc:postgresql://localhost:5432/chemfixedanswer
     username: mick
     password: mick
     platform: postgres

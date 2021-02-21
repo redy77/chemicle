@@ -1,23 +1,29 @@
-server:
-  port: ${SERVER_PORT:8888}
-
 spring:
+  application:
+    name: config-service
+
+server:
+  port: ${SERVER_PORT}
+
+---
+spring:
+  profiles: test-host, native
   application:
     name: config-server
   cloud:
     config:
       server:
-        git:
-          uri: file:///${CONFIG-REPO-ENV}
-          clone-on-start: true
-          force-pull: true
-#        native:
-#          search-locations: classpath:/shared
-#  profiles:
-#    active: native
+        native:
+          search-locations: ${SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCHLOCATIONS:file:////opt/config-repo}
+#        git:
+#          uri: file:///${CONFIG-REPO-ENV}
+#          clone-on-start: true
+#          force-pull: true
+
   security:
     user:
-      password: ${CONFIG_SERVICE_PASSWORD}
+      name: ${SRPING_CLOUD_USER_NAME:config-user-name}
+      password: ${CONFIG_SERVICE_PASSWORD:123}
 
 eureka:
   instance:
@@ -27,3 +33,7 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka}
+
+
+server:
+  port: ${SERVER_PORT:8888}

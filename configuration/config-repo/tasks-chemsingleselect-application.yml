@@ -5,7 +5,7 @@ spring:
   #    hibernate:
   #      ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/tasks_single_select
+    url: jdbc:postgresql://localhost:5432/chemsingleselect
     username: mick
     password: mick
     platform: postgres

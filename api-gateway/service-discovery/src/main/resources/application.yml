@@ -1,5 +1,8 @@
+spring:
+  application:
+    name: service-discovery
 server:
-  port: 8761
+  port: ${SERVER_PORT}
 
 eureka:
   client:
@@ -10,10 +13,10 @@ eureka:
 spring:
   profiles: test-localhost
 server:
-  port: 8761
+  port: ${SERVER_PORT:8761}
 
 ---
 spring:
   profiles: test-hosts
 server:
-  port: 8761
+  port: ${SERVER_PORT:8761}
