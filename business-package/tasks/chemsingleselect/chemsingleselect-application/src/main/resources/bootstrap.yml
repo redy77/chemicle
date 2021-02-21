@@ -1,11 +1,17 @@
 spring:
   application:
-    name: tasks-chemsingleselect-application
+    name: chemsingleselect-application
   cloud:
     config:
-      uri: http://localhost:8888 #todo в тестовом примере вместо localhost было config:8888
-      fail-fast: true
-      password: ${CONFIG_SERVICE_PASSWORD}
-      username: ${CONFIG_SERVICE_USER}
-      test:
-        message: Это тестовое сообщение для проверки работы Spring Cloud Config Server храниться в файле bootstrap.yml в модуле chemsingleselect-application
+      name: chemsingleselect-application
+      discovery:
+        enabled: true
+        service-id: config-service
+      username: ${SPRING_CLOUD_CONFIG_USERNAME}
+      password: ${SPRING_CLOUD_CONFIG_PASSWORD}
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE}

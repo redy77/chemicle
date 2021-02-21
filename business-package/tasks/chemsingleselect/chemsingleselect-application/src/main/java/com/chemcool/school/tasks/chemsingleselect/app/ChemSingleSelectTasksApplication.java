@@ -7,9 +7,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(
-        scanBasePackages = {"com.chemcool.school.tasks.chemsingleselect"}
-)
+@SpringBootApplication(scanBasePackages = {"com.chemcool.school.tasks.chemsingleselect.app"})
 @EntityScan("com.chemcool.school.tasks.chemsingleselect")
 @EnableJpaRepositories("com.chemcool.school.tasks.chemsingleselect")
 @EnableEurekaClient

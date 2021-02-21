@@ -8,7 +8,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @EnableConfigServer
 @EnableEurekaClient
-@SpringBootApplication(scanBasePackages = {"com.chemcool.school.config"})
+@SpringBootApplication(scanBasePackages = {"com.chemcool.school"})
 public class ConfigService {
     public static void main(String[] args) {
         SpringApplication.run(ConfigService.class, args);

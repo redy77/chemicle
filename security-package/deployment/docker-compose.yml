@@ -19,7 +19,7 @@ services:
     container_name: web-api-gateway
     hostname: web-api-gateway
     build:
-      context: ../../api-gateway/web-api-gateway
+      context: ../../api-gateway/web-api-gateway/web-api-gateway-application
       dockerfile: Dockerfile
     environment:
       - SPRING_PROFILES_ACTIVE=test-hosts
