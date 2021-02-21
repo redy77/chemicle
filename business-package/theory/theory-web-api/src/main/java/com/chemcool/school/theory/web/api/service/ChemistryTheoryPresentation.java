@@ -2,8 +2,7 @@ package com.chemcool.school.theory.web.api.service;
 
 import com.chemcool.school.theory.domain.ChemistryTheory;
 import com.chemcool.school.theory.domain.ChemistryTheoryExample;
-import com.chemcool.school.theory.service.ChemistryTheoryPageService;
-import com.chemcool.school.theory.web.api.dto.TheoryExample;
+import com.chemcool.school.theory.web.api.dto.TheoryDto;
 import com.chemcool.school.theory.web.api.exception.ChemistryTheoryEmptyException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,47 +11,52 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ChemistryTheoryPresentation {
 
-    private final ChemistryTheoryPageService service;
 
-    public String createChemistryTheoryExample(TheoryExample example) {
+  //  private final ChemistryTheoryPageService service;
+    private final ChemistryTheoryServiceLayer serviceLayer;
+
+    public String createChemistryTheoryDto(TheoryDto dto) {
         if (
-                example.getTheoryExampleName().isEmpty()
+                dto.getTheoryName().isEmpty()
         ) {
             throw new ChemistryTheoryEmptyException("Необходимые поля пустые, проверьте пожалуйста бланк заполнения темы.");
         } else {
-            return service.manageTheory(
-                    new ChemistryTheoryExample(
-                            example.getTheoryExampleName(),
-                            example.getTheoryExampleDescription(),
-                            example.getTheoryExampleChapter(),
-                            example.getTheoryExampleReferences()
-                    )
-            );
+            return serviceLayer.add(dto);
+//            return serviceLayer.save(
+//                    new ChemistryTheoryExample(
+//                            dto.getTheoryName(),
+//                            dto.getTheoryDescription(),
+//                            dto.getTheoryChapter(),
+//                            dto.getTheoryReferences()
+//                    )
+//            );
         }
     }
 
-    public void deleteChemistryTheoryExample(TheoryExample example) {
-        service.deleteTheory(
-                new ChemistryTheoryExample(
-                        example.getTheoryExampleName(),
-                        example.getTheoryExampleDescription(),
-                        example.getTheoryExampleChapter(),
-                        example.getTheoryExampleReferences()
-                )
-        );
+    public void deleteChemistryTheoryDto(TheoryDto dto) {
+        serviceLayer.delete(dto);
+//        service.delete(
+//                new ChemistryTheoryExample(
+//                        example.getTheoryName(),
+//                        example.getTheoryDescription(),
+//                        example.getTheoryChapter(),
+//                        example.getTheoryReferences()
+//                )
+//        );
     }
 
-    public String updateChemistryTheoryExample(String TheoryId, TheoryExample example) {
-        ChemistryTheoryExample chemistryTheoryExample = ChemistryTheoryExample.fromTheoryExample(
-                example.getTheoryExampleName(),
-                example.getTheoryExampleDescription(),
-                example.getTheoryExampleChapter(),
-                example.getTheoryExampleReferences()
-        );
-        return service.updateTheory(TheoryId, chemistryTheoryExample);
+    public void updateChemistryTheoryDto(TheoryDto dto) {
+//        ChemistryTheoryExample chemistryTheoryExample = ChemistryTheoryExample.fromTheoryExample(
+//                example.getTheoryName(),
+//                example.getTheoryDescription(),
+//                example.getTheoryChapter(),
+//                example.getTheoryReferences()
+//        );
+        serviceLayer.update(dto);
+      //  return service.update(chemistryTheoryExample);
     }
 
     public ChemistryTheory getTheoryById(String theoryId) {
-        return service.findTheoryById(theoryId);
+        return serviceLayer.findTheoryById(theoryId);
     }
 }

@@ -1,13 +1,11 @@
 spring:
-  application:
-    name: theory-application
   jpa:
     database: postgresql
     show-sql: true
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/theory_application
+    url: jdbc:postgresql://localhost:5432/tasks_matches
     username: mick
     password: mick
     platform: postgres
@@ -16,8 +14,13 @@ spring:
 server:
   port: 0
   servlet:
-    context-path: /theory-application/
+    context-path: /chemmatches-application/
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
 
 kafka:
   server: http://localhost:9092
-  groupId: theory-lesson.1
+  groupId: matching-task.1

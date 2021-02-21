@@ -7,12 +7,11 @@
 
     <groupId>com.chemcool.school</groupId>
     <artifactId>registration</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <version>1.0.0</version>
-    <name>${artifactId}-${version}</name>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>12</java.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -20,6 +19,10 @@
 
         <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+        <registration.modules.version>1.0.0</registration.modules.version>
+        <lombok.version>1.18.16</lombok.version>
+        <swagger2.version>3.0.0</swagger2.version>
+
     </properties>
 
     <dependencyManagement>
@@ -39,20 +42,55 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>com.chemcool.school</groupId>
+                <artifactId>registration-service</artifactId>
+                <version>${registration.modules.version}</version>
+                <type>jar</type>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.chemcool.school</groupId>
+                <artifactId>registration-web-api</artifactId>
+                <version>${registration.modules.version}</version>
+                <type>jar</type>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring-boot.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+            </plugin>
+        </plugins>
     </build>
 
+    <modules>
+        <module>registration-application</module>
+        <module>registration-web-api</module>
+        <module>registration-service</module>
+    </modules>
 
 </project>

@@ -12,12 +12,11 @@ import javax.persistence.Table;
 import java.util.UUID;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "chemistry_theory_page")
-@NoArgsConstructor
-@AllArgsConstructor
 public class ChemistryTheory {
-
     @Id
     private String theoryId;
 
@@ -38,6 +37,7 @@ public class ChemistryTheory {
     @NonNull
     @Column(name = "theory_references")
     private Integer theoryReferences;
+
 
 
     public static ChemistryTheory createChemistryTheory(

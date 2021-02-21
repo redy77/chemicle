@@ -12,7 +12,7 @@
     <artifactId>chemfixedanswer-web-api</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
-    <name>${artifactId}-${version}</name>
+    <name>${project.artifactId}-${project.version}</name>
 
     <properties>
     </properties>

@@ -48,12 +48,6 @@ zuul:
       service-id: chemmatches-application
       stripPrefix: false
 
-    auth-application:
-      path: /authorization-application/**
-      service-id: authorization-application
-      stripPrefix: false
-
-
   ignored-services: '*'
   retryable: true
 
