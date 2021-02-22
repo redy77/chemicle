@@ -5,7 +5,6 @@ import com.chemcool.school.lesson.domain.ChemistryLessonExample;
 import com.chemcool.school.lesson.service.ChemistryLessonProxyService;
 import com.chemcool.school.lesson.web.api.dto.LessonDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service

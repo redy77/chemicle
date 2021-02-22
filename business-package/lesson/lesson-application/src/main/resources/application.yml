@@ -7,7 +7,7 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-      url: jdbc:postgresql://localhost:5432/lesson_application
+      url: jdbc:postgresql://localhost:5432/lessons
       username: mick
       password: mick
       platform: postgres
@@ -20,4 +20,8 @@ server:
 
 kafka:
   server: http://localhost:9092
-  groupId: chemistry-lesson.1
+  chemistryLessonGroupId: chemistry-lesson.1
+  chemFixedAnswerGroupId: chemistry-answer.1
+  chemSingleSelectGroupId: chemistry-singleSelect.1
+  theoryGroupId: theory.1
+

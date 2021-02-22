@@ -2,7 +2,6 @@ package com.chemcool.school.lesson.service.command;
 
 import com.chemcool.school.lesson.domain.ChemistryLesson;
 import com.chemcool.school.lesson.storage.LessonRepository;
-import com.chemcool.school.lesson.theory.domain.ChemistryTheory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -24,7 +23,7 @@ public class ChemistryLessonPageService {
         if (chapter == 0 ){
             throw new RuntimeException("chapter параметр пустой");
         }
-        return repository.findLessonByChapter(chapter);
+        return repository.findByLessonChapter(chapter);
     }
 
 
@@ -32,7 +31,7 @@ public class ChemistryLessonPageService {
         if (references == 0 ){
             throw new RuntimeException("references параметр пустой");
         }
-        return repository.findLessonByReferences(references);
+        return repository.findByLessonReferences(references);
     }
 
 

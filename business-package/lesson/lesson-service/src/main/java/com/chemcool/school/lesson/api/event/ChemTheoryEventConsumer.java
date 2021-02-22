@@ -22,7 +22,7 @@ public class ChemTheoryEventConsumer {
     private final ChemistryTheoryEventService eventService;
 
     @KafkaHandler
-    @KafkaListener(topics = "chemistry-theory")
+    @KafkaListener(topics = "chemistry-theory", containerFactory = "theoryKafkaListenerContainerFactory")
     @Transactional
     public void handleChemistryTheory(ConsumerRecord<String, ChemistryTheoryEvent> record){
         ChemistryTheoryEvent event = record.value();
