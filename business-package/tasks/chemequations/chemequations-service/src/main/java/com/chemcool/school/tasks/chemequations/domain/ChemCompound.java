@@ -16,7 +16,8 @@ public class ChemCompound {
     private Set<ChemElement> compoundElements;
 
     public void reaction(ChemElement firstElement, ChemElement secondElement){
-        compoundElements.addAll(Collections.emptyList());
+        compoundElements.add(firstElement);
+        compoundElements.add(secondElement);
         compoundSymbols = firstElement.getElementSymbol()+secondElement.getElementSymbol();
     }
 }
