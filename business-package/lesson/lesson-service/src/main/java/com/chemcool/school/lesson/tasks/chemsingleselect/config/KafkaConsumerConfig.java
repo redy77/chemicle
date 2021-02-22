@@ -1,6 +1,6 @@
-package com.chemcool.school.lesson.theory.configuration;
+package com.chemcool.school.lesson.tasks.chemsingleselect.config;
 
-import com.chemcool.school.lesson.theory.configuration.properties.ChemistryTheoryDeserializer;
+import com.chemcool.school.lesson.tasks.chemsingleselect.config.properties.ChemSingleSelectTaskDeserializer;
 import com.chemcool.school.lesson.theory.configuration.properties.KafkaProperties;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -18,34 +18,34 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 import java.util.HashMap;
 import java.util.Map;
 
-
 @Configuration
 @EnableConfigurationProperties(KafkaProperties.class)
 @RequiredArgsConstructor
-public class KafkaConsumerConfiguration {
+public class KafkaConsumerConfig {
+    
+    //public static final String TRUSTED_PACKAGES = "com.chemcool.school.tasks.chemsingleselect.domain";
+    
     private final KafkaProperties kafkaProperties;
-
-   // public static final String TRUSTED_PACKAGES =  "com.chemcool.school.theory.domain";
-
-    public Map<String, Object> consumerConfig() {
+    
+    private Map<String, Object> consumerConfig() {
         Map<String, Object> prop = new HashMap<>();
-        prop.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaProperties.getServer());
+        prop.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServer());
         prop.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ChemistryTheoryDeserializer.class);
+        prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ChemSingleSelectTaskDeserializer.class);
        // prop.put(JsonDeserializer.TRUSTED_PACKAGES, TRUSTED_PACKAGES);
         prop.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getGroupId());
         return prop;
     }
-
+    
     @Bean
-    public KafkaListenerContainerFactory theoryKafkaListenerContainerFactory(){
-        ConcurrentKafkaListenerContainerFactory<String, String> factory=
+    public KafkaListenerContainerFactory chemSingleSelectKafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String,String> factory = 
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }
 
-    public ConsumerFactory<String, String> consumerFactory(){
+    private ConsumerFactory<String,String> consumerFactory() {
         return new DefaultKafkaConsumerFactory<>(consumerConfig());
     }
 }

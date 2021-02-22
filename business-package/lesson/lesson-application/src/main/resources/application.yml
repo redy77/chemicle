@@ -2,16 +2,16 @@ spring:
   application:
     name: lesson-application
   jpa:
-    database postgresql
+    database: postgresql
     show-sql: true
     hibernate:
       ddl-auto: update
   datasource:
       url: jdbc:postgresql://localhost:5432/lesson_application
       username: mick
-        password: mick
-        platform: postgres
-        driver-class-name: org.postgresql.Driver
+      password: mick
+      platform: postgres
+      driver-class-name: org.postgresql.Driver
 
 server:
   port: 0

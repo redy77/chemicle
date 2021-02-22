@@ -11,9 +11,7 @@ import java.util.UUID;
 public interface LessonRepository extends JpaRepository<ChemistryLesson, UUID>, JpaSpecificationExecutor<ChemistryLesson> {
 
     ChemistryLesson findLessonByChapter(int chapter);
-
+   // ChemistryLesson findLessonByChapterAndLessonReferences(int chapter);
+ //сущность которая хранит и таски и теорию
     ChemistryLesson findLessonByReferences(int references);
-
-
-
 }

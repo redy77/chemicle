@@ -19,7 +19,7 @@
 
         <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
-        <theory.modules.version>1.0.0</theory.modules.version>
+        <lesson.modules.version>1.0.0</lesson.modules.version>
         <lombok.version>1.18.16</lombok.version>
         <swagger2.version>3.0.0</swagger2.version>
 
