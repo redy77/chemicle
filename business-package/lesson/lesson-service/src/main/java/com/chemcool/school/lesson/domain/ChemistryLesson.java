@@ -15,7 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "chemistry_lesson_page")
+@Table(name = "chemistry_lesson")
 public class ChemistryLesson {
     @Id
     private String lessonId;

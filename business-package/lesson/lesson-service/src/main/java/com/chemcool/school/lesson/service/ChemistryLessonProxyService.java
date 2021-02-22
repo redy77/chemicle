@@ -2,9 +2,7 @@ package com.chemcool.school.lesson.service;
 
 import com.chemcool.school.lesson.domain.*;
 import com.chemcool.school.lesson.service.command.ChemistryLessonPageService;
-import com.chemcool.school.lesson.storage.LessonRepository;
 import lombok.RequiredArgsConstructor;
-import org.apache.kafka.common.protocol.types.Field;
 import org.springframework.stereotype.Service;
 
 @Service
