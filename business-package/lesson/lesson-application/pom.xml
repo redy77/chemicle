@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.chemcool.school.theory</groupId>
-        <artifactId>theory</artifactId>
+        <groupId>com.chemcool.school.lesson</groupId>
+        <artifactId>lesson</artifactId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>theory-application</artifactId>
+    <artifactId>lesson-application</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
     <name>${artifactId}-${version}</name>
@@ -21,14 +21,14 @@
 
         <flayway.version>5.2.3</flayway.version>
 
-        <start-class>com.chemcool.school.theory.app.TheoryApplication</start-class>
+        <start-class>com.chemcool.school.lesson.app.LessonApplication</start-class>
     </properties>
 
     <dependencies>
 
         <dependency>
-            <groupId>com.chemcool.school.theory</groupId>
-            <artifactId>theory-web-api</artifactId>
+            <groupId>com.chemcool.school.lesson</groupId>
+            <artifactId>lesson-web-api</artifactId>
             <scope>compile</scope>
         </dependency>
 

@@ -57,9 +57,7 @@
         <module>theory</module>
         <module>tasks</module>
         <module>community</module>
-        <module>Lesson</module>
-        <module>untitled</module>
-        <module>lesson-application</module>
+        <module>lesson</module>
     </modules>
 
 </project>
