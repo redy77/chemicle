@@ -15,11 +15,11 @@ import static springfox.documentation.builders.PathSelectors.regex;
 public class SwaggerConfig {
 
     @Bean
-    public Docket api(){
+    public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.chemcool.school.tasks.chemfixedanswer.web.api"))
-                .paths(regex("/tasks-chemfixedanswer-application.*"))
+                .apis(RequestHandlerSelectors.basePackage("com.chemcool.school.tasks.chemequations.web.api"))
+                .paths(regex("/tasks-chemequations-application.*"))
                 .build();
     }
 }

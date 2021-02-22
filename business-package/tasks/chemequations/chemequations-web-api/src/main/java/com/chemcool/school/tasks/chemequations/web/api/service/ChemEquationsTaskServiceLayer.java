@@ -1,9 +1,10 @@
 package com.chemcool.school.tasks.chemequations.web.api.service;
 
-import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
-import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskExample;
-import com.chemcool.school.tasks.chemfixedanswer.service.ChemFixedAnswerTaskProxyService;
-import com.chemcool.school.tasks.chemfixedanswer.web.api.dto.ChemFixedAnswerTaskDto;
+import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTask;
+import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTaskExample;
+import com.chemcool.school.tasks.chemequations.service.ChemEquationsTaskProxyService;
+import com.chemcool.school.tasks.chemequations.web.api.dto.ChemEquationsTaskDto;
+
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,29 +16,25 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ChemEquationsTaskServiceLayer {
 
+    private final ChemEquationsTaskProxyService proxyService;
 
-}
-
-/*
-
-private final ChemFixedAnswerTaskProxyService proxyService;
-
-    public List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerDto () {
-        List<ChemFixedAnswerTaskDto> list = new ArrayList<>();
-        for(ChemFixedAnswerTask task : proxyService.getAll()){
-            list.add(new ChemFixedAnswerTaskDto(task));
+    public List<ChemEquationsTaskDto> getAllChemEquationsDto() {
+        List<ChemEquationsTaskDto> list = new ArrayList<>();
+        for (ChemEquationsTask task : proxyService.getAll()) {
+            list.add(new ChemEquationsTaskDto(task));
         }
         return list;
     }
 
-    public Optional<ChemFixedAnswerTask> getFixedAnswerTaskById(String id) {
+    public Optional<ChemEquationsTask> getChemEquationsTaskById(String id) {
         return proxyService.getById(id);
     }
 
-    public String createNewFixedAnswerTask(ChemFixedAnswerTaskDto taskDto){
+    public String createNewChemEquationsTask(ChemEquationsTaskDto taskDto) {
         return proxyService.add(
-                new ChemFixedAnswerTaskExample(
+                new ChemEquationsTaskExample(
                         taskDto.getDescription(),
+                        taskDto.getEquations(),
                         taskDto.getRightAnswer(),
                         taskDto.getChapterId(),
                         taskDto.getReferenceId()
@@ -45,11 +42,12 @@ private final ChemFixedAnswerTaskProxyService proxyService;
         );
     }
 
-    public void updateFixedAnswerTask(ChemFixedAnswerTaskDto taskDto){
+    public void updateChemEquationsTask(ChemEquationsTaskDto taskDto) {
         proxyService.update(
-                new ChemFixedAnswerTask(
+                new ChemEquationsTask(
                         taskDto.getTaskId(),
                         taskDto.getDescription(),
+                        taskDto.getEquations(),
                         taskDto.getRightAnswer(),
                         taskDto.getChapterId(),
                         taskDto.getReferenceId()
@@ -57,9 +55,7 @@ private final ChemFixedAnswerTaskProxyService proxyService;
         );
     }
 
-    public void deleteFixedAnswerTask(String id){
+    public void deleteChemEquationsTask(String id) {
         proxyService.deleteById(id);
     }
 }
-
-* */
