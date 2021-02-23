@@ -1,15 +1,14 @@
 package com.chemcool.school.service;
 
-import com.chemcool.school.entities.Comment;
+import com.chemcool.school.dto.GotFromFrontEnd;
+import com.chemcool.school.entities.Lesson;
 
-import java.util.List;
 
 public interface ServiceInterface {
 
-    List<Comment> listByLesson (Long lessonId);
-
     void addLesson(String lessonName);
 
-    void addComment(String comment, String author, String data, Long lessonId);
+    Lesson getLesson(Long lessonId);
 
+    void addComment(GotFromFrontEnd gotFromFrontEnd);
 }
