@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Collections;
-import java.util.Set;
+import java.util.*;
 
 @Data
 @AllArgsConstructor
@@ -13,11 +12,21 @@ import java.util.Set;
 public class ChemCompound {
 
     private String compoundSymbols;
-    private Set<ChemElement> compoundElements;
+    private Map<ChemElement,Integer> compoundElements;
 
-    public void reaction(ChemElement firstElement, ChemElement secondElement){
-        compoundElements.add(firstElement);
-        compoundElements.add(secondElement);
-        compoundSymbols = firstElement.getElementSymbol()+secondElement.getElementSymbol();
+    public boolean reaction(ChemElement ... elements){
+        if(compoundElements==null){
+            compoundElements = new HashMap();
+        }
+        for (ChemElement el : elements) {
+            if (!compoundElements.containsKey(el)){
+                compoundElements.put(el,1);
+
+            }else {
+                compoundElements.put(el,compoundElements.get(el)+1);
+            }
+        }
+        compoundSymbols = compoundElements.toString();
+        return true;
     }
 }
