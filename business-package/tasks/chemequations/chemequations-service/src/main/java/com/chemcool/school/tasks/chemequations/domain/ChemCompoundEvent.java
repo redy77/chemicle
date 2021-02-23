@@ -23,7 +23,7 @@ import java.util.UUID;
         @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 )
 @Table(name = "chemistry_equations_task_event")
-public class ChemEquationsTaskEvent {
+public class ChemCompoundEvent {
 
     @Id
     @Column(name = "event_id")
@@ -39,28 +39,27 @@ public class ChemEquationsTaskEvent {
     private LocalDateTime eventOccuringContextTime;
 
     @Column(name = "event_type")
-    private ChemEquationsTaskEventType eventType;
+    private ChemCompoundEventType eventType;
 
     @Column(name = "event_version")
     private String eventVersion;
 
-    @Column(name = "event_entity_id")
-    private String eventEntityId;
+//    @Column(name = "event_entity_id")
+//    private String eventEntityId;
 
     @Type(type = "jsonb")
     @Column(name = "event_payload", columnDefinition = "jsonb")
-    private ChemEquationsTask eventPayload;
+    private ChemCompound eventPayload;
 
-    public static ChemEquationsTaskEvent createEvent(ChemEquationsTask task, ChemEquationsTaskEventType eventType){
-        return new ChemEquationsTaskEvent(
+    public static ChemCompoundEvent createEvent(ChemCompound compound, ChemCompoundEventType eventType){
+        return new ChemCompoundEvent(
                 UUID.randomUUID().toString(),
                 "321",
                 "ChemEquationsTaskEvent",
                 LocalDateTime.now(),
                 eventType,
                 "1.0",
-                task.getTaskId(),
-                task
+                compound
         );
     }
 }

@@ -1,6 +1,6 @@
 package com.chemcool.school.tasks.chemequations.api.configuration.properties;
 
-import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTaskEvent;
+import com.chemcool.school.tasks.chemequations.domain.ChemCompoundEvent;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 @Slf4j
-public class ChemEquationsTaskDeserializer implements Deserializer<ChemEquationsTaskEvent> {
+public class ChemEquationsTaskDeserializer implements Deserializer<ChemCompoundEvent> {
 
     private final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
@@ -19,9 +19,9 @@ public class ChemEquationsTaskDeserializer implements Deserializer<ChemEquations
     }
 
     @Override
-    public ChemEquationsTaskEvent deserialize(String s, byte[] event){
+    public ChemCompoundEvent deserialize(String s, byte[] event){
         try{
-            return mapper.readValue(new String(event, StandardCharsets.UTF_8), ChemEquationsTaskEvent.class);
+            return mapper.readValue(new String(event, StandardCharsets.UTF_8), ChemCompoundEvent.class);
         } catch (Exception exception){
             log.error("Unable to deserialize message {}", event, exception);
             return null;

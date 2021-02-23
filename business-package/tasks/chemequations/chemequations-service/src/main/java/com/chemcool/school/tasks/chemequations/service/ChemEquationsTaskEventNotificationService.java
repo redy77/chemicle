@@ -1,7 +1,7 @@
 package com.chemcool.school.tasks.chemequations.service;
 
-import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTaskEvent;
+import com.chemcool.school.tasks.chemequations.domain.ChemCompoundEvent;
 
 public interface ChemEquationsTaskEventNotificationService {
-    void send(ChemEquationsTaskEvent event);
+    void send(ChemCompoundEvent event);
 }

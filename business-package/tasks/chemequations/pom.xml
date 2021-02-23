@@ -12,7 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <chemfixedanswer.modules.version>1.0.0</chemfixedanswer.modules.version>
+        <chemequations.modules.version>1.0.0</chemequations.modules.version>
 
         <hibernate-core.version>5.4.22.Final</hibernate-core.version>
         <postgresql.version>42.2.5</postgresql.version>
@@ -48,15 +48,15 @@
 
             <dependency>
                 <groupId>com.chemcool.school.tasks</groupId>
-                <artifactId>chemfixedanswer-service</artifactId>
-                <version>${chemfixedanswer.modules.version}</version>
+                <artifactId>chemequations-service</artifactId>
+                <version>${chemequations.modules.version}</version>
                 <type>jar</type>
                 <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>com.chemcool.school.tasks</groupId>
-                <artifactId>chemfixedanswer-web-api</artifactId>
-                <version>${chemfixedanswer.modules.version}</version>
+                <artifactId>chemequations-web-api</artifactId>
+                <version>${chemequations.modules.version}</version>
                 <type>jar</type>
                 <scope>provided</scope>
             </dependency>
@@ -108,6 +108,4 @@
         <module>chemequations-service</module>
         <module>chemequations-web-api</module>
     </modules>
-
-
 </project>

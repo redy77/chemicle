@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class ChemEquationsTaskEventFactory {
-    public static ChemEquationsTaskEvent createTaskEvent(ChemEquationsTask task, ChemEquationsTaskEventType eventType){
+public class ChemCompoundEventFactory {
+    public static ChemCompoundEvent createTaskEvent(ChemCompound compound, ChemCompoundEventType eventType){
         log.info("Попытка создать событие");
-        return ChemEquationsTaskEvent.createEvent(task, eventType);
+        return ChemCompoundEvent.createEvent(compound, eventType);
     }
 }

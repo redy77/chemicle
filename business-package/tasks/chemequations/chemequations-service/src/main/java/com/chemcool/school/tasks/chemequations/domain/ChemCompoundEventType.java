@@ -1,6 +1,6 @@
 package com.chemcool.school.tasks.chemequations.domain;
 
-public enum ChemEquationsTaskEventType {
+public enum ChemCompoundEventType {
     CREATE,
     UPDATE
 }
