@@ -11,7 +11,9 @@ public class RegisterUserProxyService {
     private final RegisterUserEventNotificationService registerUserEventNotificationService;
 
     public String add(RegisterUserExample registerUserExample) {
+
         RegisterUser registerUser = RegisterUserFactory.createUser(registerUserExample);
+
         registerUserEventNotificationService.send(
                 RegisterUserEventFactory.createEvent(registerUser, RegisterUserEventType.CREATE)
         );
