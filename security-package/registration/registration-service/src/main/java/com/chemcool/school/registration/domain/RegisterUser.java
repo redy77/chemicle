@@ -61,8 +61,8 @@ public class RegisterUser {
                 example.getUserExamplePhone(),
                 example.getUserExampleEmail(),
                 example.getUserExamplePassword(),
-                RegisterUserAccountType.BASE,
-                RegisterUserAccountRole.ROLE_USER
+                example.getUserExampleType(),
+                example.getUserExampleRole()
         );
     }
 

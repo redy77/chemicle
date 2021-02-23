@@ -26,7 +26,7 @@ public class RegisterUserServiceLayer {
                         registerUserDto.getEmail(),
                         registerUserDto.getPassword(),
                         RegisterUserAccountType.BASE,
-                        RegisterUserAccountRole.ROLE_USER
+                        RegisterUserAccountRole.ROLE_USER_BASE
                 )
         );
     }

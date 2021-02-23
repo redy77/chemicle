@@ -21,12 +21,13 @@ public class RegisterUserConsumer {
     private final RegisterUserEventService registerUserEventService;
     private final RegisterUserService registerUserService;
 
-    @KafkaListener(topics = "user-registration")
+    private static final String TOPIC = "registration_users";
+
+    @KafkaListener(topics = TOPIC)
     @KafkaHandler
     public void orderListener(ConsumerRecord<String, RegisterUserEvent> record) {
         RegisterUserEvent event = record.value();
         log.info("Пойман журнал для логирования: {}", event.getEventId());
-        log.info("Ник нового юзера: {}", event.getPayload().getNick());
         registerUserEventService.saveEvent(event);
         registerUserService.save(event.getPayload());
     }
