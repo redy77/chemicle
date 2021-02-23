@@ -6,14 +6,13 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "lessons")
+@Table(name = "lesson")
 public class Lesson implements Serializable {
 
     @Id
@@ -23,8 +22,11 @@ public class Lesson implements Serializable {
     @Column(name = "lesson_name")
     private String lessonName;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "lesson")
-    private List<Comment> comments = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "lesson_comments",
+            joinColumns = @JoinColumn(name = "lesson_id"),
+            inverseJoinColumns = @JoinColumn(name = "comment_id"))
+    private List<Comment> comments;
 
     public Lesson(String lessonName) {
         this.lessonName = lessonName;

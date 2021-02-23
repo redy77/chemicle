@@ -12,7 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "comments")
+@Table(name = "comment")
 public class Comment implements Serializable {
 
     @Id
@@ -25,14 +25,9 @@ public class Comment implements Serializable {
 
     private String date;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="lesson_id", nullable=false)
-    private Lesson lesson;
-
-    public Comment(String comment, String author, String date, Lesson lesson) {
+    public Comment(String comment, String author, String date) {
         this.comment = comment;
         this.author = author;
         this.date = date;
-        this.lesson=lesson;
     }
 }
