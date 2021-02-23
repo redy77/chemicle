@@ -2,7 +2,7 @@ package com.chemcool.school.tasks.chemequations.api.configuration;
 
 import com.chemcool.school.tasks.chemequations.api.configuration.properties.ChemEquationsTaskSerialize;
 import com.chemcool.school.tasks.chemequations.api.configuration.properties.KafkaProperties;
-import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTaskEvent;
+import com.chemcool.school.tasks.chemequations.domain.ChemCompoundEvent;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -33,12 +33,12 @@ public class KafkaProducerConfiguration {
     }
 
     @Bean
-    public ProducerFactory<String, ChemEquationsTaskEvent> producerFactory(){
+    public ProducerFactory<String, ChemCompoundEvent> producerFactory(){
         return new DefaultKafkaProducerFactory<>(producerConfig());
     }
 
     @Bean
-    public KafkaTemplate<String, ChemEquationsTaskEvent> kafkaTemplate(){
+    public KafkaTemplate<String, ChemCompoundEvent> kafkaTemplate(){
         return new KafkaTemplate<>(producerFactory());
     }
 }

@@ -38,6 +38,11 @@ zuul:
       service-id: tasks-chemfixedanswer-application
       stripPrefix: false
 
+    tasks-chemequations-application:
+      path: /tasks-chemequations-application/**
+      service-id: tasks-chemequations-application
+      stripPrefix: false
+
     tasks-chemsingleselect-application:
       path: /tasks-chemsingleselect-application/**
       service-id: tasks-chemsingleselect-application

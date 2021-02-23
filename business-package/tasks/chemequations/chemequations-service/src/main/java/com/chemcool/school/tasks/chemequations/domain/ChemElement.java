@@ -22,7 +22,7 @@ public class ChemElement {
 
     //порядковый номер элемента - это число равное числу протонов в ядре атома и числу электронов,
     //которые вращаются вокруг него
-    @Column(name = "element_namber")
+    @Column(name = "element_number")
     private  int elementNumber;
 
     //символ элемента
@@ -51,5 +51,6 @@ public class ChemElement {
     //Подгруппа - А - главные (s- и р-элементы) и В - побочные (d- и f-элементы)
     @Column(name = "element_subgroup")
     private String elementSubgroup;
+
 
 }
