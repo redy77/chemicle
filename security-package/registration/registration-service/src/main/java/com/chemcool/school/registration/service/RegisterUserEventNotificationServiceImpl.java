@@ -16,7 +16,7 @@ public class RegisterUserEventNotificationServiceImpl implements RegisterUserEve
 
     private final KafkaTemplate<String, RegisterUserEvent> kafkaTemplate;
 
-    private static final String TOPIC = "registration_users";
+    private static final String TOPIC = "registration-users";
 
     @Override
     public void send(RegisterUserEvent event) {
