@@ -15,6 +15,13 @@ import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+
+/**
+ * Событие создания химического соединения
+ *
+ * @version 1.0
+ * @autor Евгений Жиленков
+ */
 @Entity
 @Data
 @AllArgsConstructor
@@ -51,7 +58,7 @@ public class ChemCompoundEvent {
     @Column(name = "event_payload", columnDefinition = "jsonb")
     private ChemCompound eventPayload;
 
-    public static ChemCompoundEvent createEvent(ChemCompound compound, ChemCompoundEventType eventType){
+    public static ChemCompoundEvent createEvent(ChemCompound compound, ChemCompoundEventType eventType) {
         return new ChemCompoundEvent(
                 UUID.randomUUID().toString(),
                 "321",

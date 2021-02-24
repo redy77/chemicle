@@ -9,7 +9,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-
+/**
+ * Сервис прослойка верхнего уровня содержащий бизнес логику CRUD операций
+ * с полученным в ходе вычисления уравнения результатом
+ *
+ * @version 1.0
+ * @autor Иван Полещук
+ */
 @Service
 @RequiredArgsConstructor
 public class ChemEquationsTaskPresentation {

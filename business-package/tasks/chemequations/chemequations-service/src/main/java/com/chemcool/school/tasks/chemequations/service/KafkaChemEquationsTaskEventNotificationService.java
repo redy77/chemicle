@@ -10,6 +10,12 @@ import org.springframework.util.concurrent.ListenableFuture;
 
 import java.util.UUID;
 
+/**
+ * Реализация уведомления о событии с соединениями
+ *
+ * @version 1.0
+ * @autor Евгений Жиленков
+ */
 @Slf4j
 @Service
 @AllArgsConstructor

@@ -17,6 +17,12 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Configuration Kafka Consumer
+ *
+ * @version 1.0
+ * @autor Евгений Жиленков
+ */
 @Configuration
 @EnableConfigurationProperties(KafkaProperties.class)
 @RequiredArgsConstructor
@@ -26,7 +32,7 @@ public class KafkaConsumerConfiguration {
 
     private final KafkaProperties kafkaProperties;
 
-    public Map<String, Object> consumerConfig(){
+    public Map<String, Object> consumerConfig() {
         Map<String, Object> prop = new HashMap<>();
         prop.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServer());
         prop.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);

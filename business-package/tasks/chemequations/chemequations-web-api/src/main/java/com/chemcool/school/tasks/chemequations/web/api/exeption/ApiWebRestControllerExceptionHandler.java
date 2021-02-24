@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ApiWebRestControllerExceptionHandler {
 
     @ExceptionHandler
-    private ResponseEntity<GeneralExceptionHandler> generalExceptionHandler(Exception exception){
+    private ResponseEntity<GeneralExceptionHandler> generalExceptionHandler(Exception exception) {
         return new ResponseEntity<>(new GeneralExceptionHandler(exception), HttpStatus.BAD_REQUEST);
     }
 

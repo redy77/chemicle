@@ -16,6 +16,12 @@ import org.springframework.kafka.core.ProducerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Configuration Kafka Producer
+ *
+ * @version 1.0
+ * @autor Евгений Жиленков
+ */
 @Configuration
 @EnableConfigurationProperties(KafkaProperties.class)
 @RequiredArgsConstructor
