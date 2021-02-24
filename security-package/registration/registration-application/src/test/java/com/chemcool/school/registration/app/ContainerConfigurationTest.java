@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * Используется образ Docker - postgres:13, на основе которого в докере запускается одноразовый контейнер.
  * Используется FlyWay, для применения миграций базы данных(таблиц) в тестовый контейнер POSTGRE_SQL_CONTAINER.
  * Используется DockerComposeContainer, который запускает одноразовые контейнеры zookeeper & Kafka,
- * используя kafka-container.yml
+ * используя kafka-compose.yml
  *
  * Если кафка уже была запущена вами ранее вручную, закомментируйте KAFKA_CONTAINER и runKafka(), либо используй @Ignore
  **/
