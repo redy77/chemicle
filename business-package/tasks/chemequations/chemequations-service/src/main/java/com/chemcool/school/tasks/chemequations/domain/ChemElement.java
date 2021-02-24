@@ -3,11 +3,13 @@ package com.chemcool.school.tasks.chemequations.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Set;
 
 
 /**
@@ -31,7 +33,7 @@ public class ChemElement {
     //порядковый номер элемента - это число равное числу протонов в ядре атома и числу электронов,
     //которые вращаются вокруг него
     @Column(name = "element_number")
-    private  int elementNumber;
+    private int elementNumber;
 
     //символ элемента
     @Column(name = "element_symbol")
@@ -54,11 +56,26 @@ public class ChemElement {
     // (электронов внешнего энергетического уровня, а также предпоследнего d-подуровня,
     // если он застроен не полностью)
     @Column(name = "element_group")
-    private String elementGroup;
+    private int elementGroup;
 
     //Подгруппа - А - главные (s- и р-элементы) и В - побочные (d- и f-элементы)
     @Column(name = "element_subgroup")
     private String elementSubgroup;
 
+    @Column(name = "element_valence")
+    private String elementValence;
 
+
+
+    public int getElementLowValence() {
+        return 8 - elementGroup;
+    }
+
+    public int getElementHighValence() {
+        return elementGroup;
+    }
+
+    public int getElementValence() {
+        return elementGroup > 4 ? getElementLowValence() : getElementHighValence();
+    }
 }

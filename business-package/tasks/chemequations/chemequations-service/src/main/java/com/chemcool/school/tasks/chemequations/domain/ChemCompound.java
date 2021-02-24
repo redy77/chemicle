@@ -26,8 +26,27 @@ public class ChemCompound {
         this.compoundSymbols = "";
     }
 
-    public boolean checkFactors() {
+    public boolean checkFactors(Map<ChemElement, Integer> elementsMap) {
+
         return true;
+    }
+
+    public String checkFactorsTest(Map<ChemElement, Integer> elementsMap) {
+        ChemElement bufElement = null;
+        if(elementsMap.size()<=2) {
+            for (ChemElement el : elementsMap.keySet()) {
+                if (bufElement == null) {
+                    bufElement = el;
+                    continue;
+                }
+
+                System.err.println(elementsMap.get(el).toString());
+                if (elementsMap.get(el) == bufElement.getElementValence() && elementsMap.get(bufElement) == el.getElementValence())
+                    return "true";
+            }
+            return "false";
+        }
+        return "bigFalse";
     }
 
     public void reaction(List<ChemElement> elements) {
@@ -40,12 +59,13 @@ public class ChemCompound {
 //            }
 //        }
         elements.stream().forEach(e -> compoundElements.put(e, compoundElements.getOrDefault(e, 0) + 1));
-        if (checkFactors()) {
+        if (checkFactors(compoundElements)) {
             reactionWrite();
         } else {
             throw new ChemEquationsTaskException("Ошибка условий формарования молекулы");
         }
-
+        //betaTest
+        System.out.println(checkFactorsTest(compoundElements));
     }
 
     public void reactionWrite() {
