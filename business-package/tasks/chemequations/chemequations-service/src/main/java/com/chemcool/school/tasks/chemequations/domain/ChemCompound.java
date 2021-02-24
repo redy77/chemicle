@@ -23,7 +23,7 @@ public class ChemCompound {
         return true;
     }
 
-    public void reaction(ChemElement ... elements){
+    public void reaction(List<ChemElement> elements){
 //        for (ChemElement el : elements) {
 //            if (!compoundElements.containsKey(el)){
 //                compoundElements.put(el,1);
@@ -32,7 +32,7 @@ public class ChemCompound {
 //                compoundElements.put(el,compoundElements.get(el)+1);
 //            }
 //        }
-        Arrays.stream(elements).forEach(e ->compoundElements.put(e,compoundElements.getOrDefault(e,0)+1));
+        elements.stream().forEach(e ->compoundElements.put(e,compoundElements.getOrDefault(e,0)+1));
         if(checkFactors()){
             reactionWrite();
         } else {

@@ -25,7 +25,11 @@ public class ChemElementService {
         return elementRepository.findAll();
     }
 
-    public Optional<ChemElement> getById (String id){
+    public Optional<ChemElement>  getById (String id){
         return elementRepository.findById(id);
+    }
+
+    public Optional<ChemElement> getByNumber (int number){
+        return elementRepository.findByElementNumber(number);
     }
 }
