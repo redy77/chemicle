@@ -32,6 +32,9 @@ public class ChemEquationsRestControllerTest {
         ChemCompound chemCompound = new ChemCompound();
         elements.add(elementService.getByNumber(elementNumber).orElseThrow());
         chemCompound.reaction(elements);
+        System.out.println("grope: " + elementService.getByNumber(elementNumber).orElseThrow().getElementGroup());
+        System.out.println("val: " + elementService.getByNumber(elementNumber).orElseThrow().getElementValence());
+        System.out.println();
         return chemCompound.getCompoundSymbols();
     }
 
