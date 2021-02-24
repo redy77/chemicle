@@ -20,8 +20,17 @@ public class ChemEquationsRestControllerTest {
         chemCompound.reaction(
                 service.getById("1").orElseThrow(),
                 service.getById("1").orElseThrow(),
-                service.getById("2").orElseThrow());
-        System.out.println(chemCompound.toString());
+                service.getById("1").orElseThrow(),
+                service.getById("3").orElseThrow(),
+                service.getById("3").orElseThrow(),
+                service.getById("3").orElseThrow(),
+                service.getById("10").orElseThrow(),
+                service.getById("10").orElseThrow(),
+                service.getById("10").orElseThrow(),
+                service.getById("2").orElseThrow(),
+                service.getById("2").orElseThrow(),
+                service.getById("28").orElseThrow());
+        System.out.println(chemCompound.getCompoundSymbols());
         return chemCompound.getCompoundSymbols();
     }
 
