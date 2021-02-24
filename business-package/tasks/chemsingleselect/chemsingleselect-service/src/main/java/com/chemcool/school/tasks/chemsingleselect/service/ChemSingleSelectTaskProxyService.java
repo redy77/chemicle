@@ -2,6 +2,7 @@ package com.chemcool.school.tasks.chemsingleselect.service;
 
 import com.chemcool.school.tasks.chemsingleselect.domain.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class ChemSingleSelectTaskProxyService {
-
+    @Qualifier("KafkaChemSingleSelectTaskEventNotificationService")
     private final ChemSingleSelectTaskEventNotificationService notificationService;
     private final ChemSingleSelectTaskService taskService;
 

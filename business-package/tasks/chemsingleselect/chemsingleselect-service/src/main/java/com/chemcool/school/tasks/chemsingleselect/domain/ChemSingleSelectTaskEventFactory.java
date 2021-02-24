@@ -5,6 +5,8 @@ import com.chemcool.school.tasks.chemsingleselect.exception.ChemSingleSelectTask
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 @Slf4j
 @Component
 public class ChemSingleSelectTaskEventFactory {
@@ -16,6 +18,6 @@ public class ChemSingleSelectTaskEventFactory {
             throw new ChemSingleSelectTaskEventException("Что-то не получилось для создания ивента");
         }
         log.info("Попытка создать событие {} при создании таски с ВЫБОРОМ ОДНОГО ОТВЕТА ИЗ МНОЖЕСТВА", eventType);
-        return ChemSingleSelectTaskEvent.createEvent(task, "777", eventType);
+        return ChemSingleSelectTaskEvent.createEvent(task, UUID.randomUUID().toString(), eventType); //todo заменить authorId
     }
 }

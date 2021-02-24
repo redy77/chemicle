@@ -11,10 +11,7 @@
         <module>api-gateway</module>
         <module>security-package</module>
         <module>business-package</module>
-        <module>lesson</module>
-        <module>lesson-applicationn</module>
-        <module>lesson-service</module>
-        <module>lesson-web-api</module>
+        <module>configuration</module>
     </modules>
 
 </project>
