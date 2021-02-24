@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Контроллер взятый из модуля chemFixedAnswer(будет доработан)
+ *
+ * @version 1.0
+ * @autor Иван Полещук
+ */
 @RestController
 @RequestMapping("/v.1.0/tasks/equations")
 @RequiredArgsConstructor

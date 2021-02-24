@@ -4,6 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Dto - контейнер для конечного результата
+ *
+ * @version 1.0
+ * @autor Иван Полещук
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -7,23 +7,30 @@ import lombok.NoArgsConstructor;
 
 import java.util.*;
 
+
+/**
+ * Класс для построения химических соединений
+ *
+ * @version 1.0
+ * @autor Евгений Жиленков
+ */
 @Data
 @AllArgsConstructor
 public class ChemCompound {
 
     private String compoundSymbols;
-    private Map<ChemElement,Integer> compoundElements;
+    private Map<ChemElement, Integer> compoundElements;
 
     public ChemCompound() {
         this.compoundElements = new HashMap();
-        this.compoundSymbols="";
+        this.compoundSymbols = "";
     }
 
-    public boolean checkFactors(){
+    public boolean checkFactors() {
         return true;
     }
 
-    public void reaction(List<ChemElement> elements){
+    public void reaction(List<ChemElement> elements) {
 //        for (ChemElement el : elements) {
 //            if (!compoundElements.containsKey(el)){
 //                compoundElements.put(el,1);
@@ -32,8 +39,8 @@ public class ChemCompound {
 //                compoundElements.put(el,compoundElements.get(el)+1);
 //            }
 //        }
-        elements.stream().forEach(e ->compoundElements.put(e,compoundElements.getOrDefault(e,0)+1));
-        if(checkFactors()){
+        elements.stream().forEach(e -> compoundElements.put(e, compoundElements.getOrDefault(e, 0) + 1));
+        if (checkFactors()) {
             reactionWrite();
         } else {
             throw new ChemEquationsTaskException("Ошибка условий формарования молекулы");
@@ -41,8 +48,8 @@ public class ChemCompound {
 
     }
 
-    public void reactionWrite(){
-        compoundElements.keySet().stream().forEach(e->compoundSymbols+=e.getElementSymbol()+compoundElements.get(e));
-        compoundSymbols = compoundSymbols.replaceAll("1","");
+    public void reactionWrite() {
+        compoundElements.keySet().stream().forEach(e -> compoundSymbols += e.getElementSymbol() + compoundElements.get(e));
+        compoundSymbols = compoundSymbols.replaceAll("1", "");
     }
 }

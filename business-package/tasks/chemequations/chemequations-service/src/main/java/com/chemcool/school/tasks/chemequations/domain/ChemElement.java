@@ -9,6 +9,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+/**
+ * Entity химического элемента
+ *
+ * @version 1.0
+ * @autor Евгений Жиленков
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,6 +23,7 @@ import javax.persistence.Table;
 @Table(name = "chemistry_element")
 public class ChemElement {
 
+    //id элемента в бд
     @Id
     @Column(name = "element_id")
     private String elementId;

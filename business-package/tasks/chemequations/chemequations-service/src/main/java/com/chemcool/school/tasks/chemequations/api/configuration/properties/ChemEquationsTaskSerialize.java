@@ -9,6 +9,12 @@ import org.apache.kafka.common.serialization.Serializer;
 
 import java.util.Map;
 
+/**
+ * Сериализатор событий для Kafka
+ *
+ * @version 1.0
+ * @autor Евгений Жиленков
+ */
 @Slf4j
 public class ChemEquationsTaskSerialize implements Serializer<ChemCompoundEvent> {
 
@@ -20,9 +26,9 @@ public class ChemEquationsTaskSerialize implements Serializer<ChemCompoundEvent>
 
     @Override
     public byte[] serialize(String s, ChemCompoundEvent event) {
-        try{
+        try {
             return mapper.writeValueAsBytes(event);
-        } catch (JsonProcessingException exception){
+        } catch (JsonProcessingException exception) {
             log.error("Unable to serialize object {}", event, exception);
             return null;
         }
