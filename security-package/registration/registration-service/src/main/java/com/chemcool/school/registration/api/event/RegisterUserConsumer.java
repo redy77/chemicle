@@ -21,7 +21,7 @@ public class RegisterUserConsumer {
     private final RegisterUserEventService registerUserEventService;
     private final RegisterUserService registerUserService;
 
-    private static final String TOPIC = "registration_users";
+    private static final String TOPIC = "registration-users";
 
     @KafkaListener(topics = TOPIC)
     @KafkaHandler
