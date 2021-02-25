@@ -18,7 +18,7 @@ public class ChemistryTheoryRestController {
 
     @PostMapping(value = "/create")
     @ApiOperation("Создает главу для сущность урока по химии.")
-    @ResponseBody
+    @ResponseBody //зачем если это рестконтроллер?
     public String createLessonExample(
             @RequestBody TheoryDto theoryDto
     ) {
@@ -50,6 +50,7 @@ public class ChemistryTheoryRestController {
     @GetMapping("/hello")
     public String hello() {
         return "Hello World!";
+        //а зачем здесь этот контроллер?...
     }
 
 
