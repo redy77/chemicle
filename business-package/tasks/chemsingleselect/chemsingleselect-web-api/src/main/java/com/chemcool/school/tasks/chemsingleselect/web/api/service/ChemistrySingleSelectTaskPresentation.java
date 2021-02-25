@@ -1,38 +1,13 @@
-package com.chemcool.school.tasks.chemsingleselect.web.api.service;
-
-import com.chemcool.school.tasks.chemsingleselect.web.api.dto.ChemistrySingleSelectTaskDto;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-
-@Service
-@RequiredArgsConstructor
-public class ChemistrySingleSelectTaskPresentation {
-
-    private final ChemistrySingleSelectTaskServiceLayer serviceLayer;
-
-    public ChemistrySingleSelectTaskDto getTaskDtoById(String id) {
-        return serviceLayer.getTaskDtoById(id);
-    }
-
-    public List<ChemistrySingleSelectTaskDto> getAllTasks() {
-        return serviceLayer.getAllTasks();
-    }
-
-    public List<ChemistrySingleSelectTaskDto> getAllTasksByChapterId(int chapterId) {
-        return serviceLayer.getAllTasksByChapterId(chapterId);
-    }
-
-    public String add(ChemistrySingleSelectTaskDto dto) {
-        return serviceLayer.add(dto);
-    }
-
-    public void update(ChemistrySingleSelectTaskDto dto) {
-        serviceLayer.update(dto);
-    }
-
-    public void deleteById(String id) {
-        serviceLayer.deleteById(id);
-    }
-}
+<component name="libraryTable">
+  <library name="Maven: org.hibernate:hibernate-jcache:5.4.22.Final">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-jcache/5.4.22.Final/hibernate-jcache-5.4.22.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-jcache/5.4.22.Final/hibernate-jcache-5.4.22.Final-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-jcache/5.4.22.Final/hibernate-jcache-5.4.22.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

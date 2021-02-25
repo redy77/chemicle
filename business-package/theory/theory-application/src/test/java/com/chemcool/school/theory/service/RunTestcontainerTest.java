@@ -43,13 +43,13 @@ public class RunTestcontainerTest {
     }
 
     @Test
-    @DisplayName("Проверка запуска контейнера Postgres")
+    @DisplayName("check run postgres testcontainer")
     void isRunningPostgreSQLContainer() {
         assertTrue(postgreSQLContainer.isRunning());
     }
 
     @Test
-    @DisplayName("Проверка запуска контейнера Kafka")
+    @DisplayName("check run kafka testcontainer")
     void isRunningKafkaContainer() {
         assertTrue(kafka.isRunning());
     }
