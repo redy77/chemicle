@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "embedded.postgresql.enabled",
+      "type": "java.lang.String",
+      "description": "Description for embedded.postgresql.enabled."
+  }
+] }
