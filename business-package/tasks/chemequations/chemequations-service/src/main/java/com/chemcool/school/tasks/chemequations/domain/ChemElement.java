@@ -39,12 +39,26 @@ public class ChemElement {
     @Column(name = "element_symbol")
     private String elementSymbol;
 
+    //транскрипция элемента на русском
+    @Column(name = "element_transcription")
+    private String ElementTranscription;
+
+
     //наименование элемента
     @Column(name = "element_name")
     private String elementName;
 
+    //наименование элемента на латинском
+    @Column(name = "element_lat_name")
+    private String elementLatName;
+
+    //молярная масса элемента
     @Column(name = "element_molar_mass")
     private double elementMolarMass;
+
+    //степень окисления элемента
+    @Column(name = "element_oxidation_value")
+    private String elementOxidationValue;
 
     //Периоды  –  горизонтальные строки химических элементов
     //Номер периода  –  номер внешнего энергетического уровня в электронной формуле атома элемента
@@ -66,7 +80,6 @@ public class ChemElement {
     private String elementValence;
 
 
-
     public int getElementLowValence() {
         return 8 - elementGroup;
     }
@@ -75,7 +88,11 @@ public class ChemElement {
         return elementGroup;
     }
 
-    public int getElementValence() {
-        return elementGroup > 4 ? getElementLowValence() : getElementHighValence();
+    public String getElementValence() {
+        if (elementValence.contains("-1")) {
+            int val = elementGroup > 4 ? getElementLowValence() : getElementHighValence();
+            return String.valueOf(val);
+        }
+        return elementValence;
     }
 }
