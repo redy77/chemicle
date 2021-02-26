@@ -15,8 +15,3 @@ spring:
         multiplier: 1.1
         max-attempts: 50
         max-interval: 1000
-
-eureka:
-  client:
-    service-url:
-      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE}
