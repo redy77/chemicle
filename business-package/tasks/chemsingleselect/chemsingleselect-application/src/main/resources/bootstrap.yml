@@ -3,9 +3,12 @@ spring:
     name: tasks-chemsingleselect-application
   cloud:
     config:
-      uri: http://localhost:8888 #todo в тестовом примере вместо localhost было config:8888
+      name: tasks-chemsingleselect-application
+      discovery:
+        enabled: true
+        service-id: config-service
       fail-fast: true
-      password: ${CONFIG_SERVICE_PASSWORD}
-      username: ${CONFIG_SERVICE_USER}
+      password: ${SPRING_CLOUD_CONFIG_USERNAME}
+      username: ${SPRING_CLOUD_CONFIG_PASSWORD}
       test:
         message: Это тестовое сообщение для проверки работы Spring Cloud Config Server храниться в файле bootstrap.yml в модуле chemsingleselect-application
