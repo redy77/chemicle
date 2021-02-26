@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GeneralExceptionHandler {
 
-  private String message;
+    private String message;
 
-  public GeneralExceptionHandler(Exception exception) {
-    this.message = exception.getMessage();
-  }
+    public GeneralExceptionHandler(Exception exception) {
+        this.message = exception.getMessage();
+    }
 
 }

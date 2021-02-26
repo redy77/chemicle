@@ -1,7 +1,6 @@
 package com.chemcool.school.tasks.chemsingleselect.web.api.controllers;
 
 import com.chemcool.school.tasks.chemsingleselect.web.api.dto.ChemistrySingleSelectTaskDto;
-import com.chemcool.school.tasks.chemsingleselect.web.api.service.ChemistrySingleSelectTaskPresentation;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
