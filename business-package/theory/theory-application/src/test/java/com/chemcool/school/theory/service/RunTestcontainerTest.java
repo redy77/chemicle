@@ -26,9 +26,6 @@ public class RunTestcontainerTest {
             .withUsername("postgresTest")
             .withPassword("postgres");
 
-    @Container
-    public static KafkaContainer kafka = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:5.4.3"));
-
     @BeforeAll
     static void runMigrations() {
         Flyway flyway = Flyway.configure()
@@ -46,12 +43,6 @@ public class RunTestcontainerTest {
     @DisplayName("check run postgres testcontainer")
     void isRunningPostgreSQLContainer() {
         assertTrue(postgreSQLContainer.isRunning());
-    }
-
-    @Test
-    @DisplayName("check run kafka testcontainer")
-    void isRunningKafkaContainer() {
-        assertTrue(kafka.isRunning());
     }
 
     public static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
