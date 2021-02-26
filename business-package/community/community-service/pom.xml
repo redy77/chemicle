@@ -16,7 +16,6 @@
     <properties>
         <java.version>15</java.version>
     </properties>
-
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
         <dependency>
