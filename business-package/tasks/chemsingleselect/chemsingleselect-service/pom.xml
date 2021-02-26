@@ -18,7 +18,7 @@
         <hibernate-core.version>5.4.22.Final</hibernate-core.version>
         <lombok.version>1.18.16</lombok.version>
         <postgresql.version>42.2.5</postgresql.version>
-        <spring.boot.version>2.3.3.RELEASE</spring.boot.version>
+        <spring.boot.version>2.3.5.RELEASE</spring.boot.version>
         <vladmihalcea.version>2.3.4</vladmihalcea.version>
     </properties>
 

@@ -9,7 +9,7 @@
     <artifactId>authorization</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
-    <name>${artifactId}-${version}</name>
+    <name>${project.artifactId}-${project.version}</name>
 
     <properties>
         <java.version>11</java.version>
