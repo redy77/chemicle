@@ -1,13 +1,18 @@
-<component name="libraryTable">
-  <library name="Maven: org.glassfish.jaxb:jaxb-runtime:2.4.0-b180830.0438">
-    <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/glassfish/jaxb/jaxb-runtime/2.4.0-b180830.0438/jaxb-runtime-2.4.0-b180830.0438.jar!/" />
-    </CLASSES>
-    <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/org/glassfish/jaxb/jaxb-runtime/2.4.0-b180830.0438/jaxb-runtime-2.4.0-b180830.0438-javadoc.jar!/" />
-    </JAVADOC>
-    <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/glassfish/jaxb/jaxb-runtime/2.4.0-b180830.0438/jaxb-runtime-2.4.0-b180830.0438-sources.jar!/" />
-    </SOURCES>
-  </library>
-</component>
+package com.chemcool.school.tasks.chemsingleselect.web.api.exception;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class GeneralExceptionHandler {
+
+  private String message;
+
+  public GeneralExceptionHandler(Exception exception) {
+    this.message = exception.getMessage();
+  }
+
+}
