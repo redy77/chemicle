@@ -1,6 +1,7 @@
 package com.chemcool.school.registration.service;
 
 import com.chemcool.school.registration.domain.RegisterUserEvent;
+import com.chemcool.school.registration.exception.RegisterUserDefinitionException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
@@ -14,7 +15,8 @@ import java.util.UUID;
 public class RegisterUserEventNotificationServiceImpl implements RegisterUserEventNotificationService {
 
     private final KafkaTemplate<String, RegisterUserEvent> kafkaTemplate;
-    private static final String TOPIC = "user-registration";
+
+    private static final String TOPIC = "registration-users";
 
     @Override
     public void send(RegisterUserEvent event) {
@@ -22,7 +24,7 @@ public class RegisterUserEventNotificationServiceImpl implements RegisterUserEve
                 UUID.randomUUID().toString(), event);
 
         if (future.isCancelled()) {
-            throw new RuntimeException("Произошла ошибка при записи в кафку");
+            throw new RegisterUserDefinitionException("Произошла ошибка при записи в кафку");
         }
         kafkaTemplate.flush();
     }
