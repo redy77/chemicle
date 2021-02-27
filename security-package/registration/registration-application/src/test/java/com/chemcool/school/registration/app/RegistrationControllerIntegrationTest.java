@@ -18,7 +18,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
 @SpringBootTest(classes = {RegistrationApplication.class})
 @AutoConfigureMockMvc
 public class RegistrationControllerIntegrationTest extends ContainerConfigurationTest {
@@ -37,7 +36,7 @@ public class RegistrationControllerIntegrationTest extends ContainerConfiguratio
     String city = "Texas";
     String phone = "+18995556677";
     String email = "tom@mail.com";
-    String password = "159753456";
+    String password = "15975Aw!";
 
     RegisterUserDto registerUserDto = new RegisterUserDto(
             nick, name, surname, city, phone, email, password

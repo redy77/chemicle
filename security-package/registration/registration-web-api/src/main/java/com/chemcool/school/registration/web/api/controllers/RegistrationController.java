@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -13,26 +14,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping()
 public class RegistrationController {
 
-    private final PasswordEncoder passwordEncoder;
     private final RegisterUserPresentation registerUserPresentation;
 
     @Autowired
-    public RegistrationController(PasswordEncoder passwordEncoder,
-                                  RegisterUserPresentation registerUserPresentation) {
-
-        this.passwordEncoder = passwordEncoder;
+    public RegistrationController(RegisterUserPresentation registerUserPresentation) {
         this.registerUserPresentation = registerUserPresentation;
     }
 
     @ApiOperation("Регистрация нового пользователя")
     @PostMapping("/registration")
     @ResponseBody
-    public String createUser(@RequestBody RegisterUserDto registerUserDto) {
+    public String createUser(@Validated @RequestBody RegisterUserDto registerUserDto) {
 
         log.info("Вызван контроллер для регистрации нового пользователя c email: "
                 + "[" + registerUserDto.getEmail() + "]");
-
-        registerUserDto.setPassword(passwordEncoder.encode(registerUserDto.getPassword()));
         return registerUserPresentation.add(registerUserDto);
     }
 }

@@ -1,11 +1,14 @@
 package com.chemcool.school.registration.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Data
@@ -13,31 +16,44 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
-@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class RegisterUser {
 
     @Id
     @Column(name = "id", unique = true)
     private String id;
 
+    @NonNull
+    @NotEmpty
     @Column(name = "nick")
     private String nick;
 
+    @NonNull
+    @NotEmpty
     @Column(name = "name")
     private String name;
 
+    @NonNull
+    @NotEmpty
     @Column(name = "surname")
     private String surname;
 
+    @NonNull
+    @NotEmpty
     @Column(name = "city")
     private String city;
 
+    @NonNull
+    @NotEmpty
     @Column(name = "phone")
     private String phone;
 
+    @NotNull
+    @NotEmpty
+    @Email
     @Column(name = "email", unique = true)
     private String email;
 
+    @NonNull
     @Column(name = "password")
     private String password;
 
