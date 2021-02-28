@@ -13,8 +13,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan("com.chemcool.school.tasks.chemsingleselect")
 @EnableJpaRepositories("com.chemcool.school.tasks.chemsingleselect")
 @EnableEurekaClient
-public class ChemSingleSelectTasksApplication {
+public class ChemSingleSelectApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ChemSingleSelectTasksApplication.class, args);
+        SpringApplication.run(ChemSingleSelectApplication.class, args);
     }
 }
