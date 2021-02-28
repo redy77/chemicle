@@ -62,7 +62,7 @@ services:
       - SPRING_PROFILES_ACTIVE=default
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
     volumes:
-      - ../../../../test_sercets:/run/secrets
+      - ../../../../test_secrets:/run/secrets
     links:
       - service-discovery
     depends_on:
@@ -70,7 +70,7 @@ services:
 
   chemsingleselect:
     image: chemsingleselect
-    container_name: chemmatches
+    container_name: chemsingleselect
     build:
       context: ../../business-package/tasks/chemsingleselect
       dockerfile: Dockerfile
@@ -78,7 +78,7 @@ services:
       - SPRING_PROFILES_ACTIVE=default
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
     volumes:
-    - ../../../../test_sercets:/run/secrets
+    - ../../../../test_secrets:/run/secrets
     links:
       - service-discovery
     depends_on:
