@@ -1,6 +1,5 @@
 spring:
-  application:
-    name: registration-application
+
   jpa:
     database: postgresql
     show-sql: true
@@ -8,8 +7,8 @@ spring:
       ddl-auto: update
   datasource:
     url: jdbc:postgresql://localhost:5432/users
-    username: postgres
-    password: root
+    username: mick
+    password: mick
     platform: postgres
     driver-class-name: org.postgresql.Driver
 

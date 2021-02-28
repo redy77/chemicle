@@ -1,7 +1,0 @@
-#!/bin/bash
-
-up_command=$(docker-compose up -d)
-show_command=$(docker-compose ps -a)
-#echo $up_command
-echo "==================================================================="
-#echo $show_command
