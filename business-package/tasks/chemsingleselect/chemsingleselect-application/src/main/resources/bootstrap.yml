@@ -1,9 +1,9 @@
 spring:
   application:
-    name: tasks-chemsingleselect-application
+    name: chemsingleselect-application
   cloud:
     config:
-      name: tasks-chemsingleselect-application
+      name: chemsingleselect-application
       discovery:
         enabled: true
         service-id: config-service
