@@ -12,6 +12,7 @@ public class RegisterUserExample {
     private String userExampleNick;
     private String userExampleName;
     private String userExampleSurname;
+    private RegisterUserGender userExampleGender;
     private String userExampleCity;
     private String userExamplePhone;
     private String userExampleEmail;

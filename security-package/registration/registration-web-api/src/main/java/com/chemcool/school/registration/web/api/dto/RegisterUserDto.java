@@ -1,6 +1,7 @@
 package com.chemcool.school.registration.web.api.dto;
 
 import com.chemcool.school.registration.annotations.ValidPassword;
+import com.chemcool.school.registration.domain.RegisterUserGender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +27,8 @@ public class RegisterUserDto {
     @NonNull
     @NotEmpty
     private String surname;
+
+    private RegisterUserGender gender;
 
     @NonNull
     @NotEmpty
