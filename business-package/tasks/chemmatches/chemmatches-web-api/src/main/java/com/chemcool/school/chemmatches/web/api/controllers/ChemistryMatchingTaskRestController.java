@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1.0/tasks/matching")
+@RequestMapping("/v1.0")
 @RequiredArgsConstructor
 public class ChemistryMatchingTaskRestController {
     private final ChemistryMatchingTaskPresentation presentation;
@@ -30,7 +30,7 @@ public class ChemistryMatchingTaskRestController {
     @ApiOperation("Создает новую сущность задания типа \"matching(сопоставления)\" по химии.")
     @ResponseBody
     public String createNewTask(@RequestBody ChemistryMatchingTaskDto task) {
-        return "New task UUID: " + presentation.add(task);
+        return presentation.add(task);
     }
 
     @PutMapping
