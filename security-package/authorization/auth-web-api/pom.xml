@@ -10,7 +10,7 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>auth-web</artifactId>
+    <artifactId>auth-web-api</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
     <name>${project.artifactId}-${project.version}</name>
@@ -22,12 +22,6 @@
     </properties>
 
     <dependencies>
-<!--        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring.boot.version}</version>
-        </dependency>-->
-
         <dependency>
             <groupId>com.chemcool.school.authorization</groupId>
             <artifactId>auth-service</artifactId>

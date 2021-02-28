@@ -26,7 +26,7 @@
     <dependencies>
         <dependency>
             <groupId>com.chemcool.school.authorization</groupId>
-            <artifactId>auth-web</artifactId>
+            <artifactId>auth-web-api</artifactId>
             <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>
@@ -48,14 +48,6 @@
             <artifactId>flyway-core</artifactId>
             <version>${flayway.version}</version>
         </dependency>
-<!--        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>${spring.boot.version}</version>
-            <scope>compile</scope>
-        </dependency>-->
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
     </dependencies>
 
     <build>

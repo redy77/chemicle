@@ -25,7 +25,7 @@ eureka:
 
 kafka:
   server: http://localhost:9092
-  groupId: authorization-user-event.2
+  groupId: registration.2
 
 
 user:
