@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: authorization-application
   jpa:
     database: postgresql
     show-sql: true
