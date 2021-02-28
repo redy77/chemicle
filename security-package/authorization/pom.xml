@@ -39,21 +39,6 @@
                 <scope>import</scope>
             </dependency>
 
-<!--            <dependency>
-                <groupId>com.chemcool.school.authorization</groupId>
-                <artifactId>auth-service</artifactId>
-                <version>${authorization.modules.version}</version>
-                <type>jar</type>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.chemcool.school.authorization</groupId>
-                <artifactId>authorization-web</artifactId>
-                <version>${authorization.modules.version}</version>
-                <type>jar</type>
-                <scope>provided</scope>
-            </dependency>-->
-
         </dependencies>
     </dependencyManagement>
 
@@ -71,7 +56,7 @@
     <modules>
         <module>auth-app</module>
         <module>auth-service</module>
-        <module>auth-web</module>
+        <module>auth-web-api</module>
     </modules>
 
 </project>

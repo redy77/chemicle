@@ -1,7 +1,7 @@
 package com.chemcool.school.auth.service.config.properties;
 
 
-import com.chemcool.school.auth.service.domain.UserWithRegistrationEvent;
+import com.chemcool.school.auth.service.domain.RegisterUserEvent;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -11,7 +11,7 @@ import org.apache.kafka.common.serialization.Serializer;
 import java.util.Map;
 
 @Slf4j
-public class UserSerializer implements Serializer<UserWithRegistrationEvent> {
+public class UserSerializer implements Serializer<RegisterUserEvent> {
 
 
     private final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());;
@@ -22,7 +22,7 @@ public class UserSerializer implements Serializer<UserWithRegistrationEvent> {
     }
 
     @Override
-    public byte[] serialize(String s, UserWithRegistrationEvent event) {
+    public byte[] serialize(String s, RegisterUserEvent event) {
         try {
             return mapper.writeValueAsBytes(event);
         } catch (JsonProcessingException exception) {

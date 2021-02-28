@@ -19,32 +19,32 @@ import java.time.LocalDateTime;
         @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 )
 @Table(name = "users_registration_event")
-public class UserWithRegistrationEvent {
+public class RegisterUserEvent {
 
     @Id
     @Column(name = "user_registration_event_id")
     private String eventId;
 
     @Column(name = "user_registration_event_author_id")
-    private String eventAuthorId;
+    private String authorId;
 
     @Column(name = "user_registration_event_occurring_context")
-    private String eventOccuringContext;
+    private String occurringContext;
 
     @Column(name = "user_registration_event_occurring_context_time")
-    private LocalDateTime eventOccuringContextTime;
+    private LocalDateTime occurringContextTime;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "user_registration_event_type")
-    private UserWithRegistrationEventType eventType;
+    private RegisterUserEventType eventType;
 
     @Column(name = "user_registration_event_version")
     private String eventVersion;
 
     @Column(name = "user_registration_event_entity_id")
-    private String eventEntityId;
+    private String entityId;
 
     @Type(type = "jsonb")
     @Column(name = "user_registration_event_payload", columnDefinition = "jsonb")
-    private UserWithRegistration eventPayload;
+    private RegisterUser payload;
 }

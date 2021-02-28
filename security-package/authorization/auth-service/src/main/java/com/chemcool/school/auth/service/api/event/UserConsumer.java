@@ -1,6 +1,6 @@
 package com.chemcool.school.auth.service.api.event;
 
-import com.chemcool.school.auth.service.domain.UserWithRegistrationEvent;
+import com.chemcool.school.auth.service.domain.RegisterUserEvent;
 import com.chemcool.school.auth.service.service.UserRegistrationEventService;
 import com.chemcool.school.auth.service.service.UserRegistrationService;
 import lombok.RequiredArgsConstructor;
@@ -22,12 +22,12 @@ public class UserConsumer {
     private final UserRegistrationEventService userRegistrationEventService;
     private final UserRegistrationService userRegistrationService;
 
-    @KafkaListener(topics = "users-registration")
+    @KafkaListener(topics = "registration-users")
     @KafkaHandler
-    public void handleUserRegistration(ConsumerRecord<String, UserWithRegistrationEvent> record) {
-        UserWithRegistrationEvent event = record.value();
+    public void handleUserRegistration(ConsumerRecord<String, RegisterUserEvent> record) {
+        RegisterUserEvent event = record.value();
         log.info("Пойман журнал для логирования: ", event.getEventId());
         userRegistrationEventService.handleEvent(event);
-        userRegistrationService.handleTask(event.getEventPayload());
+        userRegistrationService.handleTask(event.getPayload());
     }
 }

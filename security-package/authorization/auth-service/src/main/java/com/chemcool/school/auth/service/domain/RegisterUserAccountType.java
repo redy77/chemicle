@@ -1,6 +1,6 @@
 package com.chemcool.school.auth.service.domain;
 
-public enum UserAccountType {
+public enum RegisterUserAccountType {
     BASE,
     PREMIUM
 }
