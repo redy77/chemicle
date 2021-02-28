@@ -33,13 +33,14 @@ public class RegistrationControllerIntegrationTest extends ContainerConfiguratio
     String nick = "Maverick";
     String name = "Tom";
     String surname = "Cruise";
+    RegisterUserGender gender = RegisterUserGender.MALE;
     String city = "Texas";
     String phone = "+18995556677";
     String email = "tom@mail.com";
     String password = "15975Aw!";
 
     RegisterUserDto registerUserDto = new RegisterUserDto(
-            nick, name, surname, city, phone, email, password
+            nick, name, surname, gender, city, phone, email, password
     );
 
     @Test
@@ -66,6 +67,7 @@ public class RegistrationControllerIntegrationTest extends ContainerConfiguratio
             assertThat(nick).isEqualTo(user.getNick());
             assertThat(name).isEqualTo(user.getName());
             assertThat(surname).isEqualTo(user.getSurname());
+            assertThat(gender).isEqualTo(user.getGender());
             assertThat(city).isEqualTo(user.getCity());
             assertThat(phone).isEqualTo(user.getPhone());
             assertThat(email).isEqualTo(user.getEmail());

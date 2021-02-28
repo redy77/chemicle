@@ -37,6 +37,9 @@ public class RegisterUser {
     @Column(name = "surname")
     private String surname;
 
+    @Column(name = "gender")
+    private RegisterUserGender gender;
+
     @NonNull
     @NotEmpty
     @Column(name = "city")
@@ -73,6 +76,7 @@ public class RegisterUser {
                 example.getUserExampleNick(),
                 example.getUserExampleName(),
                 example.getUserExampleSurname(),
+                example.getUserExampleGender(),
                 example.getUserExampleCity(),
                 example.getUserExamplePhone(),
                 example.getUserExampleEmail(),

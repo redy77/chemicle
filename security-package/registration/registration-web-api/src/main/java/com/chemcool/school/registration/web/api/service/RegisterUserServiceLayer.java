@@ -21,6 +21,7 @@ public class RegisterUserServiceLayer {
                         registerUserDto.getNick(),
                         registerUserDto.getName(),
                         registerUserDto.getSurname(),
+                        registerUserDto.getGender(),
                         registerUserDto.getCity(),
                         registerUserDto.getPhone(),
                         registerUserDto.getEmail(),
