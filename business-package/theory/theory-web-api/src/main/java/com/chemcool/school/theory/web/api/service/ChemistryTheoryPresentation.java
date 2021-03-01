@@ -1,7 +1,6 @@
 package com.chemcool.school.theory.web.api.service;
 
 import com.chemcool.school.theory.domain.ChemistryTheory;
-import com.chemcool.school.theory.domain.ChemistryTheoryExample;
 import com.chemcool.school.theory.web.api.dto.TheoryDto;
 import com.chemcool.school.theory.web.api.exception.ChemistryTheoryEmptyException;
 import lombok.RequiredArgsConstructor;

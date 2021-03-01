@@ -1,7 +1,5 @@
 package com.chemcool.school.theory.service;
 
-
-import com.chemcool.school.theory.domain.ChemistryTheory;
 import com.chemcool.school.theory.domain.ChemistryTheoryEvent;
 import com.chemcool.school.theory.storage.ChemistryTheoryEventJournal;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +11,6 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ChemistryTheoryEventService {
-
     private final ChemistryTheoryEventJournal journal;
 
     public void handleEvent(ChemistryTheoryEvent event){
