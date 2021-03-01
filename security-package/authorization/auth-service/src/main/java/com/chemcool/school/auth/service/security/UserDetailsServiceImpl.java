@@ -1,6 +1,6 @@
 package com.chemcool.school.auth.service.security;
 
-import com.chemcool.school.auth.service.domain.UserWithRegistration;
+import com.chemcool.school.auth.service.domain.RegisterUser;
 import com.chemcool.school.auth.service.storage.UserWithRegistrationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +15,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
-        UserWithRegistration user = userWithRegistrationRepository.findByEmail(userEmail);
+        RegisterUser user = userWithRegistrationRepository.findByEmail(userEmail);
         return UserDetailsImpl.fromUserWithRegistration(user);
     }
 }

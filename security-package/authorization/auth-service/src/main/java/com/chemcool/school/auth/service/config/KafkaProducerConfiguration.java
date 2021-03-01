@@ -3,7 +3,7 @@ package com.chemcool.school.auth.service.config;
 
 import com.chemcool.school.auth.service.config.properties.KafkaProperties;
 import com.chemcool.school.auth.service.config.properties.UserSerializer;
-import com.chemcool.school.auth.service.domain.UserWithRegistrationEvent;
+import com.chemcool.school.auth.service.domain.RegisterUserEvent;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -33,12 +33,12 @@ public class KafkaProducerConfiguration {
     }
 
     @Bean
-    public ProducerFactory<String, UserWithRegistrationEvent> producerFactory() {
+    public ProducerFactory<String, RegisterUserEvent> producerFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfig());
     }
 
     @Bean
-    public KafkaTemplate<String, UserWithRegistrationEvent> kafkaTemplate() {
+    public KafkaTemplate<String, RegisterUserEvent> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }

@@ -53,6 +53,11 @@ zuul:
       service-id: registration-application
       stripPrefix: false
 
+    authorization-application:
+      path: /authorization-application/**
+      service-id: authorization-application
+      stripPrefix: false
+
   ignored-services: '*'
   retryable: true
 

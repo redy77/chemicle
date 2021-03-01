@@ -5,11 +5,10 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.chemcool.school</groupId>
+    <groupId>com.chemcool.school.authorization</groupId>
     <artifactId>authorization</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <version>1.0.0</version>
-    <name>${artifactId}-${version}</name>
 
     <properties>
         <java.version>11</java.version>
@@ -17,8 +16,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-
-        <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
+        <authorization.modules.version>1.0.0</authorization.modules.version>
+        <spring.boot.version>2.3.3.RELEASE</spring.boot.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
     </properties>
 
@@ -28,7 +27,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <type>pom</type>
-                <version>${spring-boot.version}</version>
+                <version>${spring.boot.version}</version>
                 <scope>import</scope>
             </dependency>
 
@@ -39,6 +38,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -48,11 +48,15 @@
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring-boot.version}</version>
+                    <version>${spring.boot.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
-
+    <modules>
+        <module>auth-app</module>
+        <module>auth-service</module>
+        <module>auth-web-api</module>
+    </modules>
 
 </project>

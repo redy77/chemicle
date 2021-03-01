@@ -4,6 +4,7 @@ import com.chemcool.school.auth.service.security.JwtBuilder;
 import com.chemcool.school.auth.service.security.UserDetailsServiceImpl;
 import com.chemcool.school.auth.service.storage.UserWithRegistrationRepository;
 import com.chemcool.school.auth.web.api.dto.UserSendFromClient;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

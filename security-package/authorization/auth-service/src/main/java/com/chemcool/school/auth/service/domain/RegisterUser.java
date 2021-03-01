@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "users_registration")
-public class UserWithRegistration {
+public class RegisterUser {
     @Id
     @Column(name = "user_id")
     private String id;
@@ -16,14 +16,14 @@ public class UserWithRegistration {
     private String email;
 
     @Column(name = "user_nick_name")
-    private String nickname;
+    private String nick;
 
     @Column(name = "user_password")
     private String password;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "user_role")
-    private UserAccountRole role;
+    private RegisterUserAccountRole role;
 
     @Column(name = "user_name")
     private String name;
@@ -35,9 +35,9 @@ public class UserWithRegistration {
     private String city;
 
     @Column(name = "user_phone_number")
-    private String phoneNumber;
+    private String phone;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "user_account_type")
-    private UserAccountType userAccountType;
+    private RegisterUserAccountType type;
 }
