@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-//@RequestMapping({"/v1.0/lessons"})
 @RequestMapping({"/v1.0/theory"})
 @RequiredArgsConstructor
 public class ChemistryTheoryRestController {

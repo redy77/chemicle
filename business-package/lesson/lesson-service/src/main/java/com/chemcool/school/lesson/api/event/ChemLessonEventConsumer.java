@@ -28,6 +28,7 @@ public class ChemLessonEventConsumer {
         ChemistryLessonEvent event = record.value();
         log.info("Пойман журнал для логгирования: " + event.getEventId());
         eventService.handleEvent(event);
-        lessonPageService.save(event.getEvent_payload());
+        lessonPageService.save(event.getEventPayload());
     }
+
 }

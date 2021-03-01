@@ -19,19 +19,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping({"/v1.0/lessons"})
 @RequiredArgsConstructor
 public class LessonRestController {
-//
-//    private final ChemistryLessonPresentation presentation;
-//
-//
-//    @GetMapping("/getBy/{id}")
-//    public ChemistryLesson getTheoryExampleById(@PathVariable(name = "id") String id) {
-//        log.info("вызван контроллер для получения урока по id : " + "[" + id + "]");
-//        return presentation.getTheoryById(id);
-//    }
+
+    private final ChemistryLessonPresentation presentation;
+
+
 
     @GetMapping("/hello")
     public String hello() {
         return "Hello World!";
+    }
+
+    @GetMapping("/findTaskAndTheoryByChapter")
+    public ChemistryLesson findTaskAndTheoryByChapter(int chapter){
+        return presentation.findTaskAndTheoryByChapter(chapter);
+    }
+
+    @GetMapping("/findTaskAndTheoryByReferences")
+    public ChemistryLesson findTaskAndTheoryByReferences(int references){
+        return presentation.findTaskAndTheoryByReferences(references);
     }
 
 }
