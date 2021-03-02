@@ -6,11 +6,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 @ConfigurationProperties("kafka")
 public class KafkaProperties {
-//    server: http://localhost:9092
-//    chemistryLessonGroupId: chemistry-lesson.1
-//    chemFixedAnswerGroupId: chemistry-answer.1
-//    chemSingleSelectGroupId: chemistry-singleSelect.1
-//    theoryGroupId: theory.1
 
     private String server;
     private String chemistryLessonGroupId;

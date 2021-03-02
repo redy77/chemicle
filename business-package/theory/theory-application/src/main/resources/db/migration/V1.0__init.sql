@@ -15,5 +15,4 @@ create table if not exists chemistry_theory_page (
             theory_description varchar(10000),
             theory_chapter  integer not null,
             theory_references integer not null
-
 );
