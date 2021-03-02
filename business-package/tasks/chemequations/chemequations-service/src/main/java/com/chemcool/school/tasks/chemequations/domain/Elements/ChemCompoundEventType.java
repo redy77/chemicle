@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemequations.domain;
+package com.chemcool.school.tasks.chemequations.domain.Elements;
 
 
 /**
@@ -7,7 +7,7 @@ package com.chemcool.school.tasks.chemequations.domain;
  * @version 1.0
  * @autor Евгений Жиленков
  */
-public enum ChemCompoundEventType {
-    CREATE,
-    UPDATE
-}
+//public enum ChemCompoundEventType {
+//    CREATE,
+//    UPDATE
+//}

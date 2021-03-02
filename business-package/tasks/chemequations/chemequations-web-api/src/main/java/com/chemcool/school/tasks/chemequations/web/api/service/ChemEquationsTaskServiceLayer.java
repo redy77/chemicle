@@ -1,5 +1,8 @@
 package com.chemcool.school.tasks.chemequations.web.api.service;
 
+import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTask;
+import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTaskExample;
+import com.chemcool.school.tasks.chemequations.service.ChemEquationsTaskProxyService;
 import com.chemcool.school.tasks.chemequations.web.api.dto.ChemEquationsTaskDto;
 
 import lombok.AllArgsConstructor;
@@ -20,46 +23,45 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ChemEquationsTaskServiceLayer {
 
-//    private final ChemEquationsTaskProxyService proxyService;
-//
-//    public List<ChemEquationsTaskDto> getAllChemEquationsDto() {
-//        List<ChemEquationsTaskDto> list = new ArrayList<>();
-//        for (ChemEquationsTask task : proxyService.getAll()) {
-//            list.add(new ChemEquationsTaskDto(task));
-//        }
-//        return list;
-//    }
-//
-//    public Optional<ChemEquationsTask> getChemEquationsTaskById(String id) {
-//        return proxyService.getById(id);
-//    }
-//
-//    public String createNewChemEquationsTask(ChemEquationsTaskDto taskDto) {
-//        return proxyService.add(
-//                new ChemEquationsTaskExample(
-//                        taskDto.getDescription(),
-//                        taskDto.getEquations(),
-//                        taskDto.getRightAnswer(),
-//                        taskDto.getChapterId(),
-//                        taskDto.getReferenceId()
-//                )
-//        );
-//    }
-//
-//    public void updateChemEquationsTask(ChemEquationsTaskDto taskDto) {
-//        proxyService.update(
-//                new ChemEquationsTask(
-//                        taskDto.getTaskId(),
-//                        taskDto.getDescription(),
-//                        taskDto.getEquations(),
-//                        taskDto.getRightAnswer(),
-//                        taskDto.getChapterId(),
-//                        taskDto.getReferenceId()
-//                )
-//        );
-//    }
-//
-//    public void deleteChemEquationsTask(String id) {
-//        proxyService.deleteById(id);
-//    }
+    private final ChemEquationsTaskProxyService proxyService;
+
+    public List<ChemEquationsTaskDto> getAllChemEquationsDto() {
+        List<ChemEquationsTaskDto> list = new ArrayList<>();
+        for (ChemEquationsTask task : proxyService.getAll()) {
+            list.add(new ChemEquationsTaskDto(task));
+        }
+        return list;
+    }
+
+    public Optional<ChemEquationsTask> getChemEquationsTaskById(String id) {
+        return proxyService.getById(id);
+    }
+
+
+    public String createNewChemEquationsTask(ChemEquationsTaskDto taskDto) {
+        return proxyService.add(
+                new ChemEquationsTaskExample(
+                        taskDto.getDescription(),
+                        taskDto.getRightAnswer().replaceAll(" ",""),
+                        taskDto.getChapterId(),
+                        taskDto.getReferenceId()
+                )
+        );
+    }
+
+    public void updateChemEquationsTask(ChemEquationsTaskDto taskDto) {
+        proxyService.update(
+                new ChemEquationsTask(
+                        taskDto.getTaskId(),
+                        taskDto.getDescription(),
+                        taskDto.getRightAnswer().replaceAll(" ",""),
+                        taskDto.getChapterId(),
+                        taskDto.getReferenceId()
+                )
+        );
+    }
+
+    public void deleteChemEquationsTask(String id) {
+        proxyService.deleteById(id);
+    }
 }
