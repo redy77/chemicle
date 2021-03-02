@@ -1,8 +1,7 @@
 package com.chemcool.school.tasks.chemequations.storage;
 
-import com.chemcool.school.tasks.chemequations.domain.ChemCompoundEvent;
+import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTaskEvent;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 
 /**
@@ -12,5 +11,5 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  * @autor Евгений Жиленков
  */
 public interface ChemEquationsTaskEventJournal
-        extends JpaRepository<ChemCompoundEvent, String> {
+        extends JpaRepository<ChemEquationsTaskEvent, String> {
 }

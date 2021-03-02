@@ -1,6 +1,6 @@
 package com.chemcool.school.tasks.chemequations.service;
 
-import com.chemcool.school.tasks.chemequations.domain.ChemElement;
+import com.chemcool.school.tasks.chemequations.domain.Elements.ChemElement;
 import com.chemcool.school.tasks.chemequations.storage.ChemElementRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

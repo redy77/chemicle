@@ -1,9 +1,8 @@
-package com.chemcool.school.tasks.chemequations.domain;
+package com.chemcool.school.tasks.chemequations.domain.Elements;
 
 import com.chemcool.school.tasks.chemequations.exception.ChemEquationsTaskException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.*;
 

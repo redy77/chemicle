@@ -1,6 +1,6 @@
 package com.chemcool.school.tasks.chemequations.api.configuration.properties;
 
-import com.chemcool.school.tasks.chemequations.domain.ChemCompoundEvent;
+import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTaskEvent;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -16,7 +16,7 @@ import java.util.Map;
  * @autor Евгений Жиленков
  */
 @Slf4j
-public class ChemEquationsTaskSerialize implements Serializer<ChemCompoundEvent> {
+public class ChemEquationsTaskSerialize implements Serializer<ChemEquationsTaskEvent> {
 
     private final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
@@ -25,7 +25,7 @@ public class ChemEquationsTaskSerialize implements Serializer<ChemCompoundEvent>
     }
 
     @Override
-    public byte[] serialize(String s, ChemCompoundEvent event) {
+    public byte[] serialize(String s, ChemEquationsTaskEvent event) {
         try {
             return mapper.writeValueAsBytes(event);
         } catch (JsonProcessingException exception) {

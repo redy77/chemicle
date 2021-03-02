@@ -1,7 +1,7 @@
 package com.chemcool.school.tasks.chemequations.web.api.controllers;
 
-import com.chemcool.school.tasks.chemequations.domain.ChemCompound;
-import com.chemcool.school.tasks.chemequations.domain.ChemElement;
+import com.chemcool.school.tasks.chemequations.domain.Elements.ChemCompound;
+import com.chemcool.school.tasks.chemequations.domain.Elements.ChemElement;
 import com.chemcool.school.tasks.chemequations.service.ChemElementService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
