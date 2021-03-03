@@ -23,12 +23,10 @@ public class ChemEquationsRestControllerTest {
     private final ChemElementService elementService;
     private ArrayList<ChemElement> elements;
 
-
     public ChemEquationsRestControllerTest(ChemElementService elementService) {
         this.elementService = elementService;
         this.elements = new ArrayList<>();
     }
-
 
     @GetMapping("/get")
     public String getSummary(String elementNumber) {
