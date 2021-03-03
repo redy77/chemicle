@@ -39,7 +39,7 @@ public class ChemEquationsTaskService {
         repository.deleteById(id);
     }
 
-    public boolean checkAnswer(String taskId,String userAnswer){
+    public boolean[] checkAnswer(String taskId,String userAnswer){
         return checkService.checkAnswer(repository.getOne(taskId).getRightAnswer(),userAnswer);
     }
 }
