@@ -5,6 +5,7 @@ import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTask;
 import com.chemcool.school.tasks.chemequations.web.api.dto.ChemEquationsTaskDto;
 
 import com.chemcool.school.tasks.chemequations.web.api.exeption.ApiWebRestControllerExceptionHandler;
+import com.chemcool.school.tasks.chemequations.web.api.exeption.ChemEquationsAnswerException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -47,19 +48,19 @@ public class ChemEquationsTaskPresentation {
     public void checkAnswer(String taskId, String userAnswer) {
         boolean[] test = serviceLayer.checkAnswer(taskId, userAnswer);
         if (!test[0]) {
-            new ApiWebRestControllerExceptionHandler();
             System.out.println("Ошибка 1");
+            throw new ChemEquationsAnswerException("Sos1");
         } else if (!test[1]) {
-            new ApiWebRestControllerExceptionHandler();
             System.out.println("Ошибка 2");
+            throw new ChemEquationsAnswerException("Sos2");
         } else if (!test[2]) {
-            new ApiWebRestControllerExceptionHandler();
             System.out.println("Ошибка 3");
+            throw new ChemEquationsAnswerException("Sos3");
         }
 
         if (!test[3]) {
-            new ApiWebRestControllerExceptionHandler();
             System.out.println("Ошибка 4");
+            throw new ChemEquationsAnswerException("Sos4");
         }
     }
 }
