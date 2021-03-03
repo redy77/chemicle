@@ -6,13 +6,10 @@
     <name>config-service</name>
     <description>Configuration Server</description>
 
-    <parent>
-        <artifactId>config-package</artifactId>
-        <groupId>com.chemcool.school</groupId>
-        <version>1.0.0</version>
-    </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.chemcool.school.config</groupId>
     <artifactId>config-service</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
