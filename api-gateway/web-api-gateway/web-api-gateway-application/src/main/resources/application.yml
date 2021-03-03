@@ -38,17 +38,12 @@ zuul:
       service-id: tasks-chemfixedanswer-application
       stripPrefix: false
 
-    tasks-chemequations-application:
-      path: /tasks-chemequations-application/**
-      service-id: tasks-chemequations-application
-      stripPrefix: false
-
     tasks-chemsingleselect-application:
       path: /tasks-chemsingleselect-application/**
       service-id: tasks-chemsingleselect-application
       stripPrefix: false
 
-    chemmatches-application:
+    tasks-chemmatches-application:
       path: /chemmatches-application/**
       service-id: chemmatches-application
       stripPrefix: false
@@ -56,6 +51,16 @@ zuul:
     registration-application:
       path: /registration-application/**
       service-id: registration-application
+      stripPrefix: false
+
+    authorization-application:
+      path: /authorization-application/**
+      service-id: authorization-application
+      stripPrefix: false
+
+    answers-task-application:
+      path: /answers-task-application/**
+      service-id: answers-task-application
       stripPrefix: false
 
   ignored-services: '*'
