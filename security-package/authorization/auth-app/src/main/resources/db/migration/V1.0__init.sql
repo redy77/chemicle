@@ -8,7 +8,6 @@ create table if not exists users_registration_event
     user_registration_event_occurring_context_time timestamp    not null,
     user_registration_event_payload                jsonb        not null,
     user_registration_event_type                   varchar(255) not null,
-    version                                        varchar(255) not null
 );
 
 create table if not exists users_registration
