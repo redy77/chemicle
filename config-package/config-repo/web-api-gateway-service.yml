@@ -58,6 +58,11 @@ zuul:
       service-id: authorization-application
       stripPrefix: false
 
+    answers-task-application:
+      path: /answers-task-application/**
+      service-id: answers-task-application
+      stripPrefix: false
+
   ignored-services: '*'
   retryable: true
 
