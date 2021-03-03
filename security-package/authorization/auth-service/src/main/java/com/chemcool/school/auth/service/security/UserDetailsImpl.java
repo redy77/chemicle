@@ -1,7 +1,7 @@
 package com.chemcool.school.auth.service.security;
 
-import com.chemcool.school.auth.service.domain.UserAccountRole;
-import com.chemcool.school.auth.service.domain.UserWithRegistration;
+import com.chemcool.school.auth.service.domain.RegisterUserAccountRole;
+import com.chemcool.school.auth.service.domain.RegisterUser;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +18,7 @@ public class UserDetailsImpl implements UserDetails {
     private String email;
     private String nickName;
     private String password;
-    private UserAccountRole role;
+    private RegisterUserAccountRole role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -50,8 +50,8 @@ public class UserDetailsImpl implements UserDetails {
         return true;
     }
 
-    public static UserDetails fromUserWithRegistration(UserWithRegistration user) {
-        return new UserDetailsImpl(user.getEmail(), user.getNickname(), user.getPassword(), user.getRole());
+    public static UserDetails fromUserWithRegistration(RegisterUser user) {
+        return new UserDetailsImpl(user.getEmail(), user.getNick(), user.getPassword(), user.getRole());
     }
 }
 
