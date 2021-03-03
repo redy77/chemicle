@@ -42,7 +42,7 @@ public class ChemEquationsTaskServiceLayer {
         return proxyService.add(
                 new ChemEquationsTaskExample(
                         taskDto.getDescription(),
-                        taskDto.getRightAnswer().replaceAll(" ",""),
+                        taskDto.getRightAnswer().replaceAll(" ", ""),
                         taskDto.getChapterId(),
                         taskDto.getReferenceId()
                 )
@@ -54,7 +54,7 @@ public class ChemEquationsTaskServiceLayer {
                 new ChemEquationsTask(
                         taskDto.getTaskId(),
                         taskDto.getDescription(),
-                        taskDto.getRightAnswer().replaceAll(" ",""),
+                        taskDto.getRightAnswer().replaceAll(" ", ""),
                         taskDto.getChapterId(),
                         taskDto.getReferenceId()
                 )
@@ -63,5 +63,9 @@ public class ChemEquationsTaskServiceLayer {
 
     public void deleteChemEquationsTask(String id) {
         proxyService.deleteById(id);
+    }
+
+    public boolean[] checkAnswer(String taskId, String userAnswer) {
+        return proxyService.checkAnswer(taskId, userAnswer.replaceAll(" ", ""));
     }
 }

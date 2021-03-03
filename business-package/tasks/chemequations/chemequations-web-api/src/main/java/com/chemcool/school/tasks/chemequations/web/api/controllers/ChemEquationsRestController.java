@@ -54,4 +54,9 @@ public class ChemEquationsRestController {
     public void deleteEquationsTask(@PathVariable String id) {
         presentation.deleteEquationsTask(id);
     }
+
+    @PostMapping("/checkAnswer")
+    public void checkAnswer(String taskId, String userAnswer) {
+        presentation.checkAnswer(taskId, userAnswer);
+    }
 }

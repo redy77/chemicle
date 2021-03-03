@@ -42,4 +42,9 @@ public class ChemEquationsTaskProxyService {
     public void deleteById(String id) {
         taskService.deleteById(id);
     }
+
+    public boolean[] checkAnswer(String taskId, String userAnswer) {
+        return taskService.checkAnswer(taskId, userAnswer);
+    }
+
 }

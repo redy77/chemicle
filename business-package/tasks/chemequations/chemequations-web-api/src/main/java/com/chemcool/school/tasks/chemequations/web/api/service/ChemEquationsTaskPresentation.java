@@ -4,6 +4,7 @@ package com.chemcool.school.tasks.chemequations.web.api.service;
 import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTask;
 import com.chemcool.school.tasks.chemequations.web.api.dto.ChemEquationsTaskDto;
 
+import com.chemcool.school.tasks.chemequations.web.api.exeption.ApiWebRestControllerExceptionHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -43,4 +44,22 @@ public class ChemEquationsTaskPresentation {
         serviceLayer.deleteChemEquationsTask(id);
     }
 
+    public void checkAnswer(String taskId, String userAnswer) {
+        boolean[] test = serviceLayer.checkAnswer(taskId, userAnswer);
+        if (!test[0]) {
+            new ApiWebRestControllerExceptionHandler();
+            System.out.println("Ошибка 1");
+        } else if (!test[1]) {
+            new ApiWebRestControllerExceptionHandler();
+            System.out.println("Ошибка 2");
+        } else if (!test[2]) {
+            new ApiWebRestControllerExceptionHandler();
+            System.out.println("Ошибка 3");
+        }
+
+        if (!test[3]) {
+            new ApiWebRestControllerExceptionHandler();
+            System.out.println("Ошибка 4");
+        }
+    }
 }
