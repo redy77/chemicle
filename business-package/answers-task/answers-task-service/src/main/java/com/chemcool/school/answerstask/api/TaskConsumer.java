@@ -1,4 +1,4 @@
-package com.chemcool.school.answerstask.tasks.chemfixedanswer.api;
+package com.chemcool.school.answerstask.api;
 
 import com.chemcool.school.answerstask.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskEvent;
 import com.chemcool.school.answerstask.tasks.chemfixedanswer.service.ChemFixedAnswerTaskEventService;
