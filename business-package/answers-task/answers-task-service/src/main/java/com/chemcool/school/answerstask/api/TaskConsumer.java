@@ -23,7 +23,7 @@ public class TaskConsumer {
     private final ChemFixedAnswerTaskEventService fixedAnswerTaskEventService;
     private final ChemistryMatchingTaskEventService matchingTaskEventService;
 
-    @KafkaListener(topics = "fixed-answer-task")
+    @KafkaListener(topics = "fixed-answer-task", containerFactory = "chemFixedAnswerKafkaListenerContainerFactory")
     @KafkaHandler
     public void handleChemFixedAnswerTask(ConsumerRecord<String, ChemFixedAnswerTaskEvent> record) {
         ChemFixedAnswerTaskEvent event = record.value();
@@ -31,7 +31,7 @@ public class TaskConsumer {
         fixedAnswerTaskEventService.handleEvent(event);
     }
 
-    @KafkaListener(topics = "tasks-matching")
+    @KafkaListener(topics = "tasks-matching", containerFactory = "matchingKafkaListenerContainerFactory")
     @KafkaHandler
     public void handleChemSingleSelectTask(ConsumerRecord<String, ChemistryMatchingTaskEvent> record) {
         ChemistryMatchingTaskEvent event = record.value();
