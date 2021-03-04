@@ -4,6 +4,8 @@ import com.chemcool.school.answerstask.tasks.chemfixedanswer.domain.ChemFixedAns
 import com.chemcool.school.answerstask.tasks.chemfixedanswer.service.ChemFixedAnswerTaskEventService;
 import com.chemcool.school.answerstask.tasks.chemmatches.domain.ChemistryMatchingTaskEvent;
 import com.chemcool.school.answerstask.tasks.chemmatches.service.ChemistryMatchingTaskEventService;
+import com.chemcool.school.answerstask.tasks.chemsingleselect.domain.ChemSingleSelectTaskEvent;
+import com.chemcool.school.answerstask.tasks.chemsingleselect.service.ChemSingleSelectTaskEventService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -22,6 +24,7 @@ public class TaskConsumer {
 
     private final ChemFixedAnswerTaskEventService fixedAnswerTaskEventService;
     private final ChemistryMatchingTaskEventService matchingTaskEventService;
+    private final ChemSingleSelectTaskEventService singleSelectTaskEventService;
 
     @KafkaListener(topics = "fixed-answer-task", containerFactory = "chemFixedAnswerKafkaListenerContainerFactory")
     @KafkaHandler
@@ -33,9 +36,17 @@ public class TaskConsumer {
 
     @KafkaListener(topics = "tasks-matching", containerFactory = "matchingKafkaListenerContainerFactory")
     @KafkaHandler
-    public void handleChemSingleSelectTask(ConsumerRecord<String, ChemistryMatchingTaskEvent> record) {
+    public void handleChemistryMatchingTask(ConsumerRecord<String, ChemistryMatchingTaskEvent> record) {
         ChemistryMatchingTaskEvent event = record.value();
         log.info("Пойман журнал для логирования: " + event.getChemistryMatchingTaskEventId());
         matchingTaskEventService.handleEvent(event);
+    }
+
+    @KafkaListener(topics = "tasks-single-select", containerFactory = "chemSingleSelectKafkaListenerContainerFactory")
+    @KafkaHandler
+    public void handleChemSingleSelectTask(ConsumerRecord<String, ChemSingleSelectTaskEvent> record) {
+        ChemSingleSelectTaskEvent event = record.value();
+        log.info("Пойман журнал для логирования: " + event.getTaskEventId());
+        singleSelectTaskEventService.handleEvent(event);
     }
 }
