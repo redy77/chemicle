@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: chemfixedanswer-application
   cloud:
     config:
       name: chemfixedanswer-application

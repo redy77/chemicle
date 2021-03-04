@@ -17,7 +17,7 @@ spring:
 server:
   port: 0
   servlet:
-    context-path: /tasks-chemfixedanswer-application/
+    context-path: /chemfixedanswer-application/
 
 eureka:
   client:
