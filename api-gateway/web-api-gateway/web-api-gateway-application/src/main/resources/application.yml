@@ -44,8 +44,8 @@ zuul:
       stripPrefix: false
 
     tasks-chemmatches-application:
-      path: /chemmatches-application/**
-      service-id: chemmatches-application
+      path: /tasks-chemmatches-application/**
+      service-id: tasks-chemmatches-application
       stripPrefix: false
 
     registration-application:
