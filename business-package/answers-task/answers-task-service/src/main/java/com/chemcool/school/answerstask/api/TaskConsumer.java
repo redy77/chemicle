@@ -1,5 +1,7 @@
 package com.chemcool.school.answerstask.api;
 
+import com.chemcool.school.answerstask.tasks.chemequitation.domain.ChemEquationsTaskEvent;
+import com.chemcool.school.answerstask.tasks.chemequitation.service.ChemEquationsTaskEventService;
 import com.chemcool.school.answerstask.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskEvent;
 import com.chemcool.school.answerstask.tasks.chemfixedanswer.service.ChemFixedAnswerTaskEventService;
 import com.chemcool.school.answerstask.tasks.chemmatches.domain.ChemistryMatchingTaskEvent;
@@ -25,6 +27,7 @@ public class TaskConsumer {
     private final ChemFixedAnswerTaskEventService fixedAnswerTaskEventService;
     private final ChemistryMatchingTaskEventService matchingTaskEventService;
     private final ChemSingleSelectTaskEventService singleSelectTaskEventService;
+    private final ChemEquationsTaskEventService equationsTaskEventService;
 
     @KafkaListener(topics = "fixed-answer-task", containerFactory = "chemFixedAnswerKafkaListenerContainerFactory")
     @KafkaHandler
@@ -48,5 +51,13 @@ public class TaskConsumer {
         ChemSingleSelectTaskEvent event = record.value();
         log.info("Пойман журнал для логирования: " + event.getTaskEventId());
         singleSelectTaskEventService.handleEvent(event);
+    }
+
+    @KafkaListener(topics = "equations-task", containerFactory = "chemeQuitationsKafkaListenerContainerFactory")
+    @KafkaHandler
+    public void handleChemEquationsTask(ConsumerRecord<String, ChemEquationsTaskEvent> record) {
+        ChemEquationsTaskEvent event = record.value();
+        log.info("Пойман журнал для логирования с ID: " + event.getEventId());
+        equationsTaskEventService.handleEvent(event);
     }
 }

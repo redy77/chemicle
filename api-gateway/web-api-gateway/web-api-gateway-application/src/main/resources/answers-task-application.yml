@@ -28,4 +28,4 @@ kafka:
   groupId1: fixed-answer-task.2
   groupId2: matching-task.2
   groupId3: tasks-single-select-service.2
-  groupId4: chemequitation.2
+  groupId4: equations-task.2
