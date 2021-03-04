@@ -12,9 +12,6 @@ public class ChemmathesCorrectAnswersService {
     private final ChemmathesCorrectAnswersRepository repository;
 
     public void saveCorrectAnswers(ChemistryMatchingTask task) {
-        ChemmathesCorrectAnswers chemmathesCorrectAnswers = new ChemmathesCorrectAnswers();
-        chemmathesCorrectAnswers.setId(task.getTaskId());
-        chemmathesCorrectAnswers.setCorrectCoupleForMatchingList(task.getCoupleForMatchingList());
-        repository.save(chemmathesCorrectAnswers);
+        repository.save(ChemmathesCorrectAnswers.createChemmathesCorrectAnswers(task));
     }
 }
