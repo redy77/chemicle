@@ -1,4 +1,4 @@
-package com.chemcool.school.answerstask.tasks.chemfixedanswer.kafkaConfig.properties;
+package com.chemcool.school.answerstask.api;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
