@@ -1,5 +1,6 @@
 package com.chemcool.school.answerstask.domain;
 
+import com.chemcool.school.answerstask.tasks.chemmatches.domain.ChemistryMatchingTask;
 import com.chemcool.school.answerstask.tasks.chemmatches.domain.CoupleForMatching;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,4 +22,8 @@ public class ChemmathesCorrectAnswers {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "task_id")
     private List<CoupleForMatching> correctCoupleForMatchingList;
+
+    public static ChemmathesCorrectAnswers createChemmathesCorrectAnswers(ChemistryMatchingTask task) {
+        return new ChemmathesCorrectAnswers(task.getTaskId(), task.getCoupleForMatchingList());
+    }
 }
