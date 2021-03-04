@@ -1,10 +1,10 @@
 package com.chemcool.school.answerstask.tasks.chemfixedanswer.kafkaConfig;
 
-import com.chemcool.school.answerstask.tasks.chemfixedanswer.kafkaConfig.properties.ChemFixedAnswerTaskDeserializer;
-import com.chemcool.school.answerstask.tasks.chemfixedanswer.kafkaConfig.properties.KafkaProperties;
+import com.chemcool.school.answerstask.api.KafkaProperties;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,7 @@ import java.util.Map;
 @Configuration
 @EnableConfigurationProperties(KafkaProperties.class)
 @RequiredArgsConstructor
-public class KafkaConsumerConfiguration {
+public class ChemFixedAnswerKafkaConsumerConfiguration {
 
     public static final String TRUSTED_PACKAGES =  "com.chemcool.school.answerstask.tasks.chemfixedanswer.domain";
 
@@ -37,6 +37,7 @@ public class KafkaConsumerConfiguration {
     }
 
     @Bean
+    @Qualifier("chemFixedAnswerKafkaListener")
     public KafkaListenerContainerFactory kafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, String> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();

@@ -1,4 +1,4 @@
-package com.chemcool.school.answerstask.tasks.chemfixedanswer.kafkaConfig.properties;
+package com.chemcool.school.answerstask.tasks.chemfixedanswer.kafkaConfig;
 
 import com.chemcool.school.answerstask.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskEvent;
 import com.fasterxml.jackson.databind.ObjectMapper;
