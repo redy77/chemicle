@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: chemmatches-application
   cloud:
     config:
       name: chemmatches-application
