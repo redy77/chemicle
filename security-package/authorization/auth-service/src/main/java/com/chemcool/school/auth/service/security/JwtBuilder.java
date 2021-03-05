@@ -1,5 +1,7 @@
 package com.chemcool.school.auth.service.security;
 
+import com.chemcool.school.auth.service.domain.RegisterUser;
+import com.chemcool.school.auth.service.storage.UserWithRegistrationRepository;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +22,7 @@ import java.util.Map;
 public class JwtBuilder {
 
     private final UserDetailsServiceImpl userDetailsService;
+    private final UserWithRegistrationRepository userWithRegistrationRepository;
 
     @Value("${user.jwt.validityTokenInMilliSeconds}")
     private String TOKEN_VALIDITY_PERIOD_IN_MILLI_SECONDS;
@@ -36,8 +39,11 @@ public class JwtBuilder {
     public String createTokens(String email) {
         Date now = new Date();
         Date date = new Date(now.getTime() + Integer.parseInt(TOKEN_VALIDITY_PERIOD_IN_MILLI_SECONDS));
-        return Jwts.builder()
-                .setSubject(email)
+        RegisterUser user = userWithRegistrationRepository.findByEmail(email);
+        Claims claims = Jwts.claims().setSubject(email);
+        claims.put("nick", user.getNick());
+        claims.put("role", user.getRole());
+        return Jwts.builder().setClaims(claims)
                 .setExpiration(date)
                 .signWith(SignatureAlgorithm.HS512, SECRET_KEY)
                 .compact();
