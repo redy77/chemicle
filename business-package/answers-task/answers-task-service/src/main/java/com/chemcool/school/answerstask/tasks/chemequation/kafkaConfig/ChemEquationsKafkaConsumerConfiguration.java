@@ -1,4 +1,4 @@
-package com.chemcool.school.answerstask.tasks.chemequitation.kafkaConfig;
+package com.chemcool.school.answerstask.tasks.chemequation.kafkaConfig;
 
 import com.chemcool.school.answerstask.api.KafkaProperties;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ import java.util.Map;
 @Configuration
 @EnableConfigurationProperties(KafkaProperties.class)
 @RequiredArgsConstructor
-public class ChemeQuitationsKafkaConsumerConfiguration {
+public class ChemEquationsKafkaConsumerConfiguration {
 
     public static final String TRUSTED_PACKAGES =  "com.chemcool.school.answerstask.tasks.chemequitation.domain";
 
@@ -29,7 +29,7 @@ public class ChemeQuitationsKafkaConsumerConfiguration {
         Map<String, Object> prop = new HashMap<>();
         prop.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServer());
         prop.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ChemeQuationsTaskDeserializer.class);
+        prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ChemEquationsTaskDeserializer.class);
         prop.put(JsonDeserializer.TRUSTED_PACKAGES, TRUSTED_PACKAGES);
         prop.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getGroupId4());
         return prop;

@@ -1,7 +1,6 @@
-package com.chemcool.school.answerstask.domain;
+package com.chemcool.school.answerstask.web.api.domain;
 
 import com.chemcool.school.answerstask.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
-import com.chemcool.school.answerstask.tasks.chemsingleselect.domain.ChemSingleSelectTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,8 +14,8 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table(name = "cmemesingleselect_correct_answers")
-public class ChemSingleSelectCorrectAnswers {
+@Table(name = "chemfixed_correct_answers")
+public class ChemFixedCorrectAnswers {
     @Id
     @Column(name = "task_id")
     String id;
@@ -24,7 +23,7 @@ public class ChemSingleSelectCorrectAnswers {
     @Column(name = "correct_answer")
     String correctAnswer;
 
-    public static ChemSingleSelectCorrectAnswers createChemSingleSelectCorrectAnswers(ChemSingleSelectTask task) {
-        return new ChemSingleSelectCorrectAnswers(task.getTaskId(), task.getCorrectAnswer());
+    public static ChemFixedCorrectAnswers createChemFixedCorrectAnswers(ChemFixedAnswerTask task) {
+        return new ChemFixedCorrectAnswers(task.getTaskId(), task.getRightAnswer());
     }
 }

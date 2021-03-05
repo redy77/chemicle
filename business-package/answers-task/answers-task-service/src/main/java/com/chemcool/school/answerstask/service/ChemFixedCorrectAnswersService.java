@@ -1,6 +1,6 @@
 package com.chemcool.school.answerstask.service;
 
-import com.chemcool.school.answerstask.domain.ChemFixedCorrectAnswers;
+import com.chemcool.school.answerstask.web.api.domain.ChemFixedCorrectAnswers;
 import com.chemcool.school.answerstask.storage.ChemFixedCorrectAnswersRepository;
 import com.chemcool.school.answerstask.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
 import lombok.RequiredArgsConstructor;
