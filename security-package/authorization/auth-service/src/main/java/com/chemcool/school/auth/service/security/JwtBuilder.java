@@ -18,7 +18,6 @@ import java.util.Map;
 
 @Component
 @RequiredArgsConstructor
-@PropertySource("classpath:application.yml")
 public class JwtBuilder {
 
     private final UserDetailsServiceImpl userDetailsService;
