@@ -1,4 +1,4 @@
-package com.chemcool.school.answerstask.tasks.chemequitation.domain;
+package com.chemcool.school.answerstask.tasks.chemequation.domain;
 
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.AllArgsConstructor;

@@ -2,15 +2,15 @@ package com.chemcool.school.answerstask.api;
 
 import com.chemcool.school.answerstask.service.ChemFixedCorrectAnswersService;
 import com.chemcool.school.answerstask.service.ChemSingleSelectCorrectAnswersService;
-import com.chemcool.school.answerstask.service.ChemmathesCorrectAnswersService;
-import com.chemcool.school.answerstask.service.CmemequitationСorrectAnswersService;
-import com.chemcool.school.answerstask.tasks.chemequitation.domain.ChemEquationsTaskEvent;
-import com.chemcool.school.answerstask.tasks.chemequitation.service.ChemEquationsTaskEventService;
-import com.chemcool.school.answerstask.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskEvent;
-import com.chemcool.school.answerstask.tasks.chemfixedanswer.service.ChemFixedAnswerTaskEventService;
+import com.chemcool.school.answerstask.tasks.chemequation.domain.ChemEquationsTaskEvent;
+import com.chemcool.school.answerstask.tasks.chemequation.service.ChemEquationsTaskEventService;
 import com.chemcool.school.answerstask.tasks.chemmatches.domain.ChemistryMatchingTaskEvent;
 import com.chemcool.school.answerstask.tasks.chemmatches.service.ChemistryMatchingTaskEventService;
 import com.chemcool.school.answerstask.tasks.chemsingleselect.domain.ChemSingleSelectTaskEvent;
+import com.chemcool.school.answerstask.service.ChemmathesCorrectAnswersService;
+import com.chemcool.school.answerstask.service.ChemEquationСorrectAnswersService;
+import com.chemcool.school.answerstask.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskEvent;
+import com.chemcool.school.answerstask.tasks.chemfixedanswer.service.ChemFixedAnswerTaskEventService;
 import com.chemcool.school.answerstask.tasks.chemsingleselect.service.ChemSingleSelectTaskEventService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +33,7 @@ public class TaskConsumer {
     private final ChemSingleSelectTaskEventService singleSelectTaskEventService;
     private final ChemEquationsTaskEventService equationsTaskEventService;
 
-    private final CmemequitationСorrectAnswersService cmemequitationСorrectAnswersService;
+    private final ChemEquationСorrectAnswersService chemEquationСorrectAnswersService;
     private final ChemmathesCorrectAnswersService chemmathesCorrectAnswersService;
     private final ChemFixedCorrectAnswersService chemFixedCorrectAnswersService;
     private final ChemSingleSelectCorrectAnswersService chemSingleSelectCorrectAnswersService;
@@ -72,6 +72,6 @@ public class TaskConsumer {
         ChemEquationsTaskEvent event = record.value();
         log.info("Пойман журнал для логирования с ID: " + event.getEventId());
         equationsTaskEventService.handleEvent(event);
-        cmemequitationСorrectAnswersService.saveCorrectAnswer(event.getEventPayload());
+        chemEquationСorrectAnswersService.saveCorrectAnswer(event.getEventPayload());
     }
 }

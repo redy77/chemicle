@@ -1,6 +1,6 @@
-package com.chemcool.school.answerstask.tasks.chemequitation.kafkaConfig;
+package com.chemcool.school.answerstask.tasks.chemequation.kafkaConfig;
 
-import com.chemcool.school.answerstask.tasks.chemequitation.domain.ChemEquationsTaskEvent;
+import com.chemcool.school.answerstask.tasks.chemequation.domain.ChemEquationsTaskEvent;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 @Slf4j
-public class ChemeQuationsTaskDeserializer implements Deserializer<ChemEquationsTaskEvent> {
+public class ChemEquationsTaskDeserializer implements Deserializer<ChemEquationsTaskEvent> {
 
     private final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
