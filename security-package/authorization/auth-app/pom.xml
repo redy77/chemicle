@@ -1,48 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.chemcool.school.tasks</groupId>
-        <artifactId>chemfixedanswer</artifactId>
+        <groupId>com.chemcool.school.authorization</groupId>
+        <artifactId>authorization</artifactId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>chemfixedanswer-application</artifactId>
+    <artifactId>auth-app</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}-${project.version}</name>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <spring.boot.version>2.3.3.RELEASE</spring.boot.version>
-        <start-class>com.chemcool.school.tasks.chemfixedanswer.app.ChemFixedAnswerApplication</start-class>
+        <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <spring.cloud.version>3.0.1</spring.cloud.version>
+        <spring.cloud.config.version>3.0.2</spring.cloud.config.version>
+        <flayway.version>5.2.3</flayway.version>
+        <start-class>com.chemcool.school.auth.app.AuthApplication</start-class>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>com.chemcool.school.tasks</groupId>
-            <artifactId>chemfixedanswer-web-api</artifactId>
+            <groupId>com.chemcool.school.authorization</groupId>
+            <artifactId>auth-web-api</artifactId>
+            <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <version>${spring.cloud.version}</version>
         </dependency>
-
-<!--        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
+            <version>${spring.cloud.config.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flayway.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

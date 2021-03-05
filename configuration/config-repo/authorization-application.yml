@@ -1,12 +1,13 @@
 spring:
-
+  application:
+    name: authorization-application
   jpa:
     database: postgresql
     show-sql: true
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/users
+    url: jdbc:postgresql://localhost:5432/users_autentication
     username: mick
     password: mick
     platform: postgres
@@ -15,7 +16,7 @@ spring:
 server:
   port: 0
   servlet:
-    context-path: /registration-application/
+    context-path: /authorization-application/
 
 eureka:
   client:
@@ -24,4 +25,12 @@ eureka:
 
 kafka:
   server: http://localhost:9092
-  groupId: registration.1
+  groupId: registration.2
+
+
+user:
+  jwt:
+    secretKey: chemcool
+    header: Authorization
+    validityTokenInMilliSeconds: 3600000
+    validityRefreshTokenInMilliSeconds: 72000000
