@@ -1,6 +1,7 @@
 package com.chemcool.school.tasks.chemequations.web.api.controllers;
 
 import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTask;
+import com.chemcool.school.tasks.chemequations.web.api.dto.ChemAnswerDto;
 import com.chemcool.school.tasks.chemequations.web.api.dto.ChemEquationsTaskDto;
 import com.chemcool.school.tasks.chemequations.web.api.service.ChemEquationsTaskPresentation;
 
@@ -11,14 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Контроллер взятый из модуля chemFixedAnswer(будет доработан)
- *
- * @version 1.0
- * @autor Иван Полещук
- */
+
 @RestController
-@RequestMapping("/v.1.0/tasks/equations")
+@RequestMapping("/equations/v.1.0")
 @RequiredArgsConstructor
 public class ChemEquationsRestController {
 
@@ -38,7 +34,7 @@ public class ChemEquationsRestController {
 
     @PostMapping
     @ApiOperation("Создает новую сущность задания типа \"Уравнения\" по химии")
-    public String saveNewEquationsTask(@RequestBody ChemEquationsTaskDto taskDto) {
+    public String saveNewEquationsTask(ChemEquationsTaskDto taskDto) {
         return presentation.createNewEquationsTask(taskDto);
     }
 
@@ -56,7 +52,7 @@ public class ChemEquationsRestController {
     }
 
     @PostMapping("/checkAnswer")
-    public void checkAnswer(String taskId, String userAnswer) {
-        presentation.checkAnswer(taskId, userAnswer);
+    public ChemAnswerDto checkAnswer(String taskId, String userAnswer) {
+        return presentation.checkAnswer(taskId, userAnswer);
     }
 }
