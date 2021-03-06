@@ -67,11 +67,17 @@ public class RegisterUser {
     @Enumerated(EnumType.STRING)
     private RegisterUserAccountRole role;
 
+    @Column(name = "verification_code")
+    private String verificationCode;
+
+    @Column(name = "enabled")
+    private boolean enabled;
+
     public static RegisterUser createUser(
             RegisterUserExample example
     ) {
         return new RegisterUser(
-                UUID.randomUUID().toString(),
+                example.getUserExampleId(),
                 example.getUserExampleName(),
                 example.getUserExampleSurname(),
                 example.getUserExampleBirthday(),
@@ -83,7 +89,9 @@ public class RegisterUser {
                 example.getUserExampleAuthProvider(),
                 example.getUserExampleProviderId(),
                 example.getUserExampleType(),
-                example.getUserExampleRole()
+                example.getUserExampleRole(),
+                example.getUserExampleVerificationCode(),
+                example.isUserExampleEnabled()
         );
     }
 

@@ -52,4 +52,10 @@ public class RegisterUser {
 
     @Column(name = "provider_id")
     private String providerId;
+
+    @Column(name = "verification_code")
+    private String verificationCode;
+
+    @Column(name = "enabled")
+    private boolean enabled;
 }

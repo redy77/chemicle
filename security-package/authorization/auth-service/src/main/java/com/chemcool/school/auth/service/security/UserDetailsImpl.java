@@ -1,12 +1,9 @@
 package com.chemcool.school.auth.service.security;
 
-import com.chemcool.school.auth.service.domain.RegisterUserAccountRole;
 import com.chemcool.school.auth.service.domain.RegisterUser;
-import lombok.AllArgsConstructor;
+import com.chemcool.school.auth.service.domain.RegisterUserAccountRole;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
@@ -17,18 +14,21 @@ import java.util.Map;
 
 @Data
 public class UserDetailsImpl implements OAuth2User, UserDetails {
+
     private String id;
     private String email;
     private String password;
+    private boolean isEnabled;
     private Collection<? extends GrantedAuthority> authorities;
     private Map<String, Object> attributes;
 
 
-    public UserDetailsImpl(String id, String email, String password, Collection<? extends GrantedAuthority> authorities) {
+    public UserDetailsImpl(String id, String email, String password, boolean isEnabled, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.authorities = authorities;
+        this.isEnabled = isEnabled;
     }
 
     public static UserDetailsImpl create(RegisterUser user) {
@@ -39,6 +39,7 @@ public class UserDetailsImpl implements OAuth2User, UserDetails {
                 user.getId(),
                 user.getEmail(),
                 user.getPassword(),
+                user.isEnabled(),
                 authorities
         );
     }
@@ -48,7 +49,6 @@ public class UserDetailsImpl implements OAuth2User, UserDetails {
         userDetailsImpl.setAttributes(attributes);
         return userDetailsImpl;
     }
-
 
     @Override
     public String getUsername() {
@@ -77,7 +77,7 @@ public class UserDetailsImpl implements OAuth2User, UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return isEnabled;
     }
 
     @Override
