@@ -9,6 +9,9 @@ import com.chemcool.school.answerstask.web.api.domain.TaskType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CheckUserAnswersService {
@@ -18,11 +21,24 @@ public class CheckUserAnswersService {
     private final ChemSingleSelectCorrectAnswersService chemSingleSelectCorrectAnswersService;
 
     public boolean checkUserAnswer(String taskId, TaskType taskType, String userAnswers) {
-        return true;
+        boolean resultCheckUSerAnswer = false;//эта переменная на случай если будут добавляться типы задач...
+        if (taskType.equals(TaskType.EQUATION)) {
+            resultCheckUSerAnswer = userAnswers.equals(chemEquationСorrectAnswersService.getCorrectAnswerByIdTask(taskId));
+        } else if (taskType.equals(TaskType.FIXED_ANSWER)) {
+            resultCheckUSerAnswer = userAnswers.equals(chemFixedCorrectAnswersService.getCorrectAnswerByIdTask(taskId));
+        } else if (taskType.equals(TaskType.SINGLE_SELECT)) {
+            resultCheckUSerAnswer = userAnswers.equals(chemSingleSelectCorrectAnswersService.getCorrectAnswerByIdTask(taskId));
+        }
+        return resultCheckUSerAnswer;
     }
 
-    public boolean checkUserAnswer(String taskId, TaskType taskType, CoupleForMatching coupleForMatching) {
+    public boolean checkUserAnswer(String taskId, List<CoupleForMatching> coupleForMatchingByUserList) {
+        List<CoupleForMatching> coupleForMatchingByDataBase = chemmathesCorrectAnswersService.getCorrectCouplesByIdTask(taskId);
+        Collections.sort(coupleForMatchingByUserList);
+        Collections.sort(coupleForMatchingByDataBase);
+        if (coupleForMatchingByUserList.equals(coupleForMatchingByDataBase)) {
+            return true;
+        }
         return false;
     }
-
 }

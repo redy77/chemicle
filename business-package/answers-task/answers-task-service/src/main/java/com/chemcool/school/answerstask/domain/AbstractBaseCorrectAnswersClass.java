@@ -1,6 +1,7 @@
-package com.chemcool.school.answerstask.web.api.domain;
+package com.chemcool.school.answerstask.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class AbstractBaseCorrectAnswersClass {
 
     @Id

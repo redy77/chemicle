@@ -1,6 +1,6 @@
 package com.chemcool.school.answerstask.storage;
 
-import com.chemcool.school.answerstask.web.api.domain.ChemEquationСorrectAnswers;
+import com.chemcool.school.answerstask.domain.ChemEquationСorrectAnswers;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

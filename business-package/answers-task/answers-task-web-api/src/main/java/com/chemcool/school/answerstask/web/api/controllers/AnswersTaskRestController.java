@@ -7,6 +7,8 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v.1.0/answers-task")
 @RequiredArgsConstructor
@@ -18,15 +20,12 @@ public class AnswersTaskRestController {
     @ApiOperation("Возвращает true или false ответ пользователю")
     public boolean checkAnswerUser(@PathVariable String taskId, @RequestParam TaskType taskType,
                                    @RequestParam(required = false) String userAnswers,
-                                   @RequestBody(required = false) CoupleForMatching coupleForMatching) {
-
-        boolean resultOfChecking = true;
+                                   @RequestBody(required = false) List<CoupleForMatching> coupleForMatchingList) {
 
         if (userAnswers != null) {
-            resultOfChecking = checkUserAnswersService.checkUserAnswer(taskId, taskType, userAnswers);
+            return checkUserAnswersService.checkUserAnswer(taskId, taskType, userAnswers);
         } else {
-            resultOfChecking = checkUserAnswersService.checkUserAnswer(taskId, taskType, coupleForMatching);
+            return checkUserAnswersService.checkUserAnswer(taskId, coupleForMatchingList);
         }
-        return resultOfChecking;
     }
 }
