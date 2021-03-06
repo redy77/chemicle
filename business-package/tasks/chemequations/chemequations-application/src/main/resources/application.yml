@@ -17,7 +17,7 @@ spring:
     locations: classpath:db.migration
 
 server:
-  port: 0
+  port: 9090
   servlet:
     context-path: /tasks-chemequations-application/
 
