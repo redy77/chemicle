@@ -30,5 +30,10 @@ zuul:
       service-id: registration-application
       stripPrefix: false
 
+    answers-task-application:
+      path: /answers-task-application/**
+      service-id: answers-task-application
+      stripPrefix: false
+
   ignored-services: '*'
   retryable: true
