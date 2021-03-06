@@ -26,13 +26,13 @@ import java.util.UUID;
 public class ChemFixedAnswerTaskEvent {
 
     @Id
-    @Column(name = "event_id")
+    @Column(name = "event_uuid")
     private String eventId;
 
     @Column(name = "event_author_id")
     private String eventAuthorId;
 
-    @Column(name = "event_occuring_comtext")
+    @Column(name = "event_occuring_context")
     private String eventOccuringContext;
 
     @Column(name = "event_occuring_context_time")
