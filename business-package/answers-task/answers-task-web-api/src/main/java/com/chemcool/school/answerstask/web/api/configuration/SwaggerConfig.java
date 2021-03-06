@@ -19,7 +19,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.chemcool.school.answerstask.web.api"))
-                .paths(regex("/answer-task-application.*"))
+                .paths(regex("/answers-task-application.*"))
                 .build();
     }
 }
