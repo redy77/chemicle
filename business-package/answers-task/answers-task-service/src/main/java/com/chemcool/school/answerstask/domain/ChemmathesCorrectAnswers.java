@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "chemmathes_correct_answers")
+@Table(name = "chem_mathes_correct_answers")
 public class ChemmathesCorrectAnswers {
     @Id
     @Column(name = "task_id")

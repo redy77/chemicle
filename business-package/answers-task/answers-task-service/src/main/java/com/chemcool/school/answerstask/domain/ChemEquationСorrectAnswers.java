@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @NoArgsConstructor
-@Table(name = "cmem_equation_correct_answers")
+@Table(name = "chem_equation_correct_answers")
 public class ChemEquationСorrectAnswers extends AbstractBaseCorrectAnswersClass{
 
     public ChemEquationСorrectAnswers(String taskId, String rightAnswer) {
