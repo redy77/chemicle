@@ -25,7 +25,7 @@ import java.time.LocalDateTime;
 public class ChemEquationsTaskEvent {
 
     @Id
-    @Column(name = "event_id")
+    @Column(name = "event_uuid")
     private String eventId;
 
     @Column(name = "event_author_id")
