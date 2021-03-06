@@ -4,10 +4,12 @@ import com.chemcool.school.registration.exception.ApiResponse;
 import com.chemcool.school.registration.exception.BadRequestException;
 import com.chemcool.school.registration.repository.RegisterUserRepository;
 import com.chemcool.school.registration.web.api.dto.RegisterUserDto;
-import com.chemcool.school.registration.web.api.service.RegisterUserPresentation;
+import com.chemcool.school.registration.web.api.service.VerificationEmailService;
 import io.swagger.annotations.ApiOperation;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -20,28 +22,29 @@ import java.net.URI;
 @RequestMapping("/auth")
 public class RegistrationController {
 
-    private final RegisterUserPresentation registerUserPresentation;
-
+    private final VerificationEmailService verificationEmailService;
     private final RegisterUserRepository repository;
 
     @Autowired
-    public RegistrationController(RegisterUserPresentation registerUserPresentation, RegisterUserRepository repository) {
-        this.registerUserPresentation = registerUserPresentation;
+    public RegistrationController(VerificationEmailService verificationEmailService, RegisterUserRepository repository) {
+
+        this.verificationEmailService = verificationEmailService;
         this.repository = repository;
     }
 
+    @SneakyThrows
     @ApiOperation("Регистрация нового пользователя")
     @PostMapping("/registration")
     public ResponseEntity<?> createUser(@Validated @RequestBody RegisterUserDto registerUserDto) {
 
-        if(repository.existsByEmail(registerUserDto.getEmail())) {
+        if (repository.existsByEmail(registerUserDto.getEmail())) {
             throw new BadRequestException("Email адрес уже был зарегистрирован!");
         }
 
         log.info("Вызван контроллер для регистрации нового пользователя c email: "
                 + "[" + registerUserDto.getEmail() + "]");
 
-        String result = registerUserPresentation.add(registerUserDto);
+        String result = verificationEmailService.sendVerificationEmail(registerUserDto);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/user/profile")
@@ -49,5 +52,14 @@ public class RegistrationController {
 
         return ResponseEntity.created(location)
                 .body(new ApiResponse(true, "Пользователь успешно зарегистрирован"));
+    }
+
+    @GetMapping("/verify")
+    public String verifyUser(@Param("code") String code) {
+        if (verificationEmailService.verify(code)) {
+            return "Активация аккаунта успешна";
+        } else {
+            return "Не удалось активировать аккаунт";
+        }
     }
 }

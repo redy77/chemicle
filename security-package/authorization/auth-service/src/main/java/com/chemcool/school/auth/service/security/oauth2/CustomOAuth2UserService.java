@@ -21,7 +21,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 /**
- *  запрашивается информация о пользователе.
+ * запрашивается информация о пользователе.
  */
 
 @Service
@@ -45,15 +45,15 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
     private OAuth2User processOAuth2User(OAuth2UserRequest oAuth2UserRequest, OAuth2User oAuth2User) {
         OAuth2UserInfo oAuth2UserInfo = OAuth2UserInfoFactory.getOAuth2UserInfo(oAuth2UserRequest.getClientRegistration().getRegistrationId(), oAuth2User.getAttributes());
-        if(StringUtils.isEmpty(oAuth2UserInfo.getEmail())) {
+        if (StringUtils.isEmpty(oAuth2UserInfo.getEmail())) {
             throw new OAuth2AuthenticationProcessingException("Email не найден");
         }
 
         Optional<RegisterUser> userOptional = userRepository.findByEmail(oAuth2UserInfo.getEmail());
         RegisterUser user;
-        if(userOptional.isPresent()) {
+        if (userOptional.isPresent()) {
             user = userOptional.get();
-            if(!user.getProvider().equals(RegisterUserAuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId()))) {
+            if (!user.getProvider().equals(RegisterUserAuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId()))) {
                 throw new OAuth2AuthenticationProcessingException("Похоже, вы уже зарегистрировались через " +
                         user.getProvider() + " аккаунт. Используйте" + user.getProvider() +
                         " аккаунт чтобы войти.");
@@ -66,7 +66,6 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         return UserDetailsImpl.create(user, oAuth2User.getAttributes());
     }
 
-
     private RegisterUser registerNewUser(OAuth2UserRequest oAuth2UserRequest, OAuth2UserInfo oAuth2UserInfo) {
         RegisterUser user = new RegisterUser();
         user.setId(UUID.randomUUID().toString());
@@ -75,6 +74,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         user.setName(oAuth2UserInfo.getName());
         user.setEmail(oAuth2UserInfo.getEmail());
         user.setImageUrl(oAuth2UserInfo.getImageUrl());
+        user.setEnabled(true);
         return userRepository.save(user);
     }
 

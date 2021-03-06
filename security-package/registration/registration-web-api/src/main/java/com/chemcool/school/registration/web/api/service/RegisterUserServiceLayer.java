@@ -6,16 +6,19 @@ import com.chemcool.school.registration.web.api.dto.RegisterUserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class RegisterUserServiceLayer {
 
     private final RegisterUserProxyService registerUserProxyService;
 
-    public String add(RegisterUserDto registerUserDto) {
+    public String saveBeforeVerification(RegisterUserDto registerUserDto) {
 
-        return registerUserProxyService.add(
+        return registerUserProxyService.saveBeforeVerification(
                 new RegisterUserExample(
+                        UUID.randomUUID().toString(),
                         registerUserDto.getName(),
                         registerUserDto.getSurname(),
                         registerUserDto.getBirthday(),
@@ -27,7 +30,9 @@ public class RegisterUserServiceLayer {
                         RegisterUserAuthProvider.local,
                         null,
                         RegisterUserAccountType.BASE,
-                        RegisterUserAccountRole.ROLE_USER_BASE
+                        RegisterUserAccountRole.ROLE_USER_BASE,
+                        registerUserDto.getVerificationCode(),
+                        registerUserDto.isEnabled()
                 )
         );
     }

@@ -16,7 +16,7 @@ public class RegisterUserPresentation {
         this.registerUserServiceLayer = registerUserServiceLayer;
     }
 
-    public String add(RegisterUserDto registerUserDto) {
-        return registerUserServiceLayer.add(registerUserDto);
+    public String saveBeforeVerification(RegisterUserDto registerUserDto) {
+        return registerUserServiceLayer.saveBeforeVerification(registerUserDto);
     }
 }

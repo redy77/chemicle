@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 import './Signup.css';
 import {Link, Redirect} from 'react-router-dom'
-import {GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL} from '../../constants';
 import {signup} from '../../util/APIUtils';
-import fbLogo from '../../img/fb-logo.png';
-import googleLogo from '../../img/google-logo.png';
 import Alert from 'react-s-alert';
 
 class Signup extends Component {
@@ -25,20 +22,6 @@ class Signup extends Component {
                     <SignupForm {...this.props} />
                     <span className="login-link">Уже зарегистрированы? <Link to="/login">Войдите!</Link></span>
                 </div>
-            </div>
-        );
-    }
-}
-
-
-class SocialSignup extends Component {
-    render() {
-        return (
-            <div className="social-signup">
-                <a className="btn btn-block social-btn google" href={GOOGLE_AUTH_URL}>
-                    <img src={googleLogo} alt="Google"/> Регистрация через Google</a>
-                <a className="btn btn-block social-btn facebook" href={FACEBOOK_AUTH_URL}>
-                    <img src={fbLogo} alt="Facebook"/> Регистрация через Facebook</a>
             </div>
         );
     }
@@ -77,7 +60,7 @@ class SignupForm extends Component {
 
         signup(signUpRequest)
             .then(response => {
-                Alert.success("Регистрация прошла успешно. Войдите для продолжения!");
+                Alert.success("Регистрация прошла успешно. Пожалуйста, подтвердите ваш Email по ссылке на почте!");
                 this.props.history.push("/login");
             }).catch(error => {
             Alert.error((error && error.message) || 'Что то пошло не так! Попробуйте еще раз!');
@@ -85,6 +68,7 @@ class SignupForm extends Component {
     }
 
     render() {
+
         return (
             <form onSubmit={this.handleSubmit}>
                 <div className="form-item">
@@ -107,8 +91,9 @@ class SignupForm extends Component {
                 <div className="form-item" align="left">
                     <div onChange={this.handleInputChange}>
                         <p>Пол: &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
-                            <input type="radio" value="MALE" name="gender"/> Мужской
-                            <input type="radio" value="FEMALE" name="gender"/> Женский</p>
+                            <input type="radio" value="MALE" name="gender" required/> Мужской
+                            <input type="radio" value="FEMALE" name="gender" required/> Женский
+                        </p>
                     </div>
                 </div>
                 <div className="form-item">

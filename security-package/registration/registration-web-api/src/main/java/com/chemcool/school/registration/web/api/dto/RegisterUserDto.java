@@ -35,4 +35,12 @@ public class RegisterUserDto {
     @NotBlank
     @ValidPassword
     private String password;
+
+    private String verificationCode;
+
+    private boolean enabled;
+
+    public String getFullName() {
+        return this.name + " " + this.surname;
+    }
 }
