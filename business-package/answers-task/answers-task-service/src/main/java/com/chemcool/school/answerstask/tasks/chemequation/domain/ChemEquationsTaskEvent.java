@@ -31,7 +31,7 @@ public class ChemEquationsTaskEvent {
     @Column(name = "event_author_id")
     private String eventAuthorId;
 
-    @Column(name = "event_occuring_comtext")
+    @Column(name = "event_occuring_context")
     private String eventOccuringContext;
 
     @Column(name = "event_occuring_context_time")
