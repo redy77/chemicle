@@ -1,4 +1,4 @@
-package com.chemcool.school.answerstask.web.api.domain;
+package com.chemcool.school.answerstask.domain;
 
 import com.chemcool.school.answerstask.tasks.chemequation.domain.ChemEquationsTask;
 import lombok.Data;
@@ -9,7 +9,6 @@ import javax.persistence.Table;
 
 @Entity
 @NoArgsConstructor
-@Data
 @Table(name = "cmem_equation_correct_answers")
 public class ChemEquationСorrectAnswers extends AbstractBaseCorrectAnswersClass{
 
