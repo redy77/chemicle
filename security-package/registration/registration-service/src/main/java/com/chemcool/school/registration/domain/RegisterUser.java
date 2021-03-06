@@ -3,12 +3,11 @@ package com.chemcool.school.registration.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
@@ -22,43 +21,43 @@ public class RegisterUser {
     @Column(name = "id", unique = true)
     private String id;
 
-    @NonNull
-    @NotEmpty
-    @Column(name = "nick")
-    private String nick;
-
-    @NonNull
-    @NotEmpty
+    @NotBlank
     @Column(name = "name")
     private String name;
 
-    @NonNull
-    @NotEmpty
+    @NotBlank
     @Column(name = "surname")
     private String surname;
 
+    @Column(name = "birthday")
+    private LocalDate birthday;
+
+    @NotBlank
     @Column(name = "gender")
-    private RegisterUserGender gender;
+    private String gender;
 
-    @NonNull
-    @NotEmpty
-    @Column(name = "city")
-    private String city;
-
-    @NonNull
-    @NotEmpty
+    @NotBlank
     @Column(name = "phone")
     private String phone;
 
-    @NotNull
-    @NotEmpty
+    @NotBlank
     @Email
     @Column(name = "email", unique = true)
     private String email;
 
-    @NonNull
+    @NotBlank
     @Column(name = "password")
     private String password;
+
+    @Column(name = "image_url")
+    private String imageUrl;
+
+    @Column(name = "provider")
+    @Enumerated(EnumType.STRING)
+    private RegisterUserAuthProvider provider;
+
+    @Column(name = "provider_id")
+    private String providerId;
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
@@ -73,14 +72,16 @@ public class RegisterUser {
     ) {
         return new RegisterUser(
                 UUID.randomUUID().toString(),
-                example.getUserExampleNick(),
                 example.getUserExampleName(),
                 example.getUserExampleSurname(),
+                example.getUserExampleBirthday(),
                 example.getUserExampleGender(),
-                example.getUserExampleCity(),
                 example.getUserExamplePhone(),
                 example.getUserExampleEmail(),
                 example.getUserExamplePassword(),
+                example.getImageUrl(),
+                example.getUserExampleAuthProvider(),
+                example.getUserExampleProviderId(),
                 example.getUserExampleType(),
                 example.getUserExampleRole()
         );

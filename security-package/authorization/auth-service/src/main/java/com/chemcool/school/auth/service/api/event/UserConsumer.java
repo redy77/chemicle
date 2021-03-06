@@ -26,7 +26,8 @@ public class UserConsumer {
     @KafkaHandler
     public void handleUserRegistration(ConsumerRecord<String, RegisterUserEvent> record) {
         RegisterUserEvent event = record.value();
-        log.info("Пойман журнал для логирования: ", event.getEventId());
+        log.info("Пойман журнал для логирования: {}", event.getEventId());
+        event.setAuthorId(event.getPayload().getEmail());
         userRegistrationEventService.handleEvent(event);
         userRegistrationService.handleTask(event.getPayload());
     }

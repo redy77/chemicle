@@ -1,50 +1,38 @@
 package com.chemcool.school.registration.web.api.dto;
 
 import com.chemcool.school.registration.annotations.ValidPassword;
-import com.chemcool.school.registration.domain.RegisterUserGender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegisterUserDto {
 
-    @NonNull
-    @NotEmpty
-    private String nick;
-
-    @NonNull
-    @NotEmpty
+    @NotBlank
     private String name;
 
-    @NonNull
-    @NotEmpty
+    @NotBlank
     private String surname;
 
-    private RegisterUserGender gender;
+    private LocalDate birthday;
 
-    @NonNull
-    @NotEmpty
-    private String city;
+    @NotBlank
+    private String gender;
 
-    @NonNull
-    @NotEmpty
+    @NotBlank
     private String phone;
 
-    @NotNull
-    @NotEmpty
+    @NotBlank
     @Email
     private String email;
 
-    @NonNull
+    @NotBlank
     @ValidPassword
     private String password;
-
 }
