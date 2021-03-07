@@ -1,5 +1,6 @@
 package com.chemcool.school.answerstask.tasks.chemmatches.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,8 +10,15 @@ import java.util.Objects;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "correct_couples_for_matching")
 public class CoupleForMatching implements Comparable<CoupleForMatching>{
+
+    public CoupleForMatching(String leftCouple, String rightCouple) {
+        this.leftCouple = leftCouple;
+        this.rightCouple = rightCouple;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long coupleId;

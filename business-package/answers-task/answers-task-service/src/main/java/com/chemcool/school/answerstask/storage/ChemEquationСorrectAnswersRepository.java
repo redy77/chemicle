@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ChemEquationСorrectAnswersServiceRepository extends JpaRepository<ChemEquationСorrectAnswers, String> {
+public interface ChemEquationСorrectAnswersRepository extends JpaRepository<ChemEquationСorrectAnswers, String> {
 }
