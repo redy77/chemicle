@@ -7,7 +7,7 @@ $(document).ready(function () {
 function getAllTasks() {
     $.ajax({
         type: 'get',
-        url: '/tasks-chemequations-application/equations/v.1.0/',
+        url: '/chemequations-application/equations/v.1.0/',
         response: 'json',
         success: function (data) {
             setTasksTable(data)
@@ -55,7 +55,7 @@ $(document).on('click', '#btnTaskAnswer', function () {
 
     $.ajax({
         type: 'POST',
-        url: '/tasks-chemequations-application/equations/v.1.0/checkAnswer',
+        url: '/chemequations-application/equations/v.1.0/checkAnswer',
         data: {
             "taskId" : taskId,
             "userAnswer": userAnswer

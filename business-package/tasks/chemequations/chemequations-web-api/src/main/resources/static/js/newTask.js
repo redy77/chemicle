@@ -1,7 +1,3 @@
-// $(document).ready(function(){
-//      alert('herota2');
-// })
-
 // Add user
 $(document).on("click", "#btnNewTask", function () {
     let taskDto = $("#formAddNewTask").serializeArray();
@@ -13,7 +9,7 @@ $(document).on("click", "#btnNewTask", function () {
 
     $.ajax({
         type: 'POST',
-        url: '/tasks-chemequations-application/equations/v.1.0',
+        url: '/chemequations-application/equations/v.1.0',
         data: taskDto,
         timeout: 3000,
         success: function (){
