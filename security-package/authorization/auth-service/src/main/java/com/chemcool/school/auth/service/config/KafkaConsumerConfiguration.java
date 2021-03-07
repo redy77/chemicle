@@ -2,8 +2,6 @@ package com.chemcool.school.auth.service.config;
 
 import com.chemcool.school.auth.service.config.properties.KafkaProperties;
 import com.chemcool.school.auth.service.config.properties.UserDeserializer;
-import com.fasterxml.jackson.databind.DeserializationConfig;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
