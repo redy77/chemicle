@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.UUID;
 
@@ -30,40 +31,43 @@ public class VerificationEmailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    public String sendVerificationEmail(RegisterUserDto user)
-            throws MessagingException, UnsupportedEncodingException {
+    public String sendVerificationEmail(RegisterUserDto user) {
 
         final String token = UUID.randomUUID().toString();
         user.setVerificationCode(token);
         user.setEnabled(false);
+        new Thread(() -> {
+            try {
+                String toAddress = user.getEmail();
+                String fromAddress = "borara3511@gmail.com";
+                String senderName = "ChemCool";
+                String subject = "Подтвердите регистрацию на ChemCool.ru";
+                String content = "Уважаемый <b> [[name]]</b>,<br>"
+                        + "Для активации аккаунта перейдите по ссылке ниже:<br>"
+                        + "<h3><a href=\"[[URL]]\" target=\"_self\">АКТИВИРОВАТЬ</a></h3>"
+                        + "код подтверждения: <b> [[token]]</b><br><br>"
+                        + "Рады, что Вы с нами!<br>"
+                        + "ChemCool.ru";
 
-        String toAddress = user.getEmail();
-        String fromAddress = "borara3511@gmail.com";
-        String senderName = "ChemCool";
-        String subject = "Подтвердите регистрацию на ChemCool.ru";
-        String content = "Уважаемый <b> [[name]]</b>,<br>"
-                + "Для активации аккаунта перейдите по ссылке ниже:<br>"
-                + "<h3><a href=\"[[URL]]\" target=\"_self\">АКТИВИРОВАТЬ</a></h3>"
-                + "код подтверждения: <b> [[token]]</b><br><br>"
-                + "Рады, что Вы с нами!<br>"
-                + "ChemCool.ru";
+                MimeMessage message = mailSender.createMimeMessage();
+                MimeMessageHelper helper = new MimeMessageHelper(message);
 
-        MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message);
+                helper.setFrom(fromAddress, senderName);
+                helper.setTo(toAddress);
+                helper.setSubject(subject);
 
-        helper.setFrom(fromAddress, senderName);
-        helper.setTo(toAddress);
-        helper.setSubject(subject);
+                String verifyURL = "http://localhost:8080/registration-application/auth/verify?code=" + user.getVerificationCode();
 
-        String verifyURL = "http://localhost:8080/registration-application/auth/verify?code=" + user.getVerificationCode();
+                content = content.replace("[[name]]", user.getFullName());
+                content = content.replace("[[URL]]", verifyURL);
+                content = content.replace("[[token]]", token);
 
-        content = content.replace("[[name]]", user.getFullName());
-        content = content.replace("[[URL]]", verifyURL);
-        content = content.replace("[[token]]", token);
-
-        helper.setText(content, true);
-        mailSender.send(message);
-
+                helper.setText(content, true);
+                mailSender.send(message);
+            } catch (IOException | MessagingException e) {
+                e.printStackTrace();
+            }
+        }).start();
         log.info("Письмо для подтверждения аккаунта отправлено");
 
         return registerUserPresentation.saveBeforeVerification(user);
