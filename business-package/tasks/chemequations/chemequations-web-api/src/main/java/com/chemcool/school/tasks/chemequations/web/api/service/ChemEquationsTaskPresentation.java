@@ -1,0 +1,82 @@
+package com.chemcool.school.tasks.chemequations.web.api.service;
+
+
+import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTask;
+import com.chemcool.school.tasks.chemequations.web.api.dto.ChemAnswerDto;
+import com.chemcool.school.tasks.chemequations.web.api.dto.ChemEquationsTaskDto;
+
+import com.chemcool.school.tasks.chemequations.web.api.exeption.ApiWebRestControllerExceptionHandler;
+import com.chemcool.school.tasks.chemequations.web.api.exeption.ChemEquationsAnswerException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+/**
+ * Сервис прослойка верхнего уровня содержащий бизнес логику CRUD операций
+ * с полученным в ходе вычисления уравнения результатом
+ *
+ * @version 1.0
+ * @autor Иван Полещук
+ */
+@Service
+@RequiredArgsConstructor
+public class ChemEquationsTaskPresentation {
+
+    private final ChemEquationsTaskServiceLayer serviceLayer;
+
+    public List<ChemEquationsTaskDto> getAllChemistryEquationsDto() {
+        return serviceLayer.getAllChemEquationsDto();
+    }
+
+    public Optional<ChemEquationsTask> getEquationsTaskById(String id) {
+        return serviceLayer.getChemEquationsTaskById(id);
+    }
+
+    public String createNewEquationsTask(ChemEquationsTaskDto taskDto) {
+        return serviceLayer.createNewChemEquationsTask(taskDto);
+    }
+
+    public void updateEquationsTask(ChemEquationsTaskDto taskDto) {
+        serviceLayer.updateChemEquationsTask(taskDto);
+    }
+
+    public void deleteEquationsTask(String id) {
+        serviceLayer.deleteChemEquationsTask(id);
+    }
+
+    public ChemAnswerDto checkAnswer(String taskId, String userAnswer) {
+        boolean[] test = serviceLayer.checkAnswer(taskId, userAnswer);
+        String[] result = new String[test.length];
+        int score = 10;
+
+        for (int i = 0; i < result.length; i++) {
+            result[i] = "Тест" + (i + 1) + " пройден!";
+        }
+
+        if (!test[0]) {
+            //проверяем БЕЗ учета регистра и агрегатного состояния
+            result[0] = result[0].replaceAll("пройден!", "не пройден!(-5)");
+            score -= 5;
+        }
+
+        if (!test[1]) {
+            //проверяем БЕЗ учета регистра
+            result[1] = result[1].replaceAll("пройден!", "не пройден! Проверь агрегатное состояние! (-2) ");
+            score -= 2;
+        }
+
+        if (!test[2]) {
+            //проверяем с учетом регистра
+            result[2] = result[2].replaceAll("пройден!", "не пройден! Проверь регистр елементов! (-2)");
+            score -= 2;
+        }
+        if (!test[3]) {
+            result[3] = result[3].replaceAll("пройден", "не пройден! Проверь вид реакции! (-1)");
+            score -= 1;
+        }
+        return new ChemAnswerDto(test[0], result, score);
+    }
+}

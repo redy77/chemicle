@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Химические уравнения</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<a class="btn btn-outline-success" th:href="@{/equations/v.1.0/create}">Create New Task</a>
+<h3>ШПОРА:  CuSO4 + 2NaOH → Cu(OH)2↓+ Na2SO4</h3>
+<div class="card">
+    <div class="card-header">
+       <h1>All tasks</h1>
+    </div>
+    <div class="container-fluid">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Главва</th>
+                <th scope="col">Раздел</th>
+            </tr>
+            </thead>
+            <tbody class="table-striped" id="taskTable">
+            <!--table-->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div>
+    <div class="card-header">
+        <h2>Task</h2>
+    </div>
+    <div id="taskCard">
+        <form id="answerForm">
+            <div>
+
+            </div>
+        </form>
+    </div>
+
+</div>
+<div>
+    <div class="card-header">
+        <h3>Result</h3>
+    </div>
+    <div id="resultCard">
+        <div>
+
+        </div>
+
+    </div>
+</div>
+
+<!--libraries-->
+<div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/tasks-chemequations-application/js/tasks.js"></script>
+</div>
+</body>
+</html>
