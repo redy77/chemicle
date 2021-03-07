@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <title>Lessons</title>
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: "Lato", sans-serif;
+            margin: 50px
+        }
+
+        /* Style the tab */
+        .tab {
+            float: left;
+            /*border: 1px solid #ccc;*/
+            background-color: #e9eaea;
+            width: 30%;
+            height: 600px;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            display: block;
+            background-color: inherit;
+            color: black;
+            padding: 22px 16px;
+            width: 100%;
+            border: none;
+            outline: none;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 20px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #7dc1e8;
+        }
+
+        /* Create an active/current "tab button" class */
+        .tab button.active {
+            background-color: #2688c1;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            float: left;
+            padding: 0px 60px;
+            /*border: 1px solid #ccc;*/
+            width: 70%;
+            border-left: none;
+            height: 600px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Chemistry</h1>
+
+<div id="menu" class="tab">
+</div>
+
+<div id="article" class="tabcontent">
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+
+            <form>
+                <div class="form-group">
+                    <label for="input1">Name</label>
+                    <input type="email" class="form-control" id="input1" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="textarea1">Comment</label>
+                    <textarea class="form-control" id="textarea1" rows="2"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+            </form>
+
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+
+<script>
+    const menuContent = document.getElementById('menu')
+    const artContent = document.getElementById('article')
+
+    let output = ''
+    let article = ''
+
+    const urlAll = 'http://localhost:8082/api/getlessons'
+
+    const renderMenu = (lessons) => {
+        lessons.forEach(lesson => {
+            output +=
+                '<button class="tablinks" onclick="openLesson(event,' +
+                lesson.id + ')">' + lesson.lessonName + '</button>'
+        })
+        menuContent.innerHTML = output
+    }
+    // Method Get
+    fetch(urlAll)
+        .then(res => res.json())
+        .then(data => renderMenu(data))
+
+
+    function openLesson(evt, lessonId) {
+
+        var tablinks;
+
+        // У всех "tablinks" удаляем "active" - отжимаает кнопки
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Заполняем статью и комменты к ней
+        const renderArticle = (lessons) => {
+            lessons.forEach(lesson => {
+                if (lesson.id === lessonId) {
+                    let strComment = ''
+                    lesson.comments.forEach(commentary => {
+                        strComment +=
+                            '<table style="margin-top: 60px">' +
+                            '<tr style="font-size: medium; vertical-align: top">' +
+                            '<td width="100">' + commentary.author + '</td>' +
+                            '<td width="100">' + commentary.date + '</td>' +
+                            '<td width="300">' + commentary.comment + '</td>' +
+                            '</tr>' +
+                            '</table>'
+                    })
+                    article = '<h3>' + lesson.lessonName + '</h3>' + lesson.content +
+                        strComment
+                }
+            })
+            artContent.innerHTML = article
+        }
+
+        // Method Get
+        fetch(urlAll)
+            .then(res => res.json())
+            .then(data => renderArticle(data))
+
+        //Делает одну кнопку всегда нажатой
+        evt.currentTarget.className += " active";
+    }
+
+</script>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</body>
+</html>

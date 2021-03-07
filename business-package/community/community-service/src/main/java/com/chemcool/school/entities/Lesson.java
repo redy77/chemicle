@@ -22,6 +22,9 @@ public class Lesson implements Serializable {
     @Column(name = "lesson_name")
     private String lessonName;
 
+    @Column(length = 3000)
+    private String content;
+
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "lesson_comments",
             joinColumns = @JoinColumn(name = "lesson_id"),
@@ -32,4 +35,6 @@ public class Lesson implements Serializable {
         this.lessonName = lessonName;
     }
 
+
+    
 }
