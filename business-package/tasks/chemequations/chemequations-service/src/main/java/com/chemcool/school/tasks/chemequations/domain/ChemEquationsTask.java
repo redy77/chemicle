@@ -15,7 +15,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "chemistry_equations_task")
+@Table(name = "chemistry_equations")
 public class ChemEquationsTask {
 
     @Id

@@ -22,7 +22,7 @@ import java.util.UUID;
 @TypeDefs(
         @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 )
-@Table(name = "chemistry_equations_task_event")
+@Table(name = "chemistry_equations_event")
 public class ChemEquationsTaskEvent {
 
     @Id
