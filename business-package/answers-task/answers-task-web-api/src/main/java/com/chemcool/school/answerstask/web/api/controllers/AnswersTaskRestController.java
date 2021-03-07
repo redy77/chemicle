@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v.1.0/answers-task")
+@RequestMapping("/v1.0")
 @RequiredArgsConstructor
 public class AnswersTaskRestController {
 
     private final CheckUserAnswersService checkUserAnswersService;
 
-    @PostMapping("/{taskId}")
+    @PostMapping
     @ApiOperation("Возвращает true или false ответ пользователю")
-    public boolean checkAnswerUser(@PathVariable String taskId, @RequestParam TaskType taskType,
+    public boolean checkAnswerUser(@RequestParam String taskId, @RequestParam TaskType taskType,
                                    @RequestParam(required = false) String userAnswers,
                                    @RequestBody(required = false) List<CoupleForMatching> coupleForMatchingList) {
 
@@ -27,5 +27,7 @@ public class AnswersTaskRestController {
         } else {
             return checkUserAnswersService.checkUserAnswer(taskId, coupleForMatchingList);
         }
+
+        //можно попробовать в параметрах контролера вместо requestParam requestBody с Map<String, String> payload.
     }
 }
