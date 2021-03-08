@@ -1,13 +1,13 @@
 spring:
   application:
-    name: answers-task-application
+    name: authorization-application
   jpa:
     database: postgresql
     show-sql: true
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/answers_task
+    url: jdbc:postgresql://localhost:5432/users_autentication
     username: mick
     password: mick
     platform: postgres
@@ -16,7 +16,7 @@ spring:
 server:
   port: 0
   servlet:
-    context-path: /answers-task-application/
+    context-path: /authorization-application/
 
 eureka:
   client:
@@ -25,11 +25,12 @@ eureka:
 
 kafka:
   server: http://localhost:9092
-  groupId1: fixed-answer-task.2
-  groupId2: matching-task.2
-  groupId3: tasks-single-select-service.2
-  groupId4: equations-task.2
+  groupId: registration.2
 
-authentication:
+
+user:
   jwt:
     secretKey: chemcool
+    header: AuthorizationToken
+    validityTokenInMilliSeconds: 3600000
+    validityRefreshTokenInMilliSeconds: 72000000
