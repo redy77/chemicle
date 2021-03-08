@@ -33,7 +33,8 @@ public class AnswersTaskRestController {
                                                   @RequestHeader(value = "AuthorizationToken") String token) {
 
         String userId = jwtParser.getIdUserOfToken(token);
-        boolean checkUserAnswers;
+        boolean checkUserAnswersFlag;
+
         if (checkResolverUserThisTask.checkResolverUserThisTask(taskId, userId)) {
             return new ResponseEntity<>("Задача уже была решена пользователем", HttpStatus.OK);
         }
@@ -41,13 +42,13 @@ public class AnswersTaskRestController {
         UserAnswersCorrect userAnswersCorrect = new UserAnswersCorrect(userId, jwtParser.getEmailUserOfToken(token), taskId);
 
         if (userAnswers != null) {
-            if (checkUserAnswers = checkUserAnswersService.checkUserAnswer(taskId, taskType, userAnswers)) {
+            if (checkUserAnswersFlag = checkUserAnswersService.checkUserAnswer(taskId, taskType, userAnswers)) {
                 userAnswersCorrectService.saveUserCorrectAnswers(userAnswersCorrect);
             }
         } else {
-            checkUserAnswers = checkUserAnswersService.checkUserAnswer(taskId, coupleForMatchingList);
+            checkUserAnswersFlag = checkUserAnswersService.checkUserAnswer(taskId, coupleForMatchingList);
             userAnswersCorrectService.saveUserCorrectAnswers(userAnswersCorrect);
         }
-        return new ResponseEntity<>(Boolean.toString(checkUserAnswers), HttpStatus.OK);
+        return new ResponseEntity<>(Boolean.toString(checkUserAnswersFlag), HttpStatus.OK);
     }
 }
