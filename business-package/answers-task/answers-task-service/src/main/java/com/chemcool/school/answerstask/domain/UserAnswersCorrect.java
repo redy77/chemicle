@@ -27,6 +27,6 @@ public class UserAnswersCorrect {
     @Column(name = "user_email")
     private String userEmail;
 
-    @Column(name = "correct_answer_task_id")
+    @Column(name = "correct_answer_task_id", unique = true)
     private String correctAnswersTaskId;
 }
