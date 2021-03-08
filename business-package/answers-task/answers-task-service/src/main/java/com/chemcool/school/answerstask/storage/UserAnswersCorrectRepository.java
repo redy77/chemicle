@@ -1,0 +1,9 @@
+package com.chemcool.school.answerstask.storage;
+
+import com.chemcool.school.answerstask.domain.UserAnswersCorrect;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserAnswersCorrectRepository extends JpaRepository<UserAnswersCorrect, Long> {
+}

@@ -13,6 +13,7 @@ import com.chemcool.school.answerstask.tasks.chemmatches.domain.CoupleForMatchin
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -54,13 +55,16 @@ public class AnswersTaskApplicationIntegrationTest extends RunTestcontainerTest 
     private ChemSingleSelectCorrectAnswers chemSingleSelectCorrectAnswers =
             new ChemSingleSelectCorrectAnswers("c4e04c9b-test-select", "correctAnswerSelect");
 
+    private String token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMYXpvdnNraTE5OTFAZ21haWwuY29tIiwibmljayI6Im5lbHNvbjkxIiwicm9sZSI6IlJPTEVfVVNFUl9CQVNFIiwidXNlcklkIjoiZTZjY2MxMzUtNGRjYi00MTMwLTkxYmQtZjZkYTQ0OWFiYjczIiwiZXhwIjoxNjE1MjE0MTIwfQ.4GRfurI9snY2S1IMOPC_qMB9_EK95tAb1wvrPbv8IBdZlnKq7f5Dx6i15_EueXJ01REXvPMYxItPZ9w8i27fAg";
+
     @Test
     void checkingCorrectAnswerTaskWithFixedAnswer() throws Exception {
         chemFixedCorrectAnswersRepository.save(chemFixedCorrectAnswers);
         mockMvc.perform(post("/v1.0")
                 .param("taskId", "c4e04c9b-test-fixed")
                 .param("taskType", "FIXED_ANSWER")
-                .param("userAnswers", "correctAnswerFixed"))
+                .param("userAnswers", "correctAnswerFixed")
+                .header("AuthorizationToken", token))
                 .andExpect(content().string("true"));
     }
 
@@ -70,7 +74,8 @@ public class AnswersTaskApplicationIntegrationTest extends RunTestcontainerTest 
         mockMvc.perform(post("/v1.0")
                 .param("taskId", "c4e04c9b-test-fixed")
                 .param("taskType", "FIXED_ANSWER")
-                .param("userAnswers", "noCorrectAnswerFixed"))
+                .param("userAnswers", "noCorrectAnswerFixed")
+                .header("AuthorizationToken", token))
                 .andExpect(content().string("false"));
     }
 
@@ -80,7 +85,8 @@ public class AnswersTaskApplicationIntegrationTest extends RunTestcontainerTest 
         mockMvc.perform(post("/v1.0")
                 .param("taskId", "c4e04c9b-test-select")
                 .param("taskType", "SINGLE_SELECT")
-                .param("userAnswers", "correctAnswerSelect"))
+                .param("userAnswers", "correctAnswerSelect")
+                .header("AuthorizationToken", token))
                 .andExpect(content().string("true"));
     }
 
@@ -90,7 +96,8 @@ public class AnswersTaskApplicationIntegrationTest extends RunTestcontainerTest 
         mockMvc.perform(post("/v1.0")
                 .param("taskId", "c4e04c9b-test-select")
                 .param("taskType", "SINGLE_SELECT")
-                .param("userAnswers", "noCorrectAnswerSelect"))
+                .param("userAnswers", "noCorrectAnswerSelect")
+                .header("AuthorizationToken", token))
                 .andExpect(content().string("false"));
     }
 
@@ -100,7 +107,8 @@ public class AnswersTaskApplicationIntegrationTest extends RunTestcontainerTest 
         mockMvc.perform(post("/v1.0")
                 .param("taskId", "c4e04c9b-test-equitation")
                 .param("taskType", "EQUATION")
-                .param("userAnswers", "correctAnswerEquitation"))
+                .param("userAnswers", "correctAnswerEquitation")
+                .header("AuthorizationToken", token))
                 .andExpect(content().string("true"));
     }
 
@@ -110,7 +118,8 @@ public class AnswersTaskApplicationIntegrationTest extends RunTestcontainerTest 
         mockMvc.perform(post("/v1.0")
                 .param("taskId", "c4e04c9b-test-equitation")
                 .param("taskType", "EQUATION")
-                .param("userAnswers", "NoCorrectAnswerEquitation"))
+                .param("userAnswers", "NoCorrectAnswerEquitation")
+                .header("AuthorizationToken", token))
                 .andExpect(content().string("false"));
     }
 
@@ -120,6 +129,7 @@ public class AnswersTaskApplicationIntegrationTest extends RunTestcontainerTest 
         mockMvc.perform(post("/v1.0")
                 .param("taskId", "c4e04c9b-test-matches")
                 .param("taskType", "MATCHES")
+                .header("AuthorizationToken", token)
                 .content(objectMapper.writeValueAsString(List.of(new CoupleForMatching("leftCouple1", "rightCouple1"),
                         new CoupleForMatching("leftCouple2", "rightCouple2"))))
                 .contentType(MediaType.APPLICATION_JSON))
@@ -132,6 +142,7 @@ public class AnswersTaskApplicationIntegrationTest extends RunTestcontainerTest 
         mockMvc.perform(post("/v1.0")
                 .param("taskId", "c4e04c9b-test-matches")
                 .param("taskType", "MATCHES")
+                .header("AuthorizationToken", token)
                 .content(objectMapper.writeValueAsString(List.of(new CoupleForMatching("leftCouple2", "rightCouple2"),
                         new CoupleForMatching("leftCouple1", "rightCouple1"))))
                 .contentType(MediaType.APPLICATION_JSON))
@@ -144,6 +155,7 @@ public class AnswersTaskApplicationIntegrationTest extends RunTestcontainerTest 
         mockMvc.perform(post("/v1.0")
                 .param("taskId", "c4e04c9b-test-matches")
                 .param("taskType", "MATCHES")
+                .header("AuthorizationToken", token)
                 .content(objectMapper.writeValueAsString(List.of(new CoupleForMatching("leftCouple1", "rightCouple2"),
                         new CoupleForMatching("leftCouple2", "rightCouple1"))))
                 .contentType(MediaType.APPLICATION_JSON))
@@ -156,6 +168,7 @@ public class AnswersTaskApplicationIntegrationTest extends RunTestcontainerTest 
         mockMvc.perform(post("/v1.0")
                 .param("taskId", "c4e04c9b-test-matches")
                 .param("taskType", "MATCHES")
+                .header("AuthorizationToken", token)
                 .content(objectMapper.writeValueAsString(List.of(new CoupleForMatching("leftCouple1", "rightCouple1"),
                         new CoupleForMatching("leftCouple2", "rightCouple22"))))
                 .contentType(MediaType.APPLICATION_JSON))

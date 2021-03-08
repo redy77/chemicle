@@ -42,6 +42,7 @@ public class JwtBuilder {
         Claims claims = Jwts.claims().setSubject(email);
         claims.put("nick", user.getNick());
         claims.put("role", user.getRole());
+        claims.put("userId", user.getId());
         return Jwts.builder().setClaims(claims)
                 .setExpiration(date)
                 .signWith(SignatureAlgorithm.HS512, SECRET_KEY)
