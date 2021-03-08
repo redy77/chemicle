@@ -8,7 +8,7 @@ import com.chemcool.school.answerstask.tasks.chemmatches.domain.ChemistryMatchin
 import com.chemcool.school.answerstask.tasks.chemmatches.service.ChemistryMatchingTaskEventService;
 import com.chemcool.school.answerstask.tasks.chemsingleselect.domain.ChemSingleSelectTaskEvent;
 import com.chemcool.school.answerstask.service.ChemmathesCorrectAnswersService;
-import com.chemcool.school.answerstask.service.ChemEquationСorrectAnswersService;
+import com.chemcool.school.answerstask.service.ChemEquationCorrectAnswersService;
 import com.chemcool.school.answerstask.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskEvent;
 import com.chemcool.school.answerstask.tasks.chemfixedanswer.service.ChemFixedAnswerTaskEventService;
 import com.chemcool.school.answerstask.tasks.chemsingleselect.service.ChemSingleSelectTaskEventService;
@@ -33,7 +33,7 @@ public class TaskConsumer {
     private final ChemSingleSelectTaskEventService singleSelectTaskEventService;
     private final ChemEquationsTaskEventService equationsTaskEventService;
 
-    private final ChemEquationСorrectAnswersService chemEquationСorrectAnswersService;
+    private final ChemEquationCorrectAnswersService chemEquationCorrectAnswersService;
     private final ChemmathesCorrectAnswersService chemmathesCorrectAnswersService;
     private final ChemFixedCorrectAnswersService chemFixedCorrectAnswersService;
     private final ChemSingleSelectCorrectAnswersService chemSingleSelectCorrectAnswersService;
@@ -72,6 +72,6 @@ public class TaskConsumer {
         ChemEquationsTaskEvent event = record.value();
         log.info("Пойман журнал для логирования с ID: " + event.getEventId());
         equationsTaskEventService.handleEvent(event);
-        chemEquationСorrectAnswersService.saveCorrectAnswer(event.getEventPayload());
+        chemEquationCorrectAnswersService.saveCorrectAnswer(event.getEventPayload());
     }
 }

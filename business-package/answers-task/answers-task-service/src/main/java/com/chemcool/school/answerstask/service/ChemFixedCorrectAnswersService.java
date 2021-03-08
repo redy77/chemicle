@@ -1,6 +1,5 @@
 package com.chemcool.school.answerstask.service;
 
-import com.chemcool.school.answerstask.domain.ChemEquationСorrectAnswers;
 import com.chemcool.school.answerstask.domain.ChemFixedCorrectAnswers;
 import com.chemcool.school.answerstask.storage.ChemFixedCorrectAnswersRepository;
 import com.chemcool.school.answerstask.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
@@ -17,7 +16,7 @@ public class ChemFixedCorrectAnswersService {
     }
 
     public String getCorrectAnswerByIdTask(String taskId) {
-        ChemFixedCorrectAnswers сorrectAnswers = repository.findById(taskId).orElseThrow(()-> new IllegalArgumentException("Нет задачи с таким id"));
+        ChemFixedCorrectAnswers сorrectAnswers = repository.findById(taskId).orElseThrow(() -> new IllegalArgumentException("Нет задачи с таким id"));
         return сorrectAnswers.getCorrectAnswer();
     }
 }
