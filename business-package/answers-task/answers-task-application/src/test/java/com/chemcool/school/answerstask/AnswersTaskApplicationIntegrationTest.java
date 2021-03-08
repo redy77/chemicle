@@ -5,15 +5,13 @@ import com.chemcool.school.answerstask.domain.ChemEquationСorrectAnswers;
 import com.chemcool.school.answerstask.domain.ChemFixedCorrectAnswers;
 import com.chemcool.school.answerstask.domain.ChemSingleSelectCorrectAnswers;
 import com.chemcool.school.answerstask.domain.ChemmathesCorrectAnswers;
-import com.chemcool.school.answerstask.storage.ChemEquationСorrectAnswersRepository;
-import com.chemcool.school.answerstask.storage.ChemFixedCorrectAnswersRepository;
-import com.chemcool.school.answerstask.storage.ChemSingleSelectCorrectAnswerRepository;
-import com.chemcool.school.answerstask.storage.ChemmathesCorrectAnswersRepository;
+import com.chemcool.school.answerstask.storage.*;
 import com.chemcool.school.answerstask.tasks.chemmatches.domain.CoupleForMatching;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -25,9 +23,13 @@ import java.util.List;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
+/**
+ * Перед запуском тестов поднять необходимо поднять сервис аутентификации получить токен и вставить его в поле token
+ */
 @SpringBootTest(classes = AnswersTaskApplication.class)
 @Testcontainers
 @AutoConfigureMockMvc
+//написать тест для проверки сохранения пользователя правильно ответившего на вопрос и проверки на повторный ответ
 public class AnswersTaskApplicationIntegrationTest extends RunTestcontainerTest {
     @Autowired
     private MockMvc mockMvc;
@@ -41,6 +43,8 @@ public class AnswersTaskApplicationIntegrationTest extends RunTestcontainerTest 
     private ChemmathesCorrectAnswersRepository chemmathesCorrectAnswersRepository;
     @Autowired
     private ChemSingleSelectCorrectAnswerRepository chemSingleSelectCorrectAnswerRepository;
+    @Autowired
+    private UserAnswersCorrectRepository userAnswersCorrectRepository;
 
     private ChemEquationСorrectAnswers chemEquationСorrectAnswers =
             new ChemEquationСorrectAnswers("c4e04c9b-test-equitation", "correctAnswerEquitation");
@@ -55,9 +59,15 @@ public class AnswersTaskApplicationIntegrationTest extends RunTestcontainerTest 
     private ChemSingleSelectCorrectAnswers chemSingleSelectCorrectAnswers =
             new ChemSingleSelectCorrectAnswers("c4e04c9b-test-select", "correctAnswerSelect");
 
-    private String token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMYXpvdnNraTE5OTFAZ21haWwuY29tIiwibmljayI6Im5lbHNvbjkxIiwicm9sZSI6IlJPTEVfVVNFUl9CQVNFIiwidXNlcklkIjoiZTZjY2MxMzUtNGRjYi00MTMwLTkxYmQtZjZkYTQ0OWFiYjczIiwiZXhwIjoxNjE1MjE0MTIwfQ.4GRfurI9snY2S1IMOPC_qMB9_EK95tAb1wvrPbv8IBdZlnKq7f5Dx6i15_EueXJ01REXvPMYxItPZ9w8i27fAg";
+    private String token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMYXpvdnNraTE5OTFAZ21haWwuY29tIiwibmljayI6Im5lbHNvbjkxIiwicm9sZSI6IlJPTEVfVVNFUl9CQVNFIiwidXNlcklkIjoiZTZjY2MxMzUtNGRjYi00MTMwLTkxYmQtZjZkYTQ0OWFiYjczIiwiZXhwIjoxNjE1MjQ0MzI1fQ.RrFJZQ9FaUptMtYH8D0dXUG6rawvkMxfyBzgNMSDvJXaq-_n105xRKpaffpoIw1SvQ0ZjqbAdbwMpmbsUNRtlQ";
+
+    @AfterEach
+    void cleanDataBaseUserCorrect() {
+        userAnswersCorrectRepository.deleteAll();
+    }
 
     @Test
+    @DisplayName("")
     void checkingCorrectAnswerTaskWithFixedAnswer() throws Exception {
         chemFixedCorrectAnswersRepository.save(chemFixedCorrectAnswers);
         mockMvc.perform(post("/v1.0")
