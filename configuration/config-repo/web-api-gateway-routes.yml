@@ -10,6 +10,11 @@ zuul:
       service-id: theory-application
       stripPrefix: false
 
+    chemequations-application:
+      path: /chemequations-application/**
+      service-id: chemequations-application
+      stripPrefix: false
+
     chemfixedanswer-application:
       path: /chemfixedanswer-application/**
       service-id: chemfixedanswer-application
