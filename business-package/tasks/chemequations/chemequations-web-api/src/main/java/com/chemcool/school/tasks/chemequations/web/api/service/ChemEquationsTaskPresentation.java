@@ -1,26 +1,12 @@
 package com.chemcool.school.tasks.chemequations.web.api.service;
 
-
-import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTask;
 import com.chemcool.school.tasks.chemequations.web.api.dto.ChemAnswerDto;
 import com.chemcool.school.tasks.chemequations.web.api.dto.ChemEquationsTaskDto;
-
-import com.chemcool.school.tasks.chemequations.web.api.exeption.ApiWebRestControllerExceptionHandler;
-import com.chemcool.school.tasks.chemequations.web.api.exeption.ChemEquationsAnswerException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
-/**
- * Сервис прослойка верхнего уровня содержащий бизнес логику CRUD операций
- * с полученным в ходе вычисления уравнения результатом
- *
- * @version 1.0
- * @autor Иван Полещук
- */
+
 @Service
 @RequiredArgsConstructor
 public class ChemEquationsTaskPresentation {
