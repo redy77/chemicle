@@ -26,6 +26,7 @@ function setTasksTable(result) {
             }).data("task", task)),
             $('<td>').text(task.chapterId),
             $('<td>').text(task.referenceId),
+            $('<td>').text(task.taskType),
         ).appendTo('#taskTable')
     })
 }
@@ -34,7 +35,8 @@ $(document).on('click', '#linkId', function () {
     $('#answerForm').empty();
     let task = $(this).data('task');
     $('<div>').append(
-        $('<input>').val(task.taskId).attr({"id": "taskId", "type": "hidden"}),
+        $('<input>').val(task.taskId)
+            .attr({"id": "taskId", "type": "hidden"}),
         $('<p>').text(task.description).attr({"id": "description"}),
         $('<textarea>').attr({
             "id": "userAnswer",
@@ -70,11 +72,8 @@ $(document).on('click', '#btnTaskAnswer', function () {
 function getResultAnswer(result) {
     $('#resultCard').empty();
     $.each(result.testResult, function (i, res) {
-        $('<div>').append(
-            $('<p>').text(res)
-        ).appendTo('#resultCard');
+        $('<div>').append($('<p>').text(res)).appendTo('#resultCard');
     })
-    $('<div>').append(
-        $('<h4>').text(result.score + ' баллов!')
-    ).appendTo('#resultCard');
+    $('<div>').append($('<h4>')
+        .text(result.score + ' баллов!')).appendTo('#resultCard');
 }

@@ -31,16 +31,27 @@ public class ChemEquationsTaskPresentation {
         return serviceLayer.getAllChemEquationsDto();
     }
 
-    public Optional<ChemEquationsTask> getEquationsTaskById(String id) {
+    public List<ChemEquationsTaskDto> getAllChemistryEquationsByChapterIdDto(int chapterId) {
+        return serviceLayer.getAllChemEquationsByChapterIdDto(chapterId);
+    }
+    public List<ChemEquationsTaskDto> getAllChemistryEquationsByChapterIdAndReferenceIdDto(int chapterId,int referenceId) {
+        return serviceLayer.getAllChemEquationsByChapterIdAndReferenceIdDto(chapterId,referenceId);
+    }
+
+    public ChemEquationsTaskDto getEquationsTaskById(String id) {
         return serviceLayer.getChemEquationsTaskById(id);
     }
 
-    public String createNewEquationsTask(ChemEquationsTaskDto taskDto) {
-        return serviceLayer.createNewChemEquationsTask(taskDto);
+    public ChemEquationsTaskDto getRandomChemistryEquationsDto() {
+        return serviceLayer.getRandomChemistryEquationsDto();
     }
 
-    public void updateEquationsTask(ChemEquationsTaskDto taskDto) {
-        serviceLayer.updateChemEquationsTask(taskDto);
+    public String createNewEquationsTask(ChemEquationsTaskDto taskDto,String rightAnswer) {
+        return serviceLayer.createNewChemEquationsTask(taskDto,rightAnswer);
+    }
+
+    public void updateEquationsTask(ChemEquationsTaskDto taskDto,String rightAnswer) {
+        serviceLayer.updateChemEquationsTask(taskDto,rightAnswer);
     }
 
     public void deleteEquationsTask(String id) {
