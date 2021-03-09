@@ -35,6 +35,10 @@ public class ChemEquationsTaskService {
         return repository.findAllByChapterId(chapterId);
     }
 
+    public List<ChemEquationsTask> getAllByChapterIdAndReferenceId(int chapterId,int referenceId) {
+        return repository.findAllByChapterIdAndReferenceId(chapterId,referenceId);
+    }
+
     public void deleteById(String id) {
         repository.deleteById(id);
     }

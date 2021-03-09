@@ -21,37 +21,55 @@ public class ChemEquationsRestController {
     private final ChemEquationsTaskPresentation presentation;
 
     @GetMapping
-    @ApiOperation("Возвращает сущности задания типа \"Уравнения\" по химии")
+    @ApiOperation("Возвращает все сущности задания типа \"Уравнения\"")
     public List<ChemEquationsTaskDto> getAll() {
         return presentation.getAllChemistryEquationsDto();
     }
 
+    @GetMapping("/chapter/{chapterId}")
+    @ApiOperation("Возвращает все сущности задания типа \"Уравнения\" по главе")
+    public List<ChemEquationsTaskDto> getAllByChapterId(@PathVariable int chapterId) {
+        return presentation.getAllChemistryEquationsByChapterIdDto(chapterId);
+    }
+
+    @GetMapping("/reference/{chapterId}/{referenceId}")
+    @ApiOperation("Возвращает все сущности задания типа \"Уравнения\" по разделу и главе")
+    public List<ChemEquationsTaskDto> getAllByReferenceId(@PathVariable int chapterId,@PathVariable int referenceId) {
+        return presentation.getAllChemistryEquationsByChapterIdAndReferenceIdDto(chapterId,referenceId);
+    }
+
     @GetMapping("/{id}")
-    @ApiOperation("Возвращает задание по ID типа \"Уравнения\" по химии")
-    public Optional<ChemEquationsTask> getEquationsTaskById(@PathVariable String id) {
+    @ApiOperation("Возвращает задание по ID типа \"Уравнения\"")
+    public ChemEquationsTaskDto getEquationsTaskById(@PathVariable String id) {
         return presentation.getEquationsTaskById(id);
     }
 
+    @GetMapping("/randomTask")
+    @ApiOperation("Возвращает все сущности задания типа \"Уравнения\"")
+    public ChemEquationsTaskDto getRandomTask() {
+        return presentation.getRandomChemistryEquationsDto();
+    }
+
     @PostMapping
-    @ApiOperation("Создает новую сущность задания типа \"Уравнения\" по химии")
-    public String saveNewEquationsTask(ChemEquationsTaskDto taskDto) {
-        return presentation.createNewEquationsTask(taskDto);
+    @ApiOperation("Создает новую сущность задания типа \"Уравнения\"")
+    public String saveNewEquationsTask(ChemEquationsTaskDto taskDto, String rightAnswer) {
+        return presentation.createNewEquationsTask(taskDto,rightAnswer);
     }
 
     @PutMapping
-    @ApiOperation("Сохраняет существующую сущность задания типа \"Уравнения\" по химии")
-    public String saveEquationsTask(@RequestBody ChemEquationsTaskDto taskDto) {
-        presentation.updateEquationsTask(taskDto);
-        return taskDto.getTaskId();
+    @ApiOperation("Обновляет существующую сущность задания типа \"Уравнения\"")
+    public void saveEquationsTask(ChemEquationsTaskDto taskDto,String rightAnswer) {
+        presentation.updateEquationsTask(taskDto,rightAnswer);
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation("Удаляет существующую сущность задания типа \"Уравнения\" по химии")
+    @ApiOperation("Удаляет существующую сущность задания типа \"Уравнения\"")
     public void deleteEquationsTask(@PathVariable String id) {
         presentation.deleteEquationsTask(id);
     }
 
     @PostMapping("/checkAnswer")
+    @ApiOperation("Проверяет введенный ответ с ответом в базе данных \"Уравнения\"")
     public ChemAnswerDto checkAnswer(String taskId, String userAnswer) {
         return presentation.checkAnswer(taskId, userAnswer);
     }

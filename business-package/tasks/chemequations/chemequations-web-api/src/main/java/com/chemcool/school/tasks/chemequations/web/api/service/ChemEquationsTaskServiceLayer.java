@@ -5,12 +5,14 @@ import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTaskExample;
 import com.chemcool.school.tasks.chemequations.service.ChemEquationsTaskProxyService;
 import com.chemcool.school.tasks.chemequations.web.api.dto.ChemEquationsTaskDto;
 
+import com.chemcool.school.tasks.chemequations.web.api.exeption.ChemTaskEmptyException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 /**
  * Сервис прослойка нижнего уровня содержащий бизнес логику CRUD операций
@@ -33,28 +35,54 @@ public class ChemEquationsTaskServiceLayer {
         return list;
     }
 
-    public Optional<ChemEquationsTask> getChemEquationsTaskById(String id) {
-        return proxyService.getById(id);
+    public List<ChemEquationsTaskDto> getAllChemEquationsByChapterIdDto(int chapterId) {
+        List<ChemEquationsTaskDto> list = new ArrayList<>();
+        for (ChemEquationsTask task : proxyService.getAllByChapterId(chapterId)) {
+            list.add(new ChemEquationsTaskDto(task));
+        }
+        return list;
+    }
+
+    public List<ChemEquationsTaskDto> getAllChemEquationsByChapterIdAndReferenceIdDto(int chapterId, int referenceId) {
+        List<ChemEquationsTaskDto> list = new ArrayList<>();
+        for (ChemEquationsTask task : proxyService.getAllByChapterIdAndReferenceId(chapterId, referenceId)) {
+            list.add(new ChemEquationsTaskDto(task));
+        }
+        return list;
+    }
+
+    public ChemEquationsTaskDto getRandomChemistryEquationsDto() {
+        List<ChemEquationsTaskDto> list = new ArrayList<>();
+        for (ChemEquationsTask task : proxyService.getAll()) {
+            list.add(new ChemEquationsTaskDto(task));
+        }
+        return list.get(new Random().nextInt(list.size()));
+    }
+
+    public ChemEquationsTaskDto getChemEquationsTaskById(String id) {
+        ChemEquationsTask task = proxyService.getById(id)
+                .orElseThrow(() -> new ChemTaskEmptyException("Уравнение не найдено."));
+        return new ChemEquationsTaskDto(task);
     }
 
 
-    public String createNewChemEquationsTask(ChemEquationsTaskDto taskDto) {
+    public String createNewChemEquationsTask(ChemEquationsTaskDto taskDto, String rightAnswer) {
         return proxyService.add(
                 new ChemEquationsTaskExample(
                         taskDto.getDescription(),
-                        taskDto.getRightAnswer().replaceAll(" ", ""),
+                        rightAnswer.replaceAll(" ", ""),
                         taskDto.getChapterId(),
                         taskDto.getReferenceId()
                 )
         );
     }
 
-    public void updateChemEquationsTask(ChemEquationsTaskDto taskDto) {
+    public void updateChemEquationsTask(ChemEquationsTaskDto taskDto, String rightAnswer) {
         proxyService.update(
                 new ChemEquationsTask(
                         taskDto.getTaskId(),
                         taskDto.getDescription(),
-                        taskDto.getRightAnswer().replaceAll(" ", ""),
+                        rightAnswer.replaceAll(" ", ""),
                         taskDto.getChapterId(),
                         taskDto.getReferenceId()
                 )
