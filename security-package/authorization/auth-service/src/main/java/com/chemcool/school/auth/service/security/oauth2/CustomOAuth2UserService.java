@@ -1,12 +1,13 @@
 package com.chemcool.school.auth.service.security.oauth2;
 
-import com.chemcool.school.auth.service.domain.RegisterUser;
-import com.chemcool.school.auth.service.domain.RegisterUserAuthProvider;
+import com.chemcool.school.auth.service.domain.*;
 import com.chemcool.school.auth.service.exeption.OAuth2AuthenticationProcessingException;
 import com.chemcool.school.auth.service.security.UserDetailsImpl;
 import com.chemcool.school.auth.service.security.oauth2.userInfo.OAuth2UserInfo;
 import com.chemcool.school.auth.service.security.oauth2.userInfo.OAuth2UserInfoFactory;
-import com.chemcool.school.auth.service.storage.UserWithRegistrationRepository;
+import com.chemcool.school.auth.service.service.RegisterUserEventNotificationService;
+import com.chemcool.school.auth.service.service.RegisterUserProxyService;
+import com.chemcool.school.auth.service.storage.RegisterUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.AuthenticationException;
@@ -21,14 +22,16 @@ import java.util.Optional;
 import java.util.UUID;
 
 /**
- * запрашивается информация о пользователе.
+ * запрашивается информация о пользователе. сохраняет пользователя в БД.
  */
 
 @Service
 public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
     @Autowired
-    private UserWithRegistrationRepository userRepository;
+    private RegisterUserRepository userRepository;
+    @Autowired
+    private RegisterUserProxyService registerUserProxyService;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest oAuth2UserRequest) throws OAuth2AuthenticationException {
@@ -74,8 +77,11 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         user.setName(oAuth2UserInfo.getName());
         user.setEmail(oAuth2UserInfo.getEmail());
         user.setImageUrl(oAuth2UserInfo.getImageUrl());
+        user.setRole(RegisterUserAccountRole.ROLE_USER_BASE);
+        user.setType(RegisterUserAccountType.BASE);
         user.setEnabled(true);
-        return userRepository.save(user);
+
+        return registerUserProxyService.add(user);
     }
 
     private RegisterUser updateExistingUser(RegisterUser existingUser, OAuth2UserInfo oAuth2UserInfo) {

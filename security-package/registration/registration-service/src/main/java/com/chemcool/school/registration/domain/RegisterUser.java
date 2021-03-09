@@ -21,31 +21,26 @@ public class RegisterUser {
     @Column(name = "id", unique = true)
     private String id;
 
-    @NotBlank
     @Column(name = "name")
     private String name;
 
-    @NotBlank
     @Column(name = "surname")
     private String surname;
 
     @Column(name = "birthday")
     private LocalDate birthday;
 
-    @NotBlank
     @Column(name = "gender")
     private String gender;
 
-    @NotBlank
+
     @Column(name = "phone")
     private String phone;
 
-    @NotBlank
     @Email
     @Column(name = "email", unique = true)
     private String email;
 
-    @NotBlank
     @Column(name = "password")
     private String password;
 

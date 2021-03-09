@@ -1,7 +1,12 @@
+
+
 .login-container {
     text-align: center;
 }
 
+#tsparticles {
+    bottom: 0;
+}
 
 .login-content {
     background: #fff;

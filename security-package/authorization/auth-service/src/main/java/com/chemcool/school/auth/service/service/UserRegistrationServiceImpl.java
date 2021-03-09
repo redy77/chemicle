@@ -1,17 +1,17 @@
 package com.chemcool.school.auth.service.service;
 
 import com.chemcool.school.auth.service.domain.RegisterUser;
-import com.chemcool.school.auth.service.storage.UserWithRegistrationRepository;
+import com.chemcool.school.auth.service.storage.RegisterUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class UserRegistrationServiceImpl implements UserRegistrationService{
-    private final UserWithRegistrationRepository userWithRegistrationRepository;
+    private final RegisterUserRepository registerUserRepository;
 
     @Override
-    public void handleTask(RegisterUser registerUser) {
-        userWithRegistrationRepository.save(registerUser);
+    public void save(RegisterUser registerUser) {
+        registerUserRepository.save(registerUser);
     }
 }

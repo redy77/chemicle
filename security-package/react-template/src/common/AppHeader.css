@@ -46,3 +46,13 @@
 .app-nav ul li a.active {
     color: #0f96f6;
 }
+
+.btn-blue {
+    background-color: white;
+    color: #428bca;
+}
+
+.btn-green {
+    background-color: white;
+    color: #5cb85c;
+}

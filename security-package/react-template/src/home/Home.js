@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import './Home.css';
 
 class Home extends Component {
+
     render() {
         return (
             <div className="home-container">
+
                 <div className="container">
                     <div className="field">
                         <svg
@@ -607,8 +609,8 @@ class Home extends Component {
                                 <circle cx="767.24" cy="287.1" r="1.77" opacity="0.62"></circle>
                             </g>
                         </svg>
+                        <h1 className="home-title">Обучающий портал по химии ChemCool.ru</h1>
                     </div>
-                    <h1 className="home-title">Обучающий портал по химии ChemCool.ru</h1>
                 </div>
             </div>
         )
