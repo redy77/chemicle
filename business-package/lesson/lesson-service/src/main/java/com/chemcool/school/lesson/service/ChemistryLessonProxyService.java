@@ -26,7 +26,4 @@ public class ChemistryLessonProxyService {
     public ChemistryLesson findTaskAndTheoryByReferences(int references){
         return pageService.findTaskAndTheoryByReferences(references);
     }
-
-
-
 }

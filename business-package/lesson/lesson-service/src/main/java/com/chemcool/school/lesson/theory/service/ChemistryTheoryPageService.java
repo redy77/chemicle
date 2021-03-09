@@ -1,6 +1,7 @@
 package com.chemcool.school.lesson.theory.service;
 
 
+import com.chemcool.school.lesson.domain.ChemistryLesson;
 import com.chemcool.school.lesson.theory.domain.ChemistryTheory;
 import com.chemcool.school.lesson.theory.storage.TheoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -37,5 +38,17 @@ public class ChemistryTheoryPageService {
             throw new RuntimeException("theoryId параметр пустой, проверьте конфигурацию.");
         }
         return repository.findByTheoryId(theoryId);
+    }
+
+
+    public ChemistryLesson findTaskAndTheoryByChapter(int chapter){
+        return null;
+     //   return pageService.findTaskAndTheoryByChapter(chapter);
+    }
+
+
+    public ChemistryLesson findTaskAndTheoryByReferences(int references){
+        return null;
+   //     return pageService.findTaskAndTheoryByReferences(references);
     }
 }

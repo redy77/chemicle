@@ -20,6 +20,7 @@ public class ChemSingleSelectTaskConsumer {
 
     private final ChemSingleSelectTaskEventService eventService;
     private final ChemSingleSelectTaskService taskService;
+    private final ChemLessonService lessonService;//у каждого консьюмера должен быть такой
 
     @KafkaListener(topics = "tasks-single-select", containerFactory = "chemSingleSelectKafkaListenerContainerFactory")
     @KafkaHandler
@@ -28,6 +29,11 @@ public class ChemSingleSelectTaskConsumer {
         log.info("Пойман журнал для логирования: " + event.getTaskEventId());
         eventService.handleEvent(event);
         taskService.save(event.getPayload());
+        lessonService.manageLesson(
+                event.getPayload(),
+                event.getPayload().getChapterId(),
+                event.getPayload().getReferenceId()
+        );
     }
 
 }
