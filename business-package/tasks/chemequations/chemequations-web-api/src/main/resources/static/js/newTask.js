@@ -13,10 +13,6 @@ $(document).on("click", "#btnNewTask", function () {
         type: 'POST',
         url: '/chemequations-application/equations/v.1.0',
         data: taskDto,"rightAnswer":rightAnswer,
-    // {
-    //         "taskDto" : taskDto,
-    //         "rightAnswer": rightAnswer
-    //     },
         timeout: 3000,
         success: function (){
             alert('Задача добавлена.')
