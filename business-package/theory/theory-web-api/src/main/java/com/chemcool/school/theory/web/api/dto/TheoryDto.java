@@ -22,5 +22,4 @@ public class TheoryDto {
         this.theoryChapter = theory.getTheoryChapter();
         this.theoryReferences = theory.getTheoryReferences();
     }
-
 }

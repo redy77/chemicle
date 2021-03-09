@@ -17,7 +17,6 @@ public class ChemistryTheoryDeserializer implements Deserializer<ChemistryTheory
 
     @Override
     public void configure(Map<String,?> map, boolean b){
-
     }
 
     @Override
@@ -31,7 +30,6 @@ public class ChemistryTheoryDeserializer implements Deserializer<ChemistryTheory
     }
     @Override
     public void close(){
-
     }
 
 }
