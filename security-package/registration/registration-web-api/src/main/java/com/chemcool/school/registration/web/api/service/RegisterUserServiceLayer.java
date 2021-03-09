@@ -14,9 +14,9 @@ public class RegisterUserServiceLayer {
 
     private final RegisterUserProxyService registerUserProxyService;
 
-    public String saveBeforeVerification(RegisterUserDto registerUserDto) {
+    public String add(RegisterUserDto registerUserDto) {
 
-        return registerUserProxyService.saveBeforeVerification(
+        return registerUserProxyService.add(
                 new RegisterUserExample(
                         UUID.randomUUID().toString(),
                         registerUserDto.getName(),

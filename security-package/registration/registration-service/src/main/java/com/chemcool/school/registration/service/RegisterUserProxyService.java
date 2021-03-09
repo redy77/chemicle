@@ -15,14 +15,16 @@ public class RegisterUserProxyService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-    @Autowired
-    private RegisterUserRepository repository;
 
-    public String saveBeforeVerification(RegisterUserExample registerUserExample) {
+    private final RegisterUserEventNotificationService registerUserEventNotificationService;
+
+    public String add(RegisterUserExample registerUserExample) {
 
         registerUserExample.setUserExamplePassword(passwordEncoder.encode(registerUserExample.getUserExamplePassword()));
         RegisterUser registerUser = RegisterUserFactory.createUser(registerUserExample);
-        repository.save(registerUser);
+        registerUserEventNotificationService.send(
+                RegisterUserEventFactory.createEvent(registerUser, RegisterUserEventType.CREATE)
+        );
 
         return registerUser.getId();
 

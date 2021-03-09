@@ -3,6 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import './AppHeader.css';
 
 class AppHeader extends Component {
+
+
     render() {
         return (
             <header className="app-header">
@@ -24,10 +26,20 @@ class AppHeader extends Component {
                                 ): (
                                     <ul>
                                         <li>
-                                            <NavLink to="/login">Вход</NavLink>
+
+                                            <Link to="/login">
+                                                <div className="first"><button data-backcolor="#5cb85c" className="btn btn-success">
+                                                    Вход
+                                                </button></div>
+                                            </Link>
+
                                         </li>
                                         <li>
-                                            <NavLink to="/signup">Регистрация</NavLink>
+                                            <Link to="/signup">
+                                                <div className="first"><button data-backcolor="#428bca" className="btn btn-primary">
+                                                    Регистрация
+                                                </button></div>
+                                            </Link>
                                         </li>
                                     </ul>
                                 )}

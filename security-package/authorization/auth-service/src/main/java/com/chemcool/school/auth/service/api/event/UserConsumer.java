@@ -24,11 +24,12 @@ public class UserConsumer {
 
     @KafkaListener(topics = "registration-users")
     @KafkaHandler
-    public void handleUserRegistration(ConsumerRecord<String, RegisterUserEvent> record) {
+    public void orderListener(ConsumerRecord<String, RegisterUserEvent> record) {
         RegisterUserEvent event = record.value();
         log.info("Пойман журнал для логирования: {}", event.getEventId());
         event.setAuthorId(event.getPayload().getEmail());
-        userRegistrationEventService.handleEvent(event);
-        userRegistrationService.handleTask(event.getPayload());
+
+        userRegistrationEventService.saveEvent(event);
+        userRegistrationService.save(event.getPayload());
     }
 }

@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserWithRegistrationEventJournal extends JpaRepository<RegisterUserEvent, Long> {
+public interface RegisterUserEventRepository extends JpaRepository<RegisterUserEvent, Long> {
 }

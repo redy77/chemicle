@@ -10,6 +10,7 @@ import org.hibernate.annotations.TypeDefs;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -47,4 +48,17 @@ public class RegisterUserEvent {
     @Type(type = "jsonb")
     @Column(name = "event_payload", columnDefinition = "jsonb")
     private RegisterUser payload;
+
+    public static RegisterUserEvent createEvent(RegisterUser registerUser, RegisterUserEventType type) {
+        return new RegisterUserEvent(
+                UUID.randomUUID().toString(),
+                registerUser.getEmail(),
+                "UserRegistrationSocialEvent",
+                LocalDateTime.now(),
+                type,
+                "1.0",
+                registerUser.getId(),
+                registerUser
+        );
+    }
 }

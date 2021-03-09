@@ -4,16 +4,16 @@ import com.chemcool.school.auth.service.domain.RegisterUser;
 import com.chemcool.school.auth.service.exeption.ResourceNotFoundException;
 import com.chemcool.school.auth.service.security.CurrentUser;
 import com.chemcool.school.auth.service.security.UserDetailsImpl;
-import com.chemcool.school.auth.service.storage.UserWithRegistrationRepository;
+import com.chemcool.school.auth.service.storage.RegisterUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UserControllerExample {
+public class UserProfileControllerExample {
 
     @Autowired
-    private UserWithRegistrationRepository repository;
+    private RegisterUserRepository repository;
 
 
     @GetMapping("/user/profile")

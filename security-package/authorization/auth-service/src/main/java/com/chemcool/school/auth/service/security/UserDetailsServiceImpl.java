@@ -2,7 +2,7 @@ package com.chemcool.school.auth.service.security;
 
 import com.chemcool.school.auth.service.domain.RegisterUser;
 import com.chemcool.school.auth.service.exeption.ResourceNotFoundException;
-import com.chemcool.school.auth.service.storage.UserWithRegistrationRepository;
+import com.chemcool.school.auth.service.storage.RegisterUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    UserWithRegistrationRepository repository;
+    RegisterUserRepository repository;
 
     @Override
     @Transactional

@@ -1,10 +1,12 @@
+
+
 .home-container {
     text-align: center;
     min-height: calc(100vh - 60px);
     overflow: auto;
     background-color: #303030;
     position: relative;
-    padding-top: 60px;
+
 }
 
 .home-title {
@@ -16,8 +18,9 @@
 
 .field {
     width: 50%;
-    padding-top: 5%;
+    padding-top: 10%;
     margin: 0 auto;
+    position: relative;
 }
 
 .main-image {
