@@ -1,27 +1,19 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
-
-/*
-по номеру  главы и референса дает и теорию и задачу
- */
-
 import com.chemcool.school.lesson.domain.ChemistryLesson;
-import com.chemcool.school.lesson.web.api.service.ChemistryLessonPresentation;
+import com.chemcool.school.lesson.theory.service.ChemistryTheoryPageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping({"/v1.0"})// "/lesson" тут ты сказал удалить
+@RequestMapping({"/v1.0"})
 @RequiredArgsConstructor
-public class LessonRestController { //удалить, сделать для каждой сущности свой
-
-    private final ChemistryLessonPresentation presentation;
-
+public class TheoryRestController {
+    private final ChemistryTheoryPageService pageService;
 
     @GetMapping("/hello")
     public String hello() {
@@ -30,13 +22,12 @@ public class LessonRestController { //удалить, сделать для ка
 
     @GetMapping("/findTaskAndTheoryByChapter")
     public ChemistryLesson findTaskAndTheoryByChapter(int chapter){
-        return presentation.findTaskAndTheoryByChapter(chapter);
+        return pageService.findTaskAndTheoryByChapter(chapter);
     }
 
     @GetMapping("/findTaskAndTheoryByReferences")
     public ChemistryLesson findTaskAndTheoryByReferences(int references){
-        return presentation.findTaskAndTheoryByReferences(references);
+        return pageService.findTaskAndTheoryByReferences(references);
     }
 
 }
-

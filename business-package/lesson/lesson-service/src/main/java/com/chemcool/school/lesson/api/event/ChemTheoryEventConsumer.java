@@ -20,6 +20,7 @@ public class ChemTheoryEventConsumer {
 
     private final ChemistryTheoryPageService theoryPageService;
     private final ChemistryTheoryEventService eventService;
+    private final ChemLessonService lessonService;
 
     @KafkaHandler
     @KafkaListener(topics = "chemistry-theory", containerFactory = "theoryKafkaListenerContainerFactory")
@@ -28,7 +29,12 @@ public class ChemTheoryEventConsumer {
         ChemistryTheoryEvent event = record.value();
         log.info("Пойман журнал для логгирования: " + event.getEventId());
         eventService.handleEvent(event);
-        theoryPageService.save(event.getEvent_payload());
+        theoryPageService.save(event.getEventPayload());
+        lessonService.manageLesson(
+                event.getEventPayload(),
+                event.getEventPayload().getTheoryChapter(),
+                event.getEventPayload().getTheoryReferences()
+        );
     }
 }
 
