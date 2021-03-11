@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegisterUserDto {
-    private String id;
+
     private String nick;
     private String name;
     private String surname;
@@ -16,4 +16,5 @@ public class RegisterUserDto {
     private String phone;
     private String email;
     private String password;
+
 }
