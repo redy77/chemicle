@@ -58,4 +58,7 @@ public class RegisterUser {
 
     @Column(name = "enabled")
     private boolean enabled;
+
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
 }

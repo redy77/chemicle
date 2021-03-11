@@ -74,7 +74,8 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         user.setId(UUID.randomUUID().toString());
         user.setProvider(RegisterUserAuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId()));
         user.setProviderId(oAuth2UserInfo.getId());
-        user.setName(oAuth2UserInfo.getName());
+        user.setName(oAuth2UserInfo.getFirstName());
+        user.setSurname(oAuth2UserInfo.getLastName());
         user.setEmail(oAuth2UserInfo.getEmail());
         user.setImageUrl(oAuth2UserInfo.getImageUrl());
         user.setRole(RegisterUserAccountRole.ROLE_USER_BASE);
@@ -85,8 +86,9 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     }
 
     private RegisterUser updateExistingUser(RegisterUser existingUser, OAuth2UserInfo oAuth2UserInfo) {
-        existingUser.setName(oAuth2UserInfo.getName());
+        existingUser.setName(oAuth2UserInfo.getFirstName());
+        existingUser.setName(oAuth2UserInfo.getLastName());
         existingUser.setImageUrl(oAuth2UserInfo.getImageUrl());
-        return userRepository.save(existingUser);
+        return registerUserProxyService.add(existingUser);
     }
 }

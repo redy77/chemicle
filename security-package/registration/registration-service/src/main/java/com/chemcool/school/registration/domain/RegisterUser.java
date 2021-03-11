@@ -68,6 +68,9 @@ public class RegisterUser {
     @Column(name = "enabled")
     private boolean enabled;
 
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
+
     public static RegisterUser createUser(
             RegisterUserExample example
     ) {
@@ -86,7 +89,8 @@ public class RegisterUser {
                 example.getUserExampleType(),
                 example.getUserExampleRole(),
                 example.getUserExampleVerificationCode(),
-                example.isUserExampleEnabled()
+                example.isUserExampleEnabled(),
+                example.getUserExampleResetPasswordToken()
         );
     }
 
