@@ -26,7 +26,7 @@ public class RegisterUserEvent {
     @Column(name = "event_id")
     private String eventId;
 
-    @Column(name = "author_id")
+    @Column(name = "event_author_id")
     private String authorId;
 
     @Column(name = "event_occurring_context")

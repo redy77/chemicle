@@ -25,5 +25,6 @@ public class RegisterUserExample {
     private RegisterUserAccountRole userExampleRole;
     private String userExampleVerificationCode;
     private boolean userExampleEnabled;
+    private String userExampleResetPasswordToken;
 
 }

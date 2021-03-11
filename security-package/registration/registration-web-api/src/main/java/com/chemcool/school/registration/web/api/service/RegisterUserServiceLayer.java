@@ -32,7 +32,8 @@ public class RegisterUserServiceLayer {
                         RegisterUserAccountType.BASE,
                         RegisterUserAccountRole.ROLE_USER_BASE,
                         registerUserDto.getVerificationCode(),
-                        registerUserDto.isEnabled()
+                        registerUserDto.isEnabled(),
+                        null
                 )
         );
     }
