@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.UUID;
 
 @Repository
@@ -38,6 +39,10 @@ public interface TheoryRepository extends JpaRepository<ChemistryTheory, UUID>, 
     );
 
     ChemistryTheory findByTheoryId(String theoryId);
+
+    List<ChemistryTheory> findChemistryTheoriesByTheoryChapter(int chapter);
+
+    List<ChemistryTheory> findChemistryTheoriesByTheoryReferences(int references);
 
 
 }

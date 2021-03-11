@@ -1,12 +1,13 @@
 package com.chemcool.school.lesson.theory.service;
 
 
-import com.chemcool.school.lesson.domain.ChemistryLesson;
 import com.chemcool.school.lesson.theory.domain.ChemistryTheory;
 import com.chemcool.school.lesson.theory.storage.TheoryRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -38,17 +39,21 @@ public class ChemistryTheoryPageService {
             throw new RuntimeException("theoryId параметр пустой, проверьте конфигурацию.");
         }
         return repository.findByTheoryId(theoryId);
+
     }
 
 
-    public ChemistryLesson findTaskAndTheoryByChapter(int chapter){
-        return null;
-     //   return pageService.findTaskAndTheoryByChapter(chapter);
+    public List<ChemistryTheory> findTheoryByChapter(int chapter){
+        if (chapter == 0 ) {
+            throw new RuntimeException("chapter параметр пустой, проверьте конфигурацию.");
+        }
+        return repository.findChemistryTheoriesByTheoryChapter(chapter);
     }
 
-
-    public ChemistryLesson findTaskAndTheoryByReferences(int references){
-        return null;
-   //     return pageService.findTaskAndTheoryByReferences(references);
+    public List<ChemistryTheory> findTheoryByReferences(int references){
+        if (references == 0 ) {
+            throw new RuntimeException("chapter параметр пустой, проверьте конфигурацию.");
+        }
+        return repository.findChemistryTheoriesByTheoryReferences(references);
     }
 }

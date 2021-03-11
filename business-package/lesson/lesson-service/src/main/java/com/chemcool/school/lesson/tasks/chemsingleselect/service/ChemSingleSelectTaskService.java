@@ -2,6 +2,7 @@ package com.chemcool.school.lesson.tasks.chemsingleselect.service;
 
 import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTask;
 import com.chemcool.school.lesson.tasks.chemsingleselect.storage.ChemSingleSelectTaskRepository;
+import com.chemcool.school.lesson.theory.domain.ChemistryTheory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,16 @@ public class ChemSingleSelectTaskService {
     public void deleteById(String id) {
         log.info("Удалена задачу с UUID = " + id);
         repository.deleteById(id);
+    }
+
+
+    public List<ChemSingleSelectTask> findTaskByChapter(int chapter){
+        log.info("Найдены задачи SingleSelect с chapter = " + chapter );
+        return repository.findChemSingleSelectTaskByChapterId(chapter);
+    }
+
+
+    public List<ChemSingleSelectTask> findTaskByReferences(int references){
+        return repository.findChemSingleSelectTaskByReferenceId(references);
     }
 }
