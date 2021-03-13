@@ -35,6 +35,8 @@ public class Lesson implements Serializable {
         this.lessonName = lessonName;
     }
 
-
-    
+    public Lesson(String lessonName, String content) {
+        this.lessonName = lessonName;
+        this.content = content;
+    }
 }

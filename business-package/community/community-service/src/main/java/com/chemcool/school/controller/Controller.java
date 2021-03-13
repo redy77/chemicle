@@ -1,15 +1,13 @@
 package com.chemcool.school.controller;
 
+import com.chemcool.school.dto.GotFromFrontEnd;
 import com.chemcool.school.entities.Comment;
 import com.chemcool.school.entities.Lesson;
 import com.chemcool.school.service.ServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,7 +30,7 @@ public class Controller {
     }
 
     @DeleteMapping(value = "/del/{lesson_id}/{comment_id}")
-    public ResponseEntity<Long> delUser(@PathVariable Long lesson_id, @PathVariable Long comment_id) {
+    public ResponseEntity<Long> delComment(@PathVariable Long lesson_id, @PathVariable Long comment_id) {
         if (serviceInterface.findCommentById(comment_id) == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
@@ -41,4 +39,15 @@ public class Controller {
         }
     }
 
+    @PostMapping(value = "/new")
+    public ResponseEntity<?> createNewComment(@RequestBody GotFromFrontEnd gotFromFrontEnd) {
+        serviceInterface.addComment(gotFromFrontEnd);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/newlesson")
+    public ResponseEntity<?> createNewLesson(@RequestBody Lesson lesson) {
+        serviceInterface.addLesson(lesson);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 }

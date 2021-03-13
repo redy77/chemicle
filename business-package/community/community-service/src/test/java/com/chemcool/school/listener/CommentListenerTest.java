@@ -1,6 +1,7 @@
 package com.chemcool.school.listener;
 
 import com.chemcool.school.dto.GotFromFrontEnd;
+import com.chemcool.school.entities.Lesson;
 import com.chemcool.school.repo.LessonRepo;
 import com.chemcool.school.service.ServiceInterface;
 import org.junit.Before;
@@ -51,16 +52,15 @@ class CommentListenerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    //Перед запуском теста надо перевести ddl-auto в режим create
 
     @Test
     @Order(1)
     public void testAddLesson() {
 
-        serviceInterface.addLesson(lessonName);
-        serviceInterface.addLesson(lessonName2);
-        serviceInterface.addLesson(lessonName3);
-        serviceInterface.addLesson(lessonName4);
+        serviceInterface.addLesson(new Lesson(lessonName));
+        serviceInterface.addLesson(new Lesson(lessonName2));
+        serviceInterface.addLesson(new Lesson(lessonName3));
+        serviceInterface.addLesson(new Lesson(lessonName4));
     }
 
     @Test

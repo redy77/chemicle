@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ServiceInterface {
 
-    void addLesson(String lessonName);
+    void addLesson(Lesson lesson);
 
     Lesson getLesson(Long lessonId);
 
