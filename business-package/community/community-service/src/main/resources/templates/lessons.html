@@ -28,7 +28,7 @@
             float: left;
             /*border: 1px solid #ccc;*/
             background-color: #e9eaea;
-            width: 30%;
+            width: 25%;
             height: 600px;
         }
 
@@ -79,32 +79,6 @@
 <div id="article" class="tabcontent">
 </div>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col">
-
-            <form>
-                <div class="form-group">
-                    <label for="input1">Name</label>
-                    <input type="email" class="form-control" id="input1" placeholder="Your name">
-                </div>
-                <div class="form-group">
-                    <label for="textarea1">Comment</label>
-                    <textarea class="form-control" id="textarea1" rows="2"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
-            </form>
-
-        </div>
-        <div class="col">
-
-        </div>
-        <div class="col">
-
-        </div>
-    </div>
-</div>
-
 <script>
     const menuContent = document.getElementById('menu')
     const artContent = document.getElementById('article')
@@ -114,59 +88,143 @@
 
     const urlAll = 'http://localhost:8082/api/getlessons'
 
+    //рисует меню с названиями уроков
     const renderMenu = (lessons) => {
         lessons.forEach(lesson => {
+            //создаем набор кнопок, где каждя кнопка содержит название урока
+            //в айдишник кнопок зашиваем айдишник урока
             output +=
-                '<button class="tablinks" onclick="openLesson(event,' +
+                '<button class="tablinks" id="' + lesson.id + '" onclick="openLesson(' +
                 lesson.id + ')">' + lesson.lessonName + '</button>'
         })
+        //последняя кнопка - кнопка админа
+        output +=
+            '<button class="tablinks" id="addlesson" onclick="addLesson(' +
+            ')">Админка : Добавить урок / статью / обучающий материал</button>'
+
         menuContent.innerHTML = output
     }
-    // Method Get
+
+    // Method Get чтобы нарисовать меню
     fetch(urlAll)
         .then(res => res.json())
         .then(data => renderMenu(data))
 
+    // для публикации нового коммента
+    function postNew(evt, lessonId) {
+        //позволяет не перезагружать страницу после отправки данных с формы
+        evt.preventDefault()
+// создаем сегодняшнюю дату
+        let now = new Date()
+        let time = now.getDate() + '.' + now.getMonth() + '.' + now.getFullYear()
+        const urlNew = 'http://localhost:8082/new'
 
-    function openLesson(evt, lessonId) {
+        const commentNew = {
+            comment: $('#CommentNew').val(),
+            author: $('#AuthorNew').val(),
+            date: time,
+            lessonId: lessonId
+        }
+        fetch(urlNew, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(commentNew)
+        })
+        //обновляет страницу с уроком
+        openLesson(lessonId)
+    }
 
-        var tablinks;
+    //Удаление коммента запускается кнопкой Delete
+    function sendDel(evt, lessonId, commentId) {
+        evt.preventDefault()
+        const urlDel = 'http://localhost:8082/del'
+        fetch(`${urlDel}/${lessonId}/${commentId}`, {
+            method: 'DELETE'
+        })
+        //обновляет страницу с уроком
+        openLesson(lessonId)
+    }
 
-        // У всех "tablinks" удаляем "active" - отжимаает кнопки
+    function addLesson(){
+        // У всех "tablinks" удаляем "active" - отжимааем все кнопки меню
         tablinks = document.getElementsByClassName("tablinks");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
 
-        // Заполняем статью и комменты к ней
+        document.getElementById('addlesson').className += ' active'
+
+        artContent.innerHTML='<h1>Создание нового обучающего материала / лекции / статьи. Здесь реализовать формы для заполнения контента</h1>'
+    }
+
+    // для открытия страницы с уроком
+    function openLesson(lessonId) {
+
+        var tablinks;
+
+        // У всех "tablinks" удаляем "active" - отжимааем все кнопки меню
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Рисует страницу с уроком (статьей), комментами к ней и добавляет форму для комментов
         const renderArticle = (lessons) => {
+            //форма для комментов
+            strForm =
+                '<div class="container-fluid">' +
+                '<div class="row">' +
+                '<div class="col" style="margin-top: 45px">' +
+                '<form>' +
+                '<div class="form-group">' +
+                '<input type="text" style="font-size: small" class="form-control"  id="AuthorNew" placeholder="Your name">' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<textarea class="form-control" style="font-size: small" id="CommentNew" rows="2"></textarea>' +
+                '</div>' +
+                '<button type="submit" class="btn btn-primary btn-sm" onclick="postNew(event,' + lessonId + ')">Submit</button>' +
+                '</form>' +
+                '</div>' +
+                '<div class="col"></div>' +
+                '</div>' +
+                '</div>'
             lessons.forEach(lesson => {
+                //из листа уроков находим нужный урок
                 if (lesson.id === lessonId) {
                     let strComment = ''
                     lesson.comments.forEach(commentary => {
+                        //из листа комментов формируем набор таблиц
+                        //где каждая таблица - отдельновзятый комментарий
                         strComment +=
                             '<table style="margin-top: 60px">' +
                             '<tr style="font-size: medium; vertical-align: top">' +
                             '<td width="100">' + commentary.author + '</td>' +
                             '<td width="100">' + commentary.date + '</td>' +
                             '<td width="300">' + commentary.comment + '</td>' +
+                            '<td width="100"><button type="submit" class="btn btn-outline-danger btn-sm" onclick="sendDel(event,' +
+                            lessonId + ',' + commentary.id + ')">Delete</button></td>' +
                             '</tr>' +
                             '</table>'
                     })
-                    article = '<h3>' + lesson.lessonName + '</h3>' + lesson.content +
-                        strComment
+                    // статья = имя урока + текст урока + форма комментов + сами комменты
+                    article = '<h3>' + lesson.lessonName + '</h3>' + lesson.content + strForm + strComment
                 }
             })
             artContent.innerHTML = article
         }
 
-        // Method Get
+        // Method Get возвращает response, из которого извлекается лист уроков, чтобы нарисовать страницу с уроком
         fetch(urlAll)
             .then(res => res.json())
             .then(data => renderArticle(data))
 
-        //Делает одну кнопку всегда нажатой
-        evt.currentTarget.className += " active";
+        //Делает ту кнопку, с которой прилетело - всегда нажатой
+        //айдишник кнопки совпадает с айдишником урока, что позволяет делать
+        //кнопку нажатой, вызвав openLesson и передав ему айди урока
+        // evt.currentTarget.className += " active"
+        document.getElementById(lessonId).className += " active"
     }
 
 </script>

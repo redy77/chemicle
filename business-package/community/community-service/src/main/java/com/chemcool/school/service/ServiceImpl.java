@@ -28,8 +28,8 @@ public class ServiceImpl implements ServiceInterface {
 
     @Override
     @Transactional
-    public void addLesson(String lessonName) {
-        lessonRepo.save(new Lesson(lessonName));
+    public void addLesson(Lesson lesson) {
+        lessonRepo.save(lesson);
     }
 
     @Override
