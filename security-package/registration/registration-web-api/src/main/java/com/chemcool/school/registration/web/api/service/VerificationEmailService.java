@@ -44,7 +44,7 @@ public class VerificationEmailService {
                 String content = "Уважаемый <b> [[name]]</b>,<br>"
                         + "Для активации аккаунта перейдите по ссылке ниже:<br>"
                         + "<h3><a href=\"[[URL]]\" target=\"_self\">АКТИВИРОВАТЬ</a></h3>"
-                        + "код подтверждения: <b> [[token]]</b><br><br>"   //TODO используется для дебага в swagger
+                        + "код подтверждения: <b> [[token]]</b><br><br>"   //TODO используется для дебага в swagger,удалить
                         + "Рады, что Вы с нами!<br>"
                         + "ChemCool.ru";
 
@@ -55,7 +55,7 @@ public class VerificationEmailService {
                 helper.setTo(toAddress);
                 helper.setSubject(subject);
 
-                String verifyURL = "http://localhost:8080/registration-application/auth/verify?code=" + user.getVerificationCode();
+                String verifyURL = "http://localhost:3000/verify-email/" + user.getVerificationCode();
 
                 content = content.replace("[[name]]", user.getFullName());
                 content = content.replace("[[URL]]", verifyURL);

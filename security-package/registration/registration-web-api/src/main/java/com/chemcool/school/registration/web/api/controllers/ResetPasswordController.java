@@ -21,7 +21,6 @@ import java.net.URI;
 @RequestMapping("/auth")
 public class ResetPasswordController {
 
-
     @Autowired
     private ResetPasswordService resetPasswordService;
     @Autowired
@@ -48,17 +47,7 @@ public class ResetPasswordController {
                 .body(new ApiResponse(true, "Письмо для сброса пароля успешно отправлено"));
     }
 
-   /* @GetMapping("/reset_password")
-    public String showResetPasswordForm(@Param(value = "token") String token) {
-        RegisterUser registerUser = repository.findByResetPasswordToken(token);
-
-        if (registerUser == null) {
-            throw new BadRequestException("Ссылка недействительна!");
-        }
-        return registerUser.getResetPasswordToken();
-    }*/
-
-
+    @ApiOperation("Добавляем новый пароль пользователя")
     @PostMapping("/reset-password")
     public ResponseEntity<?> processResetPassword(@RequestBody ForgotPasswordDto forgotPasswordDto) {
         String token = forgotPasswordDto.getToken();
