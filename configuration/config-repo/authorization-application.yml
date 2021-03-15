@@ -31,6 +31,6 @@ kafka:
 user:
   jwt:
     secretKey: chemcool
-    header: Authorization
+    header: AuthorizationToken
     validityTokenInMilliSeconds: 3600000
     validityRefreshTokenInMilliSeconds: 72000000

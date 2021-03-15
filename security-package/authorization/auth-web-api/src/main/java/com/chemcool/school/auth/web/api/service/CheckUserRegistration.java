@@ -17,8 +17,6 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class CheckUserRegistration {
     private final AuthenticationManager authenticate;
-    private final UserDetailsServiceImpl userDetailsService;
-    private final UserWithRegistrationRepository userWithRegistrationRepository;
     private final JwtBuilder jwtBuilder;
 
     public Map<Object, Object> responseSendToken(UserSendFromClient userClient) {

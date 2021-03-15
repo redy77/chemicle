@@ -47,5 +47,4 @@ public class ChemistryMatchingTaskRestController {
         presentation.deleteById(uuid);
         return "Сущность с UUID = " + uuid + " была успешно удалена.";
     }
-
 }

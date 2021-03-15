@@ -19,9 +19,13 @@ public class ChemistryMatchingTask {
     @Column(unique=true, name = "task_id")
     private String taskId;
 
-    @Column(length = 10000)
+    @Column(length = 10000, name = "description")
     private String description;
+
+    @Column(name = "chapter_id")
     private Integer chapterId;
+
+    @Column(name = "reference_id")
     private Integer referenceId;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)

@@ -9,7 +9,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -30,6 +33,7 @@ public class LoginControllers {
             return new ResponseEntity<>("Invalid email/password", HttpStatus.FORBIDDEN);
         }
     }
+
     @ApiOperation("Возвращает email и токен обновления")
     @GetMapping("/refreshtoken")
     public ResponseEntity<?> refreshToken(HttpServletRequest request) throws Exception {
