@@ -80,13 +80,13 @@ public class ChemistryTheoryTest extends RunTestcontainerTest {
         ChemistryTheoryEvent theoryEvent = journal.findAll().get(0);
 
         assertThat(theoryEvent.getEventId()).isNotBlank();
-        assertThat(theoryEvent.getEventAuthorId()).isNotBlank();
+        assertThat(theoryEvent.getEventAuthor()).isNotBlank();
         assertThat(theoryEvent.getEventOccurringContext()).isEqualTo("ChemistryTheoryEvent");
         assertThat(theoryEvent.getEventOccurringContextTime()).isNotNull();
         assertThat(theoryEvent.getEventType()).isEqualTo(ChemistryTheoryEventType.CREATED);
         assertThat(theoryEvent.getVersion()).isNotBlank();
-        assertThat(theoryEvent.getEvent_payload()).isNotNull();
-        assertThat(theoryEvent.getEventEntityId()).isEqualTo(theoryEvent.getEvent_payload().getTheoryId());
+        assertThat(theoryEvent.getEventPayload()).isNotNull();
+        assertThat(theoryEvent.getEventEntityId()).isEqualTo(theoryEvent.getEventPayload().getTheoryId());
     }
 
     public void addingTestTheoryDataBase(TheoryDto theoryDto) {

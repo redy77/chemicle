@@ -12,4 +12,6 @@ public class KafkaProperties {
     private String chemFixedAnswerGroupId;
     private String chemSingleSelectGroupId;
     private String theoryGroupId;
+    private String chemEquationsGroupId;
+    private String chemMatchesGroupId;
 }

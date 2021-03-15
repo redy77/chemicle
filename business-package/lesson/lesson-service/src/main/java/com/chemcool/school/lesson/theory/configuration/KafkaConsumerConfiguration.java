@@ -32,6 +32,9 @@ public class KafkaConsumerConfiguration {
         prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ChemistryTheoryDeserializer.class);
        // prop.put(JsonDeserializer.TRUSTED_PACKAGES, TRUSTED_PACKAGES);
         prop.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getTheoryGroupId());
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println("Theory ID "+kafkaProperties.getTheoryGroupId());
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         return prop;
     }
 

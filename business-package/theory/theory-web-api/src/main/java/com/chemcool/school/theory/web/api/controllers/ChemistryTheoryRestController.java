@@ -18,6 +18,7 @@ public class ChemistryTheoryRestController {
 
     @PostMapping(value = "/create")
     @ApiOperation("Создает главу для сущность урока по химии.")
+    @ResponseBody
     public String createLessonExample(
             @RequestBody TheoryDto theoryDto
     ) {
@@ -26,6 +27,7 @@ public class ChemistryTheoryRestController {
     }
 
     @PutMapping(value = "/update")
+    @ResponseBody
     public void updateLessonExample(
             @RequestBody TheoryDto dto
     ) {
@@ -34,12 +36,19 @@ public class ChemistryTheoryRestController {
     }
 
     @DeleteMapping(value = "/delete")
+    @ResponseBody
     public void deleteLessonExample(
             @RequestBody TheoryDto theoryDto
     ) {
         log.info("Вызван контроллер для удаления темы с названием: " + "[" + theoryDto.getTheoryName() + "]");
         presentation.deleteChemistryTheoryDto(theoryDto);
     }
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello World!";
+    }
+
 
     @GetMapping("/getBy/{id}")
     public ChemistryTheory getTheoryExampleById(@PathVariable(name = "id") String id) {

@@ -46,7 +46,6 @@ public class ChemistryTheoryEvent {
     @Column(name = "event_entity_id")
     private String EventEntityId;
 
-
     @Type(type = "jsonb")
     @Column(name = "event_payload", columnDefinition = "jsonb")
     private ChemistryTheory eventPayload;
