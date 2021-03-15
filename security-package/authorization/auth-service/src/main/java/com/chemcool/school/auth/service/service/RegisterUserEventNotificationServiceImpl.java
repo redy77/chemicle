@@ -1,6 +1,5 @@
 package com.chemcool.school.auth.service.service;
 
-
 import com.chemcool.school.auth.service.domain.RegisterUserEvent;
 import com.chemcool.school.auth.service.exeption.RegisterUserDefinitionException;
 import lombok.RequiredArgsConstructor;

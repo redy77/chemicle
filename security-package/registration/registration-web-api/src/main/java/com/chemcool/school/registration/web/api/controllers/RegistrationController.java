@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -54,12 +56,18 @@ public class RegistrationController {
                 .body(new ApiResponse(true, "Пользователь успешно зарегистрирован"));
     }
 
+    @ApiOperation("Активация аккаунта")
     @GetMapping("/verify")
-    public String verifyUser(@Param("code") String code) {
+    public ResponseEntity<?> verifyUser(@Param("code") String code) {
+        Map<String, String> response = new HashMap<>();
+
         if (verificationEmailService.verify(code)) {
-            return "Активация аккаунта успешна";
+            response.put("isValidated", "Активация аккаунта успешна");
+            return ResponseEntity.accepted().body(response);
         } else {
-            return "Не удалось активировать аккаунт";
+            response.put("isValidated", "Не удалось активировать аккаунт");
+            return ResponseEntity.badRequest().body(response);
         }
     }
+
 }

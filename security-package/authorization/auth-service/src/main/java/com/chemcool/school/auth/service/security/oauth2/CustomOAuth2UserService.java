@@ -87,7 +87,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
     private RegisterUser updateExistingUser(RegisterUser existingUser, OAuth2UserInfo oAuth2UserInfo) {
         existingUser.setName(oAuth2UserInfo.getFirstName());
-        existingUser.setName(oAuth2UserInfo.getLastName());
+        existingUser.setSurname(oAuth2UserInfo.getLastName());
         existingUser.setImageUrl(oAuth2UserInfo.getImageUrl());
         return registerUserProxyService.add(existingUser);
     }
