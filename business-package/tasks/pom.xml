@@ -69,7 +69,7 @@
     </build>
 
     <modules>
-        <module>chemequitaion</module>
+        <module>chemequations</module>
         <module>chemmatches</module>
         <module>chemfixedanswer</module>
         <module>chemsingleselect</module>

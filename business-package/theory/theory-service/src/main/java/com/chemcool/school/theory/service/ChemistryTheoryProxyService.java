@@ -12,9 +12,9 @@ public class ChemistryTheoryProxyService {
 
     public String add(ChemistryTheoryExample example) {
         ChemistryTheory theory = ChemistryTheoryFactory.createTheory(example);
-        notificationService.send(
-                ChemistryTheoryEventFactory.createEvent(theory, ChemistryTheoryEventType.CREATED)
-        );
+        ChemistryTheoryEvent chemistryTheoryEvent = ChemistryTheoryEventFactory.createEvent(theory, ChemistryTheoryEventType.CREATED);
+
+        notificationService.send(chemistryTheoryEvent);
         return theory.getTheoryId();
     }
 

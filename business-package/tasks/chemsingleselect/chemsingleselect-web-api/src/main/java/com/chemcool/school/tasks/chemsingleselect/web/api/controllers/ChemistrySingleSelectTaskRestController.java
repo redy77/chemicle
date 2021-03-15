@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/tasks/single-select")
+@RequestMapping("/v1.0")
 @RequiredArgsConstructor
 public class ChemistrySingleSelectTaskRestController {
 
@@ -31,7 +31,7 @@ public class ChemistrySingleSelectTaskRestController {
     @ApiOperation("Создает новую сущность задания типа \"Выбор одного ответа\" по химии.")
     @ResponseBody
     public String createNewTask(@RequestBody ChemistrySingleSelectTaskDto task) {
-        return "New task UUID: " + presentation.add(task);
+        return presentation.add(task);
     }
 
     @PutMapping
