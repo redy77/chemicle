@@ -26,7 +26,7 @@ import java.util.UUID;
  */
 
 @Service
-public class CustomOAuth2UserService extends DefaultOAuth2UserService {
+public class OAuth2UserService extends DefaultOAuth2UserService {
 
     @Autowired
     private RegisterUserRepository userRepository;

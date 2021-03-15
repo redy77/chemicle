@@ -3,16 +3,13 @@ package com.chemcool.school.auth.service.config;
 import com.chemcool.school.auth.service.security.RestAuthenticationEntryPoint;
 import com.chemcool.school.auth.service.security.TokenAuthenticationFilter;
 import com.chemcool.school.auth.service.security.UserDetailsServiceImpl;
-import com.chemcool.school.auth.service.security.oauth2.CustomOAuth2UserService;
+import com.chemcool.school.auth.service.security.oauth2.OAuth2UserService;
 import com.chemcool.school.auth.service.security.oauth2.HttpCookieOAuth2AuthorizationRequestRepository;
 import com.chemcool.school.auth.service.security.oauth2.OAuth2AuthenticationFailureHandler;
 import com.chemcool.school.auth.service.security.oauth2.OAuth2AuthenticationSuccessHandler;
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.lang.NonNullApi;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -42,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    private CustomOAuth2UserService customOAuth2UserService;
+    private OAuth2UserService OAuth2UserService;
 
     @Autowired
     private OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;
@@ -120,7 +117,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .baseUri("/oauth2/callback/*")
                     .and()
                     .userInfoEndpoint()
-                    .userService(customOAuth2UserService)
+                    .userService(OAuth2UserService)
                     .and()
                     .successHandler(oAuth2AuthenticationSuccessHandler)
                     .failureHandler(oAuth2AuthenticationFailureHandler);
