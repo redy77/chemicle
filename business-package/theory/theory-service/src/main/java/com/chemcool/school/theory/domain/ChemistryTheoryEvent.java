@@ -49,7 +49,7 @@ public class ChemistryTheoryEvent {
 
     @Type(type = "jsonb")
     @Column(name = "event_payload", columnDefinition = "jsonb")
-    private ChemistryTheory event_payload;
+    private ChemistryTheory eventPayload;
 
     public static ChemistryTheoryEvent createEvent(ChemistryTheory theory, ChemistryTheoryEventType type) {
         return new ChemistryTheoryEvent(

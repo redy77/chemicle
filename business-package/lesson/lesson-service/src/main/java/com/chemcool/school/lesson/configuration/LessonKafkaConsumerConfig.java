@@ -2,7 +2,6 @@ package com.chemcool.school.lesson.configuration;
 
 import com.chemcool.school.lesson.configuration.properties.ChemLessonDeserializer;
 import com.chemcool.school.lesson.configuration.properties.KafkaProperties;
-import com.chemcool.school.lesson.tasks.chemsingleselect.config.properties.ChemSingleSelectTaskDeserializer;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;

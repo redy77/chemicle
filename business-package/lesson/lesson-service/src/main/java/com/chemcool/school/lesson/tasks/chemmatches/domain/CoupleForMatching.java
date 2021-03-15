@@ -1,6 +1,5 @@
 package com.chemcool.school.lesson.tasks.chemmatches.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +8,6 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "couples_for_matching")
 public class CoupleForMatching {
 
@@ -23,4 +21,8 @@ public class CoupleForMatching {
     @Column(name = "right_couple")
     private String rightCouple;
 
+    public CoupleForMatching(String leftCouple, String rightCouple) {
+        this.leftCouple = leftCouple;
+        this.rightCouple = rightCouple;
+    }
 }

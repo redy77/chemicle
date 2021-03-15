@@ -21,12 +21,12 @@ public class ChemSingleSelectRestController {
 //        return "Hello World!";
 //    }
 
-    @GetMapping("/findTaskByChapter")
+    @GetMapping("/findSingleSelectTaskByChapter")
     public List<ChemSingleSelectTask> findTaskByChapter(int chapter){
         return taskService.findTaskByChapter(chapter);
     }
 
-    @GetMapping("/findTaskByReferences")
+    @GetMapping("/findSingleSelectTaskByReferences")
     public List<ChemSingleSelectTask> findTaskByReferences(int references){
         return taskService.findTaskByReferences(references);
     }
