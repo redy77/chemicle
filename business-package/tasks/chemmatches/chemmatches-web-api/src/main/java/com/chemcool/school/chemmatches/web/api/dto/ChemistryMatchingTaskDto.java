@@ -25,5 +25,4 @@ public class ChemistryMatchingTaskDto {
         this.referenceId = task.getReferenceId();
         this.coupleForMatchingList = task.getCoupleForMatchingList();
     }
-
 }
