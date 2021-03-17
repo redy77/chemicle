@@ -4,7 +4,10 @@ import com.chemcool.school.auth.service.domain.RegisterUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
-public interface UserWithRegistrationRepository extends JpaRepository<RegisterUser, Long> {
-    RegisterUser findByEmail(String userEmail);
+public interface RegisterUserRepository extends JpaRepository<RegisterUser, String> {
+    Optional<RegisterUser> findByEmail(String userEmail);
+
 }

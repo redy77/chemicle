@@ -10,11 +10,6 @@ zuul:
       service-id: theory-application
       stripPrefix: false
 
-    chemequations-application:
-      path: /chemequations-application/**
-      service-id: chemequations-application
-      stripPrefix: false
-
     chemfixedanswer-application:
       path: /chemfixedanswer-application/**
       service-id: chemfixedanswer-application
@@ -38,11 +33,8 @@ zuul:
     authorization-application:
       path: /authorization-application/**
       service-id: authorization-application
-      stripPrefix: false
-
-    answers-task-application:
-      path: /answers-task-application/**
-      service-id: answers-task-application
+      url: http://localhost:8090
+      sensitiveHeaders:
       stripPrefix: false
 
   ignored-services: '*'

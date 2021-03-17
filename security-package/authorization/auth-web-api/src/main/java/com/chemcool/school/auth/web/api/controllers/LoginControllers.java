@@ -1,54 +1,45 @@
 package com.chemcool.school.auth.web.api.controllers;
 
-import com.chemcool.school.auth.service.security.JwtBuilder;
-import com.chemcool.school.auth.web.api.dto.UserSendFromClient;
-import com.chemcool.school.auth.web.api.service.CheckUserRegistration;
-import io.jsonwebtoken.impl.DefaultClaims;
+import com.chemcool.school.auth.service.security.TokenProvider;
+import com.chemcool.school.auth.web.api.dto.AuthResponse;
+import com.chemcool.school.auth.web.api.dto.LoginRequest;
 import io.swagger.annotations.ApiOperation;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
-
 @RestController
-@RequiredArgsConstructor
+@RequestMapping("/auth")
 public class LoginControllers {
-    private final CheckUserRegistration checkUserRegistration;
-    private final JwtBuilder jwtBuilder;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private TokenProvider tokenProvider;
 
     @ApiOperation("Возвращает email и токен")
     @PostMapping("/login")
-    public ResponseEntity<?> createNewTask(@RequestBody UserSendFromClient userSendFromClient) {
-        try {
-            return ResponseEntity.ok(checkUserRegistration.responseSendToken(userSendFromClient));
-        } catch (AuthenticationException e) {
-            return new ResponseEntity<>("Invalid email/password", HttpStatus.FORBIDDEN);
-        }
+    public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
+
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        loginRequest.getEmail(),
+                        loginRequest.getPassword()
+                )
+        );
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        String token = tokenProvider.createToken(authentication);
+        return ResponseEntity.ok(new AuthResponse(token));
     }
 
-    @ApiOperation("Возвращает email и токен обновления")
-    @GetMapping("/refreshtoken")
-    public ResponseEntity<?> refreshToken(HttpServletRequest request) throws Exception {
-        DefaultClaims claims = (io.jsonwebtoken.impl.DefaultClaims) request.getAttribute("claims");
-        Map<String, Object> expectedMap = getMapFromIoJsonwebtokenClaims(claims);
-        String token = jwtBuilder.createRefreshToken(expectedMap, expectedMap.get("sub").toString());
-        Map<Object, Object> response = checkUserRegistration.createMapResponse(expectedMap.get("sub").toString(), token);
-        return ResponseEntity.ok(response);
-    }
-
-    public Map<String, Object> getMapFromIoJsonwebtokenClaims(DefaultClaims claims) {
-        Map<String, Object> expectedMap = new HashMap<String, Object>();
-        for (Map.Entry<String, Object> entry : claims.entrySet()) {
-            expectedMap.put(entry.getKey(), entry.getValue());
-        }
-        return expectedMap;
-    }
 }

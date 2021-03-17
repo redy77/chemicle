@@ -1,11 +1,13 @@
 package com.chemcool.school.registration.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
@@ -13,15 +15,11 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
-@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class RegisterUser {
 
     @Id
     @Column(name = "id", unique = true)
     private String id;
-
-    @Column(name = "nick")
-    private String nick;
 
     @Column(name = "name")
     private String name;
@@ -29,17 +27,32 @@ public class RegisterUser {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "city")
-    private String city;
+    @Column(name = "birthday")
+    private LocalDate birthday;
+
+    @Column(name = "gender")
+    private String gender;
+
 
     @Column(name = "phone")
     private String phone;
 
+    @Email
     @Column(name = "email", unique = true)
     private String email;
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "image_url")
+    private String imageUrl;
+
+    @Column(name = "provider")
+    @Enumerated(EnumType.STRING)
+    private RegisterUserAuthProvider provider;
+
+    @Column(name = "provider_id")
+    private String providerId;
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
@@ -49,20 +62,35 @@ public class RegisterUser {
     @Enumerated(EnumType.STRING)
     private RegisterUserAccountRole role;
 
+    @Column(name = "verification_code")
+    private String verificationCode;
+
+    @Column(name = "enabled")
+    private boolean enabled;
+
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
+
     public static RegisterUser createUser(
             RegisterUserExample example
     ) {
         return new RegisterUser(
-                UUID.randomUUID().toString(),
-                example.getUserExampleNick(),
+                example.getUserExampleId(),
                 example.getUserExampleName(),
                 example.getUserExampleSurname(),
-                example.getUserExampleCity(),
+                example.getUserExampleBirthday(),
+                example.getUserExampleGender(),
                 example.getUserExamplePhone(),
                 example.getUserExampleEmail(),
                 example.getUserExamplePassword(),
+                example.getImageUrl(),
+                example.getUserExampleAuthProvider(),
+                example.getUserExampleProviderId(),
                 example.getUserExampleType(),
-                example.getUserExampleRole()
+                example.getUserExampleRole(),
+                example.getUserExampleVerificationCode(),
+                example.isUserExampleEnabled(),
+                example.getUserExampleResetPasswordToken()
         );
     }
 

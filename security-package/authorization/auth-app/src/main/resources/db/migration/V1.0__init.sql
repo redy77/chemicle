@@ -1,25 +1,31 @@
-create table if not exists users_registration_event
+create table if not exists users_event
 (
-    user_registration_event_id                     varchar(255) not null primary key,
-    user_registration_event_author_id              varchar(255) not null,
-    user_registration_event_entity_id              varchar(255) not null,
-    user_registration_event_version                VARCHAR(255) not null,
-    user_registration_event_occurring_context      varchar(255) not null,
-    user_registration_event_occurring_context_time timestamp    not null,
-    user_registration_event_payload                jsonb        not null,
-    user_registration_event_type                   varchar(255) not null
+    event_id                     varchar(255) not null primary key,
+    event_author_id              varchar(255),
+    event_entity_id              varchar(255),
+    event_version                VARCHAR(255),
+    event_occurring_context      varchar(255),
+    event_occurring_context_time timestamp,
+    event_payload                jsonb,
+    event_type                   varchar(255)
 );
 
-create table if not exists users_registration
+create table if not exists users
 (
-    user_id           varchar(255) not null primary key,
-    user_email        varchar(255) not null,
-    user_nick_name    varchar(255) not null,
-    user_password     VARCHAR(255) not null,
-    user_name         varchar(255) not null,
-    user_surname      varchar(255) not null,
-    user_role         varchar(255) not null,
-    user_city         varchar(255) not null,
-    user_phone_number varchar(255) not null,
-    user_account_type varchar(255) not null
+    id                   varchar(255) not null primary key,
+    email                varchar(255),
+    password             VARCHAR(255),
+    name                 varchar(255),
+    surname              varchar(255),
+    role                 varchar(255),
+    phone                varchar(255),
+    account_type         varchar(255),
+    gender               varchar(255),
+    image_url            varchar(255),
+    provider             varchar(255),
+    provider_id          varchar(255),
+    birthday             date,
+    enabled              boolean,
+    verification_code    varchar(255),
+    reset_password_token varchar(255)
 );
