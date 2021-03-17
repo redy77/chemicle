@@ -5,7 +5,7 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/tasks_matches
+    url: jdbc:postgresql://localhost:5432/chemfixedanswer
     username: mick
     password: mick
     platform: postgres
@@ -14,7 +14,7 @@ spring:
 server:
   port: 0
   servlet:
-    context-path: /chemmatches-application/
+    context-path: /chemfixedanswer-application/
 
 eureka:
   client:
@@ -23,4 +23,4 @@ eureka:
 
 kafka:
   server: http://localhost:9092
-  groupId: matching-task.1
+  groupId: fixed-answer-task.1

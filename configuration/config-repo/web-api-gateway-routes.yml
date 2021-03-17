@@ -1,0 +1,41 @@
+zuul:
+  ribbon:
+    eager-load:
+      enabled: true
+  sensitive-headers:
+  routes:
+
+    theory-application:
+      path: /theory-application/**
+      service-id: theory-application
+      stripPrefix: false
+
+    chemfixedanswer-application:
+      path: /chemfixedanswer-application/**
+      service-id: chemfixedanswer-application
+      stripPrefix: false
+
+    chemsingleselect-application:
+      path: /chemsingleselect-application/**
+      service-id: chemsingleselect-application
+      stripPrefix: false
+
+    chemmatches-application:
+      path: /chemmatches-application/**
+      service-id: chemmatches-application
+      stripPrefix: false
+
+    registration-application:
+      path: /registration-application/**
+      service-id: registration-application
+      stripPrefix: false
+
+    authorization-application:
+      path: /authorization-application/**
+      service-id: authorization-application
+      url: http://localhost:8090
+      sensitiveHeaders:
+      stripPrefix: false
+
+  ignored-services: '*'
+  retryable: true
