@@ -1,16 +1,38 @@
 spring:
-
+  application:
+    name: registration-application
   jpa:
     database: postgresql
     show-sql: true
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/users
-    username: mick
-    password: mick
+    url: jdbc:postgresql://localhost:5432/registration_users
+    username: postgres
+    password: root
     platform: postgres
     driver-class-name: org.postgresql.Driver
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    from: borara3511@gmail.com
+    username: borara3511@gmail.com
+    password: 3511borara
+    protocol: smtp
+    tls: true
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      ssl.trust: smtp.gmail.com
+    debug: true
+
+app:
+  auth:
+    tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
+    tokenExpirationMsec: 864000000
+  oauth2:
+    authorizedRedirectUris:
+      - http://localhost:3000/oauth2/redirect
 
 server:
   port: 0
