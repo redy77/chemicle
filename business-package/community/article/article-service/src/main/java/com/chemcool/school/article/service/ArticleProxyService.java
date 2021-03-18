@@ -1,0 +1,51 @@
+package com.chemcool.school.article.service;
+
+import com.chemcool.school.article.domain.ArticleEventType;
+import com.chemcool.school.article.domain.ArticleTaskEventFactory;
+import com.chemcool.school.article.domain.ArticlesTask;
+import com.chemcool.school.article.domain.ArticlesTaskExample;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+/**
+ * The third layer for work db operations
+ *
+ * @autor Иван Полещук
+ */
+@Slf4j
+@Service
+@RequiredArgsConstructor
+public class ArticleProxyService {
+
+    private final ArticleEventNotificationService notificationService;
+    private final ArticleTaskService taskService;
+
+    public List<ArticlesTask> getAll() {
+        return taskService.getAll();
+    }
+
+    public Optional<ArticlesTask> getById(String id) {
+        return taskService.getById(id);
+    }
+
+    public String add(ArticlesTaskExample exampleTask) {
+        ArticlesTask task = ArticleTaskFactory.createArticlesTask(exampleTask);
+        notificationService.send(ArticleTaskEventFactory.createTaskEvent(task, ArticleEventType.CREATE));
+        return task.getArticleId();
+    }
+
+    public void update(ArticlesTask exampleTask) {
+        taskService.update(exampleTask);
+        notificationService.send(
+                ArticleTaskEventFactory.createTaskEvent(exampleTask, ArticleEventType.UPDATE)
+        );
+    }
+
+    public void delete(String id) {
+        taskService.delete(id);
+    }
+}
