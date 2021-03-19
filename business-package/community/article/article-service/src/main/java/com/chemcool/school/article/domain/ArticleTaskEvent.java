@@ -29,16 +29,16 @@ import java.util.UUID;
 public class ArticleTaskEvent {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "event_id")
     private String TaskEventId;
 
-    @Column(name = "author_id")
+    @Column(name = "event_author_id")
     private String authorId;
 
-    @Column(name = "occurring_comtext")
+    @Column(name = "event_occurring_context")
     private String occurringContext;
 
-    @Column(name = "occurring_context_time")
+    @Column(name = "event_occurring_context_time")
     private LocalDateTime occurringContextTime;
 
     @Column(name = "event_type")
@@ -47,17 +47,17 @@ public class ArticleTaskEvent {
     @Column(name = "event_version")
     private String eventVersion;
 
-    @Column(name = "entity_id")
+    @Column(name = "event_entity_id")
     private String entityId;
 
     @Type(type = "jsonb")
-    @Column(name = "payload", columnDefinition = "jsonb")
+    @Column(name = "event_payload", columnDefinition = "jsonb")
     private ArticlesTask payload;
 
-    public static ArticleTaskEvent createEvent(ArticlesTask task, String authorId, ArticleEventType eventType) {
+    public static ArticleTaskEvent createEvent(ArticlesTask task, ArticleEventType eventType) {
         return new ArticleTaskEvent(
                 UUID.randomUUID().toString(),
-                authorId,
+                "AuthorIdArticleTaskEvent",
                 "ArticleTaskEvent",
                 LocalDateTime.now(),
                 eventType,

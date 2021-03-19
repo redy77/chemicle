@@ -36,11 +36,12 @@ public class ArticleTaskService {
     }
 
     public void update(ArticlesTask task) {
-        log.info("Обновлена задача с UUID = " + task.getArticleId());
         repository.save(task);
+        log.info("Обновлена задача с ID = " + task.getArticleId());
     }
 
     public void delete(String id) {
         repository.deleteById(id);
+        log.info("Удалена задача с ID = " + id);
     }
 }

@@ -1,10 +1,7 @@
 package com.chemcool.school.article.service;
 
-import com.chemcool.school.article.domain.ArticleEventType;
-import com.chemcool.school.article.domain.ArticleTaskEventFactory;
-import com.chemcool.school.article.domain.ArticlesTask;
-import com.chemcool.school.article.domain.ArticlesTaskExample;
-import lombok.RequiredArgsConstructor;
+import com.chemcool.school.article.domain.*;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +15,7 @@ import java.util.Optional;
  */
 @Slf4j
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ArticleProxyService {
 
     private final ArticleEventNotificationService notificationService;

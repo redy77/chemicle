@@ -1,7 +1,5 @@
-package com.chemcool.school.article.service;
+package com.chemcool.school.article.domain;
 
-import com.chemcool.school.article.domain.ArticlesTask;
-import com.chemcool.school.article.domain.ArticlesTaskExample;
 import com.chemcool.school.article.exception.ArticleTaskException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -21,8 +19,7 @@ public class ArticleTaskFactory {
         if (example.getArticleBody().isEmpty()) {
             throw new ArticleTaskException("Ошибка! Поле \"Раздел\" пустое ");
         }
-        log.info("Попытка создать урок.");
+        log.info("Попытка создать урок. Автор: " + example.getArticleAuthor());
         return ArticlesTask.createArticlesTask(example);
     }
-
 }

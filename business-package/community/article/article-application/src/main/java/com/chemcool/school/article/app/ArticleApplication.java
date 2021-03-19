@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  *
  * @autor Иван Полещук
  */
-@SpringBootApplication(scanBasePackages = "com.chemcool.school.article")
+@SpringBootApplication(scanBasePackages = {"com.chemcool.school.article"})
 @EntityScan("com.chemcool.school.article")
 @EnableJpaRepositories("com.chemcool.school.article")
 @EnableEurekaClient

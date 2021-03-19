@@ -4,8 +4,6 @@ import com.chemcool.school.article.exception.ArticleEventException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import java.util.UUID;
-
 /**
  * Event factory for articles
  *
@@ -20,6 +18,6 @@ public class ArticleTaskEventFactory {
             throw new ArticleEventException("Что-то не получилось для создания ивента");
         }
         log.info("Попытка создать событие {} при создании статьи ", eventType);
-        return ArticleTaskEvent.createEvent(task, UUID.randomUUID().toString(), eventType);
+        return ArticleTaskEvent.createEvent(task, eventType);
     }
 }
