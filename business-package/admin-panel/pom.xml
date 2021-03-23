@@ -34,17 +34,21 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
-            <dependency>
-                <groupId>com.chemcool.school.admin-panel</groupId>
-                <artifactId>admin-panel-service</artifactId>
-                <version>${admin-panel.modules.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.chemcool.school.admin-panel</groupId>
-                <artifactId>admin-panel-web-api</artifactId>
-                <version>${admin-panel.modules.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.chemcool.school.admin-panel</groupId>-->
+<!--                <artifactId>admin-panel-app</artifactId>-->
+<!--                <version>${admin-panel.modules.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>com.chemcool.school.admin-panel</groupId>-->
+<!--                <artifactId>admin-panel-service</artifactId>-->
+<!--                <version>${admin-panel.modules.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>com.chemcool.school.admin-panel</groupId>-->
+<!--                <artifactId>admin-panel-web-api</artifactId>-->
+<!--                <version>${admin-panel.modules.version}</version>-->
+<!--            </dependency>-->
 
         </dependencies>
     </dependencyManagement>
