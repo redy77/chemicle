@@ -3,10 +3,14 @@ package com.chemcool.school.answerstask.web.api.controllers;
 import com.chemcool.school.answerstask.domain.UserAnswersCorrect;
 import com.chemcool.school.answerstask.service.UserAnswersCorrectService;
 import com.chemcool.school.answerstask.tasks.chemmatches.domain.CoupleForMatching;
+import com.chemcool.school.answerstask.web.api.domain.AnswerDto;
+import com.chemcool.school.answerstask.web.api.domain.MatchesAnswerDto;
 import com.chemcool.school.answerstask.web.api.domain.TaskType;
 import com.chemcool.school.answerstask.web.api.service.CheckResolverUserThisTask;
 import com.chemcool.school.answerstask.web.api.service.CheckUserAnswersService;
 import com.chemcool.school.answerstask.web.api.service.UserIdentJwtParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,31 +28,41 @@ public class AnswersTaskRestController {
     private final UserIdentJwtParser jwtParser;
     private final UserAnswersCorrectService userAnswersCorrectService;
     private final CheckResolverUserThisTask checkResolverUserThisTask;
+    private final ObjectMapper objectMapper;
 
     @PostMapping
-    @ApiOperation("Возвращает true или false ответ пользователю")
+    @ApiOperation("Возвращает AnswerDto в ответ пользователю")
     public ResponseEntity<String> checkAnswerUser(@RequestParam String taskId, @RequestParam TaskType taskType,
                                                   @RequestParam(required = false) String userAnswers,
                                                   @RequestBody(required = false) List<CoupleForMatching> coupleForMatchingList,
-                                                  @RequestHeader(value = "AuthorizationToken") String token) {
+                                                  @RequestHeader(value = "AuthorizationToken") String token) throws JsonProcessingException {
 
         String userId = jwtParser.getIdUserOfToken(token);
-        boolean checkUserAnswersFlag;
+        AnswerDto userAnswersDto;
 
-        if (checkResolverUserThisTask.checkResolverUserThisTask(taskId, userId)) {
+        System.out.println("id-> "+userId);
+        if (checkResolverUserThisTask.checkScoreTasks(taskId, userId)) {
+            System.out.println("sdfghjksdfghj");
             return new ResponseEntity<>("Задача уже была решена пользователем", HttpStatus.OK);
         }
 
-        UserAnswersCorrect userAnswersCorrect = new UserAnswersCorrect(userId, jwtParser.getEmailUserOfToken(token), taskId);
 
         if (userAnswers != null) {
-            if (checkUserAnswersFlag = checkUserAnswersService.checkUserAnswer(taskId, taskType, userAnswers)) {
-                userAnswersCorrectService.saveUserCorrectAnswers(userAnswersCorrect);
-            }
-        } else {
-            checkUserAnswersFlag = checkUserAnswersService.checkUserAnswer(taskId, coupleForMatchingList);
+            userAnswersDto = checkUserAnswersService.checkUserAnswer(taskId, taskType, userAnswers);
+        }
+        else {
+            userAnswersDto = checkUserAnswersService.checkUserAnswer(taskId, coupleForMatchingList);
+        }
+        UserAnswersCorrect userAnswersCorrect = new UserAnswersCorrect(
+                userId,
+                jwtParser.getEmailUserOfToken(token),
+                taskId,
+                userAnswersDto.getScore());
+
+        if (userAnswersDto.isResult()) {
+            userAnswersCorrectService.delUserCorrectAnswers(taskId,userId);
             userAnswersCorrectService.saveUserCorrectAnswers(userAnswersCorrect);
         }
-        return new ResponseEntity<>(Boolean.toString(checkUserAnswersFlag), HttpStatus.OK);
+        return new ResponseEntity<>(objectMapper.writeValueAsString(userAnswersDto), HttpStatus.OK);
     }
 }
