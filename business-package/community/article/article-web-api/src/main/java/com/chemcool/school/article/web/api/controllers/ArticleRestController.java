@@ -17,6 +17,7 @@ import java.util.List;
 @RequestMapping("/articles/v1.0/")
 @RequiredArgsConstructor
 public class ArticleRestController {
+
     private final ArticlePresentation presentation;
 
     @GetMapping
@@ -26,30 +27,29 @@ public class ArticleRestController {
     }
 
     @GetMapping("/{id}")
-    @ApiOperation("Возвращает дто сущности статьи по химии по ID.")
-    public ArticleDto getTaskById(@PathVariable String id) {
+    @ApiOperation("Возвращает дто статьи по химии по ID.")
+    public ArticleDto getArticleById(@PathVariable String id) {
         return presentation.getArticleById(id);
     }
 
     @PostMapping
-    @ApiOperation("Создает новую сущность статьи по химии.")
-    @ResponseBody
-    public String createNewTask(@RequestBody ArticleDto task) {
-        return presentation.createNewArticle(task);
+    @ApiOperation("Создает новую статью по химии.")
+    public String createNewArticle(@RequestBody ArticleDto task) {
+        presentation.createNewArticle(task);
+        return task.getArticleAuthor();
     }
 
     @PutMapping
-    @ApiOperation("Обновляет существующую сущность статьи по химии.")
-    @ResponseBody
-    public String updateTask(@RequestBody ArticleDto task) {
+    @ApiOperation("Обновляет существующую статью по химии по ID")
+    public String updateArticle(@RequestBody ArticleDto task) {
         presentation.updateArticle(task);
-        return "Update task UUID: " + task.getArticleId();
+        return task.getArticleId(); //"Обновлена статья с ID: " +
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation("Удаляет существующую сущность статьи по химии по ID.")
-    public String deleteTask(@PathVariable String id) {
+    @ApiOperation("Удаляет существующую статью по химии по ID.")
+    public String deleteArticleById(@PathVariable String id) {
         presentation.deleteArticleById(id);
-        return "Сущность с UUID = " + id + " была успешно удалена.";
+        return id; //+ "Статья с ID = " +" была успешно удалена.";
     }
 }

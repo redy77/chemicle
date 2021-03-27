@@ -30,18 +30,19 @@ public class ArticleTaskService {
         return repository.findById(id);
     }
 
-    public void save(ArticlesTask task) {
+    public String save(ArticlesTask task) {
         repository.save(task);
-        log.info("Статья с ID: " + task.getArticleId() + " сохранена.");
+        log.info("Статья с ID: " + task.getArticleId() + " сохранена");
+        return task.getArticleId();
     }
 
     public void update(ArticlesTask task) {
         repository.save(task);
-        log.info("Обновлена задача с ID = " + task.getArticleId());
+        log.info("Статья с ID: " + task.getArticleId() + " обновлена");
     }
 
     public void delete(String id) {
         repository.deleteById(id);
-        log.info("Удалена задача с ID = " + id);
+        log.info("Статья с ID: " + id + " удалена");
     }
 }

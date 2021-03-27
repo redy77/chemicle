@@ -47,7 +47,8 @@ public class ArticleServiceLayer {
 
     public void updateArticle(ArticleDto dto) {
         validate(dto);
-        proxyService.update(new ArticlesTask(
+        proxyService.update(
+                new ArticlesTask(
                         dto.getArticleId(),
                         dto.getArticleTitle(),
                         dto.getArticleBody(),

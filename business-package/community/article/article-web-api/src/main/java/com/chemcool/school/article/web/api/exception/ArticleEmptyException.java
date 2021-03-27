@@ -1,7 +1,7 @@
 package com.chemcool.school.article.web.api.exception;
 
 /**
- * Empty-Exception Handler
+ * Part of exception handler
  *
  * @autor Иван Полещук
  */
