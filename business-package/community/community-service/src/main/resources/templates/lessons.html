@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <title>Lessons</title>
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: "Lato", sans-serif;
+            margin: 50px
+        }
+
+        /* Style the tab */
+        .tab {
+            float: left;
+            /*border: 1px solid #ccc;*/
+            background-color: #e9eaea;
+            width: 25%;
+            height: 600px;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            display: block;
+            background-color: inherit;
+            color: black;
+            padding: 22px 16px;
+            width: 100%;
+            border: none;
+            outline: none;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 20px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #7dc1e8;
+        }
+
+        /* Create an active/current "tab button" class */
+        .tab button.active {
+            background-color: #2688c1;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            float: left;
+            padding: 0px 60px;
+            /*border: 1px solid #ccc;*/
+            width: 70%;
+            border-left: none;
+            height: 600px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Chemistry</h1>
+
+<div id="menu" class="tab">
+</div>
+
+<div id="article" class="tabcontent">
+</div>
+
+<script>
+    const menuContent = document.getElementById('menu')
+    const artContent = document.getElementById('article')
+
+    let output = ''
+    let article = ''
+
+    const urlAll = 'http://localhost:8082/api/getlessons'
+
+    //рисует меню с названиями уроков
+    const renderMenu = (lessons) => {
+        lessons.forEach(lesson => {
+            //создаем набор кнопок, где каждя кнопка содержит название урока
+            //в айдишник кнопок зашиваем айдишник урока
+            output +=
+                '<button class="tablinks" id="' + lesson.id + '" onclick="openLesson(' +
+                lesson.id + ')">' + lesson.lessonName + '</button>'
+        })
+        //последняя кнопка - кнопка админа
+        output +=
+            '<button class="tablinks" id="addlesson" onclick="addLesson(' +
+            ')">Админка : Добавить урок / статью / обучающий материал</button>'
+
+        menuContent.innerHTML = output
+    }
+
+    // Method Get чтобы нарисовать меню
+    fetch(urlAll)
+        .then(res => res.json())
+        .then(data => renderMenu(data))
+
+    // для публикации нового коммента
+    function postNew(evt, lessonId) {
+        //позволяет не перезагружать страницу после отправки данных с формы
+        evt.preventDefault()
+// создаем сегодняшнюю дату
+        let now = new Date()
+        let time = now.getDate() + '.' + now.getMonth() + '.' + now.getFullYear()
+        const urlNew = 'http://localhost:8082/new'
+
+        const commentNew = {
+            comment: $('#CommentNew').val(),
+            author: $('#AuthorNew').val(),
+            date: time,
+            lessonId: lessonId
+        }
+        fetch(urlNew, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(commentNew)
+        })
+        //обновляет страницу с уроком
+        openLesson(lessonId)
+    }
+
+    //Удаление коммента запускается кнопкой Delete
+    function sendDel(evt, lessonId, commentId) {
+        evt.preventDefault()
+        const urlDel = 'http://localhost:8082/del'
+        fetch(`${urlDel}/${lessonId}/${commentId}`, {
+            method: 'DELETE'
+        })
+        //обновляет страницу с уроком
+        openLesson(lessonId)
+    }
+
+    function addLesson(){
+        // У всех "tablinks" удаляем "active" - отжимааем все кнопки меню
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        document.getElementById('addlesson').className += ' active'
+
+        artContent.innerHTML='<h1>Создание нового обучающего материала / лекции / статьи. Здесь реализовать формы для заполнения контента</h1>'
+    }
+
+    // для открытия страницы с уроком
+    function openLesson(lessonId) {
+
+        var tablinks;
+
+        // У всех "tablinks" удаляем "active" - отжимааем все кнопки меню
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Рисует страницу с уроком (статьей), комментами к ней и добавляет форму для комментов
+        const renderArticle = (lessons) => {
+            //форма для комментов
+            strForm =
+                '<div class="container-fluid">' +
+                '<div class="row">' +
+                '<div class="col" style="margin-top: 45px">' +
+                '<form>' +
+                '<div class="form-group">' +
+                '<input type="text" style="font-size: small" class="form-control"  id="AuthorNew" placeholder="Your name">' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<textarea class="form-control" style="font-size: small" id="CommentNew" rows="2"></textarea>' +
+                '</div>' +
+                '<button type="submit" class="btn btn-primary btn-sm" onclick="postNew(event,' + lessonId + ')">Submit</button>' +
+                '</form>' +
+                '</div>' +
+                '<div class="col"></div>' +
+                '</div>' +
+                '</div>'
+            lessons.forEach(lesson => {
+                //из листа уроков находим нужный урок
+                if (lesson.id === lessonId) {
+                    let strComment = ''
+                    lesson.comments.forEach(commentary => {
+                        //из листа комментов формируем набор таблиц
+                        //где каждая таблица - отдельновзятый комментарий
+                        strComment +=
+                            '<table style="margin-top: 60px">' +
+                            '<tr style="font-size: medium; vertical-align: top">' +
+                            '<td width="100">' + commentary.author + '</td>' +
+                            '<td width="100">' + commentary.date + '</td>' +
+                            '<td width="300">' + commentary.comment + '</td>' +
+                            '<td width="100"><button type="submit" class="btn btn-outline-danger btn-sm" onclick="sendDel(event,' +
+                            lessonId + ',' + commentary.id + ')">Delete</button></td>' +
+                            '</tr>' +
+                            '</table>'
+                    })
+                    // статья = имя урока + текст урока + форма комментов + сами комменты
+                    article = '<h3>' + lesson.lessonName + '</h3>' + lesson.content + strForm + strComment
+                }
+            })
+            artContent.innerHTML = article
+        }
+
+        // Method Get возвращает response, из которого извлекается лист уроков, чтобы нарисовать страницу с уроком
+        fetch(urlAll)
+            .then(res => res.json())
+            .then(data => renderArticle(data))
+
+        //Делает ту кнопку, с которой прилетело - всегда нажатой
+        //айдишник кнопки совпадает с айдишником урока, что позволяет делать
+        //кнопку нажатой, вызвав openLesson и передав ему айди урока
+        // evt.currentTarget.className += " active"
+        document.getElementById(lessonId).className += " active"
+    }
+
+</script>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</body>
+</html>

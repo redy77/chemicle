@@ -12,7 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "chemistry_fixed_answer")
+@Table(name = "chemistry_fixed_answer_task")
 public class ChemFixedAnswerTask {
 
     @Id

@@ -11,8 +11,9 @@ public class CommentListener {
 
     @Autowired
     ServiceInterface serviceInterface;
-
-    @KafkaListener(topics = "KafkaComment", groupId = "group_json1",containerFactory = "kafkaListenerContainerFactory")
+// получение нового комментария реализовано как через REST, так и через KAFKA
+// чтобы включить второй способ - надо раскомментировать Кафка Слушателя
+//    @KafkaListener(topics = "KafkaComment", groupId = "group_json1",containerFactory = "kafkaListenerContainerFactory")
     public void consumeJson(GotFromFrontEnd gotFromFrontEnd){
         System.out.println("Consume Json message : "+ gotFromFrontEnd);
         serviceInterface.addComment(gotFromFrontEnd);
