@@ -39,9 +39,6 @@ public class KafkaEquationsConsumerConfiguration {
         prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ChemEquationsTaskDeserializer.class);
         //prop.put(JsonDeserializer.TRUSTED_PACKAGES, TRUSTED_PACKAGES);
         prop.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getChemEquationsGroupId());
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-        System.out.println("Equations ID  "+ kafkaProperties.getChemEquationsGroupId());
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
         return prop;
     }
 

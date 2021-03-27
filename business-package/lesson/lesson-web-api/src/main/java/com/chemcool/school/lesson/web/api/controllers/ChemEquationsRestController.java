@@ -5,8 +5,13 @@ import com.chemcool.school.lesson.tasks.chemequations.service.ChemEquationsTaskS
 import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTask;
 import com.chemcool.school.lesson.tasks.chemsingleselect.service.ChemSingleSelectTaskService;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,19 +21,21 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping({"/v1.0"})
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ChemEquationsRestController {
+
     private final ChemEquationsTaskService taskService;
 
     @ApiOperation("Find equations tasks by chapter")
     @GetMapping("/findEquationsTaskByChapter")
-    public List<ChemEquationsTask> findEquationsTaskByChapter(int chapter){
+    public List<ChemEquationsTask> findEquationsTaskByChapter(int chapter) {
         return taskService.findTaskByChapter(chapter);
     }
 
     @ApiOperation("Find equations tasks by references")
     @GetMapping("/findEquationsTaskByReferences")
-    public List<ChemEquationsTask> findEquationsTaskByReferences(int references){
+    public List<ChemEquationsTask> findEquationsTaskByReferences(int references) {
         return taskService.findTaskByReferences(references);
     }
+
 }

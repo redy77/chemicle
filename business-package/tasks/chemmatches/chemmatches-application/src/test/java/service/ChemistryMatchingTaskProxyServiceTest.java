@@ -20,6 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest(classes = ChemMatchesApplication.class)
+
 class ChemistryMatchingTaskProxyServiceTest {
 
     @Autowired

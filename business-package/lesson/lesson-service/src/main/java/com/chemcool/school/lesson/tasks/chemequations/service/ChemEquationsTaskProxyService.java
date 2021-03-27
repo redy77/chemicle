@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import com.chemcool.school.lesson.tasks.chemequations.domain.*;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +19,7 @@ public class ChemEquationsTaskProxyService {
 
     public String add(ChemEquationsTaskExample exampleTask) {
         ChemEquationsTask task = ChemEquationsTaskFactory.createChemEquationsTask(exampleTask);
-        notificationService.send(ChemEquationsTaskEventFactory.createTaskEvent(task, ChemEquationsTaskEventType.CREATE));
+        // notificationService.send(ChemEquationsTaskEventFactory.createTaskEvent(task, ChemEquationsTaskEventType.CREATE));
         return task.getTaskId();
     }
 
