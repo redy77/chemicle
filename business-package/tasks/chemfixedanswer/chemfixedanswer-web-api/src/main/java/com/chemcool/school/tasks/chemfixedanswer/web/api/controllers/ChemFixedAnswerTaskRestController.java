@@ -48,4 +48,10 @@ public class ChemFixedAnswerTaskRestController {
     public void deleteFixedAnswerTask(@PathVariable String id){
         presentation.deleteFixedAnswerTask(id);
     }
+
+    @GetMapping("/hello")
+    public String hello(){
+        return "Hello World";
+
+    }
 }

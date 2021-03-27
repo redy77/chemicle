@@ -7,3 +7,15 @@ spring:
       fail-fast: true
       password: ${CONFIG_SERVICE_PASSWORD}
       username: ${CONFIG_SERVICE_USER}
+
+---
+spring:
+  profiles: test
+  application:
+    name: tasks-chemfixedanswer-application-test
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: false
+      password: ${CONFIG_SERVICE_PASSWORD}
+      username: ${CONFIG_SERVICE_USER}
