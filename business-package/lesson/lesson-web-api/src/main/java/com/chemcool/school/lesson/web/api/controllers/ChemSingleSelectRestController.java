@@ -16,11 +16,6 @@ import java.util.List;
 public class ChemSingleSelectRestController {
     private final ChemSingleSelectTaskService taskService;
 
-//    @GetMapping("/hello")
-//    public String hello() {
-//        return "Hello World!";
-//    }
-
     @GetMapping("/findSingleSelectTaskByChapter")
     public List<ChemSingleSelectTask> findTaskByChapter(int chapter){
         return taskService.findTaskByChapter(chapter);

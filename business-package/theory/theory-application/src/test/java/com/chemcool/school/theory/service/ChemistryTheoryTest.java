@@ -36,7 +36,7 @@ public class ChemistryTheoryTest extends RunTestcontainerTest {
     public TheoryDto theoryDtoForTest =
             new TheoryDto("1", "theoryName", "theoryDescription", 1, 1);
 
-    public String BASE_URL = "/v1.0/lessons";
+    public String BASE_URL = "/theory-application/v1.0/theory";
 
     @Test
     void createLessonExampleTest() throws Exception {

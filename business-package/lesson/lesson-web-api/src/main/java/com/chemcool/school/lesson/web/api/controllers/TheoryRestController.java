@@ -17,11 +17,6 @@ import java.util.List;
 public class TheoryRestController {
     private final ChemistryTheoryPageService pageService;
 
-//    @GetMapping("/hello")
-//    public String hello() {
-//        return "Hello World!";
-//    }
-
     @GetMapping("/findTheoryByChapter")
     public List<ChemistryTheory> findTaskAndTheoryByChapter(int chapter){
         return pageService.findTheoryByChapter(chapter);
