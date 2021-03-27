@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Part exception handler
+ * Part of exception handler
  *
  * @version 1.0
  * @autor Иван Полещук

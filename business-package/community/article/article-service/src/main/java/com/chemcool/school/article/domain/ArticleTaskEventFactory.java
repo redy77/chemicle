@@ -13,11 +13,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class ArticleTaskEventFactory {
     public static ArticleTaskEvent createTaskEvent(ArticlesTask task, ArticleEventType eventType) {
-        if (false) {
-            //ToDO: реализовать логику для фабрики события создания таски
+        try {
+            log.info("Попытка создать событие {} при создании статьи ", eventType);
+            return ArticleTaskEvent.createEvent(task, eventType);
+        } catch (Throwable th) {
             throw new ArticleEventException("Что-то не получилось для создания ивента");
         }
-        log.info("Попытка создать событие {} при создании статьи ", eventType);
-        return ArticleTaskEvent.createEvent(task, eventType);
     }
 }

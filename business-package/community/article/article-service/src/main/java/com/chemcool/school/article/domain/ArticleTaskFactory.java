@@ -19,7 +19,10 @@ public class ArticleTaskFactory {
         if (example.getArticleBody().isEmpty()) {
             throw new ArticleTaskException("Ошибка! Поле \"Раздел\" пустое ");
         }
-        log.info("Попытка создать урок. Автор: " + example.getArticleAuthor());
+        if (example.getArticleAuthor().isEmpty()) {
+            throw new ArticleTaskException("Ошибка! Поле \"Автор\" пустое ");
+        }
+        log.info("Попытка создать статью. Автор: " + example.getArticleAuthor());
         return ArticlesTask.createArticlesTask(example);
     }
 }

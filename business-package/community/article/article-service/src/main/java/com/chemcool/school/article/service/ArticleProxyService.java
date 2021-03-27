@@ -32,6 +32,7 @@ public class ArticleProxyService {
     public String add(ArticlesTaskExample exampleTask) {
         ArticlesTask task = ArticleTaskFactory.createArticlesTask(exampleTask);
         notificationService.send(ArticleTaskEventFactory.createTaskEvent(task, ArticleEventType.CREATE));
+        log.info("Статья с ID " + task.getArticleId() + " передана на добавление");
         return task.getArticleId();
     }
 
@@ -40,9 +41,11 @@ public class ArticleProxyService {
         notificationService.send(
                 ArticleTaskEventFactory.createTaskEvent(exampleTask, ArticleEventType.UPDATE)
         );
+        log.info("Статья с ID " + exampleTask.getArticleId() + " передана на обновление");
     }
 
     public void delete(String id) {
         taskService.delete(id);
+        log.info("Статья с ID " + id + " передана на удаление");
     }
 }
