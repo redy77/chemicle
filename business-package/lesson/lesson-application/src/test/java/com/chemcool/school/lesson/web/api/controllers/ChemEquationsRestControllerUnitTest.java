@@ -4,10 +4,13 @@ import com.chemcool.school.lesson.app.LessonApplication;
 import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
 import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTaskExample;
 import com.chemcool.school.lesson.tasks.chemequations.service.ChemEquationsTaskService;
+import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -20,6 +23,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -33,7 +37,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 @AutoConfigureMockMvc
 @EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
 @TestPropertySource("/application-test.properties")
- class ChemEquationsRestControllerUnitTest {
+class ChemEquationsRestControllerUnitTest {
     @Autowired
     private MockMvc mockMvc;
 
@@ -54,8 +58,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
                 .createChemEquationsTask(chemEquationsTaskExampleForTest));
         this.mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
+
     @Test
-    public void contextTest() throws Exception {
+    public void contextTest() {
         assertThat(controller).isNotNull();
     }
 
@@ -63,7 +68,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
     @Test
     void findEquationsTaskByChapter() throws Exception {
         Integer chapterId = chemEquationsTaskExampleForTest.getChapterId();
-        Mockito.when(service.findTaskByChapter(chapterId)).thenReturn(chemEquationsTask);
+        Mockito.when(service.getAllByChapterId(chapterId)).thenReturn(chemEquationsTask);
         this.mockMvc.perform(
                 get("/v1.0/findEquationsTaskByChapter").param("chapter", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
@@ -74,7 +79,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
     @Test
     void findEquationsTaskByReferences() throws Exception {
         Integer referenceId = chemEquationsTaskExampleForTest.getReferenceId();
-        Mockito.when(service.findTaskByReferences(referenceId)).thenReturn(chemEquationsTask);
+        Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(chemEquationsTask);
         this.mockMvc.perform(
                 get("/v1.0/findEquationsTaskByReferences").param("references", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))

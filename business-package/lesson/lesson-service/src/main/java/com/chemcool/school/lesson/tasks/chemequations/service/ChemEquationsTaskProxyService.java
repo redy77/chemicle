@@ -19,7 +19,8 @@ public class ChemEquationsTaskProxyService {
 
     public String add(ChemEquationsTaskExample exampleTask) {
         ChemEquationsTask task = ChemEquationsTaskFactory.createChemEquationsTask(exampleTask);
-        // notificationService.send(ChemEquationsTaskEventFactory.createTaskEvent(task, ChemEquationsTaskEventType.CREATE));
+        System.out.println("ChemEquationsTaskProxyService "+task);
+        //notificationService.send(ChemEquationsTaskEventFactory.createTaskEvent(task, ChemEquationsTaskEventType.CREATE));
         return task.getTaskId();
     }
 
@@ -39,30 +40,16 @@ public class ChemEquationsTaskProxyService {
         return taskService.getAllByChapterId(chapterId);
     }
 
+    public List<ChemEquationsTask> getAllByChapterIdAndReferenceId(int chapterId,int referenceId) {
+        return taskService.getAllByChapterIdAndReferenceId(chapterId,referenceId);
+    }
+
     public void deleteById(String id) {
         taskService.deleteById(id);
     }
 
+    public boolean[] checkAnswer(String taskId, String userAnswer) {
+        return taskService.checkAnswer(taskId, userAnswer);
+    }
 
 }
-
-/*
-public class ChemSingleSelectTaskProxyService {
-    public Optional<ChemSingleSelectTask> getById(String id) {
-        return taskService.getById(id);
-    }
-
-    public List<ChemSingleSelectTask> getAll() {
-        return taskService.getAll();
-    }
-
-    public List<ChemSingleSelectTask> getAllByChapterId(int chapterId) {
-        return taskService.getAllByChapterId(chapterId);
-   }
-
-    public void deleteById(String id) {
-        taskService.deleteById(id);
-    }
-}
-
- */
