@@ -13,15 +13,15 @@ import java.util.Optional;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-
 public class ChemEquationsTaskService {
 
     private final ChemEquationsTaskRepository repository;
-   // private final ChemEquationsTaskAnswerCheckService checkService;
+    private final ChemEquationsTaskAnswerCheckService checkService;
 
-    public void save(ChemEquationsTask task) {
+    public String save(ChemEquationsTask task) {
         repository.save(task);
-        log.info("Добавлена задача с UUID = " + task.getTaskId() );
+        log.info("Задача с ID: " + task.getTaskId() + " сохранена.");
+        return task.getTaskId();
     }
 
     public Optional<ChemEquationsTask> getById(String id) {
@@ -33,27 +33,23 @@ public class ChemEquationsTaskService {
     }
 
     public List<ChemEquationsTask> getAllByChapterId(int chapterId) {
-        return repository.getAllByChapterId(chapterId);
-    }
-    public void update(ChemEquationsTask task) {
-        log.info("Обновлена задача с UUID = " + task.getTaskId() );
-        repository.save(task);
+        return repository.findAllByChapterId(chapterId);
     }
 
-    public List<ChemEquationsTask> findTaskByChapter(int chapterId) {
-        log.info("Найдены задачи Equations с chapter = " + chapterId );
-        return repository.findChemEquationsTaskByChapterId(chapterId);
+    public List<ChemEquationsTask> getAllByChapterIdAndReferenceId(int chapterId,int referenceId) {
+        return repository.findAllByChapterIdAndReferenceId(chapterId,referenceId);
     }
 
-    public List<ChemEquationsTask> findTaskByReferences(int referencesId){
-        log.info("Найдены задачи Equations с references = " + referencesId );
-        return repository.findChemEquationsTaskByReferenceId(referencesId);
-    }
     public void deleteById(String id) {
-        log.info("Удалена задачу с UUID = " + id);
         repository.deleteById(id);
     }
 
+    public boolean[] checkAnswer(String taskId, String userAnswer) {
+        return checkService.checkAnswer(repository.getOne(taskId).getRightAnswer(), userAnswer);
+    }
 
+    public List<ChemEquationsTask> getAllByReferenceId(int referencesId) {
+        return repository.findAllByReferenceId(referencesId);
+    }
 }
 

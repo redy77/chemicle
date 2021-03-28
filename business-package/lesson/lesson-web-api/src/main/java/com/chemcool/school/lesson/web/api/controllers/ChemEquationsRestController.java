@@ -29,13 +29,13 @@ public class ChemEquationsRestController {
     @ApiOperation("Find equations tasks by chapter")
     @GetMapping("/findEquationsTaskByChapter")
     public List<ChemEquationsTask> findEquationsTaskByChapter(int chapter) {
-        return taskService.findTaskByChapter(chapter);
+        return taskService.getAllByChapterId(chapter);
     }
 
     @ApiOperation("Find equations tasks by references")
     @GetMapping("/findEquationsTaskByReferences")
     public List<ChemEquationsTask> findEquationsTaskByReferences(int references) {
-        return taskService.findTaskByReferences(references);
+        return taskService.getAllByReferenceId(references);
     }
 
 }
