@@ -1,6 +1,7 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
+import com.chemcool.school.lesson.tasks.chemequations.service.ChemEquationsTaskProxyService;
 import com.chemcool.school.lesson.tasks.chemequations.service.ChemEquationsTaskService;
 import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTask;
 import com.chemcool.school.lesson.tasks.chemsingleselect.service.ChemSingleSelectTaskService;
@@ -24,7 +25,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ChemEquationsRestController {
 
-    private final ChemEquationsTaskService taskService;
+    private final ChemEquationsTaskProxyService taskService;
 
     @ApiOperation("Find equations tasks by chapter")
     @GetMapping("/findEquationsTaskByChapter")

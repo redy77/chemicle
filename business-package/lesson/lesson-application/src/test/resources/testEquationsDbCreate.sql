@@ -14,7 +14,7 @@ create table chemistry_equations_event (
                                            event_id varchar(255) not null,
                                            event_author_id varchar(255),
                                            event_entity_id varchar(255),
-                                           event_occuring_comtext varchar(255),
+                                           event_occuring_context varchar(255),
                                            event_occuring_context_time timestamp,
                                            event_payload jsonb,
                                            event_type int4,

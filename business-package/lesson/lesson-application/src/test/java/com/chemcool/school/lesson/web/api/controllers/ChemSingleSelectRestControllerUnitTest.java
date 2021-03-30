@@ -1,8 +1,6 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
-import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTaskExample;
 import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTask;
 import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTaskExample;
 import com.chemcool.school.lesson.tasks.chemsingleselect.service.ChemSingleSelectTaskService;
@@ -26,7 +24,6 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -68,7 +65,7 @@ class ChemSingleSelectRestControllerUnitTest {
     @Test
     void findTaskByChapter() throws Exception {
         Integer chapterId = chemSingleSelectTaskExampleForTest.getTaskExampleChapterId();
-        Mockito.when(service.findTaskByChapter(chapterId)).thenReturn(chemSingleSelectTask);
+        Mockito.when(service.getAllByChapterId(chapterId)).thenReturn(chemSingleSelectTask);
         this.mockMvc.perform(
                 get("/v1.0/findSingleSelectTaskByChapter").param("chapter", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
@@ -79,7 +76,7 @@ class ChemSingleSelectRestControllerUnitTest {
     @Test
     void findTaskByReferences() throws Exception {
         Integer referenceId = chemSingleSelectTaskExampleForTest.getTaskExampleReferenceId();
-        Mockito.when(service.findTaskByReferences(referenceId)).thenReturn(chemSingleSelectTask);
+        Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(chemSingleSelectTask);
         this.mockMvc.perform(
                 get("/v1.0/findSingleSelectTaskByReferences").param("references", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))

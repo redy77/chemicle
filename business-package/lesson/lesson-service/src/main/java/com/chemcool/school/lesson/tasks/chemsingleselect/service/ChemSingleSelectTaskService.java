@@ -2,7 +2,6 @@ package com.chemcool.school.lesson.tasks.chemsingleselect.service;
 
 import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTask;
 import com.chemcool.school.lesson.tasks.chemsingleselect.storage.ChemSingleSelectTaskRepository;
-import com.chemcool.school.lesson.theory.domain.ChemistryTheory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -30,9 +29,9 @@ public class ChemSingleSelectTaskService {
         return repository.findAll();
     }
 
-    public List<ChemSingleSelectTask> getAllByChapterId(int chapterId) {
-        return repository.getAllByChapterId(chapterId);
-    }
+    //public List<ChemSingleSelectTask> getAllByChapterId(int chapterId) {
+    //    return repository.getAllByChapterId(chapterId);
+   // }
 
     public void update(ChemSingleSelectTask task) {
         log.info("Обновлена задача с UUID = " + task.getTaskId() );
@@ -45,13 +44,14 @@ public class ChemSingleSelectTaskService {
     }
 
 
-    public List<ChemSingleSelectTask> findTaskByChapter(int chapter){
-        log.info("Найдены задачи SingleSelect с chapter = " + chapter );
-        return repository.findChemSingleSelectTaskByChapterId(chapter);
+    public List<ChemSingleSelectTask> getAllByChapterId(int chapterId){
+        log.info("Найдены задачи SingleSelect с chapter = " + chapterId );
+        return repository.getAllByChapterId(chapterId);
     }
 
 
-    public List<ChemSingleSelectTask> findTaskByReferences(int references){
-        return repository.findChemSingleSelectTaskByReferenceId(references);
+    public List<ChemSingleSelectTask> getAllByReferenceId(int referenceId){
+        log.info("Найдены задачи SingleSelect с reference = " + referenceId );
+        return repository.getAllByReferenceId(referenceId);
     }
 }

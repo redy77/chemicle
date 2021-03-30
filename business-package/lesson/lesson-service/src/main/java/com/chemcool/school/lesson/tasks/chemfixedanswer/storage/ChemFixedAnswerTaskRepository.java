@@ -11,6 +11,5 @@ import java.util.List;
 @Repository
 public interface ChemFixedAnswerTaskRepository extends JpaRepository<ChemFixedAnswerTask, String>, JpaSpecificationExecutor<ChemFixedAnswerTask> {
     List<ChemFixedAnswerTask> getAllByChapterId(int chapterId);
-    List<ChemFixedAnswerTask> getChemFixedAnswerTaskByChapterId(int chapterId);
-    List<ChemFixedAnswerTask> getChemFixedAnswerTaskByReferenceId(int referenceId);
+    List<ChemFixedAnswerTask> getAllByReferenceId(int referenceId);
 }

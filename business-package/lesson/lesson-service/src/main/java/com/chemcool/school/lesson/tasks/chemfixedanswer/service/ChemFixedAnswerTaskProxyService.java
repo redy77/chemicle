@@ -14,18 +14,18 @@ import java.util.Optional;
 public class ChemFixedAnswerTaskProxyService {
 
 
-    private final ChemFixedAnswerTaskEventNotificationService notificationService;
+   // private final ChemFixedAnswerTaskEventNotificationService notificationService;
     private final ChemFixedAnswerTaskService taskService;
 
-    public String add(ChemFixedAnswerTaskExample exampleTask) {
-        ChemFixedAnswerTask task = ChemFixedAnswerTaskFactory.createChemistryFixedAnswerTask(exampleTask);
-        notificationService.send(ChemFixedAnswerTaskEventFactory.createTaskEvent(task, ChemFixedAnswerTaskEventType.CREATE));
-        return task.getTaskId();
-    }
+   // public String add(ChemFixedAnswerTaskExample exampleTask) {
+  //      ChemFixedAnswerTask task = ChemFixedAnswerTaskFactory.createChemistryFixedAnswerTask(exampleTask);
+ // //      notificationService.send(ChemFixedAnswerTaskEventFactory.createTaskEvent(task, ChemFixedAnswerTaskEventType.CREATE));
+ //       return task.getTaskId();
+  //  }
 
-    public void update(ChemFixedAnswerTask task) {
-        notificationService.send(ChemFixedAnswerTaskEventFactory.createTaskEvent(task, ChemFixedAnswerTaskEventType.UPDATE));
-    }
+  //  public void update(ChemFixedAnswerTask task) {
+ //       notificationService.send(ChemFixedAnswerTaskEventFactory.createTaskEvent(task, ChemFixedAnswerTaskEventType.UPDATE));
+  //  }
 
     public Optional<ChemFixedAnswerTask> getById(String id) {
         return taskService.getById(id);
@@ -37,6 +37,10 @@ public class ChemFixedAnswerTaskProxyService {
 
     public List<ChemFixedAnswerTask> getAllByChapterId(int chapterId) {
         return taskService.getAllByChapterId(chapterId);
+    }
+
+    public List<ChemFixedAnswerTask> getAllByReferenceId(int referenceId) {
+        return taskService.getAllByReferences(referenceId);
     }
 
     public void deleteById(String id) {
