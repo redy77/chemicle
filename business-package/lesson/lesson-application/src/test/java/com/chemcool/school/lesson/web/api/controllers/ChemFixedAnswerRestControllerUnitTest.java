@@ -63,7 +63,7 @@ class ChemFixedAnswerRestControllerUnitTest {
     @Test
     void findFixedAnswerTaskByChapter() throws Exception {
         Integer chapterId = chemFixedAnswerTaskExampleForTest.getChapterId();
-        Mockito.when(service.getTaskByChapter(chapterId)).thenReturn(chemFixedAnswerTasks);
+        Mockito.when(service.getAllByChapterId(chapterId)).thenReturn(chemFixedAnswerTasks);
         this.mockMvc.perform(
                 get("/v1.0/findFixedAnswerTaskByChapter").param("chapter", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
@@ -74,7 +74,7 @@ class ChemFixedAnswerRestControllerUnitTest {
     @Test
     void findFixedAnswerTaskByReferences() throws Exception {
         Integer referenceId = chemFixedAnswerTaskExampleForTest.getReferenceId();
-        Mockito.when(service.getTaskByReferences(referenceId)).thenReturn(chemFixedAnswerTasks);
+        Mockito.when(service.getAllByReferences(referenceId)).thenReturn(chemFixedAnswerTasks);
         this.mockMvc.perform(
                 get("/v1.0/findFixedAnswerTaskByReferences").param("references", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))

@@ -48,8 +48,8 @@ public class ChemEquationsTaskService {
         return checkService.checkAnswer(repository.getOne(taskId).getRightAnswer(), userAnswer);
     }
 
-    public List<ChemEquationsTask> getAllByReferenceId(int referencesId) {
-        return repository.findAllByReferenceId(referencesId);
+    public List<ChemEquationsTask> getAllByReferenceId(int referenceId) {
+        return repository.findAllByReferenceId(referenceId);
     }
 }
 

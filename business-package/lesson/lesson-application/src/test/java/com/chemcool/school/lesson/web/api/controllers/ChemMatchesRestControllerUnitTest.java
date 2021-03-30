@@ -1,8 +1,6 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskExample;
 import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemistryMatchingTask;
 import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemistryMatchingTaskExample;
 import com.chemcool.school.lesson.tasks.chemmatches.domain.CoupleForMatching;
@@ -27,7 +25,6 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -72,7 +69,7 @@ class ChemMatchesRestControllerUnitTest {
     @Test
     void findMatchesByChapter() throws Exception {
         Integer chapterId = chemistryMatchingTaskExampleForTest.getChapterId();
-        Mockito.when(service.findTaskByChapter(chapterId)).thenReturn(chemistryMatchingTasks);
+        Mockito.when(service.getAllByChapterId(chapterId)).thenReturn(chemistryMatchingTasks);
         this.mockMvc.perform(
                 get("/v1.0/findMatchesByChapter").param("chapter", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
@@ -83,7 +80,7 @@ class ChemMatchesRestControllerUnitTest {
     @Test
     void findMatchesByReferences() throws Exception {
         Integer referenceId = chemistryMatchingTaskExampleForTest.getReferenceId();
-        Mockito.when(service.findTaskByReferences(referenceId)).thenReturn(chemistryMatchingTasks);
+        Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(chemistryMatchingTasks);
         this.mockMvc.perform(
                 get("/v1.0/findMatchesByReferences").param("references", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))

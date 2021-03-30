@@ -3,6 +3,7 @@ package com.chemcool.school.lesson.web.api.controllers;
 
 
 import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemistryMatchingTask;
+import com.chemcool.school.lesson.tasks.chemmatches.service.ChemistryMatchingTaskProxyService;
 import com.chemcool.school.lesson.tasks.chemmatches.service.ChemistryMatchingTaskService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -18,17 +19,17 @@ import java.util.List;
 @RequestMapping({"/v1.0"})
 @RequiredArgsConstructor
 public class ChemMatchesRestController {
-    private final ChemistryMatchingTaskService taskService;
+    private final ChemistryMatchingTaskProxyService taskService;
 
     @ApiOperation("Find matches tasks by chapter")
     @GetMapping("/findMatchesByChapter")
     public List<ChemistryMatchingTask> findMatchesByChapter(int chapter){
-        return taskService.findTaskByChapter(chapter);
+        return taskService.getAllByChapterId(chapter);
     }
 
     @ApiOperation("Find matches tasks by references")
     @GetMapping("/findMatchesByReferences")
     public List<ChemistryMatchingTask> findMatchesByReferences(int references){
-        return taskService.findTaskByReferences(references);
+        return taskService.getAllByReferenceId(references);
     }
 }

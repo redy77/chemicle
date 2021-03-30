@@ -35,15 +35,15 @@ create table couples_for_matching (
 );
 
 INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('1', 1, 'task1', 4);
-INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('2', 2, 'task1', 4);
-INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('3', 2, 'task1', 4);
-INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('4', 3, 'task1', 4);
-INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('5', 3, 'task1', 3);
-INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('6', 3, 'task1', 3);
-INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('7', 4, 'task1', 3);
-INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('8', 4, 'task1', 2);
-INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('9', 4, 'task1', 2);
-INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('10', 4, 'task1', 1);
+INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('2', 2, 'task2', 4);
+INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('3', 2, 'task3', 4);
+INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('4', 3, 'task4', 4);
+INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('5', 3, 'task5', 3);
+INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('6', 3, 'task6', 3);
+INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('7', 4, 'task7', 3);
+INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('8', 4, 'task8', 2);
+INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('9', 4, 'task9', 2);
+INSERT INTO chemistry_matching_task (task_id, chapter_id, description, reference_id) VALUES ('10', 4, 'task10', 1);
 
 INSERT INTO couples_for_matching (couple_id, left_couple, right_couple, task_id) VALUES (1, 'He', 'Гелий', '1');
 INSERT INTO couples_for_matching (couple_id, left_couple, right_couple, task_id) VALUES (2, 'H', 'Водород', '2');

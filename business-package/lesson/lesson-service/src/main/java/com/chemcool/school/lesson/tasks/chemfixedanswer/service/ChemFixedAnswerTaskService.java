@@ -44,12 +44,7 @@ public class ChemFixedAnswerTaskService {
         repository.deleteById(id);
     }
 
-    public List<ChemFixedAnswerTask> getTaskByChapter(int chapter){
-        log.info("Найдены задачи SingleSelect с chapter = " + chapter );
-        return repository.getChemFixedAnswerTaskByChapterId(chapter);
-    }
-
-    public List<ChemFixedAnswerTask> getTaskByReferences(int references){
-        return repository.getChemFixedAnswerTaskByReferenceId(references);
+    public List<ChemFixedAnswerTask> getAllByReferences(int references){
+        return repository.getAllByReferenceId(references);
     }
 }

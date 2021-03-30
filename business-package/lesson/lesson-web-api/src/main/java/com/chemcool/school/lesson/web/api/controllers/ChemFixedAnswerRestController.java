@@ -1,6 +1,7 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
+import com.chemcool.school.lesson.tasks.chemfixedanswer.service.ChemFixedAnswerTaskProxyService;
 import com.chemcool.school.lesson.tasks.chemfixedanswer.service.ChemFixedAnswerTaskService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -16,17 +17,17 @@ import java.util.List;
 @RequestMapping({"/v1.0"})
 @RequiredArgsConstructor
 public class ChemFixedAnswerRestController {
-    private final ChemFixedAnswerTaskService taskService;
+    private final ChemFixedAnswerTaskProxyService taskService;
 
     @ApiOperation("Find fixed answer tasks by chapter")
     @GetMapping("/findFixedAnswerTaskByChapter")
     public List<ChemFixedAnswerTask> findFixedAnswerTaskByChapter(int chapter){
-        return taskService.getTaskByChapter(chapter);
+        return taskService.getAllByChapterId(chapter);
     }
 
     @ApiOperation("Find fixed answer tasks by references")
     @GetMapping("/findFixedAnswerTaskByReferences")
     public List<ChemFixedAnswerTask> findFixedAnswerTaskByReferences(int references){
-        return taskService.getTaskByReferences(references);
+        return taskService.getAllByReferenceId(references);
     }
 }

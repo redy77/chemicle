@@ -1,6 +1,7 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTask;
+import com.chemcool.school.lesson.tasks.chemsingleselect.service.ChemSingleSelectTaskProxyService;
 import com.chemcool.school.lesson.tasks.chemsingleselect.service.ChemSingleSelectTaskService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,15 +15,15 @@ import java.util.List;
 @RequestMapping({"/v1.0"})
 @RequiredArgsConstructor
 public class ChemSingleSelectRestController {
-    private final ChemSingleSelectTaskService taskService;
+    private final ChemSingleSelectTaskProxyService taskService;
 
     @GetMapping("/findSingleSelectTaskByChapter")
     public List<ChemSingleSelectTask> findTaskByChapter(int chapter){
-        return taskService.findTaskByChapter(chapter);
+        return taskService.getAllByChapterId(chapter);
     }
 
     @GetMapping("/findSingleSelectTaskByReferences")
     public List<ChemSingleSelectTask> findTaskByReferences(int references){
-        return taskService.findTaskByReferences(references);
+        return taskService.getAllByReferenceId(references);
     }
 }

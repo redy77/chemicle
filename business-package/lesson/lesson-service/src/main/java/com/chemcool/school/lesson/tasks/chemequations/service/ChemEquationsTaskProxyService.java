@@ -14,19 +14,8 @@ import java.util.Optional;
 public class ChemEquationsTaskProxyService {
 
 
-    private final ChemEquationsTaskEventNotificationService notificationService;
+
     private final ChemEquationsTaskService taskService;
-
-    public String add(ChemEquationsTaskExample exampleTask) {
-        ChemEquationsTask task = ChemEquationsTaskFactory.createChemEquationsTask(exampleTask);
-        System.out.println("ChemEquationsTaskProxyService "+task);
-        //notificationService.send(ChemEquationsTaskEventFactory.createTaskEvent(task, ChemEquationsTaskEventType.CREATE));
-        return task.getTaskId();
-    }
-
-    public void update(ChemEquationsTask task) {
-        notificationService.send(ChemEquationsTaskEventFactory.createTaskEvent(task, ChemEquationsTaskEventType.UPDATE));
-    }
 
     public Optional<ChemEquationsTask> getById(String id) {
         return taskService.getById(id);
@@ -40,12 +29,10 @@ public class ChemEquationsTaskProxyService {
         return taskService.getAllByChapterId(chapterId);
     }
 
+    public List<ChemEquationsTask> getAllByReferenceId (int referenceId) {return taskService.getAllByReferenceId(referenceId);}
+
     public List<ChemEquationsTask> getAllByChapterIdAndReferenceId(int chapterId,int referenceId) {
         return taskService.getAllByChapterIdAndReferenceId(chapterId,referenceId);
-    }
-
-    public void deleteById(String id) {
-        taskService.deleteById(id);
     }
 
     public boolean[] checkAnswer(String taskId, String userAnswer) {

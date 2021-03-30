@@ -34,6 +34,9 @@ public class ChemSingleSelectTaskProxyService {
     public List<ChemSingleSelectTask> getAllByChapterId(int chapterId) {
         return taskService.getAllByChapterId(chapterId);
     }
+    public List<ChemSingleSelectTask> getAllByReferenceId(int referenceId) {
+        return taskService.getAllByReferenceId(referenceId);
+    }
 
     public void update(ChemSingleSelectTask task) {
         notificationService.send(

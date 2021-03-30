@@ -34,6 +34,10 @@ public class ChemistryMatchingTaskProxyService {
         return taskService.getAllByChapterId(chapterId);
     }
 
+    public List<ChemistryMatchingTask> getAllByReferenceId(int referenceId) {
+        return taskService.getAllByReferenceId(referenceId);
+    }
+
     public void update(ChemistryMatchingTask task) {
         notificationService.send(
                 ChemistryMatchingTaskEventFactory.createEvent(task, ChemistryMatchingTaskEventType.UPDATED)

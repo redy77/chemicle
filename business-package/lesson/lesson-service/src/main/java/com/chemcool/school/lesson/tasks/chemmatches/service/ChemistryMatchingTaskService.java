@@ -30,9 +30,6 @@ public class ChemistryMatchingTaskService {
         return repository.findAll();
     }
 
-    public List<ChemistryMatchingTask> getAllByChapterId(int chapterId) {
-        return repository.getAllByChapterId(chapterId);
-    }
 
     public void update(ChemistryMatchingTask task) {
         log.info("Обновлена задача с UUID = " + task.getTaskId() );
@@ -44,26 +41,17 @@ public class ChemistryMatchingTaskService {
         repository.deleteById(id);
     }
 
-    public List<ChemistryMatchingTask> findTaskByChapter(int chapterId) {
+    public List<ChemistryMatchingTask> getAllByChapterId(int chapterId) {
         log.info("Найдены задачи Equations с chapter = " + chapterId );
-        return repository.findByChapterId(chapterId);
+        return repository.getAllByChapterId(chapterId);
     }
 
-    public List<ChemistryMatchingTask> findTaskByReferences(int referencesId){
+    public List<ChemistryMatchingTask> getAllByReferenceId(int referencesId){
         log.info("Найдены задачи Equations с references = " + referencesId );
-        return repository.findByReferenceId(referencesId);
+        return repository.getAllByReferenceId(referencesId);
     }
 }
 /*
 
-
-    public List<ChemEquationsTask> findTaskByReferences(int referencesId){
-        log.info("Найдены задачи Equations с references = " + referencesId );
-        return repository.findChemEquationsTaskByReferenceId(referencesId);
-    }
-    public void deleteById(String id) {
-        log.info("Удалена задачу с UUID = " + id);
-        repository.deleteById(id);
-    }
 
  */
