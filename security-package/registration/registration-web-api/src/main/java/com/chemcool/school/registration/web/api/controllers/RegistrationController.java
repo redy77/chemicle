@@ -1,9 +1,8 @@
 package com.chemcool.school.registration.web.api.controllers;
 
 import com.chemcool.school.registration.exception.ApiResponse;
-import com.chemcool.school.registration.exception.BadRequestException;
-import com.chemcool.school.registration.repository.RegisterUserRepository;
 import com.chemcool.school.registration.web.api.dto.RegisterUserDto;
+import com.chemcool.school.registration.web.api.service.UtilUserService;
 import com.chemcool.school.registration.web.api.service.VerificationEmailService;
 import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
@@ -25,13 +24,14 @@ import java.util.Map;
 public class RegistrationController {
 
     private final VerificationEmailService verificationEmailService;
-    private final RegisterUserRepository repository;
+    private final UtilUserService utilUserService;
+
 
     @Autowired
-    public RegistrationController(VerificationEmailService verificationEmailService, RegisterUserRepository repository) {
+    public RegistrationController(VerificationEmailService verificationEmailService, UtilUserService utilUserService) {
 
         this.verificationEmailService = verificationEmailService;
-        this.repository = repository;
+        this.utilUserService = utilUserService;
     }
 
     @SneakyThrows
@@ -39,9 +39,9 @@ public class RegistrationController {
     @PostMapping("/registration")
     public ResponseEntity<?> createUser(@Validated @RequestBody RegisterUserDto registerUserDto) {
 
-        if (repository.existsByEmail(registerUserDto.getEmail())) {
-            throw new BadRequestException("Email адрес уже был зарегистрирован!");
-        }
+        utilUserService.checkMail(registerUserDto);
+        utilUserService.checkAge(registerUserDto);
+        utilUserService.checkAndSetRole(registerUserDto);
 
         log.info("Вызван контроллер для регистрации нового пользователя c email: "
                 + "[" + registerUserDto.getEmail() + "]");
@@ -56,6 +56,7 @@ public class RegistrationController {
                 .body(new ApiResponse(true, "Пользователь успешно зарегистрирован"));
     }
 
+
     @ApiOperation("Активация аккаунта")
     @GetMapping("/verify")
     public ResponseEntity<?> verifyUser(@Param("code") String code) {
@@ -69,5 +70,4 @@ public class RegistrationController {
             return ResponseEntity.badRequest().body(response);
         }
     }
-
 }
