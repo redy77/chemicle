@@ -39,8 +39,8 @@ public class RegistrationController {
     @PostMapping("/registration")
     public ResponseEntity<?> createUser(@Validated @RequestBody RegisterUserDto registerUserDto) {
 
-        utilUserService.checkMail(registerUserDto);
-        utilUserService.checkAge(registerUserDto);
+        if (utilUserService.checkMail(registerUserDto)) return ResponseEntity.badRequest().body("Email адрес уже был зарегистрирован!");
+        if (utilUserService.checkAge(registerUserDto)) return ResponseEntity.badRequest().body("Вы не можете быть учителем, ваш возраст меньше 18 лет");
         utilUserService.checkAndSetRole(registerUserDto);
 
         log.info("Вызван контроллер для регистрации нового пользователя c email: "
