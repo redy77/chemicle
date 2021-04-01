@@ -2,25 +2,17 @@ package com.chemcool.school.lesson.tasks.chemequations.service;
 
 import com.chemcool.school.lesson.app.LessonApplication;
 import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
-import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTaskExample;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -83,7 +75,7 @@ class ChemEquationsTaskProxyServiceIntegrationTest {
 
     @Test
     void getAllByChapterIdAndReferenceId() {
-        List<ChemEquationsTask> taskExamples = proxyService.getAllByChapterIdAndReferenceId(3, 3);
+        List<ChemEquationsTask> taskExamples = proxyService.getAllByReferenceIdAndChapterId(3, 3);
         System.out.println(taskExamples);
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(2);

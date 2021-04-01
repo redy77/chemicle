@@ -1,7 +1,7 @@
 package com.chemcool.school.lesson.theory.storage;
 
 
-import com.chemcool.school.lesson.theory.domain.ChemistryTheory;
+import com.chemcool.school.lesson.theory.domain.ChemTheory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface TheoryRepository extends JpaRepository<ChemistryTheory, UUID>, JpaSpecificationExecutor<ChemistryTheory> {
+public interface TheoryRepository extends JpaRepository<ChemTheory, UUID>, JpaSpecificationExecutor<ChemTheory> {
 
 
     String tableName = "chemistry_page";
@@ -38,11 +38,11 @@ public interface TheoryRepository extends JpaRepository<ChemistryTheory, UUID>, 
             @Param("theoryReferences") int theoryReferences
     );
 
-    ChemistryTheory findByTheoryId(String theoryId);
+    ChemTheory getAllByTheoryId(String theoryId);
 
-    List<ChemistryTheory> findChemistryTheoriesByTheoryChapter(int chapter);
+    List<ChemTheory> getAllByTheoryChapter(int theoryChapter);
 
-    List<ChemistryTheory> findChemistryTheoriesByTheoryReferences(int references);
+    List<ChemTheory> getAllByTheoryReferences(int theoryReferences);
 
 
 }

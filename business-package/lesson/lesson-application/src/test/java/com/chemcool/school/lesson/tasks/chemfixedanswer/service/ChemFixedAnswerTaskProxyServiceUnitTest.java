@@ -1,8 +1,6 @@
 package com.chemcool.school.lesson.tasks.chemfixedanswer.service;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
-import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTaskExample;
 import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
 import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskExample;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,7 +19,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(classes = LessonApplication.class)
 @RunWith(SpringRunner.class)
@@ -98,8 +95,17 @@ class ChemFixedAnswerTaskProxyServiceUnitTest {
 
     @Test
     void getAllByChapterId() {
-        Mockito.when(service.getAllByChapterId(1)).thenReturn(taskList.subList(0, 2));
-        List<ChemFixedAnswerTask> taskExamples = proxyService.getAllByChapterId(1);
+        Mockito.when(service.getAllByChapterId(2)).thenReturn(taskList.subList(0, 2));
+        List<ChemFixedAnswerTask> taskExamples = proxyService.getAllByChapterId(2);
+        System.out.println("*****************\n"+taskExamples + "\n*****************\n");
+        assertThat(taskExamples).isNotNull();
+        assertThat(taskExamples).hasSize(2);
+    }
+
+    @Test
+    void getAllByReferenceId() {
+        Mockito.when(service.getAllByReferenceId(1)).thenReturn(taskList.subList(1, 3));
+        List<ChemFixedAnswerTask> taskExamples = proxyService.getAllByReferenceId(1);
         System.out.println("*****************\n"+taskExamples + "\n*****************\n");
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(2);

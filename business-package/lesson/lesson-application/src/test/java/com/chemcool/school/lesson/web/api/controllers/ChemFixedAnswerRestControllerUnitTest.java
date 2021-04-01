@@ -74,7 +74,7 @@ class ChemFixedAnswerRestControllerUnitTest {
     @Test
     void findFixedAnswerTaskByReferences() throws Exception {
         Integer referenceId = chemFixedAnswerTaskExampleForTest.getReferenceId();
-        Mockito.when(service.getAllByReferences(referenceId)).thenReturn(chemFixedAnswerTasks);
+        Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(chemFixedAnswerTasks);
         this.mockMvc.perform(
                 get("/v1.0/findFixedAnswerTaskByReferences").param("references", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))

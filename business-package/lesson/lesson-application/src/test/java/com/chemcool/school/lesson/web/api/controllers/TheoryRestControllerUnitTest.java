@@ -1,10 +1,8 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
-import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTaskExample;
-import com.chemcool.school.lesson.theory.domain.ChemistryTheory;
-import com.chemcool.school.lesson.theory.domain.ChemistryTheoryExample;
+import com.chemcool.school.lesson.theory.domain.ChemTheory;
+import com.chemcool.school.lesson.theory.domain.ChemTheoryExample;
 import com.chemcool.school.lesson.theory.service.ChemistryTheoryPageService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,7 +24,6 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -43,18 +40,18 @@ class TheoryRestControllerUnitTest {
     @Autowired
     private TheoryRestController controller;
 
-    private List<ChemistryTheory> chemistryTheory;
+    private List<ChemTheory> chemTheory;
 
     @MockBean
     private ChemistryTheoryPageService service;
 
-    private ChemistryTheoryExample chemistryTheoryExampleForTest;
+    private ChemTheoryExample chemTheoryExampleForTest;
 
     @BeforeEach
     void setUp() {
-        chemistryTheoryExampleForTest = new ChemistryTheoryExample("theoryName", "theoryDescription", 1, 1);
-        chemistryTheory = Collections.singletonList(ChemistryTheory
-                .createChemistryTheory(chemistryTheoryExampleForTest));
+        chemTheoryExampleForTest = new ChemTheoryExample("theoryName", "theoryDescription", 1, 1);
+        chemTheory = Collections.singletonList(ChemTheory
+                .createChemistryTheory(chemTheoryExampleForTest));
         this.mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
@@ -65,10 +62,10 @@ class TheoryRestControllerUnitTest {
 
     @Test
     void findTaskAndTheoryByChapter() throws Exception {
-        Integer chapterId = chemistryTheoryExampleForTest.getTheoryExampleChapter();
-        Mockito.when(service.findTheoryByChapter(chapterId)).thenReturn(chemistryTheory);
+        Integer chapterId = chemTheoryExampleForTest.getTheoryExampleChapter();
+        Mockito.when(service.getAllByChapterId(chapterId)).thenReturn(chemTheory);
         this.mockMvc.perform(
-                get("/v1.0/findTheoryByChapter").param("chapter", String.valueOf(chapterId))
+                get("/v1.0/findTheoryByChapter").param("chapterId", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].theoryChapter").value(chapterId))
                 .andDo(print());
@@ -77,10 +74,10 @@ class TheoryRestControllerUnitTest {
 
     @Test
     void findTaskAndTheoryByReferences() throws Exception {
-        Integer referenceId = chemistryTheoryExampleForTest.getTheoryExampleReferences();
-        Mockito.when(service.findTheoryByReferences(referenceId)).thenReturn(chemistryTheory);
+        Integer referenceId = chemTheoryExampleForTest.getTheoryExampleReferences();
+        Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(chemTheory);
         this.mockMvc.perform(
-                get("/v1.0/findTheoryByReferences").param("references", String.valueOf(referenceId))
+                get("/v1.0/findTheoryByReferences").param("referenceId", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].theoryReferences").value(referenceId))
                 .andDo(print());

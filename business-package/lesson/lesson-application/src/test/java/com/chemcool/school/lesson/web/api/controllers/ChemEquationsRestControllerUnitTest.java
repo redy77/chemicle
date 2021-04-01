@@ -4,13 +4,8 @@ import com.chemcool.school.lesson.app.LessonApplication;
 import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
 import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTaskExample;
 import com.chemcool.school.lesson.tasks.chemequations.service.ChemEquationsTaskService;
-import org.junit.FixMethodOrder;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.runner.RunWith;
-import org.junit.runners.MethodSorters;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -53,36 +48,42 @@ class ChemEquationsRestControllerUnitTest {
 
     @BeforeEach
     void setUp() {
-        chemEquationsTaskExampleForTest = new ChemEquationsTaskExample("description", "rightAnswer", 1, 1);
+        chemEquationsTaskExampleForTest = new ChemEquationsTaskExample("description", "rightAnswer", 1, 2);
         chemEquationsTask = Collections.singletonList(ChemEquationsTask
                 .createChemEquationsTask(chemEquationsTaskExampleForTest));
         this.mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
     @Test
+    @DisplayName("Тест контекста")
     public void contextTest() {
         assertThat(controller).isNotNull();
     }
 
 
     @Test
+    @DisplayName("Получение задач по главе")
     void findEquationsTaskByChapter() throws Exception {
         Integer chapterId = chemEquationsTaskExampleForTest.getChapterId();
         Mockito.when(service.getAllByChapterId(chapterId)).thenReturn(chemEquationsTask);
         this.mockMvc.perform(
-                get("/v1.0/findEquationsTaskByChapter").param("chapter", String.valueOf(chapterId))
+                get("/v1.0/findEquationsTaskByChapterId").param("chapterId", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].chapterId").value(chapterId))
                 .andDo(print());
     }
 
     @Test
-    void findEquationsTaskByReferences() throws Exception {
+    @DisplayName("Получение задач по главе и разделу")
+    void findEquationsTaskByChapterAndReferences() throws Exception {
+        Integer chapterId = chemEquationsTaskExampleForTest.getChapterId();
         Integer referenceId = chemEquationsTaskExampleForTest.getReferenceId();
-        Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(chemEquationsTask);
+        Mockito.when(service.getAllByReferenceIdAndChapterId(referenceId, chapterId)).thenReturn(chemEquationsTask);
         this.mockMvc.perform(
-                get("/v1.0/findEquationsTaskByReferences").param("references", String.valueOf(referenceId))
+                get("/v1.0/findEquationsTaskByChapterIdAndReferenceId").param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$[0].chapterId").value(chapterId))
                 .andExpect(jsonPath("$[0].referenceId").value(referenceId))
                 .andDo(print());
     }

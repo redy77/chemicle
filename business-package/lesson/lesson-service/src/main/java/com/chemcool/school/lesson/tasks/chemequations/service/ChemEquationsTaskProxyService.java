@@ -31,8 +31,8 @@ public class ChemEquationsTaskProxyService {
 
     public List<ChemEquationsTask> getAllByReferenceId (int referenceId) {return taskService.getAllByReferenceId(referenceId);}
 
-    public List<ChemEquationsTask> getAllByChapterIdAndReferenceId(int chapterId,int referenceId) {
-        return taskService.getAllByChapterIdAndReferenceId(chapterId,referenceId);
+    public List<ChemEquationsTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId) {
+        return taskService.getAllByReferenceIdAndChapterId(referenceId,chapterId);
     }
 
     public boolean[] checkAnswer(String taskId, String userAnswer) {

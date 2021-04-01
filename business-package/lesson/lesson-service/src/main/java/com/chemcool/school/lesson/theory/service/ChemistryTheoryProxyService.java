@@ -4,36 +4,48 @@ import com.chemcool.school.lesson.theory.domain.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ChemistryTheoryProxyService {
-    private final ChemistryTheoryEventNotificationService notificationService;
+    private final ChemTheoryEventNotificationService notificationService;
     private final ChemistryTheoryPageService pageService;
 
-    public String add(ChemistryTheoryExample example) {
-        ChemistryTheory theory = ChemistryTheoryFactory.createTheory(example);
+    public String add(ChemTheoryExample example) {
+        ChemTheory theory = ChemTheoryFactory.createTheory(example);
         notificationService.send(
-                ChemistryTheoryEventFactory.createEvent(theory, ChemistryTheoryEventType.CREATED)
+                ChemTheoryEventFactory.createEvent(theory, ChemTheoryEventType.CREATED)
         );
         return theory.getTheoryId();
     }
 
-    public void delete(ChemistryTheory theory){
+    public void delete(ChemTheory theory){
         pageService.delete(theory);
     }
 
-    public void update(ChemistryTheory theory){
+    public void update(ChemTheory theory){
         notificationService.send(
-                ChemistryTheoryEventFactory.createEvent(theory, ChemistryTheoryEventType.UPDATED)
+                ChemTheoryEventFactory.createEvent(theory, ChemTheoryEventType.UPDATED)
         );
     }
 
-    public ChemistryTheory findTheoryById(String theoryId) {
+    public List<ChemTheory> getAll() {return pageService.getAll();}
+
+    public List<ChemTheory> getAllByChapterId(int chapterId){
+                return pageService.getAllByChapterId(chapterId);
+    }
+
+    public List<ChemTheory> getAllByReferenceId(int referenceId){
+                return pageService.getAllByReferenceId(referenceId);
+    }
+
+    public ChemTheory getById(String theoryId) {
         //  TODO проверить на то, что lessonId не пустой.
         if (theoryId == null || theoryId.isEmpty()) {
             throw new RuntimeException("theoryId параметр пустой, проверьте конфигурацию.");
         }
-        return pageService.findTheoryById(theoryId);
+        return pageService.getAllByTheoryId(theoryId);
     }
 }
 

@@ -1,10 +1,10 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemistryMatchingTask;
-import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemistryMatchingTaskExample;
+import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemMatchingTask;
+import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemMatchingTaskExample;
 import com.chemcool.school.lesson.tasks.chemmatches.domain.CoupleForMatching;
-import com.chemcool.school.lesson.tasks.chemmatches.service.ChemistryMatchingTaskService;
+import com.chemcool.school.lesson.tasks.chemmatches.service.ChemMatchingTaskService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -42,22 +42,22 @@ class ChemMatchesRestControllerUnitTest {
     @Autowired
     private ChemMatchesRestController controller;
 
-    private List<ChemistryMatchingTask> chemistryMatchingTasks;
+    private List<ChemMatchingTask> chemMatchingTasks;
 
     @MockBean
-    private ChemistryMatchingTaskService service;
+    private ChemMatchingTaskService service;
 
-    private ChemistryMatchingTaskExample chemistryMatchingTaskExampleForTest;
+    private ChemMatchingTaskExample chemMatchingTaskExampleForTest;
 
     private List<CoupleForMatching> list;
 
     @BeforeEach
     void setUp() {
-        chemistryMatchingTaskExampleForTest = new ChemistryMatchingTaskExample
+        chemMatchingTaskExampleForTest = new ChemMatchingTaskExample
                 ("description", "rightAnswer", 1, 1,
                         Collections.singletonList(new CoupleForMatching("1", "2")));
-        chemistryMatchingTasks = Collections.singletonList(ChemistryMatchingTask
-                .createChemistryMatchingTask(chemistryMatchingTaskExampleForTest));
+        chemMatchingTasks = Collections.singletonList(ChemMatchingTask
+                .createChemistryMatchingTask(chemMatchingTaskExampleForTest));
         this.mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
@@ -68,8 +68,8 @@ class ChemMatchesRestControllerUnitTest {
 
     @Test
     void findMatchesByChapter() throws Exception {
-        Integer chapterId = chemistryMatchingTaskExampleForTest.getChapterId();
-        Mockito.when(service.getAllByChapterId(chapterId)).thenReturn(chemistryMatchingTasks);
+        Integer chapterId = chemMatchingTaskExampleForTest.getChapterId();
+        Mockito.when(service.getAllByChapterId(chapterId)).thenReturn(chemMatchingTasks);
         this.mockMvc.perform(
                 get("/v1.0/findMatchesByChapter").param("chapter", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
@@ -79,8 +79,8 @@ class ChemMatchesRestControllerUnitTest {
 
     @Test
     void findMatchesByReferences() throws Exception {
-        Integer referenceId = chemistryMatchingTaskExampleForTest.getReferenceId();
-        Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(chemistryMatchingTasks);
+        Integer referenceId = chemMatchingTaskExampleForTest.getReferenceId();
+        Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(chemMatchingTasks);
         this.mockMvc.perform(
                 get("/v1.0/findMatchesByReferences").param("references", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))

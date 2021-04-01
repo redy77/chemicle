@@ -1,6 +1,6 @@
 package com.chemcool.school.lesson.api.event;
 
-import com.chemcool.school.lesson.theory.domain.ChemistryTheoryEvent;
+import com.chemcool.school.lesson.theory.domain.ChemTheoryEvent;
 import com.chemcool.school.lesson.theory.service.ChemistryTheoryEventService;
 import com.chemcool.school.lesson.theory.service.ChemistryTheoryPageService;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +24,8 @@ public class ChemTheoryEventConsumer {
     @KafkaHandler
     @KafkaListener(topics = "chemistry-theory", containerFactory = "theoryKafkaListenerContainerFactory")
     @Transactional
-    public void handleChemistryTheory(ConsumerRecord<String, ChemistryTheoryEvent> record){
-        ChemistryTheoryEvent event = record.value();
+    public void handleChemistryTheory(ConsumerRecord<String, ChemTheoryEvent> record){
+        ChemTheoryEvent event = record.value();
         log.info("Пойман журнал для логгирования: " + event.getEventId());
         eventService.handleEvent(event);
         theoryPageService.save(event.getEventPayload());

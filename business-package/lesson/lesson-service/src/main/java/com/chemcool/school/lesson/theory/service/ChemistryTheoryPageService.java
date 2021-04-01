@@ -1,7 +1,7 @@
 package com.chemcool.school.lesson.theory.service;
 
 
-import com.chemcool.school.lesson.theory.domain.ChemistryTheory;
+import com.chemcool.school.lesson.theory.domain.ChemTheory;
 import com.chemcool.school.lesson.theory.storage.TheoryRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,43 +17,48 @@ public class ChemistryTheoryPageService {
     private final TheoryRepository repository;
 
 
-    public String save(ChemistryTheory theory) {
+    public String save(ChemTheory theory) {
         repository.save(theory);
         log.info("Сохранил теорию c UUID" + theory.getTheoryId());
         return theory.getTheoryId();
     }
 
-    public void delete(ChemistryTheory theory) {
+    public void delete(ChemTheory theory) {
         log.info("Удалена теория = " + theory);
         repository.delete(theory);
     }
 
-    public void update(ChemistryTheory chemistry) {
+    public void update(ChemTheory chemistry) {
         log.info("Обновлена задача с UUID = " + chemistry.getTheoryId() );
         repository.save(chemistry);
     }
 
-    public ChemistryTheory findTheoryById(String theoryId) {
+    public ChemTheory getAllByTheoryId(String theoryId) {
         //  TODO проверить на то, что lessonId не пустой.
         if (theoryId == null || theoryId.isEmpty()) {
             throw new RuntimeException("theoryId параметр пустой, проверьте конфигурацию.");
         }
-        return repository.findByTheoryId(theoryId);
+        return repository.getAllByTheoryId(theoryId);
+    }
 
+    public List<ChemTheory> getAll() {
+        //  TODO проверить на то, что lessonId не пустой.
+
+        return repository.findAll();
     }
 
 
-    public List<ChemistryTheory> findTheoryByChapter(int chapter){
+    public List<ChemTheory> getAllByChapterId(int chapter){
         if (chapter == 0 ) {
             throw new RuntimeException("chapter параметр пустой, проверьте конфигурацию.");
         }
-        return repository.findChemistryTheoriesByTheoryChapter(chapter);
+        return repository.getAllByTheoryChapter(chapter);
     }
 
-    public List<ChemistryTheory> findTheoryByReferences(int references){
-        if (references == 0 ) {
+    public List<ChemTheory> getAllByReferenceId(int referenceId){
+        if (referenceId == 0 ) {
             throw new RuntimeException("chapter параметр пустой, проверьте конфигурацию.");
         }
-        return repository.findChemistryTheoriesByTheoryReferences(references);
+        return repository.getAllByTheoryReferences(referenceId);
     }
 }

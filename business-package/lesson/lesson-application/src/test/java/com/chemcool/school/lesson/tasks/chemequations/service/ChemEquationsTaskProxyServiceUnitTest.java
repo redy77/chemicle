@@ -108,8 +108,8 @@ class ChemEquationsTaskProxyServiceUnitTest {
 
     @Test
     void getAllByChapterIdAndReferenceId() {
-        Mockito.when(service.getAllByChapterIdAndReferenceId(1, 2)).thenReturn(taskList.subList(1, 2));
-        List<ChemEquationsTask> taskExamples = proxyService.getAllByChapterIdAndReferenceId(1, 2);
+        Mockito.when(service.getAllByReferenceIdAndChapterId(2, 1)).thenReturn(taskList.subList(1, 2));
+        List<ChemEquationsTask> taskExamples = proxyService.getAllByReferenceIdAndChapterId(2, 1);
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(1);
     }

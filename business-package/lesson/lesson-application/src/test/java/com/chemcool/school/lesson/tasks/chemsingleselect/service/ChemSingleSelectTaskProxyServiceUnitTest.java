@@ -124,4 +124,13 @@ class ChemSingleSelectTaskProxyServiceUnitTest {
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(2);
     }
+
+    @Test
+    void getAllByReferenceId() {
+        Mockito.when(service.getAllByReferenceId(2)).thenReturn(taskList.subList(1, 3));
+        List<ChemSingleSelectTask> taskExamples = proxyService.getAllByReferenceId(2);
+        System.out.println("*****************\n"+taskExamples + "\n*****************\n");
+        assertThat(taskExamples).isNotNull();
+        assertThat(taskExamples).hasSize(2);
+    }
 }

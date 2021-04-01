@@ -81,4 +81,12 @@ class ChemSingleSelectTaskProxyServiceIntegrationTest {
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(3);
     }
+
+    @Test
+    void getAllByReferenceId() {
+        List<ChemSingleSelectTask> taskExamples = proxyService.getAllByReferenceId(3);
+        System.out.println("*****************\n"+taskExamples + "\n*****************\n");
+        assertThat(taskExamples).isNotNull();
+        assertThat(taskExamples).hasSize(3);
+    }
 }

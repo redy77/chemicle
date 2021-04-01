@@ -40,7 +40,7 @@ public class ChemFixedAnswerTaskProxyService {
     }
 
     public List<ChemFixedAnswerTask> getAllByReferenceId(int referenceId) {
-        return taskService.getAllByReferences(referenceId);
+        return taskService.getAllByReferenceId(referenceId);
     }
 
     public void deleteById(String id) {
