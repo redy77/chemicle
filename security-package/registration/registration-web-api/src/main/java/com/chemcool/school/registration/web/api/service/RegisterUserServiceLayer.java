@@ -29,7 +29,7 @@ public class RegisterUserServiceLayer {
                         null,
                         RegisterUserAuthProvider.local,
                         null,
-                        RegisterUserAccountType.BASE,
+                        registerUserDto.getType(),
                         registerUserDto.getRole(),
                         registerUserDto.getVerificationCode(),
                         registerUserDto.isEnabled(),

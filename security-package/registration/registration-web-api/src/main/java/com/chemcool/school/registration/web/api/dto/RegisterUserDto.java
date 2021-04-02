@@ -2,6 +2,7 @@ package com.chemcool.school.registration.web.api.dto;
 
 import com.chemcool.school.registration.annotations.ValidPassword;
 import com.chemcool.school.registration.domain.RegisterUserAccountRole;
+import com.chemcool.school.registration.domain.RegisterUserAccountType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -39,6 +40,8 @@ public class RegisterUserDto {
     @ValidPassword
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private RegisterUserAccountType type;
 
     @Enumerated(EnumType.STRING)
     private RegisterUserAccountRole role;
