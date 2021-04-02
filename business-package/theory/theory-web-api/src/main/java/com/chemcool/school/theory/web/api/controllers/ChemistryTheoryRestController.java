@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping({"/v1.0/lessons"})
+@RequestMapping({"/v1.0/theory"})
 @RequiredArgsConstructor
 public class ChemistryTheoryRestController {
 
@@ -18,6 +18,7 @@ public class ChemistryTheoryRestController {
 
     @PostMapping(value = "/create")
     @ApiOperation("Создает главу для сущность урока по химии.")
+    @ResponseBody
     public String createLessonExample(
             @RequestBody TheoryDto theoryDto
     ) {
@@ -26,23 +27,28 @@ public class ChemistryTheoryRestController {
     }
 
     @PutMapping(value = "/update")
+    @ResponseBody
     public void updateLessonExample(
-            //   @RequestParam String lessonExampleId,
             @RequestBody TheoryDto dto
     ) {
         log.info("Вызван контроллер для изменения темы с названием: " + "[" + dto.getTheoryName() + "]");
         presentation.updateChemistryTheoryDto(dto);
-        //return presentation.updateChemistryTheoryExample(lessonExampleId, dto);
     }
 
     @DeleteMapping(value = "/delete")
+    @ResponseBody
     public void deleteLessonExample(
             @RequestBody TheoryDto theoryDto
     ) {
         log.info("Вызван контроллер для удаления темы с названием: " + "[" + theoryDto.getTheoryName() + "]");
         presentation.deleteChemistryTheoryDto(theoryDto);
-        // presentation.deleteChemistryTheoryExample(theoryDto);
     }
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello World!";
+    }
+
 
     @GetMapping("/getBy/{id}")
     public ChemistryTheory getTheoryExampleById(@PathVariable(name = "id") String id) {

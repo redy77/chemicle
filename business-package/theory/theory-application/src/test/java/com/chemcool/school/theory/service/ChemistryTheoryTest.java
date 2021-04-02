@@ -17,6 +17,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -36,14 +37,16 @@ public class ChemistryTheoryTest extends RunTestcontainerTest {
     public TheoryDto theoryDtoForTest =
             new TheoryDto("1", "theoryName", "theoryDescription", 1, 1);
 
-    public String BASE_URL = "/v1.0/lessons";
+    public String BASE_URL = "/v1.0/theory";
 
     @Test
     void createLessonExampleTest() throws Exception {
         mockMvc.perform(post(BASE_URL + "/create")
                 .content(objectMapper.writeValueAsString(theoryDtoForTest))
                 .contentType(MediaType.APPLICATION_JSON)
-        ).andExpect(status().isOk());
+        ).andDo(print())
+                .andExpect(status().isOk())
+                ;
     }
 
     @Test
@@ -80,13 +83,13 @@ public class ChemistryTheoryTest extends RunTestcontainerTest {
         ChemistryTheoryEvent theoryEvent = journal.findAll().get(0);
 
         assertThat(theoryEvent.getEventId()).isNotBlank();
-        assertThat(theoryEvent.getEventAuthorId()).isNotBlank();
+        assertThat(theoryEvent.getEventAuthor()).isNotBlank();
         assertThat(theoryEvent.getEventOccurringContext()).isEqualTo("ChemistryTheoryEvent");
         assertThat(theoryEvent.getEventOccurringContextTime()).isNotNull();
-        assertThat(theoryEvent.getEventType()).isEqualTo(ChemistryTheoryEventType.CREATED);
+        assertThat(theoryEvent.getEventType()).isEqualTo(String.valueOf(ChemistryTheoryEventType.CREATED));
         assertThat(theoryEvent.getVersion()).isNotBlank();
-        assertThat(theoryEvent.getEvent_payload()).isNotNull();
-        assertThat(theoryEvent.getEventEntityId()).isEqualTo(theoryEvent.getEvent_payload().getTheoryId());
+        assertThat(theoryEvent.getEventPayload()).isNotNull();
+        assertThat(theoryEvent.getEventEntityId()).isEqualTo(theoryEvent.getEventPayload().getTheoryId());
     }
 
     public void addingTestTheoryDataBase(TheoryDto theoryDto) {

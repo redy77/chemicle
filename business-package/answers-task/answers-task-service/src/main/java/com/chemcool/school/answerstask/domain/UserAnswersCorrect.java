@@ -11,10 +11,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class UserAnswersCorrect {
 
-    public UserAnswersCorrect(String userId, String userEmail, String correctAnswersTaskId) {
+    public UserAnswersCorrect(String userId, String userEmail, String correctAnswersTaskId, int score) {
         this.userId = userId;
         this.userEmail = userEmail;
         this.correctAnswersTaskId = correctAnswersTaskId;
+        this.score = score;
     }
 
     @Id
@@ -29,4 +30,7 @@ public class UserAnswersCorrect {
 
     @Column(name = "correct_answer_task_id", unique = true)
     private String correctAnswersTaskId;
+
+    @Column(name = "score")
+    private int score;
 }
