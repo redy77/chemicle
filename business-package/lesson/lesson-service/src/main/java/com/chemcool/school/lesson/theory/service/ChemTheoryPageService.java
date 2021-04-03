@@ -12,7 +12,7 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class ChemistryTheoryPageService {
+public class ChemTheoryPageService {
 
     private final TheoryRepository repository;
 

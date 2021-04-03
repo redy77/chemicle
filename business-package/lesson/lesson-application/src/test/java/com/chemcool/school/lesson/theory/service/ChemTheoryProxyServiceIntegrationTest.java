@@ -25,7 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ChemTheoryProxyServiceIntegrationTest {
 
     @Autowired
-    private ChemistryTheoryProxyService proxyService;
+    private ChemTheoryProxyService proxyService;
 
     private String id;
 

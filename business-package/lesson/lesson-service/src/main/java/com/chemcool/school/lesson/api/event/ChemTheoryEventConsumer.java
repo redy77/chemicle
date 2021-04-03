@@ -1,8 +1,8 @@
 package com.chemcool.school.lesson.api.event;
 
 import com.chemcool.school.lesson.theory.domain.ChemTheoryEvent;
-import com.chemcool.school.lesson.theory.service.ChemistryTheoryEventService;
-import com.chemcool.school.lesson.theory.service.ChemistryTheoryPageService;
+import com.chemcool.school.lesson.theory.service.ChemTheoryEventService;
+import com.chemcool.school.lesson.theory.service.ChemTheoryPageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -18,8 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ChemTheoryEventConsumer {
 
-    private final ChemistryTheoryPageService theoryPageService;
-    private final ChemistryTheoryEventService eventService;
+    private final ChemTheoryPageService theoryPageService;
+    private final ChemTheoryEventService eventService;
 
     @KafkaHandler
     @KafkaListener(topics = "chemistry-theory", containerFactory = "theoryKafkaListenerContainerFactory")

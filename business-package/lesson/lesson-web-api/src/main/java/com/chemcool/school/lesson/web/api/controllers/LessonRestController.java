@@ -26,7 +26,7 @@ public class LessonRestController {
     private final ChemSingleSelectRestController chemSingleSelectRestController;
 
 
-    @ApiOperation("Find equations tasks by referenceId")
+    @ApiOperation("Find theory and all tasks by referenceId")
     @GetMapping("/getLessonByReferenceId")
     @ResponseStatus(HttpStatus.OK)
     public List[] findEquationsTaskByReferenceId(int referenceId) {
