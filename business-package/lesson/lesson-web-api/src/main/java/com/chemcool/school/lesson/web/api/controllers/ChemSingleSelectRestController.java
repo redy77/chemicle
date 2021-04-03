@@ -2,7 +2,7 @@ package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTask;
 import com.chemcool.school.lesson.tasks.chemsingleselect.service.ChemSingleSelectTaskProxyService;
-import com.chemcool.school.lesson.tasks.chemsingleselect.service.ChemSingleSelectTaskService;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +17,21 @@ import java.util.List;
 public class ChemSingleSelectRestController {
     private final ChemSingleSelectTaskProxyService taskService;
 
-    @GetMapping("/findSingleSelectTaskByChapter")
-    public List<ChemSingleSelectTask> findTaskByChapter(int chapter){
-        return taskService.getAllByChapterId(chapter);
+    @ApiOperation("Возвращает сущности задания типа \"Один ответ\" по главе")
+    @GetMapping("/findSingleSelectTaskByChapterId")
+    public List<ChemSingleSelectTask> findTaskByChapterId(int chapterId){
+        return taskService.getAllByChapterId(chapterId);
     }
 
-    @GetMapping("/findSingleSelectTaskByReferences")
-    public List<ChemSingleSelectTask> findTaskByReferences(int references){
-        return taskService.getAllByReferenceId(references);
+    @ApiOperation("Возвращает сущности задания типа \"Один ответ\" по разделу")
+    @GetMapping("/findSingleSelectTaskByReferenceId")
+    public List<ChemSingleSelectTask> findTaskByReferenceId(int referenceId){
+        return taskService.getAllByReferenceId(referenceId);
+    }
+
+    @ApiOperation("Возвращает сущности задания типа \"Один ответ\" по разделу и главе")
+    @GetMapping("/findSingleSelectTaskByReferenceIdAndChapterId")
+    public List<ChemSingleSelectTask> findTaskByReferenceIdAndChapterId(int referenceId, int chapterId){
+        return taskService.getAllByReferenceIdAndChapterId(referenceId, chapterId);
     }
 }

@@ -5,7 +5,9 @@ import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemMatchingTask;
 import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemMatchingTaskExample;
 import com.chemcool.school.lesson.tasks.chemmatches.domain.CoupleForMatching;
 import com.chemcool.school.lesson.tasks.chemmatches.service.ChemMatchingTaskService;
+import org.hamcrest.collection.IsEmptyCollection;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -49,12 +51,10 @@ class ChemMatchesRestControllerUnitTest {
 
     private ChemMatchingTaskExample chemMatchingTaskExampleForTest;
 
-    private List<CoupleForMatching> list;
-
     @BeforeEach
     void setUp() {
         chemMatchingTaskExampleForTest = new ChemMatchingTaskExample
-                ("description", "rightAnswer", 1, 1,
+                ("description", "description", 1, 1,
                         Collections.singletonList(new CoupleForMatching("1", "2")));
         chemMatchingTasks = Collections.singletonList(ChemMatchingTask
                 .createChemistryMatchingTask(chemMatchingTaskExampleForTest));
@@ -67,24 +67,55 @@ class ChemMatchesRestControllerUnitTest {
     }
 
     @Test
+    @DisplayName("Получение задач по главе")
     void findMatchesByChapter() throws Exception {
         Integer chapterId = chemMatchingTaskExampleForTest.getChapterId();
         Mockito.when(service.getAllByChapterId(chapterId)).thenReturn(chemMatchingTasks);
         this.mockMvc.perform(
-                get("/v1.0/findMatchesByChapter").param("chapter", String.valueOf(chapterId))
+                get("/v1.0/findMatchesTaskByChapterId").param("chapterId", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].chapterId").value(chapterId))
                 .andDo(print());
     }
 
     @Test
+    @DisplayName("Получение задач по разделу")
     void findMatchesByReferences() throws Exception {
         Integer referenceId = chemMatchingTaskExampleForTest.getReferenceId();
         Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(chemMatchingTasks);
         this.mockMvc.perform(
-                get("/v1.0/findMatchesByReferences").param("references", String.valueOf(referenceId))
+                get("/v1.0/findMatchesTaskByReferenceId").param("referenceId", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].referenceId").value(referenceId))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Получение задач по главе и разделу")
+    void findMatchesByChapterAndReferences() throws Exception {
+        Integer chapterId = chemMatchingTaskExampleForTest.getChapterId();
+        Integer referenceId = chemMatchingTaskExampleForTest.getReferenceId();
+        Mockito.when(service.getAllByReferenceIdAndChapterId(referenceId, chapterId)).thenReturn(chemMatchingTasks);
+        this.mockMvc.perform(
+                get("/v1.0/findMatchesTaskByReferenceIdAndChapterId").param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$[0].chapterId").value(chapterId))
+                .andExpect(jsonPath("$[0].referenceId").value(referenceId))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Проверка на несуществующие главу или раздел")
+    void findMatchesByFakeChapterAndReferences() throws Exception {
+        Integer chapterId = 5;
+        Integer referenceId = 5;
+        Mockito.when(service.getAllByReferenceIdAndChapterId(referenceId, chapterId)).thenReturn(Collections.emptyList());
+        this.mockMvc.perform(
+                get("/v1.0/findMatchesTaskByReferenceIdAndChapterId").param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.*").value(IsEmptyCollection.empty()))
                 .andDo(print());
     }
 }

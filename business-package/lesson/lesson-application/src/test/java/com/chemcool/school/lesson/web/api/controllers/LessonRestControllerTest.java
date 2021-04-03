@@ -13,8 +13,11 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.w3c.dom.stylesheets.LinkStyle;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.isA;
@@ -42,14 +45,59 @@ class LessonRestControllerTest {
 
     @Test
     @DisplayName("Получение задач по разделу")
-    void findEquationsTaskByReferenceId() throws Exception {
+    void findLessonByReferenceId() throws Exception {
         Integer referenceId = 3;
+        ArrayList<Object> arr = new ArrayList<>()//{{add(3); add(3); add(3);}} //Если массив заполнять так то тест падает. Почему?
+        ;
+        arr.add(3);
+        arr.add(3);
+        arr.add(3);
         this.mockMvc.perform(
                 get("/v1.0/getLessonByReferenceId").param("referenceId", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.*", isA(ArrayList.class)))
                 .andExpect(jsonPath("$.*").isNotEmpty())
-                //.andExpect(jsonPath("$[1[0]].referenceId").value(referenceId))
+                .andExpect(jsonPath("$.[0].[*].theoryReferences").value(arr))
+                .andExpect(jsonPath("$.[1].[*].referenceId").value(arr))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Получение задач по главе")
+    void findLessonByChapterId() throws Exception {
+        Integer chapterId = 3;
+        ArrayList<Object> arr = new ArrayList<>();
+        arr.add(3);
+        arr.add(3);
+        arr.add(3);
+        this.mockMvc.perform(
+                get("/v1.0/getLessonByChapterId").param("chapterId", String.valueOf(chapterId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.*", isA(ArrayList.class)))
+                .andExpect(jsonPath("$.*").isNotEmpty())
+                .andExpect(jsonPath("$.[0].[*].theoryChapter").value(arr))
+                .andExpect(jsonPath("$.[1].[*].chapterId").value(arr))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Получение задач по разделу и главе")
+    void findLessonReferenceIdAndByChapterId() throws Exception {
+        Integer chapterId = 3;
+        Integer referenceId = 3;
+        ArrayList<Object> arr = new ArrayList<>();
+        arr.add(3);
+        arr.add(3);
+        this.mockMvc.perform(
+                get("/v1.0/getLessonByReferenceIdAndChapterId").param("referenceId", String.valueOf(referenceId))
+                        .param("chapterId", String.valueOf(chapterId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.*", isA(ArrayList.class)))
+                .andExpect(jsonPath("$.*").isNotEmpty())
+                .andExpect(jsonPath("$.[0].[*].theoryReferences").value(arr))
+                .andExpect(jsonPath("$.[1].[*].referenceId").value(arr))
+                .andExpect(jsonPath("$.[0].[*].theoryChapter").value(arr))
+                .andExpect(jsonPath("$.[1].[*].chapterId").value(arr))
                 .andDo(print());
     }
 }

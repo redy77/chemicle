@@ -43,6 +43,10 @@ public class ChemFixedAnswerTaskProxyService {
         return taskService.getAllByReferenceId(referenceId);
     }
 
+    public List<ChemFixedAnswerTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId){
+        return taskService.getAllByReferenceIdAndChapterId(referenceId, chapterId);
+    }
+
     public void deleteById(String id) {
         taskService.deleteById(id);
     }

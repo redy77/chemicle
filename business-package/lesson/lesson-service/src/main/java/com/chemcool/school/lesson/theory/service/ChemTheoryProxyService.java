@@ -40,8 +40,11 @@ public class ChemTheoryProxyService {
                 return pageService.getAllByReferenceId(referenceId);
     }
 
+    public List<ChemTheory> getAllByReferenceIdAndChapterId(int referenceId, int chapterId){
+        return pageService.getAllByReferenceIdAndChapterId(referenceId, chapterId);
+    }
+
     public ChemTheory getById(String theoryId) {
-        //  TODO проверить на то, что lessonId не пустой.
         if (theoryId == null || theoryId.isEmpty()) {
             throw new RuntimeException("theoryId параметр пустой, проверьте конфигурацию.");
         }

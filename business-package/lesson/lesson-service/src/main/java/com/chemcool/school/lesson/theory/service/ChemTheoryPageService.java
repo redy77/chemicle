@@ -61,4 +61,11 @@ public class ChemTheoryPageService {
         }
         return repository.getAllByTheoryReferences(referenceId);
     }
+
+    public List<ChemTheory> getAllByReferenceIdAndChapterId(int referenceId, int chapterId){
+        if (referenceId == 0 && chapterId == 0 ) {
+            throw new RuntimeException("параметр пустой, проверьте конфигурацию.");
+        }
+        return repository.getAllByTheoryReferencesAndTheoryChapter(referenceId, chapterId);
+    }
 }

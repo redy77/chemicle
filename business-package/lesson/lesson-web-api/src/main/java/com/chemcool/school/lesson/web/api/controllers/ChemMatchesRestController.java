@@ -20,15 +20,21 @@ import java.util.List;
 public class ChemMatchesRestController {
     private final ChemMatchingTaskProxyService taskService;
 
-    @ApiOperation("Find matches tasks by chapter")
-    @GetMapping("/findMatchesByChapter")
-    public List<ChemMatchingTask> findMatchesByChapter(int chapter){
-        return taskService.getAllByChapterId(chapter);
+    @ApiOperation("Возвращает сущности задания типа \"Сопоставление\" по разделу")
+    @GetMapping("/findMatchesTaskByReferenceId")
+    public List<ChemMatchingTask> findTaskByReferences(int referenceId){
+        return taskService.getAllByReferenceId(referenceId);
     }
 
-    @ApiOperation("Find matches tasks by references")
-    @GetMapping("/findMatchesByReferences")
-    public List<ChemMatchingTask> findMatchesByReferences(int references){
-        return taskService.getAllByReferenceId(references);
+    @ApiOperation("Возвращает сущности задания типа \"Сопоставление\" по главе")
+    @GetMapping("/findMatchesTaskByChapterId")
+    public List<ChemMatchingTask> findTaskByChapter(int chapterId){
+        return taskService.getAllByChapterId(chapterId);
+    }
+
+    @ApiOperation("Возвращает сущности задания типа \"Сопоставление\" по разделу и главе")
+    @GetMapping("/findMatchesTaskByReferenceIdAndChapterId")
+    public List<ChemMatchingTask> findTaskByReferenceIdAndChapterId(int referenceId, int chapterId){
+        return taskService.getAllByReferenceIdAndChapterId(referenceId, chapterId);
     }
 }

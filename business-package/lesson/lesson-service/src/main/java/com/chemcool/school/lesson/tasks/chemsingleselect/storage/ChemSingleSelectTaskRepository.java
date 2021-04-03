@@ -10,5 +10,6 @@ import java.util.List;
 public interface ChemSingleSelectTaskRepository extends JpaRepository<ChemSingleSelectTask, String> {
     List<ChemSingleSelectTask> getAllByChapterId(int chapterId);
     List<ChemSingleSelectTask> getAllByReferenceId(int referenceId);
+    List<ChemSingleSelectTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId);
 
 }

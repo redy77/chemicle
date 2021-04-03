@@ -1,6 +1,8 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.app.LessonApplication;
+import org.hamcrest.collection.IsEmptyCollection;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,10 +45,11 @@ class TheoryRestControllerIntegrationTest {
     }
 
     @Test
+    @DisplayName("Получение задач по главе")
     void findTaskAndTheoryByChapter() throws Exception {
         Integer chapterId = 2;
         this.mockMvc.perform(
-                get("/v1.0/findTheoryByChapter").param("chapterId", String.valueOf(chapterId))
+                get("/v1.0/findTheoryByChapterId").param("chapterId", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.*", isA(ArrayList.class)))
                 .andExpect(jsonPath("$.*", hasSize(chapterId)))
@@ -56,14 +59,44 @@ class TheoryRestControllerIntegrationTest {
     }
 
     @Test
+    @DisplayName("Получение задач по разделу")
     void findTaskAndTheoryByReferences() throws Exception {
         Integer referenceId = 2;
         this.mockMvc.perform(
-                get("/v1.0/findTheoryByReferences").param("referenceId", String.valueOf(referenceId))
+                get("/v1.0/findTheoryByReferenceId").param("referenceId", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.*", isA(ArrayList.class)))
                 .andExpect(jsonPath("$.*", hasSize(referenceId)))
                 .andExpect(jsonPath("$[0].theoryReferences").value(referenceId))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Получение задач по главе и разделу")
+    void findEquationsTaskByChapterIdAndReferenceId() throws Exception {
+        Integer chapterId = 3;
+        Integer referenceId = 3;
+        this.mockMvc.perform(
+                get("/v1.0/findTheoryByReferenceIdAndChapterId")
+                        .param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.*", isA(ArrayList.class)))
+                .andExpect(jsonPath("$[0].theoryChapter").value(chapterId))
+                .andExpect(jsonPath("$[0].theoryReferences").value(referenceId))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Проверка на несуществующие главу или раздел")
+    void findEquationsTaskByFakeChapterAndReferences() throws Exception {
+        Integer chapterId = 5;
+        Integer referenceId = 5;
+        this.mockMvc.perform(
+                get("/v1.0/findTheoryByReferenceIdAndChapterId").param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.*").value(IsEmptyCollection.empty()))
                 .andDo(print());
     }
 }

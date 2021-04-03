@@ -79,7 +79,7 @@ class ChemEquationsRestControllerIntegrationTest {
         Integer chapterId = 3;
         Integer referenceId = 3;
         this.mockMvc.perform(
-                get("/v1.0/findEquationsTaskByChapterIdAndReferenceId")
+                get("/v1.0/findEquationsTaskByReferenceIdAndChapterId")
                         .param("chapterId", String.valueOf(chapterId))
                         .param("referenceId", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
@@ -92,16 +92,14 @@ class ChemEquationsRestControllerIntegrationTest {
     @Test
     @DisplayName("Проверка на несуществующие главу или раздел")
     void findEquationsTaskByFakeChapterAndReferences() throws Exception {
-        Integer chapterId = 1;
+        Integer chapterId = 5;
         Integer referenceId = 5;
         this.mockMvc.perform(
-                get("/v1.0/findEquationsTaskByChapterIdAndReferenceId").param("chapterId", String.valueOf(chapterId))
+                get("/v1.0/findEquationsTaskByReferenceIdAndChapterId").param("chapterId", String.valueOf(chapterId))
                         .param("referenceId", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.*").value(IsEmptyCollection.empty()))
-                .andDo(print())
-
-        ;
+                .andDo(print());
     }
 }
 

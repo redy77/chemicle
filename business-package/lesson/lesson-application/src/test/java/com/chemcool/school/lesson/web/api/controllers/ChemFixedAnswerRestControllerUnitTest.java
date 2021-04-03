@@ -4,7 +4,9 @@ import com.chemcool.school.lesson.app.LessonApplication;
 import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
 import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskExample;
 import com.chemcool.school.lesson.tasks.chemfixedanswer.service.ChemFixedAnswerTaskService;
+import org.hamcrest.collection.IsEmptyCollection;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -76,9 +78,38 @@ class ChemFixedAnswerRestControllerUnitTest {
         Integer referenceId = chemFixedAnswerTaskExampleForTest.getReferenceId();
         Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(chemFixedAnswerTasks);
         this.mockMvc.perform(
-                get("/v1.0/findFixedAnswerTaskByReferences").param("references", String.valueOf(referenceId))
+                get("/v1.0/findFixedAnswerTaskByReference").param("references", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].referenceId").value(referenceId))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Получение задач по главе и разделу")
+    void findEquationsTaskByChapterAndReferences() throws Exception {
+        Integer chapterId = chemFixedAnswerTaskExampleForTest.getChapterId();
+        Integer referenceId = chemFixedAnswerTaskExampleForTest.getReferenceId();
+        Mockito.when(service.getAllByReferenceIdAndChapterId(referenceId, chapterId)).thenReturn(chemFixedAnswerTasks);
+        this.mockMvc.perform(
+                get("/v1.0/findFixedAnswerTaskByReferenceAndChapter").param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$[0].chapterId").value(chapterId))
+                .andExpect(jsonPath("$[0].referenceId").value(referenceId))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Проверка на несуществующие главу или раздел")
+    void findEquationsTaskByFakeChapterAndReferences() throws Exception {
+        Integer chapterId = 5;
+        Integer referenceId = 5;
+        Mockito.when(service.getAllByReferenceIdAndChapterId(referenceId, chapterId)).thenReturn(Collections.emptyList());
+        this.mockMvc.perform(
+                get("/v1.0/findFixedAnswerTaskByReferenceAndChapter").param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.*").value(IsEmptyCollection.empty()))
                 .andDo(print());
     }
 }

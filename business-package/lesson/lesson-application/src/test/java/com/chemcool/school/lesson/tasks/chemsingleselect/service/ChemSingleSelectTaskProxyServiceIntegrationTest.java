@@ -2,24 +2,17 @@ package com.chemcool.school.lesson.tasks.chemsingleselect.service;
 
 import com.chemcool.school.lesson.app.LessonApplication;
 import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTask;
-import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTaskExample;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,11 +32,13 @@ class ChemSingleSelectTaskProxyServiceIntegrationTest {
     private ChemSingleSelectTaskProxyService proxyService;
 
     private String id;
+    private Integer referenceId, chapterId;
 
     @BeforeEach
     void setUp() {
         id = "1";
-        System.out.println("*****************\n"+id + "\n*****************\n");
+        referenceId = 3;
+        chapterId = 3;
     }
 
     @Test
@@ -54,39 +49,57 @@ class ChemSingleSelectTaskProxyServiceIntegrationTest {
     @Test
     void getById() {
         ChemSingleSelectTask task = proxyService.getById(id).orElse(null);
-        System.out.println("*****************\n"+task + "\n*****************\n");
         assertThat(task).isNotNull();
         assertThat(task.getDescription()).isEqualTo("description");
+        assertThat(task.getTaskId()).isEqualTo(id);
     }
 
     @Test
     void getByFakeId() {
         ChemSingleSelectTask task = proxyService.getById(id + "1").orElse(null);
-        System.out.println("*****************\n"+task + "\n*****************\n");
         assertThat(task).isNull();
     }
 
     @Test
     void getAll() {
         List<ChemSingleSelectTask> taskExamples = proxyService.getAll();
-        System.out.println("*****************\n"+taskExamples + "\n*****************\n");
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(10);
+        for (ChemSingleSelectTask task : taskExamples) {
+            assertThat(task.getTaskId()).isNotNull();
+            assertThat(task.getChapterId()).isNotNull();
+            assertThat(task.getReferenceId()).isNotNull();
+        }
     }
 
     @Test
     void getAllByChapterId() {
-        List<ChemSingleSelectTask> taskExamples = proxyService.getAllByChapterId(3);
-        System.out.println("*****************\n"+taskExamples + "\n*****************\n");
+        List<ChemSingleSelectTask> taskExamples = proxyService.getAllByChapterId(chapterId);
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(3);
+        for (ChemSingleSelectTask task : taskExamples) {
+            assertThat(task.getChapterId()).isEqualTo(chapterId);
+        }
     }
 
     @Test
     void getAllByReferenceId() {
-        List<ChemSingleSelectTask> taskExamples = proxyService.getAllByReferenceId(3);
-        System.out.println("*****************\n"+taskExamples + "\n*****************\n");
+        List<ChemSingleSelectTask> taskExamples = proxyService.getAllByReferenceId(referenceId);
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(3);
+        for (ChemSingleSelectTask task : taskExamples) {
+            assertThat(task.getReferenceId()).isEqualTo(referenceId);
+        }
+    }
+
+    @Test
+    void getAllByReferenceIdAndChapterId() {
+        List<ChemSingleSelectTask> taskExamples = proxyService.getAllByReferenceIdAndChapterId(referenceId,chapterId);
+        assertThat(taskExamples).isNotNull();
+        assertThat(taskExamples).hasSize(2);
+        for (ChemSingleSelectTask task : taskExamples) {
+            assertThat(task.getReferenceId()).isEqualTo(referenceId);
+            assertThat(task.getChapterId()).isEqualTo(chapterId);
+        }
     }
 }

@@ -21,24 +21,24 @@ public class ChemEquationsRestController {
 
     private final ChemEquationsTaskProxyService taskService;
 
-    @ApiOperation("Find equations tasks by referenceId")
+    @ApiOperation("Возвращает сущности задания типа \"Уравнения\" по разделу")
     @GetMapping("/findEquationsTaskByReferenceId")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemEquationsTask> findEquationsTaskByReferenceId(int referenceId) {
+    public List<ChemEquationsTask> findTaskByReferenceId(int referenceId) {
         return taskService.getAllByReferenceId(referenceId);
     }
 
-    @ApiOperation("Find equations tasks by chapterId")
+    @ApiOperation("Возвращает сущности задания типа \"Уравнения\" по главе")
     @GetMapping("/findEquationsTaskByChapterId")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemEquationsTask> findEquationsTaskByChapterId(int chapterId) {
+    public List<ChemEquationsTask> findTaskByChapterId(int chapterId) {
         return taskService.getAllByChapterId(chapterId);
     }
 
-    @ApiOperation("Find equations tasks by chapterId and referenceId")
-    @GetMapping("/findEquationsTaskByChapterIdAndReferenceId")
+    @ApiOperation("Возвращает сущности задания типа \"Уравнения\" по разделу и главе")
+    @GetMapping("/findEquationsTaskByReferenceIdAndChapterId")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemEquationsTask> findEquationsTaskByReferenceIdAndChapterId(int referenceId, int chapterId) {
+    public List<ChemEquationsTask> findTaskByReferenceIdAndChapterId(int referenceId, int chapterId) {
         return taskService.getAllByReferenceIdAndChapterId(referenceId, chapterId);
     }
 }

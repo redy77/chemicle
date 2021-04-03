@@ -4,7 +4,9 @@ import com.chemcool.school.lesson.app.LessonApplication;
 import com.chemcool.school.lesson.theory.domain.ChemTheory;
 import com.chemcool.school.lesson.theory.domain.ChemTheoryExample;
 import com.chemcool.school.lesson.theory.service.ChemTheoryPageService;
+import org.hamcrest.collection.IsEmptyCollection;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -61,11 +63,12 @@ class TheoryRestControllerUnitTest {
     }
 
     @Test
+    @DisplayName("Получение задач по главе")
     void findTaskAndTheoryByChapter() throws Exception {
         Integer chapterId = chemTheoryExampleForTest.getTheoryExampleChapter();
         Mockito.when(service.getAllByChapterId(chapterId)).thenReturn(chemTheory);
         this.mockMvc.perform(
-                get("/v1.0/findTheoryByChapter").param("chapterId", String.valueOf(chapterId))
+                get("/v1.0/findTheoryByChapterId").param("chapterId", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].theoryChapter").value(chapterId))
                 .andDo(print());
@@ -73,13 +76,43 @@ class TheoryRestControllerUnitTest {
     }
 
     @Test
+    @DisplayName("Получение задач по разделу")
     void findTaskAndTheoryByReferences() throws Exception {
         Integer referenceId = chemTheoryExampleForTest.getTheoryExampleReferences();
         Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(chemTheory);
         this.mockMvc.perform(
-                get("/v1.0/findTheoryByReferences").param("referenceId", String.valueOf(referenceId))
+                get("/v1.0/findTheoryByReferenceId").param("referenceId", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].theoryReferences").value(referenceId))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Получение задач по главе и разделу")
+    void findEquationsTaskByChapterAndReferences() throws Exception {
+        Integer chapterId = chemTheoryExampleForTest.getTheoryExampleChapter();
+        Integer referenceId = chemTheoryExampleForTest.getTheoryExampleReferences();
+        Mockito.when(service.getAllByReferenceIdAndChapterId(referenceId, chapterId)).thenReturn(chemTheory);
+        this.mockMvc.perform(
+                get("/v1.0/findTheoryByReferenceIdAndChapterId").param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$[0].theoryChapter").value(chapterId))
+                .andExpect(jsonPath("$[0].theoryReferences").value(referenceId))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Проверка на несуществующие главу или раздел")
+    void findEquationsTaskByFakeChapterAndReferences() throws Exception {
+        Integer chapterId = 5;
+        Integer referenceId = 5;
+        Mockito.when(service.getAllByReferenceIdAndChapterId(referenceId, chapterId)).thenReturn(Collections.emptyList());
+        this.mockMvc.perform(
+                get("/v1.0/findTheoryByReferenceIdAndChapterId").param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.*").value(IsEmptyCollection.empty()))
                 .andDo(print());
     }
 }

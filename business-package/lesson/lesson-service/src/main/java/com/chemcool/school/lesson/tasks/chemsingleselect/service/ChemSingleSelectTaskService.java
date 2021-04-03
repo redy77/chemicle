@@ -54,4 +54,9 @@ public class ChemSingleSelectTaskService {
         log.info("Найдены задачи SingleSelect с reference = " + referenceId );
         return repository.getAllByReferenceId(referenceId);
     }
+
+    public List<ChemSingleSelectTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId){
+        log.info("Найдены задачи SingleSelect с reference = " + referenceId + " и chapterId = " + chapterId);
+        return repository.getAllByReferenceIdAndChapterId(referenceId, chapterId);
+    }
 }

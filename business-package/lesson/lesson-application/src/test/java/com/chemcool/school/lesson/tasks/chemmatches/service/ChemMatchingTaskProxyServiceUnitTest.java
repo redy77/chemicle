@@ -1,6 +1,7 @@
 package com.chemcool.school.lesson.tasks.chemmatches.service;
 
 import com.chemcool.school.lesson.app.LessonApplication;
+import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
 import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemMatchingTask;
 import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemMatchingTaskExample;
 import com.chemcool.school.lesson.tasks.chemmatches.domain.CoupleForMatching;
@@ -36,7 +37,7 @@ class ChemMatchingTaskProxyServiceUnitTest {
     private List<ChemMatchingTask> taskList = new ArrayList<>();
 
     private String id;
-    private Integer i;
+    private Integer i, referenceId, chapterId;
 
     @BeforeEach
     void setUp() {
@@ -70,8 +71,8 @@ class ChemMatchingTaskProxyServiceUnitTest {
 
         i = 0; //Элемент листа, при значения !=0 тест getById должен падать
         id = taskList.get(0).getTaskId();
-        assertThat(id).isNotNull();
-        System.out.println("Создана задача с id: " + id);
+        referenceId = 2;
+        chapterId = 1;
     }
 
     @Test
@@ -86,6 +87,7 @@ class ChemMatchingTaskProxyServiceUnitTest {
         System.out.println("*****************\n"+task + "\n*****************\n");
         assertThat(task).isNotNull();
         assertThat(task.getDescription()).isEqualTo("description_task1");
+        assertThat(task.getTaskId()).isEqualTo(id);
     }
 
     @Test
@@ -103,23 +105,47 @@ class ChemMatchingTaskProxyServiceUnitTest {
         System.out.println("*****************\n"+taskExamples + "\n*****************\n");
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(3);
+        for (ChemMatchingTask task : taskExamples) {
+            assertThat(task.getTaskId()).isNotNull();
+            assertThat(task.getChapterId()).isNotNull();
+            assertThat(task.getReferenceId()).isNotNull();
+        }
     }
 
     @Test
     void getAllByChapterId() {
-        Mockito.when(service.getAllByChapterId(1)).thenReturn(taskList.subList(0, 2));
-        List<ChemMatchingTask> taskExamples = proxyService.getAllByChapterId(1);
+        Mockito.when(service.getAllByChapterId(chapterId)).thenReturn(taskList.subList(0, 2));
+        List<ChemMatchingTask> taskExamples = proxyService.getAllByChapterId(chapterId);
         System.out.println("*****************\n"+taskExamples + "\n*****************\n");
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(2);
+        for (ChemMatchingTask task : taskExamples) {
+            assertThat(task.getChapterId()).isEqualTo(chapterId);
+        }
     }
 
     @Test
     void getAllByReferenceId() {
-        Mockito.when(service.getAllByReferenceId(2)).thenReturn(taskList.subList(1, 3));
-        List<ChemMatchingTask> taskExamples = proxyService.getAllByReferenceId(2);
+        Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(taskList.subList(1, 3));
+        List<ChemMatchingTask> taskExamples = proxyService.getAllByReferenceId(referenceId);
         System.out.println("*****************\n"+taskExamples + "\n*****************\n");
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(2);
+        for (ChemMatchingTask task : taskExamples) {
+            assertThat(task.getReferenceId()).isEqualTo(referenceId);
+        }
+    }
+
+    @Test
+    void getAllByReferenceIdAndChapterId() {
+        Mockito.when(service.getAllByReferenceIdAndChapterId(referenceId,chapterId)).thenReturn(taskList.subList(1, 2));
+        List<ChemMatchingTask> taskExamples = proxyService.getAllByReferenceIdAndChapterId(referenceId,chapterId);
+        System.out.println("*****************\n"+taskExamples + "\n*****************\n");
+        assertThat(taskExamples).isNotNull();
+        assertThat(taskExamples).hasSize(1);
+        for (ChemMatchingTask task : taskExamples) {
+            assertThat(task.getReferenceId()).isEqualTo(referenceId);
+            assertThat(task.getChapterId()).isEqualTo(chapterId);
+        }
     }
 }

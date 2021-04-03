@@ -1,29 +1,22 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskExample;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.service.ChemFixedAnswerTaskService;
-import org.junit.jupiter.api.BeforeEach;
+import org.hamcrest.collection.IsEmptyCollection;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasSize;
@@ -67,11 +60,40 @@ class ChemFixedAnswerRestControllerIntegrationTest {
     void findFixedAnswerTaskByReferences() throws Exception {
         Integer referenceId = 4;
                this.mockMvc.perform(
-                get("/v1.0/findFixedAnswerTaskByReferences").param("references", String.valueOf(referenceId))
+                get("/v1.0/findFixedAnswerTaskByReference").param("references", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
                        .andExpect(jsonPath("$.*", isA(ArrayList.class)))
                        .andExpect(jsonPath("$.*", hasSize(referenceId)))
                        .andExpect(jsonPath("$[0].referenceId").value(referenceId))
                        .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Получение задач по главе и разделу")
+    void findFixedAnswerTaskByChapterIdAndReferenceId() throws Exception {
+        Integer chapterId = 3;
+        Integer referenceId = 3;
+        this.mockMvc.perform(
+                get("/v1.0/findFixedAnswerTaskByReferenceAndChapter")
+                        .param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.*", isA(ArrayList.class)))
+                .andExpect(jsonPath("$[0].chapterId").value(chapterId))
+                .andExpect(jsonPath("$[0].referenceId").value(referenceId))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Проверка на несуществующие главу или раздел")
+    void findEFixedAnswerTaskByFakeChapterAndReferences() throws Exception {
+        Integer chapterId = 5;
+        Integer referenceId = 5;
+        this.mockMvc.perform(
+                get("/v1.0/findFixedAnswerTaskByReferenceAndChapter").param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.*").value(IsEmptyCollection.empty()))
+                .andDo(print());
     }
 }

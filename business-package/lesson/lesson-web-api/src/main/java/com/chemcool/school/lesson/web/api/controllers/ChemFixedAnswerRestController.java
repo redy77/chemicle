@@ -2,7 +2,6 @@ package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
 import com.chemcool.school.lesson.tasks.chemfixedanswer.service.ChemFixedAnswerTaskProxyService;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.service.ChemFixedAnswerTaskService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,15 +18,21 @@ import java.util.List;
 public class ChemFixedAnswerRestController {
     private final ChemFixedAnswerTaskProxyService taskService;
 
-    @ApiOperation("Find fixed answer tasks by chapter")
+    @ApiOperation("Возвращает сущности задания типа \"Фиксированный ответ\" по разделу")
+    @GetMapping("/findFixedAnswerTaskByReference")
+    public List<ChemFixedAnswerTask> findTaskByReferences(int references){
+        return taskService.getAllByReferenceId(references);
+    }
+
+    @ApiOperation("Возвращает сущности задания типа \"Фиксированный ответ\" по главе")
     @GetMapping("/findFixedAnswerTaskByChapter")
-    public List<ChemFixedAnswerTask> findFixedAnswerTaskByChapter(int chapter){
+    public List<ChemFixedAnswerTask> findTaskByChapter(int chapter){
         return taskService.getAllByChapterId(chapter);
     }
 
-    @ApiOperation("Find fixed answer tasks by references")
-    @GetMapping("/findFixedAnswerTaskByReferences")
-    public List<ChemFixedAnswerTask> findFixedAnswerTaskByReferences(int references){
-        return taskService.getAllByReferenceId(references);
+    @ApiOperation("Возвращает сущности задания типа \"Фиксированный ответ\" по разделу и главе")
+    @GetMapping("/findFixedAnswerTaskByReferenceAndChapter")
+    public  List<ChemFixedAnswerTask> findTaskByReferenceIdAndChapterId(int referenceId, int chapterId){
+        return taskService.getAllByReferenceIdAndChapterId(referenceId, chapterId);
     }
 }

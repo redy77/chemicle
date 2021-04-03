@@ -1,6 +1,7 @@
 package com.chemcool.school.lesson.theory.service;
 
 import com.chemcool.school.lesson.app.LessonApplication;
+import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
 import com.chemcool.school.lesson.theory.domain.ChemTheory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,11 +29,13 @@ class ChemTheoryProxyServiceIntegrationTest {
     private ChemTheoryProxyService proxyService;
 
     private String id;
+    private Integer referenceId, chapterId;
 
     @BeforeEach
     void setUp() {
         id = "1";
-        System.out.println("*****************\n"+id + "\n*****************\n");
+        referenceId = 3;
+        chapterId = 3;
     }
 
     @Test
@@ -46,6 +49,7 @@ class ChemTheoryProxyServiceIntegrationTest {
         System.out.println("*****************\n"+theory + "\n*****************\n");
         assertThat(theory).isNotNull();
         assertThat(theory.getTheoryDescription()).isEqualTo("theory_description1");
+        assertThat(theory.getTheoryId()).isEqualTo(id);
     }
 
     @Test
@@ -61,23 +65,44 @@ class ChemTheoryProxyServiceIntegrationTest {
         System.out.println("*****************\n"+theoryExamples + "\n*****************\n");
         assertThat(theoryExamples).isNotNull();
         assertThat(theoryExamples).hasSize(10);
+        for (ChemTheory theory : theoryExamples) {
+            assertThat(theory.getTheoryId()).isNotNull();
+            assertThat(theory.getTheoryChapter()).isNotNull();
+            assertThat(theory.getTheoryReferences()).isNotNull();
+        }
     }
 
     @Test
     void getAllByChapterId() {
-        List<ChemTheory> theoryExamples = proxyService.getAllByChapterId(3);
+        List<ChemTheory> theoryExamples = proxyService.getAllByChapterId(chapterId);
         System.out.println("*****************\n"+theoryExamples + "\n*****************\n");
         assertThat(theoryExamples).isNotNull();
         assertThat(theoryExamples).hasSize(3);
+        for (ChemTheory theory : theoryExamples) {
+            assertThat(theory.getTheoryChapter()).isEqualTo(chapterId);
+        }
     }
 
     @Test
     void getAllByReferenceId() {
-        List<ChemTheory> theoryExamples = proxyService.getAllByReferenceId(2);
+        List<ChemTheory> theoryExamples = proxyService.getAllByReferenceId(referenceId);
+        System.out.println("*****************\n"+theoryExamples + "\n*****************\n");
+        assertThat(theoryExamples).isNotNull();
+        assertThat(theoryExamples).hasSize(3);
+        for (ChemTheory theory : theoryExamples) {
+            assertThat(theory.getTheoryReferences()).isEqualTo(referenceId);
+        }
+    }
+
+    @Test
+    void getAllByReferenceIdAndChapterId() {
+        List<ChemTheory> theoryExamples = proxyService.getAllByReferenceIdAndChapterId(referenceId,chapterId);
         System.out.println("*****************\n"+theoryExamples + "\n*****************\n");
         assertThat(theoryExamples).isNotNull();
         assertThat(theoryExamples).hasSize(2);
+        for (ChemTheory theory : theoryExamples) {
+            assertThat(theory.getTheoryReferences()).isEqualTo(referenceId);
+            assertThat(theory.getTheoryChapter()).isEqualTo(chapterId);
+        }
     }
-
-
 }

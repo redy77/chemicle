@@ -35,7 +35,8 @@ class ChemFixedAnswerTaskProxyServiceUnitTest {
     private List<ChemFixedAnswerTask> taskList = new ArrayList<>();
 
     private String id;
-    private Integer i;
+    private Integer i, referenceId, chapterId;
+
 
     @BeforeEach
     void setUp() {
@@ -60,6 +61,8 @@ class ChemFixedAnswerTaskProxyServiceUnitTest {
         System.out.println("*****************\n"+taskList + "\n*****************\n");
         i = 0; //Элемент листа, при значения !=0 тест getById должен падать
         id = taskList.get(i).getTaskId();
+        referenceId = 2;
+        chapterId = 1;
     }
 
     @Test
@@ -74,11 +77,12 @@ class ChemFixedAnswerTaskProxyServiceUnitTest {
         System.out.println("*****************\n"+task + "\n*****************\n");
         assertThat(task).isNotNull();
         assertThat(task.getDescription()).isEqualTo("description");
+        assertThat(task.getTaskId()).isEqualTo(id);
     }
 
     @Test
     void getByFakeId() {
-        Mockito.when(service.getById(id)).thenReturn(Optional.ofNullable(taskList.get(0)));
+        Mockito.when(service.getById(id)).thenReturn(Optional.ofNullable(taskList.get(i)));
         ChemFixedAnswerTask task = proxyService.getById(id + "1").orElse(null);
         System.out.println("*****************\n"+task + "\n*****************\n");
         assertThat(task).isNull();
@@ -91,23 +95,47 @@ class ChemFixedAnswerTaskProxyServiceUnitTest {
         System.out.println("*****************\n"+taskExamples + "\n*****************\n");
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(3);
+        for (ChemFixedAnswerTask task : taskExamples) {
+            assertThat(task.getTaskId()).isNotNull();
+            assertThat(task.getChapterId()).isNotNull();
+            assertThat(task.getReferenceId()).isNotNull();
+        }
     }
 
     @Test
     void getAllByChapterId() {
-        Mockito.when(service.getAllByChapterId(2)).thenReturn(taskList.subList(0, 2));
-        List<ChemFixedAnswerTask> taskExamples = proxyService.getAllByChapterId(2);
+        Mockito.when(service.getAllByChapterId(chapterId)).thenReturn(taskList.subList(0, 2));
+        List<ChemFixedAnswerTask> taskExamples = proxyService.getAllByChapterId(chapterId);
         System.out.println("*****************\n"+taskExamples + "\n*****************\n");
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(2);
+        for (ChemFixedAnswerTask task : taskExamples) {
+            assertThat(task.getChapterId()).isEqualTo(chapterId);
+        }
     }
 
     @Test
     void getAllByReferenceId() {
-        Mockito.when(service.getAllByReferenceId(1)).thenReturn(taskList.subList(1, 3));
-        List<ChemFixedAnswerTask> taskExamples = proxyService.getAllByReferenceId(1);
+        Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(taskList.subList(1, 3));
+        List<ChemFixedAnswerTask> taskExamples = proxyService.getAllByReferenceId(referenceId);
         System.out.println("*****************\n"+taskExamples + "\n*****************\n");
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(2);
+        for (ChemFixedAnswerTask task : taskExamples) {
+            assertThat(task.getReferenceId()).isEqualTo(referenceId);
+        }
+    }
+
+    @Test
+    void getAllByReferenceIdAndChapterId() {
+        Mockito.when(service.getAllByReferenceIdAndChapterId(referenceId,chapterId)).thenReturn(taskList.subList(1, 2));
+        List<ChemFixedAnswerTask> taskExamples = proxyService.getAllByReferenceIdAndChapterId(referenceId,chapterId);
+        System.out.println("*****************\n"+taskExamples + "\n*****************\n");
+        assertThat(taskExamples).isNotNull();
+        assertThat(taskExamples).hasSize(1);
+        for (ChemFixedAnswerTask task : taskExamples) {
+            assertThat(task.getReferenceId()).isEqualTo(referenceId);
+            assertThat(task.getChapterId()).isEqualTo(chapterId);
+        }
     }
 }

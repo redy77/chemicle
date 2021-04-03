@@ -42,13 +42,18 @@ public class ChemMatchingTaskService {
     }
 
     public List<ChemMatchingTask> getAllByChapterId(int chapterId) {
-        log.info("Найдены задачи Equations с chapter = " + chapterId );
+        log.info("Найдены задачи Matching с chapterId = " + chapterId );
         return repository.getAllByChapterId(chapterId);
     }
 
     public List<ChemMatchingTask> getAllByReferenceId(int referenceId){
-        log.info("Найдены задачи Equations с references = " + referenceId );
+        log.info("Найдены задачи Matching с referenceId = " + referenceId );
         return repository.getAllByReferenceId(referenceId);
+    }
+
+    public List<ChemMatchingTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId){
+        log.info("Найдены задачи Matching с referenceId = " + referenceId + " и chapterId =  " + chapterId );
+        return repository.getAllByReferenceIdAndChapterId(referenceId, chapterId);
     }
 }
 /*

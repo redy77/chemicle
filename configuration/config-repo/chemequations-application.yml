@@ -8,8 +8,8 @@ spring:
       ddl-auto: none
   datasource:
     url: jdbc:postgresql://localhost:5432/chemequations
-    username: mick
-    password: mick
+    username: postgres
+    password: root
     platform: postgres
     driver-class-name: org.postgresql.Driver
 

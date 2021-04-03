@@ -44,5 +44,7 @@ public interface TheoryRepository extends JpaRepository<ChemTheory, UUID>, JpaSp
 
     List<ChemTheory> getAllByTheoryReferences(int theoryReferences);
 
+    List<ChemTheory> getAllByTheoryReferencesAndTheoryChapter(int theoryReferences, int theoryChapter);
+
 
 }

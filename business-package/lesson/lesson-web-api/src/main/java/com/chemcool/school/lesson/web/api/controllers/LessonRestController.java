@@ -1,7 +1,6 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 
-import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,16 +25,42 @@ public class LessonRestController {
     private final ChemSingleSelectRestController chemSingleSelectRestController;
 
 
-    @ApiOperation("Find theory and all tasks by referenceId")
+    @ApiOperation("Возвращает сущности заданий и теории по разделу")
     @GetMapping("/getLessonByReferenceId")
     @ResponseStatus(HttpStatus.OK)
-    public List[] findEquationsTaskByReferenceId(int referenceId) {
+    public List[] findLessonByReferenceId(int referenceId) {
         return new List[]{
-                theoryRestController.findTaskAndTheoryByReferences(referenceId),
-                chemEquationsRestController.findEquationsTaskByReferenceId(referenceId),
-                chemFixedAnswerRestController.findFixedAnswerTaskByReferences(referenceId),
-                matchesRestController.findMatchesByReferences(referenceId),
-                chemSingleSelectRestController.findTaskByReferences(referenceId)
+                theoryRestController.findTheoryByReferenceId(referenceId),
+                chemEquationsRestController.findTaskByReferenceId(referenceId),
+                chemFixedAnswerRestController.findTaskByReferences(referenceId),
+                matchesRestController.findTaskByReferences(referenceId),
+                chemSingleSelectRestController.findTaskByReferenceId(referenceId)
+        };
+    }
+
+    @ApiOperation("Возвращает сущности заданий и теории по главе")
+    @GetMapping("/getLessonByChapterId")
+    @ResponseStatus(HttpStatus.OK)
+    public List[] findLessonByChapterId(int chapterId) {
+        return new List[]{
+                theoryRestController.findTheoryByChapter(chapterId),
+                chemEquationsRestController.findTaskByChapterId(chapterId),
+                chemFixedAnswerRestController.findTaskByChapter(chapterId),
+                matchesRestController.findTaskByChapter(chapterId),
+                chemSingleSelectRestController.findTaskByChapterId(chapterId)
+        };
+    }
+
+    @ApiOperation("Возвращает сущности заданий и теории по разделу и главе")
+    @GetMapping("/getLessonByReferenceIdAndChapterId")
+    @ResponseStatus(HttpStatus.OK)
+    public List[] findLessonReferenceIdAndByChapterId(int chapterId, int referenceId) {
+        return new List[]{
+                theoryRestController.findTheoryByReferenceIdAndChapterId(chapterId, referenceId),
+                chemEquationsRestController.findTaskByReferenceIdAndChapterId(chapterId, referenceId),
+                chemFixedAnswerRestController.findTaskByReferenceIdAndChapterId(chapterId, referenceId),
+                matchesRestController.findTaskByReferenceIdAndChapterId(chapterId, referenceId),
+                chemSingleSelectRestController.findTaskByReferenceIdAndChapterId(chapterId, referenceId)
         };
     }
 }

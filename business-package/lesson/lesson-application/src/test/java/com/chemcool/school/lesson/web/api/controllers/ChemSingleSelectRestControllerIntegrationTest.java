@@ -1,29 +1,22 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTask;
-import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTaskExample;
-import com.chemcool.school.lesson.tasks.chemsingleselect.service.ChemSingleSelectTaskService;
-import org.junit.jupiter.api.BeforeEach;
+import org.hamcrest.collection.IsEmptyCollection;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasSize;
@@ -53,10 +46,11 @@ class ChemSingleSelectRestControllerIntegrationTest {
     }
 
     @Test
+    @DisplayName("Получение задач по главе")
     void findTaskByChapter() throws Exception {
         Integer chapterId = 2;
         this.mockMvc.perform(
-                get("/v1.0/findSingleSelectTaskByChapter").param("chapter", String.valueOf(chapterId))
+                get("/v1.0/findSingleSelectTaskByChapterId").param("chapterId", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.*", isA(ArrayList.class)))
                 .andExpect(jsonPath("$.*", hasSize(chapterId)))
@@ -65,14 +59,44 @@ class ChemSingleSelectRestControllerIntegrationTest {
     }
 
     @Test
+    @DisplayName("Получение задач по разделу")
     void findTaskByReferences() throws Exception {
         Integer referenceId = 2;
         this.mockMvc.perform(
-                get("/v1.0/findSingleSelectTaskByReferences").param("references", String.valueOf(referenceId))
+                get("/v1.0/findSingleSelectTaskByReferenceId").param("referenceId", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.*", isA(ArrayList.class)))
                 .andExpect(jsonPath("$.*", hasSize(referenceId)))
                 .andExpect(jsonPath("$[0].referenceId").value(referenceId))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Получение задач по главе и разделу")
+    void findEquationsTaskByChapterIdAndReferenceId() throws Exception {
+        Integer chapterId = 3;
+        Integer referenceId = 3;
+        this.mockMvc.perform(
+                get("/v1.0/findSingleSelectTaskByReferenceIdAndChapterId")
+                        .param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.*", isA(ArrayList.class)))
+                .andExpect(jsonPath("$[0].chapterId").value(chapterId))
+                .andExpect(jsonPath("$[0].referenceId").value(referenceId))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Проверка на несуществующие главу или раздел")
+    void findEquationsTaskByFakeChapterAndReferences() throws Exception {
+        Integer chapterId = 5;
+        Integer referenceId = 5;
+        this.mockMvc.perform(
+                get("/v1.0/findSingleSelectTaskByReferenceIdAndChapterId").param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.*").value(IsEmptyCollection.empty()))
                 .andDo(print());
     }
 }
