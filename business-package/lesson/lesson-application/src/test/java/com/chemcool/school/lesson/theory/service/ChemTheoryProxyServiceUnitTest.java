@@ -26,10 +26,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ChemTheoryProxyServiceUnitTest {
 
     @Autowired
-    private ChemistryTheoryProxyService proxyService;
+    private ChemTheoryProxyService proxyService;
 
     @MockBean
-    private ChemistryTheoryPageService service;
+    private ChemTheoryPageService service;
 
     private List<ChemTheory> theoryList = new ArrayList<>();
 

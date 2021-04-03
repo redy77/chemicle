@@ -8,9 +8,9 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ChemistryTheoryProxyService {
+public class ChemTheoryProxyService {
     private final ChemTheoryEventNotificationService notificationService;
-    private final ChemistryTheoryPageService pageService;
+    private final ChemTheoryPageService pageService;
 
     public String add(ChemTheoryExample example) {
         ChemTheory theory = ChemTheoryFactory.createTheory(example);

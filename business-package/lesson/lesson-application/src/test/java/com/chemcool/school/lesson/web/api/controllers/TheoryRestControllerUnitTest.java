@@ -3,7 +3,7 @@ package com.chemcool.school.lesson.web.api.controllers;
 import com.chemcool.school.lesson.app.LessonApplication;
 import com.chemcool.school.lesson.theory.domain.ChemTheory;
 import com.chemcool.school.lesson.theory.domain.ChemTheoryExample;
-import com.chemcool.school.lesson.theory.service.ChemistryTheoryPageService;
+import com.chemcool.school.lesson.theory.service.ChemTheoryPageService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -43,7 +43,7 @@ class TheoryRestControllerUnitTest {
     private List<ChemTheory> chemTheory;
 
     @MockBean
-    private ChemistryTheoryPageService service;
+    private ChemTheoryPageService service;
 
     private ChemTheoryExample chemTheoryExampleForTest;
 

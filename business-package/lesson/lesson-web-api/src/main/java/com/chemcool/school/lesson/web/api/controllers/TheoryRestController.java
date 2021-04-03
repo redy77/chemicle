@@ -1,7 +1,7 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.theory.domain.ChemTheory;
-import com.chemcool.school.lesson.theory.service.ChemistryTheoryProxyService;
+import com.chemcool.school.lesson.theory.service.ChemTheoryProxyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping({"/v1.0"})
 @RequiredArgsConstructor
 public class TheoryRestController {
-    private final ChemistryTheoryProxyService pageService;
+    private final ChemTheoryProxyService pageService;
 
     @GetMapping("/findTheoryByChapter")
     public List<ChemTheory> findTaskAndTheoryByChapter(int chapterId){
