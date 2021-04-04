@@ -1,12 +1,21 @@
 spring:
   application:
-    name: chemfixedanswer-application
+    name: tasks-chemfixedanswer-application
   cloud:
     config:
-      name: chemfixedanswer-application
-      discovery:
-        enabled: true
-        service-id: config-service
+      uri: http://localhost:8888
       fail-fast: true
-      password: ${SPRING_CLOUD_CONFIG_USERNAME}
-      username: ${SPRING_CLOUD_CONFIG_PASSWORD}
+      password: ${CONFIG_SERVICE_PASSWORD}
+      username: ${CONFIG_SERVICE_USER}
+
+---
+spring:
+  profiles: test
+  application:
+    name: tasks-chemfixedanswer-application-test
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: false
+      password: ${CONFIG_SERVICE_PASSWORD}
+      username: ${CONFIG_SERVICE_USER}
