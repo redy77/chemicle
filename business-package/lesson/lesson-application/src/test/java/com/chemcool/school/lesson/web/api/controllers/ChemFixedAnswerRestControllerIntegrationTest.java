@@ -48,7 +48,7 @@ class ChemFixedAnswerRestControllerIntegrationTest {
     void findFixedAnswerTaskByChapter() throws Exception {
         Integer chapterId = 2;
         this.mockMvc.perform(
-                get("/v1.0/findFixedAnswerTaskByChapter").param("chapter", String.valueOf(chapterId))
+                get("/v1.0/findFixedAnswerTaskByChapterId").param("chapter", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.*", isA(ArrayList.class)))
                 .andExpect(jsonPath("$.*", hasSize(chapterId)))
@@ -60,7 +60,7 @@ class ChemFixedAnswerRestControllerIntegrationTest {
     void findFixedAnswerTaskByReferences() throws Exception {
         Integer referenceId = 4;
                this.mockMvc.perform(
-                get("/v1.0/findFixedAnswerTaskByReference").param("references", String.valueOf(referenceId))
+                get("/v1.0/findFixedAnswerTaskByReferenceId").param("references", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
                        .andExpect(jsonPath("$.*", isA(ArrayList.class)))
                        .andExpect(jsonPath("$.*", hasSize(referenceId)))

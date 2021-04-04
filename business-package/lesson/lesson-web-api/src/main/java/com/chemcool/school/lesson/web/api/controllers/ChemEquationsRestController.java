@@ -1,7 +1,8 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
-import com.chemcool.school.lesson.tasks.chemequations.service.ChemEquationsTaskProxyService;
+import com.chemcool.school.lesson.web.api.dto.ChemEquationsTaskDto;
+import com.chemcool.school.lesson.web.api.service.ChemEquationsTaskPresentation;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,26 +20,26 @@ import java.util.List;
 @AllArgsConstructor
 public class ChemEquationsRestController {
 
-    private final ChemEquationsTaskProxyService taskService;
+    private final ChemEquationsTaskPresentation presentation;
 
     @ApiOperation("Возвращает сущности задания типа \"Уравнения\" по разделу")
     @GetMapping("/findEquationsTaskByReferenceId")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemEquationsTask> findTaskByReferenceId(int referenceId) {
-        return taskService.getAllByReferenceId(referenceId);
+    public List<ChemEquationsTaskDto> findTaskByReferenceId(int referenceId) {
+        return presentation.getAllChemistryEquationsByReferenceIdDto(referenceId);
     }
 
     @ApiOperation("Возвращает сущности задания типа \"Уравнения\" по главе")
     @GetMapping("/findEquationsTaskByChapterId")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemEquationsTask> findTaskByChapterId(int chapterId) {
-        return taskService.getAllByChapterId(chapterId);
+    public List<ChemEquationsTaskDto> findTaskByChapterId(int chapterId) {
+        return presentation.getAllChemistryEquationsByChapterIdDto(chapterId);
     }
 
     @ApiOperation("Возвращает сущности задания типа \"Уравнения\" по разделу и главе")
     @GetMapping("/findEquationsTaskByReferenceIdAndChapterId")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemEquationsTask> findTaskByReferenceIdAndChapterId(int referenceId, int chapterId) {
-        return taskService.getAllByReferenceIdAndChapterId(referenceId, chapterId);
+    public List<ChemEquationsTaskDto> findTaskByReferenceIdAndChapterId(int referenceId, int chapterId) {
+        return presentation.getAllChemistryEquationsByReferenceIdAndChapterIdDto(referenceId, chapterId);
     }
 }

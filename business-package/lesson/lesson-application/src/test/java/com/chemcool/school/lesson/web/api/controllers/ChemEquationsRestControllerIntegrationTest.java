@@ -134,7 +134,7 @@ class ChemEquationsRestControllerIntegrationTest {
     private String rightAnswer;
     private int chapterId;
     private int referenceId;
-    public void addingTestTheoryDataBase(TheoryDto theoryDto) {
+    public void addingTestTheoryDataBase(ChemTheoryDto theoryDto) {
         presentation.createChemistryTheoryDto(theoryDto);
     }
  System.out.println(chemEquationsTaskExampleForTest);

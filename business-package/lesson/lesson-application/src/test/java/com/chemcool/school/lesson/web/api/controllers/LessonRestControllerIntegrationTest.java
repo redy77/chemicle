@@ -18,6 +18,7 @@ import org.w3c.dom.stylesheets.LinkStyle;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.isA;
@@ -34,7 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Sql(value = {"/testEquationsDbCreate.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 //@Sql(value = {"/testDbDrop.sql"}, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 
-class LessonRestControllerTest {
+class LessonRestControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -47,7 +48,8 @@ class LessonRestControllerTest {
     @DisplayName("Получение задач по разделу")
     void findLessonByReferenceId() throws Exception {
         Integer referenceId = 3;
-        ArrayList<Object> arr = new ArrayList<>()//{{add(3); add(3); add(3);}} //Если массив заполнять так то тест падает. Почему?
+
+        List<Object> arr = new ArrayList<>()//{{add(3); add(3); add(3);}} //Если массив заполнять так то тест падает. Почему?
         ;
         arr.add(3);
         arr.add(3);

@@ -32,7 +32,7 @@ public class LessonRestController {
         return new List[]{
                 theoryRestController.findTheoryByReferenceId(referenceId),
                 chemEquationsRestController.findTaskByReferenceId(referenceId),
-                chemFixedAnswerRestController.findTaskByReferences(referenceId),
+                chemFixedAnswerRestController.findTaskByReferenceId(referenceId),
                 matchesRestController.findTaskByReferences(referenceId),
                 chemSingleSelectRestController.findTaskByReferenceId(referenceId)
         };
@@ -45,7 +45,7 @@ public class LessonRestController {
         return new List[]{
                 theoryRestController.findTheoryByChapter(chapterId),
                 chemEquationsRestController.findTaskByChapterId(chapterId),
-                chemFixedAnswerRestController.findTaskByChapter(chapterId),
+                chemFixedAnswerRestController.findTaskByChapterId(chapterId),
                 matchesRestController.findTaskByChapter(chapterId),
                 chemSingleSelectRestController.findTaskByChapterId(chapterId)
         };

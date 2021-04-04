@@ -3,7 +3,8 @@ package com.chemcool.school.lesson.web.api.controllers;
 
 
 import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemMatchingTask;
-import com.chemcool.school.lesson.tasks.chemmatches.service.ChemMatchingTaskProxyService;
+import com.chemcool.school.lesson.web.api.dto.ChemMatchingTaskDto;
+import com.chemcool.school.lesson.web.api.service.ChemMatchingTaskPresentation;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,23 +19,23 @@ import java.util.List;
 @RequestMapping({"/v1.0"})
 @RequiredArgsConstructor
 public class ChemMatchesRestController {
-    private final ChemMatchingTaskProxyService taskService;
+    private final ChemMatchingTaskPresentation presentation;
 
     @ApiOperation("Возвращает сущности задания типа \"Сопоставление\" по разделу")
     @GetMapping("/findMatchesTaskByReferenceId")
-    public List<ChemMatchingTask> findTaskByReferences(int referenceId){
-        return taskService.getAllByReferenceId(referenceId);
+    public List<ChemMatchingTaskDto> findTaskByReferences(int referenceId){
+        return presentation.getAllTasksByReferenceIdDto(referenceId);
     }
 
     @ApiOperation("Возвращает сущности задания типа \"Сопоставление\" по главе")
     @GetMapping("/findMatchesTaskByChapterId")
-    public List<ChemMatchingTask> findTaskByChapter(int chapterId){
-        return taskService.getAllByChapterId(chapterId);
+    public List<ChemMatchingTaskDto> findTaskByChapter(int chapterId){
+        return presentation.getAllTasksByChapterIdDto(chapterId);
     }
 
     @ApiOperation("Возвращает сущности задания типа \"Сопоставление\" по разделу и главе")
     @GetMapping("/findMatchesTaskByReferenceIdAndChapterId")
-    public List<ChemMatchingTask> findTaskByReferenceIdAndChapterId(int referenceId, int chapterId){
-        return taskService.getAllByReferenceIdAndChapterId(referenceId, chapterId);
+    public List<ChemMatchingTaskDto> findTaskByReferenceIdAndChapterId(int referenceId, int chapterId){
+        return presentation.getAllTasksByReferenceIdAndChapterIdDto(referenceId, chapterId);
     }
 }

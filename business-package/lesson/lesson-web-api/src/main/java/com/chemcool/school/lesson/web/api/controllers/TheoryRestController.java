@@ -1,7 +1,8 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.theory.domain.ChemTheory;
-import com.chemcool.school.lesson.theory.service.ChemTheoryProxyService;
+import com.chemcool.school.lesson.web.api.dto.ChemTheoryDto;
+import com.chemcool.school.lesson.web.api.service.ChemTheoryPresentation;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,23 +17,23 @@ import java.util.List;
 @RequestMapping({"/v1.0"})
 @RequiredArgsConstructor
 public class TheoryRestController {
-    private final ChemTheoryProxyService pageService;
+    private final ChemTheoryPresentation presentation;
 
     @ApiOperation("Возвращает сущности теории по главе")
     @GetMapping("/findTheoryByChapterId")
-    public List<ChemTheory> findTheoryByChapter(int chapterId){
-        return pageService.getAllByChapterId(chapterId);
+    public List<ChemTheoryDto> findTheoryByChapter(int chapterId){
+        return presentation.getAllTheoryByChapterIdDto(chapterId);
     }
 
     @ApiOperation("Возвращает сущности теории по разделу")
     @GetMapping("/findTheoryByReferenceId")
-    public List<ChemTheory> findTheoryByReferenceId(int referenceId){
-        return pageService.getAllByReferenceId(referenceId);
+    public List<ChemTheoryDto> findTheoryByReferenceId(int referenceId){
+        return presentation.getAllTheoryByReferenceIdDto(referenceId);
     }
 
     @ApiOperation("Возвращает сущности теории по разделу и главе")
     @GetMapping("/findTheoryByReferenceIdAndChapterId")
-    public List<ChemTheory> findTheoryByReferenceIdAndChapterId(int referenceId, int chapterId){
-        return pageService.getAllByReferenceIdAndChapterId(referenceId, chapterId);
+    public List<ChemTheoryDto> findTheoryByReferenceIdAndChapterId(int referenceId, int chapterId){
+        return presentation.getAllTheoryByReferenceIdAndChapterIdDto(referenceId, chapterId);
     }
 }

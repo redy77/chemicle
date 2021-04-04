@@ -1,9 +1,9 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
 import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskExample;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.service.ChemFixedAnswerTaskService;
+import com.chemcool.school.lesson.web.api.dto.ChemFixedAnswerTaskDto;
+import com.chemcool.school.lesson.web.api.service.ChemFixedAnswerTaskPresentation;
 import org.hamcrest.collection.IsEmptyCollection;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -42,18 +42,15 @@ class ChemFixedAnswerRestControllerUnitTest {
     @Autowired
     private ChemFixedAnswerRestController controller;
 
-    private List<ChemFixedAnswerTask> chemFixedAnswerTasks;
+    private List<ChemFixedAnswerTaskDto> chemFixedAnswerTasks;
 
     @MockBean
-    private ChemFixedAnswerTaskService service;
-
-    private ChemFixedAnswerTaskExample chemFixedAnswerTaskExampleForTest;
+    private ChemFixedAnswerTaskPresentation presentation;
 
     @BeforeEach
     void setUp() {
-        chemFixedAnswerTaskExampleForTest = new ChemFixedAnswerTaskExample("description", "rightAnswer", 1, 1);
-        chemFixedAnswerTasks = Collections.singletonList(ChemFixedAnswerTask
-                .createChemistryFixedAnswerTask(chemFixedAnswerTaskExampleForTest));
+        chemFixedAnswerTasks = Collections.singletonList(
+                new ChemFixedAnswerTaskDto("taskId","description", "rightAnswer", 1, 2, "FixedAnswer"));
         this.mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
@@ -64,10 +61,10 @@ class ChemFixedAnswerRestControllerUnitTest {
 
     @Test
     void findFixedAnswerTaskByChapter() throws Exception {
-        Integer chapterId = chemFixedAnswerTaskExampleForTest.getChapterId();
-        Mockito.when(service.getAllByChapterId(chapterId)).thenReturn(chemFixedAnswerTasks);
+        Integer chapterId = 1;
+        Mockito.when(presentation.getAllChemistryFixedAnswerByChapterIdDto(chapterId)).thenReturn(chemFixedAnswerTasks);
         this.mockMvc.perform(
-                get("/v1.0/findFixedAnswerTaskByChapter").param("chapter", String.valueOf(chapterId))
+                get("/v1.0/findFixedAnswerTaskByChapterId").param("chapterId", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].chapterId").value(chapterId))
                 .andDo(print());
@@ -75,10 +72,10 @@ class ChemFixedAnswerRestControllerUnitTest {
 
     @Test
     void findFixedAnswerTaskByReferences() throws Exception {
-        Integer referenceId = chemFixedAnswerTaskExampleForTest.getReferenceId();
-        Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(chemFixedAnswerTasks);
+        Integer referenceId = 2;
+        Mockito.when(presentation.getAllChemistryFixedAnswerByReferenceIdDto(referenceId)).thenReturn(chemFixedAnswerTasks);
         this.mockMvc.perform(
-                get("/v1.0/findFixedAnswerTaskByReference").param("references", String.valueOf(referenceId))
+                get("/v1.0/findFixedAnswerTaskByReferenceId").param("referenceId", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].referenceId").value(referenceId))
                 .andDo(print());
@@ -87,9 +84,9 @@ class ChemFixedAnswerRestControllerUnitTest {
     @Test
     @DisplayName("Получение задач по главе и разделу")
     void findEquationsTaskByChapterAndReferences() throws Exception {
-        Integer chapterId = chemFixedAnswerTaskExampleForTest.getChapterId();
-        Integer referenceId = chemFixedAnswerTaskExampleForTest.getReferenceId();
-        Mockito.when(service.getAllByReferenceIdAndChapterId(referenceId, chapterId)).thenReturn(chemFixedAnswerTasks);
+        Integer chapterId = 1;
+        Integer referenceId = 2;
+        Mockito.when(presentation.getAllChemistryFixedAnswerByReferenceIdAndChapterIdDto(referenceId, chapterId)).thenReturn(chemFixedAnswerTasks);
         this.mockMvc.perform(
                 get("/v1.0/findFixedAnswerTaskByReferenceAndChapter").param("chapterId", String.valueOf(chapterId))
                         .param("referenceId", String.valueOf(referenceId))
@@ -104,7 +101,7 @@ class ChemFixedAnswerRestControllerUnitTest {
     void findEquationsTaskByFakeChapterAndReferences() throws Exception {
         Integer chapterId = 5;
         Integer referenceId = 5;
-        Mockito.when(service.getAllByReferenceIdAndChapterId(referenceId, chapterId)).thenReturn(Collections.emptyList());
+        Mockito.when(presentation.getAllChemistryFixedAnswerByReferenceIdAndChapterIdDto(referenceId, chapterId)).thenReturn(Collections.emptyList());
         this.mockMvc.perform(
                 get("/v1.0/findFixedAnswerTaskByReferenceAndChapter").param("chapterId", String.valueOf(chapterId))
                         .param("referenceId", String.valueOf(referenceId))

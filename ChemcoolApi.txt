@@ -2,58 +2,70 @@ Lesson service Сервис уроков. Формирует уроки, по разделу и главе.
 Возвращает лист из теории и всех видов задач
 
 Chem Equations Rest Controller
-Возвращает задачи типа "Уравнения"
 GET
 /lesson-application/v1.0/findEquationsTaskByChapterId
-Find equations tasks by chapterId
-GET
-/lesson-application/v1.0/findEquationsTaskByChapterIdAndReferenceId
-Find equations tasks by chapterId and referenceId
+Возвращает сущности задания типа "Уравнения" по главе
 GET
 /lesson-application/v1.0/findEquationsTaskByReferenceId
-Find equations tasks by referenceId
+Возвращает сущности задания типа "Уравнения" по разделу
+GET
+/lesson-application/v1.0/findEquationsTaskByReferenceIdAndChapterId
+Возвращает сущности задания типа "Уравнения" по разделу и главе
 
 Chem Fixed Answer Rest Controller
-Возвращает задачи типа "Фиксированный ответ"
 GET
 /lesson-application/v1.0/findFixedAnswerTaskByChapter
-Find fixed answer tasks by chapter
+Возвращает сущности задания типа "Фиксированный ответ" по главе
 GET
-/lesson-application/v1.0/findFixedAnswerTaskByReferences
-Find fixed answer tasks by references
+/lesson-application/v1.0/findFixedAnswerTaskByReference
+Возвращает сущности задания типа "Фиксированный ответ" по разделу
+GET
+/lesson-application/v1.0/findFixedAnswerTaskByReferenceAndChapter
+Возвращает сущности задания типа "Фиксированный ответ" по разделу и главе
 
 Chem Matches Rest Controller
-Возвращает задачи типа "Сопоставление"
 GET
-/lesson-application/v1.0/findMatchesByChapter
-Find matches tasks by chapter
+/lesson-application/v1.0/findMatchesTaskByChapterId
+Возвращает сущности задания типа "Сопоставление" по главе
 GET
-/lesson-application/v1.0/findMatchesByReferences
-Find matches tasks by references
+/lesson-application/v1.0/findMatchesTaskByReferenceId
+Возвращает сущности задания типа "Сопоставление" по разделу
+GET
+/lesson-application/v1.0/findMatchesTaskByReferenceIdAndChapterId
+Возвращает сущности задания типа "Сопоставление" по разделу и главе
 
 Chem Single Select Rest Controller
-Возвращает задачи типа "Фиксированный ответ"
 GET
-/lesson-application/v1.0/findSingleSelectTaskByChapter
-findTaskByChapter
+/lesson-application/v1.0/findSingleSelectTaskByChapterId
+Возвращает сущности задания типа "Один ответ" по главе
 GET
-/lesson-application/v1.0/findSingleSelectTaskByReferences
-findTaskByReferences
+/lesson-application/v1.0/findSingleSelectTaskByReferenceId
+Возвращает сущности задания типа "Один ответ" по разделу
+GET
+/lesson-application/v1.0/findSingleSelectTaskByReferenceIdAndChapterId
+Возвращает сущности задания типа "Один ответ" по разделу и главе
 
 Lesson Rest Controller
-Возвращает урок (лист с теорией и задачами)
+GET
+/lesson-application/v1.0/getLessonByChapterId
+Возвращает сущности заданий и теории по главе
 GET
 /lesson-application/v1.0/getLessonByReferenceId
-Find theory and all tasks by referenceId
+Возвращает сущности заданий и теории по разделу
+GET
+/lesson-application/v1.0/getLessonByReferenceIdAndChapterId
+Возвращает сущности заданий и теории по разделу и главе
 
 Theory Rest Controller
-Возвращает теорию
 GET
-/lesson-application/v1.0/findTheoryByChapter
-findTaskAndTheoryByChapter
+/lesson-application/v1.0/findTheoryByChapterId
+Возвращает сущности теории по главе
 GET
-/lesson-application/v1.0/findTheoryByReferences
-findTaskAndTheoryByReferences
+/lesson-application/v1.0/findTheoryByReferenceId
+Возвращает сущности теории по разделу
+GET
+/lesson-application/v1.0/findTheoryByReferenceIdAndChapterId
+Возвращает сущности теории по разделу и главе
 
 
 Theory service Сервис теории. Формирует теоретическую часть уроков
@@ -175,15 +187,15 @@ GET
 GET
 /chemequations-application/v.1.0/reference/{chapterId}/{referenceId}
 Возвращает все сущности задания типа "Уравнения" по разделу и главе
-chem-equations-view-controller
-Chem Equations View Controller
 
+Chem Equations View Controller
 GET
 /chemequations-application/equations/v.1.0/create
 createNewTaskPage
 GET
 /chemequations-application/equations/v.1.0/view
 viewPage
+
 
 Registration service Сервис регистрации пользователей
 
