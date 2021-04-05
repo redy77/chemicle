@@ -1,6 +1,8 @@
-DELETE FROM chemistry_fixed_answer;
+-- GRANT all ON chemistry_fixed_answer_task TO mick;
 
-INSERT INTO chemistry_fixed_answer
+DELETE FROM chemistry_fixed_answer_task;
+
+INSERT INTO chemistry_fixed_answer_task
     (task_id, chapter_id, description, reference_id, right_answer)
 VALUES (1, 1, 111, 1, 111),
        (2, 2, 222, 2, 222),

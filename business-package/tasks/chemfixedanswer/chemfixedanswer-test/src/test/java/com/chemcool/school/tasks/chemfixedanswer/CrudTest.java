@@ -1,6 +1,6 @@
 package com.chemcool.school.tasks.chemfixedanswer;
 
-import com.chemcool.school.tasks.chemfixedanswer.app.ChemFixedAnswerTasksApplication;
+import com.chemcool.school.tasks.chemfixedanswer.app.ChemFixedAnswerApplication;
 import com.chemcool.school.tasks.chemfixedanswer.storage.ChemFixedAnswerTaskRepository;
 import com.chemcool.school.tasks.chemfixedanswer.web.api.dto.ChemFixedAnswerTaskDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -30,8 +30,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ChemFixedAnswerTasksApplication.class)
-@ContextConfiguration(classes = ChemFixedAnswerTasksApplication.class)
+@SpringBootTest(classes = ChemFixedAnswerApplication.class)
+@ContextConfiguration(classes = ChemFixedAnswerApplication.class)
 @AutoConfigureMockMvc
 @Sql(value = {"/db.migration/createtasks.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 public class CrudTest {
@@ -67,16 +67,16 @@ public class CrudTest {
     @Test
     public void contextLoad() throws Exception {
         //Проверка на работоспособность приложения и контроллера
-        mockMvc.perform(get("/v.1.0/tasks/fixed-answer/hello"))
+        mockMvc.perform(get("/v1.0/hello"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Hello World")));
+                .andExpect(content().string(containsString("Hello!")));
     }
 
     @Test
     public void saveNewTask() throws Exception {
         //Пост запрос к контроллеру по адресу "/v.1.0/tasks/fixed-answer" для добавления задачи и получение результата ввиде ResultActions (Id)
-        ResultActions resultActions = mockMvc.perform(post("/v.1.0/tasks/fixed-answer")
+        ResultActions resultActions = mockMvc.perform(post("/v1.0/")
                 .content(objectMapper.writeValueAsString(chemFixedAnswerTaskDto1))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful())
@@ -88,7 +88,7 @@ public class CrudTest {
 
     @Test
     public void updateTask() throws Exception {
-        ResultActions resultActions = mockMvc.perform(put("/v.1.0/tasks/fixed-answer")
+        ResultActions resultActions = mockMvc.perform(put("/v1.0")
                 .content(objectMapper.writeValueAsString(chemFixedAnswerTaskDtoUpdate))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful())

@@ -1,6 +1,6 @@
 package com.chemcool.school.tasks.chemfixedanswer;
 
-import com.chemcool.school.tasks.chemfixedanswer.app.ChemFixedAnswerTasksApplication;
+import com.chemcool.school.tasks.chemfixedanswer.app.ChemFixedAnswerApplication;
 import com.chemcool.school.tasks.chemfixedanswer.storage.ChemFixedAnswerTaskRepository;
 import com.chemcool.school.tasks.chemfixedanswer.web.api.dto.ChemFixedAnswerTaskDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ChemFixedAnswerTasksApplication.class)
+@SpringBootTest(classes = ChemFixedAnswerApplication.class)
 @AutoConfigureMockMvc
 @Sql(value = {"/db.migration/createtasks.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 public class CrudTestTwo {
@@ -66,7 +66,7 @@ public class CrudTestTwo {
         list.add(chemFixedAnswerTaskDto2);
         list.add(chemFixedAnswerTaskDto3);
         list.add(chemFixedAnswerTaskDto4);
-        this.mockMvc.perform(get("/v.1.0/tasks/fixed-answer/")
+        this.mockMvc.perform(get("/v1.0")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(content().json(objectMapper.writeValueAsString(list)))
@@ -74,8 +74,9 @@ public class CrudTestTwo {
     }
 
     @Test
+    @Sql(value = {"/db.migration/createtasks.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     public void getTaskById() throws Exception {
-        mockMvc.perform(get("/v.1.0/tasks/fixed-answer/" + "2"))
+        mockMvc.perform(get("/v1.0/" + "2"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(content().json(objectMapper.writeValueAsString(chemFixedAnswerTaskDto2)))
                 .andDo(print());
@@ -83,7 +84,7 @@ public class CrudTestTwo {
 
     @Test
     public void deleteTask() throws Exception{
-        mockMvc.perform(delete("/v.1.0/tasks/fixed-answer/"+"1"))
+        mockMvc.perform(delete("/v1.0/" + "1"))
                 .andExpect(status().is2xxSuccessful());
     }
 

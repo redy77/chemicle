@@ -18,3 +18,4 @@ create table if not exists chemistry_fixed_answer_task_event (
     event_entity_id VARCHAR(255),
     event_payload jsonb not null
 );
+

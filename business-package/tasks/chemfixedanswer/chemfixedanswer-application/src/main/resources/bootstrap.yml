@@ -1,6 +1,6 @@
 spring:
   application:
-    name: tasks-chemfixedanswer-application
+    name: chemfixedanswer-application
   cloud:
     config:
       uri: http://localhost:8888
@@ -12,7 +12,7 @@ spring:
 spring:
   profiles: test
   application:
-    name: tasks-chemfixedanswer-application-test
+    name: chemfixedanswer-application-test
   cloud:
     config:
       uri: http://localhost:8888
