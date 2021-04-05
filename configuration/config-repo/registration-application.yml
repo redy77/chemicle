@@ -47,3 +47,4 @@ eureka:
 kafka:
   server: http://localhost:9092
   groupId: registration.1
+

@@ -12,8 +12,4 @@ public class ApiWebRestControllerExceptionHandler {
     private ResponseEntity<GeneralExceptionHandler> generalExceptionHandler(Exception exception){
         return new ResponseEntity<>(new GeneralExceptionHandler(exception), HttpStatus.BAD_REQUEST);
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> f824bc7 (1)
 }

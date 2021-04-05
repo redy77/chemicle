@@ -1,6 +1,6 @@
-package com.chemcool.school.tasks.chemsingleselect.config.properties;
+package com.chemcool.school.answerstask.tasks.chemsingleselect.kafkaConfig;
 
-import com.chemcool.school.tasks.chemsingleselect.domain.ChemSingleSelectTaskEvent;
+import com.chemcool.school.answerstask.tasks.chemsingleselect.domain.ChemSingleSelectTaskEvent;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
@@ -16,15 +16,15 @@ public class ChemSingleSelectTaskDeserializer implements Deserializer<ChemSingle
             .registerModule(new JavaTimeModule());
 
     @Override
-    public void configure(Map<String, ?> configs, boolean isKey) {
+    public void configure(Map<String, ?> map, boolean b) {
     }
 
     @Override
-    public ChemSingleSelectTaskEvent deserialize(String topic, byte[] event) {
+    public ChemSingleSelectTaskEvent deserialize(String s, byte[] event) {
         try {
             return mapper.readValue(new String(event, StandardCharsets.UTF_8), ChemSingleSelectTaskEvent.class);
         } catch (Exception exception) {
-            log.error("Невозможно десериализовать сообщение {}", event, exception);
+            log.error("Unable to deserialize message {}", event, exception);
             return null;
         }
     }
@@ -32,4 +32,5 @@ public class ChemSingleSelectTaskDeserializer implements Deserializer<ChemSingle
     @Override
     public void close() {
     }
+
 }
