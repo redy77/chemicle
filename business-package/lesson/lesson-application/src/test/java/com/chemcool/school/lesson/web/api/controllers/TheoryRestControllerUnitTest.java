@@ -3,7 +3,8 @@ package com.chemcool.school.lesson.web.api.controllers;
 import com.chemcool.school.lesson.app.LessonApplication;
 import com.chemcool.school.lesson.theory.domain.ChemTheory;
 import com.chemcool.school.lesson.theory.domain.ChemTheoryExample;
-import com.chemcool.school.lesson.theory.service.ChemTheoryPageService;
+import com.chemcool.school.lesson.web.api.dto.ChemTheoryDto;
+import com.chemcool.school.lesson.web.api.service.ChemTheoryPresentation;
 import org.hamcrest.collection.IsEmptyCollection;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -42,18 +43,16 @@ class TheoryRestControllerUnitTest {
     @Autowired
     private TheoryRestController controller;
 
-    private List<ChemTheory> chemTheory;
+    private List<ChemTheoryDto> chemTheory;
 
     @MockBean
-    private ChemTheoryPageService service;
-
-    private ChemTheoryExample chemTheoryExampleForTest;
+    private ChemTheoryPresentation presentation;
 
     @BeforeEach
     void setUp() {
-        chemTheoryExampleForTest = new ChemTheoryExample("theoryName", "theoryDescription", 1, 1);
-        chemTheory = Collections.singletonList(ChemTheory
-                .createChemistryTheory(chemTheoryExampleForTest));
+        chemTheory = Collections.singletonList(
+                new ChemTheoryDto("theoryDtoId","theoryName",
+                        "theoryDescription", 1, 2,"taskType"));
         this.mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
@@ -65,8 +64,8 @@ class TheoryRestControllerUnitTest {
     @Test
     @DisplayName("Получение задач по главе")
     void findTaskAndTheoryByChapter() throws Exception {
-        Integer chapterId = chemTheoryExampleForTest.getTheoryExampleChapter();
-        Mockito.when(service.getAllByChapterId(chapterId)).thenReturn(chemTheory);
+        Integer chapterId = 1;
+        Mockito.when(presentation.getAllTheoryByChapterIdDto(chapterId)).thenReturn(chemTheory);
         this.mockMvc.perform(
                 get("/v1.0/findTheoryByChapterId").param("chapterId", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
@@ -78,8 +77,8 @@ class TheoryRestControllerUnitTest {
     @Test
     @DisplayName("Получение задач по разделу")
     void findTaskAndTheoryByReferences() throws Exception {
-        Integer referenceId = chemTheoryExampleForTest.getTheoryExampleReferences();
-        Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(chemTheory);
+        Integer referenceId = 2;
+        Mockito.when(presentation.getAllTheoryByReferenceIdDto(referenceId)).thenReturn(chemTheory);
         this.mockMvc.perform(
                 get("/v1.0/findTheoryByReferenceId").param("referenceId", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
@@ -90,9 +89,9 @@ class TheoryRestControllerUnitTest {
     @Test
     @DisplayName("Получение задач по главе и разделу")
     void findEquationsTaskByChapterAndReferences() throws Exception {
-        Integer chapterId = chemTheoryExampleForTest.getTheoryExampleChapter();
-        Integer referenceId = chemTheoryExampleForTest.getTheoryExampleReferences();
-        Mockito.when(service.getAllByReferenceIdAndChapterId(referenceId, chapterId)).thenReturn(chemTheory);
+        Integer chapterId = 1;
+        Integer referenceId = 2;
+        Mockito.when(presentation.getAllTheoryByReferenceIdAndChapterIdDto(referenceId, chapterId)).thenReturn(chemTheory);
         this.mockMvc.perform(
                 get("/v1.0/findTheoryByReferenceIdAndChapterId").param("chapterId", String.valueOf(chapterId))
                         .param("referenceId", String.valueOf(referenceId))
@@ -107,7 +106,7 @@ class TheoryRestControllerUnitTest {
     void findEquationsTaskByFakeChapterAndReferences() throws Exception {
         Integer chapterId = 5;
         Integer referenceId = 5;
-        Mockito.when(service.getAllByReferenceIdAndChapterId(referenceId, chapterId)).thenReturn(Collections.emptyList());
+        Mockito.when(presentation.getAllTheoryByReferenceIdAndChapterIdDto(referenceId, chapterId)).thenReturn(Collections.emptyList());
         this.mockMvc.perform(
                 get("/v1.0/findTheoryByReferenceIdAndChapterId").param("chapterId", String.valueOf(chapterId))
                         .param("referenceId", String.valueOf(referenceId))

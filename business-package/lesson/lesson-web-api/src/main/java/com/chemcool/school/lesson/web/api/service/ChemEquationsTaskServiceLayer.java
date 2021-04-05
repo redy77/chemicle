@@ -57,21 +57,11 @@ public class ChemEquationsTaskServiceLayer {
         return list;
     }
 
-    public ChemEquationsTaskDto getRandomChemistryEquationsDto() {
-        List<ChemEquationsTaskDto> list = new ArrayList<>();
-        for (ChemEquationsTask task : proxyService.getAll()) {
-            list.add(new ChemEquationsTaskDto(task));
-        }
-        return list.get(new Random().nextInt(list.size()));
-    }
-
     public ChemEquationsTaskDto getChemEquationsTaskById(String id) {
         ChemEquationsTask task = proxyService.getById(id)
                 .orElseThrow(() -> new ChemTaskEmptyException("Уравнение не найдено."));
         return new ChemEquationsTaskDto(task);
     }
 
-    public boolean[] checkAnswer(String taskId, String userAnswer) {
-        return proxyService.checkAnswer(taskId, userAnswer.replaceAll(" ", ""));
-    }
+
 }
