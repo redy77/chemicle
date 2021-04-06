@@ -13,8 +13,6 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ChemEquationsTaskProxyService {
 
-
-
     private final ChemEquationsTaskService taskService;
 
     public Optional<ChemEquationsTask> getById(String id) {

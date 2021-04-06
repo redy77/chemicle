@@ -4,6 +4,7 @@ import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTa
 import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskExample;
 import com.chemcool.school.lesson.tasks.chemfixedanswer.service.ChemFixedAnswerTaskProxyService;
 import com.chemcool.school.lesson.web.api.dto.ChemFixedAnswerTaskDto;
+import com.chemcool.school.lesson.web.api.exeption.ChemTaskEmptyException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -48,11 +49,10 @@ public class ChemFixedAnswerTaskServiceLayer {
         return list;
     }
 
-    public Optional<ChemFixedAnswerTask> getFixedAnswerTaskById(String id) {
-        return proxyService.getById(id);
+    public ChemFixedAnswerTaskDto getFixedAnswerTaskById(String id) {
+        ChemFixedAnswerTask task = proxyService.getById(id).orElseThrow(
+                () -> new ChemTaskEmptyException("Задание не найдено."));
+        return new ChemFixedAnswerTaskDto(task);
     }
 
-    public void deleteFixedAnswerTask(String id){
-        proxyService.deleteById(id);
-    }
 }

@@ -59,7 +59,7 @@ public class ChemEquationsTaskServiceLayer {
 
     public ChemEquationsTaskDto getChemEquationsTaskById(String id) {
         ChemEquationsTask task = proxyService.getById(id)
-                .orElseThrow(() -> new ChemTaskEmptyException("Уравнение не найдено."));
+                .orElseThrow(() -> new ChemTaskEmptyException("Задание не найдено."));
         return new ChemEquationsTaskDto(task);
     }
 

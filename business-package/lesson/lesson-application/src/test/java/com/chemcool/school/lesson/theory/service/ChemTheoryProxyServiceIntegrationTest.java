@@ -45,7 +45,7 @@ class ChemTheoryProxyServiceIntegrationTest {
 
     @Test
     void getById() {
-        ChemTheory theory = proxyService.getById(id);
+        ChemTheory theory = proxyService.getById(id).orElse(null);
         System.out.println("*****************\n"+theory + "\n*****************\n");
         assertThat(theory).isNotNull();
         assertThat(theory.getTheoryDescription()).isEqualTo("theory_description1");
@@ -54,7 +54,7 @@ class ChemTheoryProxyServiceIntegrationTest {
 
     @Test
     void getByFakeId() {
-        ChemTheory theory = proxyService.getById(id + "1");
+        ChemTheory theory = proxyService.getById(id + "1").orElse(null);
         System.out.println("*****************\n"+theory + "\n*****************\n");
         assertThat(theory).isNull();
     }

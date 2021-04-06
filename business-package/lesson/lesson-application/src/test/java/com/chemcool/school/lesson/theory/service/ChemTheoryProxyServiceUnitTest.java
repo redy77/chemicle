@@ -71,8 +71,8 @@ class ChemTheoryProxyServiceUnitTest {
 
     @Test
     void getById() {
-        Mockito.when(service.getAllByTheoryId(id)).thenReturn(theoryList.get(i));
-        ChemTheory theory = proxyService.getById(id);
+        Mockito.when(service.getAllByTheoryId(id)).thenReturn(java.util.Optional.ofNullable(theoryList.get(i)));
+        ChemTheory theory = proxyService.getById(id).orElse(null);
         System.out.println("*****************\n"+theory + "\n*****************\n");
         assertThat(theory).isNotNull();
         assertThat(theory.getTheoryDescription()).isEqualTo("theory_description");
@@ -81,8 +81,8 @@ class ChemTheoryProxyServiceUnitTest {
 
     @Test
     void getByFakeId() {
-        Mockito.when(service.getAllByTheoryId(id)).thenReturn(theoryList.get(i));
-        ChemTheory theory = proxyService.getById(id + "1");
+        Mockito.when(service.getAllByTheoryId(id)).thenReturn(java.util.Optional.ofNullable(theoryList.get(i)));
+        ChemTheory theory = proxyService.getById(id + "1").orElse(null);
         System.out.println("*****************\n"+theory + "\n*****************\n");
         assertThat(theory).isNull();
     }

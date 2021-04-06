@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -38,7 +39,7 @@ public interface TheoryRepository extends JpaRepository<ChemTheory, UUID>, JpaSp
             @Param("theoryReferences") int theoryReferences
     );
 
-    ChemTheory getAllByTheoryId(String theoryId);
+    Optional<ChemTheory> getAllByTheoryId(String theoryId);
 
     List<ChemTheory> getAllByTheoryChapter(int theoryChapter);
 

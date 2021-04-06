@@ -19,7 +19,7 @@ public class ChemFixedAnswerTaskPresentation {
         return serviceLayer.getAllChemistryFixedAnswerDto();
     }
 
-    public Optional<ChemFixedAnswerTask> getFixedAnswerTaskById(String id){
+    public ChemFixedAnswerTaskDto getFixedAnswerTaskById(String id){
         return serviceLayer.getFixedAnswerTaskById(id);
     }
 

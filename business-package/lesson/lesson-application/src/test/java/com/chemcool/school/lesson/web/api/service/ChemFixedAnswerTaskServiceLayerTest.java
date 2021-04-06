@@ -3,8 +3,11 @@ package com.chemcool.school.lesson.web.api.service;
 import com.chemcool.school.lesson.app.LessonApplication;
 import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
 import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTaskExample;
-import com.chemcool.school.lesson.tasks.chemequations.service.ChemEquationsTaskProxyService;
+import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
+import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskExample;
+import com.chemcool.school.lesson.tasks.chemfixedanswer.service.ChemFixedAnswerTaskProxyService;
 import com.chemcool.school.lesson.web.api.dto.ChemEquationsTaskDto;
+import com.chemcool.school.lesson.web.api.dto.ChemFixedAnswerTaskDto;
 import com.chemcool.school.lesson.web.api.exeption.ChemTaskEmptyException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +20,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,111 +31,105 @@ import static org.junit.jupiter.api.Assertions.*;
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
 @TestPropertySource("/application-test.properties")
-class ChemEquationsTaskServiceLayerTest {
+class ChemFixedAnswerTaskServiceLayerTest {
 
     @MockBean
-    private ChemEquationsTaskProxyService proxyService;
+    private ChemFixedAnswerTaskProxyService proxyService;
 
     @Autowired
-    private ChemEquationsTaskServiceLayer serviceLayer;
+    private ChemFixedAnswerTaskServiceLayer serviceLayer;
 
-    private final List<ChemEquationsTask> taskList = new ArrayList<>();
+    private final List<ChemFixedAnswerTask> taskList = new ArrayList<>();
 
     private String id;
     private Integer i, referenceId, chapterId;
 
     @BeforeEach
     void setUp() {
-        taskList.add(ChemEquationsTask.createChemEquationsTask(new ChemEquationsTaskExample(
+        taskList.add(ChemFixedAnswerTask.createChemistryFixedAnswerTask(new ChemFixedAnswerTaskExample(
                 "description",
                 "rightAnswer",
                 1,
                 1
         )));
-        taskList.add(ChemEquationsTask.createChemEquationsTask(new ChemEquationsTaskExample(
+        taskList.add(ChemFixedAnswerTask.createChemistryFixedAnswerTask(new ChemFixedAnswerTaskExample(
                 "another_description",
                 "another_rightAnswer",
                 1,
                 2
         )));
-        taskList.add(ChemEquationsTask.createChemEquationsTask(new ChemEquationsTaskExample(
+        taskList.add(ChemFixedAnswerTask.createChemistryFixedAnswerTask(new ChemFixedAnswerTaskExample(
                 "another_description",
                 "another_rightAnswer",
                 2,
                 2
         )));
-        i = 0;
+        i = 0; //Элемент листа, при значения !=0 тест getById должен падать
         id = taskList.get(i).getTaskId();
         referenceId = 2;
         chapterId = 1;
     }
 
     @Test
-    void getAllChemEquationsDto() {
+    void getAllChemistryFixedAnswerDto() {
         Mockito.when(proxyService.getAll()).thenReturn(taskList);
-        List<ChemEquationsTaskDto> taskExamples = serviceLayer.getAllChemEquationsDto();
+        List<ChemFixedAnswerTaskDto> taskExamples = serviceLayer.getAllChemistryFixedAnswerDto();
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(3);
-        for (ChemEquationsTaskDto task : taskExamples) {
+        for (ChemFixedAnswerTaskDto task : taskExamples) {
             assertThat(task.getTaskId()).isNotNull();
             assertThat(task.getChapterId()).isNotNull();
             assertThat(task.getReferenceId()).isNotNull();
-            assertThat(task.getTaskType()).isEqualTo("Equations");
         }
     }
 
     @Test
-    void getAllChemEquationsByChapterIdDto() {
-        Mockito.when(proxyService.getAllByChapterId(chapterId)).thenReturn(taskList.subList(0, 2));
-        List<ChemEquationsTaskDto> taskExamples = serviceLayer.getAllChemEquationsByChapterIdDto(chapterId);
-        assertThat(taskExamples).isNotNull();
-        assertThat(taskExamples).hasSize(2);
-        for (ChemEquationsTaskDto task : taskExamples) {
-            assertThat(task.getChapterId()).isEqualTo(chapterId);
-            assertThat(task.getTaskType()).isEqualTo("Equations");
-        }
-    }
-
-    @Test
-    void getAllChemEquationsByReferenceIdDto() {
+    void getAllChemistryFixedAnswerByReferenceIdDto() {
         Mockito.when(proxyService.getAllByReferenceId(referenceId)).thenReturn(taskList.subList(1, 3));
-        List<ChemEquationsTaskDto> taskExamples = serviceLayer.getAllChemEquationsByReferenceIdDto(referenceId);
+        List<ChemFixedAnswerTaskDto> taskExamples = serviceLayer.getAllChemistryFixedAnswerByReferenceIdDto(referenceId);
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(2);
-        for (ChemEquationsTaskDto task : taskExamples) {
+        for (ChemFixedAnswerTaskDto task : taskExamples) {
             assertThat(task.getReferenceId()).isEqualTo(referenceId);
-            assertThat(task.getTaskType()).isEqualTo("Equations");
         }
     }
 
     @Test
-    void getAllByReferenceIdAndChapterIdDto() {
+    void getAllChemistryFixedAnswerByChapterIdDto() {
+        Mockito.when(proxyService.getAllByChapterId(chapterId)).thenReturn(taskList.subList(0, 2));
+        List<ChemFixedAnswerTaskDto> taskExamples = serviceLayer.getAllChemistryFixedAnswerByChapterIdDto(chapterId);
+        assertThat(taskExamples).isNotNull();
+        assertThat(taskExamples).hasSize(2);
+        for (ChemFixedAnswerTaskDto task : taskExamples) {
+            assertThat(task.getChapterId()).isEqualTo(chapterId);
+        }
+    }
+
+    @Test
+    void getAllChemistryFixedAnswerByReferenceIdAndChapterIdDto() {
         Mockito.when(proxyService.getAllByReferenceIdAndChapterId(referenceId, chapterId)).thenReturn(taskList.subList(1, 2));
-        List<ChemEquationsTaskDto> taskExamples = serviceLayer.getAllByReferenceIdAndChapterIdDto(referenceId, chapterId);
+        List<ChemFixedAnswerTaskDto> taskExamples = serviceLayer.getAllChemistryFixedAnswerByReferenceIdAndChapterIdDto(referenceId, chapterId);
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(1);
-        for (ChemEquationsTaskDto task : taskExamples) {
+        for (ChemFixedAnswerTaskDto task : taskExamples) {
             assertThat(task.getReferenceId()).isEqualTo(referenceId);
             assertThat(task.getChapterId()).isEqualTo(chapterId);
-            assertThat(task.getTaskType()).isEqualTo("Equations");
         }
     }
 
     @Test
-    void getChemEquationsTaskByIdDto() {
+    void getFixedAnswerTaskById() {
         Mockito.when(proxyService.getById(id)).thenReturn(Optional.ofNullable(taskList.get(i)));
-        ChemEquationsTaskDto task = serviceLayer.getChemEquationsTaskById(id);
+        ChemFixedAnswerTaskDto task = serviceLayer.getFixedAnswerTaskById(id);
         assertThat(task).isNotNull();
         assertThat(task.getDescription()).isEqualTo("description");
         assertThat(task.getTaskId()).isEqualTo(id);
-        assertThat(task.getTaskType()).isEqualTo("Equations");
     }
-
     @Test
-    void getChemEquationsTaskByFakeIdDto() throws ChemTaskEmptyException {
+    void getFixedAnswerTaskByFakeId() throws ChemTaskEmptyException {
         Mockito.when(proxyService.getById(id)).thenReturn(Optional.ofNullable(taskList.get(0)));
         Exception exception = assertThrows(ChemTaskEmptyException.class,() -> {
-            ChemEquationsTaskDto task = serviceLayer.getChemEquationsTaskById(id + "1");
+            ChemFixedAnswerTaskDto task = serviceLayer.getFixedAnswerTaskById(id + "1");
         });
         String expectedMessage = "Задание не найдено.";
         String actualMessage = exception.getMessage();

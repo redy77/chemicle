@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -44,10 +45,8 @@ public class ChemTheoryProxyService {
         return pageService.getAllByReferenceIdAndChapterId(referenceId, chapterId);
     }
 
-    public ChemTheory getById(String theoryId) {
-        if (theoryId == null || theoryId.isEmpty()) {
-            throw new RuntimeException("theoryId параметр пустой, проверьте конфигурацию.");
-        }
+    public Optional<ChemTheory> getById(String theoryId) {
+
         return pageService.getAllByTheoryId(theoryId);
     }
 }

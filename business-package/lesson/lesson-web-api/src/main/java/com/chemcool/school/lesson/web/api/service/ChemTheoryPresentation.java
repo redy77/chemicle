@@ -13,7 +13,7 @@ public class ChemTheoryPresentation {
     private final ChemTheoryServiceLayer serviceLayer;
 
     public ChemTheoryDto getTheoryByIdDto(String theoryId) {
-        return serviceLayer.findTheoryByIdDto(theoryId);
+        return serviceLayer.getTheoryByIdDto(theoryId);
     }
 
     public List<ChemTheoryDto> getAllTheoryDto(){

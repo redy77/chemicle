@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -33,11 +34,8 @@ public class ChemTheoryPageService {
         repository.save(chemistry);
     }
 
-    public ChemTheory getAllByTheoryId(String theoryId) {
-        //  TODO проверить на то, что lessonId не пустой.
-        if (theoryId == null || theoryId.isEmpty()) {
-            throw new RuntimeException("theoryId параметр пустой, проверьте конфигурацию.");
-        }
+    public Optional<ChemTheory> getAllByTheoryId(String theoryId) {
+
         return repository.getAllByTheoryId(theoryId);
     }
 

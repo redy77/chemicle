@@ -22,9 +22,9 @@ public class ChemTheoryServiceLayer {
         }
         return list;
     }
-    public ChemTheoryDto findTheoryByIdDto(String theoryId){
-        ChemTheory theory = service.getById(theoryId);
-        return  new ChemTheoryDto(theory);
+    public ChemTheoryDto getTheoryByIdDto(String theoryId){
+        return service.getById(theoryId).map(ChemTheoryDto::new).orElse(null);
+
     }
 
     public List<ChemTheoryDto> getAllTheoryByReferenceIdDto (int referenceId) {
