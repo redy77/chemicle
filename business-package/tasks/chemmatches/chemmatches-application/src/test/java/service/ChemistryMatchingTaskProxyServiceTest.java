@@ -18,7 +18,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-
 @SpringBootTest(classes = ChemMatchesApplication.class)
 class ChemistryMatchingTaskProxyServiceTest {
 
@@ -59,7 +58,7 @@ class ChemistryMatchingTaskProxyServiceTest {
     @Test
     void getById_null() {  // получаем по несуществующему ID
         timer(1000);
-        ChemistryMatchingTask task = service.getById(id+"1").orElse(null);
+        ChemistryMatchingTask task = service.getById(id + "1").orElse(null);
         assertThat(task).isNull();
     }
 

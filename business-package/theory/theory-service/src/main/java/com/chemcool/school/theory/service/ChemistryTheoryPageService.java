@@ -14,7 +14,6 @@ public class ChemistryTheoryPageService {
 
     private final TheoryRepository repository;
 
-
     public String save(ChemistryTheory theory) {
         repository.save(theory);
         log.info("Сохранил теорию c UUID" + theory.getTheoryId());
