@@ -1,0 +1,34 @@
+package com.chemcool.school.lesson.api.event;
+
+import com.chemcool.school.lesson.domain.ChemistryLessonEvent;
+import com.chemcool.school.lesson.service.ChemistryLessonEventService;
+import com.chemcool.school.lesson.service.command.ChemistryLessonPageService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.springframework.kafka.annotation.EnableKafka;
+import org.springframework.kafka.annotation.KafkaHandler;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+
+@Slf4j
+@Service
+@EnableKafka
+@RequiredArgsConstructor
+public class ChemLessonEventConsumer {
+    private final ChemistryLessonPageService lessonPageService;
+    private final ChemistryLessonEventService eventService;
+
+    @KafkaHandler
+    @KafkaListener(topics = "chemistry-lesson", containerFactory = "lessonKafkaListenerContainerFactory")
+    @Transactional
+    public void handlerChemistryLesson(ConsumerRecord<String, ChemistryLessonEvent> record) {
+        ChemistryLessonEvent event = record.value();
+        log.info("Пойман журнал для логгирования: " + event.getEventId());
+        eventService.handleEvent(event);
+        lessonPageService.save(event.getEventPayload());
+    }
+
+}

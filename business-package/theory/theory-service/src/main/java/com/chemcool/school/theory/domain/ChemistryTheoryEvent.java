@@ -28,8 +28,8 @@ public class ChemistryTheoryEvent {
     @Column(name = "event_id")
     private String eventId;
 
-    @Column(name = "event_author_id")
-    private String eventAuthorId;
+    @Column(name = "event_author")
+    private String eventAuthor;
 
     @Column(name = "event_occurring_context")
     private String eventOccurringContext;
@@ -38,18 +38,18 @@ public class ChemistryTheoryEvent {
     private LocalDateTime eventOccurringContextTime;
 
     @Column(name = "event_type")
-    private ChemistryTheoryEventType eventType;
+    private String eventType;
 
     @Column(name = "version")
     private String version;
 
-    @Column(name = "event_eentity_id")
+    @Column(name = "event_entity_id")
     private String EventEntityId;
 
 
     @Type(type = "jsonb")
     @Column(name = "event_payload", columnDefinition = "jsonb")
-    private ChemistryTheory event_payload;
+    private ChemistryTheory eventPayload;
 
     public static ChemistryTheoryEvent createEvent(ChemistryTheory theory, ChemistryTheoryEventType type) {
         return new ChemistryTheoryEvent(
@@ -57,7 +57,7 @@ public class ChemistryTheoryEvent {
                 "123",
                 "ChemistryTheoryEvent",
                 LocalDateTime.now(),
-                type,
+                type.toString(),
                 "1.0",
                 theory.getTheoryId(),
                 theory

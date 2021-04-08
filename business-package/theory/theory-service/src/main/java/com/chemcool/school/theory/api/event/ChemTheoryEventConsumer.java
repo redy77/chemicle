@@ -28,6 +28,6 @@ public class ChemTheoryEventConsumer {
         ChemistryTheoryEvent event = record.value();
         log.info("Пойман журнал для логгирования: " + event.getEventId());
         eventService.handleEvent(event);
-        theoryPageService.save(event.getEvent_payload());
+        theoryPageService.save(event.getEventPayload());
     }
 }

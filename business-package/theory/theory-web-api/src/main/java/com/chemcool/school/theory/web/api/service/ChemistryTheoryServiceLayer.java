@@ -32,7 +32,6 @@ public class ChemistryTheoryServiceLayer {
                 dto.getTheoryChapter(),
                 dto.getTheoryReferences()
         ));
-       //service.delete(dto);
     }
 
     public void update(TheoryDto dto){
@@ -52,7 +51,7 @@ public class ChemistryTheoryServiceLayer {
     }
 
     private void validate(TheoryDto dto) {
-        if (dto.getTheoryDescription().isEmpty()) { //todo добавить все обязательные поля для проверки заполнения
+        if (dto.getTheoryDescription().isEmpty()) {
             throw new ChemistryTheoryEmptyException("Необходимые поля пустые, проверьте пожалуйста бланк заполнения задания.");
         }
     }

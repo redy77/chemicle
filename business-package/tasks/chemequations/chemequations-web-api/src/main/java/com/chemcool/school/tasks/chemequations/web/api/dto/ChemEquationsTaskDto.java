@@ -20,6 +20,6 @@ public class ChemEquationsTaskDto {
         this.description = task.getDescription();
         this.chapterId = task.getChapterId();
         this.referenceId = task.getReferenceId();
-        this.taskType = "equations";
+        this.taskType = "EQUATION";
     }
 }
