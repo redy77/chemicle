@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/chemsingleselect
     username: postgres
-    password: root
+    password: maxon
     platform: postgres
     driver-class-name: org.postgresql.Driver
 

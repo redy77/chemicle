@@ -7,7 +7,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/theory_application
     username: postgres
-    password: root
+    password: maxon
     platform: postgres
     driver-class-name: org.postgresql.Driver
 

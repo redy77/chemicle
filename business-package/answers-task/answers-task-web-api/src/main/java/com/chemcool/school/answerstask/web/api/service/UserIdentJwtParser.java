@@ -13,6 +13,7 @@ public class UserIdentJwtParser {
 
     @Value("${authentication.jwt.secretKey}")
     private String SECRET_KEY;
+//    private String SECRET_KEY = "926D96C90030DD58429D2751AC1BDBBC";
 
     public Jws<Claims> getUserOfToken(String token) {
         return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token);
@@ -20,11 +21,12 @@ public class UserIdentJwtParser {
 
     public String getEmailUserOfToken(String token) {
         Jws<Claims> jws = getUserOfToken(token);
-        return jws.getBody().getSubject();
+        return jws.getBody().get("userEmail", String.class);
     }
 
     public String getIdUserOfToken(String token) {
         Jws<Claims> jws = getUserOfToken(token);
-        return jws.getBody().get("userId", String.class);
+        System.out.println(jws.getBody());
+        return jws.getBody().getSubject();
     }
 }
