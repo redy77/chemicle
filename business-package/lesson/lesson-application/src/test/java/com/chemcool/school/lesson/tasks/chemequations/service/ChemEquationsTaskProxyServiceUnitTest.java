@@ -3,6 +3,7 @@ package com.chemcool.school.lesson.tasks.chemequations.service;
 import com.chemcool.school.lesson.app.LessonApplication;
 import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
 import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTaskExample;
+import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -36,7 +37,7 @@ class ChemEquationsTaskProxyServiceUnitTest {
     private List<ChemEquationsTask> taskList = new ArrayList<>();
 
     private String id;
-    private Integer i;
+    private Integer i, referenceId, chapterId;
 
     @BeforeEach
     void setUp() {
@@ -60,6 +61,8 @@ class ChemEquationsTaskProxyServiceUnitTest {
         )));
         i = 0; //Элемент листа, при значения !=0 тест getById должен падать
         id = taskList.get(i).getTaskId();
+        referenceId = 2;
+        chapterId = 1;
     }
 
     @Test
@@ -73,6 +76,7 @@ class ChemEquationsTaskProxyServiceUnitTest {
         ChemEquationsTask task = proxyService.getById(id).orElse(null);
         assertThat(task).isNotNull();
         assertThat(task.getDescription()).isEqualTo("description");
+        assertThat(task.getTaskId()).isEqualTo(id);
     }
 
     @Test
@@ -87,31 +91,47 @@ class ChemEquationsTaskProxyServiceUnitTest {
         Mockito.when(service.getAll()).thenReturn(taskList);
         List<ChemEquationsTask> taskExamples = proxyService.getAll();
         assertThat(taskExamples).isNotNull();
+        assertThat(taskExamples).hasSize(3);
+        for (ChemEquationsTask task : taskExamples) {
+            assertThat(task.getTaskId()).isNotNull();
+            assertThat(task.getChapterId()).isNotNull();
+            assertThat(task.getReferenceId()).isNotNull();
+        }
     }
 
     @Test
     void getAllByChapterId() {
-        Mockito.when(service.getAllByChapterId(1)).thenReturn(taskList.subList(0, 2));
-        List<ChemEquationsTask> taskExamples = proxyService.getAllByChapterId(1);
+        Mockito.when(service.getAllByChapterId(chapterId)).thenReturn(taskList.subList(0, 2));
+        List<ChemEquationsTask> taskExamples = proxyService.getAllByChapterId(chapterId);
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(2);
+        for (ChemEquationsTask task : taskExamples) {
+            assertThat(task.getChapterId()).isEqualTo(chapterId);
+        }
     }
 
     @Test
     void getAllByReferenceId() {
-        Mockito.when(service.getAllByReferenceId(2)).thenReturn(taskList.subList(1, 3));
-        List<ChemEquationsTask> taskExamples = proxyService.getAllByReferenceId(2);
+        Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(taskList.subList(1, 3));
+        List<ChemEquationsTask> taskExamples = proxyService.getAllByReferenceId(referenceId);
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(2);
+        for (ChemEquationsTask task : taskExamples) {
+            assertThat(task.getReferenceId()).isEqualTo(referenceId);
+        }
     }
 
 
     @Test
     void getAllByChapterIdAndReferenceId() {
-        Mockito.when(service.getAllByChapterIdAndReferenceId(1, 2)).thenReturn(taskList.subList(1, 2));
-        List<ChemEquationsTask> taskExamples = proxyService.getAllByChapterIdAndReferenceId(1, 2);
+        Mockito.when(service.getAllByReferenceIdAndChapterId(referenceId, chapterId)).thenReturn(taskList.subList(1, 2));
+        List<ChemEquationsTask> taskExamples = proxyService.getAllByReferenceIdAndChapterId(referenceId, chapterId);
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(1);
+        for (ChemEquationsTask task : taskExamples) {
+            assertThat(task.getReferenceId()).isEqualTo(referenceId);
+            assertThat(task.getChapterId()).isEqualTo(chapterId);
+        }
     }
 
     @Test

@@ -44,7 +44,11 @@ public class ChemFixedAnswerTaskService {
         repository.deleteById(id);
     }
 
-    public List<ChemFixedAnswerTask> getAllByReferences(int references){
-        return repository.getAllByReferenceId(references);
+    public List<ChemFixedAnswerTask> getAllByReferenceId(int referenceId){
+        return repository.getAllByReferenceId(referenceId);
+    }
+
+    public List<ChemFixedAnswerTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId){
+        return repository.getAllByReferenceIdAndChapterId(referenceId, chapterId);
     }
 }

@@ -22,13 +22,13 @@ create table chemistry_theory_event (
                                               primary key (event_id)
 );
 
-INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('1', 1, 'theory_description', 4, 'theory_name');
-INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('2', 2, 'theory_description', 4, 'theory_name');
-INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('3', 2, 'theory_description', 4, 'theory_name');
-INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('4', 3, 'theory_description', 4, 'theory_name');
-INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('5', 3, 'theory_description', 3, 'theory_name');
-INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('6', 3, 'theory_description', 3, 'theory_name');
-INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('7', 4, 'theory_description', 3, 'theory_name');
-INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('8', 4, 'theory_description', 2, 'theory_name');
-INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('9', 4, 'theory_description', 2, 'theory_name');
-INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('10', 4, 'theory_description', 1, 'theory_name');
+INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('1', 1, 'theory_description1', 4, 'theory_name1');
+INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('2', 2, 'theory_description2', 4, 'theory_name2');
+INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('3', 2, 'theory_description3', 4, 'theory_name3');
+INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('4', 3, 'theory_description4', 4, 'theory_name4');
+INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('5', 3, 'theory_description5', 3, 'theory_name5');
+INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('6', 3, 'theory_description6', 3, 'theory_name6');
+INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('7', 4, 'theory_description7', 3, 'theory_name7');
+INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('8', 4, 'theory_description8', 2, 'theory_name8');
+INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('9', 4, 'theory_description9', 2, 'theory_name9');
+INSERT INTO chemistry_theory_page (theory_id, theory_chapter, theory_description, theory_references, theory_name) VALUES ('10', 4, 'theory_description10', 1, 'theory_name10');

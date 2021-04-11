@@ -1,7 +1,7 @@
 package com.chemcool.school.lesson.theory.configuration;
 
 import com.chemcool.school.lesson.configuration.properties.KafkaProperties;
-import com.chemcool.school.lesson.theory.configuration.properties.ChemistryTheoryDeserializer;
+import com.chemcool.school.lesson.theory.configuration.properties.ChemTheoryDeserializer;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -29,7 +29,7 @@ public class KafkaConsumerConfiguration {
         Map<String, Object> prop = new HashMap<>();
         prop.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaProperties.getServer());
         prop.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ChemistryTheoryDeserializer.class);
+        prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ChemTheoryDeserializer.class);
        // prop.put(JsonDeserializer.TRUSTED_PACKAGES, TRUSTED_PACKAGES);
         prop.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getTheoryGroupId());
         return prop;

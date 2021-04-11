@@ -8,8 +8,8 @@ spring:
       ddl-auto: update
   datasource:
       url: jdbc:postgresql://localhost:5432/lessons
-      username: mick
-      password: mick
+      username: postgres
+      password: root
       platform: postgres
       driver-class-name: org.postgresql.Driver
 
@@ -24,4 +24,6 @@ kafka:
   chemFixedAnswerGroupId: chemistry-answer.1
   chemSingleSelectGroupId: chemistry-singleSelect.1
   theoryGroupId: theory.1
+  chemEquationsGroupId: chemistry-equations.1
+  chemMatchesGroupId: chemistry-matches.1
 

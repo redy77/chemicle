@@ -15,7 +15,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/equations/v.1.0")
+@RequestMapping("/v.1.0")
 @RequiredArgsConstructor
 public class ChemEquationsRestController {
 

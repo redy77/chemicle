@@ -2,25 +2,18 @@ package com.chemcool.school.lesson.tasks.chemequations.service;
 
 import com.chemcool.school.lesson.app.LessonApplication;
 import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
-import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTaskExample;
+import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -36,10 +29,13 @@ class ChemEquationsTaskProxyServiceIntegrationTest {
     private ChemEquationsTaskProxyService proxyService;
 
     private String id;
+    private Integer referenceId, chapterId;
 
     @BeforeEach
     void setUp() {
         id = "1";
+        referenceId = 3;
+        chapterId = 3;
     }
 
     @Test
@@ -52,6 +48,7 @@ class ChemEquationsTaskProxyServiceIntegrationTest {
         ChemEquationsTask task = proxyService.getById(id).orElse(null);
         assertThat(task).isNotNull();
         assertThat(task.getDescription()).isEqualTo("task1");
+        assertThat(task.getTaskId()).isEqualTo(id);
     }
 
     @Test
@@ -64,29 +61,45 @@ class ChemEquationsTaskProxyServiceIntegrationTest {
     void getAll() {
         List<ChemEquationsTask> taskExamples = proxyService.getAll();
         assertThat(taskExamples).isNotNull();
+        assertThat(taskExamples).hasSize(10);
+        for (ChemEquationsTask task : taskExamples) {
+            assertThat(task.getTaskId()).isNotNull();
+            assertThat(task.getChapterId()).isNotNull();
+            assertThat(task.getReferenceId()).isNotNull();
+        }
     }
 
     @Test
     void getAllByChapterId() {
-        List<ChemEquationsTask> taskExamples = proxyService.getAllByChapterId(2);
+        List<ChemEquationsTask> taskExamples = proxyService.getAllByChapterId(chapterId);
         assertThat(taskExamples).isNotNull();
-        assertThat(taskExamples).hasSize(2);
+        assertThat(taskExamples).hasSize(3);
+        for (ChemEquationsTask task : taskExamples) {
+            assertThat(task.getChapterId()).isEqualTo(chapterId);
+        }
     }
 
     @Test
     void getAllByReferenceId() {
-        List<ChemEquationsTask> taskExamples = proxyService.getAllByReferenceId(2);
+        List<ChemEquationsTask> taskExamples = proxyService.getAllByReferenceId(referenceId);
         assertThat(taskExamples).isNotNull();
-        assertThat(taskExamples).hasSize(2);
+        assertThat(taskExamples).hasSize(3);
+        for (ChemEquationsTask task : taskExamples) {
+            assertThat(task.getReferenceId()).isEqualTo(referenceId);
+        }
     }
 
 
     @Test
     void getAllByChapterIdAndReferenceId() {
-        List<ChemEquationsTask> taskExamples = proxyService.getAllByChapterIdAndReferenceId(3, 3);
+        List<ChemEquationsTask> taskExamples = proxyService.getAllByReferenceIdAndChapterId(3, 3);
         System.out.println(taskExamples);
         assertThat(taskExamples).isNotNull();
         assertThat(taskExamples).hasSize(2);
+        for (ChemEquationsTask task : taskExamples) {
+            assertThat(task.getReferenceId()).isEqualTo(referenceId);
+            assertThat(task.getChapterId()).isEqualTo(chapterId);
+        }
     }
 
     @Test
@@ -94,6 +107,7 @@ class ChemEquationsTaskProxyServiceIntegrationTest {
         boolean[] result = proxyService.checkAnswer(id, "CuSO4+2NaOH→Cu(OH)2↓+Na2SO4");
         assertThat(result).isNotNull();
         assertThat(result).hasSize(4);
+        assertThat(result).containsOnly(true);
     }
 
 

@@ -1,6 +1,6 @@
 package com.chemcool.school.lesson.tasks.chemmatches.configuration.properties;
 
-import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemistryMatchingTaskEvent;
+import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemMatchingTaskEvent;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 @Slf4j
-public class ChemMatchesTaskDeserializer implements Deserializer<ChemistryMatchingTaskEvent> {
+public class ChemMatchesTaskDeserializer implements Deserializer<ChemMatchingTaskEvent> {
 
     private final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
@@ -19,9 +19,9 @@ public class ChemMatchesTaskDeserializer implements Deserializer<ChemistryMatchi
     }
 
     @Override
-    public ChemistryMatchingTaskEvent deserialize(String s, byte[] event) {
+    public ChemMatchingTaskEvent deserialize(String s, byte[] event) {
         try {
-            return mapper.readValue(new String(event, StandardCharsets.UTF_8), ChemistryMatchingTaskEvent.class);
+            return mapper.readValue(new String(event, StandardCharsets.UTF_8), ChemMatchingTaskEvent.class);
         } catch (Exception exception) {
             log.error("Unable to deserializer massage {}", event, exception);
             return null;
