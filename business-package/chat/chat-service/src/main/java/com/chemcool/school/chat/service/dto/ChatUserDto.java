@@ -1,4 +1,4 @@
-package com.chemcool.school.chat.web.api.dto;
+package com.chemcool.school.chat.service.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

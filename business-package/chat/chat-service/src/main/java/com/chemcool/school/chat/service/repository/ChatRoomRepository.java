@@ -1,4 +1,13 @@
 package com.chemcool.school.chat.service.repository;
 
-public interface ChatRoomRepository {
+import com.chemcool.school.chat.service.models.ChatRoom;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface ChatRoomRepository extends JpaRepository<ChatRoom, String>, JpaSpecificationExecutor<ChatRoom> {
+    Optional<ChatRoom> findByRoomId(int roomId);
 }
