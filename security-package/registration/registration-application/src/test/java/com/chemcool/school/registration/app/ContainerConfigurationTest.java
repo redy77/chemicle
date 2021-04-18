@@ -68,7 +68,7 @@ public class ContainerConfigurationTest {
     @DisplayName("Миграция FlyWay таблиц в тестовый контейнер Postgres в docker")
     public void runMigrations() {
         POSTGRE_SQL_CONTAINER.withDatabaseName(DB_NAME);
-        var flyway = Flyway.configure()
+        Flyway flyway = Flyway.configure()
                 .locations("db/migration")
                 .schemas("public")
                 .dataSource(POSTGRE_SQL_CONTAINER.getJdbcUrl(),
@@ -78,7 +78,6 @@ public class ContainerConfigurationTest {
         flyway.info();
         flyway.migrate();
     }
-
 
     @Container
     public static DockerComposeContainer<?> KAFKA_CONTAINER = new DockerComposeContainer<>(

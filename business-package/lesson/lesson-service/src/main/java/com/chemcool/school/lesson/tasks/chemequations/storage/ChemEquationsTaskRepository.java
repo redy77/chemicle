@@ -11,10 +11,9 @@ import java.util.List;
 @Repository
 public interface ChemEquationsTaskRepository
         extends JpaRepository<ChemEquationsTask, String>, JpaSpecificationExecutor<ChemEquationsTask> {
-    List<ChemEquationsTask> getAllByChapterId(int chapterId);
-    //List<ChemEquationsTask> findAllByChapterIdAndReferenceId(int chapterId,int referenceId);
-    List<ChemEquationsTask> findChemEquationsTaskByChapterId(int chapterId);
-    List<ChemEquationsTask> findChemEquationsTaskByReferenceId(int referenceId);
+    List<ChemEquationsTask> findAllByChapterId(int chapterId);
+    List<ChemEquationsTask> findAllByReferenceIdAndChapterId(int referenceId, int chapterId);
+    List<ChemEquationsTask> findAllByReferenceId(int referenceId);
 }
 
 

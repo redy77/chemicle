@@ -17,8 +17,8 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <authorization.modules.version>1.0.0</authorization.modules.version>
-        <spring.boot.version>2.3.3.RELEASE</spring.boot.version>
-        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+        <spring.boot.version>2.3.9.RELEASE</spring.boot.version>
+        <spring-cloud.version>Hoxton.SR10</spring-cloud.version>
     </properties>
 
     <dependencyManagement>

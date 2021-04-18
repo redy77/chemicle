@@ -13,19 +13,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ChemFixedAnswerTaskProxyService {
 
-
-    private final ChemFixedAnswerTaskEventNotificationService notificationService;
     private final ChemFixedAnswerTaskService taskService;
-
-    public String add(ChemFixedAnswerTaskExample exampleTask) {
-        ChemFixedAnswerTask task = ChemFixedAnswerTaskFactory.createChemistryFixedAnswerTask(exampleTask);
-        notificationService.send(ChemFixedAnswerTaskEventFactory.createTaskEvent(task, ChemFixedAnswerTaskEventType.CREATE));
-        return task.getTaskId();
-    }
-
-    public void update(ChemFixedAnswerTask task) {
-        notificationService.send(ChemFixedAnswerTaskEventFactory.createTaskEvent(task, ChemFixedAnswerTaskEventType.UPDATE));
-    }
 
     public Optional<ChemFixedAnswerTask> getById(String id) {
         return taskService.getById(id);
@@ -39,8 +27,12 @@ public class ChemFixedAnswerTaskProxyService {
         return taskService.getAllByChapterId(chapterId);
     }
 
-    public void deleteById(String id) {
-        taskService.deleteById(id);
+    public List<ChemFixedAnswerTask> getAllByReferenceId(int referenceId) {
+        return taskService.getAllByReferenceId(referenceId);
+    }
+
+    public List<ChemFixedAnswerTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId){
+        return taskService.getAllByReferenceIdAndChapterId(referenceId, chapterId);
     }
 }
 

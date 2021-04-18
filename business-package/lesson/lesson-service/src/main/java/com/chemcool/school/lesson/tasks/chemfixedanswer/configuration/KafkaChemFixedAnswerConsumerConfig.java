@@ -34,9 +34,6 @@ public class KafkaChemFixedAnswerConsumerConfig {
         prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ChemFixedAnswerTaskDeserializer.class);
         //prop.put(JsonDeserializer.TRUSTED_PACKAGES, TRUSTED_PACKAGES);
         prop.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getChemFixedAnswerGroupId());
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-        System.out.println("Fixed Answer ID  "+ kafkaProperties.getChemFixedAnswerGroupId());
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
         return prop;
     }
 

@@ -1,12 +1,12 @@
 package com.chemcool.school.registration.web.api.service;
 
-import com.chemcool.school.registration.domain.RegisterUserAccountRole;
-import com.chemcool.school.registration.domain.RegisterUserAccountType;
-import com.chemcool.school.registration.domain.RegisterUserExample;
+import com.chemcool.school.registration.domain.*;
 import com.chemcool.school.registration.service.RegisterUserProxyService;
 import com.chemcool.school.registration.web.api.dto.RegisterUserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -18,15 +18,22 @@ public class RegisterUserServiceLayer {
 
         return registerUserProxyService.add(
                 new RegisterUserExample(
-                        registerUserDto.getNick(),
+                        UUID.randomUUID().toString(),
                         registerUserDto.getName(),
                         registerUserDto.getSurname(),
-                        registerUserDto.getCity(),
+                        registerUserDto.getBirthday(),
+                        registerUserDto.getGender(),
                         registerUserDto.getPhone(),
                         registerUserDto.getEmail(),
                         registerUserDto.getPassword(),
-                        RegisterUserAccountType.BASE,
-                        RegisterUserAccountRole.ROLE_USER_BASE
+                        null,
+                        RegisterUserAuthProvider.local,
+                        null,
+                        registerUserDto.getType(),
+                        registerUserDto.getRole(),
+                        registerUserDto.getVerificationCode(),
+                        registerUserDto.isEnabled(),
+                        null
                 )
         );
     }

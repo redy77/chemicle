@@ -1,8 +1,8 @@
 package com.chemcool.school.lesson.api.event;
 
-import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemistryMatchingTaskEvent;
-import com.chemcool.school.lesson.tasks.chemmatches.service.ChemistryMatchingTaskEventService;
-import com.chemcool.school.lesson.tasks.chemmatches.service.ChemistryMatchingTaskService;
+import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemMatchingTaskEvent;
+import com.chemcool.school.lesson.tasks.chemmatches.service.ChemMatchingTaskEventService;
+import com.chemcool.school.lesson.tasks.chemmatches.service.ChemMatchingTaskService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -20,15 +20,15 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class ChemMatchesEventConsumer {
 
 
-    private final ChemistryMatchingTaskEventService eventService;
-    private final ChemistryMatchingTaskService taskService;
+    private final ChemMatchingTaskEventService eventService;
+    private final ChemMatchingTaskService taskService;
 
     @KafkaListener(topics = "tasks-matching", containerFactory = "chemMatchesKafkaListenerContainerFactory")
     @KafkaHandler
-    public void handleChemMatchesTask(ConsumerRecord<String, ChemistryMatchingTaskEvent> record) {
-        ChemistryMatchingTaskEvent event = record.value();
+    public void handleChemMatchesTask(ConsumerRecord<String, ChemMatchingTaskEvent> record) {
+        ChemMatchingTaskEvent event = record.value();
         log.info("Пойман журнал для логирования: " + event.getChemistryMatchingTaskEventId());
         eventService.handleEvent(event);
-        taskService.save(event.getChemistryMatchingTaskEventPayload());
+        taskService.save(event.getChemMatchingTaskEventPayload());
     }
 }

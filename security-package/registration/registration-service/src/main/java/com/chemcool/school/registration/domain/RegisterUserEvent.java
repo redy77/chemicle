@@ -51,7 +51,7 @@ public class RegisterUserEvent {
     public static RegisterUserEvent createEvent(RegisterUser registerUser, RegisterUserEventType type) {
         return new RegisterUserEvent(
                 UUID.randomUUID().toString(),
-                registerUser.getNick(),
+                registerUser.getEmail(),
                 "UserRegistrationEvent",
                 LocalDateTime.now(),
                 type,

@@ -1,14 +1,15 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
-import com.chemcool.school.lesson.tasks.chemequations.service.ChemEquationsTaskService;
-import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTask;
-import com.chemcool.school.lesson.tasks.chemsingleselect.service.ChemSingleSelectTaskService;
+import com.chemcool.school.lesson.web.api.dto.ChemEquationsTaskDto;
+import com.chemcool.school.lesson.web.api.service.ChemEquationsTaskPresentation;
 import io.swagger.annotations.ApiOperation;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -16,19 +17,29 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping({"/v1.0"})
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ChemEquationsRestController {
-    private final ChemEquationsTaskService taskService;
 
-    @ApiOperation("Find equations tasks by chapter")
-    @GetMapping("/findEquationsTaskByChapter")
-    public List<ChemEquationsTask> findEquationsTaskByChapter(int chapter){
-        return taskService.findTaskByChapter(chapter);
+    private final ChemEquationsTaskPresentation presentation;
+
+    @ApiOperation("Возвращает сущности задания типа \"Уравнения\" по разделу")
+    @GetMapping("/findEquationsTaskByReferenceId")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ChemEquationsTaskDto> findTaskByReferenceId(int referenceId) {
+        return presentation.getAllChemistryEquationsByReferenceIdDto(referenceId);
     }
 
-    @ApiOperation("Find equations tasks by references")
-    @GetMapping("/findEquationsTaskByReferences")
-    public List<ChemEquationsTask> findEquationsTaskByReferences(int references){
-        return taskService.findTaskByReferences(references);
+    @ApiOperation("Возвращает сущности задания типа \"Уравнения\" по главе")
+    @GetMapping("/findEquationsTaskByChapterId")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ChemEquationsTaskDto> findTaskByChapterId(int chapterId) {
+        return presentation.getAllChemistryEquationsByChapterIdDto(chapterId);
+    }
+
+    @ApiOperation("Возвращает сущности задания типа \"Уравнения\" по разделу и главе")
+    @GetMapping("/findEquationsTaskByReferenceIdAndChapterId")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ChemEquationsTaskDto> findTaskByReferenceIdAndChapterId(int referenceId, int chapterId) {
+        return presentation.getAllChemistryEquationsByReferenceIdAndChapterIdDto(referenceId, chapterId);
     }
 }

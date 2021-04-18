@@ -33,9 +33,6 @@ public class KafkaChemMatchesConsumerConfiguration {
         properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ChemMatchesTaskDeserializer.class);
         //properties.put(JsonDeserializer.TRUSTED_PACKAGES, TRUSTED_PACKAGES);
         properties.put(ConsumerConfig.GROUP_ID_CONFIG, this.kafkaProperties.getChemMatchesGroupId());
-        System.out.println("**********************************");
-        System.out.println(kafkaProperties.getChemMatchesGroupId());
-        System.out.println("**********************************");
         return properties;
     }
 
@@ -44,10 +41,7 @@ public class KafkaChemMatchesConsumerConfiguration {
         ConcurrentKafkaListenerContainerFactory<String, String> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
-        System.out.println();
-        System.out.println("**********************************");
-        System.out.println(factory.getContainerProperties().getGroupId());
-        System.out.println("**********************************");
+
         return factory;
     }
 

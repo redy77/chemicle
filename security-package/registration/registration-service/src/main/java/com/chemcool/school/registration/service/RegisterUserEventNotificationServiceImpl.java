@@ -16,11 +16,11 @@ public class RegisterUserEventNotificationServiceImpl implements RegisterUserEve
 
     private final KafkaTemplate<String, RegisterUserEvent> kafkaTemplate;
 
-    private static final String TOPIC = "registration-users";
+    private static final String REGISTRATION_USERS = "registration-users";
 
     @Override
     public void send(RegisterUserEvent event) {
-        ListenableFuture<SendResult<String, RegisterUserEvent>> future = kafkaTemplate.send(TOPIC,
+        ListenableFuture<SendResult<String, RegisterUserEvent>> future = kafkaTemplate.send(REGISTRATION_USERS,
                 UUID.randomUUID().toString(), event);
 
         if (future.isCancelled()) {

@@ -32,7 +32,7 @@ public class ChemSingleSelectTaskEvent {
     @Column(name = "author_id")
     private String authorId;
 
-    @Column(name = "occuring_comtext")
+    @Column(name = "occuring_context")
     private String occuringContext;
 
     @Column(name = "occuring_context_time")

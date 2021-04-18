@@ -1,7 +1,7 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
-import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.service.ChemFixedAnswerTaskService;
+import com.chemcool.school.lesson.web.api.dto.ChemFixedAnswerTaskDto;
+import com.chemcool.school.lesson.web.api.service.ChemFixedAnswerTaskPresentation;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,17 +16,23 @@ import java.util.List;
 @RequestMapping({"/v1.0"})
 @RequiredArgsConstructor
 public class ChemFixedAnswerRestController {
-    private final ChemFixedAnswerTaskService taskService;
+    private final ChemFixedAnswerTaskPresentation presentation;
 
-    @ApiOperation("Find fixed answer tasks by chapter")
-    @GetMapping("/findFixedAnswerTaskByChapter")
-    public List<ChemFixedAnswerTask> findFixedAnswerTaskByChapter(int chapter){
-        return taskService.getTaskByChapter(chapter);
+    @ApiOperation("Возвращает сущности задания типа \"Фиксированный ответ\" по разделу")
+    @GetMapping("/findFixedAnswerTaskByReferenceId")
+    public List<ChemFixedAnswerTaskDto> findTaskByReferenceId(int referenceId){
+        return presentation.getAllChemistryFixedAnswerByReferenceIdDto(referenceId);
     }
 
-    @ApiOperation("Find fixed answer tasks by references")
-    @GetMapping("/findFixedAnswerTaskByReferences")
-    public List<ChemFixedAnswerTask> findFixedAnswerTaskByReferences(int references){
-        return taskService.getTaskByReferences(references);
+    @ApiOperation("Возвращает сущности задания типа \"Фиксированный ответ\" по главе")
+    @GetMapping("/findFixedAnswerTaskByChapterId")
+    public List<ChemFixedAnswerTaskDto> findTaskByChapterId(int chapterId){
+        return presentation.getAllChemistryFixedAnswerByChapterIdDto(chapterId);
+    }
+
+    @ApiOperation("Возвращает сущности задания типа \"Фиксированный ответ\" по разделу и главе")
+    @GetMapping("/findFixedAnswerTaskByReferenceAndChapter")
+    public  List<ChemFixedAnswerTaskDto> findTaskByReferenceIdAndChapterId(int referenceId, int chapterId){
+        return presentation.getAllChemistryFixedAnswerByReferenceIdAndChapterIdDto(referenceId, chapterId);
     }
 }

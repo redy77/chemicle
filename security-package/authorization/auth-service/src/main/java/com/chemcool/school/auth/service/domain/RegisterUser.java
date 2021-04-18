@@ -3,41 +3,62 @@ package com.chemcool.school.auth.service.domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "users_registration")
+@Table(name = "users")
 public class RegisterUser {
+
     @Id
-    @Column(name = "user_id")
+    @Column(name = "id")
     private String id;
 
-    @Column(name = "user_email")
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "user_nick_name")
-    private String nick;
-
-    @Column(name = "user_password")
+    @Column(name = "password")
     private String password;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "user_role")
+    @Column(name = "role")
     private RegisterUserAccountRole role;
 
-    @Column(name = "user_name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "user_surname")
+    @Column(name = "surname")
     private String surname;
 
-    @Column(name = "user_city")
-    private String city;
+    @Column(name = "birthday")
+    private LocalDate birthday;
 
-    @Column(name = "user_phone_number")
+    @Column(name = "phone")
     private String phone;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "user_account_type")
+    @Column(name = "account_type")
     private RegisterUserAccountType type;
+
+    @Column(name = "gender")
+    private String gender;
+
+    @Column(name = "image_url")
+    private String imageUrl;
+
+    @Column(name = "provider")
+    @Enumerated(EnumType.STRING)
+    private RegisterUserAuthProvider provider;
+
+    @Column(name = "provider_id")
+    private String providerId;
+
+    @Column(name = "verification_code")
+    private String verificationCode;
+
+    @Column(name = "enabled")
+    private boolean enabled;
+
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
 }
