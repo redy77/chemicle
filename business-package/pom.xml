@@ -59,7 +59,6 @@
         <module>tasks</module>
         <module>community</module>
         <module>lesson</module>
-        <module>admin-panel</module>
     </modules>
 
 </project>
