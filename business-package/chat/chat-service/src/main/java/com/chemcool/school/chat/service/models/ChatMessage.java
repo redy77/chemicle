@@ -40,6 +40,7 @@ public class ChatMessage {
     @Column(name = "published_date")
     private Timestamp timestamp;
 
+
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "message_type")
     @Type( type = "pgsql_enum" )

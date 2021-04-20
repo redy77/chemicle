@@ -45,7 +45,6 @@
         <!--            <groupId>io.springfox</groupId>-->
         <!--            <artifactId>springfox-swagger-ui</artifactId>-->
         <!--        </dependency>-->
-
         <!-- Новые зависимости-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -9,6 +9,7 @@ spring:
     enabled: true
     service-id: test-hosts
   #    service-id: config-service
+
   username: ${SPRING_CLOUD_CONFIG_USERNAME}
   password: ${SPRING_CLOUD_CONFIG_PASSWORD}
   fail-fast: true

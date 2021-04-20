@@ -22,10 +22,12 @@ public class ChatRoom {
     @Column(name = "name")
     private String roomName;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_linked_rooms",
             joinColumns = @JoinColumn(name = "room_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<ChatUser> users = new ArrayList<>();
+
 }
