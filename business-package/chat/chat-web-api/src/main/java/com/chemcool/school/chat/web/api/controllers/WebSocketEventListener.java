@@ -1,6 +1,6 @@
 package com.chemcool.school.chat.web.api.controllers;
 
-import com.chemcool.school.chat.web.api.model.ChatMessage;
+import com.chemcool.school.chat.service.models.ChatMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
+
 @Component
 public class WebSocketEventListener {
 
     private static final Logger logger = LoggerFactory.getLogger(WebSocketEventListener.class);
 
-    @Autowired
     private SimpMessageSendingOperations messagingTemplate;
 
     @EventListener
@@ -33,8 +33,9 @@ public class WebSocketEventListener {
             logger.info("User Disconnected : " + username);
 
             ChatMessage chatMessage = new ChatMessage();
+            chatMessage.setSenderName(username);
+            chatMessage.setMessage("User Disconnected : " + username);
             chatMessage.setType(ChatMessage.MessageType.LEAVE);
-            chatMessage.setSender(username);
 
             messagingTemplate.convertAndSend("/topic/public", chatMessage);
         }

@@ -1,30 +1,39 @@
 package com.chemcool.school.chat.web.api.controllers;
 
-import com.chemcool.school.chat.web.api.model.ChatMessage;
+import com.chemcool.school.chat.service.models.ChatMessage;
+import com.chemcool.school.chat.service.service.ChatMessageServiceImpl;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Objects;
 
 //@RestController
 @Controller
 public class ChatController {
+    private final ChatMessageServiceImpl chatMessageService;
+
+    public ChatController(ChatMessageServiceImpl chatMessageService) {
+
+        this.chatMessageService = chatMessageService;
+    }
 
     @MessageMapping("/chat.sendMessage")
     @SendTo("/topic/public")
     public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
+        System.out.println("SENDING A MESSAGE FOR SAVING FROM CHATCONTROLLER... ");
+        chatMessageService.save(chatMessage);
         return chatMessage;
     }
 
     @MessageMapping("/chat.addUser")
     @SendTo("/topic/public")
     public ChatMessage addUser(@Payload ChatMessage chatMessage,
-                               SimpMessageHeaderAccessor headerAccessor) {
+                                  SimpMessageHeaderAccessor headerAccessor) {
         // Add username in web socket session
-        headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
+        Objects.requireNonNull(headerAccessor.getSessionAttributes()).put("username", chatMessage.getSenderName());
         return chatMessage;
     }
 

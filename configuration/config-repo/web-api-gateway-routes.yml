@@ -4,6 +4,10 @@ zuul:
       enabled: true
   sensitive-headers:
   routes:
+    chat-application:
+      path: /chat-application/**
+      service-id: chat-application
+      stripPrefix: false
 
     theory-application:
       path: /theory-application/**
