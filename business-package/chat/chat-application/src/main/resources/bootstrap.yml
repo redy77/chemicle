@@ -7,7 +7,6 @@ spring:
       name: chat-application
   discovery:
     enabled: true
-    service-id: test-hosts
   #    service-id: config-service
 
   username: ${SPRING_CLOUD_CONFIG_USERNAME}

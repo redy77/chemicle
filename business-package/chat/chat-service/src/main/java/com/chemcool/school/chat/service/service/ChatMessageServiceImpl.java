@@ -26,18 +26,14 @@ public class ChatMessageServiceImpl implements ChatMessageService {
 
     @Override
     public Boolean save(ChatMessage chatMessage) {
-        System.out.println("Started looking for users... ");
         ChatUser user = chatUserService.findByUserName(chatMessage.getSenderName());
-        System.out.println("Found user... " + user);
 
         chatMessage.setId(UUID.randomUUID().toString());
         chatMessage.setTimestamp(new Timestamp(System.currentTimeMillis()));
         chatMessage.setUser(user);
         chatMessage.setType(ChatMessage.MessageType.CHAT);
 
-        System.out.println("MESSAGE TO BE SAVED: " + chatMessage);
         ChatMessage result = messageRepository.save(chatMessage);
-        System.out.println("Message saved " + result.getUser());
 //        log.info("Message с ID: " + chatMessage.getId() + "  добавлен.");
         return true;
     }
