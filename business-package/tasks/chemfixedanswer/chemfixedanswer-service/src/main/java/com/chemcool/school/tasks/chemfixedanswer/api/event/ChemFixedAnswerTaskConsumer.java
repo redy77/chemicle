@@ -22,7 +22,7 @@ public class ChemFixedAnswerTaskConsumer {
     private final ChemFixedAnswerTaskService taskService;
     private final ChemFixedAnswerTaskEventService eventService;
 
-    @KafkaListener(topics = "fixed-answer-task")
+    @KafkaListener(topics = "fixed-answer")
     @KafkaHandler
     public void handleChemFixedAnswerTask(ConsumerRecord<String, ChemFixedAnswerTaskEvent> record) {
         ChemFixedAnswerTaskEvent event = record.value();
