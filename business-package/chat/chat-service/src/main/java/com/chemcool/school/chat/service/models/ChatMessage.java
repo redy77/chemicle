@@ -1,6 +1,8 @@
 package com.chemcool.school.chat.service.models;
 
+import com.chemcool.school.chat.service.miscelaneous.MessageType;
 import com.vladmihalcea.hibernate.type.basic.PostgreSQLEnumType;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
@@ -11,7 +13,7 @@ import java.sql.Timestamp;
 
 @Data
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "messages")
 @TypeDef(
@@ -21,7 +23,6 @@ import java.sql.Timestamp;
 public class ChatMessage {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     @ManyToOne
@@ -40,17 +41,10 @@ public class ChatMessage {
     @Column(name = "published_date")
     private Timestamp timestamp;
 
-
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "message_type")
     @Type( type = "pgsql_enum" )
     private MessageType type;
-
-    public enum MessageType {
-        CHAT,
-        JOIN,
-        LEAVE;
-    }
 
     @Override
     public String toString() {

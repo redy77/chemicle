@@ -37,7 +37,6 @@ CREATE TABLE messages (
                           sender_name VARCHAR(255) NOT NULL,
                           message VARCHAR(255) NOT NULL,
                           published_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
---                           type VARCHAR(8),
                           type message_type,
                           PRIMARY KEY (id),
                           UNIQUE (id),

@@ -16,7 +16,6 @@ import java.util.List;
 public class ChatRoom {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     @Column(name = "name")

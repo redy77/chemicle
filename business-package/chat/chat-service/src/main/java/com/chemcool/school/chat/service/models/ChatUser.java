@@ -16,14 +16,7 @@ import java.util.List;
 @Table(name = "users")
 public class ChatUser {
 
-    public ChatUser(String id, String userName, String userRole) {
-        this.id = id;
-        this.userName = userName;
-        this.userRole = userRole;
-    }
-
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     @Column(name = "name")

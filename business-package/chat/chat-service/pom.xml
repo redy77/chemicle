@@ -16,18 +16,11 @@
     <packaging>jar</packaging>
 
     <properties>
-        <!--        <java.version>11</java.version>-->
-        <!--        <maven.compiler.source>${java.version}</maven.compiler.source>-->
-        <!--        <maven.compiler.target>${java.version}</maven.compiler.target>-->
-        <!--        <lombok.version>1.18.16</lombok.version>-->
-        <postgresql.version>42.2.19</postgresql.version>
         <jackson.version>2.11.3</jackson.version>
         <hibernate.version>5.3.2.Final</hibernate.version>
-        <!--        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>-->
         <vladmihalcea.version>2.10.4</vladmihalcea.version>
         <jaxb.api.version>2.3.1</jaxb.api.version>
         <jjwt.version>0.9.1</jjwt.version>
-        <!--        <kafka.testcontainer.version>1.15.0</kafka.testcontainer.version>-->
     </properties>
 
     <dependencies>
@@ -47,19 +40,7 @@
             <artifactId>spring-data-jpa</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
-
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.kafka</groupId>-->
-        <!--            <artifactId>spring-kafka</artifactId>-->
-        <!--        </dependency>-->
         <!--END SPRING-->
-
-        <!--                Database-->
-<!--        <dependency>-->
-<!--            <groupId>org.postgresql</groupId>-->
-<!--            <artifactId>postgresql</artifactId>-->
-<!--            <version>${postgresql.version}</version>-->
-<!--        </dependency>-->
 
         <!--        TOOLS -->
         <dependency>
@@ -68,17 +49,6 @@
             <version>2.2.0</version>
             <scope>test</scope>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.projectlombok</groupId>-->
-        <!--            <artifactId>lombok</artifactId>-->
-        <!--            <version>${lombok.version}</version>-->
-        <!--            <scope>compile</scope>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>javax.xml.bind</groupId>-->
-        <!--            <artifactId>jaxb-api</artifactId>-->
-        <!--            <version>${jaxb.api.version}</version>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -122,6 +92,11 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-rest-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>
