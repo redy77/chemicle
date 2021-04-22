@@ -6,8 +6,8 @@ spring:
       ddl-auto: update
   datasource:
     url: jdbc:postgresql://localhost:5432/chemmatches
-    username: postgres
-    password: maxon
+    username: mick
+    password: mick
     platform: postgres
     driver-class-name: org.postgresql.Driver
 

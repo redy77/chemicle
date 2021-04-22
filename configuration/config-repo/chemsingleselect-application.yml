@@ -4,8 +4,8 @@ spring:
     show-sql: true
   datasource:
     url: jdbc:postgresql://localhost:5432/chemsingleselect
-    username: postgres
-    password: maxon
+    username: mick
+    password: mick
     platform: postgres
     driver-class-name: org.postgresql.Driver
 
