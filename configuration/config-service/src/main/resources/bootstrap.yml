@@ -53,7 +53,7 @@ spring:
     config:
       server:
         native:
-          search-locations: ${SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCHLOCATIONS:file:///home/patric/Рабочий%20стол/Projects/boofik-chemcool-e19315591d18/configuration/config-repo}
+          search-locations: ${SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCHLOCATIONS:file:////opt/config-repo}
   security:
     user:
       name: ${SRPING_CLOUD_USER_NAME:config-user-name}
@@ -65,6 +65,6 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka}
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://service-discovery:8761/eureka}
 
 
