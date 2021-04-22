@@ -56,7 +56,6 @@
     <modules>
         <module>answers-task</module>
         <module>community</module>
-        <module>admin-panel</module>
         <module>constructor</module>
     </modules>
 
