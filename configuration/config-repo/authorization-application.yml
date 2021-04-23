@@ -8,8 +8,13 @@ spring:
       ddl-auto: update
   datasource:
     url: jdbc:postgresql://localhost:5432/users_autentication
+<<<<<<< HEAD
     username: mick
     password: mick
+=======
+    username: postgres
+    password: maxon
+>>>>>>> 31bb05ba67aaf0b1b4f806278716e89095538854
     platform: postgres
     driver-class-name: org.postgresql.Driver
   security:

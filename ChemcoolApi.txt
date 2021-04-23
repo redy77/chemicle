@@ -1,0 +1,239 @@
+Lesson service Сервис уроков. Формирует уроки, по разделу и главе. 
+Возвращает лист из теории и всех видов задач
+
+Chem Equations Rest Controller
+GET
+/lesson-application/v1.0/findEquationsTaskByChapterId
+Возвращает сущности задания типа "Уравнения" по главе
+GET
+/lesson-application/v1.0/findEquationsTaskByReferenceId
+Возвращает сущности задания типа "Уравнения" по разделу
+GET
+/lesson-application/v1.0/findEquationsTaskByReferenceIdAndChapterId
+Возвращает сущности задания типа "Уравнения" по разделу и главе
+
+Chem Fixed Answer Rest Controller
+GET
+/lesson-application/v1.0/findFixedAnswerTaskByChapter
+Возвращает сущности задания типа "Фиксированный ответ" по главе
+GET
+/lesson-application/v1.0/findFixedAnswerTaskByReference
+Возвращает сущности задания типа "Фиксированный ответ" по разделу
+GET
+/lesson-application/v1.0/findFixedAnswerTaskByReferenceAndChapter
+Возвращает сущности задания типа "Фиксированный ответ" по разделу и главе
+
+Chem Matches Rest Controller
+GET
+/lesson-application/v1.0/findMatchesTaskByChapterId
+Возвращает сущности задания типа "Сопоставление" по главе
+GET
+/lesson-application/v1.0/findMatchesTaskByReferenceId
+Возвращает сущности задания типа "Сопоставление" по разделу
+GET
+/lesson-application/v1.0/findMatchesTaskByReferenceIdAndChapterId
+Возвращает сущности задания типа "Сопоставление" по разделу и главе
+
+Chem Single Select Rest Controller
+GET
+/lesson-application/v1.0/findSingleSelectTaskByChapterId
+Возвращает сущности задания типа "Один ответ" по главе
+GET
+/lesson-application/v1.0/findSingleSelectTaskByReferenceId
+Возвращает сущности задания типа "Один ответ" по разделу
+GET
+/lesson-application/v1.0/findSingleSelectTaskByReferenceIdAndChapterId
+Возвращает сущности задания типа "Один ответ" по разделу и главе
+
+Lesson Rest Controller
+GET
+/lesson-application/v1.0/getLessonByChapterId
+Возвращает сущности заданий и теории по главе
+GET
+/lesson-application/v1.0/getLessonByReferenceId
+Возвращает сущности заданий и теории по разделу
+GET
+/lesson-application/v1.0/getLessonByReferenceIdAndChapterId
+Возвращает сущности заданий и теории по разделу и главе
+
+Theory Rest Controller
+GET
+/lesson-application/v1.0/findTheoryByChapterId
+Возвращает сущности теории по главе
+GET
+/lesson-application/v1.0/findTheoryByReferenceId
+Возвращает сущности теории по разделу
+GET
+/lesson-application/v1.0/findTheoryByReferenceIdAndChapterId
+Возвращает сущности теории по разделу и главе
+
+
+Theory service Сервис теории. Формирует теоретическую часть уроков
+
+Chemistry Theory Rest Controller
+POST
+/theory-application/v1.0/theory/create
+Создает главу для сущность урока по химии.
+DELETE
+/theory-application/v1.0/theory/delete
+deleteLessonExample
+GET
+/theory-application/v1.0/theory/getBy/{id}
+getTheoryExampleById
+GET
+/theory-application/v1.0/theory/hello
+hello
+PUT
+/theory-application/v1.0/theory/update
+updateLessonExample
+
+
+Fixed answers service Сервис задач "Фиксированный ответ".
+Формирует задачи типа "Фиксированный ответ"
+
+Chem Fixed Answer Task Rest Controller
+GET
+/chemfixedanswer-application/v1.0
+Возвращает сущности задания типа "Фиксированный ответ" по химии
+POST
+/chemfixedanswer-application/v1.0
+Создает новую сущность задания типа "Фиксированный ответ" по химии
+PUT
+/chemfixedanswer-application/v1.0
+Сохраняет существующую сущность задания типа "Фиксированный ответ" по химии
+GET
+/chemfixedanswer-application/v1.0/{id}
+Возвращает задани по ID типа "Фиксированный ответ" по химии
+DELETE
+/chemfixedanswer-application/v1.0/{id}
+Удалеят существующую сущность задания типа "Фиксированный ответ" по химии
+
+
+Single select service Сервис задач "Выбор одного ответа".
+Формирует задачи типа "Выбор одного ответа"
+
+Chemistry Single Select Task Rest Controller
+GET
+/chemsingleselect-application/v1.0
+Возвращает все задания типа "Выбор одного ответа" по химии.
+POST
+/chemsingleselect-application/v1.0
+Создает новую сущность задания типа "Выбор одного ответа" по химии.
+PUT
+/chemsingleselect-application/v1.0
+Сохраняет существующую сущность задания типа "Выбор одного ответа" по химии.
+GET
+/chemsingleselect-application/v1.0/{uuid}
+Возвращает дто сущности задания типа "Выбор одного ответа" по химии по UUID.
+DELETE
+/chemsingleselect-application/v1.0/{uuid}
+Удалеят существующую сущность задания типа "Выбор одного ответа" по химии по UUID.
+
+Spring Cloud Config Server Test Controller
+GET
+/chemsingleselect-application/cloud-config-server-test-message
+Проверка работы Spring Cloud Config Server.
+
+
+Matching service Сервис задач "Сопоставления".
+Формирует задачи типа "Сопоставления"
+
+Chemistry Matching Task Rest Controller
+GET
+/chemmatches-application/v1.0
+Возвращает все задания типа "matching(сопоставления)" по химии.
+POST
+/chemmatches-application/v1.0
+Создает новую сущность задания типа "matching(сопоставления)" по химии.
+PUT
+/chemmatches-application/v1.0
+Обновляет существующую сущность задания типа "matching(сопоставления)" по химии.
+GET
+/chemmatches-application/v1.0/{uuid}
+Возвращает дто сущности задания типа "matching(сопоставления)" по химии по UUID.
+DELETE
+/chemmatches-application/v1.0/{uuid}
+Удалеят существующую сущность задания типа "matching(сопоставления)" по химии по UUID.
+
+
+Equations service Сервис задач "Уравнения"
+Формирует задачи типа "Уравнения"
+
+Chem Equations Rest Controller
+GET
+/chemequations-application/v.1.0
+Возвращает все сущности задания типа "Уравнения"
+POST
+/chemequations-application/v.1.0
+Создает новую сущность задания типа "Уравнения"
+PUT
+/chemequations-application/v.1.0
+Обновляет существующую сущность задания типа "Уравнения"
+GET
+/chemequations-application/v.1.0/{id}
+Возвращает задание по ID типа "Уравнения"
+DELETE
+/chemequations-application/v.1.0/{id}
+Удаляет существующую сущность задания типа "Уравнения"
+GET
+/chemequations-application/v.1.0/chapter/{chapterId}
+Возвращает все сущности задания типа "Уравнения" по главе
+POST
+/chemequations-application/v.1.0/checkAnswer
+Проверяет введенный ответ с ответом в базе данных "Уравнения"
+GET
+/chemequations-application/v.1.0/randomTask
+Возвращает случайную сущность задания типа "Уравнения"
+GET
+/chemequations-application/v.1.0/reference/{chapterId}/{referenceId}
+Возвращает все сущности задания типа "Уравнения" по разделу и главе
+
+Chem Equations View Controller
+GET
+/chemequations-application/equations/v.1.0/create
+createNewTaskPage
+GET
+/chemequations-application/equations/v.1.0/view
+viewPage
+
+
+Registration service Сервис регистрации пользователей
+
+Registration Controller
+POST
+/registration-application/auth/registration
+Регистрация нового пользователя
+GET
+/registration-application/auth/verify
+Активация аккаунта
+reset-password-controller
+Reset Password Controller
+
+POST
+/registration-application/auth/forgot-password
+отправляем ссылку сброса пароля на Email
+POST
+/registration-application/auth/reset-password
+Добавляем новый пароль пользователя
+
+
+Login service Сервис аутенфикации пользователей
+
+Login Controllers
+POST
+/authorization-application/auth/login
+Возвращает email и токен
+user-profile-controller-example
+User Profile Controller Example
+
+GET
+/authorization-application/user/profile
+getCurrentUser
+
+
+Answers task service Сервис проверки ответов?
+
+Answers Task Rest Controller
+POST
+/answers-task-application/v1.0
+Возвращает true или false ответ пользователю

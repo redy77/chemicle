@@ -18,7 +18,7 @@ import java.util.UUID;
 
 @Data
 @Entity
-@Table
+@Table(name = "chemistry_lesson_event")
 @NoArgsConstructor
 @AllArgsConstructor
 @TypeDefs(

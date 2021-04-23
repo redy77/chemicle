@@ -9,6 +9,11 @@ zuul:
       service-id: chat-application
       stripPrefix: false
 
+    lesson-application:
+      path: /lesson-application/**
+      service-id: lesson-application
+      stripPrefix: false
+
     theory-application:
       path: /theory-application/**
       service-id: theory-application
@@ -29,9 +34,19 @@ zuul:
       service-id: chemmatches-application
       stripPrefix: false
 
+    chemequations-application:
+      path: /chemequations-application/**
+      service-id: chemequations-application
+      stripPrefix: false
+
     registration-application:
       path: /registration-application/**
       service-id: registration-application
+      stripPrefix: false
+
+    answers-task-application:
+      path: /answers-task-application/**
+      service-id: answers-task-application
       stripPrefix: false
 
     authorization-application:

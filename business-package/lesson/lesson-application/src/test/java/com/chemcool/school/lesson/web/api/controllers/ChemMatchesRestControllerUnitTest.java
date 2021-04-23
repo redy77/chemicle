@@ -1,11 +1,12 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemistryMatchingTask;
-import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemistryMatchingTaskExample;
 import com.chemcool.school.lesson.tasks.chemmatches.domain.CoupleForMatching;
-import com.chemcool.school.lesson.tasks.chemmatches.service.ChemistryMatchingTaskService;
+import com.chemcool.school.lesson.web.api.dto.ChemMatchingTaskDto;
+import com.chemcool.school.lesson.web.api.service.ChemMatchingTaskPresentation;
+import org.hamcrest.collection.IsEmptyCollection;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -42,22 +43,18 @@ class ChemMatchesRestControllerUnitTest {
     @Autowired
     private ChemMatchesRestController controller;
 
-    private List<ChemistryMatchingTask> chemistryMatchingTasks;
+    private List<ChemMatchingTaskDto> chemMatchingTasks;
 
     @MockBean
-    private ChemistryMatchingTaskService service;
-
-    private ChemistryMatchingTaskExample chemistryMatchingTaskExampleForTest;
-
-    private List<CoupleForMatching> list;
+    private ChemMatchingTaskPresentation presentation;
 
     @BeforeEach
     void setUp() {
-        chemistryMatchingTaskExampleForTest = new ChemistryMatchingTaskExample
-                ("description", "rightAnswer", 1, 1,
-                        Collections.singletonList(new CoupleForMatching("1", "2")));
-        chemistryMatchingTasks = Collections.singletonList(ChemistryMatchingTask
-                .createChemistryMatchingTask(chemistryMatchingTaskExampleForTest));
+        chemMatchingTasks = Collections.singletonList(
+                new ChemMatchingTaskDto("id", "description", 1, 2,
+                        Collections.singletonList(new CoupleForMatching(1L,"1", "2")),"Matches"));
+
+        System.out.println(chemMatchingTasks);
         this.mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
@@ -67,24 +64,55 @@ class ChemMatchesRestControllerUnitTest {
     }
 
     @Test
+    @DisplayName("Получение задач по главе")
     void findMatchesByChapter() throws Exception {
-        Integer chapterId = chemistryMatchingTaskExampleForTest.getChapterId();
-        Mockito.when(service.getAllByChapterId(chapterId)).thenReturn(chemistryMatchingTasks);
+        Integer chapterId = 1;
+        Mockito.when(presentation.getAllTasksByChapterIdDto(chapterId)).thenReturn(chemMatchingTasks);
         this.mockMvc.perform(
-                get("/v1.0/findMatchesByChapter").param("chapter", String.valueOf(chapterId))
+                get("/v1.0/findMatchesTaskByChapterId").param("chapterId", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].chapterId").value(chapterId))
                 .andDo(print());
     }
 
     @Test
+    @DisplayName("Получение задач по разделу")
     void findMatchesByReferences() throws Exception {
-        Integer referenceId = chemistryMatchingTaskExampleForTest.getReferenceId();
-        Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(chemistryMatchingTasks);
+        Integer referenceId = 2;
+        Mockito.when(presentation.getAllTasksByReferenceIdDto(referenceId)).thenReturn(chemMatchingTasks);
         this.mockMvc.perform(
-                get("/v1.0/findMatchesByReferences").param("references", String.valueOf(referenceId))
+                get("/v1.0/findMatchesTaskByReferenceId").param("referenceId", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].referenceId").value(referenceId))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Получение задач по главе и разделу")
+    void findMatchesByChapterAndReferences() throws Exception {
+        Integer chapterId = 1;
+        Integer referenceId = 2;
+        Mockito.when(presentation.getAllTasksByReferenceIdAndChapterIdDto(referenceId, chapterId)).thenReturn(chemMatchingTasks);
+        this.mockMvc.perform(
+                get("/v1.0/findMatchesTaskByReferenceIdAndChapterId").param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$[0].chapterId").value(chapterId))
+                .andExpect(jsonPath("$[0].referenceId").value(referenceId))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Проверка на несуществующие главу или раздел")
+    void findMatchesByFakeChapterAndReferences() throws Exception {
+        Integer chapterId = 5;
+        Integer referenceId = 5;
+        Mockito.when(presentation.getAllTasksByReferenceIdAndChapterIdDto(referenceId, chapterId)).thenReturn(Collections.emptyList());
+        this.mockMvc.perform(
+                get("/v1.0/findMatchesTaskByReferenceIdAndChapterId").param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.*").value(IsEmptyCollection.empty()))
                 .andDo(print());
     }
 }

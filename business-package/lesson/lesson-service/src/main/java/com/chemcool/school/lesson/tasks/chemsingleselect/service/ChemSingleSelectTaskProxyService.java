@@ -38,6 +38,10 @@ public class ChemSingleSelectTaskProxyService {
         return taskService.getAllByReferenceId(referenceId);
     }
 
+    public List<ChemSingleSelectTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId) {
+        return taskService.getAllByReferenceIdAndChapterId(referenceId, chapterId);
+    }
+
     public void update(ChemSingleSelectTask task) {
         notificationService.send(
                 ChemSingleSelectTaskEventFactory.createEvent(task, ChemTaskEventType.UPDATE)

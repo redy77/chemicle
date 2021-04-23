@@ -3,14 +3,12 @@ package com.chemcool.school.lesson.web.api.controllers;
 import com.chemcool.school.lesson.app.LessonApplication;
 import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
 import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTaskExample;
-import com.chemcool.school.lesson.tasks.chemequations.service.ChemEquationsTaskService;
-import org.junit.FixMethodOrder;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
+import com.chemcool.school.lesson.web.api.dto.ChemEquationsTaskDto;
+import com.chemcool.school.lesson.web.api.service.ChemEquationsTaskPresentation;
+import org.hamcrest.collection.IsEmptyCollection;
+import org.junit.jupiter.api.*;
 import org.junit.runner.RunWith;
-import org.junit.runners.MethodSorters;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -24,6 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -44,51 +43,75 @@ class ChemEquationsRestControllerUnitTest {
     @Autowired
     private ChemEquationsRestController controller;
 
-    private List<ChemEquationsTask> chemEquationsTask;
+    private List<ChemEquationsTaskDto> chemEquationsTask;
 
     @MockBean
-    private ChemEquationsTaskService service;
-
-    private ChemEquationsTaskExample chemEquationsTaskExampleForTest;
+    private ChemEquationsTaskPresentation presentation;
 
     @BeforeEach
     void setUp() {
-        chemEquationsTaskExampleForTest = new ChemEquationsTaskExample("description", "rightAnswer", 1, 1);
-        chemEquationsTask = Collections.singletonList(ChemEquationsTask
-                .createChemEquationsTask(chemEquationsTaskExampleForTest));
+        chemEquationsTask = Collections.singletonList(
+                new ChemEquationsTaskDto("id", "description", 1, 2, "Equations"));
         this.mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
     @Test
+    @DisplayName("Тест контекста")
     public void contextTest() {
         assertThat(controller).isNotNull();
     }
 
+    @Test
+    @DisplayName("Получение задач по разделу")
+    void findEquationsTaskByReference() throws Exception {
+        Integer referenceId = 2;
+        Mockito.when(presentation.getAllChemistryEquationsByChapterIdDto(referenceId)).thenReturn(chemEquationsTask);
+        this.mockMvc.perform(
+                get("/v1.0/findEquationsTaskByChapterId").param("chapterId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$[0].referenceId").value(referenceId))
+                .andDo(print());
+    }
 
     @Test
+    @DisplayName("Получение задач по главе")
     void findEquationsTaskByChapter() throws Exception {
-        Integer chapterId = chemEquationsTaskExampleForTest.getChapterId();
-        Mockito.when(service.getAllByChapterId(chapterId)).thenReturn(chemEquationsTask);
+        Integer chapterId = 1;
+        Mockito.when(presentation.getAllChemistryEquationsByChapterIdDto(chapterId)).thenReturn(chemEquationsTask);
         this.mockMvc.perform(
-                get("/v1.0/findEquationsTaskByChapter").param("chapter", String.valueOf(chapterId))
+                get("/v1.0/findEquationsTaskByChapterId").param("chapterId", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].chapterId").value(chapterId))
                 .andDo(print());
     }
 
     @Test
-    void findEquationsTaskByReferences() throws Exception {
-        Integer referenceId = chemEquationsTaskExampleForTest.getReferenceId();
-        Mockito.when(service.getAllByReferenceId(referenceId)).thenReturn(chemEquationsTask);
+    @DisplayName("Получение задач по главе и разделу")
+    void findEquationsTaskByChapterAndReferences() throws Exception {
+        Integer chapterId = 1;
+        Integer referenceId = 2;
+        Mockito.when(presentation.getAllChemistryEquationsByReferenceIdAndChapterIdDto(referenceId, chapterId)).thenReturn(chemEquationsTask);
         this.mockMvc.perform(
-                get("/v1.0/findEquationsTaskByReferences").param("references", String.valueOf(referenceId))
+                get("/v1.0/findEquationsTaskByReferenceIdAndChapterId").param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$[0].chapterId").value(chapterId))
                 .andExpect(jsonPath("$[0].referenceId").value(referenceId))
                 .andDo(print());
     }
 
-    @AfterEach
-    void tearDown() {
+    @Test
+    @DisplayName("Проверка на несуществующие главу или раздел")
+    void findEquationsTaskByFakeChapterAndReferences() throws Exception {
+        int chapterId = 5;
+        int referenceId = 5;
+        Mockito.when(presentation.getAllChemistryEquationsByReferenceIdAndChapterIdDto(referenceId, chapterId)).thenReturn(Collections.emptyList());
+        this.mockMvc.perform(
+                get("/v1.0/findEquationsTaskByReferenceIdAndChapterId").param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.*").value(IsEmptyCollection.empty()))
+                .andDo(print());
     }
 }
 

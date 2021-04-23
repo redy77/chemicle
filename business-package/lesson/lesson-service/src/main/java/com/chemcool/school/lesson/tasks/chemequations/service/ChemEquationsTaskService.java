@@ -4,7 +4,6 @@ import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
 import com.chemcool.school.lesson.tasks.chemequations.storage.ChemEquationsTaskRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,8 +35,8 @@ public class ChemEquationsTaskService {
         return repository.findAllByChapterId(chapterId);
     }
 
-    public List<ChemEquationsTask> getAllByChapterIdAndReferenceId(int chapterId,int referenceId) {
-        return repository.findAllByChapterIdAndReferenceId(chapterId,referenceId);
+    public List<ChemEquationsTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId) {
+        return repository.findAllByReferenceIdAndChapterId(referenceId,chapterId);
     }
 
     public void deleteById(String id) {

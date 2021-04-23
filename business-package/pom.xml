@@ -57,11 +57,9 @@
         <module>theory</module>
         <module>answers-task</module>
         <module>tasks</module>
+        <module>chat</module>
         <module>community</module>
         <module>lesson</module>
-        <module>admin-panel</module>
-        <module>answers-task</module>
-        <module>chat</module>
     </modules>
 
 </project>

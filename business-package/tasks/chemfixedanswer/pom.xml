@@ -108,6 +108,7 @@
         <module>chemfixedanswer-application</module>
         <module>chemfixedanswer-service</module>
         <module>chemfixedanswer-web-api</module>
+        <module>chemfixedanswer-test</module>
     </modules>
 
 </project>

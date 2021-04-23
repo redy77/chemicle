@@ -1,24 +1,31 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.app.LessonApplication;
+import org.hamcrest.collection.IsEmptyCollection;
+import org.hamcrest.core.IsNot;
+import org.hamcrest.core.IsNull;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = LessonApplication.class)
@@ -35,15 +42,30 @@ class ChemEquationsRestControllerIntegrationTest {
     private ChemEquationsRestController controller;
 
     @Test
+    @DisplayName("Тест контекста")
     public void contextTest() {
         assertThat(controller).isNotNull();
     }
 
     @Test
-    void findEquationsTaskByChapter() throws Exception {
+    @DisplayName("Получение задач по разделу")
+    void findEquationsTaskByReferenceId() throws Exception {
+        Integer referenceId = 3;
+        this.mockMvc.perform(
+                get("/v1.0/findEquationsTaskByReferenceId").param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.*", isA(ArrayList.class)))
+                .andExpect(jsonPath("$.*", hasSize(referenceId)))
+                .andExpect(jsonPath("$[0].referenceId").value(referenceId))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Получение задач по главе")
+    void findEquationsTaskByChapterId() throws Exception {
         Integer chapterId = 2;
         this.mockMvc.perform(
-                get("/v1.0/findEquationsTaskByChapter").param("chapter", String.valueOf(chapterId))
+                get("/v1.0/findEquationsTaskByChapterId").param("chapterId", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.*", isA(ArrayList.class)))
                 .andExpect(jsonPath("$.*", hasSize(chapterId)))
@@ -52,14 +74,31 @@ class ChemEquationsRestControllerIntegrationTest {
     }
 
     @Test
-    void findEquationsTaskByReferences() throws Exception {
-        Integer referenceId = 4;
+    @DisplayName("Получение задач по главе и разделу")
+    void findEquationsTaskByChapterIdAndReferenceId() throws Exception {
+        Integer chapterId = 3;
+        Integer referenceId = 3;
         this.mockMvc.perform(
-                get("/v1.0/findEquationsTaskByReferences").param("references", String.valueOf(referenceId))
+                get("/v1.0/findEquationsTaskByReferenceIdAndChapterId")
+                        .param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.*", isA(ArrayList.class)))
-                .andExpect(jsonPath("$.*", hasSize(referenceId)))
+                .andExpect(jsonPath("$[0].chapterId").value(chapterId))
                 .andExpect(jsonPath("$[0].referenceId").value(referenceId))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Проверка на несуществующие главу или раздел")
+    void findEquationsTaskByFakeChapterAndReferences() throws Exception {
+        Integer chapterId = 5;
+        Integer referenceId = 5;
+        this.mockMvc.perform(
+                get("/v1.0/findEquationsTaskByReferenceIdAndChapterId").param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.*").value(IsEmptyCollection.empty()))
                 .andDo(print());
     }
 }
@@ -95,7 +134,7 @@ class ChemEquationsRestControllerIntegrationTest {
     private String rightAnswer;
     private int chapterId;
     private int referenceId;
-    public void addingTestTheoryDataBase(TheoryDto theoryDto) {
+    public void addingTestTheoryDataBase(ChemTheoryDto theoryDto) {
         presentation.createChemistryTheoryDto(theoryDto);
     }
  System.out.println(chemEquationsTaskExampleForTest);

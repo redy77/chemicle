@@ -2,9 +2,9 @@ package com.chemcool.school.lesson.web.api.controllers;
 
 
 
-import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemistryMatchingTask;
-import com.chemcool.school.lesson.tasks.chemmatches.service.ChemistryMatchingTaskProxyService;
-import com.chemcool.school.lesson.tasks.chemmatches.service.ChemistryMatchingTaskService;
+import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemMatchingTask;
+import com.chemcool.school.lesson.web.api.dto.ChemMatchingTaskDto;
+import com.chemcool.school.lesson.web.api.service.ChemMatchingTaskPresentation;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,17 +19,23 @@ import java.util.List;
 @RequestMapping({"/v1.0"})
 @RequiredArgsConstructor
 public class ChemMatchesRestController {
-    private final ChemistryMatchingTaskProxyService taskService;
+    private final ChemMatchingTaskPresentation presentation;
 
-    @ApiOperation("Find matches tasks by chapter")
-    @GetMapping("/findMatchesByChapter")
-    public List<ChemistryMatchingTask> findMatchesByChapter(int chapter){
-        return taskService.getAllByChapterId(chapter);
+    @ApiOperation("Возвращает сущности задания типа \"Сопоставление\" по разделу")
+    @GetMapping("/findMatchesTaskByReferenceId")
+    public List<ChemMatchingTaskDto> findTaskByReferences(int referenceId){
+        return presentation.getAllTasksByReferenceIdDto(referenceId);
     }
 
-    @ApiOperation("Find matches tasks by references")
-    @GetMapping("/findMatchesByReferences")
-    public List<ChemistryMatchingTask> findMatchesByReferences(int references){
-        return taskService.getAllByReferenceId(references);
+    @ApiOperation("Возвращает сущности задания типа \"Сопоставление\" по главе")
+    @GetMapping("/findMatchesTaskByChapterId")
+    public List<ChemMatchingTaskDto> findTaskByChapter(int chapterId){
+        return presentation.getAllTasksByChapterIdDto(chapterId);
+    }
+
+    @ApiOperation("Возвращает сущности задания типа \"Сопоставление\" по разделу и главе")
+    @GetMapping("/findMatchesTaskByReferenceIdAndChapterId")
+    public List<ChemMatchingTaskDto> findTaskByReferenceIdAndChapterId(int referenceId, int chapterId){
+        return presentation.getAllTasksByReferenceIdAndChapterIdDto(referenceId, chapterId);
     }
 }

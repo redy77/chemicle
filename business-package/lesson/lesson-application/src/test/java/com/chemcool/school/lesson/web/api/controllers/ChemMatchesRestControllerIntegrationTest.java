@@ -1,30 +1,22 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemistryMatchingTask;
-import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemistryMatchingTaskExample;
-import com.chemcool.school.lesson.tasks.chemmatches.domain.CoupleForMatching;
-import com.chemcool.school.lesson.tasks.chemmatches.service.ChemistryMatchingTaskService;
-import org.junit.jupiter.api.BeforeEach;
+import org.hamcrest.collection.IsEmptyCollection;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasSize;
@@ -57,7 +49,7 @@ class ChemMatchesRestControllerIntegrationTest {
     void findMatchesByChapter() throws Exception {
         Integer chapterId = 2;
         this.mockMvc.perform(
-                get("/v1.0/findMatchesByChapter").param("chapter", String.valueOf(chapterId))
+                get("/v1.0/findMatchesTaskByChapterId").param("chapterId", String.valueOf(chapterId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.*", isA(ArrayList.class)))
                 .andExpect(jsonPath("$.*", hasSize(chapterId)))
@@ -69,11 +61,40 @@ class ChemMatchesRestControllerIntegrationTest {
     void findMatchesByReferences() throws Exception {
         Integer referenceId = 4;
         this.mockMvc.perform(
-                get("/v1.0/findMatchesByReferences").param("references", String.valueOf(referenceId))
+                get("/v1.0/findMatchesTaskByReferenceId").param("referenceId", String.valueOf(referenceId))
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.*", isA(ArrayList.class)))
                 .andExpect(jsonPath("$.*", hasSize(referenceId)))
                 .andExpect(jsonPath("$[0].referenceId").value(referenceId))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Получение задач по главе и разделу")
+    void findMatchesTaskByChapterIdAndReferenceId() throws Exception {
+        Integer chapterId = 3;
+        Integer referenceId = 3;
+        this.mockMvc.perform(
+                get("/v1.0/findMatchesTaskByReferenceIdAndChapterId")
+                        .param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.*", isA(ArrayList.class)))
+                .andExpect(jsonPath("$[0].chapterId").value(chapterId))
+                .andExpect(jsonPath("$[0].referenceId").value(referenceId))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("Проверка на несуществующие главу или раздел")
+    void findMatchesTaskByFakeChapterAndReferences() throws Exception {
+        Integer chapterId = 5;
+        Integer referenceId = 5;
+        this.mockMvc.perform(
+                get("/v1.0/findMatchesTaskByReferenceIdAndChapterId").param("chapterId", String.valueOf(chapterId))
+                        .param("referenceId", String.valueOf(referenceId))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.*").value(IsEmptyCollection.empty()))
                 .andDo(print());
     }
 }
