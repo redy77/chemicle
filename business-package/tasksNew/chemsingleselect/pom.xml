@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project xmlns="http://maven.apache.org/POM/4.0.0">
+    <parent>
+        <groupId>com.chemcool.school.tasks</groupId>
+        <artifactId>tasks</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.chemcool.school.tasks</groupId>
-    <artifactId>chemfixedanswer</artifactId>
+    <groupId>com.chemcool.school.tasks.chemsingleselect</groupId>
+    <artifactId>chemsingleselect</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
@@ -12,19 +18,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <chemfixedanswer.modules.version>1.0.0</chemfixedanswer.modules.version>
 
-        <hibernate-core.version>5.4.22.Final</hibernate-core.version>
-        <postgresql.version>42.2.5</postgresql.version>
-
-        <flayway.version>5.2.3</flayway.version>
         <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
-
+        <chemsingleselect.modules.version>1.0.0</chemsingleselect.modules.version>
         <lombok.version>1.18.16</lombok.version>
         <swagger2.version>3.0.0</swagger2.version>
-        <kafka.version>2.6.5</kafka.version>
-        <mockito.version>3.7.7</mockito.version>
 
     </properties>
 
@@ -47,16 +46,16 @@
             </dependency>
 
             <dependency>
-                <groupId>com.chemcool.school.tasks</groupId>
-                <artifactId>chemfixedanswer-service</artifactId>
-                <version>${chemfixedanswer.modules.version}</version>
+                <groupId>com.chemcool.school.tasks.chemsingleselect</groupId>
+                <artifactId>chemsingleselect-service</artifactId>
+                <version>${chemsingleselect.modules.version}</version>
                 <type>jar</type>
                 <scope>provided</scope>
             </dependency>
             <dependency>
-                <groupId>com.chemcool.school.tasks</groupId>
-                <artifactId>chemfixedanswer-web-api</artifactId>
-                <version>${chemfixedanswer.modules.version}</version>
+                <groupId>com.chemcool.school.tasks.chemsingleselect</groupId>
+                <artifactId>chemsingleselect-web-api</artifactId>
+                <version>${chemsingleselect.modules.version}</version>
                 <type>jar</type>
                 <scope>provided</scope>
             </dependency>
@@ -79,15 +78,6 @@
                 <version>${swagger2.version}</version>
             </dependency>
 
-<!--            TEST-->
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>${mockito.version}</version>
-                <scope>test</scope>
-            </dependency>
-<!--            end test-->
-
         </dependencies>
     </dependencyManagement>
 
@@ -104,10 +94,10 @@
     </build>
 
     <modules>
-        <module>chemfixedanswer-application</module>
-        <module>chemfixedanswer-service</module>
-        <module>chemfixedanswer-web-api</module>
-        <module>chemfixedanswer-test</module>
+        <module>chemsingleselect-application</module>
+        <module>chemsingleselect-service</module>
+        <module>chemsingleselect-web-api</module>
     </modules>
 
 </project>
+

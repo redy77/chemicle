@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.chemcool.school.tasks</groupId>
-    <artifactId>chemfixedanswer</artifactId>
+    <artifactId>chemequations</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
@@ -12,7 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <chemfixedanswer.modules.version>1.0.0</chemfixedanswer.modules.version>
+        <chemequations.modules.version>1.0.0</chemequations.modules.version>
 
         <hibernate-core.version>5.4.22.Final</hibernate-core.version>
         <postgresql.version>42.2.5</postgresql.version>
@@ -48,15 +48,15 @@
 
             <dependency>
                 <groupId>com.chemcool.school.tasks</groupId>
-                <artifactId>chemfixedanswer-service</artifactId>
-                <version>${chemfixedanswer.modules.version}</version>
+                <artifactId>chemequations-service</artifactId>
+                <version>${chemequations.modules.version}</version>
                 <type>jar</type>
                 <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>com.chemcool.school.tasks</groupId>
-                <artifactId>chemfixedanswer-web-api</artifactId>
-                <version>${chemfixedanswer.modules.version}</version>
+                <artifactId>chemequations-web-api</artifactId>
+                <version>${chemequations.modules.version}</version>
                 <type>jar</type>
                 <scope>provided</scope>
             </dependency>
@@ -79,14 +79,14 @@
                 <version>${swagger2.version}</version>
             </dependency>
 
-<!--            TEST-->
+            <!--            TEST-->
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
                 <version>${mockito.version}</version>
                 <scope>test</scope>
             </dependency>
-<!--            end test-->
+            <!--            end test-->
 
         </dependencies>
     </dependencyManagement>
@@ -104,10 +104,8 @@
     </build>
 
     <modules>
-        <module>chemfixedanswer-application</module>
-        <module>chemfixedanswer-service</module>
-        <module>chemfixedanswer-web-api</module>
-        <module>chemfixedanswer-test</module>
+        <module>chemequations-application</module>
+        <module>chemequations-service</module>
+        <module>chemequations-web-api</module>
     </modules>
-
 </project>

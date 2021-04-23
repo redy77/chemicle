@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<project xmlns="http://maven.apache.org/POM/4.0.0">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.chemcool.school.tasks</groupId>
-    <artifactId>chemfixedanswer</artifactId>
-    <version>1.0.0</version>
+    <groupId>com.chemcool.school.chemmatches</groupId>
+    <artifactId>chemmatches</artifactId>
     <packaging>pom</packaging>
+    <version>1.0.0</version>
 
     <properties>
         <java.version>11</java.version>
@@ -12,20 +15,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <chemfixedanswer.modules.version>1.0.0</chemfixedanswer.modules.version>
 
-        <hibernate-core.version>5.4.22.Final</hibernate-core.version>
-        <postgresql.version>42.2.5</postgresql.version>
-
-        <flayway.version>5.2.3</flayway.version>
         <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
-
+        <chemmatches.modules.version>1.0.0</chemmatches.modules.version>
         <lombok.version>1.18.16</lombok.version>
         <swagger2.version>3.0.0</swagger2.version>
-        <kafka.version>2.6.5</kafka.version>
-        <mockito.version>3.7.7</mockito.version>
-
     </properties>
 
     <dependencyManagement>
@@ -47,16 +42,16 @@
             </dependency>
 
             <dependency>
-                <groupId>com.chemcool.school.tasks</groupId>
-                <artifactId>chemfixedanswer-service</artifactId>
-                <version>${chemfixedanswer.modules.version}</version>
+                <groupId>com.chemcool.school.chemmatches</groupId>
+                <artifactId>chemmatches-service</artifactId>
+                <version>${chemmatches.modules.version}</version>
                 <type>jar</type>
                 <scope>provided</scope>
             </dependency>
             <dependency>
-                <groupId>com.chemcool.school.tasks</groupId>
-                <artifactId>chemfixedanswer-web-api</artifactId>
-                <version>${chemfixedanswer.modules.version}</version>
+                <groupId>com.chemcool.school.chemmatches</groupId>
+                <artifactId>chemmatches-web-api</artifactId>
+                <version>${chemmatches.modules.version}</version>
                 <type>jar</type>
                 <scope>provided</scope>
             </dependency>
@@ -78,16 +73,6 @@
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${swagger2.version}</version>
             </dependency>
-
-<!--            TEST-->
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>${mockito.version}</version>
-                <scope>test</scope>
-            </dependency>
-<!--            end test-->
-
         </dependencies>
     </dependencyManagement>
 
@@ -104,10 +89,9 @@
     </build>
 
     <modules>
-        <module>chemfixedanswer-application</module>
-        <module>chemfixedanswer-service</module>
-        <module>chemfixedanswer-web-api</module>
-        <module>chemfixedanswer-test</module>
+        <module>chemmatches-application</module>
+        <module>chemmatches-service</module>
+        <module>chemmatches-web-api</module>
     </modules>
 
 </project>
