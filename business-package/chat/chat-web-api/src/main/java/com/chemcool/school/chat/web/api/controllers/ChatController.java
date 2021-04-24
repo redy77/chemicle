@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import java.util.Objects;
 
 
-//@RestController
 @Controller
 public class ChatController {
     private final ChatMessageServiceImpl chatMessageService;

@@ -17,7 +17,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "messages")
 @TypeDef(
-        name = "pgsql_enum",
+        name = "message_type_enum",
         typeClass = PostgreSQLEnumType.class
 )
 public class ChatMessage {
@@ -32,7 +32,7 @@ public class ChatMessage {
     @Column(name = "room_id")
     private String roomId;
 
-    @Column(name = "sender_name")
+    @Column(name = "name")
     private String senderName;
 
     @Column(name = "message")
@@ -43,7 +43,7 @@ public class ChatMessage {
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "message_type")
-    @Type( type = "pgsql_enum" )
+    @Type( type = "message_type_enum" )
     private MessageType type;
 
     @Override

@@ -7,22 +7,18 @@ import com.chemcool.school.chat.service.repository.ChatMessageRepository;
 
 import lombok.RequiredArgsConstructor;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.UUID;
 
-//@Slf4j
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ChatMessageServiceImpl implements ChatMessageService {
     private final ChatMessageRepository messageRepository;
     private final ChatUserServiceImpl chatUserService;
-
-//    public ChatMessageServiceImpl(ChatMessageRepository messageRepository,ChatUserServiceImpl chatUserService ) {
-//        this.messageRepository = messageRepository;
-//        this.chatUserService = chatUserService;
-//    }
 
     @Override
     public Boolean save(ChatMessage chatMessage) {
@@ -34,7 +30,7 @@ public class ChatMessageServiceImpl implements ChatMessageService {
         chatMessage.setType(MessageType.CHAT);
 
         ChatMessage result = messageRepository.save(chatMessage);
-//        log.info("Message с ID: " + chatMessage.getId() + "  добавлен.");
+        log.info("Message с ID: " + chatMessage.getId() + "  добавлен.");
         return true;
     }
 }
