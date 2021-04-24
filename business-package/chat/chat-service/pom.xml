@@ -41,6 +41,22 @@
             <version>${spring-boot.version}</version>
         </dependency>
 
+        <!--DATABASE-->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+
+        <!--DATABASE FOR TESTING-->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version>
+            <scope>test</scope>
+        </dependency>
+
+
         <!--        TOOLS -->
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
