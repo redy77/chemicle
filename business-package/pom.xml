@@ -54,7 +54,7 @@
     </build>
 
     <modules>
-        <module>answers-task</module>
+        <module>answers</module>
         <module>community</module>
         <module>constructor</module>
     </modules>
