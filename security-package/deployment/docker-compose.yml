@@ -24,13 +24,12 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=test-hosts
       - SPRING_CLOUD_CONFIG_USERNAME=config-service-user
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://localhost:8761/eureka/
-    volumes:
-      - ../../../../test_secrets:/run/secrets
+      - SPRING_CLOUD_CONFIG_PASSWORD=123
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka
     links:
       - service-discovery
     depends_on:
-      - service-discovery
+      - config-service
     ports:
       - 8080:8080
 
@@ -51,38 +50,6 @@ services:
     ports:
       - 8888:8888
 
-
-  theory-application:
-    image: theory-application
-    container_name: theory-application
-    build:
-      context: ../../business-package/theory/theory-application
-      dockerfile: Dockerfile
-    environment:
-      - SPRING_PROFILES_ACTIVE=default
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
-    volumes:
-      - ../../../../test_secrets:/run/secrets
-    links:
-      - service-discovery
-    depends_on:
-      - web-api-gateway
-
-  chemsingleselect:
-    image: chemsingleselect
-    container_name: chemsingleselect
-    build:
-      context: ../../business-package/tasks/chemsingleselect
-      dockerfile: Dockerfile
-    environment:
-      - SPRING_PROFILES_ACTIVE=default
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
-    volumes:
-    - ../../../../test_secrets:/run/secrets
-    links:
-      - service-discovery
-    depends_on:
-      - web-api-gateway
 
   postgres:
     image: postgres
