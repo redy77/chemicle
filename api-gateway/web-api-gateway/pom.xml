@@ -90,7 +90,6 @@
 
     <modules>
         <module>web-api-gateway-application</module>
-        <module>web-api-gateway-service</module>
     </modules>
 
 

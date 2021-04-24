@@ -4,7 +4,7 @@ EXPOSE 8080
 
 RUN adduser --system --home /var/cache/bootapp --shell /sbin/nologin bootapp;
 
-COPY /web-api-gateway-application/target/web-api-gateway.jar /opt/web-api-gateway.jar
+COPY /target/web-api-gateway.jar /opt/web-api-gateway.jar
 
 USER bootapp
 

@@ -54,12 +54,10 @@
     </build>
 
     <modules>
-        <module>theory</module>
-        <module>answers-task</module>
-        <module>tasks</module>
         <module>chat</module>
+        <module>answers</module>
         <module>community</module>
-        <module>lesson</module>
+        <module>constructor</module>
     </modules>
 
 </project>
