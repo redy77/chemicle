@@ -7,8 +7,8 @@ services:
     container_name: service-discovery
     hostname: service-discovery
     build:
-      context: ../../../api-gateway/service-discovery
-      dockerfile: Dockerfile
+      context: ../../../../api-gateway/service-discovery
+      dockerfile: ../../../../api-gateway/service-discovery/Dockerfile
     environment:
       - SPRING_PROFILES_ACTIVE=default
     ports:
@@ -19,7 +19,7 @@ services:
     container_name: web-api-gateway
     hostname: web-api-gateway
     build:
-      context: ../../../api-gateway/web-api-gateway
+      context: ../../../../api-gateway/web-api-gateway
       dockerfile: Dockerfile
     environment:
       - SPRING_PROFILES_ACTIVE=default
@@ -37,8 +37,8 @@ services:
     image: theory-application
     container_name: theory-application
     build:
-      context: ../../../business-package/theory/theory-application
-      dockerfile: Dockerfile
+      context: ../theory-application
+      dockerfile: ../theory-application/Dockerfile
     environment:
       - SPRING_PROFILES_ACTIVE=default
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/

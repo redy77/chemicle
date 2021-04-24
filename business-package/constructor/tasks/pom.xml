@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.chemcool.school.theory</groupId>
-    <artifactId>theory</artifactId>
-    <packaging>pom</packaging>
+    <groupId>com.chemcool.school.tasks</groupId>
+    <artifactId>tasks</artifactId>
     <version>1.0.0</version>
-
+    <packaging>pom</packaging>
 
     <properties>
         <java.version>11</java.version>
@@ -20,14 +15,14 @@
 
         <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
-        <theory.modules.version>1.0.0</theory.modules.version>
+        <tasks.modules.version>1.0.0</tasks.modules.version>
         <lombok.version>1.18.16</lombok.version>
         <swagger2.version>3.0.0</swagger2.version>
-
     </properties>
 
     <dependencyManagement>
         <dependencies>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -45,21 +40,6 @@
             </dependency>
 
             <dependency>
-                <groupId>com.chemcool.school.theory</groupId>
-                <artifactId>theory-service</artifactId>
-                <version>${theory.modules.version}</version>
-                <type>jar</type>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.chemcool.school.theory</groupId>
-                <artifactId>theory-web-api</artifactId>
-                <version>${theory.modules.version}</version>
-                <type>jar</type>
-                <scope>provided</scope>
-            </dependency>
-
-            <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
@@ -70,33 +50,30 @@
                 <artifactId>springfox-swagger2</artifactId>
                 <version>${swagger2.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${swagger2.version}</version>
             </dependency>
 
-
         </dependencies>
     </dependencyManagement>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring-boot.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+            </plugin>
+        </plugins>
     </build>
 
     <modules>
-        <module>theory-application</module>
-        <module>theory-service</module>
-        <module>theory-web-api</module>
+        <module>chemequations</module>
+        <module>chemmatches</module>
+        <module>chemfixedanswer</module>
+        <module>chemsingleselect</module>
     </modules>
 
 </project>
