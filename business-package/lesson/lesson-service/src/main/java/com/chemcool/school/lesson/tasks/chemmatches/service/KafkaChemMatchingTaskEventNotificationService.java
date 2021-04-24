@@ -34,7 +34,7 @@ public class KafkaChemMatchingTaskEventNotificationService implements ChemMatchi
 
     @Override
     public void send(ChemFixedAnswerTaskEvent event) {
-        ListenableFuture<SendResult<String, ChemFixedAnswerTaskEvent>> future = kafkaTemplate.send("fixed-answer-task", UUID.randomUUID().toString(), event);
+        ListenableFuture<SendResult<String, ChemFixedAnswerTaskEvent>> future = kafkaTemplate.send("fixed-answer", UUID.randomUUID().toString(), event);
         future.addCallback(System.out::println, System.out::println);
         kafkaTemplate.flush();
     }
