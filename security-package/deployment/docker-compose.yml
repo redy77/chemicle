@@ -24,7 +24,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=test-hosts
       - SPRING_CLOUD_CONFIG_USERNAME=config-service-user
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=https://localhost:8761/eureka
     volumes:
       - ../../../../test_secrets:/run/secrets
     links:
