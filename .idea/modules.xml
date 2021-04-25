@@ -16,6 +16,10 @@
       <module fileurl="file://$PROJECT_DIR$/security-package/authorization/auth-web-api/auth-web-api.iml" filepath="$PROJECT_DIR$/security-package/authorization/auth-web-api/auth-web-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/security-package/authorization/authorization.iml" filepath="$PROJECT_DIR$/security-package/authorization/authorization.iml" />
       <module fileurl="file://$PROJECT_DIR$/business-package/business-package.iml" filepath="$PROJECT_DIR$/business-package/business-package.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/chat/chat.iml" filepath="$PROJECT_DIR$/business-package/chat/chat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/chat/chat-application/chat-application.iml" filepath="$PROJECT_DIR$/business-package/chat/chat-application/chat-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/chat/chat-service/chat-service.iml" filepath="$PROJECT_DIR$/business-package/chat/chat-service/chat-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/chat/chat-web-api/chat-web-api.iml" filepath="$PROJECT_DIR$/business-package/chat/chat-web-api/chat-web-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/chemcool.iml" filepath="$PROJECT_DIR$/chemcool.iml" />
       <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemequations/chemequations.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemequations/chemequations.iml" />
       <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemequations/chemequations-application/chemequations-application.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemequations/chemequations-application/chemequations-application.iml" />
