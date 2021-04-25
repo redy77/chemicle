@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: tasks-application
+  cloud:
+    config:
+      name: tasks-application
+      discovery:
+        enabled: true
+        service-id: config-service
+      fail-fast: true
+      password: ${SPRING_CLOUD_CONFIG_USERNAME}
+      username: ${SPRING_CLOUD_CONFIG_PASSWORD}
+
+---
+spring:
+  profiles: test
+  application:
+    name: tasks-application-test
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: false
+      password: ${CONFIG_SERVICE_PASSWORD}
+      username: ${CONFIG_SERVICE_USER}
