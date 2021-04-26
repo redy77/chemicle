@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/business-package/admin-panel/admin-panel.iml" filepath="$PROJECT_DIR$/business-package/admin-panel/admin-panel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/admin-panel/admin-panel-app/admin-panel-app.iml" filepath="$PROJECT_DIR$/business-package/admin-panel/admin-panel-app/admin-panel-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/admin-panel/admin-panel-service/admin-panel-service.iml" filepath="$PROJECT_DIR$/business-package/admin-panel/admin-panel-service/admin-panel-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/admin-panel/admin-panel-web-api/admin-panel-web-api.iml" filepath="$PROJECT_DIR$/business-package/admin-panel/admin-panel-web-api/admin-panel-web-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/answers/answers.iml" filepath="$PROJECT_DIR$/business-package/answers/answers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/answers/answers-application/answers-application.iml" filepath="$PROJECT_DIR$/business-package/answers/answers-application/answers-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/answers/answers-service/answers-service.iml" filepath="$PROJECT_DIR$/business-package/answers/answers-service/answers-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/answers/answers-web-api/answers-web-api.iml" filepath="$PROJECT_DIR$/business-package/answers/answers-web-api/answers-web-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-gateway/api-gateway.iml" filepath="$PROJECT_DIR$/api-gateway/api-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/security-package/authorization/auth-app/auth-app.iml" filepath="$PROJECT_DIR$/security-package/authorization/auth-app/auth-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/security-package/authorization/auth-service/auth-service.iml" filepath="$PROJECT_DIR$/security-package/authorization/auth-service/auth-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/security-package/authorization/auth-web-api/auth-web-api.iml" filepath="$PROJECT_DIR$/security-package/authorization/auth-web-api/auth-web-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/security-package/authorization/authorization.iml" filepath="$PROJECT_DIR$/security-package/authorization/authorization.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/business-package.iml" filepath="$PROJECT_DIR$/business-package/business-package.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chemcool.iml" filepath="$PROJECT_DIR$/chemcool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemequations/chemequations.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemequations/chemequations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemequations/chemequations-application/chemequations-application.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemequations/chemequations-application/chemequations-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemequations/chemequations-service/chemequations-service.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemequations/chemequations-service/chemequations-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemequations/chemequations-web-api/chemequations-web-api.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemequations/chemequations-web-api/chemequations-web-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemfixedanswer/chemfixedanswer.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemfixedanswer/chemfixedanswer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemfixedanswer/chemfixedanswer-application/chemfixedanswer-application.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemfixedanswer/chemfixedanswer-application/chemfixedanswer-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemfixedanswer/chemfixedanswer-service/chemfixedanswer-service.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemfixedanswer/chemfixedanswer-service/chemfixedanswer-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemfixedanswer/chemfixedanswer-test/chemfixedanswer-test.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemfixedanswer/chemfixedanswer-test/chemfixedanswer-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemfixedanswer/chemfixedanswer-web-api/chemfixedanswer-web-api.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemfixedanswer/chemfixedanswer-web-api/chemfixedanswer-web-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemmatches/chemmatches.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemmatches/chemmatches.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemmatches/chemmatches-application/chemmatches-application.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemmatches/chemmatches-application/chemmatches-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemmatches/chemmatches-service/chemmatches-service.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemmatches/chemmatches-service/chemmatches-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemmatches/chemmatches-web-api/chemmatches-web-api.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemmatches/chemmatches-web-api/chemmatches-web-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemsingleselect/chemsingleselect.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemsingleselect/chemsingleselect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemsingleselect/chemsingleselect-application/chemsingleselect-application.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemsingleselect/chemsingleselect-application/chemsingleselect-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemsingleselect/chemsingleselect-service/chemsingleselect-service.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemsingleselect/chemsingleselect-service/chemsingleselect-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/chemsingleselect/chemsingleselect-web-api/chemsingleselect-web-api.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/chemsingleselect/chemsingleselect-web-api/chemsingleselect-web-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/community/community.iml" filepath="$PROJECT_DIR$/business-package/community/community.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/community/community-application/community-application.iml" filepath="$PROJECT_DIR$/business-package/community/community-application/community-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/community/community-service/community-service.iml" filepath="$PROJECT_DIR$/business-package/community/community-service/community-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/community/community-web-api/community-web-api.iml" filepath="$PROJECT_DIR$/business-package/community/community-web-api/community-web-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/configuration/config-service/config-service.iml" filepath="$PROJECT_DIR$/configuration/config-service/config-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/configuration/configuration.iml" filepath="$PROJECT_DIR$/configuration/configuration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/constructor.iml" filepath="$PROJECT_DIR$/business-package/constructor/constructor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/lesson/lesson.iml" filepath="$PROJECT_DIR$/business-package/constructor/lesson/lesson.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/lesson/lesson-application/lesson-application.iml" filepath="$PROJECT_DIR$/business-package/constructor/lesson/lesson-application/lesson-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/lesson/lesson-service/lesson-service.iml" filepath="$PROJECT_DIR$/business-package/constructor/lesson/lesson-service/lesson-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/lesson/lesson-web-api/lesson-web-api.iml" filepath="$PROJECT_DIR$/business-package/constructor/lesson/lesson-web-api/lesson-web-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/security-package/registration/registration.iml" filepath="$PROJECT_DIR$/security-package/registration/registration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/security-package/registration/registration-application/registration-application.iml" filepath="$PROJECT_DIR$/security-package/registration/registration-application/registration-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/security-package/registration/registration-service/registration-service.iml" filepath="$PROJECT_DIR$/security-package/registration/registration-service/registration-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/security-package/registration/registration-web-api/registration-web-api.iml" filepath="$PROJECT_DIR$/security-package/registration/registration-web-api/registration-web-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/security-package/security-package.iml" filepath="$PROJECT_DIR$/security-package/security-package.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-gateway/service-discovery/service-discovery.iml" filepath="$PROJECT_DIR$/api-gateway/service-discovery/service-discovery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/tasks/tasks.iml" filepath="$PROJECT_DIR$/business-package/constructor/tasks/tasks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/theory/theory.iml" filepath="$PROJECT_DIR$/business-package/constructor/theory/theory.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/theory/theory-application/theory-application.iml" filepath="$PROJECT_DIR$/business-package/constructor/theory/theory-application/theory-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/theory/theory-service/theory-service.iml" filepath="$PROJECT_DIR$/business-package/constructor/theory/theory-service/theory-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business-package/constructor/theory/theory-web-api/theory-web-api.iml" filepath="$PROJECT_DIR$/business-package/constructor/theory/theory-web-api/theory-web-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-gateway/web-api-gateway/web-api-gateway.iml" filepath="$PROJECT_DIR$/api-gateway/web-api-gateway/web-api-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-gateway/web-api-gateway/web-api-gateway-application/web-api-gateway-application.iml" filepath="$PROJECT_DIR$/api-gateway/web-api-gateway/web-api-gateway-application/web-api-gateway-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-gateway/web-api-gateway/web-api-gateway-service/web-api-gateway-service.iml" filepath="$PROJECT_DIR$/api-gateway/web-api-gateway/web-api-gateway-service/web-api-gateway-service.iml" />
+    </modules>
+  </component>
+</project>

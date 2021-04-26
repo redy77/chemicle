@@ -57,6 +57,7 @@
         <module>theory</module>
         <module>answers-task</module>
         <module>tasks</module>
+        <module>community</module>
         <module>lesson</module>
         <module>admin-panel</module>
     </modules>
