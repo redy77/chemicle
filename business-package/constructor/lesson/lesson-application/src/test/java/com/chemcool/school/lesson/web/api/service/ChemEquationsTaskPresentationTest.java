@@ -1,8 +1,6 @@
 package com.chemcool.school.lesson.web.api.service;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
-import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTaskExample;
 import com.chemcool.school.lesson.web.api.dto.ChemEquationsTaskDto;
 import com.chemcool.school.lesson.web.api.exeption.ChemTaskEmptyException;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,10 +16,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(classes = LessonApplication.class)
 @RunWith(SpringRunner.class)

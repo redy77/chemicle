@@ -1,8 +1,6 @@
 package com.chemcool.school.lesson.web.api.service;
 
 
-import com.chemcool.school.lesson.domain.ChemistryLesson;
-import com.chemcool.school.lesson.domain.ChemistryLessonExample;
 import com.chemcool.school.lesson.web.api.dto.LessonDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

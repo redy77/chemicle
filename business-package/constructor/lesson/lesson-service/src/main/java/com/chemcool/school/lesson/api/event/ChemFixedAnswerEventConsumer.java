@@ -1,11 +1,8 @@
 package com.chemcool.school.lesson.api.event;
 
-import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskEvent;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.service.ChemFixedAnswerTaskEventService;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.service.ChemFixedAnswerTaskService;
-import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTaskEvent;
-import com.chemcool.school.lesson.tasks.chemsingleselect.service.ChemSingleSelectTaskEventService;
-import com.chemcool.school.lesson.tasks.chemsingleselect.service.ChemSingleSelectTaskService;
+import com.chemcool.school.lesson.domain.fixedanswer.ChemFixedAnswerTaskEvent;
+import com.chemcool.school.lesson.service.fixedanswer.ChemFixedAnswerTaskEventService;
+import com.chemcool.school.lesson.service.fixedanswer.ChemFixedAnswerTaskService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;

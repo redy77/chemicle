@@ -1,8 +1,8 @@
 package com.chemcool.school.lesson.api.event;
 
-import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemMatchingTaskEvent;
-import com.chemcool.school.lesson.tasks.chemmatches.service.ChemMatchingTaskEventService;
-import com.chemcool.school.lesson.tasks.chemmatches.service.ChemMatchingTaskService;
+import com.chemcool.school.lesson.domain.matches.ChemMatchingTaskEvent;
+import com.chemcool.school.lesson.service.matches.ChemMatchingTaskEventService;
+import com.chemcool.school.lesson.service.matches.ChemMatchingTaskService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;

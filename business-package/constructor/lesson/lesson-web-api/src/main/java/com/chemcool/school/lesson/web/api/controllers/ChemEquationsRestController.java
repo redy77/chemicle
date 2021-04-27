@@ -1,6 +1,5 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
-import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
 import com.chemcool.school.lesson.web.api.dto.ChemEquationsTaskDto;
 import com.chemcool.school.lesson.web.api.service.ChemEquationsTaskPresentation;
 import io.swagger.annotations.ApiOperation;
