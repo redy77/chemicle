@@ -2,7 +2,7 @@ package com.chemcool.school.answers.service;
 
 import com.chemcool.school.answers.domain.ChemEquationCorrectAswers;
 import com.chemcool.school.answers.storage.ChemEquationCorrectAnswersRepository;
-import com.chemcool.school.answers.tasks.chemequation.domain.ChemEquationsTask;
+import com.chemcool.school.answers.domain.equation.ChemEquationsTask;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

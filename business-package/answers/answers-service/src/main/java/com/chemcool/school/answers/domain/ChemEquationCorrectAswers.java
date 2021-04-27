@@ -1,6 +1,6 @@
 package com.chemcool.school.answers.domain;
 
-import com.chemcool.school.answers.tasks.chemequation.domain.ChemEquationsTask;
+import com.chemcool.school.answers.domain.equation.ChemEquationsTask;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
