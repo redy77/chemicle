@@ -12,7 +12,7 @@ import java.util.Base64;
 
 @Service
 @Data
-public class jwtParser {
+public class JWTParser {
 //    @Value("${authentication.jwt.secretKey}")
 //    private String SECRET_KEY;
     private String SECRET_KEY = "926D96C90030DD58429D2751AC1BDBBC";

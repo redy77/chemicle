@@ -1,37 +1,40 @@
 package com.chemcool.school.braingames.twoofoureight.web.api.controllers;
 
-import com.chemcool.school.braingames.twoofoureight.web.api.jwt.jwtParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import io.swagger.annotations.ApiOperation;
+import com.chemcool.school.braingames.twoofoureight.web.api.jwt.JWTParser;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-@RequestMapping()
+@RequestMapping("/valid")
 @RequiredArgsConstructor
 public class TwoOFourEightRestController {
 
-    private final jwtParser jwtParser;
+    private final JWTParser jwtParser;
+    //    @Value("authentication.db")
+    private String DBUserID = "100";
+    //    @Value("authentication.db")
+    private String DBUserEmail = null;
 
     @GetMapping()
-    public ResponseEntity<String> viewPage(@RequestHeader(value = "Authorization", required = false) String token) {
-
-        return new ResponseEntity<>("this is reply of our token:  "+token, HttpStatus.OK);
+    @ResponseBody
+    public String isValid(@RequestHeader(value = "AuthorizationToken") String token) {
+        String userID = jwtParser.getIdUserOfToken(token);
+        String userEmail = jwtParser.getEmailUserOfToken(token);
+        if (userID == DBUserID && userEmail == DBUserEmail) { //узнать как вытаскивать юзеров
+            return Boolean.TRUE.toString();
+        }
+        return Boolean.FALSE.toString();
     }
 
-    @GetMapping("/test")
-    public ModelAndView index (@RequestHeader(value = "AuthorizationToken") String token) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index");
-        System.out.println(jwtParser.getIdUserOfToken(token));
 
-        return modelAndView;
-    }
+/** на сегодня вижу так: нужно:
+ получаем токен
+ парсим его - получаем данные
+ сравниваем данные с базой текущих юзеров
+ если есть совпадение возвращаем тру иначе фолс
+
+ */
 
 
 }
