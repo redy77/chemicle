@@ -27,8 +27,8 @@ flyway:
 
 server:
   port: 8100
-#  servlet:
-#    context-path: /chat-application/
+  servlet:
+    context-path: /chat-application
 
 eureka:
   client:

@@ -35,6 +35,12 @@
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flayway.version}</version>
+        </dependency>
+
         <!--TEST-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

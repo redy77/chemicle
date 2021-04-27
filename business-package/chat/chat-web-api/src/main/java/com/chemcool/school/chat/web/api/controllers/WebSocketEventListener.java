@@ -40,7 +40,7 @@ public class WebSocketEventListener {
             chatMessage.setMessage("User Disconnected : " + username);
             chatMessage.setType(MessageType.LEAVE);
 
-            messagingTemplate.convertAndSend("/topic/public", chatMessage);
+            messagingTemplate.convertAndSend("/chat-application/topic/public", chatMessage);
         }
     }
 }

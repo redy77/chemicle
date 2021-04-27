@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 
 import java.util.Objects;
 
-
 @Controller
 public class ChatController {
     private final ChatMessageServiceImpl chatMessageService;
@@ -20,14 +19,14 @@ public class ChatController {
     }
 
     @MessageMapping("/chat.sendMessage")
-    @SendTo("/topic/public")
+    @SendTo("/chat-application/topic/public")
     public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
         chatMessageService.save(chatMessage);
         return chatMessage;
     }
 
     @MessageMapping("/chat.addUser")
-    @SendTo("/topic/public")
+    @SendTo("/chat-application/topic/public")
     public ChatMessage addUser(@Payload ChatMessage chatMessage,
                                SimpMessageHeaderAccessor headerAccessor) {
         // Add username in web socket session

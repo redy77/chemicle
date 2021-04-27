@@ -19,7 +19,7 @@
         <chat.modules.version>1.0.0</chat.modules.version>
         <lombok.version>1.18.20</lombok.version>
         <swagger2.version>3.0.0</swagger2.version>
-        <flayway.version>5.2.3</flayway.version>
+        <flayway.version>5.2.4</flayway.version>
     </properties>
 
     <dependencies>

@@ -23,21 +23,19 @@ function connect(event) {
         usernamePage.classList.add('hidden');
         chatPage.classList.remove('hidden');
 
-        let socket = new SockJS('/ws');
+        let socket = new SockJS('/chat-application/ws');
         stompClient = Stomp.over(socket);
-
         stompClient.connect({}, onConnected, onError);
     }
     event.preventDefault();
 }
 
-
 function onConnected() {
     // Subscribe to the Public Topic
-    stompClient.subscribe('/topic/public', onMessageReceived);
+    stompClient.subscribe('/chat-application/topic/public', onMessageReceived);
 
     // Tell your username to the server
-    stompClient.send("/app/chat.addUser",
+    stompClient.send("/chat-application/app/chat.addUser",
         {},
         JSON.stringify({senderName: username, type: 'JOIN'})
     )
@@ -45,12 +43,10 @@ function onConnected() {
     connectingElement.classList.add('hidden');
 }
 
-
 function onError(error) {
     connectingElement.textContent = 'Could not connect to WebSocket server. Please refresh this page to try again!';
     connectingElement.style.color = 'red';
 }
-
 
 function sendMessage(event) {
     let messageContent = messageInput.value.trim();
@@ -64,16 +60,14 @@ function sendMessage(event) {
             type: 'CHAT'
         };
 
-        stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
+        stompClient.send("/chat-application/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
         messageInput.value = '';
     }
     event.preventDefault();
 }
 
-
 function onMessageReceived(payload) {
     let message = JSON.parse(payload.body);
-    console.log("RECEIVED MESSAGE via websocket", payload.body);
     let messageElement = document.createElement('li');
 
     if (message.type === 'JOIN') {
@@ -107,7 +101,6 @@ function onMessageReceived(payload) {
     messageArea.appendChild(messageElement);
     messageArea.scrollTop = messageArea.scrollHeight;
 }
-
 
 function getAvatarColor(messageSender) {
     let hash = 0;
