@@ -2,8 +2,8 @@ package com.chemcool.school.answers.service;
 
 import com.chemcool.school.answers.domain.ChemmathesCorrectAnswers;
 import com.chemcool.school.answers.storage.ChemmathesCorrectAnswersRepository;
-import com.chemcool.school.answers.tasks.chemmatches.domain.ChemistryMatchingTask;
-import com.chemcool.school.answers.tasks.chemmatches.domain.CoupleForMatching;
+import com.chemcool.school.answers.domain.matches.ChemistryMatchingTask;
+import com.chemcool.school.answers.domain.matches.CoupleForMatching;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
