@@ -1,7 +1,7 @@
 package com.chemcool.school.lesson.web.api.dto;
 
-import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemMatchingTask;
-import com.chemcool.school.lesson.tasks.chemmatches.domain.CoupleForMatching;
+import com.chemcool.school.lesson.domain.matches.ChemMatchingTask;
+import com.chemcool.school.lesson.domain.matches.CoupleForMatching;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

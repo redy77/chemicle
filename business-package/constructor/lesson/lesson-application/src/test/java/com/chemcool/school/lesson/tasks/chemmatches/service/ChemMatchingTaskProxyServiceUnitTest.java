@@ -1,10 +1,11 @@
 package com.chemcool.school.lesson.tasks.chemmatches.service;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
-import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemMatchingTask;
-import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemMatchingTaskExample;
-import com.chemcool.school.lesson.tasks.chemmatches.domain.CoupleForMatching;
+import com.chemcool.school.lesson.domain.matches.ChemMatchingTask;
+import com.chemcool.school.lesson.domain.matches.ChemMatchingTaskExample;
+import com.chemcool.school.lesson.domain.matches.CoupleForMatching;
+import com.chemcool.school.lesson.service.matches.ChemMatchingTaskProxyService;
+import com.chemcool.school.lesson.service.matches.ChemMatchingTaskService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

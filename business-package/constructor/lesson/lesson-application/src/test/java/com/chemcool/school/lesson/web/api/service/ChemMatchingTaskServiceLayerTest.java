@@ -1,11 +1,10 @@
 package com.chemcool.school.lesson.web.api.service;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemMatchingTask;
-import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemMatchingTaskExample;
-import com.chemcool.school.lesson.tasks.chemmatches.domain.CoupleForMatching;
-import com.chemcool.school.lesson.tasks.chemmatches.service.ChemMatchingTaskProxyService;
-import com.chemcool.school.lesson.web.api.dto.ChemEquationsTaskDto;
+import com.chemcool.school.lesson.domain.matches.ChemMatchingTask;
+import com.chemcool.school.lesson.domain.matches.ChemMatchingTaskExample;
+import com.chemcool.school.lesson.domain.matches.CoupleForMatching;
+import com.chemcool.school.lesson.service.matches.ChemMatchingTaskProxyService;
 import com.chemcool.school.lesson.web.api.dto.ChemMatchingTaskDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,7 +22,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(classes = LessonApplication.class)
 @RunWith(SpringRunner.class)

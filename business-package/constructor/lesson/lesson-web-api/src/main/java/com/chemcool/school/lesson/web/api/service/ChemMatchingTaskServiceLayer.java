@@ -1,7 +1,7 @@
 package com.chemcool.school.lesson.web.api.service;
 
-import com.chemcool.school.lesson.tasks.chemmatches.domain.ChemMatchingTask;
-import com.chemcool.school.lesson.tasks.chemmatches.service.ChemMatchingTaskProxyService;
+import com.chemcool.school.lesson.domain.matches.ChemMatchingTask;
+import com.chemcool.school.lesson.service.matches.ChemMatchingTaskProxyService;
 import com.chemcool.school.lesson.web.api.dto.ChemMatchingTaskDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

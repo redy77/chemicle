@@ -1,8 +1,7 @@
 package com.chemcool.school.lesson.web.api.service;
 
-import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskExample;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.service.ChemFixedAnswerTaskProxyService;
+import com.chemcool.school.lesson.domain.fixedanswer.ChemFixedAnswerTask;
+import com.chemcool.school.lesson.service.fixedanswer.ChemFixedAnswerTaskProxyService;
 import com.chemcool.school.lesson.web.api.dto.ChemFixedAnswerTaskDto;
 import com.chemcool.school.lesson.web.api.exeption.ChemTaskEmptyException;
 import lombok.AllArgsConstructor;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor

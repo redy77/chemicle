@@ -1,6 +1,6 @@
 package com.chemcool.school.lesson.web.api.dto;
 
-import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
+import com.chemcool.school.lesson.domain.fixedanswer.ChemFixedAnswerTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

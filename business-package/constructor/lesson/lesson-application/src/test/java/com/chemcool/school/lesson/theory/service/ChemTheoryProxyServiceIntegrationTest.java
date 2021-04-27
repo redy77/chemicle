@@ -1,7 +1,6 @@
 package com.chemcool.school.lesson.theory.service;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
 import com.chemcool.school.lesson.theory.domain.ChemTheory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
