@@ -54,9 +54,11 @@
     </build>
 
     <modules>
-        <module>answers</module>
+        <module>theory</module>
+        <module>answers-task</module>
+        <module>tasks</module>
         <module>community</module>
-        <module>constructor</module>
+        <module>lesson</module>
     </modules>
 
 </project>
