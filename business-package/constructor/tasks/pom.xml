@@ -70,10 +70,9 @@
     </build>
 
     <modules>
-        <module>chemequations</module>
-        <module>chemmatches</module>
-        <module>chemfixedanswer</module>
-        <module>chemsingleselect</module>
+        <module>tasks-application</module>
+        <module>tasks-service</module>
+        <module>tasks-web-api</module>
     </modules>
 
 </project>

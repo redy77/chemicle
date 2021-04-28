@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemequations.web.api.exeption;
+package com.chemcool.school.tasks.chemequations.exeption;
 
 public class ChemTaskEmptyException extends RuntimeException {
     public ChemTaskEmptyException(String message) {

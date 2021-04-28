@@ -1,17 +1,14 @@
-package com.chemcool.school.tasks.chemequations.web.api.controllers;
+package com.chemcool.school.tasks.chemequations.controllers;
 
-import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTask;
-import com.chemcool.school.tasks.chemequations.web.api.dto.ChemAnswerDto;
-import com.chemcool.school.tasks.chemequations.web.api.dto.ChemEquationsTaskDto;
-import com.chemcool.school.tasks.chemequations.web.api.service.ChemEquationsTaskPresentation;
-
+import com.chemcool.school.tasks.chemequations.dto.ChemAnswerDto;
+import com.chemcool.school.tasks.chemequations.dto.ChemEquationsTaskDto;
+import com.chemcool.school.tasks.chemequations.service.ChemEquationsTaskPresentation;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController

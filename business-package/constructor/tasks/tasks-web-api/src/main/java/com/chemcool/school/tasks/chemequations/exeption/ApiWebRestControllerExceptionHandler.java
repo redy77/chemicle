@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemequations.web.api.exeption;
+package com.chemcool.school.tasks.chemequations.exeption;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

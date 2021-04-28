@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemequations.web.api.controllers;
+package com.chemcool.school.tasks.chemequations.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

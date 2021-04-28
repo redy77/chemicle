@@ -1,6 +1,6 @@
 package com.chemcool.school.tasks.chemequations.domain;
 
-import com.chemcool.school.tasks.chemequations.exception.ChemEquationsTaskException;
+import com.chemcool.school.tasks.chemequations.service.ChemEquationsTaskException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

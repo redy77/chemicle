@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemequations.web.api.dto;
+package com.chemcool.school.tasks.chemequations.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

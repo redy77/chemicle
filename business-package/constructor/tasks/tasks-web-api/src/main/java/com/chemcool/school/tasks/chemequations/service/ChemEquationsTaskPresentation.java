@@ -1,7 +1,7 @@
-package com.chemcool.school.tasks.chemequations.web.api.service;
+package com.chemcool.school.tasks.chemequations.service;
 
-import com.chemcool.school.tasks.chemequations.web.api.dto.ChemAnswerDto;
-import com.chemcool.school.tasks.chemequations.web.api.dto.ChemEquationsTaskDto;
+import com.chemcool.school.tasks.chemequations.dto.ChemAnswerDto;
+import com.chemcool.school.tasks.chemequations.dto.ChemEquationsTaskDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
