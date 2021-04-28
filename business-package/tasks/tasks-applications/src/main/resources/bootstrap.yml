@@ -1,9 +1,9 @@
 spring:
   application:
-    name: tasks-applications
+    name: chemfixedanswer-application
   cloud:
     config:
-      name: tasks-applications
+      name: chemfixedanswer-application
       discovery:
         enabled: true
         service-id: config-service
@@ -11,23 +11,6 @@ spring:
       password: ${SPRING_CLOUD_CONFIG_USERNAME}
       username: ${SPRING_CLOUD_CONFIG_PASSWORD}
 
-
-#spring:
-#  jpa:
-#    database: POSTGRESQL
-#    show-sql: true
-#    hibernate:
-#      ddl-auto: update
-#  datasource:
-#    platform: postgres
-#    url: jdbc:postgresql://localhost:5432/tasks
-#    username: postgres
-#    password: maxon
-#    driverClassName: org.postgresql.Driver
-#
-#  flyway:
-#    baseline-on-migrate: true
-#    locations: classpath:db/migration
 
 #---
 #spring:

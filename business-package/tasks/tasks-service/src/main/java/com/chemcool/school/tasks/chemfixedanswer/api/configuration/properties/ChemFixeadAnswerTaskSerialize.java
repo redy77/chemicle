@@ -1,6 +1,6 @@
-package com.chemcool.school.tasks.chemequations.api.configuration.properties;
+package com.chemcool.school.tasks.chemfixedanswer.api.configuration.properties;
 
-import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTaskEvent;
+import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskEvent;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -9,14 +9,8 @@ import org.apache.kafka.common.serialization.Serializer;
 
 import java.util.Map;
 
-/**
- * Сериализатор событий для Kafka
- *
- * @version 1.0
- * @autor Евгений Жиленков
- */
 @Slf4j
-public class ChemEquationsTaskSerialize implements Serializer<ChemEquationsTaskEvent> {
+public class ChemFixeadAnswerTaskSerialize implements Serializer<ChemFixedAnswerTaskEvent> {
 
     private final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
@@ -25,10 +19,10 @@ public class ChemEquationsTaskSerialize implements Serializer<ChemEquationsTaskE
     }
 
     @Override
-    public byte[] serialize(String s, ChemEquationsTaskEvent event) {
-        try {
+    public byte[] serialize(String s, ChemFixedAnswerTaskEvent event) {
+        try{
             return mapper.writeValueAsBytes(event);
-        } catch (JsonProcessingException exception) {
+        } catch (JsonProcessingException exception){
             log.error("Unable to serialize object {}", event, exception);
             return null;
         }
