@@ -16,8 +16,6 @@ public class JWTParser {
 //    @Value("${authentication.jwt.secretKey}")
 //    private String SECRET_KEY;
     private String SECRET_KEY = "926D96C90030DD58429D2751AC1BDBBC";
-//    private static final String SECRET_KEY = "secret";
-
 
     public Jws<Claims> getUserOfToken(String token) {
         return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token);

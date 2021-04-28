@@ -1,4 +1,4 @@
-package com.chemcool.school.braingames.twoofoureight.api.configuration.properties;
+package com.chemcool.school.braingames.twoofoureight.api.event;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
