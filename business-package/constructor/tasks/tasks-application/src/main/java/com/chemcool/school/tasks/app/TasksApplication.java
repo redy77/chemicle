@@ -6,13 +6,12 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(scanBasePackages = {"com.chemcool.school.tasks.chemequations"})
-@EntityScan("com.chemcool.school.tasks.chemequations")
-@EnableJpaRepositories("com.chemcool.school.tasks.chemequations")
+@SpringBootApplication(scanBasePackages = {"com.chemcool.school.tasks"})
+@EntityScan("com.chemcool.school.tasks")
+@EnableJpaRepositories("com.chemcool.school.tasks")
 @EnableEurekaClient
 public class TasksApplication {
     public static void main(String[] args) {
-        SpringApplication.run(TasksApplication.class,args);
+        SpringApplication.run(TasksApplication.class, args);
     }
 }
-

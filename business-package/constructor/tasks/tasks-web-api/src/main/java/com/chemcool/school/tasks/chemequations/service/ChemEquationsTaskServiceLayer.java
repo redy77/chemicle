@@ -2,16 +2,14 @@ package com.chemcool.school.tasks.chemequations.service;
 
 import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTask;
 import com.chemcool.school.tasks.chemequations.domain.ChemEquationsTaskExample;
-import com.chemcool.school.tasks.chemequations.service.ChemEquationsTaskProxyService;
 import com.chemcool.school.tasks.chemequations.dto.ChemEquationsTaskDto;
 
-import com.chemcool.school.tasks.chemequations.exeption.ChemTaskEmptyException;
+import com.chemcool.school.tasks.chemequations.ChemTaskEmptyException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 
 /**
