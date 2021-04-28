@@ -31,11 +31,11 @@
             <scope>compile</scope>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.chemcool.school.tasks</groupId>-->
-<!--            <artifactId>tasks-service</artifactId>-->
-<!--            <scope>compile</scope>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.chemcool.school.tasks</groupId>
+            <artifactId>tasks-service</artifactId>
+            <scope>compile</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>

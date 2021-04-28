@@ -1,9 +1,9 @@
 spring:
   application:
-    name: tasks-application
+    name: tasks-applications
   cloud:
     config:
-      name: tasks-application
+      name: tasks-applications
       discovery:
         enabled: true
         service-id: config-service
@@ -11,14 +11,32 @@ spring:
       password: ${SPRING_CLOUD_CONFIG_USERNAME}
       username: ${SPRING_CLOUD_CONFIG_PASSWORD}
 
----
-spring:
-  profiles: test
-  application:
-    name: tasks-application-test
-  cloud:
-    config:
-      uri: http://localhost:8888
-      fail-fast: false
-      password: ${CONFIG_SERVICE_PASSWORD}
-      username: ${CONFIG_SERVICE_USER}
+
+#spring:
+#  jpa:
+#    database: POSTGRESQL
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#  datasource:
+#    platform: postgres
+#    url: jdbc:postgresql://localhost:5432/tasks
+#    username: postgres
+#    password: maxon
+#    driverClassName: org.postgresql.Driver
+#
+#  flyway:
+#    baseline-on-migrate: true
+#    locations: classpath:db/migration
+
+#---
+#spring:
+#  profiles: test
+#  application:
+#    name: chemfixedanswer-application-test
+#  cloud:
+#    config:
+#      uri: http://localhost:8888
+#      fail-fast: false
+#      password: ${CONFIG_SERVICE_PASSWORD}
+#      username: ${CONFIG_SERVICE_USER}
