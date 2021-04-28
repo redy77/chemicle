@@ -1,7 +1,7 @@
 package com.chemcool.school.tasks.chemfixedanswer;
 
 import com.chemcool.school.tasks.chemfixedanswer.app.ChemFixedAnswerApplication;
-import com.chemcool.school.tasks.chemfixedanswer.storage.ChemFixedAnswerTaskRepository;
+import com.chemcool.school.tasks.chemfixedanswer.infrastructure.storage.ChemFixedAnswerTaskRepository;
 import com.chemcool.school.tasks.chemfixedanswer.web.api.dto.ChemFixedAnswerTaskDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;

@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemfixedanswer.storage;
+package com.chemcool.school.tasks.chemfixedanswer.infrastructure.storage;
 
 import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
 import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskEvent;

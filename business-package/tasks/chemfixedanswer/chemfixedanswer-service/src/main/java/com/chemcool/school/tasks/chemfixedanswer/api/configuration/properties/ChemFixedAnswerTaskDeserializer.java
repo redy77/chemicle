@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemfixedanswer.api.configuration.properties;
+package com.chemcool.school.tasks.chemfixedanswer.infrastructure.configuration.properties;
 
 import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskEvent;
 import com.fasterxml.jackson.databind.ObjectMapper;

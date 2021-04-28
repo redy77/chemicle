@@ -1,7 +1,7 @@
-package com.chemcool.school.tasks.chemfixedanswer.api.configuration;
+package com.chemcool.school.tasks.chemfixedanswer.infrastructure.configuration;
 
-import com.chemcool.school.tasks.chemfixedanswer.api.configuration.properties.ChemFixeadAnswerTaskSerialize;
-import com.chemcool.school.tasks.chemfixedanswer.api.configuration.properties.KafkaProperties;
+import com.chemcool.school.tasks.chemfixedanswer.infrastructure.configuration.properties.ChemFixeadAnswerTaskSerialize;
+import com.chemcool.school.tasks.chemfixedanswer.infrastructure.configuration.properties.KafkaProperties;
 import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskEvent;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;

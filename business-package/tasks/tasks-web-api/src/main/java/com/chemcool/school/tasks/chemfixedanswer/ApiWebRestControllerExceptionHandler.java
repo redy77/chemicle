@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemfixedanswer.exception;
+package com.chemcool.school.tasks.chemfixedanswer;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

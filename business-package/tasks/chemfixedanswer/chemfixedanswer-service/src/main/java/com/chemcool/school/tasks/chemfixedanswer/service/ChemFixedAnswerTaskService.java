@@ -1,7 +1,7 @@
 package com.chemcool.school.tasks.chemfixedanswer.service;
 
 import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
-import com.chemcool.school.tasks.chemfixedanswer.storage.ChemFixedAnswerTaskRepository;
+import com.chemcool.school.tasks.chemfixedanswer.infrastructure.storage.ChemFixedAnswerTaskRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

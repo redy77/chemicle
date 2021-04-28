@@ -59,6 +59,7 @@
         <module>tasks</module>
         <module>community</module>
         <module>lesson</module>
+        <module>tasks-application</module>
     </modules>
 
 </project>
