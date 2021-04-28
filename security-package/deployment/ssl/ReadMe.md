@@ -29,5 +29,9 @@ keytool -genkey -alias tomcat -storetype PKCS12  -keyalg RSA -keysize 2048 -keys
 
 ![](keytool.png)
 
+Созданный нами сертификат помещаем в директорию микросервиса:
+
+![](.)
+
 
 
