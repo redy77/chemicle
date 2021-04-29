@@ -54,5 +54,5 @@ Thumbs.db
 *.wmv
 
 .idea/*
-*/chat/chat-web-api/src/main/resources/
+./chat/chat-web-api/src/main/resources/*
 
