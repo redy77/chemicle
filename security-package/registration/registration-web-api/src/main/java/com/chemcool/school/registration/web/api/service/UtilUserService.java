@@ -1,6 +1,7 @@
 package com.chemcool.school.registration.web.api.service;
 
 import com.chemcool.school.registration.domain.RegisterUserAccountRole;
+import com.chemcool.school.registration.domain.RegisterUserAccountType;
 import com.chemcool.school.registration.repository.RegisterUserRepository;
 import com.chemcool.school.registration.web.api.dto.RegisterUserDto;
 import lombok.extern.slf4j.Slf4j;
@@ -30,8 +31,10 @@ public class UtilUserService {
 
     public void checkAndSetRole(RegisterUserDto registerUserDto) {
         if (registerUserDto.getRole() == null) {
-            log.error("role");
             registerUserDto.setRole(RegisterUserAccountRole.ROLE_USER_BASE);
+        }
+        if (registerUserDto.getType() == null) {
+            registerUserDto.setType(RegisterUserAccountType.BASE);
         }
     }
 }

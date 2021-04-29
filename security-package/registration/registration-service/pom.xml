@@ -12,8 +12,8 @@
     <artifactId>registration-service</artifactId>
 
     <properties>
-        <maven.compiler.source>12</maven.compiler.source>
-        <maven.compiler.target>12</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <lombok.version>1.18.18</lombok.version>
         <kafka.version>2.6.6</kafka.version>
         <vladmihalcea.version>2.3.4</vladmihalcea.version>

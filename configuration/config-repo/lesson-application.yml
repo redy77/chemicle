@@ -24,4 +24,6 @@ kafka:
   chemFixedAnswerGroupId: chemistry-answer.1
   chemSingleSelectGroupId: chemistry-singleSelect.1
   theoryGroupId: theory.1
+  chemEquationsGroupId: chemistry-equations.1
+  chemMatchesGroupId: chemistry-matches.1
 

@@ -61,14 +61,6 @@
             <dependency>
                 <groupId>com.chemcool.school</groupId>
                 <artifactId>web-api-gateway-application</artifactId>
-                <version>1.0.0</version>
-                <type>jar</type>
-                <scope>provided</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>com.chemcool.school</groupId>
-                <artifactId>web-api-gateway-service</artifactId>
                 <version>${web-api-gateway.modules.version}</version>
                 <type>jar</type>
                 <scope>provided</scope>
@@ -90,7 +82,6 @@
 
     <modules>
         <module>web-api-gateway-application</module>
-        <module>web-api-gateway-service</module>
     </modules>
 
 

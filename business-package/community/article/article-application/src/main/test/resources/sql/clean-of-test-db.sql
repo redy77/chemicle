@@ -1,2 +1,0 @@
-delete from articles
-delete from article_task_event
