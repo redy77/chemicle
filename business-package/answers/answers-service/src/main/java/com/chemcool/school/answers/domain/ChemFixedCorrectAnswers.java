@@ -1,6 +1,6 @@
 package com.chemcool.school.answers.domain;
 
-import com.chemcool.school.answers.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
+import com.chemcool.school.answers.domain.fixedanswer.ChemFixedAnswerTask;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;

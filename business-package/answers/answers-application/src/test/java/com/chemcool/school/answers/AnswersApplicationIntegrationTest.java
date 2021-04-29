@@ -6,7 +6,7 @@ import com.chemcool.school.answers.domain.ChemFixedCorrectAnswers;
 import com.chemcool.school.answers.domain.ChemSingleSelectCorrectAnswers;
 import com.chemcool.school.answers.domain.ChemmathesCorrectAnswers;
 import com.chemcool.school.answers.storage.*;
-import com.chemcool.school.answers.tasks.chemmatches.domain.CoupleForMatching;
+import com.chemcool.school.answers.domain.matches.CoupleForMatching;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;

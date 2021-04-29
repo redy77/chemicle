@@ -1,6 +1,5 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
-import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTask;
 import com.chemcool.school.lesson.web.api.dto.ChemSingleSelectTaskDto;
 import com.chemcool.school.lesson.web.api.service.ChemSingleSelectTaskPresentation;
 import io.swagger.annotations.ApiOperation;

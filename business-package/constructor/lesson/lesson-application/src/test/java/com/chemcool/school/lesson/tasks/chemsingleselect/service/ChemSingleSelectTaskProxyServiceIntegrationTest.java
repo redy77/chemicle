@@ -1,7 +1,8 @@
 package com.chemcool.school.lesson.tasks.chemsingleselect.service;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTask;
+import com.chemcool.school.lesson.domain.singleselect.ChemSingleSelectTask;
+import com.chemcool.school.lesson.service.singleselect.ChemSingleSelectTaskProxyService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

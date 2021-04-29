@@ -4,7 +4,7 @@ import com.chemcool.school.answers.service.ChemEquationCorrectAnswersService;
 import com.chemcool.school.answers.service.ChemFixedCorrectAnswersService;
 import com.chemcool.school.answers.service.ChemSingleSelectCorrectAnswersService;
 import com.chemcool.school.answers.service.ChemmathesCorrectAnswersService;
-import com.chemcool.school.answers.tasks.chemmatches.domain.CoupleForMatching;
+import com.chemcool.school.answers.domain.matches.CoupleForMatching;
 import com.chemcool.school.answers.web.api.domain.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

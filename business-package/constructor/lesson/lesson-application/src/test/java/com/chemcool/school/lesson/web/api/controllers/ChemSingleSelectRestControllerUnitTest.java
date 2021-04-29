@@ -1,8 +1,7 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTask;
-import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTaskExample;
+import com.chemcool.school.lesson.domain.singleselect.ChemSingleSelectTaskExample;
 import com.chemcool.school.lesson.web.api.dto.ChemSingleSelectTaskDto;
 import com.chemcool.school.lesson.web.api.service.ChemSingleSelectTaskPresentation;
 import org.hamcrest.collection.IsEmptyCollection;

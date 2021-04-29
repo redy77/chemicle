@@ -1,7 +1,7 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemmatches.domain.CoupleForMatching;
+import com.chemcool.school.lesson.domain.matches.CoupleForMatching;
 import com.chemcool.school.lesson.web.api.dto.ChemMatchingTaskDto;
 import com.chemcool.school.lesson.web.api.service.ChemMatchingTaskPresentation;
 import org.hamcrest.collection.IsEmptyCollection;

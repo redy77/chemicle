@@ -56,7 +56,6 @@
     <modules>
         <module>chat</module>
         <module>answers</module>
-        <module>community</module>
         <module>constructor</module>
     </modules>
 

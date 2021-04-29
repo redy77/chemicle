@@ -2,7 +2,7 @@ package com.chemcool.school.answers.web.api.controllers;
 
 import com.chemcool.school.answers.domain.UserAnswersCorrect;
 import com.chemcool.school.answers.service.UserAnswersCorrectService;
-import com.chemcool.school.answers.tasks.chemmatches.domain.CoupleForMatching;
+import com.chemcool.school.answers.domain.matches.CoupleForMatching;
 import com.chemcool.school.answers.web.api.domain.AnswerDto;
 import com.chemcool.school.answers.web.api.domain.TaskType;
 import com.chemcool.school.answers.web.api.service.CheckResolverUserThisTask;

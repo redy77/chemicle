@@ -1,10 +1,8 @@
 package com.chemcool.school.lesson.web.api.service;
 
-import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTask;
-import com.chemcool.school.lesson.tasks.chemsingleselect.domain.ChemSingleSelectTaskExample;
-import com.chemcool.school.lesson.tasks.chemsingleselect.service.ChemSingleSelectTaskProxyService;
+import com.chemcool.school.lesson.domain.singleselect.ChemSingleSelectTask;
+import com.chemcool.school.lesson.service.singleselect.ChemSingleSelectTaskProxyService;
 import com.chemcool.school.lesson.web.api.dto.ChemSingleSelectTaskDto;
-import com.chemcool.school.lesson.web.api.exeption.ChemistryTaskEmptyException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

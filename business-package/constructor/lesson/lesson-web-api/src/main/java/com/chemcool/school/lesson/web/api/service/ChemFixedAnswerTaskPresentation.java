@@ -1,12 +1,10 @@
 package com.chemcool.school.lesson.web.api.service;
 
-import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
 import com.chemcool.school.lesson.web.api.dto.ChemFixedAnswerTaskDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

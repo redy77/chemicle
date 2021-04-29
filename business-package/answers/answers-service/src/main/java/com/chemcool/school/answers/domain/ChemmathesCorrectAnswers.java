@@ -1,7 +1,7 @@
 package com.chemcool.school.answers.domain;
 
-import com.chemcool.school.answers.tasks.chemmatches.domain.ChemistryMatchingTask;
-import com.chemcool.school.answers.tasks.chemmatches.domain.CoupleForMatching;
+import com.chemcool.school.answers.domain.matches.ChemistryMatchingTask;
+import com.chemcool.school.answers.domain.matches.CoupleForMatching;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

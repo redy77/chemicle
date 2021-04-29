@@ -1,6 +1,6 @@
 package com.chemcool.school.lesson.web.api.dto;
 
-import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
+import com.chemcool.school.lesson.domain.equation.ChemEquationsTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
