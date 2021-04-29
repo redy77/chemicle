@@ -1,41 +1,54 @@
 package com.chemcool.school.chat.web.api.controllers;
 
-import com.chemcool.school.chat.service.models.ChatMessage;
-import com.chemcool.school.chat.service.service.ChatMessageServiceImpl;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
-import org.springframework.stereotype.Controller;
+import com.chemcool.school.chat.service.models.ChatRoom;
+import com.chemcool.school.chat.service.models.ChatUser;
+import com.chemcool.school.chat.service.service.ChatRoomService;
+import com.chemcool.school.chat.service.service.ChatUserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Objects;
+import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/")
+@RequiredArgsConstructor
 public class ChatController {
-    private final ChatMessageServiceImpl chatMessageService;
+    private final ChatUserService chatUserService;
+    private final ChatRoomService chatRoomService;
 
-    public ChatController(ChatMessageServiceImpl chatMessageService) {
-        this.chatMessageService = chatMessageService;
+    @GetMapping("/users")
+    public List<ChatUser> getAllUsers() {
+        return chatUserService.findAllUsers();
     }
 
-    @MessageMapping("/chat.sendMessage")
-    @SendTo("/chat-application/topic/public")
-    public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
-        chatMessageService.save(chatMessage);
-        return chatMessage;
+    @PostMapping("/users")
+    public ChatUser addOrUpdateUser(ChatUser user) {
+        return chatUserService.addOrUpdateUser(user);
     }
 
-    @MessageMapping("/chat.addUser")
-    @SendTo("/chat-application/topic/public")
-    public ChatMessage addUser(@Payload ChatMessage chatMessage,
-                               SimpMessageHeaderAccessor headerAccessor) {
-        // Add username in web socket session
-        Objects.requireNonNull(headerAccessor.getSessionAttributes()).put("username", chatMessage.getSenderName());
-        return chatMessage;
+    @DeleteMapping("/users")
+    public void deleteUser(String id) {
+        chatUserService.deleteUser(id);
     }
 
-//    @GetMapping(value = "/check")
-//    public String check() {
-//        return "check";
-//    }
+    @GetMapping("/rooms")
+    public List<ChatRoom> getAllRooms() {
+        return chatRoomService.findAllRooms();
+    }
+
+    @GetMapping("/rooms/{id}")
+    public List<ChatRoom> getAllRoomsByUserId(@PathVariable String id) {
+        return chatRoomService.findAllRoomsByUserId(id);
+    }
+
+    @PostMapping("/rooms")
+    public ChatRoom addRoom(ChatRoom room) {
+        return chatRoomService.addRoom(room);
+    }
+
+    @DeleteMapping("/rooms/{id}")
+    public void deleteRoom(@PathVariable String id) {
+        chatRoomService.deleteRoom(id);
+    }
+
 }

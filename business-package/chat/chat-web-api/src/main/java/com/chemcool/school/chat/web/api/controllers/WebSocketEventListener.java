@@ -2,31 +2,20 @@ package com.chemcool.school.chat.web.api.controllers;
 
 import com.chemcool.school.chat.service.miscelaneous.MessageType;
 import com.chemcool.school.chat.service.models.ChatMessage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Component;
-import org.springframework.web.socket.messaging.SessionConnectedEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
-
+@Slf4j
+@RequiredArgsConstructor
 @Component
 public class WebSocketEventListener {
 
-    private static final Logger logger = LoggerFactory.getLogger(WebSocketEventListener.class);
-
     private final SimpMessageSendingOperations messagingTemplate;
-
-    public WebSocketEventListener(SimpMessageSendingOperations messagingTemplate) {
-        this.messagingTemplate = messagingTemplate;
-    }
-
-    @EventListener
-    public void handleWebSocketConnectListener(SessionConnectedEvent event) {
-        logger.info("Received a new web socket connection");
-    }
 
     @EventListener
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
@@ -34,7 +23,7 @@ public class WebSocketEventListener {
 
         String username = (String) headerAccessor.getSessionAttributes().get("username");
         if(username != null) {
-            logger.info("User Disconnected : " + username);
+            log.info("User Disconnected : " + username);
             ChatMessage chatMessage = new ChatMessage();
             chatMessage.setSenderName(username);
             chatMessage.setMessage("User Disconnected : " + username);

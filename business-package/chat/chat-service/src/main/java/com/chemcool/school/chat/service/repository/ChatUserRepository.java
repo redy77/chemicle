@@ -11,7 +11,6 @@ import java.util.Optional;
 @Repository
 @RepositoryRestResource(path="users")
 public interface ChatUserRepository extends JpaRepository<ChatUser, String>, JpaSpecificationExecutor<ChatUser> {
-//    ChatUser findByUserId(String userId);
 
     @Query("select e from ChatUser e where e.userName = ?1")
     Optional<ChatUser> findByUserName(String name);

@@ -9,5 +9,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 @RepositoryRestResource(path="messages")
 public interface ChatMessageRepository extends JpaRepository<ChatMessage, String>, JpaSpecificationExecutor<ChatMessage> {
-//    Optional<ChatMessage> findByElementNumber(String elementNumber);
 }
