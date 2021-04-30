@@ -1,6 +1,6 @@
 package com.chemcool.school.answers.storage.fixedanswer;
 
-import com.chemcool.school.answers.domain.ChemFixedCorrectAnswers;
+import com.chemcool.school.answers.domain.fixedanswer.ChemFixedCorrectAnswers;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

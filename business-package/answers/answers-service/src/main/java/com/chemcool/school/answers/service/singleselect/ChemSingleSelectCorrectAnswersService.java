@@ -1,8 +1,8 @@
 package com.chemcool.school.answers.service.singleselect;
 
-import com.chemcool.school.answers.storage.ChemSingleSelectCorrectAnswerRepository;
+import com.chemcool.school.answers.storage.singleselect.ChemSingleSelectCorrectAnswerRepository;
 import com.chemcool.school.answers.domain.singleselect.ChemSingleSelectTask;
-import com.chemcool.school.answers.domain.ChemSingleSelectCorrectAnswers;
+import com.chemcool.school.answers.domain.singleselect.ChemSingleSelectCorrectAnswers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

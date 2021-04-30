@@ -1,7 +1,7 @@
 package com.chemcool.school.answers.service.matches;
 
-import com.chemcool.school.answers.domain.ChemmathesCorrectAnswers;
-import com.chemcool.school.answers.storage.ChemmathesCorrectAnswersRepository;
+import com.chemcool.school.answers.domain.matches.ChemmathesCorrectAnswers;
+import com.chemcool.school.answers.storage.matches.ChemmathesCorrectAnswersRepository;
 import com.chemcool.school.answers.domain.matches.ChemistryMatchingTask;
 import com.chemcool.school.answers.domain.matches.CoupleForMatching;
 import lombok.RequiredArgsConstructor;
