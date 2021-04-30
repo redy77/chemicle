@@ -1,4 +1,4 @@
-package com.chemcool.school.answers.storage;
+package com.chemcool.school.answers.storage.fixedanswer;
 
 import com.chemcool.school.answers.domain.ChemFixedCorrectAnswers;
 import org.springframework.data.jpa.repository.JpaRepository;

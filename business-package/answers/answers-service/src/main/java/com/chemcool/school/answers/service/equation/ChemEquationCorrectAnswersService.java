@@ -1,4 +1,4 @@
-package com.chemcool.school.answers.service;
+package com.chemcool.school.answers.service.equation;
 
 import com.chemcool.school.answers.domain.ChemEquationCorrectAswers;
 import com.chemcool.school.answers.storage.ChemEquationCorrectAnswersRepository;

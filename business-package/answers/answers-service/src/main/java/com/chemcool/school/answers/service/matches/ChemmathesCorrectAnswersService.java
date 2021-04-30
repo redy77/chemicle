@@ -1,4 +1,4 @@
-package com.chemcool.school.answers.service;
+package com.chemcool.school.answers.service.matches;
 
 import com.chemcool.school.answers.domain.ChemmathesCorrectAnswers;
 import com.chemcool.school.answers.storage.ChemmathesCorrectAnswersRepository;

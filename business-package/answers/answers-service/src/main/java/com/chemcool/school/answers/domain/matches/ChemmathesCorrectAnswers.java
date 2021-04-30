@@ -1,4 +1,4 @@
-package com.chemcool.school.answers.domain;
+package com.chemcool.school.answers.domain.matches;
 
 import com.chemcool.school.answers.domain.matches.ChemistryMatchingTask;
 import com.chemcool.school.answers.domain.matches.CoupleForMatching;

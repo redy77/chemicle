@@ -1,4 +1,4 @@
-package com.chemcool.school.answers.storage;
+package com.chemcool.school.answers.storage.singleselect;
 
 import com.chemcool.school.answers.domain.ChemSingleSelectCorrectAnswers;
 import org.springframework.data.jpa.repository.JpaRepository;
