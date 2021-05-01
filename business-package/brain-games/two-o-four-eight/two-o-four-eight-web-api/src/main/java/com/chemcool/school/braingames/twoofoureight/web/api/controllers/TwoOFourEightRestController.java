@@ -21,18 +21,10 @@ public class TwoOFourEightRestController {
     public String isValid(@RequestHeader(value = "AuthorizationToken") String token) {
         String userID = jwtParser.getIdUserOfToken(token);
         String userEmail = jwtParser.getEmailUserOfToken(token);
-        if (userID == DBUserID && userEmail == DBUserEmail) { //узнать как вытаскивать юзеров
+        if (userID.equals(DBUserID) && userEmail == DBUserEmail) {
             return Boolean.TRUE.toString();
         }
         return Boolean.FALSE.toString();
     }
-
-
-/** на сегодня вижу так: нужно:
- получаем токен
- парсим его - получаем данные
- сравниваем данные с базой текущих юзеров
- если есть совпадение возвращаем тру иначе фолс
- */
 
 }
