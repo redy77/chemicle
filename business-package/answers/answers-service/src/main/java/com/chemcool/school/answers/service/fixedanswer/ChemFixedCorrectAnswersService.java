@@ -1,7 +1,7 @@
-package com.chemcool.school.answers.service;
+package com.chemcool.school.answers.service.fixedanswer;
 
-import com.chemcool.school.answers.domain.ChemFixedCorrectAnswers;
-import com.chemcool.school.answers.storage.ChemFixedCorrectAnswersRepository;
+import com.chemcool.school.answers.domain.fixedanswer.ChemFixedCorrectAnswers;
+import com.chemcool.school.answers.storage.fixedanswer.ChemFixedCorrectAnswersRepository;
 import com.chemcool.school.answers.domain.fixedanswer.ChemFixedAnswerTask;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

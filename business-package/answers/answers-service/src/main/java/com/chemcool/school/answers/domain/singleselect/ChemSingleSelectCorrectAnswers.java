@@ -1,4 +1,4 @@
-package com.chemcool.school.answers.domain;
+package com.chemcool.school.answers.domain.singleselect;
 
 import com.chemcool.school.answers.domain.singleselect.ChemSingleSelectTask;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.chemcool.school.answers.domain;
+package com.chemcool.school.answers.domain.fixedanswer;
 
 import com.chemcool.school.answers.domain.fixedanswer.ChemFixedAnswerTask;
 import lombok.NoArgsConstructor;
