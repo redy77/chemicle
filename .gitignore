@@ -27,7 +27,7 @@ target/
 dist/
 
 # JetBrains IDE
-.idea/
+.idea
 *.iml
 *.iws
 
