@@ -18,3 +18,4 @@ spring:
 
 default:
   url: http://localhost:8100/chat-application
+stomp_endpoint: /ws
