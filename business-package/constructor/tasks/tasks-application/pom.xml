@@ -30,26 +30,15 @@
             <artifactId>tasks-web-api</artifactId>
             <scope>compile</scope>
         </dependency>
-
         <dependency>
             <groupId>com.chemcool.school.tasks</groupId>
             <artifactId>tasks-service</artifactId>
             <scope>compile</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.flywaydb</groupId>-->
-<!--            <artifactId>flyway-core</artifactId>-->
-<!--            <version>${flayway.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.data</groupId>-->
-<!--            <artifactId>spring-data-jpa</artifactId>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
