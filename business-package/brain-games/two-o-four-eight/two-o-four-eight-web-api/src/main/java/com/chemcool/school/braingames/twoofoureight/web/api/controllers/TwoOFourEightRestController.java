@@ -32,14 +32,16 @@ public class TwoOFourEightRestController {
         return Boolean.FALSE.toString();
     }
 
-    @PostMapping("/saveScore")
-    public String getData(@RequestHeader(value = "AuthorizationToken") String token, @RequestBody(required = false) Map<String, String> payload) {
+    @PostMapping("/save")
+    public String save(@RequestHeader(value = "AuthorizationToken") String token, @RequestBody(required = false) Map<String, String> payload) {
         String userID = jwtParser.getIdUserOfToken(token);
         UserScore userScore = new UserScore();
         userScore.setUserId(userID);
-        userScore.setScore(payload.get("score"));
+        userScore.setScore((String)payload.get("myScore"));
+        System.out.println("PAYLOAD: " + payload);
+        System.out.println("MYSCORE: " +payload.get("myScore"));
+        System.out.println("USERID: " + userID);
         userScoreService.saveUserScore(userScore);
-        System.out.println("User: " + userID + ",  Score:" + userScore.getScore() + " saved to DB");
         return userScore.toString();
     }
 

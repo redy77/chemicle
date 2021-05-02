@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserScoreRepository extends JpaRepository<UserScore, String> {
-    UserScore findById(Long id);
+    UserScore findByUserId(String id);
 }

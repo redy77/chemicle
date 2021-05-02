@@ -5,6 +5,7 @@ var max = size - 1;
 
 var isMoved = false;
 var score = 0;
+let totalScore = 0;
 
 var excludeIds = [];
 
@@ -330,22 +331,29 @@ function checkGameOver() {
     if (isOver) {
         alert("Игра окончена!  " +
             "Ваш счёт: " + score);
+        totalScore = score;
+        console.log(totalScore);
+        saveScore();
+
     }
     return false;
 }
 
-// function saveScore(){
-//     const currentScore = {
-//         myScore: score
-//     };
-//     fetch("/valid", {
-//         method: "POST",
-//         headers: {
-//             Accept: "application/json", "Context-Type": "application/json; charset=UTF-8"
-//         },
-//         body: JSON.stringify(currentScore)
-//     })
-// }
+function saveScore(){
+    const currentScore = {
+        myScore: totalScore
+    };
+    fetch("/two-o-four-eight-application/save", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json; charset=UTF-8",
+            //hardcoded!
+            "AuthorizationToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAiLCJpYXQiOjE2MTk5MzI4NTcsImV4cCI6MTYyMDc5Njg1N30.nBI5gbJYOAoA9cyHXKk2yFj4y2Z8-R61AzaVqjAXNwSn-nupSID6-lxgix0Nd4RJsZChTpgmPrYYsBPLSRug7w"
+        },
+        body: JSON.stringify(currentScore)
+    })
+}
 
 // function getColor(val)
 // {
