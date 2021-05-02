@@ -1,6 +1,6 @@
 package com.chemcool.school.answers.domain.equation;
 
-import com.chemcool.school.answers.domain.equation.ChemEquationsTask;
+import com.chemcool.school.answers.domain.AbstractBaseCorrectAnswersClass;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Entity
 @NoArgsConstructor
 @Table(name = "chem_equation_correct_answers")
-public class ChemEquationCorrectAswers extends AbstractBaseCorrectAnswersClass{
+public class ChemEquationCorrectAswers extends AbstractBaseCorrectAnswersClass {
 
     public ChemEquationCorrectAswers(String taskId, String rightAnswer) {
         super(taskId, rightAnswer);
