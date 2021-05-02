@@ -328,10 +328,24 @@ function checkGameOver() {
         }
     }
     if (isOver) {
-        alert("Игра окончена!");
+        alert("Игра окончена!  " +
+            "Ваш счёт: " + score);
     }
     return false;
 }
+
+// function saveScore(){
+//     const currentScore = {
+//         myScore: score
+//     };
+//     fetch("/valid", {
+//         method: "POST",
+//         headers: {
+//             Accept: "application/json", "Context-Type": "application/json; charset=UTF-8"
+//         },
+//         body: JSON.stringify(currentScore)
+//     })
+// }
 
 // function getColor(val)
 // {
