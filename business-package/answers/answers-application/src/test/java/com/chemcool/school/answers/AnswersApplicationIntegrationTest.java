@@ -1,12 +1,16 @@
 package com.chemcool.school.answers;
 
 import com.chemcool.school.answers.app.AnswersApplication;
-import com.chemcool.school.answers.domain.ChemEquationCorrectAswers;
-import com.chemcool.school.answers.domain.ChemFixedCorrectAnswers;
-import com.chemcool.school.answers.domain.ChemSingleSelectCorrectAnswers;
-import com.chemcool.school.answers.domain.ChemmathesCorrectAnswers;
+import com.chemcool.school.answers.domain.equation.ChemEquationCorrectAswers;
+import com.chemcool.school.answers.domain.fixedanswer.ChemFixedCorrectAnswers;
+import com.chemcool.school.answers.domain.singleselect.ChemSingleSelectCorrectAnswers;
+import com.chemcool.school.answers.domain.matches.ChemmathesCorrectAnswers;
 import com.chemcool.school.answers.storage.*;
 import com.chemcool.school.answers.domain.matches.CoupleForMatching;
+import com.chemcool.school.answers.storage.equation.ChemEquationCorrectAnswersRepository;
+import com.chemcool.school.answers.storage.fixedanswer.ChemFixedCorrectAnswersRepository;
+import com.chemcool.school.answers.storage.matches.ChemmathesCorrectAnswersRepository;
+import com.chemcool.school.answers.storage.singleselect.ChemSingleSelectCorrectAnswerRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
