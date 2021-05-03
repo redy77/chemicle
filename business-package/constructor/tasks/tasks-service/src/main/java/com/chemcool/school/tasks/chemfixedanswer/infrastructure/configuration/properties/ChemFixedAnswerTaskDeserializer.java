@@ -1,5 +1,6 @@
 package com.chemcool.school.tasks.chemfixedanswer.infrastructure.configuration.properties;
 
+
 import com.chemcool.school.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskEvent;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

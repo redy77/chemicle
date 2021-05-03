@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemfixedanswer.infrastructure.configuration.properties;
+package com.chemcool.school.tasks.chemmatches.infrastructure.configuration.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -12,6 +12,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableEurekaClient
 public class TasksApplication {
     public static void main(String[] args) {
-        SpringApplication.run(TasksApplication.class, args);
+        SpringApplication.  run(TasksApplication.class, args);
     }
 }

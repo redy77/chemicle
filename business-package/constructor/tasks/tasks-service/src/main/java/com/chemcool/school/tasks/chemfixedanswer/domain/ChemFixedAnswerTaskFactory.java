@@ -1,6 +1,5 @@
 package com.chemcool.school.tasks.chemfixedanswer.domain;
 
-import com.chemcool.school.tasks.chemfixedanswer.service.ChemFixedAnswerTaskException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

@@ -40,7 +40,7 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
         </dependency>
-<!--нужно разобраться-->
+
         <dependency>
             <groupId>com.chemcool.school.tasks</groupId>
             <artifactId>tasks-service</artifactId>

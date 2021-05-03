@@ -92,6 +92,7 @@
         <module>tasks-service</module>
         <module>tasks-web-api</module>
         <module>tasks-application</module>
+        <module>chemsingleselect</module>
     </modules>
 
 </project>
