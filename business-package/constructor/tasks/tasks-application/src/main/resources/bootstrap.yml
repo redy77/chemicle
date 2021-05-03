@@ -1,6 +1,6 @@
 spring:
   application:
-    name: chemfixedanswer-application
+    name: tasks-application
   cloud:
     config:
       name: chemfixedanswer-application
@@ -11,6 +11,20 @@ spring:
       password: ${SPRING_CLOUD_CONFIG_USERNAME}
       username: ${SPRING_CLOUD_CONFIG_PASSWORD}
 
+---
+
+spring:
+  application:
+    name: chemmatches-application
+  cloud:
+    config:
+      name: chemmatches-application
+      discovery:
+        enabled: true
+        service-id: config-service
+      fail-fast: true
+      password: ${SPRING_CLOUD_CONFIG_USERNAME}
+      username: ${SPRING_CLOUD_CONFIG_PASSWORD}
 ---
 spring:
   profiles: test
@@ -24,15 +38,3 @@ spring:
       username: ${CONFIG_SERVICE_USER}
 
 ---
-spring:
-  application:
-    name: chemmatches-application
-  cloud:
-    config:
-      name: chemmatches-application
-      discovery:
-        enabled: true
-        service-id: config-service
-      fail-fast: true
-      password: ${SPRING_CLOUD_CONFIG_USERNAME}
-      username: ${SPRING_CLOUD_CONFIG_PASSWORD}

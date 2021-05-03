@@ -19,7 +19,7 @@ import java.util.Map;
 @Configuration
 @EnableConfigurationProperties(KafkaProperties.class)
 @RequiredArgsConstructor
-public class KafkaProducerConfiguration {
+public class KafkaChemmatchesProducerConfiguration {
 
     private final KafkaProperties kafkaProperties;
 
@@ -32,12 +32,12 @@ public class KafkaProducerConfiguration {
     }
 
     @Bean
-    public ProducerFactory<String, ChemistryMatchingTaskEvent> producerFactory() {
+    public ProducerFactory<String, ChemistryMatchingTaskEvent> chemistryMatchingTaskEventProducerFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfig());
     }
 
     @Bean
-    public KafkaTemplate<String, ChemistryMatchingTaskEvent> kafkaTemplate() {
-        return new KafkaTemplate<>(producerFactory());
+    public KafkaTemplate<String, ChemistryMatchingTaskEvent> chemistryMatchingTaskEventKafkaTemplate() {
+        return new KafkaTemplate<>(chemistryMatchingTaskEventProducerFactory());
     }
 }
