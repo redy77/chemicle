@@ -1,8 +1,7 @@
 package com.chemcool.school.lesson.web.api.service;
 
-import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
-import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTaskExample;
-import com.chemcool.school.lesson.tasks.chemequations.service.ChemEquationsTaskProxyService;
+import com.chemcool.school.lesson.domain.equation.ChemEquationsTask;
+import com.chemcool.school.lesson.service.equation.ChemEquationsTaskProxyService;
 import com.chemcool.school.lesson.web.api.dto.ChemEquationsTaskDto;
 import com.chemcool.school.lesson.web.api.exeption.ChemTaskEmptyException;
 import lombok.AllArgsConstructor;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Сервис прослойка нижнего уровня содержащий бизнес логику CRUD операций

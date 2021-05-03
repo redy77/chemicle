@@ -1,7 +1,6 @@
 package com.chemcool.school.lesson.web.api.dto;
 
 
-import com.chemcool.school.lesson.domain.ChemistryLesson;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,12 +1,9 @@
 package com.chemcool.school.lesson.web.api.service;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTask;
-import com.chemcool.school.lesson.tasks.chemequations.domain.ChemEquationsTaskExample;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTask;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.domain.ChemFixedAnswerTaskExample;
-import com.chemcool.school.lesson.tasks.chemfixedanswer.service.ChemFixedAnswerTaskProxyService;
-import com.chemcool.school.lesson.web.api.dto.ChemEquationsTaskDto;
+import com.chemcool.school.lesson.domain.fixedanswer.ChemFixedAnswerTask;
+import com.chemcool.school.lesson.domain.fixedanswer.ChemFixedAnswerTaskExample;
+import com.chemcool.school.lesson.service.fixedanswer.ChemFixedAnswerTaskProxyService;
 import com.chemcool.school.lesson.web.api.dto.ChemFixedAnswerTaskDto;
 import com.chemcool.school.lesson.web.api.exeption.ChemTaskEmptyException;
 import org.junit.jupiter.api.BeforeEach;
