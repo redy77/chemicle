@@ -1,8 +1,9 @@
-package com.chemcool.school.tasks.infrastructure.chemsingleselect.configuration;
+package com.chemcool.school.tasks.infrastructure.chemmatches.configuration;
 
-import com.chemcool.school.tasks.domain.chemsingleselect.ChemSingleSelectTaskEvent;
-import com.chemcool.school.tasks.infrastructure.chemsingleselect.configuration.properties.ChemSingleSelectTaskSerializer;
-import com.chemcool.school.tasks.infrastructure.chemsingleselect.configuration.properties.KafkaProperties;
+
+import com.chemcool.school.tasks.domain.chemmatches.ChemistryMatchingTaskEvent;
+import com.chemcool.school.tasks.infrastructure.chemmatches.configuration.properties.ChemistryMatchingTaskSerializer;
+import com.chemcool.school.tasks.infrastructure.chemmatches.configuration.properties.KafkaProperties;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -19,26 +20,25 @@ import java.util.Map;
 @Configuration
 @EnableConfigurationProperties(KafkaProperties.class)
 @RequiredArgsConstructor
-public class KafkaProducerConfiguration {
+public class KafkaChemMatchesProducerConfiguration {
 
     private final KafkaProperties kafkaProperties;
 
-    @Bean
-    public Map<String, Object> producerConfig() {
+    public Map<String, Object> chemMatchesProducerConfig() {
         Map<String, Object> properties = new HashMap<>();
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServer());
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ChemSingleSelectTaskSerializer.class);
+        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ChemistryMatchingTaskSerializer.class);
         return properties;
     }
 
     @Bean
-    public ProducerFactory<String, ChemSingleSelectTaskEvent> producerFactory() {
-        return new DefaultKafkaProducerFactory<>(producerConfig());
+    public ProducerFactory<String, ChemistryMatchingTaskEvent> chemistryMatchingTaskEventProducerFactory() {
+        return new DefaultKafkaProducerFactory<>(chemMatchesProducerConfig());
     }
 
     @Bean
-    public KafkaTemplate<String, ChemSingleSelectTaskEvent> kafkaTemplate () {
-        return new KafkaTemplate<>(producerFactory());
+    public KafkaTemplate<String, ChemistryMatchingTaskEvent> chemistryMatchingTaskEventKafkaTemplate() {
+        return new KafkaTemplate<>(chemistryMatchingTaskEventProducerFactory());
     }
 }

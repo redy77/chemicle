@@ -21,7 +21,7 @@ import java.util.Map;
 @Configuration
 @RequiredArgsConstructor
 @EnableConfigurationProperties(KafkaProperties.class)
-public class KafkaChemmatchesConsumerConfiguration {
+public class KafkaChemMatchesConsumerConfiguration {
 
     private static final String TRUSTED_PACKAGES = "com.chemcool.school.chemmatches.domain";
     private final KafkaProperties kafkaProperties;
@@ -38,7 +38,7 @@ public class KafkaChemmatchesConsumerConfiguration {
     }
 
     @Bean
-    public KafkaListenerContainerFactory kafkaChemmatchesListenerContainerFactory(){
+    public KafkaListenerContainerFactory kafkaChemMatchesListenerContainerFactory(){
         ConcurrentKafkaListenerContainerFactory<String, String> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());

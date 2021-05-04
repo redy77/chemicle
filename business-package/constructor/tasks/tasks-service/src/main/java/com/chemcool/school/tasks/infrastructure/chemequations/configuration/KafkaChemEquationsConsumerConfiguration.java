@@ -26,7 +26,7 @@ import java.util.Map;
 @Configuration
 @EnableConfigurationProperties(KafkaProperties.class)
 @RequiredArgsConstructor
-public class KafkaConsumerConfiguration {
+public class KafkaChemEquationsConsumerConfiguration {
 
     private final String TRUSTED_PACKAGES = "com/chemcool/school/tasks/chemequations/domain";
 
@@ -43,7 +43,7 @@ public class KafkaConsumerConfiguration {
     }
 
     @Bean
-    public KafkaListenerContainerFactory kafkaListenerContainerFactory() {
+    public KafkaListenerContainerFactory kafkaChemEquationsListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, String> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());

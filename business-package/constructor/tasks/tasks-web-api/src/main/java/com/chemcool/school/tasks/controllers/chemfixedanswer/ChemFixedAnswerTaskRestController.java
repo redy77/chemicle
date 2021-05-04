@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/v1.0")
+@RequestMapping("/chemFixedAnswer/v1.0")
 @RequiredArgsConstructor
 public class ChemFixedAnswerTaskRestController {
 

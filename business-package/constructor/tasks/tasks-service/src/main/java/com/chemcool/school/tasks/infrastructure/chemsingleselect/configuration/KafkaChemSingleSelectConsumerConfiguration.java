@@ -1,7 +1,7 @@
-package com.chemcool.school.tasks.infrastructure.chemfixedanswer.configuration;
+package com.chemcool.school.tasks.infrastructure.chemsingleselect.configuration;
 
-import com.chemcool.school.tasks.infrastructure.chemfixedanswer.configuration.properties.ChemFixedAnswerTaskDeserializer;
-import com.chemcool.school.tasks.infrastructure.chemfixedanswer.configuration.properties.KafkaProperties;
+import com.chemcool.school.tasks.infrastructure.chemsingleselect.configuration.properties.ChemSingleSelectTaskDeserializer;
+import com.chemcool.school.tasks.infrastructure.chemsingleselect.configuration.properties.KafkaProperties;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -20,24 +20,24 @@ import java.util.Map;
 @Configuration
 @EnableConfigurationProperties(KafkaProperties.class)
 @RequiredArgsConstructor
-public class KafkaChemfixedanswerConsumerConfiguration {
+public class KafkaChemSingleSelectConsumerConfiguration {
 
-    private final String TRUSTED_PACKAGES = "com/chemcool/school/tasks/chemfixedanswer/domain";
+    public static final String TRUSTED_PACKAGES = "com.chemcool.school.tasks.chemsingleselect.domain";
 
     private final KafkaProperties kafkaProperties;
 
-    public Map<String, Object> consumerConfig(){
+    public Map<String, Object> consumerConfig() {
         Map<String, Object> prop = new HashMap<>();
         prop.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServer());
         prop.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ChemFixedAnswerTaskDeserializer.class);
+        prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ChemSingleSelectTaskDeserializer.class);
         prop.put(JsonDeserializer.TRUSTED_PACKAGES, TRUSTED_PACKAGES);
         prop.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getGroupId());
         return prop;
     }
 
     @Bean
-    public KafkaListenerContainerFactory kafkaChemfixedanswerListenerContainerFactory() {
+    public KafkaListenerContainerFactory kafkaChemSingleSelectListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, String> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
@@ -47,4 +47,5 @@ public class KafkaChemfixedanswerConsumerConfiguration {
     public ConsumerFactory<String, String> consumerFactory() {
         return new DefaultKafkaConsumerFactory<>(consumerConfig());
     }
+
 }
