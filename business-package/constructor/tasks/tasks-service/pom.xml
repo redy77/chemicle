@@ -27,7 +27,7 @@
         <jaxb.api.version>2.3.1</jaxb.api.version>
         <jjwt.version>0.9.1</jjwt.version>
         <kafka.testcontainer.version>1.15.0</kafka.testcontainer.version>
-        <!--        <flywaydb.version>7.5.3</flywaydb.version>-->
+        <flywaydb.version>7.5.3</flywaydb.version>
     </properties>
 
     <dependencies>
@@ -100,12 +100,11 @@
             <artifactId>spring-kafka</artifactId>
         </dependency>
 
-
-        <!--        <dependency>-->
-        <!--            <groupId>org.flywaydb</groupId>-->
-        <!--            <artifactId>flyway-core</artifactId>-->
-        <!--            <version>${flywaydb.version}</version>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flywaydb.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
