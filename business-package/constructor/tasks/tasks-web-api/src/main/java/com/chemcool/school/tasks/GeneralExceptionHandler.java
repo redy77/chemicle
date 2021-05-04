@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemequations;
+package com.chemcool.school.tasks;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
