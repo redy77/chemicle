@@ -1,7 +1,8 @@
 package com.chemcool.school.tasks.app;
 
-import com.chemcool.school.tasks.chemequations.controllers.ChemEquationsRestController;
-import com.chemcool.school.tasks.chemequations.infrastructure.storage.ChemEquationsTaskRepository;
+
+import com.chemcool.school.tasks.controllers.chemequations.ChemEquationsRestController;
+import com.chemcool.school.tasks.infrastructure.chemequations.storage.ChemEquationsTaskRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
