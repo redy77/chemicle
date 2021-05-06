@@ -22,7 +22,7 @@ public class ChemistryMatchingTaskConsumer {
     private final ChemistryMatchingTaskEventService eventService;
     private final ChemistryMatchingTaskService taskService;
 
-    @KafkaListener(topics = "tasks-matching")
+    @KafkaListener(topics = "task-chemistry-matches", containerFactory = "kafkaChemMatchesListenerContainerFactory")
     @KafkaHandler
     public void handleChemSingleSelectTask(ConsumerRecord<String, ChemistryMatchingTaskEvent> record) {
         ChemistryMatchingTaskEvent event = record.value();

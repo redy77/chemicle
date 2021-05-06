@@ -29,7 +29,7 @@ public class ChemEquationsTaskConsumer {
     private final ChemEquationsTaskService taskService;
     private final ChemEquationsTaskEventService eventService;
 
-    @KafkaListener(topics = "equations-task")
+    @KafkaListener(topics = "task-chemistry-equations", containerFactory = "kafkaChemEquationsListenerContainerFactory")
     @KafkaHandler
     public void handleChemEquationsTask(ConsumerRecord<String, ChemEquationsTaskEvent> record) {
         ChemEquationsTaskEvent event = record.value();

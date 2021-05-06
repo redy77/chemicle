@@ -23,7 +23,7 @@ public class ChemSingleSelectTaskConsumer {
     private final ChemSingleSelectTaskEventService eventService;
     private final ChemSingleSelectTaskService taskService;
 
-    @KafkaListener(topics = "tasks-single-select")
+    @KafkaListener(topics = "task-chemistry-singleSelect", containerFactory = "kafkaChemSingleSelectListenerContainerFactory")
     @KafkaHandler
     public void handleChemSingleSelectTask(ConsumerRecord<String, ChemSingleSelectTaskEvent> record) {
         ChemSingleSelectTaskEvent event = record.value();
