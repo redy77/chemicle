@@ -2,7 +2,7 @@ package com.chemcool.school.tasks.service.chemmatches;
 
 
 import com.chemcool.school.tasks.domain.chemmatches.ChemistryMatchingTask;
-import com.chemcool.school.tasks.infrastructure.chemmatches.storage.ChemistryMatchingTaskRepository;
+import com.chemcool.school.tasks.infrastructure.storage.chemmatches.ChemistryMatchingTaskRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

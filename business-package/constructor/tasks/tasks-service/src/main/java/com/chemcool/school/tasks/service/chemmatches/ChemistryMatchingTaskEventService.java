@@ -1,7 +1,7 @@
 package com.chemcool.school.tasks.service.chemmatches;
 
 import com.chemcool.school.tasks.domain.chemmatches.ChemistryMatchingTaskEvent;
-import com.chemcool.school.tasks.infrastructure.chemmatches.storage.ChemistryMatchingTaskEventJournal;
+import com.chemcool.school.tasks.infrastructure.storage.chemmatches.ChemistryMatchingTaskEventJournal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

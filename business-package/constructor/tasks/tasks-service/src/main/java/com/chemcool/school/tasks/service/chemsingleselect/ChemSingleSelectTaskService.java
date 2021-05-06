@@ -3,7 +3,7 @@ package com.chemcool.school.tasks.service.chemsingleselect;
 
 
 import com.chemcool.school.tasks.domain.chemsingleselect.ChemSingleSelectTask;
-import com.chemcool.school.tasks.infrastructure.chemsingleselect.storage.ChemSingleSelectTaskRepository;
+import com.chemcool.school.tasks.infrastructure.storage.chemsingleselect.ChemSingleSelectTaskRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.chemcool.school.tasks.service.chemequations;
 
 import com.chemcool.school.tasks.domain.chemequations.ChemEquationsTaskEvent;
-import com.chemcool.school.tasks.infrastructure.chemequations.storage.ChemEquationsTaskEventJournal;
+import com.chemcool.school.tasks.infrastructure.storage.chemequations.ChemEquationsTaskEventJournal;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
