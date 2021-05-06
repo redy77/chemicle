@@ -15,12 +15,12 @@ import java.util.UUID;
 @AllArgsConstructor
 public class KafkaChemFixedAnswerTaskEventNotificationService implements ChemFixedAnswerTaskEventNotificationService {
 
-    private final KafkaTemplate<String, ChemFixedAnswerTaskEvent> kafkaTemplate;
+    private final KafkaTemplate<String, ChemFixedAnswerTaskEvent> chemFixedAnswerTaskEventKafkaTemplate;
 
     @Override
     public void send(ChemFixedAnswerTaskEvent event) {
-        ListenableFuture<SendResult<String, ChemFixedAnswerTaskEvent>> future = kafkaTemplate.send("fixed-answer-task", UUID.randomUUID().toString(), event);
+        ListenableFuture<SendResult<String, ChemFixedAnswerTaskEvent>> future = chemFixedAnswerTaskEventKafkaTemplate.send("fixed-answer-task", UUID.randomUUID().toString(), event);
         future.addCallback(System.out::println, System.out::println);
-        kafkaTemplate.flush();
+        chemFixedAnswerTaskEventKafkaTemplate.flush();
     }
 }

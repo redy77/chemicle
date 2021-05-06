@@ -2,7 +2,7 @@ package com.chemcool.school.tasks.infrastructure.configuration.properties.produc
 
 
 import com.chemcool.school.tasks.domain.chemfixedanswer.ChemFixedAnswerTaskEvent;
-import com.chemcool.school.tasks.infrastructure.configuration.properties.chemfixedanswer.ChemFixeadAnswerTaskSerialize;
+import com.chemcool.school.tasks.infrastructure.configuration.properties.chemfixedanswer.ChemFixedAnswerTaskSerialize;
 import com.chemcool.school.tasks.infrastructure.configuration.properties.KafkaProperties;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -29,7 +29,7 @@ public class KafkaChemFixedAnswerProducerConfiguration {
         Map<String, Object> prop = new HashMap<>();
         prop.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServer());
         prop.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        prop.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ChemFixeadAnswerTaskSerialize.class);
+        prop.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ChemFixedAnswerTaskSerialize.class);
         return prop;
     }
 

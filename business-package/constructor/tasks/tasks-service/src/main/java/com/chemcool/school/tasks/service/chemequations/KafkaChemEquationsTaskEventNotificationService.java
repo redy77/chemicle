@@ -22,12 +22,12 @@ import java.util.UUID;
 @AllArgsConstructor
 public class KafkaChemEquationsTaskEventNotificationService implements ChemEquationsTaskEventNotificationService {
 
-    private final KafkaTemplate<String, ChemEquationsTaskEvent> kafkaTemplate;
+    private final KafkaTemplate<String, ChemEquationsTaskEvent> chemEquationsTaskEventKafkaTemplate;
 
     @Override
     public void send(ChemEquationsTaskEvent event) {
-        ListenableFuture<SendResult<String, ChemEquationsTaskEvent>> future = kafkaTemplate.send("equations-task", UUID.randomUUID().toString(), event);
+        ListenableFuture<SendResult<String, ChemEquationsTaskEvent>> future = chemEquationsTaskEventKafkaTemplate.send("equations-task", UUID.randomUUID().toString(), event);
         future.addCallback(System.out::println, System.out::println);
-        kafkaTemplate.flush();
+        chemEquationsTaskEventKafkaTemplate.flush();
     }
 }

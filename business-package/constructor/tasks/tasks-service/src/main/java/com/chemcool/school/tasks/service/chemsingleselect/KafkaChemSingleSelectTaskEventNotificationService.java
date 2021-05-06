@@ -15,15 +15,15 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class KafkaChemSingleSelectTaskEventNotificationService implements ChemSingleSelectTaskEventNotificationService {
 
-    private final KafkaTemplate<String, ChemSingleSelectTaskEvent> kafkaTemplate;
+    private final KafkaTemplate<String, ChemSingleSelectTaskEvent> chemSingleSelectTaskEventKafkaTemplate;
     private static final String TOPIC = "tasks-single-select";
 
     @Override
     public void send(ChemSingleSelectTaskEvent event) {
-        ListenableFuture<SendResult<String, ChemSingleSelectTaskEvent>> future = kafkaTemplate.send(TOPIC, UUID.randomUUID().toString(), event);
+        ListenableFuture<SendResult<String, ChemSingleSelectTaskEvent>> future = chemSingleSelectTaskEventKafkaTemplate.send(TOPIC, UUID.randomUUID().toString(), event);
         if (future.isCancelled()) {
             throw new ChemSingleSelectDefinitionException("Произошла ошибка при записи в кафку");
         }
-        kafkaTemplate.flush();
+        chemSingleSelectTaskEventKafkaTemplate.flush();
     }
 }

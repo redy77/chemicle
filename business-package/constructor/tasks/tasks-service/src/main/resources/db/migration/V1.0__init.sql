@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 create table chemistry_element (
     element_id varchar(255) not null,
     element_transcription varchar(255),
@@ -34,7 +33,8 @@ create table chemistry_equations_event (
     event_type int4,
     event_version varchar(255),
     primary key (event_id)
-=======
+);
+
 GRANT all ON chemistry_fixed_answer_task TO mick;
 
 create table if not exists chemistry_fixed_answer_task (
@@ -54,7 +54,7 @@ create table if not exists chemistry_fixed_answer_task_event (
     event_version VARCHAR(255),
     event_entity_id VARCHAR(255),
     event_payload jsonb not null
->>>>>>> origin/dmitrii(crud)
+
 );
 
 CREATE TABLE chemistry_matching_task

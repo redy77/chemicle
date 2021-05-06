@@ -28,7 +28,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class KafkaChemEquationsConsumerConfiguration {
 
-    private final String TRUSTED_PACKAGES = "com/chemcool/school/tasks/domain/chemequations";
+    private final String TRUSTED_PACKAGES = "com.chemcool.school.tasks.domain.chemequations";
 
     private final KafkaProperties kafkaProperties;
 

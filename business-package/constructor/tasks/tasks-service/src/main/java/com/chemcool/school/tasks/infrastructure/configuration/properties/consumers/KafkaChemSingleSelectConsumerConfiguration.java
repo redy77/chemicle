@@ -22,7 +22,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class KafkaChemSingleSelectConsumerConfiguration {
 
-    public static final String TRUSTED_PACKAGES = "com/chemcool/school/tasks/domain/chemsingleselect";
+    public static final String TRUSTED_PACKAGES = "com.chemcool.school.tasks.domain.chemsingleselect";
 
     private final KafkaProperties kafkaProperties;
 

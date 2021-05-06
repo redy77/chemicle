@@ -23,7 +23,7 @@ import java.util.Map;
 @EnableConfigurationProperties(KafkaProperties.class)
 public class KafkaChemMatchesConsumerConfiguration {
 
-    private static final String TRUSTED_PACKAGES = "com/chemcool/school/tasks/domain/chemmatches";
+    private static final String TRUSTED_PACKAGES = "com.chemcool.school.tasks.domain.chemmatches";
     private final KafkaProperties kafkaProperties;
 
     @Bean

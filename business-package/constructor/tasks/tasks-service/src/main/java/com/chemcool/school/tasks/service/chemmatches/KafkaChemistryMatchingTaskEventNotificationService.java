@@ -15,15 +15,15 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class KafkaChemistryMatchingTaskEventNotificationService implements ChemistryMatchingTaskEventNotificationService {
 
-    private final KafkaTemplate<String, ChemistryMatchingTaskEvent> kafkaTemplate;
+    private final KafkaTemplate<String, ChemistryMatchingTaskEvent> chemistryMatchingTaskEventKafkaTemplate;
     private static final String TOPIC = "tasks-matching";
 
     @Override
     public void send(ChemistryMatchingTaskEvent event) {
-        ListenableFuture<SendResult<String, ChemistryMatchingTaskEvent>> future = kafkaTemplate.send(TOPIC, UUID.randomUUID().toString(), event);
+        ListenableFuture<SendResult<String, ChemistryMatchingTaskEvent>> future = chemistryMatchingTaskEventKafkaTemplate.send(TOPIC, UUID.randomUUID().toString(), event);
         if (future.isCancelled()) {
             throw new ChemistryMatchingTaskException("Произошла ошибка при записи в кафку");
         }
-        kafkaTemplate.flush();
+        chemistryMatchingTaskEventKafkaTemplate.flush();
     }
 }

@@ -12,7 +12,7 @@ import org.apache.kafka.common.serialization.Serializer;
 import java.util.Map;
 
 @Slf4j
-public class ChemFixeadAnswerTaskSerialize implements Serializer<ChemFixedAnswerTaskEvent> {
+public class ChemFixedAnswerTaskSerialize implements Serializer<ChemFixedAnswerTaskEvent> {
 
     private final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
