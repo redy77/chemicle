@@ -5,4 +5,3 @@ public class ChemSingleSelectTaskFormatException extends RuntimeException{
         super(message);
     }
 }
-//dwa
