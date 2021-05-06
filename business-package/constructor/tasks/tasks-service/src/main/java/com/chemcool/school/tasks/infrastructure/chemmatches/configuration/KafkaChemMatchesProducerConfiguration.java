@@ -3,7 +3,7 @@ package com.chemcool.school.tasks.infrastructure.chemmatches.configuration;
 
 import com.chemcool.school.tasks.domain.chemmatches.ChemistryMatchingTaskEvent;
 import com.chemcool.school.tasks.infrastructure.chemmatches.configuration.properties.ChemistryMatchingTaskSerializer;
-import com.chemcool.school.tasks.infrastructure.chemmatches.configuration.properties.KafkaProperties;
+import com.chemcool.school.tasks.infrastructure.KafkaProperties;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;

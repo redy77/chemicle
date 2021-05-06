@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.infrastructure.chemmatches.api.event;
+package com.chemcool.school.tasks.infrastructure.api.event;
 
 import com.chemcool.school.tasks.domain.chemmatches.ChemistryMatchingTaskEvent;
 import com.chemcool.school.tasks.service.chemmatches.ChemistryMatchingTaskEventService;

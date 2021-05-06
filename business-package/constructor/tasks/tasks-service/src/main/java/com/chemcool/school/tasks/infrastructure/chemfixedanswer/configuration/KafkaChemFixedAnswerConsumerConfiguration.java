@@ -1,7 +1,7 @@
 package com.chemcool.school.tasks.infrastructure.chemfixedanswer.configuration;
 
 import com.chemcool.school.tasks.infrastructure.chemfixedanswer.configuration.properties.ChemFixedAnswerTaskDeserializer;
-import com.chemcool.school.tasks.infrastructure.chemfixedanswer.configuration.properties.KafkaProperties;
+import com.chemcool.school.tasks.infrastructure.KafkaProperties;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;

@@ -3,7 +3,7 @@ package com.chemcool.school.tasks.infrastructure.chemfixedanswer.configuration;
 
 import com.chemcool.school.tasks.domain.chemfixedanswer.ChemFixedAnswerTaskEvent;
 import com.chemcool.school.tasks.infrastructure.chemfixedanswer.configuration.properties.ChemFixeadAnswerTaskSerialize;
-import com.chemcool.school.tasks.infrastructure.chemfixedanswer.configuration.properties.KafkaProperties;
+import com.chemcool.school.tasks.infrastructure.KafkaProperties;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;

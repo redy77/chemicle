@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.infrastructure.chemsingleselect.api.event;
+package com.chemcool.school.tasks.infrastructure.api.event;
 
 
 import com.chemcool.school.tasks.domain.chemsingleselect.ChemSingleSelectTaskEvent;

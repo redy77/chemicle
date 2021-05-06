@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.infrastructure.chemequations.api.event;
+package com.chemcool.school.tasks.infrastructure.api.event;
 
 import com.chemcool.school.tasks.domain.chemequations.ChemEquationsTaskEvent;
 import com.chemcool.school.tasks.service.chemequations.ChemEquationsTaskEventService;

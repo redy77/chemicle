@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.infrastructure.chemfixedanswer.api.event;
+package com.chemcool.school.tasks.infrastructure.api.event;
 
 
 import com.chemcool.school.tasks.domain.chemfixedanswer.ChemFixedAnswerTaskEvent;
