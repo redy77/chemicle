@@ -1,9 +1,9 @@
 package com.chemcool.school.answers.web.api.service;
 
-import com.chemcool.school.answers.service.ChemEquationCorrectAnswersService;
-import com.chemcool.school.answers.service.ChemFixedCorrectAnswersService;
-import com.chemcool.school.answers.service.ChemSingleSelectCorrectAnswersService;
-import com.chemcool.school.answers.service.ChemmathesCorrectAnswersService;
+import com.chemcool.school.answers.service.equation.ChemEquationCorrectAnswersService;
+import com.chemcool.school.answers.service.fixedanswer.ChemFixedCorrectAnswersService;
+import com.chemcool.school.answers.service.singleselect.ChemSingleSelectCorrectAnswersService;
+import com.chemcool.school.answers.service.matches.ChemmathesCorrectAnswersService;
 import com.chemcool.school.answers.domain.matches.CoupleForMatching;
 import com.chemcool.school.answers.web.api.domain.*;
 import lombok.RequiredArgsConstructor;
