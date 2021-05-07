@@ -21,13 +21,18 @@ public class ChatController {
         return chatUserService.findAllUsers();
     }
 
-    @PostMapping("/users")
-    public ChatUser addOrUpdateUser(ChatUser user) {
-        return chatUserService.addOrUpdateUser(user);
+    @GetMapping("/room/{id}/users")
+    public List<ChatUser> getAllUsersByRoomId(@PathVariable String id) {
+        return chatUserService.findAllUsersByRoomId(id);
     }
 
-    @DeleteMapping("/users")
-    public void deleteUser(String id) {
+    @PostMapping("/users")
+    public ChatUser addOrUpdateUser(ChatUser user, String roomName) {
+        return chatUserService.addOrUpdateUser(user, roomName);
+    }
+
+    @DeleteMapping("/users/{id}")
+    public void deleteUser(@PathVariable String id) {
         chatUserService.deleteUser(id);
     }
 
@@ -36,7 +41,7 @@ public class ChatController {
         return chatRoomService.findAllRooms();
     }
 
-    @GetMapping("/rooms/{id}")
+    @GetMapping("/users/{id}/rooms")
     public List<ChatRoom> getAllRoomsByUserId(@PathVariable String id) {
         return chatRoomService.findAllRoomsByUserId(id);
     }
@@ -46,9 +51,9 @@ public class ChatController {
         return chatRoomService.addRoom(room);
     }
 
-    @DeleteMapping("/rooms/{id}")
-    public void deleteRoom(@PathVariable String id) {
-        chatRoomService.deleteRoom(id);
+    @DeleteMapping("/rooms/{id}/{roomName}")
+    public void deleteRoom(@PathVariable String id, @PathVariable String roomName) {
+        chatUserService.deleteRoom(id, roomName);
     }
 
 }

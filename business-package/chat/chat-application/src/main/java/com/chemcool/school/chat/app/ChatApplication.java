@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan("com.chemcool.school.chat")
 @EnableEurekaClient
 @EnableJpaRepositories("com.chemcool.school.chat")
-public class ChatApplication {
+public class ChatApplication { 
     public static void main(String[] args) {
         SpringApplication.run(ChatApplication.class, args);
     }

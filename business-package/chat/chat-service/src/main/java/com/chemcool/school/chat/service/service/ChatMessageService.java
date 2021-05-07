@@ -10,6 +10,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
@@ -31,5 +34,17 @@ public class ChatMessageService implements MessageService {
         ChatMessage result = messageRepository.save(chatMessage);
         log.info("Сообщение с ID: " + chatMessage.getId() + "  добавлено.");
         return result.getId();
+    }
+    
+    @Override
+    public List<ChatMessage> findAllMessagesByRoomId(String id){
+        List<ChatMessage> foundMessagesByRoomId = new ArrayList<>();
+        Optional<List<ChatMessage>> searchMessagesResult = messageRepository.findAllMessagesByRoomId(id);
+        
+        if (searchMessagesResult.isPresent()) {
+            foundMessagesByRoomId = searchMessagesResult.get();
+        }
+
+        return foundMessagesByRoomId;
     }
 }

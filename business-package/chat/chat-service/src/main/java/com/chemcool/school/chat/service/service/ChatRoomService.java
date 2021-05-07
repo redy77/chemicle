@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
@@ -27,18 +28,33 @@ public class ChatRoomService implements RoomService {
         return chatRoomRepository.findAllRoomsByUserId(id);
     }
 
-    @Override
-    public void deleteRoom(String id) {
-        log.info("Чат-комната: " + id + "  удалена.");
-        chatRoomRepository.deleteById(id);
-    }
 
     @Override
     public ChatRoom addRoom(ChatRoom room) {
-        List<ChatUser> users = new ArrayList<>();
-        room.setId(UUID.randomUUID().toString());
-        room.setUsers(users);
-        log.info("Чат-комната: " + room.getId() + "  добавлена.");
-        return chatRoomRepository.save(room);
+        if (room.getId() == null || room.getId().isEmpty()) {
+            List<ChatUser> users = new ArrayList<>();
+            String trimmedRoomName = room.getRoomName().trim();
+            room.setRoomName(trimmedRoomName);
+            room.setId(UUID.randomUUID().toString());
+            room.setUsers(users);
+            log.info("Чат-комната: " + room.getId() + "  добавлена.");
+        } else {
+            log.info("Чат-комната: " + room.getId() + "  обновлена.");
+        }
+        ChatRoom savedRoom = chatRoomRepository.save(room);
+        return savedRoom;
+    }
+
+    @Override
+    public ChatRoom findByRoomName(String name) {
+        ChatRoom room = null;
+        Optional<ChatRoom> searchRoomResult = chatRoomRepository.findByRoomName(name.trim());
+
+        if (searchRoomResult.isPresent()) {
+            room = searchRoomResult.get();
+        } else {
+            throw new RuntimeException("Невозможно найти чат-комнату по имени: " + name);
+        }
+        return room;
     }
 }

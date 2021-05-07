@@ -8,9 +8,12 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Objects;
 
 @RestController
@@ -33,6 +36,11 @@ public class WebSocketController {
                                SimpMessageHeaderAccessor headerAccessor) {
         Objects.requireNonNull(headerAccessor.getSessionAttributes()).put("username", chatMessage.getSenderName());
         return chatMessage;
+    }
+
+    @GetMapping("/room/{id}/messages")
+    public List<ChatMessage> getAllMessagesByRoomId(@PathVariable String id) {
+        return chatMessageService.findAllMessagesByRoomId(id);
     }
 
 }

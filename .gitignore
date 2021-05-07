@@ -52,7 +52,3 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
-
-.idea/*
-business-package/chat/chat-web-api/src/main/resources/static/
-
