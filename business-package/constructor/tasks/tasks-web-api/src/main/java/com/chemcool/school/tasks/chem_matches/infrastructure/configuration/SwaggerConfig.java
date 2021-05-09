@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemmatches.infrastructure.configuration;
+package com.chemcool.school.tasks.chem_matches.infrastructure.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,8 +18,8 @@ public class SwaggerConfig {
     public Docket api(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.chemcool.school.chemmatches.web.api"))
-                .paths(regex("/chemmatches-application.*"))
+                .apis(RequestHandlerSelectors.basePackage("com.chemcool.school.tasks"))
+                .paths(regex("/tasks-application.*"))
                 .build();
     }
 

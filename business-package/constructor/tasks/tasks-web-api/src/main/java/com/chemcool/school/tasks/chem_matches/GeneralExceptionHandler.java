@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemfixedanswer;
+package com.chemcool.school.tasks.chem_matches;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

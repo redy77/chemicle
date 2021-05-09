@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.app;
+package com.chemcool.school.tasks.chem_equation;
 
 
 import com.chemcool.school.tasks.controllers.chemequations.ChemEquationsRestController;

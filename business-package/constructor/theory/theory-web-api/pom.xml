@@ -39,18 +39,12 @@
             <artifactId>springfox-swagger-ui</artifactId>
         </dependency>
 
-
-
         <dependency>
             <groupId>com.chemcool.school.theory</groupId>
             <artifactId>theory-service</artifactId>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>com.chemcool.school.theory</groupId>
-            <artifactId>theory-service</artifactId>
-            <scope>compile</scope>
-        </dependency>
+
     </dependencies>
 
 </project>
