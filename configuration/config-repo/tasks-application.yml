@@ -8,8 +8,8 @@ spring:
       ddl-auto: create
   datasource:
     url: jdbc:postgresql://localhost:5432/tasks
-    username: postgres
-    password: maxon
+    username: mick
+    password: mick
     platform: postgres
     driver-class-name: org.postgresql.Driver
 
@@ -24,3 +24,5 @@ kafka:
   taskChemFixedAnswerGroupId: task-chemistry-answer.1
   taskChemMatchesGroupId: task-chemistry-matches.1
   taskChemSingleSelectGroupId: task-chemistry-singleSelect.1
+
+
