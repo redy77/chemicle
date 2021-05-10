@@ -1,1 +1,0 @@
-CREATE ROLE mick WITH LOGIN PASSWORD 'mick';

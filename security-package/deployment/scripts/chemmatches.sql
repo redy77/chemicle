@@ -1,1 +1,0 @@
-CREATE DATABASE chemmatches OWNER mick;

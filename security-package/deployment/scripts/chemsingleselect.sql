@@ -1,1 +1,0 @@
-CREATE DATABASE chem_single_select OWNER mick;

@@ -1,1 +1,0 @@
-CREATE DATABASE chemfixedanswer OWNER mick;
