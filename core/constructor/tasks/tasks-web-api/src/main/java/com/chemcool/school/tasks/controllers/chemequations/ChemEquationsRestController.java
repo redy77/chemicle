@@ -6,6 +6,7 @@ import com.chemcool.school.tasks.dto.chemequations.ChemEquationsTaskDto;
 import com.chemcool.school.tasks.service.chemequations.ChemEquationsTaskPresentation;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ import java.util.List;
 @RequestMapping("/chemEquations/v.1.0")
 @RequiredArgsConstructor
 public class ChemEquationsRestController {
+
 
     private final ChemEquationsTaskPresentation presentation;
 
@@ -36,8 +38,8 @@ public class ChemEquationsRestController {
     @GetMapping("/reference/{chapterId}/{referenceId}")
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation("Возвращает все сущности задания типа \"Уравнения\" по разделу и главе")
-    public List<ChemEquationsTaskDto> getAllByReferenceId(@PathVariable int chapterId,@PathVariable int referenceId) {
-        return presentation.getAllChemistryEquationsByChapterIdAndReferenceIdDto(chapterId,referenceId);
+    public List<ChemEquationsTaskDto> getAllByReferenceId(@PathVariable int chapterId, @PathVariable int referenceId) {
+        return presentation.getAllChemistryEquationsByChapterIdAndReferenceIdDto(chapterId, referenceId);
     }
 
     @GetMapping("/{id}")
@@ -58,14 +60,14 @@ public class ChemEquationsRestController {
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation("Создает новую сущность задания типа \"Уравнения\"")
     public String saveNewEquationsTask(ChemEquationsTaskDto taskDto, String rightAnswer) {
-        return presentation.createNewEquationsTask(taskDto,rightAnswer);
+        return presentation.createNewEquationsTask(taskDto, rightAnswer);
     }
 
     @PutMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation("Обновляет существующую сущность задания типа \"Уравнения\"")
-    public void saveEquationsTask(ChemEquationsTaskDto taskDto,String rightAnswer) {
-        presentation.updateEquationsTask(taskDto,rightAnswer);
+    public void saveEquationsTask(ChemEquationsTaskDto taskDto, String rightAnswer) {
+        presentation.updateEquationsTask(taskDto, rightAnswer);
     }
 
     @DeleteMapping("/{id}")
