@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.chemcool.school</groupId>
-    <artifactId>business-package</artifactId>
+    <artifactId>core</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
 
@@ -54,11 +54,9 @@
     </build>
 
     <modules>
-        <module>theory</module>
-        <module>answers-task</module>
-        <module>tasks</module>
-        <module>lesson</module>
-        <module>admin-panel</module>
+        <module>answers</module>
+        <module>brain-games</module>
+        <module>constructor</module>
     </modules>
 
 </project>
