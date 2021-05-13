@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: two-o-four-eight-application
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/user_score
+    username: postgres #mick
+    password: maxon #mick
+    platform: postres
+    driver-class-name: org.postgresql.Driver
+
+server:
+  port: 9091
+  servlet:
+    context-path: /two-o-four-eight-application/
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+kafka:
+  server: http://localhost:9092
+  groupId: twoofoureight.1
