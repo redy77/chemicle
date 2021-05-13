@@ -10,7 +10,7 @@
     <modules>
         <module>api-gateway</module>
         <module>security-package</module>
-        <module>business-package</module>
+        <module>core</module>
         <module>configuration</module>
 
     </modules>
