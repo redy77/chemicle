@@ -16,6 +16,4 @@ spring:
     max-attempts: 50
     max-interval: 1000
 
-default:
-  url: http://localhost:8100/chat-application
 stomp_endpoint: /ws
