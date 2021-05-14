@@ -4,6 +4,10 @@ zuul:
       enabled: true
   sensitive-headers:
   routes:
+    chat-application:
+      path: /chat-application/**
+      service-id: chat-application
+      stripPrefix: false
 
     lesson-application:
       path: /lesson-application/**
@@ -40,9 +44,9 @@ zuul:
       service-id: registration-application
       stripPrefix: false
 
-    answers-task-application:
-      path: /answers-task-application/**
-      service-id: answers-task-application
+    answers-application:
+      path: /answers-application/**
+      service-id: answers-application
       stripPrefix: false
 
     authorization-application:

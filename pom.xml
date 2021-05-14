@@ -12,7 +12,7 @@
         <module>security-package</module>
         <module>core</module>
         <module>configuration</module>
-
+        <module>business-package</module>
     </modules>
 
 </project>

@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: chat-application
+  cloud:
+    config:
+      name: chat-application
+  discovery:
+    enabled: true
+
+  username: ${SPRING_CLOUD_CONFIG_USERNAME}
+  password: ${SPRING_CLOUD_CONFIG_PASSWORD}
+  fail-fast: true
+  retry:
+    initial-interval: 2000
+    multiplier: 1.1
+    max-attempts: 50
+    max-interval: 1000
+
+stomp_endpoint: /ws
