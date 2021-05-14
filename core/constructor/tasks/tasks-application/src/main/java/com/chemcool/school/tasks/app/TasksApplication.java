@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemEquation;
+package com.chemcool.school.tasks.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
