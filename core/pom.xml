@@ -57,6 +57,7 @@
         <module>answers</module>
         <module>brain-games</module>
         <module>constructor</module>
+        <module>alchemy</module>
     </modules>
 
 </project>
