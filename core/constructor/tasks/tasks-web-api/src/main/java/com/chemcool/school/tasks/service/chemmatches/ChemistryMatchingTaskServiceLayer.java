@@ -1,6 +1,6 @@
 package com.chemcool.school.tasks.service.chemmatches;
 
-import com.chemcool.school.tasks.chem_matches.ChemistryTaskEmptyException;
+import com.chemcool.school.tasks.chemMatches.ChemistryTaskEmptyException;
 import com.chemcool.school.tasks.domain.chemmatches.ChemistryMatchingTask;
 import com.chemcool.school.tasks.domain.chemmatches.ChemistryMatchingTaskExample;
 import com.chemcool.school.tasks.dto.chemmatches.ChemistryMatchingTaskDto;
