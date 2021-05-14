@@ -1,6 +1,6 @@
 package com.chemcool.school.tasks.chemFixedanswer;
 
-import com.chemcool.school.tasks.app.TasksApplication;
+import com.chemcool.school.tasks.chemEquation.TasksApplication;
 
 import com.chemcool.school.tasks.dto.chemfixedanswer.ChemFixedAnswerTaskDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TasksApplication.class)
 @AutoConfigureMockMvc
-@Sql(value = {"../../../../../../resources/createtasks.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(value = {"/createtasks.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 public class CrudTestTwo {
 
     @Autowired
@@ -56,7 +56,7 @@ public class CrudTestTwo {
     }
 
     @Test
-    @Sql(value = {"../../../../../../resources/createtasks.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(value = {"/createtasks.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     public void getTasks() throws Exception {
         List<ChemFixedAnswerTaskDto> list = new ArrayList<>();
         list.add(chemFixedAnswerTaskDto1);
@@ -71,7 +71,7 @@ public class CrudTestTwo {
     }
 
     @Test
-    @Sql(value = {"../../../../../../resources/createtasks.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(value = {"/createtasks.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     public void getTaskById() throws Exception {
         mockMvc.perform(get("/v1.0/" + "2"))
                 .andExpect(status().is2xxSuccessful())

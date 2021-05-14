@@ -1,6 +1,6 @@
 package com.chemcool.school.tasks.chemMatches;
 
-import com.chemcool.school.tasks.app.TasksApplication;
+import com.chemcool.school.tasks.chemEquation.TasksApplication;
 import com.chemcool.school.tasks.domain.chemmatches.ChemistryMatchingTask;
 import com.chemcool.school.tasks.domain.chemmatches.ChemistryMatchingTaskExample;
 import com.chemcool.school.tasks.domain.chemmatches.CoupleForMatching;
