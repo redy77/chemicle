@@ -4,6 +4,11 @@ zuul:
       enabled: true
   sensitive-headers:
   routes:
+    alchemy-application:
+      path: /alchemy-application/**
+      service-id: alchemy-application
+      stripPrefix: false
+
     chat-application:
       path: /chat-application/**
       service-id: chat-application
