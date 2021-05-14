@@ -1,6 +1,6 @@
 package com.chemcool.school.tasks.chemFixedanswer;
 
-import com.chemcool.school.tasks.chemEquation.TasksApplication;
+import com.chemcool.school.tasks.app.TasksApplication;
 
 import com.chemcool.school.tasks.dto.chemfixedanswer.ChemFixedAnswerTaskDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
