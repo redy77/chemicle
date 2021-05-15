@@ -11,16 +11,4 @@ spring:
       username: ${SPRING_CLOUD_CONFIG_USERNAME}
       password: ${SPRING_CLOUD_CONFIG_PASSWORD}
 
----
-spring:
-  profiles: test
-  application:
-    name: tasks-application-test
-  cloud:
-    config:
-      uri: http://localhost:8888
-      fail-fast: false
-      username: ${SPRING_CLOUD_CONFIG_USERNAME}
-      password: ${SPRING_CLOUD_CONFIG_PASSWORD}
-
 

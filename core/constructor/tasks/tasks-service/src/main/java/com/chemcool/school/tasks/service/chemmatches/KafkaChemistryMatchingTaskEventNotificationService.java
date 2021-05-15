@@ -16,7 +16,7 @@ import java.util.UUID;
 public class KafkaChemistryMatchingTaskEventNotificationService implements ChemistryMatchingTaskEventNotificationService {
 
     private final KafkaTemplate<String, ChemistryMatchingTaskEvent> chemistryMatchingTaskEventKafkaTemplate;
-    private static final String TOPIC = "tasks-matching";
+    private static final String TOPIC = "task-chemistry-matches";
 
     @Override
     public void send(ChemistryMatchingTaskEvent event) {

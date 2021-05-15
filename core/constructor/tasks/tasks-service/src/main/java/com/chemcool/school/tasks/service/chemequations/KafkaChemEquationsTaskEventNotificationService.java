@@ -26,7 +26,7 @@ public class KafkaChemEquationsTaskEventNotificationService implements ChemEquat
 
     @Override
     public void send(ChemEquationsTaskEvent event) {
-        ListenableFuture<SendResult<String, ChemEquationsTaskEvent>> future = chemEquationsTaskEventKafkaTemplate.send("equations-task", UUID.randomUUID().toString(), event);
+        ListenableFuture<SendResult<String, ChemEquationsTaskEvent>> future = chemEquationsTaskEventKafkaTemplate.send("task-chemistry-equations", UUID.randomUUID().toString(), event);
         future.addCallback(System.out::println, System.out::println);
         chemEquationsTaskEventKafkaTemplate.flush();
     }

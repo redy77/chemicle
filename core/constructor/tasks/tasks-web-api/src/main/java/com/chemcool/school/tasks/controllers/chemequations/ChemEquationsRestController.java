@@ -18,7 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ChemEquationsRestController {
 
-
+    @Autowired
     private final ChemEquationsTaskPresentation presentation;
 
     @GetMapping

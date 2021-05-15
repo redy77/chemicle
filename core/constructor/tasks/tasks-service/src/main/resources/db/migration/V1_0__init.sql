@@ -35,8 +35,6 @@ create table chemistry_equations_event (
     primary key (event_id)
 );
 
-GRANT all ON chemistry_fixed_answer_task TO mick;
-
 create table if not exists chemistry_fixed_answer_task (
     task_id varchar(255) not null primary key,
     description VARCHAR(10000),

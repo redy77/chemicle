@@ -1,6 +1,8 @@
 package com.chemcool.school.tasks.chemEquation;
 
 
+
+import com.chemcool.school.tasks.app.TasksApplication;
 import com.chemcool.school.tasks.controllers.chemequations.ChemEquationsRestController;
 import com.chemcool.school.tasks.infrastructure.storage.chemequations.ChemEquationsTaskRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,13 +31,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = TasksApplication.class)
 @Transactional
 @AutoConfigureMockMvc
 @TestPropertySource("/application-test.properties")
-@Sql(value = {"/testDB-before.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@Sql(value = {"/testDB-after.sql"}, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+@Sql(value = {"/testEquationDb.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 public class EquationControllerTest {
+
 
     private String expectedResponse;
 
@@ -65,7 +67,7 @@ public class EquationControllerTest {
     @Test
     @DisplayName("Достаем все задания")
     public void testGetAllChemEquationTask() throws Exception {
-        mockMvc.perform(get("/equations/v.1.0")
+        mockMvc.perform(get("/chemEquations/v.1.0")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -78,7 +80,7 @@ public class EquationControllerTest {
     public void testGetAllChemEquationTaskByChapterId() throws Exception {
         int chapter = 3;
 
-        mockMvc.perform(get("/equations/v.1.0/chapter/" + chapter)
+        mockMvc.perform(get("/chemEquations/v.1.0/chapter/" + chapter)
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -93,7 +95,7 @@ public class EquationControllerTest {
         int chapter = 3;
         int reference = 4;
 
-        mockMvc.perform(get("/equations/v.1.0/reference/" + chapter + "/" + reference)
+        mockMvc.perform(get("/chemEquations/v.1.0/reference/" + chapter + "/" + reference)
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -106,7 +108,7 @@ public class EquationControllerTest {
     public void testGetChemEquationTaskById() throws Exception {
         String id = "4";
 
-        mockMvc.perform(get("/equations/v.1.0/" + id)
+        mockMvc.perform(get("/chemEquations/v.1.0/" + id)
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -121,7 +123,7 @@ public class EquationControllerTest {
     @Test
     @DisplayName("Достаем случайное задание")
     public void testGetRandomChemEquationTask() throws Exception {
-        mockMvc.perform(get("/equations/v.1.0/randomTask")
+        mockMvc.perform(get("/chemEquations/v.1.0/randomTask")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -131,7 +133,7 @@ public class EquationControllerTest {
     @Test
     @DisplayName("Создаем задание задание")
     public void testCreateChemEquationTask() throws Exception {
-        String id = mockMvc.perform(post("/equations/v.1.0/")
+        String id = mockMvc.perform(post("/chemEquations/v.1.0/")
                 .param("taskId", "test")
                 .param("description", "test")
                 .param("chapterId", "1")
@@ -160,9 +162,8 @@ public class EquationControllerTest {
     @Test
     @DisplayName("Удаляем задание")
     public void testDelChemEquationTaskById() throws Exception {
-        String id = "4";
-
-        mockMvc.perform(delete("/equations/v.1.0/" + id)
+        String id = "2";
+        mockMvc.perform(delete("/chemEquations/v.1.0/" + id)
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
@@ -173,7 +174,7 @@ public class EquationControllerTest {
     @DisplayName("Если введен полностью правильный ответ")
     public void testCheckAnswer1() throws Exception {
         String answer = "CuSO4+2NaOH→Cu(OH)2↓+Na2SO4";
-        mockMvc.perform(post("/equations/v.1.0/checkAnswer")
+        mockMvc.perform(post("/chemEquations/v.1.0/checkAnswer")
                 .param("taskId","1")
                 .param("userAnswer",answer)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -187,7 +188,7 @@ public class EquationControllerTest {
     @DisplayName("Если введен полностью правильный ответ, но в другом порядке")
     public void testCheckAnswer2() throws Exception {
         String answer = "CuSO4+2NaOH→Na2SO4+Cu(OH)2↓";
-        mockMvc.perform(post("/equations/v.1.0/checkAnswer")
+        mockMvc.perform(post("/chemEquations/v.1.0/checkAnswer")
                 .param("taskId","1")
                 .param("userAnswer",answer)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -201,7 +202,7 @@ public class EquationControllerTest {
     @DisplayName("Если введен не правельный правильный ответ")
     public void testCheckAnswer3() throws Exception {
         String answer = "badAnswer";
-        mockMvc.perform(post("/equations/v.1.0/checkAnswer")
+        mockMvc.perform(post("/chemEquationsv.1.0/checkAnswer")
                 .param("taskId","1")
                 .param("userAnswer",answer)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -215,7 +216,7 @@ public class EquationControllerTest {
     @DisplayName("Если введен правильный ответ, но не учтен знак, агрегатное состояние и регистр")
     public void testCheckAnswer4() throws Exception {
         String answer = "cuso4+2naoh=cu(oh)2+na2so4";
-        mockMvc.perform(post("/equations/v.1.0/checkAnswer")
+        mockMvc.perform(post("/chemEquations/v.1.0/checkAnswer")
                 .param("taskId","1")
                 .param("userAnswer",answer)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -229,7 +230,7 @@ public class EquationControllerTest {
     @DisplayName("Если введен полностью правильный ответ, кроме знака")
     public void testCheckAnswer5() throws Exception {
         String answer = "CuSO4+2NaOH=Cu(OH)2↓+Na2SO4";
-        mockMvc.perform(post("/equations/v.1.0/checkAnswer")
+        mockMvc.perform(post("/chemEquations/v.1.0/checkAnswer")
                 .param("taskId","1")
                 .param("userAnswer",answer)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -243,7 +244,7 @@ public class EquationControllerTest {
     @DisplayName("Если введен полностью правильный ответ, кроме агрегатного состояния")
     public void testCheckAnswer6() throws Exception {
         String answer = "CuSO4+2NaOH→Cu(OH)2+Na2SO4";
-        mockMvc.perform(post("/equations/v.1.0/checkAnswer")
+        mockMvc.perform(post("/chemEquations/v.1.0/checkAnswer")
                 .param("taskId","1")
                 .param("userAnswer",answer)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -257,7 +258,7 @@ public class EquationControllerTest {
     @DisplayName("Если введен полностью правильный ответ, кроме регистра")
     public void testCheckAnswer7() throws Exception {
         String answer = "cuso4+2naoh→cu(oh)2↓+na2so4";
-        mockMvc.perform(post("/equations/v.1.0/checkAnswer")
+        mockMvc.perform(post("/chemEquations/v.1.0/checkAnswer")
                 .param("taskId","1")
                 .param("userAnswer",answer)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -271,7 +272,7 @@ public class EquationControllerTest {
     @DisplayName("Если введен полностью правильный ответ, кроме регистра и знака")
     public void testCheckAnswer8() throws Exception {
         String answer = "cuso4+2naoh=cu(oh)2↓+na2so4";
-        mockMvc.perform(post("/equations/v.1.0/checkAnswer")
+        mockMvc.perform(post("/chemEquations/v.1.0/checkAnswer")
                 .param("taskId","1")
                 .param("userAnswer",answer)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -280,4 +281,5 @@ public class EquationControllerTest {
                 .andExpect(jsonPath("$.answerResult").value(true))
                 .andExpect(jsonPath("$.score").value(7));
     }
+
 }
