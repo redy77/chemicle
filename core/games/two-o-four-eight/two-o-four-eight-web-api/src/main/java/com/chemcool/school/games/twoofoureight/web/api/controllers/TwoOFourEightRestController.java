@@ -21,7 +21,7 @@ public class TwoOFourEightRestController {
     public String save(@RequestHeader(value = "Authorization") String token,
                        @RequestBody(required = false) Map<String, String> payload) {
         UserScore userScore = new UserScore();
-        userScore.setUserId(jwtParser.getIdUserOfToken(token));
+        userScore.setUserId(jwtParser.getUserIdFromToken(token));
         userScore.setScore(payload.get("myScore"));
         userScoreService.saveUserScore(userScore);
         return userScore.toString();
