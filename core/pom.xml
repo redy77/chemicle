@@ -50,6 +50,7 @@
                     <version>${spring-boot.version}</version>
                 </plugin>
             </plugins>
+
         </pluginManagement>
     </build>
 
