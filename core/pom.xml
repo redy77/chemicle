@@ -57,6 +57,7 @@
         <module>answers</module>
         <module>games</module>
         <module>constructor</module>
+        <module>chat</module>
         <module>alchemy</module>
     </modules>
 
