@@ -14,13 +14,13 @@ public class JWTParser {
     @Value("${jwt.secret}")
     private String jwtSecret;
 
-    public Jws<Claims> getUserOfToken(String token) {
-        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
-    }
+    public String getUserIdFromToken(String token) {
+        Claims claims = Jwts.parser()
+                .setSigningKey(jwtSecret)
+                .parseClaimsJws(token)
+                .getBody();
 
-    public String getIdUserOfToken(String token) {
-        Jws<Claims> jws = getUserOfToken(token);
-        return jws.getBody().getSubject();
+        return claims.getSubject();
     }
 }
 
