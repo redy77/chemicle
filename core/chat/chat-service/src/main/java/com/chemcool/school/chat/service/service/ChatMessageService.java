@@ -35,7 +35,17 @@ public class ChatMessageService implements MessageService {
         log.info("Сообщение с ID: " + chatMessage.getId() + "  добавлено.");
         return result.getId();
     }
-    
+
+    @Override
+    public ChatMessage edit(ChatMessage chatMessage) {
+        return messageRepository.save(chatMessage);
+    }
+
+    @Override
+    public void delete(ChatMessage chatMessage) {
+        messageRepository.delete(chatMessage);
+    }
+
     @Override
     public List<ChatMessage> findAllMessagesByRoomId(String id){
         List<ChatMessage> foundMessagesByRoomId = new ArrayList<>();

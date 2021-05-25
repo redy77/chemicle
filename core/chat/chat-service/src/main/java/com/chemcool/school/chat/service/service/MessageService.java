@@ -7,4 +7,6 @@ import java.util.List;
 public interface MessageService {
     String save(ChatMessage chatMessage);
     List<ChatMessage> findAllMessagesByRoomId(String id);
+    ChatMessage edit(ChatMessage chatMessage);
+    void delete(ChatMessage chatMessage);
 }
