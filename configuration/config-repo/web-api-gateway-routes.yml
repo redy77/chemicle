@@ -29,6 +29,11 @@ zuul:
       service-id: tasks-application
       stripPrefix: false
 
+    two-o-four-eight-application:
+      path: /two-o-four-eight-application/**
+      service-id: two-o-four-eight-application
+      stripPrefix: false
+
     registration-application:
       path: /registration-application/**
       service-id: registration-application

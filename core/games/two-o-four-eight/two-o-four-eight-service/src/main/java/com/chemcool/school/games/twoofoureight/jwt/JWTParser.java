@@ -2,43 +2,37 @@ package com.chemcool.school.games.twoofoureight.jwt;
 
 import io.jsonwebtoken.*;
 import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Slf4j
-@Service
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+
+@Component
 @Data
-public class JWTParser {
+public class JWTParser implements JWTParserInterface{
 
-    @Value("${jwt.secret}")
+    @Value("${authentication.jwt.secretKey}")
     private String jwtSecret;
 
-    public String getUserIdFromToken(String token) {
-        Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
-                .parseClaimsJws(token)
-                .getBody();
-
-        return claims.getSubject();
-    }
-
-    public boolean validateToken(String authToken) {
+    @Override
+    public Claims getClaimsFromToken(String token) {
+        Claims claims;
         try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
-            return true;
-        } catch (SignatureException ex) {
-            log.error("Invalid JWT signature");
-        } catch (MalformedJwtException ex) {
-            log.error("Invalid JWT token");
-        } catch (ExpiredJwtException ex) {
-            log.error("Expired JWT token");
-        } catch (UnsupportedJwtException ex) {
-            log.error("Unsupported JWT token");
-        } catch (IllegalArgumentException ex) {
-            log.error("JWT claims string is empty.");
+            claims = Jwts.parser()
+                    .setSigningKey(jwtSecret)
+                    .parseClaimsJws(token)
+                    .getBody();
+        }catch (Exception e){
+            System.err.println("Ошибка при получении Claims  из токена!");
+            claims = null;
         }
-        return false;
+        return claims;
     }
+
+    public String getUserIdFromToken(String token) {
+        return getClaimsFromToken(token).getSubject();
+    }
+
 }
 

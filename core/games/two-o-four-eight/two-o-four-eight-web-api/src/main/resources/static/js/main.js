@@ -349,7 +349,7 @@ function saveScore(){
             "Accept": "application/json",
             "Content-Type": "application/json; charset=UTF-8",
             //hardcoded!
-            "Authorization": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAiLCJpYXQiOjE2MjA5MTEzMTcsImV4cCI6MTYyMTc3NTMxN30.B42dFWHYQqvDfSllktO0EwSE9fPDsNqN3GHWFotc5sKhnQFyZhDFmGdDKnUqDkf150Qv9dEav1FfPTdxsvYOwQ"
+            "Authorization": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAiLCJpYXQiOjE2MjIwMjM2OTEsImV4cCI6MTYyMjg4NzY5MX0.PQxwQ_giH--F8d2rFzan76BYSSuWgTYQtsRp_plCaFoLUXxziUbGVO1VBS8PbS0gh0_CAbLGdtwbXRluyf2Ahw"
         },
         body: JSON.stringify(currentScore)
     })
