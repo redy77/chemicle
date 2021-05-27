@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ChemmathesCorrectAnswersService {
+public class  ChemmathesCorrectAnswersService {
     private final ChemmathesCorrectAnswersRepository repository;
 
     public void saveCorrectAnswers(ChemistryMatchingTask task) {

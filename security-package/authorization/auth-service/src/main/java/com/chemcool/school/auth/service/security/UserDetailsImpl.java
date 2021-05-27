@@ -16,6 +16,7 @@ import java.util.Map;
 public class UserDetailsImpl implements OAuth2User, UserDetails {
 
     private String id;
+    private String name;
     private String email;
     private String password;
     private boolean isEnabled;
@@ -23,8 +24,9 @@ public class UserDetailsImpl implements OAuth2User, UserDetails {
     private Map<String, Object> attributes;
 
 
-    public UserDetailsImpl(String id, String email, String password, boolean isEnabled, Collection<? extends GrantedAuthority> authorities) {
+    public UserDetailsImpl(String id, String name, String email, String password, boolean isEnabled, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
+        this.name = name;
         this.email = email;
         this.password = password;
         this.authorities = authorities;
@@ -37,6 +39,7 @@ public class UserDetailsImpl implements OAuth2User, UserDetails {
 
         return new UserDetailsImpl(
                 user.getId(),
+                user.getName(),
                 user.getEmail(),
                 user.getPassword(),
                 user.isEnabled(),
@@ -94,9 +97,13 @@ public class UserDetailsImpl implements OAuth2User, UserDetails {
         this.attributes = attributes;
     }
 
+    //    @Override
+//    public String getName() {
+//        return String.valueOf(id);
+//    }
     @Override
     public String getName() {
-        return String.valueOf(id);
+        return name;
     }
 }
 
