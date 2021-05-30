@@ -1,6 +1,6 @@
 package com.chemcool.school.chat.service.service;
 
-import com.chemcool.school.chat.service.models.ChatRoom;
+import com.chemcool.school.chat.service.domain.ChatRoom;
 import java.util.List;
 
 public interface RoomService {

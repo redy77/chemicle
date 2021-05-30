@@ -1,4 +1,4 @@
-package com.chemcool.school.chat.service.models;
+package com.chemcool.school.chat.service.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

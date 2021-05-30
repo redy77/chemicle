@@ -1,7 +1,7 @@
 package com.chemcool.school.chat.service.service;
 
-import com.chemcool.school.chat.service.models.ChatRoom;
-import com.chemcool.school.chat.service.models.ChatUser;
+import com.chemcool.school.chat.service.domain.ChatRoom;
+import com.chemcool.school.chat.service.domain.ChatUser;
 import com.chemcool.school.chat.service.repository.ChatRoomRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
