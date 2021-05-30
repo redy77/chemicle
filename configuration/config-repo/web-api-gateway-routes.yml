@@ -4,6 +4,11 @@ zuul:
       enabled: true
   sensitive-headers:
   routes:
+    alchemy-application:
+      path: /alchemy-application/**
+      service-id: alchemy-application
+      stripPrefix: false
+
     chat-application:
       path: /chat-application/**
       service-id: chat-application
@@ -19,24 +24,9 @@ zuul:
       service-id: theory-application
       stripPrefix: false
 
-    chemfixedanswer-application:
-      path: /chemfixedanswer-application/**
-      service-id: chemfixedanswer-application
-      stripPrefix: false
-
-    chemsingleselect-application:
-      path: /chemsingleselect-application/**
-      service-id: chemsingleselect-application
-      stripPrefix: false
-
-    chemmatches-application:
-      path: /chemmatches-application/**
-      service-id: chemmatches-application
-      stripPrefix: false
-
-    chemequations-application:
-      path: /chemequations-application/**
-      service-id: chemequations-application
+    tasks-application:
+      path: /tasks-application/**
+      service-id: tasks-application
       stripPrefix: false
 
     registration-application:
