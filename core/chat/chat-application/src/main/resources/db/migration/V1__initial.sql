@@ -9,7 +9,7 @@ create table messages
     name           varchar(255),
     published_date timestamp,
     type           message_type,
-    sender_id      varchar(255),
+    chat_user      varchar(255),
     primary key (id)
 );
 
@@ -39,7 +39,7 @@ create table users_linked_rooms
 );
 
 alter table if exists messages
-    add constraint messages_sender_fk foreign key (sender_id) references users;
+    add constraint messages_sender_fk foreign key (chat_user) references users;
 alter table if exists users_linked_rooms
     add constraint users_linked_rooms_user_fk foreign key (user_id) references users;
 alter table if exists users_linked_rooms

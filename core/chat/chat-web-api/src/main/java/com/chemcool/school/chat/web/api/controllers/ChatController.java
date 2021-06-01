@@ -1,7 +1,7 @@
 package com.chemcool.school.chat.web.api.controllers;
 
-import com.chemcool.school.chat.service.models.ChatRoom;
-import com.chemcool.school.chat.service.models.ChatUser;
+import com.chemcool.school.chat.service.domain.ChatRoom;
+import com.chemcool.school.chat.service.domain.ChatUser;
 import com.chemcool.school.chat.service.service.ChatRoomService;
 import com.chemcool.school.chat.service.service.ChatUserService;
 import lombok.RequiredArgsConstructor;

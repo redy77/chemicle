@@ -1,4 +1,4 @@
-package com.chemcool.school.chat.service.models;
+package com.chemcool.school.chat.service.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ public class ChatUser {
     private String id;
 
     @Column(name = "name")
-    private String userName;
+    private String name;
 
     @Column(name = "role")
     private String userRole;
@@ -37,7 +37,7 @@ public class ChatUser {
     public String toString() {
         return "ChatUser{" +
                 "id='" + id + '\'' +
-                ", userName='" + userName + '\'' +
+                ", userName='" + name + '\'' +
                 ", userRole='" + userRole + '\'' +
                 ", chatMessage=" + chatMessage +
                 '}';

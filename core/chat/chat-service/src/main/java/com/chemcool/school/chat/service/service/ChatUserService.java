@@ -1,8 +1,8 @@
 package com.chemcool.school.chat.service.service;
 
-import com.chemcool.school.chat.service.models.ChatMessage;
-import com.chemcool.school.chat.service.models.ChatRoom;
-import com.chemcool.school.chat.service.models.ChatUser;
+import com.chemcool.school.chat.service.domain.ChatMessage;
+import com.chemcool.school.chat.service.domain.ChatRoom;
+import com.chemcool.school.chat.service.domain.ChatUser;
 import com.chemcool.school.chat.service.repository.ChatRoomRepository;
 import com.chemcool.school.chat.service.repository.ChatUserRepository;
 import lombok.RequiredArgsConstructor;
@@ -93,19 +93,6 @@ public class ChatUserService implements UserService {
         }
 
         return savedUser;
-    }
-
-    @Override
-    public ChatUser findByUserName(String name) {
-        ChatUser user = null;
-        Optional<ChatUser> searchUserResult = chatUserRepository.findByUserName(name);
-
-        if (searchUserResult.isPresent()) {
-            user = searchUserResult.get();
-        } else {
-            throw new RuntimeException("Невозможно найти пользователя по имени: " + name);
-        }
-        return user;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.chemcool.school.chat.service.models;
+package com.chemcool.school.chat.service.domain;
 
 import com.chemcool.school.chat.service.miscelaneous.MessageType;
 import com.vladmihalcea.hibernate.type.basic.PostgreSQLEnumType;
@@ -26,7 +26,7 @@ public class ChatMessage {
     private String id;
 
     @ManyToOne
-    @JoinColumn(name="sender_id")
+    @JoinColumn(name="chat_user")
     private ChatUser user;
 
     @Column(name = "room_id")
@@ -34,6 +34,9 @@ public class ChatMessage {
 
     @Column(name = "name")
     private String senderName;
+
+    @Column(name = "sender_id")
+    private String senderId;
 
     @Column(name = "message")
     private String message;

@@ -1,7 +1,7 @@
 package com.chemcool.school.chat.web.api.controllers;
 
 import com.chemcool.school.chat.service.miscelaneous.MessageType;
-import com.chemcool.school.chat.service.models.ChatMessage;
+import com.chemcool.school.chat.service.domain.ChatMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;

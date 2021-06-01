@@ -1,6 +1,6 @@
 package com.chemcool.school.chat.service.repository;
 
-import com.chemcool.school.chat.service.models.ChatUser;
+import com.chemcool.school.chat.service.domain.ChatUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -17,6 +17,4 @@ public interface ChatUserRepository extends JpaRepository<ChatUser, String>, Jpa
     @Query("select u from ChatUser u join u.chatRooms r where r.id = ?1")
     Optional<List<ChatUser>> findAllUsersByRoomId(String id);
 
-    @Query("select e from ChatUser e where e.userName = ?1")
-    Optional<ChatUser> findByUserName(String name);
 }
