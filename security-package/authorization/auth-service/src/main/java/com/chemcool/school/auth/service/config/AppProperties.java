@@ -1,56 +1,27 @@
 package com.chemcool.school.auth.service.config;
 
+import lombok.AllArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.context.properties.ConstructorBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Component
 @ConfigurationProperties(prefix = "app")
+@ConstructorBinding
+@AllArgsConstructor
 public class AppProperties {
-    private final Auth auth = new Auth();
-    private final OAuth2 oauth2 = new OAuth2();
+    public final Auth auth;
+    public final Oauth2 oauth2;
 
+    @AllArgsConstructor
     public static class Auth {
-        private String tokenSecret;
-        private long tokenExpirationMsec;
-
-        public String getTokenSecret() {
-            return tokenSecret;
-        }
-
-        public void setTokenSecret(String tokenSecret) {
-            this.tokenSecret = tokenSecret;
-        }
-
-        public long getTokenExpirationMsec() {
-            return tokenExpirationMsec;
-        }
-
-        public void setTokenExpirationMsec(long tokenExpirationMsec) {
-            this.tokenExpirationMsec = tokenExpirationMsec;
-        }
+        public final String tokenSecret;
+        public final String tokenIssuer;
+        public final long tokenExpiration;
     }
 
-    public static final class OAuth2 {
-        private List<String> authorizedRedirectUris = new ArrayList<>();
-
-        public List<String> getAuthorizedRedirectUris() {
-            return authorizedRedirectUris;
-        }
-
-        public OAuth2 authorizedRedirectUris(List<String> authorizedRedirectUris) {
-            this.authorizedRedirectUris = authorizedRedirectUris;
-            return this;
-        }
-    }
-
-    public Auth getAuth() {
-        return auth;
-    }
-
-    public OAuth2 getOauth2() {
-        return oauth2;
+    @AllArgsConstructor
+    public static class Oauth2 {
+        public final List<String> authorizedRedirectUris;
     }
 }
