@@ -2,13 +2,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.chemcool.school</groupId>
     <artifactId>security-package</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
+
+
+    <modules>
+        <module>authorization</module>
+        <module>registration</module>
+    </modules>
+
 
     <properties>
         <java.version>11</java.version>
@@ -20,6 +26,7 @@
         <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
     </properties>
+
 
     <dependencyManagement>
         <dependencies>
@@ -41,6 +48,7 @@
         </dependencies>
     </dependencyManagement>
 
+
     <build>
         <pluginManagement>
             <plugins>
@@ -52,10 +60,5 @@
             </plugins>
         </pluginManagement>
     </build>
-
-    <modules>
-        <module>authorization</module>
-        <module>registration</module>
-    </modules>
 
 </project>

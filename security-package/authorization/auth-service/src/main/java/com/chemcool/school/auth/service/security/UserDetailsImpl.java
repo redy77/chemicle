@@ -1,7 +1,6 @@
 package com.chemcool.school.auth.service.security;
 
 import com.chemcool.school.auth.service.domain.RegisterUser;
-import com.chemcool.school.auth.service.domain.RegisterUserAccountRole;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,8 +21,7 @@ public class UserDetailsImpl implements OAuth2User, UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
     private Map<String, Object> attributes;
 
-
-    public UserDetailsImpl(String id, String email, String password, boolean isEnabled, Collection<? extends GrantedAuthority> authorities) {
+    private UserDetailsImpl(String id, String email, String password, boolean isEnabled, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -31,9 +29,10 @@ public class UserDetailsImpl implements OAuth2User, UserDetails {
         this.isEnabled = isEnabled;
     }
 
+
     public static UserDetailsImpl create(RegisterUser user) {
         List<GrantedAuthority> authorities = Collections.
-                singletonList(RegisterUserAccountRole.ROLE_USER_BASE);
+                singletonList(user.getRole());
 
         return new UserDetailsImpl(
                 user.getId(),
@@ -98,5 +97,5 @@ public class UserDetailsImpl implements OAuth2User, UserDetails {
     public String getName() {
         return String.valueOf(id);
     }
-}
 
+}

@@ -1,14 +1,16 @@
 package com.chemcool.school.auth.service.security.oauth2;
 
-import com.chemcool.school.auth.service.domain.*;
+import com.chemcool.school.auth.service.domain.RegisterUser;
+import com.chemcool.school.auth.service.domain.RegisterUserAccountRole;
+import com.chemcool.school.auth.service.domain.RegisterUserAccountType;
+import com.chemcool.school.auth.service.domain.RegisterUserAuthProvider;
 import com.chemcool.school.auth.service.exeption.OAuth2AuthenticationProcessingException;
 import com.chemcool.school.auth.service.security.UserDetailsImpl;
 import com.chemcool.school.auth.service.security.oauth2.userInfo.OAuth2UserInfo;
 import com.chemcool.school.auth.service.security.oauth2.userInfo.OAuth2UserInfoFactory;
-import com.chemcool.school.auth.service.service.RegisterUserEventNotificationService;
 import com.chemcool.school.auth.service.service.RegisterUserProxyService;
 import com.chemcool.school.auth.service.storage.RegisterUserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -26,12 +28,12 @@ import java.util.UUID;
  */
 
 @Service
+@AllArgsConstructor
 public class OAuth2UserService extends DefaultOAuth2UserService {
 
-    @Autowired
-    private RegisterUserRepository userRepository;
-    @Autowired
-    private RegisterUserProxyService registerUserProxyService;
+    private final RegisterUserRepository userRepository;
+    private final RegisterUserProxyService registerUserProxyService;
+
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest oAuth2UserRequest) throws OAuth2AuthenticationException {
@@ -91,4 +93,5 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
         existingUser.setImageUrl(oAuth2UserInfo.getImageUrl());
         return registerUserProxyService.add(existingUser);
     }
+
 }
