@@ -1,6 +1,7 @@
 package com.chemcool.school.auth.service.security;
 
 import com.chemcool.school.auth.service.domain.RegisterUser;
+import com.chemcool.school.auth.service.domain.RegisterUserAccountRole;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,27 +16,30 @@ import java.util.Map;
 public class UserDetailsImpl implements OAuth2User, UserDetails {
 
     private String id;
+    private String name;
     private String email;
     private String password;
     private boolean isEnabled;
     private Collection<? extends GrantedAuthority> authorities;
     private Map<String, Object> attributes;
 
-    private UserDetailsImpl(String id, String email, String password, boolean isEnabled, Collection<? extends GrantedAuthority> authorities) {
+
+    public UserDetailsImpl(String id, String name, String email, String password, boolean isEnabled, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
+        this.name = name;
         this.email = email;
         this.password = password;
         this.authorities = authorities;
         this.isEnabled = isEnabled;
     }
 
-
     public static UserDetailsImpl create(RegisterUser user) {
         List<GrantedAuthority> authorities = Collections.
-                singletonList(user.getRole());
+                singletonList(RegisterUserAccountRole.ROLE_USER_BASE);
 
         return new UserDetailsImpl(
                 user.getId(),
+                user.getName(),
                 user.getEmail(),
                 user.getPassword(),
                 user.isEnabled(),
@@ -93,9 +97,13 @@ public class UserDetailsImpl implements OAuth2User, UserDetails {
         this.attributes = attributes;
     }
 
+    //    @Override
+//    public String getName() {
+//        return String.valueOf(id);
+//    }
     @Override
     public String getName() {
-        return String.valueOf(id);
+        return name;
     }
-
 }
+
