@@ -18,11 +18,10 @@ import java.util.UUID;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class ChatMessageService implements MessageService {
+public class ChatMessageService {
     private final ChatMessageRepository messageRepository;
     private final ChatUserService chatUserService;
 
-    @Override
     public String save(ChatMessage chatMessage) {
         ChatUser user = chatUserService.findByUserName(chatMessage.getSenderName());
 
@@ -36,17 +35,14 @@ public class ChatMessageService implements MessageService {
         return result.getId();
     }
 
-    @Override
     public ChatMessage edit(ChatMessage chatMessage) {
         return messageRepository.save(chatMessage);
     }
 
-    @Override
     public void delete(ChatMessage chatMessage) {
         messageRepository.delete(chatMessage);
     }
 
-    @Override
     public List<ChatMessage> findAllMessagesByRoomId(String id){
         List<ChatMessage> foundMessagesByRoomId = new ArrayList<>();
         Optional<List<ChatMessage>> searchMessagesResult = messageRepository.findAllMessagesByRoomId(id);
