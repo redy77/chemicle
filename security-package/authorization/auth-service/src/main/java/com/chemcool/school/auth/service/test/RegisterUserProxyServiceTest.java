@@ -1,9 +1,7 @@
 package com.chemcool.school.auth.service.test;
 
 import com.chemcool.school.auth.service.domain.RegisterUser;
-import com.chemcool.school.auth.service.service.RegisterUserEventNotificationService;
 import com.chemcool.school.auth.service.service.RegisterUserProxyService;
-import com.chemcool.school.auth.service.storage.RegisterUserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -22,11 +20,24 @@ class RegisterUserProxyServiceTest {
     @Test
     void add (){
         when(registerUserProxyService.add(any())).thenReturn(aRegisterUser());
-        RegisterUser newRegisterUser = RegisterUser.builder().email("test_email")
-                .id("test_id").gender("test_gender").imageUrl("test_imageUrl").name("test_name")
-                .password("test_password").phone("Test_phone")
-                .providerId("test_providerId").surname("test_surname")
-                .verificationCode("test_verificationCode").build();
+        RegisterUser newRegisterUser = new RegisterUser(
+                "test_id",
+                "test_email",
+                "test_password",
+                null,
+                "test_name",
+                "test_surname",
+                null,
+                "Test_phone",
+                null,
+                "test_gender",
+                "test_imageUrl",
+                null,
+                "test_providerId",
+                "test_verificationCode",
+                true,
+                null);
+
         RegisterUser saveRegisterUser = registerUserProxyService.add(newRegisterUser);
         assertNotNull(saveRegisterUser);
         assertEquals(saveRegisterUser.getId(), aRegisterUser().getId());

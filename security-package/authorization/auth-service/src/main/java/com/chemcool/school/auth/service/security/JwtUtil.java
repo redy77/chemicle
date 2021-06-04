@@ -24,9 +24,11 @@ public class JwtUtil {
 
         return Jwts.builder()
                 .setIssuer(prop.auth.tokenIssuer)
-                .setSubject(details.getId())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + prop.auth.tokenExpiration))
+                .claim("id", details.getId())
+                .claim("email", details.getEmail())
+                .claim("name", details.getName())
                 .signWith(SignatureAlgorithm.HS512, prop.auth.tokenSecret)
                 .compact();
     }
