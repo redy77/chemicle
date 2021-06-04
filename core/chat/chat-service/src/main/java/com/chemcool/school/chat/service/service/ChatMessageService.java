@@ -1,10 +1,11 @@
 package com.chemcool.school.chat.service.service;
 
 import com.chemcool.school.chat.service.miscelaneous.MessageType;
-import com.chemcool.school.chat.service.models.ChatMessage;
-import com.chemcool.school.chat.service.models.ChatUser;
+import com.chemcool.school.chat.service.domain.ChatMessage;
+import com.chemcool.school.chat.service.domain.ChatUser;
 import com.chemcool.school.chat.service.repository.ChatMessageRepository;
 
+import com.chemcool.school.chat.service.repository.ChatUserRepository;
 import lombok.RequiredArgsConstructor;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,19 +21,27 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ChatMessageService {
     private final ChatMessageRepository messageRepository;
-    private final ChatUserService chatUserService;
+    private final ChatUserRepository chatUserRepository;
 
     public String save(ChatMessage chatMessage) {
-        ChatUser user = chatUserService.findByUserName(chatMessage.getSenderName());
 
-        chatMessage.setId(UUID.randomUUID().toString());
-        chatMessage.setTimestamp(new Timestamp(System.currentTimeMillis()));
-        chatMessage.setUser(user);
-        chatMessage.setType(MessageType.CHAT);
+        ChatUser user = null;
+        Optional<ChatUser> searchUserResult = chatUserRepository.findById(chatMessage.getSenderId());
 
-        ChatMessage result = messageRepository.save(chatMessage);
-        log.info("Сообщение с ID: " + chatMessage.getId() + "  добавлено.");
-        return result.getId();
+        if (searchUserResult.isPresent()) {
+            user = searchUserResult.get();
+        } else {
+            throw new RuntimeException("Невозможно найти пользователя по id: " + chatMessage.getSenderId());
+        }
+            chatMessage.setId(UUID.randomUUID().toString());
+            chatMessage.setTimestamp(new Timestamp(System.currentTimeMillis()));
+            chatMessage.setUser(user);
+            chatMessage.setType(MessageType.CHAT);
+
+            ChatMessage result = messageRepository.save(chatMessage);
+            log.info("Сообщение с ID: " + chatMessage.getId() + "  добавлено.");
+            return result.getId();
+
     }
 
     public ChatMessage edit(ChatMessage chatMessage) {

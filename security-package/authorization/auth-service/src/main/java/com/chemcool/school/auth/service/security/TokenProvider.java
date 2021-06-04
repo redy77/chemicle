@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
@@ -35,10 +36,16 @@ public class TokenProvider {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + appProperties.getAuth().getTokenExpirationMsec());
 
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", userDetailsImpl.getId());
+        map.put("email", userDetailsImpl.getEmail());
+        map.put("name", userDetailsImpl.getName());
+
         return Jwts.builder()
-                .setSubject(userDetailsImpl.getId())
+//                .setSubject(userDetailsImpl.getId())
                 .setIssuedAt(new Date())
                 .setExpiration(expiryDate)
+                .setClaims(map)
                 .signWith(SignatureAlgorithm.HS512, appProperties.getAuth().getTokenSecret())
                 .compact();
     }

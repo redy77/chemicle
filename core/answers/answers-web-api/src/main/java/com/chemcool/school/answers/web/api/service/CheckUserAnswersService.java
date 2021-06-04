@@ -21,27 +21,27 @@ public class CheckUserAnswersService {
     private final ChemSingleSelectCorrectAnswersService chemSingleSelectCorrectAnswersService;
 
     public AnswerDto checkUserAnswer(String taskId, TaskType taskType, String userAnswers) {
-        AnswerDto resultCheckUSerAnswer = null;//эта переменная на случай если будут добавляться типы задач...
+        AnswerDto resultCheckUserAnswer = null;//эта переменная на случай если будут добавляться типы задач...
 
         if (taskType.equals(TaskType.EQUATION)) {
-            resultCheckUSerAnswer = new CheckEquationService().checkAnswer(
+            resultCheckUserAnswer = new CheckEquationService().checkAnswer(
                             chemEquationCorrectAnswersService.getCorrectAnswerByIdTask(taskId),
                             userAnswers);
 
         } else if (taskType.equals(TaskType.FIXED_ANSWER)) {
-            resultCheckUSerAnswer = new FixedAnswerDto();
+            resultCheckUserAnswer = new FixedAnswerDto();
             if(userAnswers.equals(chemFixedCorrectAnswersService.getCorrectAnswerByIdTask(taskId))){
-                resultCheckUSerAnswer.setResult(true);
-                resultCheckUSerAnswer.setScore(10);
+                resultCheckUserAnswer.setResult(true);
+                resultCheckUserAnswer.setScore(10);
             }
         } else if (taskType.equals(TaskType.SINGLE_SELECT)) {
-            resultCheckUSerAnswer = new SingleSelectAnswerDto();
+            resultCheckUserAnswer = new SingleSelectAnswerDto();
             if(userAnswers.equals(chemSingleSelectCorrectAnswersService.getCorrectAnswerByIdTask(taskId))){
-                resultCheckUSerAnswer.setResult(true);
-                resultCheckUSerAnswer.setScore(10);
+                resultCheckUserAnswer.setResult(true);
+                resultCheckUserAnswer.setScore(10);
             }
         }
-        return resultCheckUSerAnswer;
+        return resultCheckUserAnswer;
     }
 
     public AnswerDto checkUserAnswer(String taskId, List<CoupleForMatching> coupleForMatchingByUserList) {
