@@ -1,26 +1,35 @@
 package com.chemcool.school.games.twoofoureight.jwt;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.*;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 @Data
-public class JWTParser {
+public class JWTParser implements JWTParserInterface{
 
-    @Value("${jwt.secret}")
+    @Value("${authentication.jwt.secretKey}")
     private String jwtSecret;
 
-    public String getUserIdFromToken(String token) {
-        Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
-                .parseClaimsJws(token)
-                .getBody();
-
-        return claims.getSubject();
+    @Override
+    public Claims getClaimsFromToken(String token) {
+        Claims claims;
+        try {
+            claims = Jwts.parser()
+                    .setSigningKey(jwtSecret)
+                    .parseClaimsJws(token)
+                    .getBody();
+        }catch (Exception e){
+            System.err.println("Ошибка при получении Claims  из токена!");
+            claims = null;
+        }
+        return claims;
     }
+
+    public String getUserIdFromToken(String token) {
+        return getClaimsFromToken(token).getSubject();
+    }
+
 }
 
