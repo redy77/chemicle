@@ -1,45 +1,50 @@
 package com.chemcool.school.auth.web.api.controllers;
 
-import com.chemcool.school.auth.service.security.TokenProvider;
-import com.chemcool.school.auth.web.api.dto.AuthResponse;
+import com.chemcool.school.auth.service.security.JwtUtil;
 import com.chemcool.school.auth.web.api.dto.LoginRequest;
+import com.chemcool.school.auth.web.api.dto.UserView;
+import com.chemcool.school.auth.web.api.dto.UserViewMapper;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/auth")
 public class LoginControllers {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authManager;
+    private final JwtUtil jwtUtil;
+    private final UserViewMapper userViewMapper;
 
-    @Autowired
-    private TokenProvider tokenProvider;
 
-    @ApiOperation("Возвращает email и токен")
+    @ApiOperation("Возвращает: header(Authorization: Bearer jwt) и UserView")
     @PostMapping("/login")
-    public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<UserView> authenticateUser(@RequestBody LoginRequest request) {
 
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginRequest.getEmail(),
-                        loginRequest.getPassword()
-                )
+        Authentication auth = authManager.authenticate(
+                new UsernamePasswordAuthenticationToken( request.getEmail(), request.getPassword() )
         );
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        SecurityContextHolder.getContext().setAuthentication(auth);
 
-        String token = tokenProvider.createToken(authentication);
-        return ResponseEntity.ok(new AuthResponse(token));
+        return ResponseEntity.ok()
+                .header(
+                        HttpHeaders.AUTHORIZATION, "Bearer " + jwtUtil.generateJwt(auth)
+                )
+                .body(
+                        userViewMapper.toUserView( (UserDetails) auth.getPrincipal() )
+                );
     }
 
 }

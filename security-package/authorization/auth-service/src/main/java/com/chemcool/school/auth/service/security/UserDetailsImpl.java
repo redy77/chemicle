@@ -1,7 +1,6 @@
 package com.chemcool.school.auth.service.security;
 
 import com.chemcool.school.auth.service.domain.RegisterUser;
-import com.chemcool.school.auth.service.domain.RegisterUserAccountRole;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,8 +33,7 @@ public class UserDetailsImpl implements OAuth2User, UserDetails {
     }
 
     public static UserDetailsImpl create(RegisterUser user) {
-        List<GrantedAuthority> authorities = Collections.
-                singletonList(RegisterUserAccountRole.ROLE_USER_BASE);
+        List<GrantedAuthority> authorities = Collections.singletonList(user.getRole());
 
         return new UserDetailsImpl(
                 user.getId(),
