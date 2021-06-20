@@ -9,6 +9,7 @@ spring:
         service-id: config-service
       username: ${SPRING_CLOUD_CONFIG_USERNAME}
       password: ${SPRING_CLOUD_CONFIG_PASSWORD}
+      label: ${SPRING_CLOUD_CONFIG_LABEL:master}
       fail-fast: true
       retry:
         initial-interval: 2000
