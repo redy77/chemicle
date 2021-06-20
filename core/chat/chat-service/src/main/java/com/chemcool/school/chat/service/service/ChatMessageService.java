@@ -43,7 +43,15 @@ public class ChatMessageService {
             return result.getId();
 
     }
-    
+
+    public ChatMessage edit(ChatMessage chatMessage) {
+        return messageRepository.save(chatMessage);
+    }
+
+    public void delete(ChatMessage chatMessage) {
+        messageRepository.delete(chatMessage);
+    }
+
     public List<ChatMessage> findAllMessagesByRoomId(String id){
         List<ChatMessage> foundMessagesByRoomId = new ArrayList<>();
         Optional<List<ChatMessage>> searchMessagesResult = messageRepository.findAllMessagesByRoomId(id);

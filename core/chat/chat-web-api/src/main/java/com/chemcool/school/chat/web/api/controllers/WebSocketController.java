@@ -30,6 +30,18 @@ public class WebSocketController {
         return chatMessage;
     }
 
+    @MessageMapping("/chat.editMessage")
+    @SendTo("/chat-application/topic/public")
+    public ChatMessage editMessage(@Payload ChatMessage chatMessage) {
+        return chatMessageService.edit(chatMessage);
+    }
+
+    @MessageMapping("/chat.deleteMessage")
+    @SendTo("/chat-application/topic/public")
+    public void deleteMessage(@Payload ChatMessage chatMessage) {
+        chatMessageService.delete(chatMessage);
+    }
+
     @MessageMapping("/chat.addUser")
     @SendTo("/chat-application/topic/public")
     public ChatMessage addUser(@Payload ChatMessage chatMessage,
