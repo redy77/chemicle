@@ -6,8 +6,9 @@ spring:
       name: chat-application
       discovery:
         enabled: true
-      username: ${SPRING_CLOUD_CONFIG_USERNAME}
-      password: ${SPRING_CLOUD_CONFIG_PASSWORD}
+        service-id: config-service
+      password: ${SPRING_CLOUD_CONFIG_USERNAME}
+      username: ${SPRING_CLOUD_CONFIG_PASSWORD}
       label: ${SPRING_CLOUD_CONFIG_LABEL:master}
       fail-fast: true
       retry:
