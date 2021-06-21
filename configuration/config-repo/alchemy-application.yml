@@ -7,9 +7,9 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/alchemy
-    username: postgres
-    password: 1234
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/alchemy}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:1234}
     platform: postgres
     driver-class-name: org.postgresql.Driver
 
@@ -21,10 +21,10 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka}
 
 kafka:
-  server: http://localhost:9092
+  server: ${KAFKA_SERVER:http://localhost:9092}
   groupId1: fixed-answer-task.2
 
 authentication:
