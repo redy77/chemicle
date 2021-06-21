@@ -7,9 +7,9 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/users_autentication
-    username: mick
-    password: mick
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/users_autentication}
+    username: ${SPRING_DATASOURCE_USERNAME:mick}
+    password: ${SPRING_DATASOURCE_PASSWORD:mick}
     platform: postgres
     driver-class-name: org.postgresql.Driver
   security:
@@ -37,17 +37,17 @@ spring:
             userInfoUri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
 
 server:
-  port: 8090
+  port: 0
   servlet:
     context-path: /authorization-application/
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka}
 
 kafka:
-  server: http://localhost:9092
+  server: ${KAFKA_SERVER:http://localhost:9092}
   groupId: registration.2
 
 app:
