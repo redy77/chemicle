@@ -47,7 +47,6 @@ zuul:
     authorization-application:
       path: /authorization-application/**
       service-id: authorization-application
-      url: http://localhost:8090
       sensitiveHeaders:
       stripPrefix: false
 
