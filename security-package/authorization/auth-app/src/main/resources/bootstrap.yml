@@ -3,16 +3,7 @@ spring:
     name: authorization-application
   cloud:
     config:
-      name: authorization-application
-      discovery:
-        enabled: true
-        service-id: config-service
-      password: ${SPRING_CLOUD_CONFIG_PASSWORD}
-      username: ${SPRING_CLOUD_CONFIG_USERNAME}
-      label: ${SPRING_CLOUD_CONFIG_LABEL:master}
+      uri: http://localhost:8888
       fail-fast: true
-      retry:
-        initial-interval: 2000
-        multiplier: 1.1
-        max-attempts: 50
-        max-interval: 1000
+      password: ${CONFIG_SERVICE_PASSWORD}
+      username: ${CONFIG_SERVICE_USER}
