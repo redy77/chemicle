@@ -33,7 +33,7 @@ create table users
 drop table if exists users_linked_rooms;
 create table users_linked_rooms
 (
-    id varchar(255) NOT NULL,
+    id      varchar(255) NOT NULL,
     room_id varchar(255) not null,
     user_id varchar(255) not null
 );
