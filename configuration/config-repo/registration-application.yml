@@ -7,9 +7,9 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/registration_users
-    username: mick
-    password: mick
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/registration_users}
+    username: ${SPRING_DATASOURCE_USERNAME:mick}
+    password: ${SPRING_DATASOURCE_PASSWORD:mick}
     platform: postgres
     driver-class-name: org.postgresql.Driver
   mail:
@@ -39,12 +39,7 @@ server:
   servlet:
     context-path: /registration-application/
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-
 kafka:
-  server: http://localhost:9092
+  server: ${KAFKA_SERVER:http://localhost:9092}
   groupId: registration.1
 
