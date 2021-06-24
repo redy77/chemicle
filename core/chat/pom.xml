@@ -6,7 +6,7 @@
 
     <groupId>com.chemcool.school.chat</groupId>
     <artifactId>chat</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -16,7 +16,7 @@
         <postgresql.version>42.2.19</postgresql.version>
         <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
-        <chat.modules.version>1.0.0</chat.modules.version>
+        <chat.modules.version>1.0.1</chat.modules.version>
         <lombok.version>1.18.20</lombok.version>
         <swagger2.version>3.0.0</swagger2.version>
         <flayway.version>5.2.4</flayway.version>

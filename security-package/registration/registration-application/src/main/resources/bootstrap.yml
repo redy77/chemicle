@@ -3,7 +3,21 @@ spring:
     name: registration-application
   cloud:
     config:
-      uri: http://localhost:8888
+      name: registration-application
+      discovery:
+        enabled: true
+        service-id: config-service
+      username: ${SPRING_CLOUD_CONFIG_USERNAME}
+      password: ${SPRING_CLOUD_CONFIG_PASSWORD}
+      label: ${SPRING_CLOUD_CONFIG_LABEL:master}
       fail-fast: true
-      password: ${CONFIG_SERVICE_PASSWORD}
-      username: ${CONFIG_SERVICE_USER}
+      retry:
+        initial-interval: 2000
+        multiplier: 1.1
+        max-attempts: 50
+        max-interval: 1000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka}
