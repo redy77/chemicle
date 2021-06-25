@@ -11,9 +11,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.util.ArrayList;
 import java.util.List;
 
-@EnableSwagger2
-@Component
-@Primary
+
 public class DocumentationConfig implements SwaggerResourcesProvider {
     private final RouteLocator routeLocator;
 
