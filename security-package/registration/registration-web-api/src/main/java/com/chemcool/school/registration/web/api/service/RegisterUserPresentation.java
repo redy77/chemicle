@@ -9,12 +9,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class RegisterUserPresentation {
 
-    private RegisterUserServiceLayer registerUserServiceLayer;
-
-    @Autowired
-    public RegisterUserPresentation(RegisterUserServiceLayer registerUserServiceLayer) {
-        this.registerUserServiceLayer = registerUserServiceLayer;
-    }
+    private final RegisterUserServiceLayer registerUserServiceLayer;
 
     public String add(RegisterUserDto registerUserDto) {
         return registerUserServiceLayer.add(registerUserDto);
