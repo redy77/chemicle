@@ -1,7 +1,7 @@
 package com.chemcool.school.registration.configuration;
 
 import com.chemcool.school.registration.configuration.properties.KafkaProperties;
-import com.chemcool.school.registration.configuration.properties.RegisterUserDeserializer;
+import com.chemcool.school.registration.domain.RegisterUserEvent;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -22,7 +22,7 @@ import java.util.Map;
 @EnableConfigurationProperties(KafkaProperties.class)
 public class KafkaConsumerConfiguration {
 
-    private static final String TRUSTED_PACKAGES = "com.chemcool.school.registration.models";
+    private static final String TRUSTED_PACKAGES = "com.chemcool.school.registration.domain";
 
     private final KafkaProperties kafkaProperties;
 
@@ -31,7 +31,7 @@ public class KafkaConsumerConfiguration {
         Map<String, Object> properties = new HashMap<>();
         properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, this.kafkaProperties.getServer());
         properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, RegisterUserDeserializer.class);
+        properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         properties.put(JsonDeserializer.TRUSTED_PACKAGES, TRUSTED_PACKAGES);
         properties.put(ConsumerConfig.GROUP_ID_CONFIG, this.kafkaProperties.getGroupId());
         return properties;
@@ -39,13 +39,13 @@ public class KafkaConsumerConfiguration {
 
     @Bean
     public KafkaListenerContainerFactory<?> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, String> factory =
+        ConcurrentKafkaListenerContainerFactory<String, RegisterUserEvent> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }
 
-    public ConsumerFactory<String, String> consumerFactory() {
+    public ConsumerFactory<String, RegisterUserEvent> consumerFactory() {
         return new DefaultKafkaConsumerFactory<>(consumerConfig());
     }
 }
