@@ -3,20 +3,26 @@ package com.chemcool.school.registration.web.api.service;
 import com.chemcool.school.registration.domain.RegisterUser;
 import com.chemcool.school.registration.domain.RegisterUserEventFactory;
 import com.chemcool.school.registration.domain.RegisterUserEventType;
+import com.chemcool.school.registration.exception.ApiResponse;
+import com.chemcool.school.registration.exception.BadRequestException;
 import com.chemcool.school.registration.exception.RegisterUserDefinitionException;
 import com.chemcool.school.registration.repository.RegisterUserRepository;
 import com.chemcool.school.registration.service.RegisterUserEventNotificationService;
 import com.chemcool.school.registration.web.api.dto.ForgotPasswordDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
+import java.net.URI;
 import java.util.UUID;
 
 @Slf4j
@@ -31,6 +37,45 @@ public class ResetPasswordService {
     private JavaMailSender mailSender;
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+
+    public ResponseEntity<?> processForgotPassword(ForgotPasswordDto forgotPasswordDto) {
+        if (!repository.existsByEmail(forgotPasswordDto.getEmail())) {
+            throw new BadRequestException("Email адрес не был зарегистрирован!");
+        }
+
+        log.info("Вызван контроллер для сброса пароля на email: "
+                + "[" + forgotPasswordDto.getEmail() + "]");
+
+        String result = sendForgotPasswordEmail(forgotPasswordDto);
+
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentContextPath().path("/")
+                .buildAndExpand(result).toUri();
+
+        return ResponseEntity.created(location)
+                .body(new ApiResponse(true, "Письмо для сброса пароля успешно отправлено"));
+    }
+
+    public ResponseEntity<?> processResetPassword(ForgotPasswordDto forgotPasswordDto) {
+        String token = forgotPasswordDto.getToken();
+        String password = forgotPasswordDto.getPassword();
+
+        RegisterUser registerUser = repository.findByResetPasswordToken(token);
+
+        if (registerUser == null) {
+            throw new BadRequestException("Неверная ссылка, либо истек срок действия ссылки");
+        }
+
+        updatePassword(registerUser, password);
+
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentContextPath().path("/")
+                .buildAndExpand(registerUser.getId()).toUri();
+
+        return ResponseEntity.created(location)
+                .body(new ApiResponse(true, "Пароль был успешно изменен!"));
+    }
 
     public String sendForgotPasswordEmail(ForgotPasswordDto forgotPasswordDto) {
 
