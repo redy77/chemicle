@@ -47,9 +47,8 @@ public class RegistrationService {
                 .body(new ApiResponse(true, "Пользователь успешно зарегистрирован"));
     }
 
-    public ResponseEntity<?> verifyUser(@Param("code") String code) {
+    public ResponseEntity<?> verifyUser(String code) {
         Map<String, String> response = new HashMap<>();
-
         if (verificationEmailService.verify(code)) {
             response.put("isValidated", "Активация аккаунта успешна");
             return ResponseEntity.accepted().body(response);

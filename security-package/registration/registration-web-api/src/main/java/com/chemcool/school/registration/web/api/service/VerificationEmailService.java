@@ -55,7 +55,7 @@ public class VerificationEmailService {
                 helper.setTo(toAddress);
                 helper.setSubject(subject);
 
-                String verifyURL = "http://localhost:3000/verify-email/" + user.getVerificationCode();
+                String verifyURL = "http://localhost:8080/registration-application/auth/verify?code=" + user.getVerificationCode();
 
                 content = content.replace("[[name]]", user.getFullName());
                 content = content.replace("[[URL]]", verifyURL);
@@ -74,11 +74,9 @@ public class VerificationEmailService {
 
     public boolean verify(String verificationCode) {
         RegisterUser user = repository.findByVerificationCode(verificationCode);
-
         if (user == null || user.isEnabled()) {
             return false;
         } else {
-
             user.setVerificationCode(null);
             user.setEnabled(true);
             registerUserEventNotificationService.send(
