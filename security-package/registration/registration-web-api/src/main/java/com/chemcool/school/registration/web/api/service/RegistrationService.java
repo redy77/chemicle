@@ -22,13 +22,15 @@ public class RegistrationService {
 
     private final UtilUserService utilUserService;
 
-
     public ResponseEntity<?> createUser(RegisterUserDto registerUserDto) {
         if (utilUserService.checkMail(registerUserDto)) {
             return ResponseEntity.badRequest().body("Email адрес уже был зарегистрирован!");
         }
         if (utilUserService.checkAge(registerUserDto)) {
             return ResponseEntity.badRequest().body("Вы не можете быть учителем, ваш возраст меньше 18 лет");
+        }
+        if (utilUserService.checkPhone(registerUserDto)) {
+            return ResponseEntity.badRequest().body("Номер телефона уже зарегестрирован!");
         }
         utilUserService.checkAndSetRole(registerUserDto);
 
@@ -56,5 +58,4 @@ public class RegistrationService {
             return ResponseEntity.badRequest().body(response);
         }
     }
-
 }

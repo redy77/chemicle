@@ -27,6 +27,10 @@ public class UtilUserService {
         return Period.between(registerUserDto.getBirthday(), LocalDate.now()).getYears() < 18;
     }
 
+    public boolean checkPhone(RegisterUserDto registerUserDto) {
+        return repository.existsByPhone(registerUserDto.getPhone());
+    }
+
     public void checkAndSetRole(RegisterUserDto registerUserDto) {
         if (registerUserDto.getRole() == null) {
             registerUserDto.setRole(RegisterUserAccountRole.ROLE_USER_BASE);
