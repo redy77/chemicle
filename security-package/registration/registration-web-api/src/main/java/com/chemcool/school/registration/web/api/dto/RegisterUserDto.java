@@ -6,6 +6,7 @@ import com.chemcool.school.registration.domain.RegisterUserAccountType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -30,6 +31,7 @@ public class RegisterUserDto {
     private String gender;
 
     @NotBlank
+    @Length(min = 10, max = 10, message = "Не допустимая длина номера")
     private String phone;
 
     @NotBlank
