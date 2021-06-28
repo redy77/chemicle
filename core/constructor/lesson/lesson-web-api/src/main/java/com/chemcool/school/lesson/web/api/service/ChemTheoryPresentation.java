@@ -20,15 +20,19 @@ public class ChemTheoryPresentation {
         return serviceLayer.getAllTheoryDto();
     }
 
-    public List<ChemTheoryDto> getAllTheoryByReferenceIdDto(int referenceId){
+    public List<ChemTheoryDto> getAllTheoryByReferenceIdDto(Integer referenceId){
         return serviceLayer.getAllTheoryByReferenceIdDto(referenceId);
     }
 
-    public List<ChemTheoryDto> getAllTheoryByChapterIdDto(int chapterId){
+    public List<ChemTheoryDto> getAllTheoryByChapterIdDto(Integer chapterId){
         return serviceLayer.getAllTheoryByChapterIdDto(chapterId);
     }
 
-    public List<ChemTheoryDto> getAllTheoryByReferenceIdAndChapterIdDto(int referenceId, int chapterId){
+    public List<ChemTheoryDto> getAllTheoryByReferenceIdAndChapterIdDto(Integer referenceId, Integer chapterId){
         return serviceLayer.getAllTheoryByReferenceIdIndChapterIdDto(referenceId, chapterId);
+    }
+
+    public ChemTheoryDto getRandomChemTheoryDto() {
+        return serviceLayer.getRandomChemTheoryDto();
     }
 }

@@ -10,9 +10,9 @@ import java.util.TreeSet;
 @Slf4j
 @Service
 public class ChemEquationsTaskAnswerCheckService {
-    private boolean[] result;
-    private Set<String> bufRightAnswer;
-    private Set<String> bufUserAnswer;
+    private final boolean[] result;
+    private final Set<String> bufRightAnswer;
+    private final Set<String> bufUserAnswer;
 
     public ChemEquationsTaskAnswerCheckService() {
         this.result = new boolean[4];

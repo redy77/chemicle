@@ -23,12 +23,12 @@ public class ChemMatchesEventConsumer {
     private final ChemMatchingTaskEventService eventService;
     private final ChemMatchingTaskService taskService;
 
-    @KafkaListener(topics = "tasks-matching", containerFactory = "chemMatchesKafkaListenerContainerFactory")
+    @KafkaListener(topics = "task-chemistry-matches", containerFactory = "chemMatchesKafkaListenerContainerFactory")
     @KafkaHandler
     public void handleChemMatchesTask(ConsumerRecord<String, ChemMatchingTaskEvent> record) {
         ChemMatchingTaskEvent event = record.value();
         log.info("Пойман журнал для логирования: " + event.getChemistryMatchingTaskEventId());
         eventService.handleEvent(event);
-        taskService.save(event.getChemMatchingTaskEventPayload());
+        taskService.save(event.getChemistryMatchingTaskEventPayload());
     }
 }

@@ -2,6 +2,7 @@ package com.chemcool.school.tasks.chemFixedanswer;
 
 import com.chemcool.school.tasks.app.TasksApplication;
 
+import com.chemcool.school.tasks.dto.chemfixedanswer.ChemFixedAnswerTaskCreateDto;
 import com.chemcool.school.tasks.dto.chemfixedanswer.ChemFixedAnswerTaskDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
@@ -38,25 +39,25 @@ public class CrudTest {
 //    @Autowired
 //    private ChemFixedAnswerTaskRepository repository;
 
-    ChemFixedAnswerTaskDto chemFixedAnswerTaskDto1;
-    ChemFixedAnswerTaskDto chemFixedAnswerTaskDto2;
-    ChemFixedAnswerTaskDto chemFixedAnswerTaskDto3;
-    ChemFixedAnswerTaskDto chemFixedAnswerTaskDtoUpdate;
-    ChemFixedAnswerTaskDto chemFixedAnswerTaskDto4;
+    ChemFixedAnswerTaskCreateDto chemFixedAnswerTaskDto1;
+    ChemFixedAnswerTaskCreateDto chemFixedAnswerTaskDto2;
+    ChemFixedAnswerTaskCreateDto chemFixedAnswerTaskDto3;
+    ChemFixedAnswerTaskCreateDto chemFixedAnswerTaskDtoUpdate;
+    ChemFixedAnswerTaskCreateDto chemFixedAnswerTaskDto4;
 
     @Before
     public void prepareForTest(){
         //Создание ДТО для тестирования записи данных
         chemFixedAnswerTaskDto1 =
-                new ChemFixedAnswerTaskDto("1", "111", "111", 1, 1);
+                new ChemFixedAnswerTaskCreateDto("1", "111", "111", 1, 1);
         chemFixedAnswerTaskDto2 =
-                new ChemFixedAnswerTaskDto("2", "222", "222", 2, 2);
+                new ChemFixedAnswerTaskCreateDto("2", "222", "222", 2, 2);
         chemFixedAnswerTaskDto3 =
-                new ChemFixedAnswerTaskDto("3", "333", "333", 3, 3);
+                new ChemFixedAnswerTaskCreateDto("3", "333", "333", 3, 3);
         chemFixedAnswerTaskDtoUpdate =
-                new ChemFixedAnswerTaskDto("3", "123", "123", 3, 3);
+                new ChemFixedAnswerTaskCreateDto("3", "123", "123", 3, 3);
          chemFixedAnswerTaskDto4 =
-                new ChemFixedAnswerTaskDto("4", "444", "444", 4, 4);
+                new ChemFixedAnswerTaskCreateDto("4", "444", "444", 4, 4);
     }
 
     @Test

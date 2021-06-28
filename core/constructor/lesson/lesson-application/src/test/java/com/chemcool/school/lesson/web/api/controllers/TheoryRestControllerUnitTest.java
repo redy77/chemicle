@@ -1,8 +1,6 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.theory.domain.ChemTheory;
-import com.chemcool.school.lesson.theory.domain.ChemTheoryExample;
 import com.chemcool.school.lesson.web.api.dto.ChemTheoryDto;
 import com.chemcool.school.lesson.web.api.service.ChemTheoryPresentation;
 import org.hamcrest.collection.IsEmptyCollection;

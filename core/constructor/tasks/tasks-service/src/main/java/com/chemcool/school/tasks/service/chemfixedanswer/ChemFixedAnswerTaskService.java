@@ -38,4 +38,14 @@ public class ChemFixedAnswerTaskService {
     public void deleteById(String id) {
         repository.deleteById(id);
     }
+
+    public boolean checkAnswer(String taskId, String userAnswer) {
+        Optional<ChemFixedAnswerTask> task = repository.findById(taskId);
+        String rightAnswer = task.orElseThrow().getRightAnswer();
+        return userAnswer.equals(rightAnswer);
+    }
+
+    public List<ChemFixedAnswerTask> getAllByChapterIdAndReferenceId(int chapterId, int referenceId) {
+        return repository.findAllByChapterIdAndReferenceId(chapterId, referenceId);
+    }
 }

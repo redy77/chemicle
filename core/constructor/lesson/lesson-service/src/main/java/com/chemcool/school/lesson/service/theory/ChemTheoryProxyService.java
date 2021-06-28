@@ -1,6 +1,6 @@
-package com.chemcool.school.lesson.theory.service;
+package com.chemcool.school.lesson.service.theory;
 
-import com.chemcool.school.lesson.theory.domain.*;
+import com.chemcool.school.lesson.domain.theory.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -33,15 +33,15 @@ public class ChemTheoryProxyService {
 
     public List<ChemTheory> getAll() {return pageService.getAll();}
 
-    public List<ChemTheory> getAllByChapterId(int chapterId){
+    public List<ChemTheory> getAllByChapterId(Integer chapterId){
                 return pageService.getAllByChapterId(chapterId);
     }
 
-    public List<ChemTheory> getAllByReferenceId(int referenceId){
+    public List<ChemTheory> getAllByReferenceId(Integer referenceId){
                 return pageService.getAllByReferenceId(referenceId);
     }
 
-    public List<ChemTheory> getAllByReferenceIdAndChapterId(int referenceId, int chapterId){
+    public List<ChemTheory> getAllByReferenceIdAndChapterId(Integer referenceId, Integer chapterId){
         return pageService.getAllByReferenceIdAndChapterId(referenceId, chapterId);
     }
 

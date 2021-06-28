@@ -1,7 +1,6 @@
-package com.chemcool.school.tasks.dto.chemequations;
+package com.chemcool.school.tasks.dto.chemfixedanswer;
 
-
-import com.chemcool.school.tasks.domain.chemequations.ChemEquationsTask;
+import com.chemcool.school.tasks.domain.chemfixedanswer.ChemFixedAnswerTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,18 +8,18 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChemEquationsTaskDto {
+public class ChemFixedAnswerTaskCreateDto {
     private String taskId;
     private String description;
+    private String rightAnswer;
     private int chapterId;
     private int referenceId;
-    private String taskType;
 
-    public ChemEquationsTaskDto(ChemEquationsTask task) {
+    public ChemFixedAnswerTaskCreateDto(ChemFixedAnswerTask task) {
         this.taskId = task.getTaskId();
         this.description = task.getDescription();
+        this.rightAnswer = task.getRightAnswer();
         this.chapterId = task.getChapterId();
         this.referenceId = task.getReferenceId();
-                this.taskType = "EQUATION";
     }
 }

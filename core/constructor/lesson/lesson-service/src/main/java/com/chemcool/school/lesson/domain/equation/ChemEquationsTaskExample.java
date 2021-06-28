@@ -13,6 +13,6 @@ public class ChemEquationsTaskExample extends ChemEquationsTask {
     private String description;
     private String rightAnswer;
 
-    private int chapterId;
-    private int referenceId;
+    private Integer chapterId;
+    private Integer referenceId;
 }

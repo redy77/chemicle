@@ -2,9 +2,11 @@ package com.chemcool.school.tasks.service.chemequations;
 
 
 import com.chemcool.school.tasks.dto.chemequations.ChemAnswerDto;
+import com.chemcool.school.tasks.dto.chemequations.ChemEquationsTaskCreateDto;
 import com.chemcool.school.tasks.dto.chemequations.ChemEquationsTaskDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -34,12 +36,12 @@ public class ChemEquationsTaskPresentation {
         return serviceLayer.getRandomChemistryEquationsDto();
     }
 
-    public String createNewEquationsTask(ChemEquationsTaskDto taskDto,String rightAnswer) {
-        return serviceLayer.createNewChemEquationsTask(taskDto,rightAnswer);
+    public String createNewEquationsTask(ChemEquationsTaskCreateDto taskDto) {
+        return serviceLayer.createNewChemEquationsTask(taskDto);
     }
 
-    public void updateEquationsTask(ChemEquationsTaskDto taskDto,String rightAnswer) {
-        serviceLayer.updateChemEquationsTask(taskDto,rightAnswer);
+    public void updateEquationsTask(ChemEquationsTaskCreateDto taskDto) {
+        serviceLayer.updateChemEquationsTask(taskDto);
     }
 
     public void deleteEquationsTask(String id) {

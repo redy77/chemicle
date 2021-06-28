@@ -33,10 +33,10 @@ public class ChemSingleSelectTask {
     private String correctAnswer;
 
     @Column(name = "chapter_id")
-    private int chapterId;
+    private Integer chapterId;
 
     @Column(name = "reference_id")
-    private int referenceId;
+    private Integer referenceId;
 
     @Column(name = "incorrect_answer_one")
     private String incorrectAnswerOne;

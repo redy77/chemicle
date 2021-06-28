@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface ChemFixedAnswerTaskRepository extends JpaRepository<ChemFixedAnswerTask, String>, JpaSpecificationExecutor<ChemFixedAnswerTask> {
-    List<ChemFixedAnswerTask> getAllByChapterId(int chapterId);
-    List<ChemFixedAnswerTask> getAllByReferenceId(int referenceId);
-    List<ChemFixedAnswerTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId);
+    List<ChemFixedAnswerTask> getAllByChapterId(Integer chapterId);
+    List<ChemFixedAnswerTask> getAllByReferenceId(Integer referenceId);
+    List<ChemFixedAnswerTask> getAllByReferenceIdAndChapterId(Integer referenceId, Integer chapterId);
 }

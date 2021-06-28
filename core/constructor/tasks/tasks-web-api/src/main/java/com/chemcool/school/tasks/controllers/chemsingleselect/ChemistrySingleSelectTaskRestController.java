@@ -6,35 +6,21 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/chemistrySingleSelect/v1.0")
+@RequestMapping("chemistrySingleSelect/v1.0")
 @RequiredArgsConstructor
 public class ChemistrySingleSelectTaskRestController {
 
     private final ChemistrySingleSelectTaskPresentation presentation;
 
-    @GetMapping
-    @ApiOperation("Возвращает все задания типа \"Выбор одного ответа\" по химии.")
-    public List<ChemistrySingleSelectTaskDto> getAllTasks() {
-        return presentation.getAllTasks();
-    }
-
-    @GetMapping("/{uuid}")
-    @ApiOperation("Возвращает дто сущности задания типа \"Выбор одного ответа\" по химии по UUID.")
-    public ChemistrySingleSelectTaskDto getTaskById(@PathVariable String uuid) {
-        return presentation.getTaskDtoById(uuid);
-    }
-
-    @PostMapping
+    @PostMapping("/create")
     @ApiOperation("Создает новую сущность задания типа \"Выбор одного ответа\" по химии.")
     @ResponseBody
     public String createNewTask(@RequestBody ChemistrySingleSelectTaskDto task) {
         return presentation.add(task);
     }
 
-    @PutMapping
+    @PutMapping("/update")
     @ApiOperation("Сохраняет существующую сущность задания типа \"Выбор одного ответа\" по химии.")
     @ResponseBody
     public String updateTask(@RequestBody ChemistrySingleSelectTaskDto task) {

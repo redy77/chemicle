@@ -13,8 +13,8 @@ public class ChemSingleSelectTaskDto {
     private String taskDtoId;
     private String description;
     private String correctAnswer;
-    private int chapterId;
-    private int referenceId;
+    private Integer chapterId;
+    private Integer referenceId;
     private String incorrectAnswerOne;
     private String incorrectAnswerTwo;
     private String incorrectAnswerThree;

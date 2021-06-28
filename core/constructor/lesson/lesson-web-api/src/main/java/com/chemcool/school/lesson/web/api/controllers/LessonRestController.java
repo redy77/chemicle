@@ -5,16 +5,13 @@ import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping({"/v1.0"})
+@RequestMapping({"lesson/v1.0"})
 @AllArgsConstructor
 public class LessonRestController {
 
@@ -26,9 +23,9 @@ public class LessonRestController {
 
 
     @ApiOperation("Возвращает сущности заданий и теории по разделу")
-    @GetMapping("/getLessonByReferenceId")
+    @GetMapping("/getLessonByReferenceId/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List[] findLessonByReferenceId(int referenceId) {
+    public List[] findLessonByReferenceId(@PathVariable("id") int referenceId) {
         return new List[]{
                 theoryRestController.findTheoryByReferenceId(referenceId),
                 chemEquationsRestController.findTaskByReferenceId(referenceId),
@@ -39,9 +36,9 @@ public class LessonRestController {
     }
 
     @ApiOperation("Возвращает сущности заданий и теории по главе")
-    @GetMapping("/getLessonByChapterId")
+    @GetMapping("/getLessonByChapterId/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List[] findLessonByChapterId(int chapterId) {
+    public List[] findLessonByChapterId(@PathVariable("id") int chapterId) {
         return new List[]{
                 theoryRestController.findTheoryByChapter(chapterId),
                 chemEquationsRestController.findTaskByChapterId(chapterId),
@@ -52,9 +49,11 @@ public class LessonRestController {
     }
 
     @ApiOperation("Возвращает сущности заданий и теории по разделу и главе")
-    @GetMapping("/getLessonByReferenceIdAndChapterId")
+    @GetMapping("/getLessonByReferenceId/{chapter_id}/AndChapterId/{reference_id}")
     @ResponseStatus(HttpStatus.OK)
-    public List[] findLessonReferenceIdAndByChapterId(int chapterId, int referenceId) {
+    public List[] findLessonReferenceIdAndByChapterId(
+            @PathVariable("chapter_id") int chapterId,
+            @PathVariable("reference_id") int referenceId) {
         return new List[]{
                 theoryRestController.findTheoryByReferenceIdAndChapterId(chapterId, referenceId),
                 chemEquationsRestController.findTaskByReferenceIdAndChapterId(chapterId, referenceId),

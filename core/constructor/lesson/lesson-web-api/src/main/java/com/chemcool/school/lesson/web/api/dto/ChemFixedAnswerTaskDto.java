@@ -12,8 +12,8 @@ public class ChemFixedAnswerTaskDto {
     private String taskId;
     private String description;
     private String rightAnswer;
-    private int chapterId;
-    private int referenceId;
+    private Integer chapterId;
+    private Integer referenceId;
     private String taskType;
 
     public ChemFixedAnswerTaskDto(ChemFixedAnswerTask task) {

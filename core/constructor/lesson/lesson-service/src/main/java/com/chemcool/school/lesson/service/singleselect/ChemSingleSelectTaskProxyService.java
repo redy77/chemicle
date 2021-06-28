@@ -31,14 +31,14 @@ public class ChemSingleSelectTaskProxyService {
         return taskService.getAll();
     }
 
-    public List<ChemSingleSelectTask> getAllByChapterId(int chapterId) {
+    public List<ChemSingleSelectTask> getAllByChapterId(Integer chapterId) {
         return taskService.getAllByChapterId(chapterId);
     }
-    public List<ChemSingleSelectTask> getAllByReferenceId(int referenceId) {
+    public List<ChemSingleSelectTask> getAllByReferenceId(Integer referenceId) {
         return taskService.getAllByReferenceId(referenceId);
     }
 
-    public List<ChemSingleSelectTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId) {
+    public List<ChemSingleSelectTask> getAllByReferenceIdAndChapterId(Integer referenceId, Integer chapterId) {
         return taskService.getAllByReferenceIdAndChapterId(referenceId, chapterId);
     }
 

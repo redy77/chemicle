@@ -1,6 +1,6 @@
-package com.chemcool.school.lesson.theory.configuration.properties;
+package com.chemcool.school.lesson.configuration.properties.theory;
 
-import com.chemcool.school.lesson.theory.domain.ChemTheoryEvent;
+import com.chemcool.school.lesson.domain.theory.ChemTheoryEvent;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;

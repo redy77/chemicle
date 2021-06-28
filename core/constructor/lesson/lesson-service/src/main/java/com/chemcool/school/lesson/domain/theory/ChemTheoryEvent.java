@@ -1,4 +1,4 @@
-package com.chemcool.school.lesson.theory.domain;
+package com.chemcool.school.lesson.domain.theory;
 
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.AllArgsConstructor;

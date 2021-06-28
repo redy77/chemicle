@@ -1,7 +1,9 @@
 package com.chemcool.school.lesson.web.api.service;
 
+import com.chemcool.school.lesson.domain.equation.ChemEquationsTask;
 import com.chemcool.school.lesson.domain.fixedanswer.ChemFixedAnswerTask;
 import com.chemcool.school.lesson.service.fixedanswer.ChemFixedAnswerTaskProxyService;
+import com.chemcool.school.lesson.web.api.dto.ChemEquationsTaskDto;
 import com.chemcool.school.lesson.web.api.dto.ChemFixedAnswerTaskDto;
 import com.chemcool.school.lesson.web.api.exeption.ChemTaskEmptyException;
 import lombok.AllArgsConstructor;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Service
 @AllArgsConstructor
@@ -23,7 +26,7 @@ public class ChemFixedAnswerTaskServiceLayer {
         }
         return list;
     }
-    public List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerByReferenceIdDto (int referenceId) {
+    public List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerByReferenceIdDto (Integer referenceId) {
         List<ChemFixedAnswerTaskDto> list = new ArrayList<>();
         for(ChemFixedAnswerTask task : proxyService.getAllByReferenceId(referenceId)){
             list.add(new ChemFixedAnswerTaskDto(task));
@@ -31,7 +34,7 @@ public class ChemFixedAnswerTaskServiceLayer {
         return list;
     }
 
-    public List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerByChapterIdDto (int chapterId) {
+    public List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerByChapterIdDto (Integer chapterId) {
         List<ChemFixedAnswerTaskDto> list = new ArrayList<>();
         for(ChemFixedAnswerTask task : proxyService.getAllByChapterId(chapterId)){
             list.add(new ChemFixedAnswerTaskDto(task));
@@ -39,7 +42,8 @@ public class ChemFixedAnswerTaskServiceLayer {
         return list;
     }
 
-    public List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerByReferenceIdAndChapterIdDto (int referenceId, int chapterId) {
+    public List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerByReferenceIdAndChapterIdDto (Integer referenceId,
+                                                                                                Integer chapterId) {
         List<ChemFixedAnswerTaskDto> list = new ArrayList<>();
         for(ChemFixedAnswerTask task : proxyService.getAllByReferenceIdAndChapterId(referenceId, chapterId)){
             list.add(new ChemFixedAnswerTaskDto(task));
@@ -53,4 +57,11 @@ public class ChemFixedAnswerTaskServiceLayer {
         return new ChemFixedAnswerTaskDto(task);
     }
 
+    public ChemFixedAnswerTaskDto getRandomChemFixedAnswerTaskDto() {
+        List<ChemFixedAnswerTaskDto> list = new ArrayList<>();
+        for (ChemFixedAnswerTask task : proxyService.getAll()) {
+            list.add(new ChemFixedAnswerTaskDto(task));
+        }
+        return list.get(new Random().nextInt(list.size()));
+    }
 }

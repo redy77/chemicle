@@ -3,6 +3,7 @@ package com.chemcool.school.tasks.service.chemequations;
 import com.chemcool.school.tasks.chemequations.ChemTaskEmptyException;
 import com.chemcool.school.tasks.domain.chemequations.ChemEquationsTask;
 import com.chemcool.school.tasks.domain.chemequations.ChemEquationsTaskExample;
+import com.chemcool.school.tasks.dto.chemequations.ChemEquationsTaskCreateDto;
 import com.chemcool.school.tasks.dto.chemequations.ChemEquationsTaskDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -63,23 +64,24 @@ public class ChemEquationsTaskServiceLayer {
     }
 
 
-    public String createNewChemEquationsTask(ChemEquationsTaskDto taskDto, String rightAnswer) {
+    public String createNewChemEquationsTask(ChemEquationsTaskCreateDto taskDto) {
         return proxyService.add(
                 new ChemEquationsTaskExample(
+                        taskDto.getTaskId(),
                         taskDto.getDescription(),
-                        rightAnswer.replaceAll(" ", ""),
+                        taskDto.getRightAnswer(),
                         taskDto.getChapterId(),
                         taskDto.getReferenceId()
                 )
         );
     }
 
-    public void updateChemEquationsTask(ChemEquationsTaskDto taskDto, String rightAnswer) {
+    public void updateChemEquationsTask(ChemEquationsTaskCreateDto taskDto) {
         proxyService.update(
                 new ChemEquationsTask(
                         taskDto.getTaskId(),
                         taskDto.getDescription(),
-                        rightAnswer.replaceAll(" ", ""),
+                        taskDto.getRightAnswer(),
                         taskDto.getChapterId(),
                         taskDto.getReferenceId()
                 )

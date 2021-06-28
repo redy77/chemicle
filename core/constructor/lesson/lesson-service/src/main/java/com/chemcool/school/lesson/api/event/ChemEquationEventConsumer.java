@@ -12,6 +12,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+
 @Slf4j
 @Service
 @EnableKafka
@@ -21,7 +22,7 @@ public class ChemEquationEventConsumer {
     private final ChemEquationsTaskEventService eventService;
     private final ChemEquationsTaskService taskService;
 
-    @KafkaListener(topics = "equations-task", containerFactory = "chemEquationsKafkaListenerContainerFactory")
+    @KafkaListener(topics = "task-chemistry-equations", containerFactory = "chemEquationsKafkaListenerContainerFactory")
     @KafkaHandler
     public void handleChemEquationsTask(ConsumerRecord<String, ChemEquationsTaskEvent> record) {
         ChemEquationsTaskEvent event = record.value();
@@ -29,5 +30,4 @@ public class ChemEquationEventConsumer {
         eventService.handleEvent(event);
         taskService.save(event.getEventPayload());
     }
-
 }

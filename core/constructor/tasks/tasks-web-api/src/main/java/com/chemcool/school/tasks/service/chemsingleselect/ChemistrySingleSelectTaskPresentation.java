@@ -35,4 +35,12 @@ public class ChemistrySingleSelectTaskPresentation {
     public void deleteById(String id) {
         serviceLayer.deleteById(id);
     }
+
+    public List<ChemistrySingleSelectTaskDto> getAllChemistryMatchingTaskByChapterIdDto(int chapterId) {
+        return serviceLayer.getAllChemistryMatchingTaskByChapterIdDto(chapterId);
+    }
+
+    public List<ChemistrySingleSelectTaskDto> getAllChemistryMatchingTaskByChapterIdAndReferenceIdDto(int chapterId, int referenceId) {
+        return serviceLayer.getAllChemistryMatchingTaskByChapterIdAndReferenceIdDto(chapterId, referenceId);
+    }
 }

@@ -1,8 +1,8 @@
-package com.chemcool.school.lesson.theory.service;
+package com.chemcool.school.lesson.service.theory;
 
 
-import com.chemcool.school.lesson.theory.domain.ChemTheoryEvent;
-import com.chemcool.school.lesson.theory.exception.ChemTheoryDefenitionException;
+import com.chemcool.school.lesson.domain.theory.ChemTheoryEvent;
+import com.chemcool.school.lesson.exception.theory.ChemTheoryDefenitionException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;

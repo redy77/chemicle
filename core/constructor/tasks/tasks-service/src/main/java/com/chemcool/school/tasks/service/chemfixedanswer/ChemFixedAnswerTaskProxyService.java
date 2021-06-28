@@ -43,5 +43,13 @@ public class ChemFixedAnswerTaskProxyService {
     public void deleteById(String id) {
         taskService.deleteById(id);
     }
+
+    public boolean checkAnswer(String taskId, String userAnswer) {
+        return taskService.checkAnswer(taskId, userAnswer);
+    }
+
+    public List<ChemFixedAnswerTask> getAllByChapterIdAndReferenceId(int chapterId, int referenceId) {
+        return taskService.getAllByChapterIdAndReferenceId(chapterId, referenceId);
+    }
 }
 

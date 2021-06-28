@@ -36,4 +36,11 @@ public class ChemistryMatchingTaskPresentation {
         service.deleteById(id);
     }
 
+    public List<ChemistryMatchingTaskDto> getAllChemistryMatchingTaskByChapterIdDto(int chapterId) {
+        return service.getAllChemistryMatchingTaskByChapterIdDto(chapterId);
+    }
+
+    public List<ChemistryMatchingTaskDto> getAllChemistryMatchingTaskByChapterIdAndReferenceIdDto(int chapterId, int referenceId) {
+        return service.getAllChemistryMatchingTaskByChapterIdAndReferenceIdDto(chapterId, referenceId);
+    }
 }

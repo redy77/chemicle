@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Сервис прослойка нижнего уровня содержащий бизнес логику CRUD операций
@@ -31,7 +32,7 @@ public class ChemEquationsTaskServiceLayer {
         return list;
     }
 
-    public List<ChemEquationsTaskDto> getAllChemEquationsByChapterIdDto(int chapterId) {
+    public List<ChemEquationsTaskDto> getAllChemEquationsByChapterIdDto(Integer chapterId) {
         List<ChemEquationsTaskDto> list = new ArrayList<>();
         for (ChemEquationsTask task : proxyService.getAllByChapterId(chapterId)) {
             list.add(new ChemEquationsTaskDto(task));
@@ -39,7 +40,7 @@ public class ChemEquationsTaskServiceLayer {
         return list;
     }
 
-    public List<ChemEquationsTaskDto> getAllChemEquationsByReferenceIdDto(int referenceId) {
+    public List<ChemEquationsTaskDto> getAllChemEquationsByReferenceIdDto(Integer referenceId) {
         List<ChemEquationsTaskDto> list = new ArrayList<>();
         for (ChemEquationsTask task : proxyService.getAllByReferenceId(referenceId)) {
             list.add(new ChemEquationsTaskDto(task));
@@ -47,7 +48,7 @@ public class ChemEquationsTaskServiceLayer {
         return list;
     }
 
-    public List<ChemEquationsTaskDto> getAllByReferenceIdAndChapterIdDto(int referenceId, int chapterId) {
+    public List<ChemEquationsTaskDto> getAllByReferenceIdAndChapterIdDto(Integer referenceId, Integer chapterId) {
         List<ChemEquationsTaskDto> list = new ArrayList<>();
         for (ChemEquationsTask task : proxyService.getAllByReferenceIdAndChapterId(referenceId, chapterId)) {
             list.add(new ChemEquationsTaskDto(task));
@@ -62,4 +63,11 @@ public class ChemEquationsTaskServiceLayer {
     }
 
 
+    public ChemEquationsTaskDto getRandomChemistryEquationsDto() {
+        List<ChemEquationsTaskDto> list = new ArrayList<>();
+        for (ChemEquationsTask task : proxyService.getAll()) {
+            list.add(new ChemEquationsTaskDto(task));
+        }
+        return list.get(new Random().nextInt(list.size()));
+    }
 }

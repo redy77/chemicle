@@ -1,7 +1,7 @@
-package com.chemcool.school.lesson.theory.domain;
+package com.chemcool.school.lesson.domain.theory;
 
 
-import com.chemcool.school.lesson.theory.exception.ChemTheoryFormatException;
+import com.chemcool.school.lesson.exception.theory.ChemTheoryFormatException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

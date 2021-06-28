@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 public class ChemEquationsTaskDto {
     private String taskId;
     private String description;
-    private int chapterId;
-    private int referenceId;
+    private Integer chapterId;
+    private Integer referenceId;
     private String taskType;
 
     public ChemEquationsTaskDto(ChemEquationsTask task) {

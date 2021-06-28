@@ -44,18 +44,18 @@ public class ChemSingleSelectTaskService {
     }
 
 
-    public List<ChemSingleSelectTask> getAllByChapterId(int chapterId){
+    public List<ChemSingleSelectTask> getAllByChapterId(Integer chapterId){
         log.info("Найдены задачи SingleSelect с chapter = " + chapterId );
         return repository.getAllByChapterId(chapterId);
     }
 
 
-    public List<ChemSingleSelectTask> getAllByReferenceId(int referenceId){
+    public List<ChemSingleSelectTask> getAllByReferenceId(Integer referenceId){
         log.info("Найдены задачи SingleSelect с reference = " + referenceId );
         return repository.getAllByReferenceId(referenceId);
     }
 
-    public List<ChemSingleSelectTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId){
+    public List<ChemSingleSelectTask> getAllByReferenceIdAndChapterId(Integer referenceId, Integer chapterId){
         log.info("Найдены задачи SingleSelect с reference = " + referenceId + " и chapterId = " + chapterId);
         return repository.getAllByReferenceIdAndChapterId(referenceId, chapterId);
     }

@@ -6,34 +6,21 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
-@RequestMapping("/chemistryMatching/v1.0")
+@RequestMapping("chemistryMatching/v1.0")
 @RequiredArgsConstructor
 public class ChemistryMatchingTaskRestController {
     private final ChemistryMatchingTaskPresentation presentation;
 
-    @GetMapping
-    @ApiOperation("Возвращает все задания типа \"matching(сопоставления)\" по химии.")
-    public List<ChemistryMatchingTaskDto> getAllTasks(){
-        return presentation.getAllTasks();
-    }
-
-    @GetMapping("/{uuid}")
-    @ApiOperation("Возвращает дто сущности задания типа \"matching(сопоставления)\" по химии по UUID.")
-    public ChemistryMatchingTaskDto getTaskById(@PathVariable String uuid){
-        return presentation.getTaskDtoById(uuid);
-    }
-
-    @PostMapping
+    @PostMapping("/create")
     @ApiOperation("Создает новую сущность задания типа \"matching(сопоставления)\" по химии.")
     @ResponseBody
     public String createNewTask(@RequestBody ChemistryMatchingTaskDto task) {
         return presentation.add(task);
     }
 
-    @PutMapping
+    @PutMapping("/update")
     @ApiOperation("Обновляет существующую сущность задания типа \"matching(сопоставления)\" по химии.")
     @ResponseBody
     public String updateTask(@RequestBody ChemistryMatchingTaskDto task) {

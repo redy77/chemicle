@@ -1,8 +1,10 @@
 package com.chemcool.school.tasks.service.chemmatches;
 
 import com.chemcool.school.tasks.chemMatches.ChemistryTaskEmptyException;
+import com.chemcool.school.tasks.domain.chemfixedanswer.ChemFixedAnswerTask;
 import com.chemcool.school.tasks.domain.chemmatches.ChemistryMatchingTask;
 import com.chemcool.school.tasks.domain.chemmatches.ChemistryMatchingTaskExample;
+import com.chemcool.school.tasks.dto.chemfixedanswer.ChemFixedAnswerTaskDto;
 import com.chemcool.school.tasks.dto.chemmatches.ChemistryMatchingTaskDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -70,5 +72,21 @@ public class ChemistryMatchingTaskServiceLayer {
         if (dto.getDescription().isEmpty()) {
             throw new ChemistryTaskEmptyException("Необходимые поля пустые, проверьте пожалуйста бланк заполнения задания.");
         }
+    }
+
+    public List<ChemistryMatchingTaskDto> getAllChemistryMatchingTaskByChapterIdDto(int chapterId) {
+        List<ChemistryMatchingTaskDto> list = new ArrayList<>();
+        for (ChemistryMatchingTask task : service.getAllByChapterId(chapterId)) {
+            list.add(new ChemistryMatchingTaskDto(task));
+        }
+        return list;
+    }
+
+    public List<ChemistryMatchingTaskDto> getAllChemistryMatchingTaskByChapterIdAndReferenceIdDto(int chapterId, int referenceId) {
+        List<ChemistryMatchingTaskDto> list = new ArrayList<>();
+        for (ChemistryMatchingTask task : service.getAllByChapterIdAndReferenceId(chapterId, referenceId)) {
+            list.add(new ChemistryMatchingTaskDto(task));
+        }
+        return list;
     }
 }
