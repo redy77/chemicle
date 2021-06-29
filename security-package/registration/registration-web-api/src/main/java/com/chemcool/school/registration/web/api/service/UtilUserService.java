@@ -25,14 +25,16 @@ public class UtilUserService {
     public String checkAge(RegisterUserDto registerUserDto) {
         String message = "";
         int age;
-        if (registerUserDto.getBirthday() == null) {
-            message += "Не указан возраст!\n";
-        } else {
+        if (registerUserDto.getBirthday() != null) {
             age = Period.between(registerUserDto.getBirthday(), LocalDate.now()).getYears();
             if (age < 6 || age > 100) {
                 message += "Недопустимый возраст!\n";
             } else if (age < 18 && registerUserDto.getRole() == RegisterUserAccountRole.ROLE_TEACHER) {
                 message += "Ваш возраст меньше 18, вы не можете быть учителем!\n";
+            }
+        } else {
+            if (registerUserDto.getRole() == RegisterUserAccountRole.ROLE_TEACHER) {
+                message += "Вы не указали возраст, вы не можете быть учителем\n";
             }
         }
         return message;

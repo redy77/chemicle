@@ -8,7 +8,6 @@ public enum RegisterUserAccountRole implements GrantedAuthority {
     ROLE_TEACHER("ROLE_TEACHER"),
     ROLE_STUDENT("ROLE_STUDENT");
 
-
     RegisterUserAccountRole(String role) {
         this.role = role;
     }
