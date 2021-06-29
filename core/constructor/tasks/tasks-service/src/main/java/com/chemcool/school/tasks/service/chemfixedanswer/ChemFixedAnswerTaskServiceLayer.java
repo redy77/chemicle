@@ -2,6 +2,7 @@ package com.chemcool.school.tasks.service.chemfixedanswer;
 
 import com.chemcool.school.tasks.domain.chemfixedanswer.ChemFixedAnswerTask;
 import com.chemcool.school.tasks.domain.chemfixedanswer.ChemFixedAnswerTaskExample;
+import com.chemcool.school.tasks.dto.chemfixedanswer.ChemFixedAnswerTaskCreateDto;
 import com.chemcool.school.tasks.dto.chemfixedanswer.ChemFixedAnswerTaskDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class ChemFixedAnswerTaskServiceLayer {
         return proxyService.getById(id);
     }
 
-    public String createNewFixedAnswerTask(ChemFixedAnswerTaskDto taskDto){
+    public String createNewFixedAnswerTask(ChemFixedAnswerTaskCreateDto taskDto){
         return proxyService.add(
                 new ChemFixedAnswerTaskExample(
                         taskDto.getDescription(),
@@ -39,7 +40,7 @@ public class ChemFixedAnswerTaskServiceLayer {
         );
     }
 
-    public void updateFixedAnswerTask(ChemFixedAnswerTaskDto taskDto){
+    public void updateFixedAnswerTask(ChemFixedAnswerTaskCreateDto taskDto){
         proxyService.update(
                 new ChemFixedAnswerTask(
                         taskDto.getTaskId(),
@@ -53,5 +54,9 @@ public class ChemFixedAnswerTaskServiceLayer {
 
     public void deleteFixedAnswerTask(String id){
         proxyService.deleteById(id);
+    }
+
+    public boolean checkAnswer(String taskId, String userAnswer) {
+        return proxyService.checkAnswer(taskId, userAnswer.replaceAll(" ", ""));
     }
 }

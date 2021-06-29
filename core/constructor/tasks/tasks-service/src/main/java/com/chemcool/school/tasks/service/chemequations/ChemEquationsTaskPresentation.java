@@ -2,12 +2,9 @@ package com.chemcool.school.tasks.service.chemequations;
 
 import com.chemcool.school.tasks.dto.chemequations.ChemAnswerDto;
 import com.chemcool.school.tasks.dto.chemequations.ChemEquationsTaskCreateDto;
-import com.chemcool.school.tasks.dto.chemequations.ChemEquationsTaskDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.List;
 
 
 @Service
@@ -15,25 +12,6 @@ import java.util.List;
 public class ChemEquationsTaskPresentation {
 
     private final ChemEquationsTaskServiceLayer serviceLayer;
-    
-    public List<ChemEquationsTaskDto> getAllChemistryEquationsDto() {
-        return serviceLayer.getAllChemEquationsDto();
-    }
-
-    public List<ChemEquationsTaskDto> getAllChemistryEquationsByChapterIdDto(int chapterId) {
-        return serviceLayer.getAllChemEquationsByChapterIdDto(chapterId);
-    }
-    public List<ChemEquationsTaskDto> getAllChemistryEquationsByChapterIdAndReferenceIdDto(int chapterId,int referenceId) {
-        return serviceLayer.getAllChemEquationsByChapterIdAndReferenceIdDto(chapterId,referenceId);
-    }
-
-    public ChemEquationsTaskDto getEquationsTaskById(String id) {
-        return serviceLayer.getChemEquationsTaskById(id);
-    }
-
-    public ChemEquationsTaskDto getRandomChemistryEquationsDto() {
-        return serviceLayer.getRandomChemistryEquationsDto();
-    }
 
     public String createNewEquationsTask(ChemEquationsTaskCreateDto taskDto) {
         return serviceLayer.createNewChemEquationsTask(taskDto);

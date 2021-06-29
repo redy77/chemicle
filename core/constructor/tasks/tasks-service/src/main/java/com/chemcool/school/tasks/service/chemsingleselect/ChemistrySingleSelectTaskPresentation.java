@@ -20,10 +20,6 @@ public class ChemistrySingleSelectTaskPresentation {
         return serviceLayer.getAllTasks();
     }
 
-    public List<ChemistrySingleSelectTaskDto> getAllTasksByChapterId(int chapterId) {
-        return serviceLayer.getAllTasksByChapterId(chapterId);
-    }
-
     public String add(ChemistrySingleSelectTaskDto dto) {
         return serviceLayer.add(dto);
     }
@@ -34,13 +30,5 @@ public class ChemistrySingleSelectTaskPresentation {
 
     public void deleteById(String id) {
         serviceLayer.deleteById(id);
-    }
-
-    public List<ChemistrySingleSelectTaskDto> getAllChemistryMatchingTaskByChapterIdDto(int chapterId) {
-        return serviceLayer.getAllChemistryMatchingTaskByChapterIdDto(chapterId);
-    }
-
-    public List<ChemistrySingleSelectTaskDto> getAllChemistryMatchingTaskByChapterIdAndReferenceIdDto(int chapterId, int referenceId) {
-        return serviceLayer.getAllChemistryMatchingTaskByChapterIdAndReferenceIdDto(chapterId, referenceId);
     }
 }

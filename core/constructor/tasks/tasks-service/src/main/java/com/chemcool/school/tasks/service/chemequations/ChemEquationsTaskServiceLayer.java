@@ -25,44 +25,6 @@ public class ChemEquationsTaskServiceLayer {
 
     private final ChemEquationsTaskProxyService proxyService;
 
-    public List<ChemEquationsTaskDto> getAllChemEquationsDto() {
-        List<ChemEquationsTaskDto> list = new ArrayList<>();
-        for (ChemEquationsTask task : proxyService.getAll()) {
-            list.add(new ChemEquationsTaskDto(task));
-        }
-        return list;
-    }
-
-    public List<ChemEquationsTaskDto> getAllChemEquationsByChapterIdDto(int chapterId) {
-        List<ChemEquationsTaskDto> list = new ArrayList<>();
-        for (ChemEquationsTask task : proxyService.getAllByChapterId(chapterId)) {
-            list.add(new ChemEquationsTaskDto(task));
-        }
-        return list;
-    }
-
-    public List<ChemEquationsTaskDto> getAllChemEquationsByChapterIdAndReferenceIdDto(int chapterId, int referenceId) {
-        List<ChemEquationsTaskDto> list = new ArrayList<>();
-        for (ChemEquationsTask task : proxyService.getAllByChapterIdAndReferenceId(chapterId, referenceId)) {
-            list.add(new ChemEquationsTaskDto(task));
-        }
-        return list;
-    }
-
-    public ChemEquationsTaskDto getRandomChemistryEquationsDto() {
-        List<ChemEquationsTaskDto> list = new ArrayList<>();
-        for (ChemEquationsTask task : proxyService.getAll()) {
-            list.add(new ChemEquationsTaskDto(task));
-        }
-        return list.get(new Random().nextInt(list.size()));
-    }
-
-    public ChemEquationsTaskDto getChemEquationsTaskById(String id) {
-        ChemEquationsTask task = proxyService.getById(id)
-                .orElseThrow(() -> new ChemTaskEmptyException("Уравнение не найдено."));
-        return new ChemEquationsTaskDto(task);
-    }
-
 
     public String createNewChemEquationsTask(ChemEquationsTaskCreateDto taskDto) {
         return proxyService.add(
