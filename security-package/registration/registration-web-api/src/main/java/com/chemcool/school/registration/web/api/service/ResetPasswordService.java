@@ -9,6 +9,7 @@ import com.chemcool.school.registration.exception.RegisterUserDefinitionExceptio
 import com.chemcool.school.registration.repository.RegisterUserRepository;
 import com.chemcool.school.registration.service.RegisterUserEventNotificationService;
 import com.chemcool.school.registration.web.api.dto.ForgotPasswordDto;
+import com.chemcool.school.registration.web.api.dto.ResetPasswordDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -57,9 +58,9 @@ public class ResetPasswordService {
                 .body(new ApiResponse(true, "Письмо для сброса пароля успешно отправлено"));
     }
 
-    public ResponseEntity<?> processResetPassword(ForgotPasswordDto forgotPasswordDto) {
-        String token = forgotPasswordDto.getToken();
-        String password = forgotPasswordDto.getPassword();
+    public ResponseEntity<?> processResetPassword(ResetPasswordDto resetPasswordDto) {
+        String token = resetPasswordDto.getToken();
+        String password = resetPasswordDto.getPassword();
 
         RegisterUser registerUser = repository.findByResetPasswordToken(token);
 
