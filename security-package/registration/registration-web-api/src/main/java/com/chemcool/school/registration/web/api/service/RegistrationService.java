@@ -2,15 +2,17 @@ package com.chemcool.school.registration.web.api.service;
 
 import com.chemcool.school.registration.domain.RegisterUserAccountRole;
 import com.chemcool.school.registration.exception.ApiResponse;
+import com.chemcool.school.registration.exception.RegisterUserDefinitionException;
 import com.chemcool.school.registration.web.api.dto.RegisterUserDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,16 +26,27 @@ public class RegistrationService {
     private final UtilUserService utilUserService;
 
     public ResponseEntity<?> createUser(RegisterUserDto registerUserDto) {
-        String message = "";
-        message += utilUserService.checkAge(registerUserDto);
+        Map<String, String> errors = new HashMap<>();
+        int age;
+
         if (utilUserService.checkMail(registerUserDto)) {
-            message += "Email адрес уже был зарегистрирован!\n";
+            errors.put("email", "Email адрес уже был зарегистрирован!");
         }
         if (registerUserDto.getPhone() != null && utilUserService.checkPhone(registerUserDto)) {
-            message += "Номер телефона уже использован\n";
+            errors.put("phone", "Номер телефона уже использован");
         }
-        if (!message.isEmpty()) {
-            return ResponseEntity.badRequest().body(message);
+        if (registerUserDto.getBirthday() != null) {
+            age = Period.between(registerUserDto.getBirthday(), LocalDate.now()).getYears();
+            if (age < 18 && registerUserDto.getRole() == RegisterUserAccountRole.ROLE_TEACHER) {
+                errors.put("role", "Ваш возраст меньше 18, вы не можете быть учителем!");
+            }
+        } else {
+            if (registerUserDto.getRole() == RegisterUserAccountRole.ROLE_TEACHER) {
+                errors.put("age", "Вы не указали возраст, вы не можете быть учителем");
+            }
+        }
+        if (!errors.isEmpty()) {
+            return ResponseEntity.badRequest().body(new ApiResponse(errors, "VALIDATION_FAILED"));
         }
         utilUserService.checkAndSetRole(registerUserDto);
 
@@ -47,7 +60,7 @@ public class RegistrationService {
                 .buildAndExpand(result).toUri();
 
         return ResponseEntity.created(location)
-                .body(new ApiResponse(true, "Пользователь успешно зарегистрирован"));
+                .body(new ApiResponse(true, "Пользователь успешно зарегистрирован", false));
     }
 
     public ResponseEntity<?> verifyUser(String code) {

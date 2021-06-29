@@ -1,12 +1,13 @@
 package com.chemcool.school.registration.web.api.dto;
 
+import com.chemcool.school.registration.annotations.ValidBirthday;
 import com.chemcool.school.registration.annotations.ValidPassword;
+import com.chemcool.school.registration.annotations.ValidPhone;
 import com.chemcool.school.registration.domain.RegisterUserAccountRole;
 import com.chemcool.school.registration.domain.RegisterUserAccountType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -25,16 +26,17 @@ public class RegisterUserDto {
     @NotBlank
     private String surname;
 
+    @ValidBirthday
     private LocalDate birthday;
 
     @NotBlank
     private String gender;
 
-    @Length(min = 10, max = 10, message = "Не допустимая длина номера")
+    @ValidPhone
     private String phone;
 
     @NotBlank
-    @Email
+    @Email(message = "Invalid Email")
     private String email;
 
     @NotBlank
