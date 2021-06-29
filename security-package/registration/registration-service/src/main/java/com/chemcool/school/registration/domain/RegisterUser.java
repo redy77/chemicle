@@ -34,7 +34,7 @@ public class RegisterUser {
     private String gender;
 
 
-    @Column(name = "phone")
+    @Column(name = "phone", unique = true)
     private String phone;
 
     @Email
