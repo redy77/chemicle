@@ -1,11 +1,8 @@
 package com.chemcool.school.tasks.service.chemsingleselect;
 
-
-import com.chemcool.school.tasks.chemsingleselect.ChemistryTaskEmptyException;
-import com.chemcool.school.tasks.domain.chemmatches.ChemistryMatchingTask;
+import com.chemcool.school.tasks.exception.chemFixedAnswer.ChemistryTaskEmptyException;
 import com.chemcool.school.tasks.domain.chemsingleselect.ChemSingleSelectTask;
 import com.chemcool.school.tasks.domain.chemsingleselect.ChemSingleSelectTaskExample;
-import com.chemcool.school.tasks.dto.chemmatches.ChemistryMatchingTaskDto;
 import com.chemcool.school.tasks.dto.chemsingleselect.ChemistrySingleSelectTaskDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -82,21 +79,5 @@ public class ChemistrySingleSelectTaskServiceLayer {
         ) {
             throw new ChemistryTaskEmptyException("Необходимые поля пустые, проверьте пожалуйста бланк заполнения задания.");
         }
-    }
-
-    public List<ChemistrySingleSelectTaskDto> getAllChemistryMatchingTaskByChapterIdDto(int chapterId) {
-        List<ChemistrySingleSelectTaskDto> list = new ArrayList<>();
-        for (ChemSingleSelectTask task : service.getAllByChapterId(chapterId)) {
-            list.add(new ChemistrySingleSelectTaskDto(task));
-        }
-        return list;
-    }
-
-    public List<ChemistrySingleSelectTaskDto> getAllChemistryMatchingTaskByChapterIdAndReferenceIdDto(int chapterId, int referenceId) {
-        List<ChemistrySingleSelectTaskDto> list = new ArrayList<>();
-        for (ChemSingleSelectTask task : service.getAllByChapterIdAndReferenceId(chapterId, referenceId)) {
-            list.add(new ChemistrySingleSelectTaskDto(task));
-        }
-        return list;
     }
 }

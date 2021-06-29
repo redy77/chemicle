@@ -1,7 +1,5 @@
 package com.chemcool.school.tasks.service.chemfixedanswer;
 
-
-
 import com.chemcool.school.tasks.domain.chemfixedanswer.ChemFixedAnswerTask;
 import com.chemcool.school.tasks.dto.chemfixedanswer.ChemFixedAnswerTaskCreateDto;
 import com.chemcool.school.tasks.dto.chemfixedanswer.ChemFixedAnswerTaskDto;

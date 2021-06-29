@@ -40,6 +40,8 @@ public class RegisterUserDto {
     @ValidPassword
     private String password;
 
+    private String imageUrl;
+
     @Enumerated(EnumType.STRING)
     private RegisterUserAccountType type;
 
@@ -49,6 +51,8 @@ public class RegisterUserDto {
     private String verificationCode;
 
     private boolean enabled;
+
+    private String resetPasswordToken;
 
     public String getFullName() {
         return this.name + " " + this.surname;

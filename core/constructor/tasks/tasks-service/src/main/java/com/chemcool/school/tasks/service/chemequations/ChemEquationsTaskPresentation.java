@@ -1,6 +1,5 @@
 package com.chemcool.school.tasks.service.chemequations;
 
-
 import com.chemcool.school.tasks.dto.chemequations.ChemAnswerDto;
 import com.chemcool.school.tasks.dto.chemequations.ChemEquationsTaskCreateDto;
 import com.chemcool.school.tasks.dto.chemequations.ChemEquationsTaskDto;
@@ -16,7 +15,7 @@ import java.util.List;
 public class ChemEquationsTaskPresentation {
 
     private final ChemEquationsTaskServiceLayer serviceLayer;
-
+    
     public List<ChemEquationsTaskDto> getAllChemistryEquationsDto() {
         return serviceLayer.getAllChemEquationsDto();
     }

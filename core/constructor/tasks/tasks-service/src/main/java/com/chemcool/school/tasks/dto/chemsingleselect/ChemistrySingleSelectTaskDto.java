@@ -1,7 +1,5 @@
 package com.chemcool.school.tasks.dto.chemsingleselect;
 
-
-
 import com.chemcool.school.tasks.domain.chemsingleselect.ChemSingleSelectTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
