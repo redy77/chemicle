@@ -95,10 +95,6 @@ public class UserDetailsImpl implements OAuth2User, UserDetails {
         this.attributes = attributes;
     }
 
-    //    @Override
-//    public String getName() {
-//        return String.valueOf(id);
-//    }
     @Override
     public String getName() {
         return name;
