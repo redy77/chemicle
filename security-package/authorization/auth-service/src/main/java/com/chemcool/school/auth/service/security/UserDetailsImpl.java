@@ -18,7 +18,7 @@ public class UserDetailsImpl implements OAuth2User, UserDetails {
     private String name;
     private String email;
     private String password;
-    private boolean isEnabled;
+    private boolean enabled;
     private Collection<? extends GrantedAuthority> authorities;
     private Map<String, Object> attributes;
 
@@ -29,7 +29,7 @@ public class UserDetailsImpl implements OAuth2User, UserDetails {
         this.email = email;
         this.password = password;
         this.authorities = authorities;
-        this.isEnabled = isEnabled;
+        this.enabled = isEnabled;
     }
 
     public static UserDetailsImpl create(RegisterUser user) {
@@ -78,7 +78,7 @@ public class UserDetailsImpl implements OAuth2User, UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return isEnabled;
+        return enabled;
     }
 
     @Override
