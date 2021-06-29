@@ -16,7 +16,10 @@ import java.nio.charset.StandardCharsets;
 
 @Component
 public class SwaggerResourcesFilter extends ZuulFilter {
-
+    private final String ERROR_OBJECT = "{" +
+            "\"name\":\"basic-error-controller\"," +
+            "\"description\":\"Basic Error Controller\"" +
+            "}";
     private final DiscoveryClient discoveryClient;
 
     public SwaggerResourcesFilter(DiscoveryClient discoveryClient) {
@@ -47,7 +50,7 @@ public class SwaggerResourcesFilter extends ZuulFilter {
         try (InputStream stream = context.getResponseDataStream()) {
             String body = StreamUtils.copyToString(stream, StandardCharsets.UTF_8);
             JSONObject jsonObject = new JSONObject(body);
-            jsonObject.getJSONArray("tags").remove(jsonObject.getJSONArray("tags").get(0));
+            jsonObject.getJSONArray("tags").remove(new JSONObject(ERROR_OBJECT));
             jsonObject.getJSONObject("paths").remove(uri.substring(0, uri.length() - 11) + "error");
             jsonObject.getJSONObject("definitions").remove("View");
             jsonObject.getJSONObject("definitions").remove("ModelAndView");
