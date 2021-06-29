@@ -1,6 +1,5 @@
 package com.chemcool.school.registration.web.api.dto;
 
-import com.chemcool.school.registration.annotations.ValidPassword;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,10 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResetPasswordDto {
+public class ForgotPasswordDto {
 
-    private String token;
-
-    @ValidPassword
-    private String password;
+    private String email;
 }

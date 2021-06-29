@@ -20,7 +20,6 @@ your:
   path:
     yml:
       stringAccount: ${VERIFY_ACCOUNT_URL}
-      stringPassword: ${VERIFY_PASSWORD_URL}
 
 eureka:
   client:
