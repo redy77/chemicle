@@ -11,9 +11,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.util.ArrayList;
 import java.util.List;
 
-@EnableSwagger2
-@Component
 @Primary
+@Component
+@EnableSwagger2
 public class DocumentationConfig implements SwaggerResourcesProvider {
     private final RouteLocator routeLocator;
 
@@ -28,7 +28,8 @@ public class DocumentationConfig implements SwaggerResourcesProvider {
         routes.forEach(
                 route -> resources.add(
                         swaggerResource(
-                                route.getId(), route.getFullPath().replace("**", "v2/api-docs"),"2.0"
+                                route.getId(),
+                                route.getFullPath().replace("**", "v2/api-docs"),"2.0"
                         )
                 )
         );
@@ -37,9 +38,13 @@ public class DocumentationConfig implements SwaggerResourcesProvider {
 
     private SwaggerResource swaggerResource(String name, String location, String version) {
         SwaggerResource swaggerResource = new SwaggerResource();
-        swaggerResource.setName(name);
+        swaggerResource.setName(fancyNameConverter(name));
         swaggerResource.setLocation(location);
         swaggerResource.setSwaggerVersion(version);
         return swaggerResource;
+    }
+
+    private String fancyNameConverter(String str) {
+        return str.toUpperCase().charAt(0) + str.substring(1, str.length() - 12);
     }
 }
