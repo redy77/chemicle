@@ -1,6 +1,6 @@
 package com.chemcool.school.tasks.service.chemequations;
 
-import com.chemcool.school.tasks.chemequations.ChemTaskEmptyException;
+import com.chemcool.school.tasks.exception.chemequations.ChemTaskEmptyException;
 import com.chemcool.school.tasks.domain.chemequations.ChemEquationsTask;
 import com.chemcool.school.tasks.domain.chemequations.ChemEquationsTaskExample;
 import com.chemcool.school.tasks.dto.chemequations.ChemEquationsTaskDto;
