@@ -29,7 +29,7 @@ public class RegistrationService {
         if (utilUserService.checkAge(registerUserDto)) {
             return ResponseEntity.badRequest().body("Вы не можете быть учителем, ваш возраст меньше 18 лет");
         }
-        if (utilUserService.checkPhone(registerUserDto)) {
+        if (registerUserDto.getPhone() != null && utilUserService.checkPhone(registerUserDto)) {
             return ResponseEntity.badRequest().body("Номер телефона уже использован");
         }
         utilUserService.checkAndSetRole(registerUserDto);

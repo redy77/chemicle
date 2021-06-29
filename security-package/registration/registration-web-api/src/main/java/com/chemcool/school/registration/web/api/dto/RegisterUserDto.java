@@ -30,7 +30,6 @@ public class RegisterUserDto {
     @NotBlank
     private String gender;
 
-    @NotBlank
     @Length(min = 10, max = 10, message = "Не допустимая длина номера")
     private String phone;
 
