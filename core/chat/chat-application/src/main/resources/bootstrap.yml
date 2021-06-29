@@ -17,6 +17,8 @@ spring:
         max-attempts: 50
         max-interval: 1000
 
+stomp_endpoint: /ws
+
 eureka:
   client:
     service-url:
