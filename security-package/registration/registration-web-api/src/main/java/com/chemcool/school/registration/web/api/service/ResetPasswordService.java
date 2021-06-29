@@ -8,22 +8,23 @@ import com.chemcool.school.registration.exception.BadRequestException;
 import com.chemcool.school.registration.exception.RegisterUserDefinitionException;
 import com.chemcool.school.registration.repository.RegisterUserRepository;
 import com.chemcool.school.registration.service.RegisterUserEventNotificationService;
-import com.chemcool.school.registration.web.api.dto.ForgotPasswordDto;
 import com.chemcool.school.registration.web.api.dto.ResetPasswordDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Slf4j
@@ -38,17 +39,31 @@ public class ResetPasswordService {
     private JavaMailSender mailSender;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Value("${your.path.yml.stringPassword}")
+    private String resetPasswordUrl;
 
+    public ResponseEntity<?> processVerifyPassword(String token) {
+        RegisterUser registerUser = repository.findByResetPasswordToken(token);
+        Map<String, String> response = new HashMap<>();
 
-    public ResponseEntity<?> processForgotPassword(ForgotPasswordDto forgotPasswordDto) {
-        if (!repository.existsByEmail(forgotPasswordDto.getEmail())) {
+        if (registerUser != null) {
+            response.put("isValidated", "Пароль может быть изменен");
+            registerUser.setResetPasswordToken(token + "verify");
+            return ResponseEntity.accepted().body(response);
+        } else {
+            throw new BadRequestException("Неверная ссылка, либо истек срок действия ссылки");
+        }
+    }
+
+    public ResponseEntity<?> processForgotPassword(ResetPasswordDto resetPasswordDto) {
+        if (!repository.existsByEmail(resetPasswordDto.getEmail())) {
             throw new BadRequestException("Email адрес не был зарегистрирован!");
         }
 
         log.info("Вызван контроллер для сброса пароля на email: "
-                + "[" + forgotPasswordDto.getEmail() + "]");
+                + "[" + resetPasswordDto.getEmail() + "]");
 
-        String result = sendForgotPasswordEmail(forgotPasswordDto);
+        String result = sendForgotPasswordEmail(resetPasswordDto);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/")
@@ -59,28 +74,26 @@ public class ResetPasswordService {
     }
 
     public ResponseEntity<?> processResetPassword(ResetPasswordDto resetPasswordDto) {
-        String token = resetPasswordDto.getToken();
         String password = resetPasswordDto.getPassword();
+        RegisterUser registerUser = repository.findByEmail(resetPasswordDto.getEmail());
+        String token = registerUser.getResetPasswordToken();
 
-        RegisterUser registerUser = repository.findByResetPasswordToken(token);
-
-        if (registerUser == null) {
-            throw new BadRequestException("Неверная ссылка, либо истек срок действия ссылки");
+        if (registerUser.getResetPasswordToken().contains(token)
+                &&registerUser.getResetPasswordToken().contains("verify")) {
+            updatePassword(registerUser, password);
         }
-
-        updatePassword(registerUser, password);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/")
                 .buildAndExpand(registerUser.getId()).toUri();
-
+        registerUser.setResetPasswordToken(null);
         return ResponseEntity.created(location)
                 .body(new ApiResponse(true, "Пароль был успешно изменен!"));
     }
 
-    public String sendForgotPasswordEmail(ForgotPasswordDto forgotPasswordDto) {
+    public String sendForgotPasswordEmail(ResetPasswordDto resetPasswordDto) {
 
-        final String email = forgotPasswordDto.getEmail();
+        final String email = resetPasswordDto.getEmail();
         final String token = UUID.randomUUID().toString();
 
         RegisterUser registerUser = repository.findByEmail(email);
@@ -111,7 +124,7 @@ public class ResetPasswordService {
                 helper.setTo(email);
                 helper.setSubject(subject);
 
-                String resetPasswordUrl = "http://localhost:3000/reset-password/" + token;
+                resetPasswordUrl += token;
 
                 content = content.replace("[[URL]]", resetPasswordUrl);
 

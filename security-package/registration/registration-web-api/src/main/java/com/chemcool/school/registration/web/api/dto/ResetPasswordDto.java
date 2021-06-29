@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ResetPasswordDto {
 
+    private String email;
+
     private String token;
 
     @ValidPassword

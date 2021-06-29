@@ -8,6 +8,7 @@ import com.chemcool.school.registration.service.RegisterUserEventNotificationSer
 import com.chemcool.school.registration.web.api.dto.RegisterUserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,8 @@ public class VerificationEmailService {
     private RegisterUserPresentation registerUserPresentation;
     @Autowired
     private JavaMailSender mailSender;
+    @Value("${your.path.yml.stringAccount}")
+    private String verifyURL;
 
     public String sendVerificationEmail(RegisterUserDto user) {
 
@@ -55,7 +58,7 @@ public class VerificationEmailService {
                 helper.setTo(toAddress);
                 helper.setSubject(subject);
 
-                String verifyURL = "http://localhost:8080/registration-application/auth/verify?code=" + user.getVerificationCode();
+                verifyURL += user.getVerificationCode();
 
                 content = content.replace("[[name]]", user.getFullName());
                 content = content.replace("[[URL]]", verifyURL);
