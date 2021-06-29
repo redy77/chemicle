@@ -1,7 +1,6 @@
 package com.chemcool.school.tasks.service.chemsingleselect;
 
-
-import com.chemcool.school.tasks.chemsingleselect.ChemistryTaskEmptyException;
+import com.chemcool.school.tasks.exception.chemFixedAnswer.ChemistryTaskEmptyException;
 import com.chemcool.school.tasks.domain.chemsingleselect.ChemSingleSelectTask;
 import com.chemcool.school.tasks.domain.chemsingleselect.ChemSingleSelectTaskExample;
 import com.chemcool.school.tasks.dto.chemsingleselect.ChemistrySingleSelectTaskDto;

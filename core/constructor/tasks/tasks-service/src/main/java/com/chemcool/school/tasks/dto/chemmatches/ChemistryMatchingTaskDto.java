@@ -1,6 +1,5 @@
 package com.chemcool.school.tasks.dto.chemmatches;
 
-
 import com.chemcool.school.tasks.domain.chemmatches.ChemistryMatchingTask;
 import com.chemcool.school.tasks.domain.chemmatches.CoupleForMatching;
 import lombok.AllArgsConstructor;
