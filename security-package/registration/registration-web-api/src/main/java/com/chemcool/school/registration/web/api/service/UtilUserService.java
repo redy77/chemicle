@@ -20,11 +20,22 @@ public class UtilUserService {
 
     public boolean checkMail(RegisterUserDto registerUserDto) {
         return repository.existsByEmail(registerUserDto.getEmail());
-
     }
 
-    public boolean checkAge(RegisterUserDto registerUserDto) {
-        return Period.between(registerUserDto.getBirthday(), LocalDate.now()).getYears() < 18;
+    public String checkAge(RegisterUserDto registerUserDto) {
+        String message = "";
+        int age;
+        if (registerUserDto.getBirthday() == null) {
+            message += "Не указан возраст!\n";
+        } else {
+            age = Period.between(registerUserDto.getBirthday(), LocalDate.now()).getYears();
+            if (age < 6 || age > 100) {
+                message += "Недопустимый возраст!\n";
+            } else if (age < 18 && registerUserDto.getRole() == RegisterUserAccountRole.ROLE_TEACHER) {
+                message += "Ваш возраст меньше 18, вы не можете быть учителем!\n";
+            }
+        }
+        return message;
     }
 
     public boolean checkPhone(RegisterUserDto registerUserDto) {

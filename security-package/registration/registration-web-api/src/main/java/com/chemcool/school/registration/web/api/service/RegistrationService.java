@@ -1,5 +1,6 @@
 package com.chemcool.school.registration.web.api.service;
 
+import com.chemcool.school.registration.domain.RegisterUserAccountRole;
 import com.chemcool.school.registration.exception.ApiResponse;
 import com.chemcool.school.registration.web.api.dto.RegisterUserDto;
 import lombok.RequiredArgsConstructor;
@@ -23,14 +24,16 @@ public class RegistrationService {
     private final UtilUserService utilUserService;
 
     public ResponseEntity<?> createUser(RegisterUserDto registerUserDto) {
+        String message = "";
+        message += utilUserService.checkAge(registerUserDto);
         if (utilUserService.checkMail(registerUserDto)) {
-            return ResponseEntity.badRequest().body("Email адрес уже был зарегистрирован!");
-        }
-        if (utilUserService.checkAge(registerUserDto)) {
-            return ResponseEntity.badRequest().body("Вы не можете быть учителем, ваш возраст меньше 18 лет");
+            message += "Email адрес уже был зарегистрирован!\n";
         }
         if (registerUserDto.getPhone() != null && utilUserService.checkPhone(registerUserDto)) {
-            return ResponseEntity.badRequest().body("Номер телефона уже использован");
+            message += "Номер телефона уже использован\n";
+        }
+        if (!message.isEmpty()) {
+            return ResponseEntity.badRequest().body(message);
         }
         utilUserService.checkAndSetRole(registerUserDto);
 
