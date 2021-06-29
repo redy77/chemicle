@@ -21,6 +21,7 @@ public class ChemistrySingleSelectTaskRestController {
         return presentation.getAllTasks();
     }
 
+
     @GetMapping("/{uuid}")
     @ApiOperation("Возвращает дто сущности задания типа \"Выбор одного ответа\" по химии по UUID.")
     public ChemistrySingleSelectTaskDto getTaskById(@PathVariable String uuid) {
