@@ -1,7 +1,7 @@
 package com.chemcool.school.registration.domain;
 
 public enum RegisterUserAuthProvider {
-    local,
-    facebook,
-    google
+    LOCAL,
+    FACEBOOK,
+    GOOGLE
 }
