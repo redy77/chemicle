@@ -65,7 +65,7 @@ public class RegisterUser {
     private String verificationCode;
 
     @Column(name = "enabled")
-    private boolean enabled;
+    private boolean isEnabled;
 
     @Column(name = "reset_password_token")
     private String resetPasswordToken;

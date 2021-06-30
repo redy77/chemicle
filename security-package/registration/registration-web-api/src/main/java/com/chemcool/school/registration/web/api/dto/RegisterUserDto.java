@@ -53,7 +53,7 @@ public class RegisterUserDto {
 
     private String verificationCode;
 
-    private boolean enabled;
+    private boolean isEnabled;
 
     private String resetPasswordToken;
 
