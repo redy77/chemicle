@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("/chemEquations/v.1.0")
+@RequestMapping("/v.1.0/chemEquations")
 @RequiredArgsConstructor
 public class ChemEquationsViewController {
 
