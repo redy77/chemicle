@@ -15,7 +15,6 @@ import java.util.UUID;
 public class RegisterUserEventNotificationServiceImpl implements RegisterUserEventNotificationService {
     private final UserRegistrationEventService userRegistrationEventService;
     private final KafkaTemplate<String, RegisterUserEvent> kafkaTemplate;
-
     private static final String REGISTRATION_USERS_SOCIAL = "registration-users-social";
 
     @Override

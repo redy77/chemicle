@@ -11,6 +11,8 @@ public interface RegisterUserRepository extends JpaRepository<RegisterUser, Stri
 
     Boolean existsByEmail(String email);
 
+    Boolean existsByPhone(String phone);
+
     RegisterUser findByVerificationCode(String code);
 
     RegisterUser findByResetPasswordToken(String resetToken);

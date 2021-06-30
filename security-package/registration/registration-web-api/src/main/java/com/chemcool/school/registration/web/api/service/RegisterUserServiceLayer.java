@@ -26,14 +26,14 @@ public class RegisterUserServiceLayer {
                         registerUserDto.getPhone(),
                         registerUserDto.getEmail(),
                         registerUserDto.getPassword(),
-                        null,
-                        RegisterUserAuthProvider.local,
-                        null,
+                        registerUserDto.getImageUrl(),
+                        RegisterUserAuthProvider.LOCAL,
+                        UUID.randomUUID().toString(),
                         registerUserDto.getType(),
                         registerUserDto.getRole(),
                         registerUserDto.getVerificationCode(),
                         registerUserDto.isEnabled(),
-                        null
+                        registerUserDto.getResetPasswordToken()
                 )
         );
     }

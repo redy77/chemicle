@@ -26,6 +26,5 @@ public class RegisterUserProxyService {
         );
 
         return userRepository.save(registerUser);
-
     }
 }

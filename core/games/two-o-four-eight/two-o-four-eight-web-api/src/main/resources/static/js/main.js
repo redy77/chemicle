@@ -88,7 +88,7 @@ function moveUp(id) {
                         document.getElementById(nId).innerHTML = (val + nVal);
                         document.getElementById(nId).style.backgroundImage = getElement((val + nVal));
                         document.getElementById((k + 1) + "" + j).innerHTML = "";
-                        document.getElementById((k + 1) + "" + j).style.backgroundImage = "#url('images/default.png')";
+                        document.getElementById((k + 1) + "" + j).style.backgroundImage = "url('images/default.png')";
                         isMoved = true;
                         score += (val + nVal);
                     }
@@ -273,15 +273,17 @@ function update() {
         }
     }
     var id = ids[Math.floor(Math.random() * ids.length)];
-    var newNumber = Math.floor(Math.random() * 3) * 2
+    var newNumber = Math.floor(Math.random() * 3) * 2;
     if (newNumber === 0) {
         newNumber = 2
     }
-    document.getElementById(id).innerHTML = newNumber;
+
     if (newNumber === 2) {
         document.getElementById(id).style.backgroundImage = getElement(2);
+        document.getElementById(id).innerHTML = 2;
     } else {
         document.getElementById(id).style.backgroundImage = getElement(4);
+        document.getElementById(id).innerHTML = 4;
     }
 
     //Check if no move space available
