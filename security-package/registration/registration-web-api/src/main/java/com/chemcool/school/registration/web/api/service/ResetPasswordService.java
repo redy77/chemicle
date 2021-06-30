@@ -97,8 +97,8 @@ public class ResetPasswordService {
                 String senderName = "ChemCool";
                 String subject = "Восстановление пароля на сайте ChemCool.ru";
                 String content = "<p>Здравствуйте.</p>"
-                        + "<p>Перейдите пожалуйста по ссылке ниже для сброса пароля:</p>"
-                        + "<h3><a href=\"[[URL]]\" target=\"_self\">ВОССТАНОВИТЬ ПАРОЛЬ</a></h3>"
+                        + "<p>Воспользуйтесь кодом ниже для сброса пароля:</p>"
+                        + "<h3>[[TOKEN]]</h3>"
                         + "<br>"
                         + "<p>Игнорируйте это письмо если вы не запрашивали сброс пароля.</p>"
                         + "Рады, что Вы с нами!<br>"
@@ -110,10 +110,7 @@ public class ResetPasswordService {
                 helper.setFrom(fromAddress, senderName);
                 helper.setTo(email);
                 helper.setSubject(subject);
-
-                String resetPasswordUrl = "http://localhost:3000/reset-password/" + token;
-
-                content = content.replace("[[URL]]", resetPasswordUrl);
+                content = content.replace("[[TOKEN]]", registerUser.getResetPasswordToken());
 
                 helper.setText(content, true);
                 mailSender.send(message);
@@ -126,7 +123,6 @@ public class ResetPasswordService {
     }
 
     public void updatePassword(RegisterUser registerUser, String password) {
-
         registerUser.setPassword(passwordEncoder.encode(password));
         registerUser.setResetPasswordToken(null);
         log.info("Пользователь {} успешно изменил пароль", registerUser.getEmail());

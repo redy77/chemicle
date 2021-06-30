@@ -27,7 +27,7 @@ public class RegisterUserServiceLayer {
                         registerUserDto.getEmail(),
                         registerUserDto.getPassword(),
                         registerUserDto.getImageUrl(),
-                        RegisterUserAuthProvider.local,
+                        RegisterUserAuthProvider.LOCAL,
                         UUID.randomUUID().toString(),
                         registerUserDto.getType(),
                         registerUserDto.getRole(),
