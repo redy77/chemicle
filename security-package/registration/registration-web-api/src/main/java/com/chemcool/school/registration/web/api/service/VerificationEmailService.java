@@ -30,7 +30,7 @@ public class VerificationEmailService {
     private RegisterUserPresentation registerUserPresentation;
     @Autowired
     private JavaMailSender mailSender;
-    @Value("${your.path.yml.stringAccount}")
+    @Value("${accountUpdate.path}")
     private String verifyURL;
 
     public String sendVerificationEmail(RegisterUserDto user) {

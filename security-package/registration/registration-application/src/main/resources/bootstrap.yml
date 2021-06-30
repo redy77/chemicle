@@ -16,10 +16,8 @@ spring:
         multiplier: 1.1
         max-attempts: 50
         max-interval: 1000
-your:
-  path:
-    yml:
-      stringAccount: ${VERIFY_ACCOUNT_URL}
+accountUpdate:
+  path: ${VERIFY_ACCOUNT_URL}
 
 eureka:
   client:
