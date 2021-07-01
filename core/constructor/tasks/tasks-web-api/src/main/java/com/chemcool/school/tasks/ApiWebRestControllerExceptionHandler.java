@@ -14,8 +14,8 @@ public class ApiWebRestControllerExceptionHandler {
     }
 
     @ExceptionHandler
-    private ResponseEntity<RuntimeException> ChemEquationsAnswerHandler(RuntimeException exception) {
-        return new ResponseEntity<>(new RuntimeException(exception.getMessage()), HttpStatus.BAD_REQUEST);
+    private ResponseEntity<ChemEquationsAnswerException> ChemEquationsAnswerHandler(ChemEquationsAnswerException exception) {
+        return new ResponseEntity<>(new ChemEquationsAnswerException(exception.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
 }
