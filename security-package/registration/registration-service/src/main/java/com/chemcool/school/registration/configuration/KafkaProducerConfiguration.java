@@ -23,23 +23,15 @@ public class KafkaProducerConfiguration {
 
     private final KafkaProperties kafkaProperties;
 
-    @Bean
-    public Map<String, Object> producerConfig() {
-        Map<String, Object> prop = new HashMap<>();
-        prop.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServer());
-        prop.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        prop.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-        return prop;
-    }
-
-    @Bean
-    public ProducerFactory<String, RegisterUserEvent> producerFactory() {
-        return new DefaultKafkaProducerFactory<>(producerConfig());
-    }
 
     @Bean
     public KafkaTemplate<String, RegisterUserEvent> kafkaTemplate() {
-        return new KafkaTemplate<>(producerFactory());
-    }
+        Map<String, Object> properties = new HashMap<>();
+        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServer());
+        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
 
+        ProducerFactory<String, RegisterUserEvent> factory = new DefaultKafkaProducerFactory<>(properties);
+        return new KafkaTemplate<>(factory);
+    }
 }
