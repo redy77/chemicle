@@ -1,5 +1,6 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
+import com.chemcool.school.lesson.web.api.classForController.ChemEquationsTaskDtoList;
 import com.chemcool.school.lesson.web.api.dto.ChemEquationsTaskDto;
 import com.chemcool.school.lesson.web.api.service.ChemEquationsTaskPresentation;
 import io.swagger.annotations.ApiOperation;
@@ -8,11 +9,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Slf4j
 @RestController
-@RequestMapping({"chemEquations/v1.0"})
+@RequestMapping({"/v1.0/chem-equations"})
 @AllArgsConstructor
 public class ChemEquationsRestController {
 
@@ -21,31 +20,31 @@ public class ChemEquationsRestController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation("Возвращает все сущности задания типа \"Уравнения\"")
-    public List<ChemEquationsTaskDto> getAll() {
-        return presentation.getAllChemistryEquationsDto();
+    public ChemEquationsTaskDtoList getAll() {
+        return ChemEquationsTaskDtoList.getAllTask(presentation);
     }
 
     @ApiOperation("Возвращает сущности задания типа \"Уравнения\" по разделу")
-    @GetMapping("/findEquationsTaskByReferenceId/{id}")
+    @GetMapping("/find-by-reference/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemEquationsTaskDto> findTaskByReferenceId(@PathVariable("id") Integer referenceId) {
-        return presentation.getAllChemistryEquationsByReferenceIdDto(referenceId);
+    public ChemEquationsTaskDtoList findTaskByReferenceId(@PathVariable("id") Integer referenceId) {
+        return ChemEquationsTaskDtoList.getTaskByReference(presentation, referenceId);
     }
 
     @ApiOperation("Возвращает сущности задания типа \"Уравнения\" по главе")
-    @GetMapping("/findEquationsTaskByChapterId/{id}")
+    @GetMapping("/find-by-chapter/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemEquationsTaskDto> findTaskByChapterId(@PathVariable("id") Integer chapterId) {
-        return presentation.getAllChemistryEquationsByChapterIdDto(chapterId);
+    public ChemEquationsTaskDtoList findTaskByChapterId(@PathVariable("id") Integer chapterId) {
+        return ChemEquationsTaskDtoList.getTaskByChapter(presentation, chapterId);
     }
 
     @ApiOperation("Возвращает сущности задания типа \"Уравнения\" по разделу и главе")
-    @GetMapping("/findEquationsTaskByReferenceId/{reference_id}/AndChapterId/{chapter_id}")
+    @GetMapping("/find-by-reference/{reference_id}/chapter/{chapter_id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemEquationsTaskDto> findTaskByReferenceIdAndChapterId(
+    public ChemEquationsTaskDtoList findTaskByReferenceIdAndChapterId(
             @PathVariable("reference_id") Integer referenceId,
             @PathVariable("chapter_id") Integer chapterId) {
-        return presentation.getAllChemistryEquationsByReferenceIdAndChapterIdDto(referenceId, chapterId);
+        return ChemEquationsTaskDtoList.getTaskByReferenceAndChapter(presentation, referenceId, chapterId);
     }
 
     @GetMapping("/{id}")
@@ -55,7 +54,7 @@ public class ChemEquationsRestController {
         return presentation.getEquationsTaskById(id);
     }
 
-    @GetMapping("/randomTask")
+    @GetMapping("/random-task")
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation("Возвращает случайную сущность задания типа \"Уравнения\"")
     public ChemEquationsTaskDto getRandomTask() {

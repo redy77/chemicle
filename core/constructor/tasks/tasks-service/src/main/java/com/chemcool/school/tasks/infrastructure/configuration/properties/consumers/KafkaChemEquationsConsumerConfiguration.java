@@ -1,6 +1,7 @@
 package com.chemcool.school.tasks.infrastructure.configuration.properties.consumers;
 
-import com.chemcool.school.tasks.infrastructure.configuration.properties.chemequation.ChemEquationsTaskDeserializer;
+import com.chemcool.school.tasks.domain.chemequations.ChemEquationsTaskEvent;
+import com.chemcool.school.tasks.infrastructure.configuration.properties.KafkaJsonDeserializer;
 import com.chemcool.school.tasks.infrastructure.configuration.properties.KafkaProperties;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -36,7 +37,7 @@ public class KafkaChemEquationsConsumerConfiguration {
         Map<String, Object> prop = new HashMap<>();
         prop.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServer());
         prop.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ChemEquationsTaskDeserializer.class);
+        prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaJsonDeserializer.class);
         prop.put(JsonDeserializer.TRUSTED_PACKAGES, TRUSTED_PACKAGES);
         prop.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getTaskCemEquationsGroupId());
         return prop;
@@ -44,13 +45,14 @@ public class KafkaChemEquationsConsumerConfiguration {
 
     @Bean
     public KafkaListenerContainerFactory kafkaChemEquationsListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, String> factory =
+        ConcurrentKafkaListenerContainerFactory<String, ChemEquationsTaskEvent> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }
 
-    public ConsumerFactory<String, String> consumerFactory() {
-        return new DefaultKafkaConsumerFactory<>(consumerConfig());
+    public ConsumerFactory<String, ChemEquationsTaskEvent> consumerFactory() {
+        return new DefaultKafkaConsumerFactory<>(consumerConfig(), new StringDeserializer(),
+                new KafkaJsonDeserializer<ChemEquationsTaskEvent>(ChemEquationsTaskEvent.class));
     }
 }

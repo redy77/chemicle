@@ -1,7 +1,7 @@
 package com.chemcool.school.tasks.infrastructure.configuration.properties.producers;
 
 import com.chemcool.school.tasks.domain.chemsingleselect.ChemSingleSelectTaskEvent;
-import com.chemcool.school.tasks.infrastructure.configuration.properties.chemsingleselect.ChemSingleSelectTaskSerializer;
+import com.chemcool.school.tasks.infrastructure.configuration.properties.KafkaJsonSerializer;
 import com.chemcool.school.tasks.infrastructure.configuration.properties.KafkaProperties;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -28,7 +28,7 @@ public class KafkaChemSingleSelectProducerConfiguration {
         Map<String, Object> properties = new HashMap<>();
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServer());
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ChemSingleSelectTaskSerializer.class);
+        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaJsonSerializer.class);
         return properties;
     }
 

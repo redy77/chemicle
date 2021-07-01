@@ -1,5 +1,9 @@
 package com.chemcool.school.lesson.domain.fixedanswer;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,6 +40,8 @@ public class ChemFixedAnswerTaskEvent {
     private String eventOccuringContext;
 
     @Column(name = "event_occuring_context_time")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime eventOccuringContextTime;
 
     @Column(name = "event_type")

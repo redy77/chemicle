@@ -1,5 +1,6 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
+import com.chemcool.school.lesson.web.api.classForController.ChemFixedAnswerTaskDtoList;
 import com.chemcool.school.lesson.web.api.dto.ChemFixedAnswerTaskDto;
 import com.chemcool.school.lesson.web.api.service.ChemFixedAnswerTaskPresentation;
 import io.swagger.annotations.ApiOperation;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping({"chemFixedAnswer/v1.0"})
+@RequestMapping({"/v1.0/chem-fixed-answer"})
 @RequiredArgsConstructor
 public class ChemFixedAnswerRestController {
     private final ChemFixedAnswerTaskPresentation presentation;
@@ -20,31 +21,31 @@ public class ChemFixedAnswerRestController {
     @GetMapping
     @ApiOperation("Возвращает сущности задания типа \"Фиксированный ответ\" по химии")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemFixedAnswerTaskDto> getAll(){
-        return presentation.getAllChemistryFixedAnswerDto();
+    public ChemFixedAnswerTaskDtoList getAll(){
+        return ChemFixedAnswerTaskDtoList.getAllTask(presentation);
     }
 
     @ApiOperation("Возвращает сущности задания типа \"Фиксированный ответ\" по разделу")
-    @GetMapping("/findFixedAnswerTaskByReferenceId/{id}")
+    @GetMapping("/find-by-reference/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemFixedAnswerTaskDto> findTaskByReferenceId(@PathVariable("id") Integer referenceId){
-        return presentation.getAllChemistryFixedAnswerByReferenceIdDto(referenceId);
+    public ChemFixedAnswerTaskDtoList findTaskByReferenceId(@PathVariable("id") Integer referenceId){
+        return ChemFixedAnswerTaskDtoList.getTaskByReference(presentation, referenceId);
     }
 
     @ApiOperation("Возвращает сущности задания типа \"Фиксированный ответ\" по главе")
-    @GetMapping("/findFixedAnswerTaskByChapterId/{id}")
+    @GetMapping("/find-by-chapter/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemFixedAnswerTaskDto> findTaskByChapterId(@PathVariable("id") Integer chapterId){
-        return presentation.getAllChemistryFixedAnswerByChapterIdDto(chapterId);
+    public ChemFixedAnswerTaskDtoList findTaskByChapterId(@PathVariable("id") Integer chapterId){
+        return ChemFixedAnswerTaskDtoList.getTaskByChapter(presentation, chapterId);
     }
 
     @ApiOperation("Возвращает сущности задания типа \"Фиксированный ответ\" по разделу и главе")
-    @GetMapping("/findFixedAnswerTaskByReferenceId/{reference_id}/AndChapterId/{chapter_id}")
+    @GetMapping("/find-by-reference/{reference_id}/chapter/{chapter_id}")
     @ResponseStatus(HttpStatus.OK)
-    public  List<ChemFixedAnswerTaskDto> findTaskByReferenceIdAndChapterId(
+    public  ChemFixedAnswerTaskDtoList findTaskByReferenceIdAndChapterId(
             @PathVariable("reference_id") Integer referenceId,
             @PathVariable("chapter_id") Integer chapterId) {
-        return presentation.getAllChemistryFixedAnswerByReferenceIdAndChapterIdDto(referenceId, chapterId);
+        return ChemFixedAnswerTaskDtoList.getTaskByReferenceAndChapter(presentation, referenceId, chapterId);
     }
 
     @GetMapping("/{id}")
@@ -54,7 +55,7 @@ public class ChemFixedAnswerRestController {
         return presentation.getFixedAnswerTaskById(id);
     }
 
-    @GetMapping("/randomTask")
+    @GetMapping("/random-task")
     @ApiOperation("Возвращает случайную сущность задания типа \"Уравнения\"")
     @ResponseStatus(HttpStatus.OK)
     public ChemFixedAnswerTaskDto getRandomTask() {

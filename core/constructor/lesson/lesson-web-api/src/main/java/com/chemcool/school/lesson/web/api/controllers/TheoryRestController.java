@@ -1,6 +1,6 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
-import com.chemcool.school.lesson.web.api.dto.ChemSingleSelectTaskDto;
+import com.chemcool.school.lesson.web.api.classForController.ChemTheoryDtoList;
 import com.chemcool.school.lesson.web.api.dto.ChemTheoryDto;
 import com.chemcool.school.lesson.web.api.service.ChemTheoryPresentation;
 import io.swagger.annotations.ApiOperation;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping({"theory/v1.0"})
+@RequestMapping({"/v1.0/theory"})
 @RequiredArgsConstructor
 public class TheoryRestController {
     private final ChemTheoryPresentation presentation;
@@ -21,42 +21,42 @@ public class TheoryRestController {
     @ApiOperation("Возвращает все сущности теории")
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemTheoryDto> getAllTheory() {
-        return presentation.getAllTheoryDto();
-    }
-
-    @ApiOperation("Возвращает сущности теории по главе")
-    @GetMapping("/findTheoryByChapterId/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public List<ChemTheoryDto> findTheoryByChapter(@PathVariable("id") Integer chapterId) {
-        return presentation.getAllTheoryByChapterIdDto(chapterId);
+    public ChemTheoryDtoList getAllTheory() {
+        return ChemTheoryDtoList.getAllTheory(presentation);
     }
 
     @ApiOperation("Возвращает сущности теории по разделу")
-    @GetMapping("/findTheoryByReferenceId/{id}")
+    @GetMapping("/find-by-reference/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemTheoryDto> findTheoryByReferenceId(@PathVariable("id") Integer referenceId) {
-        return presentation.getAllTheoryByReferenceIdDto(referenceId);
+    public ChemTheoryDtoList findTheoryByReferenceId(@PathVariable("id") Integer referenceId) {
+        return ChemTheoryDtoList.getTheoryByReference(presentation, referenceId);
+    }
+
+    @ApiOperation("Возвращает сущности теории по главе")
+    @GetMapping("/find-by-chapter/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ChemTheoryDtoList findTheoryByChapter(@PathVariable("id") Integer chapterId) {
+        return ChemTheoryDtoList.getTheoryByChapter(presentation, chapterId);
     }
 
     @ApiOperation("Возвращает сущности теории по разделу и главе")
-    @GetMapping("/findTheoryByReferenceId/{reference_id}/AndChapterId/{chapter_id}")
+    @GetMapping("/find-by-reference/{reference_id}/chapter/{chapter_id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemTheoryDto> findTheoryByReferenceIdAndChapterId(
+    public ChemTheoryDtoList findTheoryByReferenceIdAndChapterId(
             @PathVariable("reference_id") Integer referenceId,
             @PathVariable("chapter_id") Integer chapterId) {
-        return presentation.getAllTheoryByReferenceIdAndChapterIdDto(referenceId, chapterId);
+        return ChemTheoryDtoList.getTaskByReferenceAndChapter(presentation, referenceId, chapterId);
     }
 
     @ApiOperation("Возвращает сущности теории по id")
-    @GetMapping("/getBy/{id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ChemTheoryDto getTheoryExampleById(@PathVariable(name = "id") String id) {
         log.info("вызван контроллер для получения урока по id : " + "[" + id + "]");
         return presentation.getTheoryByIdDto(id);
     }
 
-    @GetMapping("/randomTask")
+    @GetMapping("/random-task")
     @ApiOperation("Возвращает случайную сущность задания типа \"Уравнения\"")
     @ResponseStatus(HttpStatus.OK)
     public ChemTheoryDto getRandomTask() {

@@ -2,7 +2,7 @@ package com.chemcool.school.tasks.infrastructure.configuration.properties.produc
 
 
 import com.chemcool.school.tasks.domain.chemfixedanswer.ChemFixedAnswerTaskEvent;
-import com.chemcool.school.tasks.infrastructure.configuration.properties.chemfixedanswer.ChemFixedAnswerTaskSerialize;
+import com.chemcool.school.tasks.infrastructure.configuration.properties.KafkaJsonSerializer;
 import com.chemcool.school.tasks.infrastructure.configuration.properties.KafkaProperties;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
+import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +30,7 @@ public class KafkaChemFixedAnswerProducerConfiguration {
         Map<String, Object> prop = new HashMap<>();
         prop.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServer());
         prop.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        prop.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ChemFixedAnswerTaskSerialize.class);
+        prop.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaJsonSerializer.class);
         return prop;
     }
 

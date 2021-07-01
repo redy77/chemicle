@@ -1,65 +1,40 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
-
+import com.chemcool.school.lesson.web.api.classForController.LessonDtoList;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Slf4j
 @RestController
-@RequestMapping({"lesson/v1.0"})
+@RequestMapping({"/v1.0/lesson"})
 @AllArgsConstructor
 public class LessonRestController {
-
-    private final TheoryRestController theoryRestController;
-    private final ChemEquationsRestController chemEquationsRestController;
-    private final ChemFixedAnswerRestController chemFixedAnswerRestController;
-    private final ChemMatchesRestController matchesRestController;
-    private final ChemSingleSelectRestController chemSingleSelectRestController;
+    private final LessonDtoList lessonDtoList;
 
 
     @ApiOperation("Возвращает сущности заданий и теории по разделу")
-    @GetMapping("/getLessonByReferenceId/{id}")
+    @GetMapping("/get-by-reference/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List[] findLessonByReferenceId(@PathVariable("id") int referenceId) {
-        return new List[]{
-                theoryRestController.findTheoryByReferenceId(referenceId),
-                chemEquationsRestController.findTaskByReferenceId(referenceId),
-                chemFixedAnswerRestController.findTaskByReferenceId(referenceId),
-                matchesRestController.findTaskByReferences(referenceId),
-                chemSingleSelectRestController.findTaskByReferenceId(referenceId)
-        };
+    public LessonDtoList findLessonByReferenceId(@PathVariable("id") Integer referenceId) {
+        return lessonDtoList.getLessonByReference(referenceId);
     }
 
     @ApiOperation("Возвращает сущности заданий и теории по главе")
-    @GetMapping("/getLessonByChapterId/{id}")
+    @GetMapping("/get-by-chapter/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List[] findLessonByChapterId(@PathVariable("id") int chapterId) {
-        return new List[]{
-                theoryRestController.findTheoryByChapter(chapterId),
-                chemEquationsRestController.findTaskByChapterId(chapterId),
-                chemFixedAnswerRestController.findTaskByChapterId(chapterId),
-                matchesRestController.findTaskByChapter(chapterId),
-                chemSingleSelectRestController.findTaskByChapterId(chapterId)
-        };
+    public LessonDtoList findLessonByChapterId(@PathVariable("id") Integer chapterId) {
+        return lessonDtoList.getLessonByChapter(chapterId);
     }
 
     @ApiOperation("Возвращает сущности заданий и теории по разделу и главе")
-    @GetMapping("/getLessonByReferenceId/{chapter_id}/AndChapterId/{reference_id}")
+    @GetMapping("/get-by-reference/{chapter_id}/chapter/{reference_id}")
     @ResponseStatus(HttpStatus.OK)
-    public List[] findLessonReferenceIdAndByChapterId(
-            @PathVariable("chapter_id") int chapterId,
-            @PathVariable("reference_id") int referenceId) {
-        return new List[]{
-                theoryRestController.findTheoryByReferenceIdAndChapterId(chapterId, referenceId),
-                chemEquationsRestController.findTaskByReferenceIdAndChapterId(chapterId, referenceId),
-                chemFixedAnswerRestController.findTaskByReferenceIdAndChapterId(chapterId, referenceId),
-                matchesRestController.findTaskByReferenceIdAndChapterId(chapterId, referenceId),
-                chemSingleSelectRestController.findTaskByReferenceIdAndChapterId(chapterId, referenceId)
-        };
+    public LessonDtoList findLessonReferenceIdAndByChapterId(
+            @PathVariable("chapter_id") Integer chapterId,
+            @PathVariable("reference_id") Integer referenceId) {
+        return lessonDtoList.getLessonByReferenceAndChapter(referenceId, chapterId);
     }
 }

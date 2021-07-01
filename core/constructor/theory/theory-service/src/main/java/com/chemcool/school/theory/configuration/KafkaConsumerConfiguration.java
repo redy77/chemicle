@@ -1,7 +1,8 @@
 package com.chemcool.school.theory.configuration;
 
-import com.chemcool.school.theory.configuration.properties.ChemistryTheoryDeserializer;
+import com.chemcool.school.theory.configuration.properties.KafkaJsonDeserializer;
 import com.chemcool.school.theory.configuration.properties.KafkaProperties;
+import com.chemcool.school.theory.domain.ChemistryTheoryEvent;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -30,7 +31,7 @@ public class KafkaConsumerConfiguration {
         Map<String, Object> prop = new HashMap<>();
         prop.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaProperties.getServer());
         prop.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ChemistryTheoryDeserializer.class);
+        prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaJsonDeserializer.class);
         prop.put(JsonDeserializer.TRUSTED_PACKAGES, TRUSTED_PACKAGES);
         prop.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getGroupId());
         return prop;
@@ -38,13 +39,14 @@ public class KafkaConsumerConfiguration {
 
     @Bean
     public KafkaListenerContainerFactory kafkaListenerContainerFactory(){
-        ConcurrentKafkaListenerContainerFactory<String, String> factory=
+        ConcurrentKafkaListenerContainerFactory<String, ChemistryTheoryEvent> factory=
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }
 
-    public ConsumerFactory<String, String> consumerFactory(){
-        return new DefaultKafkaConsumerFactory<>(consumerConfig());
+    public ConsumerFactory<String, ChemistryTheoryEvent> consumerFactory(){
+        return new DefaultKafkaConsumerFactory<>(consumerConfig(), new StringDeserializer(),
+                new KafkaJsonDeserializer<ChemistryTheoryEvent>(ChemistryTheoryEvent.class));
     }
 }

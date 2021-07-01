@@ -1,5 +1,6 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
+import com.chemcool.school.lesson.web.api.classForController.ChemMatchingTaskDtoList;
 import com.chemcool.school.lesson.web.api.dto.ChemMatchingTaskDto;
 import com.chemcool.school.lesson.web.api.service.ChemMatchingTaskPresentation;
 import io.swagger.annotations.ApiOperation;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping({"chemMatches/v1.0"})
+@RequestMapping({"/v1.0/chem-matches"})
 @RequiredArgsConstructor
 public class ChemMatchesRestController {
     private final ChemMatchingTaskPresentation presentation;
@@ -20,31 +21,31 @@ public class ChemMatchesRestController {
     @GetMapping
     @ApiOperation("Возвращает все задания типа \"matching(сопоставления)\" по химии.")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemMatchingTaskDto> getAllTasks(){
-        return presentation.getAllTasks();
+    public ChemMatchingTaskDtoList getAllTasks(){
+        return ChemMatchingTaskDtoList.getAllTask(presentation);
     }
 
     @ApiOperation("Возвращает сущности задания типа \"Сопоставление\" по разделу")
-    @GetMapping("/findMatchesTaskByReferenceId/{id}")
+    @GetMapping("/find-by-reference/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemMatchingTaskDto> findTaskByReferences(@PathVariable("id") Integer referenceId){
-        return presentation.getAllTasksByReferenceIdDto(referenceId);
+    public ChemMatchingTaskDtoList findTaskByReferences(@PathVariable("id") Integer referenceId){
+        return ChemMatchingTaskDtoList.getTaskByReference(presentation, referenceId);
     }
 
     @ApiOperation("Возвращает сущности задания типа \"Сопоставление\" по главе")
-    @GetMapping("/findMatchesTaskByChapterId/{id}")
+    @GetMapping("/find-by-chapter/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemMatchingTaskDto> findTaskByChapter(@PathVariable("id") Integer chapterId){
-        return presentation.getAllTasksByChapterIdDto(chapterId);
+    public ChemMatchingTaskDtoList findTaskByChapter(@PathVariable("id") Integer chapterId){
+        return ChemMatchingTaskDtoList.getTaskByChapter(presentation, chapterId);
     }
 
     @ApiOperation("Возвращает сущности задания типа \"Сопоставление\" по разделу и главе")
-    @GetMapping("/findMatchesTaskByReferenceId/{reference_id}/AndChapterId/{chapter_id}")
+    @GetMapping("/find-by-reference/{reference_id}/chapter/{chapter_id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemMatchingTaskDto> findTaskByReferenceIdAndChapterId(
+    public ChemMatchingTaskDtoList findTaskByReferenceIdAndChapterId(
             @PathVariable("reference_id") Integer referenceId,
             @PathVariable("chapter_id") Integer chapterId){
-        return presentation.getAllTasksByReferenceIdAndChapterIdDto(referenceId, chapterId);
+        return ChemMatchingTaskDtoList.getTaskByReferenceAndChapter(presentation, referenceId, chapterId);
     }
 
     @GetMapping("/{uuid}")
@@ -54,7 +55,7 @@ public class ChemMatchesRestController {
         return presentation.getTaskDtoById(uuid);
     }
 
-    @GetMapping("/randomTask")
+    @GetMapping("/random-task")
     @ApiOperation("Возвращает случайную сущность задания типа \"Уравнения\"")
     @ResponseStatus(HttpStatus.OK)
     public ChemMatchingTaskDto getRandomTask() {

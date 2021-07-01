@@ -2,7 +2,7 @@ package com.chemcool.school.tasks.infrastructure.configuration.properties.produc
 
 
 import com.chemcool.school.tasks.domain.chemmatches.ChemistryMatchingTaskEvent;
-import com.chemcool.school.tasks.infrastructure.configuration.properties.chemmatches.ChemistryMatchingTaskSerializer;
+import com.chemcool.school.tasks.infrastructure.configuration.properties.KafkaJsonSerializer;
 import com.chemcool.school.tasks.infrastructure.configuration.properties.KafkaProperties;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
+import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +29,7 @@ public class KafkaChemMatchesProducerConfiguration {
         Map<String, Object> properties = new HashMap<>();
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServer());
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ChemistryMatchingTaskSerializer.class);
+        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaJsonSerializer.class);
         return properties;
     }
 

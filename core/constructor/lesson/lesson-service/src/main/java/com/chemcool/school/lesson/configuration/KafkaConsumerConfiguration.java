@@ -1,7 +1,7 @@
 package com.chemcool.school.lesson.configuration;
 
 import com.chemcool.school.lesson.configuration.properties.KafkaProperties;
-import com.chemcool.school.lesson.configuration.properties.theory.ChemTheoryDeserializer;
+import com.chemcool.school.lesson.domain.theory.ChemTheoryEvent;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -23,27 +23,28 @@ import java.util.Map;
 public class KafkaConsumerConfiguration {
     private final KafkaProperties kafkaProperties;
 
-   // public static final String TRUSTED_PACKAGES =  "com.chemcool.school.theory.domain";
+    public static final String TRUSTED_PACKAGES =  "com.chemcool.school.lesson.domain.theory";
 
     public Map<String, Object> consumerConfig() {
         Map<String, Object> prop = new HashMap<>();
         prop.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaProperties.getServer());
         prop.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ChemTheoryDeserializer.class);
-       // prop.put(JsonDeserializer.TRUSTED_PACKAGES, TRUSTED_PACKAGES);
+        prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaJsonDeserializer.class);
+        prop.put(TRUSTED_PACKAGES, TRUSTED_PACKAGES);
         prop.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getTheoryGroupId());
         return prop;
     }
 
     @Bean
     public KafkaListenerContainerFactory theoryKafkaListenerContainerFactory(){
-        ConcurrentKafkaListenerContainerFactory<String, String> factory=
+        ConcurrentKafkaListenerContainerFactory<String, ChemTheoryEvent> factory=
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }
 
-    public ConsumerFactory<String, String> consumerFactory(){
-        return new DefaultKafkaConsumerFactory<>(consumerConfig());
+    public ConsumerFactory<String, ChemTheoryEvent> consumerFactory(){
+        return new DefaultKafkaConsumerFactory<>(consumerConfig(), new StringDeserializer(),
+                new KafkaJsonDeserializer<ChemTheoryEvent>(ChemTheoryEvent.class));
     }
 }

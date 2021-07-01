@@ -1,5 +1,6 @@
 package com.chemcool.school.lesson.web.api.controllers;
 
+import com.chemcool.school.lesson.web.api.classForController.ChemSingleSelectTaskDtoList;
 import com.chemcool.school.lesson.web.api.dto.ChemSingleSelectTaskDto;
 import com.chemcool.school.lesson.web.api.service.ChemSingleSelectTaskPresentation;
 import io.swagger.annotations.ApiOperation;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @Slf4j
 @RestController
-@RequestMapping({"chemSingleSelect/v1.0"})
+@RequestMapping({"/v1.0/chem-single-select"})
 @RequiredArgsConstructor
 public class ChemSingleSelectRestController {
     private final ChemSingleSelectTaskPresentation presentation;
@@ -19,31 +20,31 @@ public class ChemSingleSelectRestController {
     @GetMapping
     @ApiOperation("Возвращает все задания типа \"Выбор одного ответа\" по химии.")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemSingleSelectTaskDto> getAllTasks() {
-        return presentation.getAllTasksDto();
-    }
-
-    @ApiOperation("Возвращает сущности задания типа \"Один ответ\" по главе")
-    @GetMapping("/findSingleSelectTaskByChapterId/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public List<ChemSingleSelectTaskDto> findTaskByChapterId(@PathVariable("id") Integer chapterId){
-        return presentation.getAllTasksByChapterIdDto(chapterId);
+    public ChemSingleSelectTaskDtoList getAllTasks() {
+        return ChemSingleSelectTaskDtoList.getAllTask(presentation);
     }
 
     @ApiOperation("Возвращает сущности задания типа \"Один ответ\" по разделу")
-    @GetMapping("/findSingleSelectTaskByReferenceId/{id}")
+    @GetMapping("/find-by-reference/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemSingleSelectTaskDto> findTaskByReferenceId(@PathVariable("id") Integer referenceId){
-        return presentation.getAllTasksByReferenceIdDto(referenceId);
+    public ChemSingleSelectTaskDtoList findTaskByReferenceId(@PathVariable("id") Integer referenceId){
+        return ChemSingleSelectTaskDtoList.getTaskByReference(presentation, referenceId);
+    }
+
+    @ApiOperation("Возвращает сущности задания типа \"Один ответ\" по главе")
+    @GetMapping("/find-by-chapter/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ChemSingleSelectTaskDtoList findTaskByChapterId(@PathVariable("id") Integer chapterId){
+        return ChemSingleSelectTaskDtoList.getTaskByChapter(presentation, chapterId);
     }
 
     @ApiOperation("Возвращает сущности задания типа \"Один ответ\" по разделу и главе")
-    @GetMapping("/findSingleSelectTaskByReferenceId/{reference_id}/AndChapterId/{chapter_id}")
+    @GetMapping("/find-by-reference/{reference_id}/chapter/{chapter_id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<ChemSingleSelectTaskDto> findTaskByReferenceIdAndChapterId(
+    public ChemSingleSelectTaskDtoList findTaskByReferenceIdAndChapterId(
             @PathVariable("reference_id") Integer referenceId,
             @PathVariable("chapter_id") Integer chapterId) {
-        return presentation.getAllTasksByReferenceIdAndChapterIdDto(referenceId, chapterId);
+        return ChemSingleSelectTaskDtoList.getTaskByReferenceAndChapter(presentation, referenceId, chapterId);
     }
 
     @GetMapping("/{uuid}")
@@ -53,7 +54,7 @@ public class ChemSingleSelectRestController {
         return presentation.getTaskDtoByIdDto(uuid);
     }
 
-    @GetMapping("/randomTask")
+    @GetMapping("/random-task")
     @ApiOperation("Возвращает случайную сущность задания типа \"Уравнения\"")
     @ResponseStatus(HttpStatus.OK)
     public ChemSingleSelectTaskDto getRandomTask() {

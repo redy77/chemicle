@@ -1,5 +1,9 @@
 package com.chemcool.school.tasks.domain.chemsingleselect;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,6 +40,8 @@ public class ChemSingleSelectTaskEvent {
     private String occuringContext;
 
     @Column(name = "occuring_context_time")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime occuringContextTime;
 
     @Column(name = "event_type")
@@ -52,7 +58,6 @@ public class ChemSingleSelectTaskEvent {
     private ChemSingleSelectTask payload;
 
     public static ChemSingleSelectTaskEvent createEvent(ChemSingleSelectTask task, String authorId, ChemTaskEventType eventType){
-//        ChemSingleSelectTask task = ChemSingleSelectTask.createChemistrySingleSelectTask(example);
         return new ChemSingleSelectTaskEvent(
                 UUID.randomUUID().toString(),
                 authorId,

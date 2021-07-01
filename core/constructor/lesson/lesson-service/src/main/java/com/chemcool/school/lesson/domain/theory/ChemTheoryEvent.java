@@ -1,5 +1,9 @@
 package com.chemcool.school.lesson.domain.theory;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,6 +39,8 @@ public class ChemTheoryEvent {
     private String eventOccurringContext;
 
     @Column(name = "event_occurring_context_time")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime eventOccurringContextTime;
 
     @Column(name = "event_type")

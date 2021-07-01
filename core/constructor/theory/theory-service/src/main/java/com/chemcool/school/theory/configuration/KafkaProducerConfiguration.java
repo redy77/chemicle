@@ -1,6 +1,6 @@
 package com.chemcool.school.theory.configuration;
 
-import com.chemcool.school.theory.configuration.properties.ChemistryTheorySerializer;
+import com.chemcool.school.theory.configuration.properties.KafkaJsonSerializer;
 import com.chemcool.school.theory.domain.ChemistryTheoryEvent;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -28,7 +28,7 @@ public class KafkaProducerConfiguration {
         Map<String, Object> properties = new HashMap<>();
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServer());
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ChemistryTheorySerializer.class);
+        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaJsonSerializer.class);
         return properties;
     }
 
