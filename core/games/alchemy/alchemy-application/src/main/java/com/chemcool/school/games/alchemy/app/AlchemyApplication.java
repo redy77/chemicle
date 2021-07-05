@@ -1,4 +1,4 @@
-package com.chemcool.school.alchemy.app;
+package com.chemcool.school.games.alchemy.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,7 +6,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication(
-		scanBasePackages = {"com.chemcool.school.alchemy"}
+		scanBasePackages = {"com.chemcool.school.games.alchemy"}
 )
 @EnableSwagger2
 @EnableEurekaClient
