@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.chemcool.school.alchemy</groupId>
+    <groupId>com.chemcool.school.games.alchemy</groupId>
     <artifactId>alchemy</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
@@ -42,14 +42,14 @@
             </dependency>
 
             <dependency>
-                <groupId>com.chemcool.school.alchemy</groupId>
+                <groupId>com.chemcool.school.games.alchemy</groupId>
                 <artifactId>alchemy-service</artifactId>
                 <version>1.0.0</version>
                 <type>jar</type>
                 <scope>provided</scope>
             </dependency>
             <dependency>
-                <groupId>com.chemcool.school.alchemy</groupId>
+                <groupId>com.chemcool.school.games.alchemy</groupId>
                 <artifactId>alchemy-web-api</artifactId>
                 <version>${alchemy.modules.version}</version>
                 <type>jar</type>

@@ -9,6 +9,7 @@
 
     <modules>
         <module>two-o-four-eight</module>
+        <module>alchemy</module>
     </modules>
 
 </project>
