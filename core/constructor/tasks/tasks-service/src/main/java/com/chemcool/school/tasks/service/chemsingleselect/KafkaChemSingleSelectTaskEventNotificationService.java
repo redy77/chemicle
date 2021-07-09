@@ -10,7 +10,6 @@ import org.springframework.util.concurrent.ListenableFuture;
 
 import java.util.UUID;
 
-
 @Service
 @RequiredArgsConstructor
 public class KafkaChemSingleSelectTaskEventNotificationService implements ChemSingleSelectTaskEventNotificationService {

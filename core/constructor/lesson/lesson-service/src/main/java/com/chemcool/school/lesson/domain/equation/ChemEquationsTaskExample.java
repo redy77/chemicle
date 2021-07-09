@@ -1,6 +1,5 @@
 package com.chemcool.school.lesson.domain.equation;
 
-import com.chemcool.school.lesson.domain.equation.ChemEquationsTask;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

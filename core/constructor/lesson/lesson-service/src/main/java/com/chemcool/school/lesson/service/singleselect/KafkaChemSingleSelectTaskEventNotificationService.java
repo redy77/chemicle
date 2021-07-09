@@ -1,6 +1,5 @@
 package com.chemcool.school.lesson.service.singleselect;
 
-
 import com.chemcool.school.lesson.domain.singleselect.ChemSingleSelectTaskEvent;
 import com.chemcool.school.lesson.exception.singleselect.ChemSingleSelectDefinitionException;
 import com.chemcool.school.lesson.service.singleselect.ChemSingleSelectTaskEventNotificationService;
@@ -13,7 +12,6 @@ import org.springframework.util.concurrent.ListenableFuture;
 
 
 import java.util.UUID;
-
 
 @Service
 @RequiredArgsConstructor

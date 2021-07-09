@@ -29,10 +29,6 @@ public class ChemSingleSelectTaskService {
         return repository.findAll();
     }
 
-    //public List<ChemSingleSelectTask> getAllByChapterId(int chapterId) {
-    //    return repository.getAllByChapterId(chapterId);
-   // }
-
     public void update(ChemSingleSelectTask task) {
         log.info("Обновлена задача с UUID = " + task.getTaskId() );
         repository.save(task);

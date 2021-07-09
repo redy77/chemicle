@@ -56,7 +56,3 @@ public class ChemMatchingTaskService {
         return repository.getAllByReferenceIdAndChapterId(referenceId, chapterId);
     }
 }
-/*
-
-
- */

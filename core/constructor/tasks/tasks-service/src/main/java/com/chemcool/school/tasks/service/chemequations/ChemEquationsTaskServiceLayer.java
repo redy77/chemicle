@@ -12,13 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Сервис прослойка нижнего уровня содержащий бизнес логику CRUD операций
- * с полученным в ходе вычисления уравнения результатом
- *
- * @version 1.0
- * @autor Иван Полещук
- */
 @Service
 @AllArgsConstructor
 public class ChemEquationsTaskServiceLayer {

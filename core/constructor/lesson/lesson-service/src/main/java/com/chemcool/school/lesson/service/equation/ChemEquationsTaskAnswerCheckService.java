@@ -37,13 +37,11 @@ public class ChemEquationsTaskAnswerCheckService {
         return result;
     }
 
-    //обнуляем буферные переменные
     private void bufClear() {
         bufUserAnswer.clear();
         bufRightAnswer.clear();
     }
 
-    //проверка элементов без учета порядка
     private boolean check(String r, String u) {
         bufClear();
         bufRightAnswer.addAll(Arrays.asList(r.replaceAll("[↓↑]", "").split("[→=⇄↔+]")));
@@ -51,12 +49,10 @@ public class ChemEquationsTaskAnswerCheckService {
         return bufRightAnswer.equals(bufUserAnswer);
     }
 
-    //без учета регистра
     private boolean checkRegister(String r, String u) {
         return check(r.toLowerCase(), u.toLowerCase());
     }
 
-    //проверка с учетом агрегатного состояния продуктов реакции
     private boolean checkAgrStatus(String r, String u) {
         bufClear();
         bufRightAnswer.addAll(Arrays.asList(r.toLowerCase().split("[→=⇄↔+]")));
@@ -64,7 +60,6 @@ public class ChemEquationsTaskAnswerCheckService {
         return bufRightAnswer.equals(bufUserAnswer);
     }
 
-    //проверка вида реакции (знака между левой и правой частью уравнения)
     private boolean checkSymbol(String r, String u) {
         r = r.replaceAll("[^→=⇄↔]", "");
         u = u.replaceAll("[^→=⇄↔]", "");

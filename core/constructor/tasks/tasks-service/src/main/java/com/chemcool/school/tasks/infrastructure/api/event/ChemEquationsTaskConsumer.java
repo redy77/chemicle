@@ -12,13 +12,6 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-
-/**
- * Consumer событий (будет доработан)
- *
- * @version 1.0
- * @autor Евгений Жиленков
- */
 @Slf4j
 @Service
 @EnableKafka

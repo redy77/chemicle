@@ -5,8 +5,6 @@ import com.chemcool.school.tasks.dto.chemequations.ChemEquationsTaskCreateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-
-
 @Service
 @RequiredArgsConstructor
 public class ChemEquationsTaskPresentation {
@@ -35,19 +33,16 @@ public class ChemEquationsTaskPresentation {
         }
 
         if (!test[0]) {
-            //проверяем БЕЗ учета регистра
             result[1] = result[1].replaceAll("пройден!", "не пройден! (-5) ");
             score -= 5;
         }
         if (!test[1]) {
-            //проверяем регистр
             result[0] = result[0].replaceAll("пройден!", "не пройден! проверь регистр(-2)");
             score -= 2;
         }
 
 
         if (!test[2]) {
-            //проверяем с учетом агрегатного состояния
             result[2] = result[2].replaceAll("пройден!", "не пройден! Проверь агрегатное состояние елементов! (-2)");
             score -= 2;
         }

@@ -12,7 +12,6 @@ import org.springframework.util.concurrent.ListenableFuture;
 
 import java.util.UUID;
 
-
 @Slf4j
 @Service
 @AllArgsConstructor
@@ -30,13 +29,3 @@ public class KafkaChemMatchingTaskEventNotificationService implements ChemMatchi
         kafkaTemplate.flush();
     }
 }
-/*
-  private final KafkaTemplate<String, ChemFixedAnswerTaskEvent> kafkaTemplate;
-
-    @Override
-    public void send(ChemFixedAnswerTaskEvent event) {
-        ListenableFuture<SendResult<String, ChemFixedAnswerTaskEvent>> future = kafkaTemplate.send("fixed-answer", UUID.randomUUID().toString(), event);
-        future.addCallback(System.out::println, System.out::println);
-        kafkaTemplate.flush();
-    }
- */

@@ -8,14 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
-/**
- * Класс для построения химических соединений
- *
- * @version 1.0
- * @autor Евгений Жиленков
- */
-
 @Data
 @AllArgsConstructor
 public class ChemCompound {
@@ -59,7 +51,6 @@ public class ChemCompound {
             throw new ChemEquationsTaskException("Ошибка условий формарования молекулы");
         }
 
-        //betaTest
         System.out.println(checkValenceFactor(compoundElements));
     }
 

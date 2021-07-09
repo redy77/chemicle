@@ -17,12 +17,6 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Configuration Kafka Consumer
-// *
-// * @version 1.0
-// * @autor Евгений Жиленков
-// */
 @Configuration
 @EnableConfigurationProperties(KafkaProperties.class)
 @RequiredArgsConstructor

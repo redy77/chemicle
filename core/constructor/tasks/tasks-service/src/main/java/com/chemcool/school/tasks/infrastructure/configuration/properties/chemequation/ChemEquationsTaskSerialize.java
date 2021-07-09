@@ -9,12 +9,7 @@ import org.apache.kafka.common.serialization.Serializer;
 
 import java.util.Map;
 
-/**
- * Сериализатор событий для Kafka
- *
- * @version 1.0
- * @autor Евгений Жиленков
- */
+
 @Slf4j
 public class ChemEquationsTaskSerialize implements Serializer<ChemEquationsTaskEvent> {
 
