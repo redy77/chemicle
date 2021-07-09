@@ -8,9 +8,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.Period;
-
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -20,11 +17,10 @@ public class UtilUserService {
 
     public boolean checkMail(RegisterUserDto registerUserDto) {
         return repository.existsByEmail(registerUserDto.getEmail());
-
     }
 
-    public boolean checkAge(RegisterUserDto registerUserDto) {
-        return Period.between(registerUserDto.getBirthday(), LocalDate.now()).getYears() < 18;
+    public boolean checkPhone(RegisterUserDto registerUserDto) {
+        return repository.existsByPhone(registerUserDto.getPhone());
     }
 
     public void checkAndSetRole(RegisterUserDto registerUserDto) {

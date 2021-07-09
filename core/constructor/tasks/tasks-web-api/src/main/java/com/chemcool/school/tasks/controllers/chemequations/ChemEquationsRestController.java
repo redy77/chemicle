@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("chemEquations/v.1.0")
+@RequestMapping("/chemEquations/v.1.0")
 @RequiredArgsConstructor
 public class ChemEquationsRestController {
 

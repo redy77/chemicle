@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("chemFixedAnswer/v1.0")
+@RequestMapping("/chemFixedAnswer/v1.0")
 @RequiredArgsConstructor
 public class ChemFixedAnswerTaskRestController {
 

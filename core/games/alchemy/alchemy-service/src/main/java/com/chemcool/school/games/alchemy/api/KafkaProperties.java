@@ -1,4 +1,4 @@
-package com.chemcool.school.alchemy.api;
+package com.chemcool.school.games.alchemy.api;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

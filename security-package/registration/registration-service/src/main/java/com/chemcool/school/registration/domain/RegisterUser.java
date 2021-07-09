@@ -33,8 +33,7 @@ public class RegisterUser {
     @Column(name = "gender")
     private String gender;
 
-
-    @Column(name = "phone")
+    @Column(name = "phone", unique = true)
     private String phone;
 
     @Email
@@ -66,7 +65,7 @@ public class RegisterUser {
     private String verificationCode;
 
     @Column(name = "enabled")
-    private boolean enabled;
+    private boolean isEnabled;
 
     @Column(name = "reset_password_token")
     private String resetPasswordToken;

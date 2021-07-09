@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping({"theory/v1.0"})
+@RequestMapping({"/theory/v1.0"})
 @RequiredArgsConstructor
 public class ChemistryTheoryRestController {
 
