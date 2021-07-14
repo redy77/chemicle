@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.chemcool.school.alchemy</groupId>
+        <groupId>com.chemcool.school.games.alchemy</groupId>
         <artifactId>alchemy</artifactId>
         <version>1.0.0</version>
     </parent>
@@ -24,12 +24,12 @@
 
         <flayway.version>5.2.3</flayway.version>
 
-        <start-class>com.chemcool.school.alchemy.app.AlchemyApplication</start-class>
+        <start-class>com.chemcool.school.games.alchemy.app.AlchemyApplication</start-class>
     </properties>
 
         <dependencies>
             <dependency>
-                <groupId>com.chemcool.school.alchemy</groupId>
+                <groupId>com.chemcool.school.games.alchemy</groupId>
                 <artifactId>alchemy-web-api</artifactId>
                 <version>1.0.0</version>
                 <scope>compile</scope>
