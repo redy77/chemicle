@@ -1,4 +1,4 @@
-package com.chemcool.school.auth.service.test;
+package com.chemcool.school.auth.test;
 
 import com.chemcool.school.auth.service.security.JwtUtil;
 import org.junit.Test;
