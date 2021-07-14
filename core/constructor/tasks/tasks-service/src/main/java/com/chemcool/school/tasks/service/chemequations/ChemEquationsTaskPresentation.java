@@ -2,6 +2,7 @@ package com.chemcool.school.tasks.service.chemequations;
 
 import com.chemcool.school.tasks.dto.chemequations.ChemAnswerDto;
 import com.chemcool.school.tasks.dto.chemequations.ChemEquationsTaskDto;
+import com.chemcool.school.tasks.jwt.JWTParser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class ChemEquationsTaskPresentation {
 
     private final ChemEquationsTaskServiceLayer serviceLayer;
+    private final JWTParser jwtParser;
     
     public List<ChemEquationsTaskDto> getAllChemistryEquationsDto() {
         return serviceLayer.getAllChemEquationsDto();
@@ -33,7 +35,8 @@ public class ChemEquationsTaskPresentation {
         return serviceLayer.getRandomChemistryEquationsDto();
     }
 
-    public String createNewEquationsTask(ChemEquationsTaskDto taskDto,String rightAnswer) {
+    public String createNewEquationsTask(ChemEquationsTaskDto taskDto, String rightAnswer, String token) {
+        jwtParser.checkRolesOnAdmin(token);
         return serviceLayer.createNewChemEquationsTask(taskDto,rightAnswer);
     }
 

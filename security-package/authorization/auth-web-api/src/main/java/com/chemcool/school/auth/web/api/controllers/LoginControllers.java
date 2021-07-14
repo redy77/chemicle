@@ -1,6 +1,7 @@
 package com.chemcool.school.auth.web.api.controllers;
 
 import com.chemcool.school.auth.service.security.JwtUtil;
+import com.chemcool.school.auth.service.security.UserDetailsImpl;
 import com.chemcool.school.auth.web.api.dto.LoginRequest;
 import com.chemcool.school.auth.web.api.dto.UserView;
 import com.chemcool.school.auth.web.api.dto.UserViewMapper;
@@ -43,7 +44,7 @@ public class LoginControllers {
                         HttpHeaders.AUTHORIZATION, "Bearer " + jwtUtil.generateJwt(auth)
                 )
                 .body(
-                        userViewMapper.toUserView( (UserDetails) auth.getPrincipal() )
+                        userViewMapper.toUserView( (UserDetailsImpl) auth.getPrincipal() )
                 );
     }
 

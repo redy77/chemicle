@@ -1,13 +1,11 @@
 package com.chemcool.school.auth.web.api.dto;
 
-import org.mapstruct.InjectionStrategy;
+import com.chemcool.school.auth.service.security.UserDetailsImpl;
 import org.mapstruct.Mapper;
-import org.springframework.security.core.userdetails.UserDetails;
 
-@Mapper(componentModel = "spring",
-        injectionStrategy = InjectionStrategy.CONSTRUCTOR)
+@Mapper(componentModel = "spring")
 public interface UserViewMapper {
 
-    UserView toUserView(UserDetails details);
+    UserView toUserView(UserDetailsImpl details);
 
 }

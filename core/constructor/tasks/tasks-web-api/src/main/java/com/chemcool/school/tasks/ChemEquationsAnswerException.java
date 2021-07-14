@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.chemequations;
+package com.chemcool.school.tasks;
 
 public class ChemEquationsAnswerException extends RuntimeException {
     public ChemEquationsAnswerException(String message) {
