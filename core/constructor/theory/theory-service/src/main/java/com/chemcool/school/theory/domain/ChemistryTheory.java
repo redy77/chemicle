@@ -18,6 +18,7 @@ import java.util.UUID;
 @Table(name = "chemistry_theory_page")
 public class ChemistryTheory {
     @Id
+    @Column(name = "theory_id")
     private String theoryId;
 
     @Column(name = "theory_name")

@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 public class ChemSingleSelectTaskExample {
     private String taskExampleDescription;
     private String taskExampleCorrectAnswer;
-    private int taskExampleChapterId;
-    private int taskExampleReferenceId;
+    private Integer taskExampleChapterId;
+    private Integer taskExampleReferenceId;
     private String taskExampleIncorrectAnswerOne;
     private String taskExampleIncorrectAnswerTwo;
     private String taskExampleIncorrectAnswerThree;

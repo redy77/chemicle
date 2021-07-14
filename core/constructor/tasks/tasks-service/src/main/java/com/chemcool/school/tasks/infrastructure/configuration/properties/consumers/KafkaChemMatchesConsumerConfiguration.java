@@ -1,7 +1,8 @@
 package com.chemcool.school.tasks.infrastructure.configuration.properties.consumers;
 
-
-import com.chemcool.school.tasks.infrastructure.configuration.properties.chemmatches.ChemistryMatchingTaskDeserializer;
+import com.chemcool.school.tasks.domain.chemfixedanswer.ChemFixedAnswerTaskEvent;
+import com.chemcool.school.tasks.domain.chemmatches.ChemistryMatchingTaskEvent;
+import com.chemcool.school.tasks.infrastructure.configuration.properties.KafkaJsonDeserializer;
 import com.chemcool.school.tasks.infrastructure.configuration.properties.KafkaProperties;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -31,7 +32,7 @@ public class KafkaChemMatchesConsumerConfiguration {
         Map<String, Object> properties = new HashMap<>();
         properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, this.kafkaProperties.getServer());
         properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ChemistryMatchingTaskDeserializer.class);
+        properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaJsonDeserializer.class);
         properties.put(JsonDeserializer.TRUSTED_PACKAGES, TRUSTED_PACKAGES);
         properties.put(ConsumerConfig.GROUP_ID_CONFIG, this.kafkaProperties.getTaskChemMatchesGroupId());
         return properties;
@@ -39,14 +40,15 @@ public class KafkaChemMatchesConsumerConfiguration {
 
     @Bean
     public KafkaListenerContainerFactory kafkaChemMatchesListenerContainerFactory(){
-        ConcurrentKafkaListenerContainerFactory<String, String> factory =
+        ConcurrentKafkaListenerContainerFactory<String, ChemistryMatchingTaskEvent> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }
 
-    public ConsumerFactory<String, String> consumerFactory(){
-        return new DefaultKafkaConsumerFactory<>(consumerConfig());
+    public ConsumerFactory<String, ChemistryMatchingTaskEvent> consumerFactory(){
+        return new DefaultKafkaConsumerFactory<>(consumerConfig(), new StringDeserializer(),
+                new KafkaJsonDeserializer<ChemistryMatchingTaskEvent>(ChemistryMatchingTaskEvent.class));
     }
 
 }

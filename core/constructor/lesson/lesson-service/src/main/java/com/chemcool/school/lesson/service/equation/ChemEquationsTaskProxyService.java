@@ -23,13 +23,15 @@ public class ChemEquationsTaskProxyService {
         return taskService.getAll();
     }
 
-    public List<ChemEquationsTask> getAllByChapterId(int chapterId) {
+    public List<ChemEquationsTask> getAllByChapterId(Integer chapterId) {
         return taskService.getAllByChapterId(chapterId);
     }
 
-    public List<ChemEquationsTask> getAllByReferenceId (int referenceId) {return taskService.getAllByReferenceId(referenceId);}
+    public List<ChemEquationsTask> getAllByReferenceId (Integer referenceId) {
+        return taskService.getAllByReferenceId(referenceId);
+    }
 
-    public List<ChemEquationsTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId) {
+    public List<ChemEquationsTask> getAllByReferenceIdAndChapterId(Integer referenceId, Integer chapterId) {
         return taskService.getAllByReferenceIdAndChapterId(referenceId,chapterId);
     }
 

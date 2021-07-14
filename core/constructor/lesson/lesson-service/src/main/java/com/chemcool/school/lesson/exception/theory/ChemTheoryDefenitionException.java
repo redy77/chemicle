@@ -1,4 +1,4 @@
-package com.chemcool.school.lesson.theory.exception;
+package com.chemcool.school.lesson.exception.theory;
 
 public class ChemTheoryDefenitionException extends RuntimeException {
     public ChemTheoryDefenitionException(String message) {

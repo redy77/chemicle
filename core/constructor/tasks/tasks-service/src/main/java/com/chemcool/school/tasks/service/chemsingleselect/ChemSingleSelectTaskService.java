@@ -44,4 +44,8 @@ public class ChemSingleSelectTaskService {
         log.info("Удалена задачу с UUID = " + id);
         repository.deleteById(id);
     }
+
+    public List<ChemSingleSelectTask> getAllByChapterIdAndReferenceId(int chapterId, int referenceId) {
+        return repository.getAllByChapterIdAndReferenceId(chapterId, referenceId);
+    }
 }

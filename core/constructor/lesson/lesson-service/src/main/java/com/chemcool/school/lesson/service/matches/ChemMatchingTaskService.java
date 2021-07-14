@@ -41,22 +41,18 @@ public class ChemMatchingTaskService {
         repository.deleteById(id);
     }
 
-    public List<ChemMatchingTask> getAllByChapterId(int chapterId) {
+    public List<ChemMatchingTask> getAllByChapterId(Integer chapterId) {
         log.info("Найдены задачи Matching с chapterId = " + chapterId );
         return repository.getAllByChapterId(chapterId);
     }
 
-    public List<ChemMatchingTask> getAllByReferenceId(int referenceId){
+    public List<ChemMatchingTask> getAllByReferenceId(Integer referenceId){
         log.info("Найдены задачи Matching с referenceId = " + referenceId );
         return repository.getAllByReferenceId(referenceId);
     }
 
-    public List<ChemMatchingTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId){
+    public List<ChemMatchingTask> getAllByReferenceIdAndChapterId(Integer referenceId, Integer chapterId){
         log.info("Найдены задачи Matching с referenceId = " + referenceId + " и chapterId =  " + chapterId );
         return repository.getAllByReferenceIdAndChapterId(referenceId, chapterId);
     }
 }
-/*
-
-
- */

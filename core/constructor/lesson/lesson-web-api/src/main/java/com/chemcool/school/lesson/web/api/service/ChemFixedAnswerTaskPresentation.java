@@ -1,5 +1,6 @@
 package com.chemcool.school.lesson.web.api.service;
 
+import com.chemcool.school.lesson.web.api.dto.ChemEquationsTaskDto;
 import com.chemcool.school.lesson.web.api.dto.ChemFixedAnswerTaskDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,15 +22,20 @@ public class ChemFixedAnswerTaskPresentation {
         return serviceLayer.getFixedAnswerTaskById(id);
     }
 
-    public  List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerByReferenceIdDto(int referenceId){
+    public  List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerByReferenceIdDto(Integer referenceId){
         return serviceLayer.getAllChemistryFixedAnswerByReferenceIdDto(referenceId);
     }
 
-    public  List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerByChapterIdDto(int chapterId){
+    public  List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerByChapterIdDto(Integer chapterId){
         return serviceLayer.getAllChemistryFixedAnswerByChapterIdDto(chapterId);
     }
 
-    public  List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerByReferenceIdAndChapterIdDto(int referenceId, int chapterId){
+    public  List<ChemFixedAnswerTaskDto> getAllChemistryFixedAnswerByReferenceIdAndChapterIdDto(Integer referenceId,
+                                                                                                Integer chapterId){
         return serviceLayer.getAllChemistryFixedAnswerByReferenceIdAndChapterIdDto(referenceId, chapterId);
+    }
+
+    public ChemFixedAnswerTaskDto getRandomChemFixedAnswerTaskDto() {
+        return serviceLayer.getRandomChemFixedAnswerTaskDto();
     }
 }

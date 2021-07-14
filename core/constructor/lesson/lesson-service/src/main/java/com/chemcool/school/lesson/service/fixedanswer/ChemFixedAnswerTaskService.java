@@ -30,7 +30,7 @@ public class ChemFixedAnswerTaskService {
         return repository.findAll();
     }
 
-    public List<ChemFixedAnswerTask> getAllByChapterId(int chapterId) {
+    public List<ChemFixedAnswerTask> getAllByChapterId(Integer chapterId) {
         return repository.getAllByChapterId(chapterId);
     }
 
@@ -44,11 +44,11 @@ public class ChemFixedAnswerTaskService {
         repository.deleteById(id);
     }
 
-    public List<ChemFixedAnswerTask> getAllByReferenceId(int referenceId){
+    public List<ChemFixedAnswerTask> getAllByReferenceId(Integer referenceId){
         return repository.getAllByReferenceId(referenceId);
     }
 
-    public List<ChemFixedAnswerTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId){
+    public List<ChemFixedAnswerTask> getAllByReferenceIdAndChapterId(Integer referenceId, Integer chapterId){
         return repository.getAllByReferenceIdAndChapterId(referenceId, chapterId);
     }
 }

@@ -10,12 +10,6 @@ import org.apache.kafka.common.serialization.Deserializer;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-/**
- * Десериализатор событий для Kafka
- *
- * @version 1.0
- * @autor Евгений Жиленков
- */
 @Slf4j
 public class ChemEquationsTaskDeserializer implements Deserializer<ChemEquationsTaskEvent> {
 

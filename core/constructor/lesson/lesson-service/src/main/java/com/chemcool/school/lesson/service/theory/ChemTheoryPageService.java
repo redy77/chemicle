@@ -1,8 +1,8 @@
-package com.chemcool.school.lesson.theory.service;
+package com.chemcool.school.lesson.service.theory;
 
 
-import com.chemcool.school.lesson.theory.domain.ChemTheory;
-import com.chemcool.school.lesson.theory.storage.TheoryRepository;
+import com.chemcool.school.lesson.domain.theory.ChemTheory;
+import com.chemcool.school.lesson.storage.theory.TheoryRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -46,21 +46,21 @@ public class ChemTheoryPageService {
     }
 
 
-    public List<ChemTheory> getAllByChapterId(int chapter){
+    public List<ChemTheory> getAllByChapterId(Integer chapter){
         if (chapter == 0 ) {
             throw new RuntimeException("chapter параметр пустой, проверьте конфигурацию.");
         }
         return repository.getAllByTheoryChapter(chapter);
     }
 
-    public List<ChemTheory> getAllByReferenceId(int referenceId){
+    public List<ChemTheory> getAllByReferenceId(Integer referenceId){
         if (referenceId == 0 ) {
             throw new RuntimeException("chapter параметр пустой, проверьте конфигурацию.");
         }
         return repository.getAllByTheoryReferences(referenceId);
     }
 
-    public List<ChemTheory> getAllByReferenceIdAndChapterId(int referenceId, int chapterId){
+    public List<ChemTheory> getAllByReferenceIdAndChapterId(Integer referenceId, Integer chapterId){
         if (referenceId == 0 && chapterId == 0 ) {
             throw new RuntimeException("параметр пустой, проверьте конфигурацию.");
         }

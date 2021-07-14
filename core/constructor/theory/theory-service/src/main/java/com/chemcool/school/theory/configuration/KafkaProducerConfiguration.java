@@ -1,9 +1,9 @@
 package com.chemcool.school.theory.configuration;
 
+import com.chemcool.school.theory.configuration.properties.KafkaProperties;
 import com.chemcool.school.theory.domain.ChemistryTheoryEvent;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;
-import com.chemcool.school.theory.configuration.properties.KafkaProperties;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;

@@ -1,13 +1,16 @@
 package com.chemcool.school.lesson.web.api.service;
 
-import com.chemcool.school.lesson.theory.domain.ChemTheory;
-import com.chemcool.school.lesson.theory.service.ChemTheoryProxyService;
+import com.chemcool.school.lesson.domain.singleselect.ChemSingleSelectTask;
+import com.chemcool.school.lesson.domain.theory.ChemTheory;
+import com.chemcool.school.lesson.service.theory.ChemTheoryProxyService;
+import com.chemcool.school.lesson.web.api.dto.ChemSingleSelectTaskDto;
 import com.chemcool.school.lesson.web.api.dto.ChemTheoryDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +30,7 @@ public class ChemTheoryServiceLayer {
 
     }
 
-    public List<ChemTheoryDto> getAllTheoryByReferenceIdDto (int referenceId) {
+    public List<ChemTheoryDto> getAllTheoryByReferenceIdDto (Integer referenceId) {
         List<ChemTheoryDto> list = new ArrayList<>();
         for(ChemTheory task : service.getAllByReferenceId(referenceId)){
             list.add(new ChemTheoryDto(task));
@@ -35,7 +38,7 @@ public class ChemTheoryServiceLayer {
         return list;
     }
 
-    public List<ChemTheoryDto> getAllTheoryByChapterIdDto (int chapterId) {
+    public List<ChemTheoryDto> getAllTheoryByChapterIdDto (Integer chapterId) {
         List<ChemTheoryDto> list = new ArrayList<>();
         for(ChemTheory task : service.getAllByChapterId(chapterId)){
             list.add(new ChemTheoryDto(task));
@@ -43,11 +46,19 @@ public class ChemTheoryServiceLayer {
         return list;
     }
 
-    public List<ChemTheoryDto> getAllTheoryByReferenceIdIndChapterIdDto (int referenceId, int chapterId) {
+    public List<ChemTheoryDto> getAllTheoryByReferenceIdIndChapterIdDto (Integer referenceId, Integer chapterId) {
         List<ChemTheoryDto> list = new ArrayList<>();
         for(ChemTheory task : service.getAllByReferenceIdAndChapterId(referenceId, chapterId)){
             list.add(new ChemTheoryDto(task));
         }
         return list;
+    }
+
+    public ChemTheoryDto getRandomChemTheoryDto() {
+        List<ChemTheoryDto> list = new ArrayList<>();
+        for (ChemTheory task : service.getAll()) {
+            list.add(new ChemTheoryDto(task));
+        }
+        return list.get(new Random().nextInt(list.size()));
     }
 }

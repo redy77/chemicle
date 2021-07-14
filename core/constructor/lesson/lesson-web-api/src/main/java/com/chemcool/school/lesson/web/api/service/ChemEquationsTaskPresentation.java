@@ -1,7 +1,5 @@
 package com.chemcool.school.lesson.web.api.service;
 
-
-import com.chemcool.school.lesson.web.api.dto.ChemAnswerDto;
 import com.chemcool.school.lesson.web.api.dto.ChemEquationsTaskDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,14 +17,14 @@ public class ChemEquationsTaskPresentation {
         return serviceLayer.getAllChemEquationsDto();
     }
 
-    public List<ChemEquationsTaskDto> getAllChemistryEquationsByReferenceIdDto(int referenceId) {
+    public List<ChemEquationsTaskDto> getAllChemistryEquationsByReferenceIdDto(Integer referenceId) {
         return serviceLayer.getAllChemEquationsByReferenceIdDto(referenceId);
     }
 
-    public List<ChemEquationsTaskDto> getAllChemistryEquationsByChapterIdDto(int chapterId) {
+    public List<ChemEquationsTaskDto> getAllChemistryEquationsByChapterIdDto(Integer chapterId) {
         return serviceLayer.getAllChemEquationsByChapterIdDto(chapterId);
     }
-    public List<ChemEquationsTaskDto> getAllChemistryEquationsByReferenceIdAndChapterIdDto(int referenceId,int chapterId) {
+    public List<ChemEquationsTaskDto> getAllChemistryEquationsByReferenceIdAndChapterIdDto(Integer referenceId,Integer chapterId) {
         return serviceLayer.getAllByReferenceIdAndChapterIdDto(referenceId,chapterId);
     }
 
@@ -34,4 +32,7 @@ public class ChemEquationsTaskPresentation {
         return serviceLayer.getChemEquationsTaskById(id);
     }
 
+    public ChemEquationsTaskDto getRandomChemistryEquationsDto() {
+        return serviceLayer.getRandomChemistryEquationsDto();
+    }
 }

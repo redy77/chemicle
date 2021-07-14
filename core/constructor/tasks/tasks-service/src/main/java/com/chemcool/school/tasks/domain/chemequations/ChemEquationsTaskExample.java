@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ChemEquationsTaskExample {
-
+    private String taskId;
     private String description;
     private String rightAnswer;
     private int chapterId;

@@ -1,4 +1,4 @@
-package com.chemcool.school.lesson.theory.domain;
+package com.chemcool.school.lesson.domain.theory;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

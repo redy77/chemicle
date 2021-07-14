@@ -1,7 +1,8 @@
 package com.chemcool.school.lesson.theory.service;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.theory.domain.ChemTheory;
+import com.chemcool.school.lesson.domain.theory.ChemTheory;
+import com.chemcool.school.lesson.service.theory.ChemTheoryProxyService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

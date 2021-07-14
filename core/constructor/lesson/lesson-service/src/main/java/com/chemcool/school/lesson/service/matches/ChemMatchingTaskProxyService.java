@@ -30,15 +30,15 @@ public class ChemMatchingTaskProxyService {
         return taskService.getAll();
     }
 
-    public List<ChemMatchingTask> getAllByChapterId(int chapterId) {
+    public List<ChemMatchingTask> getAllByChapterId(Integer chapterId) {
         return taskService.getAllByChapterId(chapterId);
     }
 
-    public List<ChemMatchingTask> getAllByReferenceId(int referenceId) {
+    public List<ChemMatchingTask> getAllByReferenceId(Integer referenceId) {
         return taskService.getAllByReferenceId(referenceId);
     }
 
-    public List<ChemMatchingTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId) {
+    public List<ChemMatchingTask> getAllByReferenceIdAndChapterId(Integer referenceId, Integer chapterId) {
         return taskService.getAllByReferenceIdAndChapterId(referenceId, chapterId);
     }
 

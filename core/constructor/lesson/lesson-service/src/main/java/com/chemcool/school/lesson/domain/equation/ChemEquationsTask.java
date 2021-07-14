@@ -31,11 +31,11 @@ public class ChemEquationsTask {
 
     @Column(name = "chapter_id")
     @NonNull
-    private int chapterId;
+    private Integer chapterId;
 
     @Column(name = "reference_id")
     @NonNull
-    private int referenceId;
+    private Integer referenceId;
 
     public static ChemEquationsTask createChemEquationsTask(
             ChemEquationsTaskExample task

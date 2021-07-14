@@ -20,15 +20,19 @@ public class ChemSingleSelectTaskPresentation {
         return serviceLayer.getAllTasksDto();
     }
 
-    public List<ChemSingleSelectTaskDto> getAllTasksByReferenceIdDto(int referenceId) {
+    public List<ChemSingleSelectTaskDto> getAllTasksByReferenceIdDto(Integer referenceId) {
         return serviceLayer.getAllTasksByReferenceIdDto(referenceId);
     }
 
-    public List<ChemSingleSelectTaskDto> getAllTasksByChapterIdDto(int chapterId) {
+    public List<ChemSingleSelectTaskDto> getAllTasksByChapterIdDto(Integer chapterId) {
         return serviceLayer.getAllTasksByChapterIdDto(chapterId);
     }
 
-    public List<ChemSingleSelectTaskDto> getAllTasksByReferenceIdAndChapterIdDto(int referenceId, int chapterId) {
+    public List<ChemSingleSelectTaskDto> getAllTasksByReferenceIdAndChapterIdDto(Integer referenceId, Integer chapterId) {
         return serviceLayer.getAllTasksByReferenceIdAndChapterIdDto(referenceId, chapterId);
+    }
+
+    public ChemSingleSelectTaskDto getRandomChemSingleSelectTaskDto() {
+        return serviceLayer.getRandomChemSingleSelectTaskDto();
     }
 }

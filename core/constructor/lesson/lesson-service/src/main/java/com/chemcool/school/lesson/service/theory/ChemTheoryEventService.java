@@ -1,8 +1,8 @@
-package com.chemcool.school.lesson.theory.service;
+package com.chemcool.school.lesson.service.theory;
 
 
-import com.chemcool.school.lesson.theory.domain.ChemTheoryEvent;
-import com.chemcool.school.lesson.theory.storage.ChemTheoryEventJournal;
+import com.chemcool.school.lesson.domain.theory.ChemTheoryEvent;
+import com.chemcool.school.lesson.storage.theory.ChemTheoryEventJournal;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

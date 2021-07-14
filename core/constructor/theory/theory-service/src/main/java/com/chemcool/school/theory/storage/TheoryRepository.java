@@ -36,6 +36,4 @@ public interface TheoryRepository extends JpaRepository<ChemistryTheory, UUID>, 
     );
 
     ChemistryTheory findByTheoryId(String theoryId);
-
-
 }

@@ -31,11 +31,11 @@ public class ChemEquationsTaskService {
         return repository.findAll();
     }
 
-    public List<ChemEquationsTask> getAllByChapterId(int chapterId) {
+    public List<ChemEquationsTask> getAllByChapterId(Integer chapterId) {
         return repository.findAllByChapterId(chapterId);
     }
 
-    public List<ChemEquationsTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId) {
+    public List<ChemEquationsTask> getAllByReferenceIdAndChapterId(Integer referenceId, Integer chapterId) {
         return repository.findAllByReferenceIdAndChapterId(referenceId,chapterId);
     }
 
@@ -47,8 +47,12 @@ public class ChemEquationsTaskService {
         return checkService.checkAnswer(repository.getOne(taskId).getRightAnswer(), userAnswer);
     }
 
-    public List<ChemEquationsTask> getAllByReferenceId(int referenceId) {
+    public List<ChemEquationsTask> getAllByReferenceId(Integer referenceId) {
         return repository.findAllByReferenceId(referenceId);
+    }
+
+    public void saveAll(List<ChemEquationsTask> taskList){
+        repository.saveAll(taskList);
     }
 }
 

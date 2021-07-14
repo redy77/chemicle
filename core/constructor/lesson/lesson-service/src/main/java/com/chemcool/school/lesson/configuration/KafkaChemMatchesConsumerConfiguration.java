@@ -3,7 +3,7 @@ package com.chemcool.school.lesson.configuration;
 
 import com.chemcool.school.lesson.configuration.properties.KafkaProperties;
 import com.chemcool.school.lesson.domain.matches.ChemMatchingTaskEvent;
-import com.chemcool.school.lesson.theory.domain.ChemTheoryEvent;
+import com.chemcool.school.lesson.domain.theory.ChemTheoryEvent;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;

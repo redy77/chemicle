@@ -1,7 +1,7 @@
-package com.chemcool.school.lesson.theory.storage;
+package com.chemcool.school.lesson.storage.theory;
 
 
-import com.chemcool.school.lesson.theory.domain.ChemTheory;
+import com.chemcool.school.lesson.domain.theory.ChemTheory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
@@ -34,18 +34,18 @@ public interface TheoryRepository extends JpaRepository<ChemTheory, UUID>, JpaSp
     void updateTheory(
             @Param("theoryId") String theoryId,
             @Param("theoryName") String theoryName,
-            @Param("theoryChapter") int theoryChapter,
+            @Param("theoryChapter") Integer theoryChapter,
             @Param("theoryDescription") String theoryDescription,
-            @Param("theoryReferences") int theoryReferences
+            @Param("theoryReferences") Integer theoryReferences
     );
 
     Optional<ChemTheory> getAllByTheoryId(String theoryId);
 
-    List<ChemTheory> getAllByTheoryChapter(int theoryChapter);
+    List<ChemTheory> getAllByTheoryChapter(Integer theoryChapter);
 
-    List<ChemTheory> getAllByTheoryReferences(int theoryReferences);
+    List<ChemTheory> getAllByTheoryReferences(Integer theoryReferences);
 
-    List<ChemTheory> getAllByTheoryReferencesAndTheoryChapter(int theoryReferences, int theoryChapter);
+    List<ChemTheory> getAllByTheoryReferencesAndTheoryChapter(Integer theoryReferences, Integer theoryChapter);
 
 
 }

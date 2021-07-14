@@ -2,6 +2,9 @@ package com.chemcool.school.lesson.configuration;
 
 import com.chemcool.school.lesson.configuration.properties.KafkaProperties;
 import com.chemcool.school.lesson.domain.singleselect.ChemSingleSelectTaskEvent;
+import com.chemcool.school.lesson.domain.equation.ChemEquationsTaskEvent;
+import com.chemcool.school.lesson.domain.matches.ChemMatchingTaskEvent;
+import com.chemcool.school.lesson.domain.singleselect.ChemSingleSelectTaskEvent;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -21,7 +24,7 @@ import java.util.Map;
 @EnableConfigurationProperties(KafkaProperties.class)
 @RequiredArgsConstructor
 public class KafkaSingleSelectConsumerConfiguration {
-    
+
     private final KafkaProperties kafkaProperties;
 
     

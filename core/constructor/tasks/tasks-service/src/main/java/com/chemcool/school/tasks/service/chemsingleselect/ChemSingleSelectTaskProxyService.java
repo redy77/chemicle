@@ -44,4 +44,8 @@ public class ChemSingleSelectTaskProxyService {
     public void deleteById(String id) {
         taskService.deleteById(id);
     }
+
+    public List<ChemSingleSelectTask> getAllByChapterIdAndReferenceId(int chapterId, int referenceId) {
+        return taskService.getAllByChapterIdAndReferenceId(chapterId, referenceId);
+    }
 }

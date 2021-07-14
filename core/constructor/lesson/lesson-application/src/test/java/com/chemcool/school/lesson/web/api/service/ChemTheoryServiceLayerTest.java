@@ -1,9 +1,9 @@
 package com.chemcool.school.lesson.web.api.service;
 
 import com.chemcool.school.lesson.app.LessonApplication;
-import com.chemcool.school.lesson.theory.domain.ChemTheory;
-import com.chemcool.school.lesson.theory.domain.ChemTheoryExample;
-import com.chemcool.school.lesson.theory.service.ChemTheoryProxyService;
+import com.chemcool.school.lesson.domain.theory.ChemTheory;
+import com.chemcool.school.lesson.domain.theory.ChemTheoryExample;
+import com.chemcool.school.lesson.service.theory.ChemTheoryProxyService;
 import com.chemcool.school.lesson.web.api.dto.ChemTheoryDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

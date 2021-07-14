@@ -9,12 +9,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Бизнес логика для работы с химическими элементами
- *
- * @version 1.0
- * @autor Евгений Жиленков
- */
 @Slf4j
 @Service
 @RequiredArgsConstructor

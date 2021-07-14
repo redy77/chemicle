@@ -21,7 +21,7 @@ public class ChemistryTheoryPageService {
     }
 
     public void delete(ChemistryTheory theory) {
-        log.info("Удалена теория = " + theory);
+        log.info("Удалена теория с именем " + theory.getTheoryName());
         repository.delete(theory);
     }
 

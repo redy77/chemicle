@@ -1,8 +1,8 @@
 package com.chemcool.school.lesson.api.event;
 
-import com.chemcool.school.lesson.theory.domain.ChemTheoryEvent;
-import com.chemcool.school.lesson.theory.service.ChemTheoryEventService;
-import com.chemcool.school.lesson.theory.service.ChemTheoryPageService;
+import com.chemcool.school.lesson.domain.theory.ChemTheoryEvent;
+import com.chemcool.school.lesson.service.theory.ChemTheoryEventService;
+import com.chemcool.school.lesson.service.theory.ChemTheoryPageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;

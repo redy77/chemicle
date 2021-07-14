@@ -20,16 +20,27 @@ public class ChemMatchingTaskPresentation {
         return service.getAllTasksDto();
     }
 
-    public List<ChemMatchingTaskDto> getAllTasksByReferenceIdDto(int referenceId) {
+    public List<ChemMatchingTaskDto> getAllTasksByReferenceIdDto(Integer referenceId) {
         return service.getAllTasksByReferenceIdDto(referenceId);
     }
 
-    public List<ChemMatchingTaskDto> getAllTasksByChapterIdDto(int chapterId) {
+    public List<ChemMatchingTaskDto> getAllTasksByChapterIdDto(Integer chapterId) {
         return service.getAllTasksByChapterIdDto(chapterId);
     }
 
-    public List<ChemMatchingTaskDto> getAllTasksByReferenceIdAndChapterIdDto(int referenceId, int chapterId) {
+    public List<ChemMatchingTaskDto> getAllTasksByReferenceIdAndChapterIdDto(Integer referenceId, Integer chapterId) {
         return service.getAllTasksByReferenceIdAndChapterIdDto(referenceId, chapterId);
     }
 
+    public List<ChemMatchingTaskDto> getAllTasks() {
+        return service.getAllTasks();
+    }
+
+    public ChemMatchingTaskDto getTaskDtoById(String uuid) {
+        return service.getTaskDtoById(uuid);
+    }
+
+    public ChemMatchingTaskDto getRandomChemMatchingTaskDto() {
+        return service.getRandomChemMatchingTaskDto();
+    }
 }

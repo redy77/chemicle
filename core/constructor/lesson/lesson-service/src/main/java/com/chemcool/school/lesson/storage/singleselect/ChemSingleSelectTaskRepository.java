@@ -8,8 +8,8 @@ import java.util.List;
 
 @Repository
 public interface ChemSingleSelectTaskRepository extends JpaRepository<ChemSingleSelectTask, String> {
-    List<ChemSingleSelectTask> getAllByChapterId(int chapterId);
-    List<ChemSingleSelectTask> getAllByReferenceId(int referenceId);
-    List<ChemSingleSelectTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId);
+    List<ChemSingleSelectTask> getAllByChapterId(Integer chapterId);
+    List<ChemSingleSelectTask> getAllByReferenceId(Integer referenceId);
+    List<ChemSingleSelectTask> getAllByReferenceIdAndChapterId(Integer referenceId, Integer chapterId);
 
 }

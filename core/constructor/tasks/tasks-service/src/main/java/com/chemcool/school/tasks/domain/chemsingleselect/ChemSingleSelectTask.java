@@ -11,11 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.UUID;
 
-/**
- * Класс вопрос с одним выбором ответа.
- * Один правильный ответ, и до 4х неправильных. *
- *
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

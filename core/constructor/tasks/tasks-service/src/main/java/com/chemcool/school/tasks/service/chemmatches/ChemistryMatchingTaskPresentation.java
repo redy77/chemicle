@@ -5,8 +5,6 @@ import com.chemcool.school.tasks.jwt.JWTParser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class ChemistryMatchingTaskPresentation {
@@ -14,17 +12,6 @@ public class ChemistryMatchingTaskPresentation {
     private final ChemistryMatchingTaskServiceLayer service;
     private final JWTParser jwtParser;
 
-    public ChemistryMatchingTaskDto getTaskDtoById(String id) {
-        return service.getTaskDtoById(id);
-    }
-
-    public List<ChemistryMatchingTaskDto> getAllTasks() {
-        return service.getAllTasks();
-    }
-
-    public List<ChemistryMatchingTaskDto> getAllTasksByChapterId(Integer chapterId) {
-        return service.getAllTasksByChapterId(chapterId);
-    }
 
     public String add(ChemistryMatchingTaskDto dto, String token) {
        jwtParser.checkRolesOnAdmin(token);
@@ -38,5 +25,4 @@ public class ChemistryMatchingTaskPresentation {
     public void deleteById(String id) {
         service.deleteById(id);
     }
-
 }

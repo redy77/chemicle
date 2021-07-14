@@ -11,5 +11,5 @@ import java.util.List;
 public interface ChemMatchingTaskRepository extends JpaRepository<ChemMatchingTask, String>, JpaSpecificationExecutor<ChemMatchingTask> {
     List<ChemMatchingTask> getAllByChapterId(Integer chapterId);
     List<ChemMatchingTask> getAllByReferenceId(Integer referencesId);
-    List<ChemMatchingTask> getAllByReferenceIdAndChapterId(int referenceId, int chapterId);
+    List<ChemMatchingTask> getAllByReferenceIdAndChapterId(Integer referenceId, Integer chapterId);
 }
