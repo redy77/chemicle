@@ -29,6 +29,7 @@ public class JwtUtil {
                 .claim("id", details.getId())
                 .claim("email", details.getEmail())
                 .claim("name", details.getName())
+                .claim("roles", details.getAuthorities())
                 .signWith(SignatureAlgorithm.HS512, prop.auth.tokenSecret)
                 .compact();
     }

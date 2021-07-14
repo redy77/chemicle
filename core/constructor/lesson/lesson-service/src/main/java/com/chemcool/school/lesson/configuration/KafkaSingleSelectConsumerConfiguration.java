@@ -1,6 +1,7 @@
 package com.chemcool.school.lesson.configuration;
 
 import com.chemcool.school.lesson.configuration.properties.KafkaProperties;
+import com.chemcool.school.lesson.domain.singleselect.ChemSingleSelectTaskEvent;
 import com.chemcool.school.lesson.domain.equation.ChemEquationsTaskEvent;
 import com.chemcool.school.lesson.domain.matches.ChemMatchingTaskEvent;
 import com.chemcool.school.lesson.domain.singleselect.ChemSingleSelectTaskEvent;
@@ -23,30 +24,23 @@ import java.util.Map;
 @EnableConfigurationProperties(KafkaProperties.class)
 @RequiredArgsConstructor
 public class KafkaSingleSelectConsumerConfiguration {
+
     private final KafkaProperties kafkaProperties;
 
-    private final String TRUSTED_PACKAGES = "com.chemcool.school.lesson.domain.singleselect";
-    
-    private Map<String, Object> consumerConfig() {
-        Map<String, Object> prop = new HashMap<>();
-        prop.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServer());
-        prop.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaJsonDeserializer.class);
-        prop.put(JsonDeserializer.TRUSTED_PACKAGES, TRUSTED_PACKAGES);
-        prop.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getChemSingleSelectGroupId());
-        return prop;
-    }
     
     @Bean
     public KafkaListenerContainerFactory chemSingleSelectKafkaListenerContainerFactory() {
+        Map<String, Object> properties = new HashMap<>();
+        properties.put(JsonDeserializer.VALUE_DEFAULT_TYPE, ChemSingleSelectTaskEvent.class);
+        properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServer());
+        properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+        properties.put(JsonDeserializer.USE_TYPE_INFO_HEADERS, false);
+        properties.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getChemSingleSelectGroupId());
+
         ConcurrentKafkaListenerContainerFactory<String, ChemSingleSelectTaskEvent> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory());
+        factory.setConsumerFactory(new DefaultKafkaConsumerFactory<>(properties));
         return factory;
-    }
-
-    private ConsumerFactory<String, ChemSingleSelectTaskEvent> consumerFactory() {
-        return new DefaultKafkaConsumerFactory<>(consumerConfig(), new StringDeserializer(),
-                new KafkaJsonDeserializer<ChemSingleSelectTaskEvent>(ChemSingleSelectTaskEvent.class));
     }
 }

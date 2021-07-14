@@ -2,9 +2,9 @@ package com.chemcool.school.auth.web.api.dto;
 
 public class UserView {
 
-    private String id;
-    private String email;
-    private String name;
-    private String surname;
+    public String id;
+    public String email;
+    public String name;
+    public String surname;
 
 }

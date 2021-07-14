@@ -17,7 +17,7 @@ spring:
         max-attempts: 50
         max-interval: 1000
 accountUpdate:
-  path: ${VERIFY_ACCOUNT_URL}
+  path: ${VERIFY_ACCOUNT_URL:awd}
 
 eureka:
   client:

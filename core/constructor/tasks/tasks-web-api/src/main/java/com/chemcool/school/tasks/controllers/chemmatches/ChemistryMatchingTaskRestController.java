@@ -16,8 +16,9 @@ public class ChemistryMatchingTaskRestController {
     @PostMapping("/create")
     @ApiOperation("Создает новую сущность задания типа \"matching(сопоставления)\" по химии.")
     @ResponseBody
-    public String createNewTask(@RequestBody ChemistryMatchingTaskDto task) {
-        return presentation.add(task);
+    public String createNewTask(@RequestHeader(value = "Authorization") String token,
+                                @RequestBody ChemistryMatchingTaskDto task) {
+        return presentation.add(task, token);
     }
 
     @PutMapping("/update")

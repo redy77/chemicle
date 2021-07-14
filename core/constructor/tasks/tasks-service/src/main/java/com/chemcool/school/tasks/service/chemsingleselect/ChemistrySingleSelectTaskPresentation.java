@@ -1,6 +1,7 @@
 package com.chemcool.school.tasks.service.chemsingleselect;
 
 import com.chemcool.school.tasks.dto.chemsingleselect.ChemistrySingleSelectTaskDto;
+import com.chemcool.school.tasks.jwt.JWTParser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ import java.util.List;
 public class ChemistrySingleSelectTaskPresentation {
 
     private final ChemistrySingleSelectTaskServiceLayer serviceLayer;
+    private final JWTParser jwtParser;
 
     public ChemistrySingleSelectTaskDto getTaskDtoById(String id) {
         return serviceLayer.getTaskDtoById(id);
@@ -20,7 +22,12 @@ public class ChemistrySingleSelectTaskPresentation {
         return serviceLayer.getAllTasks();
     }
 
-    public String add(ChemistrySingleSelectTaskDto dto) {
+    public List<ChemistrySingleSelectTaskDto> getAllTasksByChapterId(int chapterId) {
+        return serviceLayer.getAllTasksByChapterId(chapterId);
+    }
+
+    public String add(ChemistrySingleSelectTaskDto dto, String token) {
+        jwtParser.checkRolesOnAdmin(token);
         return serviceLayer.add(dto);
     }
 

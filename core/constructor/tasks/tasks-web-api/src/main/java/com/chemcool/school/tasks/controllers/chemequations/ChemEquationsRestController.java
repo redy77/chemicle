@@ -21,8 +21,9 @@ public class ChemEquationsRestController {
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation("Создает новую сущность задания типа \"Уравнения\"")
-    public String saveNewEquationsTask(@RequestBody ChemEquationsTaskCreateDto taskDto) {
-        return presentation.createNewEquationsTask(taskDto);
+    public String saveNewEquationsTask(@RequestHeader(value = "Authorization") String token,
+                                       ChemEquationsTaskDto taskDto, String rightAnswer) {
+        return presentation.createNewEquationsTask(taskDto, rightAnswer, token);
     }
 
     @PutMapping("/update")

@@ -1,4 +1,4 @@
-package com.chemcool.school.auth.service.test;
+package com.chemcool.school.auth.test;
 
 import com.chemcool.school.auth.service.domain.RegisterUser;
 import com.chemcool.school.auth.service.domain.RegisterUserEvent;

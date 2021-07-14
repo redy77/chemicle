@@ -16,8 +16,9 @@ public class ChemFixedAnswerTaskRestController {
 
     @PostMapping("/create")
     @ApiOperation("Создает новую сущность задания типа \"Фиксированный ответ\" по химии")
-    public String saveNewFixedAnswerTask(@RequestBody ChemFixedAnswerTaskCreateDto taskDto){
-        return presentation.createNewFixedAnswerTask(taskDto);
+    public String saveNewFixedAnswerTask(@RequestHeader(value = "Authorization") String token,
+                                         @RequestBody ChemFixedAnswerTaskDto taskDto) {
+        return presentation.createNewFixedAnswerTask(taskDto, token);
     }
 
     @PutMapping("/update")

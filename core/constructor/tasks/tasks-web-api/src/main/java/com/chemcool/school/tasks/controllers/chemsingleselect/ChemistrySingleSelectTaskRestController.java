@@ -16,8 +16,9 @@ public class ChemistrySingleSelectTaskRestController {
     @PostMapping("/create")
     @ApiOperation("Создает новую сущность задания типа \"Выбор одного ответа\" по химии.")
     @ResponseBody
-    public String createNewTask(@RequestBody ChemistrySingleSelectTaskDto task) {
-        return presentation.add(task);
+    public String createNewTask(@RequestHeader(value = "Authorization") String token,
+                                @RequestBody ChemistrySingleSelectTaskDto task) {
+        return presentation.add(task, token);
     }
 
     @PutMapping("/update")

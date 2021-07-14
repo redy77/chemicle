@@ -1,15 +1,10 @@
-package com.chemcool.school.auth.service.test;
+package com.chemcool.school.auth.test;
 
-import com.chemcool.school.auth.service.domain.RegisterUser;
 import com.chemcool.school.auth.service.domain.RegisterUserEvent;
-import com.chemcool.school.auth.service.domain.RegisterUserEventFactory;
 import com.chemcool.school.auth.service.domain.RegisterUserEventType;
-import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static com.chemcool.school.auth.service.test.RegisterUserEventPrototype.aRegisterUserEvent;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
