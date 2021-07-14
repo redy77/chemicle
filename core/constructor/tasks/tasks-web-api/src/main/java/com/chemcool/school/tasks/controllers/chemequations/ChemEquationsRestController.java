@@ -22,7 +22,7 @@ public class ChemEquationsRestController {
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation("Создает новую сущность задания типа \"Уравнения\"")
     public String saveNewEquationsTask(@RequestHeader(value = "Authorization") String token,
-                                       ChemEquationsTaskDto taskDto, String rightAnswer) {
+                                       ChemEquationsTaskCreateDto taskDto, String rightAnswer) {
         return presentation.createNewEquationsTask(taskDto, rightAnswer, token);
     }
 
