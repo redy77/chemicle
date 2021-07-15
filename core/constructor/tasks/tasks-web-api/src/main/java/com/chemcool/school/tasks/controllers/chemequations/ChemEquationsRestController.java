@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/chemEquations/v.1.0")
+@RequestMapping("/v.1.0/chemEquations")
 @RequiredArgsConstructor
 public class ChemEquationsRestController {
 
@@ -22,7 +22,8 @@ public class ChemEquationsRestController {
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation("Создает новую сущность задания типа \"Уравнения\"")
     public String saveNewEquationsTask(@RequestHeader(value = "Authorization") String token,
-                                       ChemEquationsTaskCreateDto taskDto, String rightAnswer) {
+                                       @RequestBody ChemEquationsTaskCreateDto taskDto,
+                                       @RequestParam String rightAnswer) {
         return presentation.createNewEquationsTask(taskDto, rightAnswer, token);
     }
 
