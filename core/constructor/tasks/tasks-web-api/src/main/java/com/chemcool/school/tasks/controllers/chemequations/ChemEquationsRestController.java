@@ -21,41 +21,6 @@ public class ChemEquationsRestController {
     @Autowired
     private final ChemEquationsTaskPresentation presentation;
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    @ApiOperation("Возвращает все сущности задания типа \"Уравнения\"")
-    public List<ChemEquationsTaskDto> getAll() {
-        return presentation.getAllChemistryEquationsDto();
-    }
-
-    @GetMapping("/chapter/{chapterId}")
-    @ResponseStatus(HttpStatus.OK)
-    @ApiOperation("Возвращает все сущности задания типа \"Уравнения\" по главе")
-    public List<ChemEquationsTaskDto> getAllByChapterId(@PathVariable int chapterId) {
-        return presentation.getAllChemistryEquationsByChapterIdDto(chapterId);
-    }
-
-    @GetMapping("/reference/{chapterId}/{referenceId}")
-    @ResponseStatus(HttpStatus.OK)
-    @ApiOperation("Возвращает все сущности задания типа \"Уравнения\" по разделу и главе")
-    public List<ChemEquationsTaskDto> getAllByReferenceId(@PathVariable int chapterId, @PathVariable int referenceId) {
-        return presentation.getAllChemistryEquationsByChapterIdAndReferenceIdDto(chapterId, referenceId);
-    }
-
-    @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ApiOperation("Возвращает задание по ID типа \"Уравнения\"")
-    public ChemEquationsTaskDto getEquationsTaskById(@PathVariable String id) {
-        return presentation.getEquationsTaskById(id);
-    }
-
-    @GetMapping("/randomTask")
-    @ResponseStatus(HttpStatus.OK)
-    @ApiOperation("Возвращает случайную сущность задания типа \"Уравнения\"")
-    public ChemEquationsTaskDto getRandomTask() {
-        return presentation.getRandomChemistryEquationsDto();
-    }
-
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation("Создает новую сущность задания типа \"Уравнения\"")
