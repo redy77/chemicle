@@ -2,6 +2,7 @@ package com.chemcool.school.tasks.controllers.chemequations;
 
 import com.chemcool.school.tasks.dto.chemequations.ChemAnswerDto;
 import com.chemcool.school.tasks.dto.chemequations.ChemEquationsTaskCreateDto;
+import com.chemcool.school.tasks.dto.chemequations.ChemEquationsTaskDto;
 import com.chemcool.school.tasks.service.chemequations.ChemEquationsTaskPresentation;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -9,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
-@RequestMapping("/chemEquations/v.1.0")
+@RequestMapping("/v.1.0/chemEquations/")
 @RequiredArgsConstructor
 public class ChemEquationsRestController {
 
@@ -46,4 +49,5 @@ public class ChemEquationsRestController {
     public ChemAnswerDto checkAnswer(String taskId, String userAnswer) {
         return presentation.checkAnswer(taskId, userAnswer);
     }
+
 }
