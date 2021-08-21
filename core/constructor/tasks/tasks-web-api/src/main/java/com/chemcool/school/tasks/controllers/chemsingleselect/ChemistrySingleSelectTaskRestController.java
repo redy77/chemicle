@@ -4,6 +4,7 @@ import com.chemcool.school.tasks.dto.chemsingleselect.ChemistrySingleSelectTaskD
 import com.chemcool.school.tasks.service.chemsingleselect.ChemistrySingleSelectTaskPresentation;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,6 +15,7 @@ public class ChemistrySingleSelectTaskRestController {
     private final ChemistrySingleSelectTaskPresentation presentation;
 
     @PostMapping("/create")
+    @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation("Создает новую сущность задания типа \"Выбор одного ответа\" по химии.")
     @ResponseBody
     public String createNewTask(@RequestHeader(value = "Authorization") String token,
@@ -22,6 +24,7 @@ public class ChemistrySingleSelectTaskRestController {
     }
 
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation("Сохраняет существующую сущность задания типа \"Выбор одного ответа\" по химии.")
     @ResponseBody
     public String updateTask(@RequestBody ChemistrySingleSelectTaskDto task) {
@@ -30,6 +33,7 @@ public class ChemistrySingleSelectTaskRestController {
     }
 
     @DeleteMapping("/{uuid}")
+    @ResponseStatus(HttpStatus.OK)
     @ApiOperation("Удалеят существующую сущность задания типа \"Выбор одного ответа\" по химии по UUID.")
     public String deleteTask(@PathVariable String uuid) {
         presentation.deleteById(uuid);

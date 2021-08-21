@@ -43,7 +43,7 @@ create table if not exists chemistry_fixed_answer_task (
     reference_id int
 );
 
-create table if not exists chemistry_fixed_answer_task_event (
+create table if not exists chemistry_fixed_answer_event (
     event_uuid VARCHAR(255) not null primary key,
     event_author_id VARCHAR(255) not null,
     event_occuring_context VARCHAR(255) not null,
