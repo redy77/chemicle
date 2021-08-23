@@ -1,1 +1,0 @@
-CREATE DATABASE lesson_application OWNER mick;

@@ -55,7 +55,7 @@
     </build>
 
     <modules>
-        <module>constructor</module>
+        <module>chemistry</module>
     </modules>
 
 </project>

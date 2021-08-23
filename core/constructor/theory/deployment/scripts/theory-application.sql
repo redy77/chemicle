@@ -1,1 +1,0 @@
-CREATE DATABASE theory_application OWNER mick;
