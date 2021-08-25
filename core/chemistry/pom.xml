@@ -54,6 +54,7 @@
         <module>lesson</module>
         <module>tasks</module>
         <module>theory</module>
+        <module>constructor</module>
     </modules>
 
 </project>
