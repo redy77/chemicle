@@ -56,6 +56,7 @@
 
     <modules>
         <module>chemistry</module>
+        <module>constructor-web-api</module>
     </modules>
 
 </project>

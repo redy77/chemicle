@@ -24,27 +24,27 @@
 
         <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
-        <tasks.modules.version>1.0.0</tasks.modules.version>
+        <constructor.modules.version>1.0.0</constructor.modules.version>
         <lombok.version>1.18.16</lombok.version>
         <swagger2.version>3.0.0</swagger2.version>
     </properties>
     <dependencyManagement>
         <dependencies>
 
-<!--            <dependency>-->
-<!--                <groupId>com.chemcool.school.constructor</groupId>-->
-<!--                <artifactId>constructor-service</artifactId>-->
-<!--                <version>${constructor.modules.version}</version>-->
-<!--                <type>jar</type>-->
-<!--                <scope>provided</scope>-->
-<!--            </dependency>-->
-<!--            <dependency>-->
-<!--                <groupId>com.chemcool.school.constructor</groupId>-->
-<!--                <artifactId>constructor-web-api</artifactId>-->
-<!--                <version>${constructor.modules.version}</version>-->
-<!--                <type>jar</type>-->
-<!--                <scope>provided</scope>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.chemcool.school.constructor</groupId>
+                <artifactId>constructor-service</artifactId>
+                <version>${constructor.modules.version}</version>
+                <type>jar</type>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.chemcool.school.constructor</groupId>
+                <artifactId>constructor-web-api</artifactId>
+                <version>${constructor.modules.version}</version>
+                <type>jar</type>
+                <scope>provided</scope>
+            </dependency>
 
 
             <dependency>
@@ -95,6 +95,8 @@
 
     <modules>
         <module>constructor-application</module>
+        <module>constructor-service</module>
+        <module>constructor-web-api</module>
     </modules>
 
 
