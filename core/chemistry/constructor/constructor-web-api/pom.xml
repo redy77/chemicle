@@ -7,9 +7,10 @@
         <groupId>com.chemcool.school.constructor</groupId>
         <version>1.0.0</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
+    <modelVersion>4.0.0</modelVersion>
     <artifactId>constructor-web-api</artifactId>
+    <packaging>pom</packaging>
     <version>1.0.0</version>
     <name>${project.artifactId}-${project.version}</name>
 
@@ -43,8 +44,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.chemcool.school.tasks</groupId>
-            <artifactId>tasks-service</artifactId>
+            <groupId>com.chemcool.school.constructor</groupId>
+            <artifactId>constructor-service</artifactId>
             <scope>compile</scope>
         </dependency>
 
@@ -53,12 +54,12 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.testng</groupId>-->
-<!--            <artifactId>testng</artifactId>-->
-<!--            <version>RELEASE</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>com.github.rest-driver</groupId>
             <artifactId>rest-server-driver</artifactId>
