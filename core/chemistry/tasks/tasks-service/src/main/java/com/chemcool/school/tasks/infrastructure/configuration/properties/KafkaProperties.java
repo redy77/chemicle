@@ -7,8 +7,4 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("kafka")
 public class KafkaProperties {
     private String server;
-    private String taskCemEquationsGroupId;
-    private String taskChemFixedAnswerGroupId;
-    private String taskChemMatchesGroupId;
-    private String taskChemSingleSelectGroupId;
 }
