@@ -1,0 +1,36 @@
+spring:
+  appclication:
+    name: constructor-application
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/chemcool_constructor
+    username: mick
+    password: mick
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+
+
+server:
+  port: 0
+  servlet:
+    context-path: /constructor-application/
+
+kafka:
+  server: http://localhost:9092
+  constructorCemEquationsGroupId: constructor-chemistry-equations.1
+  constructorChemFixedAnswerGroupId: constructor-chemistry-answer.1
+  constructorChemMatchesGroupId: constructor-chemistry-matches.1
+  constructorChemSingleSelectGroupId: constructor-chemistry-singleSelect.1
+
+authentication:
+  jwt:
+    secretKey: 926D96C90030DD58429D2751AC1BDBBC
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
