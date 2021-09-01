@@ -2,14 +2,77 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-<!--    <parent>-->
-<!--        <artifactId>core</artifactId>-->
-<!--        <groupId>com.chemcool.school</groupId>-->
-<!--        <version>1.0.0</version>-->
-<!--    </parent>-->
+    <parent>
+        <artifactId>core</artifactId>
+        <groupId>com.chemcool.school</groupId>
+        <version>1.0.0</version>
+    </parent>
+
     <modelVersion>4.0.0</modelVersion>
-
+    <groupId>com.chemcool.school</groupId>
     <artifactId>leslibrary</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
 
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <lombok.version>1.18.16</lombok.version>
+        <postgresql.version>42.2.5</postgresql.version>
+        <jackson.version>2.11.3</jackson.version>
+        <hibernate.version>5.3.2.Final</hibernate.version>
+        <spring.boot.version>2.3.3.RELEASE</spring.boot.version>
+        <kafka.version>2.6.1</kafka.version>
+        <vladmihalcea.version>2.3.4</vladmihalcea.version>
+        <jaxb.api.version>2.3.1</jaxb.api.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <kafka.testcontainer.version>1.15.0</kafka.testcontainer.version>
+        <flayway.version>5.2.3</flayway.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flayway.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
