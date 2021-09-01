@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class TaskBaseClass {
+public class Task {
     @Id
     @Column(name = "task_id")
     private String taskId;
