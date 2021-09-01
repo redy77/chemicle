@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.models.enums;
+package com.chemcool.school.tasks.statuses;
 
 public enum TaskStatus {
     CREATE,

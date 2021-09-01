@@ -1,6 +1,6 @@
 package com.chemcool.school.tasks.models;
 
-import com.chemcool.school.tasks.models.enums.TaskStatus;
+import com.chemcool.school.tasks.statuses.TaskStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
