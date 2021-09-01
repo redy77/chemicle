@@ -19,14 +19,9 @@
         <maven.compiler.target>11</maven.compiler.target>
         <lombok.version>1.18.16</lombok.version>
         <postgresql.version>42.2.5</postgresql.version>
-        <jackson.version>2.11.3</jackson.version>
         <hibernate.version>5.3.2.Final</hibernate.version>
         <spring.boot.version>2.3.3.RELEASE</spring.boot.version>
         <kafka.version>2.6.1</kafka.version>
-        <vladmihalcea.version>2.3.4</vladmihalcea.version>
-        <jaxb.api.version>2.3.1</jaxb.api.version>
-        <jjwt.version>0.9.1</jjwt.version>
-        <kafka.testcontainer.version>1.15.0</kafka.testcontainer.version>
         <flayway.version>5.2.3</flayway.version>
     </properties>
 
@@ -61,7 +56,6 @@
             <version>${lombok.version}</version>
             <scope>compile</scope>
         </dependency>
-
 
     </dependencies>
 
