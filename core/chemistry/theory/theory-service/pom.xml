@@ -56,9 +56,6 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-
-
-
         <!--END SPRING-->
 
         <!--        Database-->
@@ -67,7 +64,6 @@
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
         </dependency>
-
         <!--        TOOLS -->
         <dependency>
             <groupId>org.projectlombok</groupId>
