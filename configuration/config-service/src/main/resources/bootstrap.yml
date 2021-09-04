@@ -53,7 +53,7 @@ spring:
     config:
       server:
         native:
-          search-locations: ${SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCHLOCATIONS:file:////opt/config-repo}
+          search-locations: ${SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCHLOCATIONS:file:///C:\Users\Александр\IdeaProjects\chemcool-server\configuration\config-repo}
   security:
     user:
       name: ${SRPING_CLOUD_USER_NAME:config-user-name}
