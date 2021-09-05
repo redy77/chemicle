@@ -21,10 +21,10 @@ server:
 
 kafka:
   server: http://localhost:9092
-  constructorCemEquationsGroupId: constructor-chemistry-equations.1
-  constructorChemFixedAnswerGroupId: constructor-chemistry-answer.1
-  constructorChemMatchesGroupId: constructor-chemistry-matches.1
-  constructorChemSingleSelectGroupId: constructor-chemistry-singleSelect.1
+  constructorComparisonGroupId: constructor-chemistry-comparision.1
+  constructorFixedAnswerGroupId: constructor-chemistry-answer.1
+  constructorMatchesGroupId: constructor-chemistry-matches.1
+  constructorSingleSelectGroupId: constructor-chemistry-singleSelect.1
 
 authentication:
   jwt:
