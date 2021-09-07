@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/v1/single_select")
+@RequestMapping("/v1/single_select/task")
 public class SingleSelectController {
 
-    @PostMapping()
+    @PostMapping("/add")
     public ResponseEntity<SingleSelectCon> addUser(@RequestBody SingleSelectCon singleSelectCon) {
          return ResponseEntity.ok(singleSelectCon); //дописать метод
     }
