@@ -1,4 +1,4 @@
-package com.chemcool.school.constructor.infrastructure.configuration.properties;
+package com.chemcool.school.constructor.infrastructure.configuration.kafka;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.common.serialization.Serializer;

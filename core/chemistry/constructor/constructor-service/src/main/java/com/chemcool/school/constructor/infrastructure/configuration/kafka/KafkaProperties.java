@@ -1,4 +1,4 @@
-package com.chemcool.school.constructor.infrastructure.configuration.properties;
+package com.chemcool.school.constructor.infrastructure.configuration.kafka;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
