@@ -1,6 +1,6 @@
 package com.chemcool.school.constructor.domain.singleselect.dto;
 
-import com.chemcool.school.constructor.domain.singleselect.entities.SingleSelectCon;
+import com.chemcool.school.constructor.domain.singleselect.models.SingleSelectCon;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
