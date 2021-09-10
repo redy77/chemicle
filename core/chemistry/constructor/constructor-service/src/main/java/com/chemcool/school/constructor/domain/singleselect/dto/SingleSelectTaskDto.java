@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SingleSelectTaskDto {
-    private Long id;
     private String conditionOfTask;
     private String rightAnswer;
     private String answersArray;
@@ -20,7 +19,6 @@ public class SingleSelectTaskDto {
     private boolean isHiden;
 
     public SingleSelectTaskDto(SingleSelectCon task) {
-        this.id = task.getId();
         this.conditionOfTask = task.getConditionOfTask();
         this.rightAnswer = task.getRightAnswer();
         this.answersArray = task.getAnswersArray();

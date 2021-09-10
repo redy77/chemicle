@@ -9,15 +9,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "single_select_table")
+@Table(name = "single_select_task")
 public class SingleSelectCon {
     @Id
-    private Long id;
+    private UUID id;
 
     @Column(name = "condition_of_task")
     private String conditionOfTask;
