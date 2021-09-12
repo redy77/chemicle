@@ -7,8 +7,5 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("kafka")
 public class KafkaProperties {
     private String server;
-    private String constructorComparisonGroupId;
-    private String constructorFixedAnswerGroupId;
-    private String constructorMatchesGroupId;
-    private String constructorSingleSelectGroupId;
+    private String groupId;
 }

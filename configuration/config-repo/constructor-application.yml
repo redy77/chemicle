@@ -21,10 +21,7 @@ server:
 
 kafka:
   server: http://localhost:9092
-  constructorComparisonGroupId: constructor-chemistry-comparision.1
-  constructorFixedAnswerGroupId: constructor-chemistry-answer.1
-  constructorMatchesGroupId: constructor-chemistry-matches.1
-  constructorSingleSelectGroupId: constructor-chemistry-singleSelect.1
+  groupId: constructor-task.1
 
 authentication:
   jwt:
