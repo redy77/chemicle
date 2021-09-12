@@ -8,12 +8,12 @@ public class ComparisonTaskService implements TaskService<ComparisonTask> {
 
     @Override
     public void create(ComparisonTask task) {
-        System.out.println("create");
+
     }
 
     @Override
     public void update(ComparisonTask task) {
-        System.out.println("update");
+
     }
 
     @Override
