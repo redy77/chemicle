@@ -52,13 +52,6 @@
                 <type>jar</type>
                 <scope>provided</scope>
             </dependency>
-            <dependency>
-                <groupId>com.chemcool.school.theory</groupId>
-                <artifactId>theory-web-api</artifactId>
-                <version>${theory.modules.version}</version>
-                <type>jar</type>
-                <scope>provided</scope>
-            </dependency>
 
             <dependency>
                 <groupId>org.projectlombok</groupId>
@@ -97,7 +90,6 @@
     <modules>
         <module>theory-application</module>
         <module>theory-service</module>
-        <module>theory-web-api</module>
     </modules>
 
 </project>
