@@ -47,6 +47,14 @@
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.chemcool.school</groupId>
+            <artifactId>leslibrary</artifactId>
+            <version>1.0.0</version>
+            <scope>pom</scope>
+        </dependency>
+
         <!--END SPRING-->
 
         <!--        Database-->
@@ -105,6 +113,7 @@
             <artifactId>jjwt</artifactId>
             <version>${jjwt.version}</version>
         </dependency>
+
     </dependencies>
 
 </project>
