@@ -20,10 +20,7 @@ server:
 
 kafka:
   server: http://localhost:9092
-  taskCemEquationsGroupId: task-chemistry-equations.1
-  taskChemFixedAnswerGroupId: task-chemistry-answer.1
-  taskChemMatchesGroupId: task-chemistry-matches.1
-  taskChemSingleSelectGroupId: task-chemistry-singleSelect.1
+  groupId: constructor-task.1
 
 authentication:
   jwt:
