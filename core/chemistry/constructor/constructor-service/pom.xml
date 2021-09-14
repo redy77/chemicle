@@ -77,6 +77,13 @@
 <!--        </dependency>-->
 
 
+        <dependency>
+            <groupId>com.chemcool.school</groupId>
+            <artifactId>leslibrary</artifactId>
+            <version>1.0.0</version>
+            <scope>pom</scope>
+        </dependency>
+
         <!--        TOOLS -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -118,6 +125,10 @@
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
             <version>${jjwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
         </dependency>
     </dependencies>
 

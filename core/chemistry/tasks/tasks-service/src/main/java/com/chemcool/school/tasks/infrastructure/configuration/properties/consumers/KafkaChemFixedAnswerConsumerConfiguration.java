@@ -2,7 +2,7 @@ package com.chemcool.school.tasks.infrastructure.configuration.properties.consum
 
 import com.chemcool.school.tasks.domain.chemfixedanswer.ChemFixedAnswerTaskEvent;
 import com.chemcool.school.tasks.infrastructure.configuration.properties.KafkaJsonDeserializer;
-import com.chemcool.school.tasks.infrastructure.configuration.properties.KafkaProperties;
+import com.chemcool.school.tasks.infrastructure.configuration.kafka.KafkaProperties;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -28,12 +28,13 @@ public class KafkaChemFixedAnswerConsumerConfiguration {
     private final KafkaProperties kafkaProperties;
 
     public Map<String, Object> consumerConfig(){
+        //TODO этот класс надо удалить?
         Map<String, Object> prop = new HashMap<>();
         prop.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServer());
         prop.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaJsonDeserializer.class);
         prop.put(JsonDeserializer.TRUSTED_PACKAGES, TRUSTED_PACKAGES);
-        prop.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getTaskChemFixedAnswerGroupId());
+        prop.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getGroupId());
         return prop;
     }
 
