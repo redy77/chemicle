@@ -1,6 +1,7 @@
 package com.chemcool.school.tasks.models;
 
 import com.chemcool.school.tasks.statuses.TaskStatus;
+import com.chemcool.school.tasks.statuses.TaskType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,11 +9,10 @@ import lombok.NonNull;
 
 import javax.persistence.*;
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
 public class Task {
     @Id
     @Column(name = "task_id")
@@ -36,7 +36,13 @@ public class Task {
 
     @Column(name = "task_status")
     @NonNull
+    @Enumerated(EnumType.STRING)
     private TaskStatus taskStatus;
+
+    @Column(name = "task_type")
+    @NonNull
+    @Enumerated(EnumType.STRING)
+    private TaskType taskType;
 
     @Column(name = "is_hidden", columnDefinition = "boolean default false")
     private Boolean isHidden;
