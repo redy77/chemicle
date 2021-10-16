@@ -56,7 +56,7 @@
 
     <modules>
         <module>chemistry</module>
-        <module>leslibrary</module>
+        <module>constructor-web-api</module>
     </modules>
 
 </project>
