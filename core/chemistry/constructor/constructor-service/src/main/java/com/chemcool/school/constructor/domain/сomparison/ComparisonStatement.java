@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "comparison_statement")
 public class ComparisonStatement {
 
     @Id
@@ -20,7 +21,7 @@ public class ComparisonStatement {
     private String value;
 
     @Column
-    private Integer order;
+    private Integer order_number;
 
     @OneToOne(fetch = FetchType.LAZY)
     private ComparisonPair comparisonPair;

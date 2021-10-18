@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "comparison_pair")
 public class ComparisonPair {
 
     @Id

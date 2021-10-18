@@ -12,6 +12,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "comparison")
 public class Comparison extends Task {
 
     @Column
