@@ -2,7 +2,7 @@ package com.chemcool.school.constructor.web.api.controllers;
 
 import com.chemcool.school.constructor.domain.сomparison.Comparison;
 import com.chemcool.school.constructor.service.сomparison.ComparisonService;
-import com.chemcool.school.constructor.web.api.converters.ComparisonConverter;
+import com.chemcool.school.constructor.service.сomparison.ComparisonConverter;
 import com.chemcool.school.constructor.web.api.dto.ComparisonDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,19 +18,16 @@ import javax.validation.Valid;
 public class ComparisonController {
 
     private final ComparisonService comparisonService;
-    private final ComparisonConverter comparisonConverter;
 
     @Autowired
-    public ComparisonController(ComparisonService comparisonService, ComparisonConverter comparisonConverter) {
+    public ComparisonController(ComparisonService comparisonService) {
         this.comparisonService = comparisonService;
-        this.comparisonConverter = comparisonConverter;
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ResponseEntity<ComparisonDto> add(@RequestBody @Valid ComparisonDto comparisonDto) {
-        Comparison comparison = comparisonConverter.convertDtoToEntity(comparisonDto);
-        comparisonService.save(comparison);
+    public ResponseEntity<String> add(@RequestBody @Valid ComparisonDto comparisonDto) {
+        String id = comparisonService.save(comparisonDto.toPresentation());
 
-        return ResponseEntity.ok(comparisonDto);
+        return ResponseEntity.ok(id);
     }
 }

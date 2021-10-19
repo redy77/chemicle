@@ -1,7 +1,8 @@
 package com.chemcool.school.constructor.service.сomparison;
 
-import com.chemcool.school.constructor.domain.сomparison.Comparison;
+import com.chemcool.school.constructor.presentation.ComparisonPresentation;
 
 public interface ComparisonService {
-    void save(Comparison comparison);
+
+    String save(ComparisonPresentation comparisonPresentation);
 }

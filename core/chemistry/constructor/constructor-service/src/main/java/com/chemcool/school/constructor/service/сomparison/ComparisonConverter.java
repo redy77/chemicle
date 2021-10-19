@@ -1,9 +1,9 @@
-package com.chemcool.school.constructor.web.api.converters;
+package com.chemcool.school.constructor.service.сomparison;
 
 import com.chemcool.school.constructor.domain.сomparison.Comparison;
 import com.chemcool.school.constructor.domain.сomparison.ComparisonPair;
 import com.chemcool.school.constructor.domain.сomparison.ComparisonStatement;
-import com.chemcool.school.constructor.web.api.dto.ComparisonDto;
+import com.chemcool.school.constructor.presentation.ComparisonPresentation;
 import com.chemcool.school.tasks.statuses.TaskStatus;
 import com.chemcool.school.tasks.statuses.TaskType;
 import org.springframework.stereotype.Component;
@@ -15,12 +15,12 @@ import java.util.List;
 @Component
 public class ComparisonConverter {
 
-    public Comparison convertDtoToEntity(ComparisonDto comparisonDto) {
+    public Comparison convertPresentationToEntity(ComparisonPresentation comparisonPresentation) {
         Comparison comparison = new Comparison();
 
-        List<String> keys = comparisonDto.getKeys();
-        List<String> values = comparisonDto.getValues();
-        HashMap<String, String> mapping = comparisonDto.getMapping();
+        List<String> keys = comparisonPresentation.getKeys();
+        List<String> values = comparisonPresentation.getValues();
+        HashMap<String, String> mapping = comparisonPresentation.getMapping();
         List<ComparisonPair> items = new ArrayList<>();
 
         mapping.forEach((key, value) -> {
@@ -45,10 +45,10 @@ public class ComparisonConverter {
         //TODO fix auto-generating id
         comparison.setTaskId("task-id");
         comparison.setItems(items);
-        comparison.setConditionOfTask(comparisonDto.getConditionOfTask());
-        comparison.setClassNum(comparisonDto.getClassNum());
-        comparison.setChapterNum(comparisonDto.getChapterNum());
-        comparison.setParagraphNum(comparisonDto.getParagraphNum());
+        comparison.setConditionOfTask(comparisonPresentation.getConditionOfTask());
+        comparison.setClassNum(comparisonPresentation.getClassNum());
+        comparison.setChapterNum(comparisonPresentation.getChapterNum());
+        comparison.setParagraphNum(comparisonPresentation.getParagraphNum());
         comparison.setTaskType(TaskType.COMPARISON);
         comparison.setTaskStatus(TaskStatus.CREATE);
         comparison.setIsHidden(false);
