@@ -44,7 +44,7 @@ public class SingleSelectCon {
     @Column(name = "task_status")
     private String taskStatus;
 
-    @Column(name = "is_hiden")
-    private boolean isHiden;
+    @Column(name = "is_hidden")
+    private boolean isHidden;
 
 }

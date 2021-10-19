@@ -16,7 +16,7 @@ public class SingleSelectTaskDto {
     private int chapterNum;
     private int paragraphNum;
     private String taskStatus;
-    private boolean isHiden;
+    private boolean isHidden;
 
     public SingleSelectTaskDto(SingleSelectCon task) {
         this.conditionOfTask = task.getConditionOfTask();
@@ -26,6 +26,6 @@ public class SingleSelectTaskDto {
         this.chapterNum = task.getChapterNum();
         this.paragraphNum = task.getParagraphNum();
         this.taskStatus = task.getTaskStatus();
-        this.isHiden = task.isHiden();
+        this.isHidden = task.isHidden();
     }
 }
