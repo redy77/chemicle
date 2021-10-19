@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -15,6 +16,8 @@ import javax.persistence.*;
 @MappedSuperclass
 public class Task {
     @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "task_id")
     private String taskId;
 
