@@ -1,6 +1,9 @@
 package com.chemcool.school.constructor.domain;
 
 import com.chemcool.school.tasks.models.Task;
+import com.chemcool.school.tasks.statuses.TaskStatus;
+import com.chemcool.school.tasks.statuses.TaskType;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,5 +24,17 @@ public class SingleSelectTask extends Task {
 
     @ElementCollection(fetch = FetchType.LAZY)
     private List<String> answers = new ArrayList<>();
+
+    @Builder
+    public SingleSelectTask(String taskId, String conditionOfTask,
+                            Short classNum, Short chapterNum,
+                            Short paragraphNum, TaskStatus status,
+                            TaskType type, Boolean isHidden,
+                            String rightAnswer, List<String> answers) {
+        super(taskId, conditionOfTask, classNum, chapterNum,
+                paragraphNum,status, type, isHidden);
+        this.rightAnswer = rightAnswer;
+        this.answers = answers;
+    }
 
 }
