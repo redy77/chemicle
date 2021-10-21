@@ -1,32 +1,24 @@
 package com.chemcool.school.constructor.web.api.controllers;
 
+import com.chemcool.school.constructor.domain.SingleSelectPresentation;
 import com.chemcool.school.constructor.service.SingleSelectService;
 import com.chemcool.school.constructor.web.api.dto.SingleSelectDto;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.NoArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/single-select")
+@RequestMapping("/api/v1/single-select")
+@NoArgsConstructor
 public class SingleSelectController {
 
-    private final SingleSelectService service;
-
-    @Autowired
-    public SingleSelectController(SingleSelectService service) {
-        this.service = service;
-    }
-
-    @GetMapping("/")
-    public String test() {
-        return "working";
-    }
+    private SingleSelectService service;
+    private ModelMapper mapper;
 
     @PostMapping("/")
-    public ResponseEntity<SingleSelectDto> add(@RequestBody SingleSelectDto dto) {
-        service.save(dto.dtoToEntity(dto));
-        return ResponseEntity.ok(dto);
+    public ResponseEntity<String> add(@RequestBody SingleSelectDto dto) {
+        SingleSelectPresentation presentation = mapper.map(dto, SingleSelectPresentation.class);
+        return ResponseEntity.ok(service.save(presentation));
     }
-
-
 }
