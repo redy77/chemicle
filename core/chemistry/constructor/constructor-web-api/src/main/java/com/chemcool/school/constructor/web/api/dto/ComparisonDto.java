@@ -3,6 +3,8 @@ package com.chemcool.school.constructor.web.api.dto;
 import com.chemcool.school.constructor.presentation.ComparisonPresentation;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.constraints.NotNull;
 import java.util.HashMap;
@@ -39,18 +41,4 @@ public class ComparisonDto {
     @NotNull
     @JsonProperty("mapping")
     private HashMap<String, String> mapping;
-
-    public ComparisonPresentation toPresentation() {
-        ComparisonPresentation comparisonPresentation = new ComparisonPresentation();
-
-        comparisonPresentation.setConditionOfTask(conditionOfTask);
-        comparisonPresentation.setClassNum(classNum);
-        comparisonPresentation.setChapterNum(chapterNum);
-        comparisonPresentation.setParagraphNum(paragraphNum);
-        comparisonPresentation.setKeys(keys);
-        comparisonPresentation.setValues(values);
-        comparisonPresentation.setMapping(mapping);
-
-        return comparisonPresentation;
-    }
 }

@@ -4,8 +4,9 @@ import com.chemcool.school.constructor.domain.сomparison.Comparison;
 import com.chemcool.school.constructor.domain.сomparison.ComparisonPair;
 import com.chemcool.school.constructor.domain.сomparison.ComparisonStatement;
 import com.chemcool.school.constructor.presentation.ComparisonPresentation;
-import com.chemcool.school.tasks.statuses.TaskStatus;
-import com.chemcool.school.tasks.statuses.TaskType;
+import org.modelmapper.Converter;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -15,12 +16,12 @@ import java.util.List;
 @Component
 public class ComparisonConverter {
 
-    public Comparison convertPresentationToEntity(ComparisonPresentation comparisonPresentation) {
-        Comparison comparison = new Comparison();
-
-        List<String> keys = comparisonPresentation.getKeys();
-        List<String> values = comparisonPresentation.getValues();
-        HashMap<String, String> mapping = comparisonPresentation.getMapping();
+    private final ModelMapper modelMapper;
+    private final Converter<HashMap<String, String>, List<ComparisonPair>> hashMapToList = mappingContext -> {
+        ComparisonPresentation presentation = (ComparisonPresentation) mappingContext.getParent().getSource();
+        List<String> keys = presentation.getKeys();
+        List<String> values = presentation.getValues();
+        HashMap<String, String> mapping = presentation.getMapping();
         List<ComparisonPair> items = new ArrayList<>();
 
         mapping.forEach((key, value) -> {
@@ -42,17 +43,21 @@ public class ComparisonConverter {
             items.add(comparisonPair);
         });
 
-        //TODO fix auto-generating id
-        comparison.setTaskId("task-id");
-        comparison.setItems(items);
-        comparison.setConditionOfTask(comparisonPresentation.getConditionOfTask());
-        comparison.setClassNum(comparisonPresentation.getClassNum());
-        comparison.setChapterNum(comparisonPresentation.getChapterNum());
-        comparison.setParagraphNum(comparisonPresentation.getParagraphNum());
-        comparison.setTaskType(TaskType.COMPARISON);
-        comparison.setTaskStatus(TaskStatus.CREATE);
-        comparison.setIsHidden(false);
+        return items;
+    };
 
-        return comparison;
+    @Autowired
+    public ComparisonConverter(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
+
+    public Comparison convertPresentationToEntity(ComparisonPresentation comparisonPresentation) {
+        modelMapper
+                .createTypeMap(ComparisonPresentation.class, Comparison.class)
+                .addMappings(mapper -> mapper.using(hashMapToList)
+                    .map(ComparisonPresentation::getMapping, Comparison::setItems)
+                );
+
+        return modelMapper.map(comparisonPresentation, Comparison.class);
     }
 }
