@@ -5,7 +5,7 @@ import com.chemcool.school.constructor.web.api.dto.SingleSelectDto;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SingleSelectConvertor {
+public class SingleSelectConverterImpl implements SingleSelectConverter{
     public SingleSelectRepresentation build(SingleSelectDto dto) {
         return SingleSelectDto.build(dto);
     }
