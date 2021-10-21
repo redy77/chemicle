@@ -1,7 +1,7 @@
 package com.chemcool.school.constructor.service;
 
-import com.chemcool.school.constructor.domain.SingleSelectPresentation;
+import com.chemcool.school.constructor.domain.representation.SingleSelectRepresentation;
 
 public interface SingleSelectService {
-    String save(SingleSelectPresentation presentation);
+    String save(SingleSelectRepresentation presentation); //returns task id
 }

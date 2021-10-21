@@ -37,10 +37,6 @@
             <artifactId>springfox-swagger2</artifactId>
             <version>${swagger2.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.modelmapper</groupId>
-            <artifactId>modelmapper</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>com.chemcool.school.constructor</groupId>

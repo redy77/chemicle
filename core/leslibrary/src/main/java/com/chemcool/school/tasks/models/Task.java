@@ -2,10 +2,7 @@ package com.chemcool.school.tasks.models;
 
 import com.chemcool.school.tasks.statuses.TaskStatus;
 import com.chemcool.school.tasks.statuses.TaskType;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
