@@ -1,4 +1,4 @@
-package com.chemcool.school.constructor.domain.сomparison;
+package com.chemcool.school.constructor.domain;
 
 import com.chemcool.school.tasks.models.Task;
 import lombok.Data;
@@ -18,5 +18,5 @@ public class Comparison extends Task {
     @Column
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "task_id")
-    private List<ComparisonPair> items;
+    private List<ComparisonPair> comparisonPairs;
 }

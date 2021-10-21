@@ -1,8 +1,7 @@
 package com.chemcool.school.constructor.service.сomparison;
 
-import com.chemcool.school.constructor.domain.сomparison.Comparison;
-import com.chemcool.school.constructor.domain.сomparison.ComparisonPair;
-import com.chemcool.school.constructor.domain.сomparison.ComparisonStatement;
+import com.chemcool.school.constructor.domain.Comparison;
+import com.chemcool.school.constructor.domain.ComparisonPair;
 import com.chemcool.school.constructor.presentation.ComparisonPresentation;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
@@ -19,31 +18,19 @@ public class ComparisonConverter {
     private final ModelMapper modelMapper;
     private final Converter<HashMap<String, String>, List<ComparisonPair>> hashMapToList = mappingContext -> {
         ComparisonPresentation presentation = (ComparisonPresentation) mappingContext.getParent().getSource();
-        List<String> keys = presentation.getKeys();
-        List<String> values = presentation.getValues();
-        HashMap<String, String> mapping = presentation.getMapping();
-        List<ComparisonPair> items = new ArrayList<>();
+        HashMap<String, String> correctAnswers = presentation.getCorrectAnswers();
+        List<ComparisonPair> comparisonPairs = new ArrayList<>();
 
-        mapping.forEach((key, value) -> {
-            int keyIndex = keys.indexOf(key);
-            int valueIndex = values.indexOf(value);
-
-            if (keyIndex == -1 || valueIndex == -1) {
-                //TODO Customize exception
-                throw new RuntimeException("Invalid request");
-            }
-
-            ComparisonStatement keyStatement = new ComparisonStatement(key, keyIndex);
-            ComparisonStatement valueStatement = new ComparisonStatement(value, valueIndex);
-
+        correctAnswers.forEach((leftValue, rightValue) -> {
             ComparisonPair comparisonPair = new ComparisonPair();
-            comparisonPair.setKey(keyStatement);
-            comparisonPair.setValue(valueStatement);
 
-            items.add(comparisonPair);
+            comparisonPair.setLeftValue(leftValue);
+            comparisonPair.setRightValue(rightValue);
+
+            comparisonPairs.add(comparisonPair);
         });
 
-        return items;
+        return comparisonPairs;
     };
 
     @Autowired
@@ -55,7 +42,7 @@ public class ComparisonConverter {
         modelMapper
                 .createTypeMap(ComparisonPresentation.class, Comparison.class)
                 .addMappings(mapper -> mapper.using(hashMapToList)
-                    .map(ComparisonPresentation::getMapping, Comparison::setItems)
+                    .map(ComparisonPresentation::getCorrectAnswers, Comparison::setComparisonPairs)
                 );
 
         return modelMapper.map(comparisonPresentation, Comparison.class);

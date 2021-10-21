@@ -1,4 +1,4 @@
-package com.chemcool.school.constructor.domain.сomparison;
+package com.chemcool.school.constructor.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,9 +18,6 @@ public class ComparisonPair {
     @Column(name = "uuid", updatable = false, nullable = false)
     private String uuid;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private ComparisonStatement key;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private ComparisonStatement value;
+    private String leftValue;
+    private String rightValue;
 }
