@@ -9,26 +9,32 @@ import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Data
 public class SingleSelectDto {
 
-    @NotBlank
+    @NotNull
     private String conditionOfTask;
 
+    @NotNull
     @NotBlank
     private String rightAnswer;
 
     @NotNull
+    @Size(min = 3)
     private List<String> answers;
 
-    @Range(min = 1, max = 11)
+    @NotNull
+    @Range(min = 1, max = 11, message = "classNum must be in range between 1 and 11")
     private Short classNum;
 
-    @Range(min = 1, max = 4)
+    @NotNull
+    @Range(min = 1, max = 4, message = "chapterNum must be in range between 1 and 4")
     private Short chapterNum;
 
-    @Range(min = 1, max = 33)
+    @NotNull
+    @Range(min = 1, max = 100, message = "paragraphNum must be in range between 1 and 100")
     private Short paragraphNum;
 }
