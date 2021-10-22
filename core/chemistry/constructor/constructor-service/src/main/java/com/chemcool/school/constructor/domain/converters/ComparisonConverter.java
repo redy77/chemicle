@@ -1,8 +1,8 @@
-package com.chemcool.school.constructor.service.сomparison;
+package com.chemcool.school.constructor.domain.converters;
 
 import com.chemcool.school.constructor.domain.Comparison;
 import com.chemcool.school.constructor.domain.ComparisonPair;
-import com.chemcool.school.constructor.presentation.ComparisonPresentation;
+import com.chemcool.school.constructor.domain.representation.ComparisonPresentation;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

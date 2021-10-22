@@ -1,6 +1,6 @@
 package com.chemcool.school.constructor.web.api.service;
 
-import com.chemcool.school.constructor.presentation.ComparisonPresentation;
+import com.chemcool.school.constructor.domain.representation.ComparisonPresentation;
 import com.chemcool.school.constructor.web.api.dto.ComparisonDto;
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,6 @@
 package com.chemcool.school.constructor.web.api.controllers;
 
-import com.chemcool.school.constructor.service.сomparison.ComparisonService;
+import com.chemcool.school.constructor.service.ComparisonService;
 import com.chemcool.school.constructor.web.api.dto.ComparisonDto;
 import com.chemcool.school.constructor.web.api.service.ComparisonDtoConverter;
 import org.springframework.beans.factory.annotation.Autowired;

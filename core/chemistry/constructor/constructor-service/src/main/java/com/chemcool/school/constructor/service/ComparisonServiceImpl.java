@@ -1,7 +1,8 @@
-package com.chemcool.school.constructor.service.сomparison;
+package com.chemcool.school.constructor.service;
 
 import com.chemcool.school.constructor.domain.Comparison;
-import com.chemcool.school.constructor.presentation.ComparisonPresentation;
+import com.chemcool.school.constructor.domain.converters.ComparisonConverter;
+import com.chemcool.school.constructor.domain.representation.ComparisonPresentation;
 import com.chemcool.school.constructor.infrastructure.storage.ComparisonRepository;
 import com.chemcool.school.tasks.statuses.TaskStatus;
 import com.chemcool.school.tasks.statuses.TaskType;

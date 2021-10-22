@@ -1,4 +1,4 @@
-package com.chemcool.school.constructor.presentation;
+package com.chemcool.school.constructor.domain.representation;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
