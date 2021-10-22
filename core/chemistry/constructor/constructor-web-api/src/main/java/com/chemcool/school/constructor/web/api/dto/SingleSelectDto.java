@@ -29,6 +29,6 @@ public class SingleSelectDto {
     @Range(min = 1, max = 4)
     private Short chapterNum;
 
-    @NotBlank
+    @Range(min = 1, max = 33)
     private Short paragraphNum;
 }

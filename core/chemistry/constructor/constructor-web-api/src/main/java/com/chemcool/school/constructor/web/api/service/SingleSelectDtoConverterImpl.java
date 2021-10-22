@@ -8,7 +8,7 @@ import com.chemcool.school.constructor.web.api.dto.SingleSelectDto;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SingleSelectConverterImpl implements SingleSelectConverter{
+public class SingleSelectDtoConverterImpl implements SingleSelectDtoConverter {
 
     public SingleSelectRepresentation convertToRepresentation(SingleSelectDto dto) {
 
