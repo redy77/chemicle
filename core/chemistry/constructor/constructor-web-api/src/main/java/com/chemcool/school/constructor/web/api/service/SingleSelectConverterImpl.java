@@ -6,7 +6,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SingleSelectConverterImpl implements SingleSelectConverter{
-    public SingleSelectRepresentation build(SingleSelectDto dto) {
-        return SingleSelectDto.build(dto);
+
+    public SingleSelectRepresentation convertToRepresentation(SingleSelectDto dto) {
+
+        return SingleSelectRepresentation.builder()
+                .conditionOfTask(dto.getConditionOfTask())
+                .rightAnswer(dto.getRightAnswer())
+                .answers(dto.getAnswers())
+                .classNum(dto.getClassNum())
+                .chapterNum(dto.getChapterNum())
+                .paragraphNum(dto.getParagraphNum())
+                .build();
     }
 }

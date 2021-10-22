@@ -13,16 +13,4 @@ public class SingleSelectDto {
     private Short classNum;
     private Short chapterNum;
     private Short paragraphNum;
-
-    public static SingleSelectRepresentation build(SingleSelectDto dto) {
-        SingleSelectRepresentation representation = SingleSelectRepresentation.builder()
-                .conditionOfTask(dto.conditionOfTask)
-                .rightAnswer(dto.rightAnswer)
-                .answers(dto.answers)
-                .classNum(dto.classNum)
-                .chapterNum(dto.chapterNum)
-                .paragraphNum(dto.paragraphNum)
-                .build();
-        return representation;
-    }
 }

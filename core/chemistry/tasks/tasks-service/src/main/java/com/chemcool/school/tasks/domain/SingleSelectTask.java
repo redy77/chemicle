@@ -1,4 +1,4 @@
-package com.chemcool.school.constructor.domain;
+package com.chemcool.school.tasks.domain;
 
 import com.chemcool.school.tasks.models.Task;
 import com.chemcool.school.tasks.statuses.TaskStatus;
@@ -26,10 +26,13 @@ public class SingleSelectTask extends Task {
     private List<String> answers = new ArrayList<>();
 
     @Builder
-    public SingleSelectTask(String taskId, String conditionOfTask, Short classNum, Short chapterNum,
-                            Short paragraphNum, TaskStatus status, TaskType type, Boolean isHidden,
+    public SingleSelectTask(String taskId, String conditionOfTask,
+                            Short classNum, Short chapterNum,
+                            Short paragraphNum, TaskStatus status,
+                            TaskType type, Boolean isHidden,
                             String rightAnswer, List<String> answers) {
-        super(taskId, conditionOfTask, classNum, chapterNum, paragraphNum,status, type, isHidden);
+        super(taskId, conditionOfTask, classNum, chapterNum,
+                paragraphNum,status, type, isHidden);
         this.rightAnswer = rightAnswer;
         this.answers = answers;
     }

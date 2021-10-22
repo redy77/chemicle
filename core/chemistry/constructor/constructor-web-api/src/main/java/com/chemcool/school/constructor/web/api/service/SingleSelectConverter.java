@@ -4,5 +4,5 @@ import com.chemcool.school.constructor.domain.representation.SingleSelectReprese
 import com.chemcool.school.constructor.web.api.dto.SingleSelectDto;
 
 public interface SingleSelectConverter {
-    SingleSelectRepresentation build(SingleSelectDto dto);
+    SingleSelectRepresentation convertToRepresentation(SingleSelectDto dto);
 }

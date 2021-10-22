@@ -18,7 +18,7 @@ public class SingleSelectController {
 
     @PostMapping("/build")
     public ResponseEntity<String> build(@RequestBody SingleSelectDto dto) {
-        SingleSelectRepresentation representation = convertor.build(dto);
+        SingleSelectRepresentation representation = convertor.convertToRepresentation(dto);
         return ResponseEntity.ok(service.save(representation));
     }
 }
