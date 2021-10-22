@@ -1,9 +1,7 @@
 package com.chemcool.school.constructor.domain;
 
 import com.chemcool.school.tasks.models.Task;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,9 +11,12 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Table(name = "comparison")
+@Builder
+@RequiredArgsConstructor
 public class Comparison extends Task {
 
     @Column
+    @NonNull
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "task_id")
     private List<ComparisonPair> comparisonPairs;

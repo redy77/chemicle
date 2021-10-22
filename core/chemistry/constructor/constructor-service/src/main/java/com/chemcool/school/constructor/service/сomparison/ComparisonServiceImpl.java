@@ -2,7 +2,7 @@ package com.chemcool.school.constructor.service.сomparison;
 
 import com.chemcool.school.constructor.domain.Comparison;
 import com.chemcool.school.constructor.presentation.ComparisonPresentation;
-import com.chemcool.school.constructor.storage.ComparisonRepository;
+import com.chemcool.school.constructor.infrastructure.storage.ComparisonRepository;
 import com.chemcool.school.tasks.statuses.TaskStatus;
 import com.chemcool.school.tasks.statuses.TaskType;
 import org.springframework.beans.factory.annotation.Autowired;

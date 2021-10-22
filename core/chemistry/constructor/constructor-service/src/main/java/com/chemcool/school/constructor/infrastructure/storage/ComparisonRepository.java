@@ -1,4 +1,4 @@
-package com.chemcool.school.constructor.storage;
+package com.chemcool.school.constructor.infrastructure.storage;
 
 import com.chemcool.school.constructor.domain.Comparison;
 import org.springframework.data.jpa.repository.JpaRepository;

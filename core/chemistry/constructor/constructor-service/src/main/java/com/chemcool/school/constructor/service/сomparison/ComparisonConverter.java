@@ -3,9 +3,6 @@ package com.chemcool.school.constructor.service.сomparison;
 import com.chemcool.school.constructor.domain.Comparison;
 import com.chemcool.school.constructor.domain.ComparisonPair;
 import com.chemcool.school.constructor.presentation.ComparisonPresentation;
-import org.modelmapper.Converter;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -15,10 +12,8 @@ import java.util.List;
 @Component
 public class ComparisonConverter {
 
-    private final ModelMapper modelMapper;
-    private final Converter<HashMap<String, String>, List<ComparisonPair>> hashMapToList = mappingContext -> {
-        ComparisonPresentation presentation = (ComparisonPresentation) mappingContext.getParent().getSource();
-        HashMap<String, String> correctAnswers = presentation.getCorrectAnswers();
+    public Comparison convertPresentationToEntity(ComparisonPresentation comparisonPresentation) {
+        HashMap<String, String> correctAnswers = comparisonPresentation.getCorrectAnswers();
         List<ComparisonPair> comparisonPairs = new ArrayList<>();
 
         correctAnswers.forEach((leftValue, rightValue) -> {
@@ -30,21 +25,16 @@ public class ComparisonConverter {
             comparisonPairs.add(comparisonPair);
         });
 
-        return comparisonPairs;
-    };
+        Comparison comparison = Comparison
+                .builder()
+                .comparisonPairs(comparisonPairs)
+                .build();
 
-    @Autowired
-    public ComparisonConverter(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
+        comparison.setConditionOfTask(comparisonPresentation.getConditionOfTask());
+        comparison.setClassNum(comparisonPresentation.getClassNum());
+        comparison.setChapterNum(comparisonPresentation.getChapterNum());
+        comparison.setParagraphNum(comparisonPresentation.getParagraphNum());
 
-    public Comparison convertPresentationToEntity(ComparisonPresentation comparisonPresentation) {
-        modelMapper
-                .createTypeMap(ComparisonPresentation.class, Comparison.class)
-                .addMappings(mapper -> mapper.using(hashMapToList)
-                    .map(ComparisonPresentation::getCorrectAnswers, Comparison::setComparisonPairs)
-                );
-
-        return modelMapper.map(comparisonPresentation, Comparison.class);
+        return comparison;
     }
 }
