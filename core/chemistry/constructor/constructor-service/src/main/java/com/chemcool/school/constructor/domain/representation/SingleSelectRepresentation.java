@@ -1,13 +1,12 @@
 package com.chemcool.school.constructor.domain.representation;
+/**
+ * @Author Constantine Lee
+ */
 
-import com.chemcool.school.constructor.domain.SingleSelectTask;
-import com.chemcool.school.tasks.statuses.TaskStatus;
-import com.chemcool.school.tasks.statuses.TaskType;
 import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
-import java.util.UUID;
 
 @Builder
 @Data

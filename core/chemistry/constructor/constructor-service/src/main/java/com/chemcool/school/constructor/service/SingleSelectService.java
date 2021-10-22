@@ -1,4 +1,7 @@
 package com.chemcool.school.constructor.service;
+/**
+ * @Author Constantine Lee
+ */
 
 import com.chemcool.school.constructor.domain.representation.SingleSelectRepresentation;
 
