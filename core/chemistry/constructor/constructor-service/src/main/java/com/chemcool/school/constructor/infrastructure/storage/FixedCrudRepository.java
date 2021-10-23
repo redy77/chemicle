@@ -1,4 +1,4 @@
-package com.chemcool.school.constructor.service;
+package com.chemcool.school.constructor.infrastructure.storage;
 
 import com.chemcool.school.constructor.domain.FixedAnswerTask;
 import org.springframework.data.repository.CrudRepository;

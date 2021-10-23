@@ -6,7 +6,6 @@ import com.chemcool.school.tasks.statuses.TaskType;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 
 
 @Data
@@ -15,10 +14,10 @@ import javax.validation.constraints.NotBlank;
 @Table(name ="сhemistru_fixed_create_task" )
 public class FixedAnswerTask extends Task {
 
-    @NotBlank
+    @NonNull
     private String idAuthor;
 
-    @NotBlank
+    @NonNull
     private String answer;
 
     @Builder
