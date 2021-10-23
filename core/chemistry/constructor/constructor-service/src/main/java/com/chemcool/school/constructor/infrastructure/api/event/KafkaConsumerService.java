@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @EnableKafka
+
 public class KafkaConsumerService {
 
     @KafkaListener(topics = "single-select-constructor", groupId = "constructor", containerFactory = "kafkaListenerContainerFactory")

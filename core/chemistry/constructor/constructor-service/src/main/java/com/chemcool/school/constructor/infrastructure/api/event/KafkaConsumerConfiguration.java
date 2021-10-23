@@ -25,7 +25,7 @@ public class KafkaConsumerConfiguration {
 
     @Value(value = "${kafka.server}")
     private String bootstrapserver;
-    private final String groupId = "constructor";
+    private final String GROUP_ID = "constructor";
 
     @Bean
     public ConsumerFactory<String, SingleSelectTask> consumerFactory() {
@@ -36,7 +36,7 @@ public class KafkaConsumerConfiguration {
 
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapserver);
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, GROUP_ID);
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, deserializer);
 
