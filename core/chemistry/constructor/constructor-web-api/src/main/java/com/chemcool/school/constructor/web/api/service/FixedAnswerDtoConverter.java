@@ -1,6 +1,6 @@
 package com.chemcool.school.constructor.web.api.service;
 
-import com.chemcool.school.constructor.representation.FixedAnswerDtoRepresentation;
+import com.chemcool.school.constructor.domain.representation.FixedAnswerDtoRepresentation;
 import com.chemcool.school.constructor.web.api.dto.FixedAnswerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

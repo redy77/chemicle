@@ -20,7 +20,7 @@ public class FixedAnswerDto {
     @Range(min = 1, max = 4, message = "chapterNum must be in range between 1 and 4")
     private Short chapterNum;
 
-    @NotBlank
+    @Range(min = 1, max = 100, message = "paragraphNum must be in range between 1 and 100")
     private Short paragraphNum;
 
     @NotBlank

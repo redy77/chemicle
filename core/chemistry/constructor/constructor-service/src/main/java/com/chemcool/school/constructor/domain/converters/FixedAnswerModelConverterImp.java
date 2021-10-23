@@ -1,7 +1,7 @@
-package com.chemcool.school.constructor.convertor;
+package com.chemcool.school.constructor.domain.converters;
 
 import com.chemcool.school.constructor.domain.FixedAnswerTask;
-import com.chemcool.school.constructor.representation.FixedAnswerDtoRepresentation;
+import com.chemcool.school.constructor.domain.representation.FixedAnswerDtoRepresentation;
 import com.chemcool.school.tasks.statuses.TaskStatus;
 import com.chemcool.school.tasks.statuses.TaskType;
 import org.springframework.stereotype.Service;
