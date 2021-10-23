@@ -4,56 +4,56 @@ zuul:
       enabled: true
   sensitive-headers:
   routes:
-    alchemy-application:
-      path: /alchemy-application/**
-      service-id: alchemy-application
-      stripPrefix: false
+#    alchemy-application:
+#      path: /alchemy-application/**
+#      service-id: alchemy-application
+#      stripPrefix: false
 
-    chat-application:
-      path: /chat-application/**
-      service-id: chat-application
-      stripPrefix: false
+#    chat-application:
+#      path: /chat-application/**
+#      service-id: chat-application
+#      stripPrefix: false
 
     lesson-application:
       path: /lesson-application/**
       service-id: lesson-application
       stripPrefix: false
 
-    theory-application:
-      path: /theory-application/**
-      service-id: theory-application
-      stripPrefix: false
-
-    tasks-application:
-      path: /tasks-application/**
-      service-id: tasks-application
-      stripPrefix: false
+#    theory-application:
+#      path: /theory-application/**
+#      service-id: theory-application
+#      stripPrefix: false
+#
+#    tasks-application:
+#      path: /tasks-application/**
+#      service-id: tasks-application
+#      stripPrefix: false
 
     constructor-application:
       path: /constructor-application/**
       service-id: constructor-application
       stripPrefix: false
 
-    two-o-four-eight-application:
-      path: /two-o-four-eight-application/**
-      service-id: two-o-four-eight-application
-      stripPrefix: false
+#    two-o-four-eight-application:
+#      path: /two-o-four-eight-application/**
+#      service-id: two-o-four-eight-application
+#      stripPrefix: false
+#
+#    registration-application:
+#      path: /registration-application/**
+#      service-id: registration-application
+#      stripPrefix: false
+#
+#    answers-application:
+#      path: /answers-application/**
+#      service-id: answers-application
+#      stripPrefix: false
 
-    registration-application:
-      path: /registration-application/**
-      service-id: registration-application
-      stripPrefix: false
-
-    answers-application:
-      path: /answers-application/**
-      service-id: answers-application
-      stripPrefix: false
-
-    authorization-application:
-      path: /authorization-application/**
-      service-id: authorization-application
-      sensitiveHeaders:
-      stripPrefix: false
+#    authorization-application:
+#      path: /authorization-application/**
+#      service-id: authorization-application
+#      sensitiveHeaders:
+#      stripPrefix: false
 
   ignored-services: '*'
   retryable: true
