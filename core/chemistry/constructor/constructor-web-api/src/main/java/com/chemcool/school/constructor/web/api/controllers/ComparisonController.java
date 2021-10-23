@@ -17,9 +17,9 @@ public class ComparisonController {
     private final ComparisonDtoConverter comparisonDtoConverter;
 
     @Autowired
-    public ComparisonController(ComparisonService comparisonService, ComparisonDtoConverter comparisonDtoConverter) {
+    public ComparisonController(ComparisonService comparisonService, ComparisonDtoConverter comparisonDtoConverterImpl) {
         this.comparisonService = comparisonService;
-        this.comparisonDtoConverter = comparisonDtoConverter;
+        this.comparisonDtoConverter = comparisonDtoConverterImpl;
     }
 
     @PostMapping(value = "/build")
