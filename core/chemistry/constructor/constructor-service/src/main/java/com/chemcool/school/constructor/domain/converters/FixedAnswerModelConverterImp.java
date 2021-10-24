@@ -21,6 +21,7 @@ public class FixedAnswerModelConverterImp implements FixedAnswerDtoConverter{
                .taskStatus(TaskStatus.CREATE)
                .taskType(TaskType.FIXED_ANSWER)
                .isHidden(false)
+               .answer(fixedAnswerDtoRepresentation.getAnswer())
                .build();
     }
 }

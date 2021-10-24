@@ -25,9 +25,4 @@ public class FixedAnswerDto {
 
     @NotBlank
     private String answer;
-
-    @NotBlank
-    private String idAuthor;
-
-
 }

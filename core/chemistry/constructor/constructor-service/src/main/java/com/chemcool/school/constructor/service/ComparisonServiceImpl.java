@@ -3,6 +3,7 @@ package com.chemcool.school.constructor.service;
 import com.chemcool.school.constructor.domain.Comparison;
 import com.chemcool.school.constructor.domain.converters.ComparisonConverter;
 import com.chemcool.school.constructor.domain.representation.ComparisonPresentation;
+import com.chemcool.school.constructor.infrastructure.api.event.KafkaProducerService;
 import com.chemcool.school.constructor.infrastructure.storage.ComparisonRepository;
 import com.chemcool.school.tasks.statuses.TaskStatus;
 import com.chemcool.school.tasks.statuses.TaskType;
@@ -16,11 +17,13 @@ public class ComparisonServiceImpl implements ComparisonService {
 
     private final ComparisonRepository comparisonRepository;
     private final ComparisonConverter comparisonConverter;
+    private final KafkaProducerService kafkaProducerService;
 
     @Autowired
-    public ComparisonServiceImpl(ComparisonRepository comparisonRepository, ComparisonConverter comparisonConverter) {
+    public ComparisonServiceImpl(ComparisonRepository comparisonRepository, ComparisonConverter comparisonConverter, KafkaProducerService kafkaProducerService) {
         this.comparisonRepository = comparisonRepository;
         this.comparisonConverter = comparisonConverter;
+        this.kafkaProducerService = kafkaProducerService;
     }
 
     @Override
@@ -33,6 +36,8 @@ public class ComparisonServiceImpl implements ComparisonService {
         comparison.setTaskStatus(TaskStatus.CREATE);
         comparison.setIsHidden(false);
         comparisonRepository.save(comparison);
+
+        kafkaProducerService.sendToKafka(comparison.getTaskType().toString(), comparison);
 
         return comparison.getTaskId();
     }

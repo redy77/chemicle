@@ -1,6 +1,8 @@
 package com.chemcool.school.constructor.infrastructure.api.event;
 
+import com.chemcool.school.constructor.domain.Comparison;
 import com.chemcool.school.constructor.domain.SingleSelectTask;
+import com.chemcool.school.tasks.models.Task;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +19,7 @@ import java.util.Map;
 
 /**
  * @Author Constantine Lee
- * @Date 23.10.2021 5:07
+ * @Date 23.10.2021
  */
 @Configuration
 @EnableKafka
@@ -25,30 +27,30 @@ public class KafkaConsumerConfiguration {
 
     @Value(value = "${kafka.server}")
     private String bootstrapserver;
-    private final String GROUP_ID = "constructor";
+
+    @Value(value = "${kafka.groupId}")
+    private String groupId;
 
     @Bean
-    public ConsumerFactory<String, SingleSelectTask> consumerFactory() {
-        JsonDeserializer<SingleSelectTask> deserializer = new JsonDeserializer<>(SingleSelectTask.class);
-        deserializer.setRemoveTypeHeaders(false);
-        deserializer.addTrustedPackages("*");
-        deserializer.setUseTypeMapperForKey(true);
+    public ConsumerFactory<String, Object> consumerFactory() {
 
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapserver);
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, GROUP_ID);
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, deserializer);
+        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+        config.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
+        config.put(JsonDeserializer.TYPE_MAPPINGS, "singleSelectTask:com.chemcool.school.constructor.domain.SingleSelectTask," +
+                                                    "comparison:com.chemcool.school.constructor.domain.Comparison, " +
+                                                    "fixedAnswerTask:com.chemcool.school.constructor.domain.FixedAnswerTask");
 
-
-        return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(), deserializer);
+        return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(), null);
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, SingleSelectTask> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, SingleSelectTask> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, Object> concurrentKafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }
-
 }

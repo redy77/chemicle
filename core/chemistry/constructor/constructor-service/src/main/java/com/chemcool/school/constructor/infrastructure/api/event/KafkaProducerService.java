@@ -1,22 +1,39 @@
 package com.chemcool.school.constructor.infrastructure.api.event;
 
-import com.chemcool.school.constructor.domain.SingleSelectTask;
-import com.chemcool.school.tasks.models.Task;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
+import org.springframework.util.concurrent.ListenableFuture;
+import org.springframework.util.concurrent.ListenableFutureCallback;
 
 /**
  * @Author Constantine Lee
- * @Date 23.10.2021 4:12
+ * @Date 23.10.2021
  */
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class KafkaProducerService {
 
-    private final KafkaTemplate<String, SingleSelectTask> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
-    public void sendTask(String topic, SingleSelectTask task) {
-        kafkaTemplate.send(topic, task);
+
+    public void sendToKafka(String topic, Object task) {
+        ListenableFuture<SendResult<String, Object>> future = kafkaTemplate.send(topic, task);
+        future.addCallback(new ListenableFutureCallback<>() {
+            @Override
+            public void onFailure(Throwable throwable) {
+                log.error("Unable to send message: " + throwable);
+            }
+
+            @Override
+            public void onSuccess(SendResult<String, Object> sendResult) {
+                log.info("Message was sent to topic: " + sendResult.getRecordMetadata().topic() +
+                        ", with offset: " + sendResult.getRecordMetadata().offset() +
+                        ", at: " + sendResult.getRecordMetadata().timestamp());
+            }
+        });
     }
 }

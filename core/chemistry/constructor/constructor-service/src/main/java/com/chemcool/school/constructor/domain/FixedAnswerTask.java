@@ -15,19 +15,13 @@ import javax.persistence.*;
 public class FixedAnswerTask extends Task {
 
     @NonNull
-    private String idAuthor;
-
-    @NonNull
     private String answer;
 
     @Builder
     public FixedAnswerTask(String taskId, String conditionOfTask, Short classNum,
                            Short chapterNum, Short paragraphNum, TaskStatus taskStatus,
-                           TaskType taskType, Boolean isHidden, String idAuthor, String answer) {
+                           TaskType taskType, Boolean isHidden, String answer) {
         super(taskId, conditionOfTask, classNum, chapterNum, paragraphNum, taskStatus, taskType, isHidden);
-        this.idAuthor = idAuthor;
         this.answer = answer;
     }
-
-
 }
