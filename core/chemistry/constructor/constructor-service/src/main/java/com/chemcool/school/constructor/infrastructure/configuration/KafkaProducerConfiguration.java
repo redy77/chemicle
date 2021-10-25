@@ -24,20 +24,25 @@ import java.util.Map;
  */
 @Configuration
 public class KafkaProducerConfiguration {
+
     @Value(value = "${kafka.server}")
     private String bootstrapserver;
 
+    @Value(value = "${spring.kafka.consumer.properties.spring.json.type.mapping}")
+    private String typeMappings;
+
     @Bean
-    public ProducerFactory<String, Object> producerFactory() {
+    public ProducerFactory<String, Task> producerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapserver);
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+        config.put(JsonSerializer.TYPE_MAPPINGS, typeMappings);
         return new DefaultKafkaProducerFactory<>(config);
     }
 
     @Bean
-    public KafkaTemplate<String, Object> kafkaTemplate () {
+    public KafkaTemplate<String, Task> kafkaTemplate () {
         return new KafkaTemplate<>(producerFactory());
     }
 

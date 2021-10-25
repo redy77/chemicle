@@ -11,7 +11,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EntityScan("com.chemcool.school.tasks")
 @EnableJpaRepositories("com.chemcool.school.tasks")
 @EnableEurekaClient
-@EnableSwagger2
+//@EnableSwagger2
 public class TasksApplication {
     public static void main(String[] args) {
         SpringApplication.run(TasksApplication.class, args);

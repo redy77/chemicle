@@ -1,4 +1,4 @@
-package com.chemcool.school.constructor.domain;
+package com.chemcool.school.tasks.domain;
 
 import com.chemcool.school.tasks.models.Task;
 import com.chemcool.school.tasks.statuses.TaskStatus;
@@ -10,7 +10,6 @@ import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
-@ToString(callSuper = true)
 @Entity
 @Table(name ="сhemistru_fixed_create_task" )
 public class FixedAnswerTask extends Task {

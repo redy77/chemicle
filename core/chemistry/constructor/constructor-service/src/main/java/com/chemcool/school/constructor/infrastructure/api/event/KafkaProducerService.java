@@ -1,5 +1,6 @@
 package com.chemcool.school.constructor.infrastructure.api.event;
 
+import com.chemcool.school.tasks.models.Task;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -17,11 +18,11 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 @Slf4j
 public class KafkaProducerService {
 
-    private final KafkaTemplate<String, Object> kafkaTemplate;
+    private final KafkaTemplate<String, Task> kafkaTemplate;
 
 
-    public void sendToKafka(String topic, Object task) {
-        ListenableFuture<SendResult<String, Object>> future = kafkaTemplate.send(topic, task);
+    public void sendToKafka(String topic, Task task) {
+        ListenableFuture<SendResult<String, Task>> future = kafkaTemplate.send(topic, task);
         future.addCallback(new ListenableFutureCallback<>() {
             @Override
             public void onFailure(Throwable throwable) {
@@ -29,7 +30,7 @@ public class KafkaProducerService {
             }
 
             @Override
-            public void onSuccess(SendResult<String, Object> sendResult) {
+            public void onSuccess(SendResult<String, Task> sendResult) {
                 log.info("Message was sent to topic: " + sendResult.getRecordMetadata().topic() +
                         ", with offset: " + sendResult.getRecordMetadata().offset() +
                         ", at: " + sendResult.getRecordMetadata().timestamp());
