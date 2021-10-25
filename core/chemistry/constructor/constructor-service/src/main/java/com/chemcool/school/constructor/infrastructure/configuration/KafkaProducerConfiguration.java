@@ -28,7 +28,7 @@ public class KafkaProducerConfiguration {
     @Value(value = "${kafka.server}")
     private String bootstrapserver;
 
-    @Value(value = "${spring.kafka.consumer.properties.spring.json.type.mapping}")
+    @Value(value = "${spring.kafka.producer.properties.spring.json.type.mapping}")
     private String typeMappings;
 
     @Bean

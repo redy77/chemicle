@@ -13,6 +13,16 @@ spring:
     platform: postgres
     driver-class-name: org.postgresql.Driver
 
+  kafka:
+    consumer:
+      properties:
+        spring:
+          json:
+            type:
+              mapping: "singleSelectTask:com.chemcool.school.tasks.domain.SingleSelectTask,
+                  comparison:com.chemcool.school.tasks.domain.Comparison,
+                  fixedAnswerTask:com.chemcool.school.tasks.domain.FixedAnswerTask"
+
 server:
   port: 0
   servlet:
