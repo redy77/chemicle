@@ -1,17 +1,11 @@
 package com.chemcool.school.tasks.infrastructure.api.event;
 
-import com.chemcool.school.tasks.domain.Comparison;
-import com.chemcool.school.tasks.domain.FixedAnswerTask;
-import com.chemcool.school.tasks.domain.SingleSelectTask;
-import com.chemcool.school.tasks.service.ComparisonService;
-import com.chemcool.school.tasks.service.FixedAnswerService;
-import com.chemcool.school.tasks.service.SingleSelectService;
+import com.chemcool.school.tasks.models.Task;
+import com.chemcool.school.tasks.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.messaging.MessageHeaders;
-import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
@@ -25,25 +19,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class KafkaConsumerService {
 
-    private final ComparisonService comparisonService;
-    private final SingleSelectService singleSelectService;
-    private final FixedAnswerService fixedAnswerService;
+    private final TaskService taskService;
 
-    @KafkaListener(topics = "SINGLE_SELECT", containerFactory = "concurrentKafkaListenerContainerFactory")
-    public void listenSingleSelect(@Payload SingleSelectTask task) {
-        log.info("Task was received from topic: " + task.getTaskType());
-        singleSelectService.save(task);
-    }
-
-    @KafkaListener(topics = "COMPARISON", containerFactory = "concurrentKafkaListenerContainerFactory")
-    public void listenComparison(@Payload Comparison task) {
-        log.info("Task was received from topic: " + task.getTaskType());
-        comparisonService.save(task);
-    }
-
-    @KafkaListener(topics = "FIXED_ANSWER", containerFactory = "concurrentKafkaListenerContainerFactory")
-    public void listenFixedAnswer(@Payload FixedAnswerTask task) {
-        log.info("Task was received from topic: " + task.getTaskType());
-        fixedAnswerService.save(task);
+    @KafkaListener(topics = "tasks", groupId = "groupId", containerFactory = "concurrentKafkaListenerContainerFactory")
+    public void listenTask(@Payload Task task) {
+        log.info("Task with id {} was received.", task.getTaskId());
+        taskService.save(task);
     }
 }

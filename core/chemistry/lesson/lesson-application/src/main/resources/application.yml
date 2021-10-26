@@ -1,0 +1,10 @@
+spring:
+  kafka:
+    consumer:
+      properties:
+        spring:
+          json:
+            type:
+              mapping: "singleSelectTask:com.chemcool.school.lesson.domain.SingleSelectTask,
+                  comparison:com.chemcool.school.lesson.domain.Comparison,
+                  fixedAnswerTask:com.chemcool.school.lesson.domain.FixedAnswerTask"

@@ -18,11 +18,12 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 @Slf4j
 public class KafkaProducerService {
 
+    private final String TOPIC = "tasks";
     private final KafkaTemplate<String, Task> kafkaTemplate;
 
 
     public void sendToKafka(String topic, Task task) {
-        ListenableFuture<SendResult<String, Task>> future = kafkaTemplate.send(topic, task);
+        ListenableFuture<SendResult<String, Task>> future = kafkaTemplate.send(TOPIC, task);
         future.addCallback(new ListenableFutureCallback<>() {
             @Override
             public void onFailure(Throwable throwable) {

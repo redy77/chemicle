@@ -10,6 +10,14 @@ spring:
     password: mick
     platform: postgres
     driver-class-name: org.postgresql.Driver
+    kafka:
+      producer:
+        properties:
+          spring:
+            json:
+              type:
+                mapping: "theoryTask: com.chemcool.school.constructor.domain.TheoryTask"
+
 
 server:
   port: 0
@@ -18,4 +26,5 @@ server:
 
 kafka:
   server: http://localhost:9092
-  groupId: chemistry-theory.1
+  groupId: theory-application
+

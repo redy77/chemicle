@@ -30,7 +30,7 @@ server:
 
 kafka:
   server: http://localhost:9092
-  groupId: constructor-task.1
+  groupId: tasks-application
 
 authentication:
   jwt:
