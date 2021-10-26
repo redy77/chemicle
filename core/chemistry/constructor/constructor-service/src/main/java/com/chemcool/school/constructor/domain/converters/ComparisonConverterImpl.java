@@ -2,12 +2,17 @@ package com.chemcool.school.constructor.domain.converters;
 
 import com.chemcool.school.constructor.domain.Comparison;
 import com.chemcool.school.constructor.domain.ComparisonPair;
+import com.chemcool.school.constructor.domain.SingleSelectTask;
 import com.chemcool.school.constructor.domain.representation.ComparisonPresentation;
+import com.chemcool.school.constructor.domain.representation.SingleSelectRepresentation;
+import com.chemcool.school.tasks.statuses.TaskStatus;
+import com.chemcool.school.tasks.statuses.TaskType;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class ComparisonConverterImpl implements ComparisonConverter {
@@ -25,16 +30,16 @@ public class ComparisonConverterImpl implements ComparisonConverter {
             comparisonPairs.add(comparisonPair);
         });
 
-        Comparison comparison = Comparison
-                .builder()
+        return Comparison.builder()
+                .taskId(UUID.randomUUID().toString())
+                .conditionOfTask(comparisonPresentation.getConditionOfTask())
+                .classNum(comparisonPresentation.getClassNum())
+                .chapterNum(comparisonPresentation.getChapterNum())
+                .paragraphNum(comparisonPresentation.getParagraphNum())
+                .status(TaskStatus.CREATE)
+                .type(TaskType.COMPARISON)
+                .isHidden(false)
                 .comparisonPairs(comparisonPairs)
                 .build();
-
-        comparison.setConditionOfTask(comparisonPresentation.getConditionOfTask());
-        comparison.setClassNum(comparisonPresentation.getClassNum());
-        comparison.setChapterNum(comparisonPresentation.getChapterNum());
-        comparison.setParagraphNum(comparisonPresentation.getParagraphNum());
-
-        return comparison;
     }
 }

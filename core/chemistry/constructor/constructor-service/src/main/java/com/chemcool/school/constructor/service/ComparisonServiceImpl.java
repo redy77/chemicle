@@ -26,14 +26,7 @@ public class ComparisonServiceImpl implements ComparisonService {
     @Override
     public String save(ComparisonPresentation comparisonPresentation) {
         Comparison comparison = comparisonConverter.convertPresentationToEntity(comparisonPresentation);
-        String generatedId = UUID.randomUUID().toString();
-
-        comparison.setTaskId(generatedId);
-        comparison.setTaskType(TaskType.COMPARISON);
-        comparison.setTaskStatus(TaskStatus.CREATE);
-        comparison.setIsHidden(false);
         comparisonRepository.save(comparison);
-
         return comparison.getTaskId();
     }
 }

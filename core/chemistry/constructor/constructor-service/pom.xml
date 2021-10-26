@@ -27,7 +27,7 @@
         <jaxb.api.version>2.3.1</jaxb.api.version>
         <jjwt.version>0.9.1</jjwt.version>
         <kafka.testcontainer.version>1.15.0</kafka.testcontainer.version>
-        <flayway.version>5.2.3</flayway.version>
+        <flyway.version>5.2.3</flyway.version>
     </properties>
 
     <dependencies>
@@ -64,13 +64,14 @@
             <version>${postgresql.version}</version>
         </dependency>
 
-<!--TODO подключить миграцию-->
 
-<!--        <dependency>-->
-<!--            <groupId>org.flywaydb</groupId>-->
-<!--            <artifactId>flyway-core</artifactId>-->
-<!--            <version>${flyway.version}</version>-->
-<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway.version}</version>
+        </dependency>
+
 
 
         <dependency>

@@ -27,14 +27,14 @@ public class SingleSelectDto {
     private List<String> answers;
 
     @NotNull
-    @Range(min = 1, max = 11, message = "classNum must be in range between 1 and 11")
+    @Range(min = 1, max = 11, message = "класс (от 1 до 11)")
     private Short classNum;
 
     @NotNull
-    @Range(min = 1, max = 4, message = "chapterNum must be in range between 1 and 4")
+    @Range(min = 1, max = 4, message = "глава (от 1 до 4)")
     private Short chapterNum;
 
     @NotNull
-    @Range(min = 1, max = 100, message = "paragraphNum must be in range between 1 and 100")
+    @Range(min = 1, max = 100, message = "параграф (от 1 до 100)")
     private Short paragraphNum;
 }
