@@ -28,13 +28,16 @@ public class SingleSelectTask extends Task {
     @ElementCollection(fetch = FetchType.LAZY)
     private List<String> answers = new ArrayList<>();
 
+    @Column(name = "task_number")
+    private Integer taskNumber;
+
     @Builder
     public SingleSelectTask(String taskId, String conditionOfTask, Short classNum, Short chapterNum,
                             Short paragraphNum, TaskStatus status, TaskType type, Boolean isHidden,
-                            String rightAnswer, List<String> answers) {
+                            String rightAnswer, List<String> answers, Integer taskNumber) {
         super(taskId, conditionOfTask, classNum, chapterNum, paragraphNum,status, type, isHidden);
         this.rightAnswer = rightAnswer;
         this.answers = answers;
+        this.taskNumber = taskNumber;
     }
-
 }

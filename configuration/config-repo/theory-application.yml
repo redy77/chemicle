@@ -10,13 +10,14 @@ spring:
     password: mick
     platform: postgres
     driver-class-name: org.postgresql.Driver
-    kafka:
-      producer:
-        properties:
-          spring:
-            json:
-              type:
-                mapping: "theoryTask: com.chemcool.school.constructor.domain.TheoryTask"
+
+  kafka:
+    consumer:
+      properties:
+        spring:
+          json:
+            type:
+              mapping: "theoryTask:com.chemcool.school.theory.domain.TheoryTask"
 
 
 server:

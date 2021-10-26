@@ -24,7 +24,7 @@ public class SingleSelectServiceImpl implements SingleSelectService {
     public String save(SingleSelectRepresentation representation) {
         SingleSelectTask task = converter.convertToTask(representation);
         repository.save(task);
-        kafkaProducerService.sendToKafka(task.getTaskType().toString(), task);
+        kafkaProducerService.sendToKafka("tasks", task);
         return task.getTaskId();
     }
 }

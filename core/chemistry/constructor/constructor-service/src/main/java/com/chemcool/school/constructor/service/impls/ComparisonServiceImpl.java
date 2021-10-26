@@ -38,7 +38,7 @@ public class ComparisonServiceImpl implements ComparisonService {
         comparison.setIsHidden(false);
         comparisonRepository.save(comparison);
 
-        kafkaProducerService.sendToKafka(comparison.getTaskType().toString(), comparison);
+        kafkaProducerService.sendToKafka("tasks", comparison);
 
         return comparison.getTaskId();
     }

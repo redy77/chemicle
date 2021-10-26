@@ -21,7 +21,7 @@ public class FixedAnswerServiceLayer {
     public String saveBdConverter(FixedAnswerDtoRepresentation fixedAnswerDtoRepresentation) {
         FixedAnswerTask fixedAnswerTask = fixedAnswerDtoConverter.convertToTask(fixedAnswerDtoRepresentation);
         fixedCrudService.addQuestion(fixedAnswerTask);
-        kafkaProducerService.sendToKafka(fixedAnswerTask.getTaskType().toString(), fixedAnswerTask);
+        kafkaProducerService.sendToKafka("tasks", fixedAnswerTask);
         return fixedAnswerTask.getTaskId();
     }
 }
