@@ -1,12 +1,18 @@
 package com.chemcool.school.tasks.service;
 
 
+import com.chemcool.school.tasks.domain.AbstractTask;
 import com.chemcool.school.tasks.models.Task;
 
-public interface TaskService<T extends Task> {
-    public void create(T task);
+import java.util.List;
 
-    public void update(T task);
+/**
+ * @Author : Constantine Lee
+ * @Date : 26.10.2021
+ * @e-mail : rhowbn@gmail.com
+ */
+public interface TaskService {
+    AbstractTask save(AbstractTask task);
 
-    public void delete(T task);
+    List<AbstractTask> findAll();
 }

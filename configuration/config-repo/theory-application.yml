@@ -11,6 +11,15 @@ spring:
     platform: postgres
     driver-class-name: org.postgresql.Driver
 
+  kafka:
+    consumer:
+      properties:
+        spring:
+          json:
+            type:
+              mapping: "theoryTask:com.chemcool.school.theory.domain.TheoryTask"
+
+
 server:
   port: 0
   servlet:
@@ -18,4 +27,5 @@ server:
 
 kafka:
   server: http://localhost:9092
-  groupId: chemistry-theory.1
+  groupId: theory-application
+

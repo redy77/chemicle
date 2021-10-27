@@ -16,7 +16,6 @@ public class FixedAnswerDtoConverter {
                 .chapterNum(fixedAnswerDto.getChapterNum())
                 .paragraphNum(fixedAnswerDto.getParagraphNum())
                 .answer(fixedAnswerDto.getAnswer())
-                .idAuthor(fixedAnswerDto.getIdAuthor())
                 .build();
     }
 }

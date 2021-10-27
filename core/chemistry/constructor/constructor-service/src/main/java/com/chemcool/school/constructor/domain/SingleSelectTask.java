@@ -6,9 +6,7 @@ package com.chemcool.school.constructor.domain;
 import com.chemcool.school.tasks.models.Task;
 import com.chemcool.school.tasks.statuses.TaskStatus;
 import com.chemcool.school.tasks.statuses.TaskType;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -20,6 +18,8 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public class SingleSelectTask extends Task {
 
     @Column(name = "right_answer")

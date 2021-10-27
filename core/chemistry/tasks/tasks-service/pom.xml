@@ -12,7 +12,7 @@
     <artifactId>tasks-service</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
-    <name>${artifactId}-${version}</name>
+    <name>${project.artifactId}-${project.version}</name>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -64,11 +64,6 @@
             <version>${postgresql.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
-            <version>${flayway.version}</version>
-        </dependency>
 
 
         <!--        TOOLS -->

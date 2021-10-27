@@ -23,7 +23,4 @@ public class FixedAnswerDtoRepresentation {
     private Short paragraphNum;
 
     private String answer;
-
-    private String idAuthor;
-
 }

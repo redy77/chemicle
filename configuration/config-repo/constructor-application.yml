@@ -12,7 +12,16 @@ spring:
     password: mick
     platform: postgres
     driver-class-name: org.postgresql.Driver
-
+  kafka:
+    producer:
+      properties:
+        spring:
+          json:
+            type:
+              mapping: "singleSelectTask:com.chemcool.school.constructor.domain.SingleSelectTask,
+              comparison:com.chemcool.school.constructor.domain.Comparison,
+              fixedAnswerTask:com.chemcool.school.constructor.domain.FixedAnswerTask,
+              theoryTask:com.chemcool.school.constructor.domain.TheoryTask"
 
 server:
   port: 0

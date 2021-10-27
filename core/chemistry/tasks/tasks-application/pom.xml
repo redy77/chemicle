@@ -12,7 +12,7 @@
     <artifactId>tasks-application</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
-    <name>${artifactId}-${version}</name>
+    <name>${project.artifactId}-${project.version}</name>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -31,6 +31,10 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -67,7 +71,13 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.chemcool.school.tasks</groupId>
+            <artifactId>tasks-web-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
+
 
     <build>
         <plugins>
