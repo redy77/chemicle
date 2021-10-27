@@ -2,6 +2,9 @@ package com.chemcool.school.tasks.service;
 
 
 import com.chemcool.school.tasks.domain.AbstractTask;
+import com.chemcool.school.tasks.models.Task;
+
+import java.util.List;
 
 /**
  * @Author : Constantine Lee
@@ -10,4 +13,6 @@ import com.chemcool.school.tasks.domain.AbstractTask;
  */
 public interface TaskService {
     AbstractTask save(AbstractTask task);
+
+    List<AbstractTask> findAll();
 }

@@ -1,6 +1,6 @@
 package com.chemcool.school.lesson.infrastructure.storage;
 
-import com.chemcool.school.tasks.domain.FixedAnswerTask;
+import com.chemcool.school.lesson.domain.FixedAnswerTask;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

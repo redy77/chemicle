@@ -19,15 +19,15 @@ zuul:
       service-id: lesson-application
       stripPrefix: false
 
-#    theory-application:
-#      path: /theory-application/**
-#      service-id: theory-application
-#      stripPrefix: false
-#
-#    tasks-application:
-#      path: /tasks-application/**
-#      service-id: tasks-application
-#      stripPrefix: false
+    theory-application:
+      path: /theory-application/**
+      service-id: theory-application
+      stripPrefix: false
+
+    tasks-application:
+      path: /tasks-application/**
+      service-id: tasks-application
+      stripPrefix: false
 
     constructor-application:
       path: /constructor-application/**

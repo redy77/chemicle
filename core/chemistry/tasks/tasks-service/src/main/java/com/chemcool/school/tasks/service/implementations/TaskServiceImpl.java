@@ -2,10 +2,13 @@ package com.chemcool.school.tasks.service.implementations;
 
 import com.chemcool.school.tasks.domain.AbstractTask;
 import com.chemcool.school.tasks.infrastructure.storage.TaskRepository;
+import com.chemcool.school.tasks.models.Task;
 import com.chemcool.school.tasks.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @Author : Constantine Lee
@@ -26,5 +29,10 @@ public class TaskServiceImpl implements TaskService {
         AbstractTask baseTask = taskRepository.save(task);
         log.info("Task with id {} was saved to db", baseTask.getTaskId());
         return baseTask;
+    }
+
+    @Override
+    public List<AbstractTask> findAll() {
+        return taskRepository.findAll();
     }
 }
