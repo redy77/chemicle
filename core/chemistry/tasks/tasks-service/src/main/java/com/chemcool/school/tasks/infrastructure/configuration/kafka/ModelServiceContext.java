@@ -1,9 +1,7 @@
 package com.chemcool.school.tasks.infrastructure.configuration.kafka;
 
 import com.chemcool.school.tasks.service.TaskService;
-import com.chemcool.school.tasks.service.chemcomparison.ComparisonTaskService;
-import com.chemcool.school.tasks.service.chemfixedanswer.FixedAnswerTaskService;
-import com.chemcool.school.tasks.service.chemsingleselect.SingleSelectTaskService;
+import com.chemcool.school.tasks.service.SingleSelectTaskService;
 import com.chemcool.school.tasks.statuses.TaskType;
 import lombok.Data;
 import org.springframework.context.annotation.Scope;
@@ -21,8 +19,8 @@ public class ModelServiceContext {
 
     public ModelServiceContext() {
         this.taskServices = new HashMap<>();
-        this.taskServices.put(TaskType.FIXED_ANSWER, new FixedAnswerTaskService());
-        this.taskServices.put(TaskType.COMPARISON, new ComparisonTaskService());
+//        this.taskServices.put(TaskType.FIXED_ANSWER, new FixedAnswerTaskService());
+//        this.taskServices.put(TaskType.COMPARISON, new ComparisonTaskService());
         this.taskServices.put(TaskType.SINGLE_SELECT, new SingleSelectTaskService());
     }
 

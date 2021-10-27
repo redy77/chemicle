@@ -27,7 +27,7 @@
         <jaxb.api.version>2.3.1</jaxb.api.version>
         <jjwt.version>0.9.1</jjwt.version>
         <kafka.testcontainer.version>1.15.0</kafka.testcontainer.version>
-        <flayway.version>5.2.3</flayway.version>
+        <flyway.version>5.2.3</flyway.version>
     </properties>
 
     <dependencies>
@@ -46,11 +46,7 @@
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
+            <version>${kafka.version}</version>
         </dependency>
 
         <dependency>
@@ -68,13 +64,14 @@
             <version>${postgresql.version}</version>
         </dependency>
 
-<!--TODO подключить миграцию-->
 
-<!--        <dependency>-->
-<!--            <groupId>org.flywaydb</groupId>-->
-<!--            <artifactId>flyway-core</artifactId>-->
-<!--            <version>${flayway.version}</version>-->
-<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway.version}</version>
+        </dependency>
+
 
 
         <dependency>
@@ -129,6 +126,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>2.4.4</version>
         </dependency>
     </dependencies>
 
