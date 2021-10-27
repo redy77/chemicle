@@ -1,6 +1,7 @@
 package com.chemcool.school.tasks.infrastructure.configuration;
 
 
+import com.chemcool.school.tasks.domain.AbstractTask;
 import com.chemcool.school.tasks.models.Task;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -34,7 +35,7 @@ public class KafkaConsumerConfiguration {
     private String typeMappings;
 
     @Bean
-    public ConsumerFactory<String, Task> consumerFactory() {
+    public ConsumerFactory<String, AbstractTask> consumerFactory() {
 
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapserver);
@@ -47,8 +48,8 @@ public class KafkaConsumerConfiguration {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, Task> concurrentKafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, Task> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, AbstractTask> concurrentKafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, AbstractTask> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }

@@ -1,20 +1,18 @@
 package com.chemcool.school.tasks.domain;
 
-import com.chemcool.school.tasks.models.Task;
+import com.chemcool.school.tasks.statuses.TaskType;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
-@Entity
 @Data
+@Entity
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-@Table(name = "comparison")
-@Builder
-@RequiredArgsConstructor
-public class Comparison extends Task {
+@DiscriminatorValue("COMPARISON")
+public class Comparison extends AbstractTask {
 
     @Column
     @NonNull

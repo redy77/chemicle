@@ -1,5 +1,6 @@
 package com.chemcool.school.tasks.infrastructure.api.event;
 
+import com.chemcool.school.tasks.domain.AbstractTask;
 import com.chemcool.school.tasks.models.Task;
 import com.chemcool.school.tasks.service.TaskService;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ public class KafkaConsumerService {
     private final TaskService taskService;
 
     @KafkaListener(topics = "tasks", groupId = "groupId", containerFactory = "concurrentKafkaListenerContainerFactory")
-    public void listenTask(@Payload Task task) {
+    public void listenTask(@Payload AbstractTask task) {
         log.info("Task with id {} was received.", task.getTaskId());
         taskService.save(task);
     }

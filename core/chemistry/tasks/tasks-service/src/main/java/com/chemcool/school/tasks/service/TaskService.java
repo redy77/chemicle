@@ -1,6 +1,7 @@
 package com.chemcool.school.tasks.service;
 
-import com.chemcool.school.tasks.models.Task;
+
+import com.chemcool.school.tasks.domain.AbstractTask;
 
 /**
  * @Author : Constantine Lee
@@ -8,5 +9,5 @@ import com.chemcool.school.tasks.models.Task;
  * @e-mail : rhowbn@gmail.com
  */
 public interface TaskService {
-    Task save(Task task);
+    AbstractTask save(AbstractTask task);
 }
