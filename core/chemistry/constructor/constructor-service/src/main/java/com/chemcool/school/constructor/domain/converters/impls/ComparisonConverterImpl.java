@@ -2,13 +2,8 @@ package com.chemcool.school.constructor.domain.converters.impls;
 
 import com.chemcool.school.constructor.domain.Comparison;
 import com.chemcool.school.constructor.domain.ComparisonPair;
-<<<<<<< HEAD:core/chemistry/constructor/constructor-service/src/main/java/com/chemcool/school/constructor/domain/converters/ComparisonConverterImpl.java
-import com.chemcool.school.constructor.domain.SingleSelectTask;
-=======
 import com.chemcool.school.constructor.domain.converters.ComparisonConverter;
->>>>>>> kafka:core/chemistry/constructor/constructor-service/src/main/java/com/chemcool/school/constructor/domain/converters/impls/ComparisonConverterImpl.java
 import com.chemcool.school.constructor.domain.representation.ComparisonPresentation;
-import com.chemcool.school.constructor.domain.representation.SingleSelectRepresentation;
 import com.chemcool.school.tasks.statuses.TaskStatus;
 import com.chemcool.school.tasks.statuses.TaskType;
 import org.springframework.stereotype.Component;

@@ -24,4 +24,13 @@ public class SingleSelectTask extends AbstractTask {
 
     @ElementCollection(fetch = FetchType.LAZY)
     private List<String> answers = new ArrayList<>();
+
+    @Builder
+    public SingleSelectTask(String taskId, String conditionOfTask, Short classNum, Short chapterNum,
+                            Short paragraphNum, TaskStatus status, TaskType type, Boolean isHidden,
+                            int taskNumber, String rightAnswer, List<String> answers) {
+        super(taskId, conditionOfTask, classNum, chapterNum, paragraphNum,status, type, isHidden, taskNumber);
+        this.rightAnswer = rightAnswer;
+        this.answers = answers;
+    }
 }

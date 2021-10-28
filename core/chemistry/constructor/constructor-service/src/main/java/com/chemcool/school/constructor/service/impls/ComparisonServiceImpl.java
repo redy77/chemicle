@@ -31,12 +31,9 @@ public class ComparisonServiceImpl implements ComparisonService {
     public String save(ComparisonPresentation comparisonPresentation) {
         Comparison comparison = comparisonConverter.convertPresentationToEntity(comparisonPresentation);
         comparisonRepository.save(comparison);
-<<<<<<< HEAD:core/chemistry/constructor/constructor-service/src/main/java/com/chemcool/school/constructor/service/ComparisonServiceImpl.java
-=======
 
         kafkaProducerService.sendToKafka("tasks", comparison);
 
->>>>>>> kafka:core/chemistry/constructor/constructor-service/src/main/java/com/chemcool/school/constructor/service/impls/ComparisonServiceImpl.java
         return comparison.getTaskId();
     }
 }
