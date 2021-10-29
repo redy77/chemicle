@@ -1,4 +1,4 @@
-package com.chemcool.school.tasks.service;
+package com.chemcool.school.tasks.domain.exceptions;
 
 /**
  * @Author : Constantine Lee

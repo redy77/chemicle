@@ -1,16 +1,21 @@
-package com.chemcool.school.tasks.domain.representations;
+package com.chemcool.school.tasks.domain.dto;
 
 /**
  * @Author Constantine Lee
  */
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class SingleSelectRepresentation implements TaskRepresentation{
+public class SingleSelectDTO implements TaskDTO {
 
     private String taskId;
 

@@ -1,11 +1,11 @@
-package com.chemcool.school.tasks.domain.representations;
+package com.chemcool.school.tasks.domain.dto;
 
 /**
  * @Author : Constantine Lee
  * @Date : 29.10.2021
  * @e-mail : rhowbn@gmail.com
  */
-public interface TaskRepresentation {
+public interface TaskDTO {
     String getTaskId();
     String getConditionOfTask();
     Short getClassNum();

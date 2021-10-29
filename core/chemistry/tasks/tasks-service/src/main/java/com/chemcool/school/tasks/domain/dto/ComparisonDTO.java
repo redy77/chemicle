@@ -1,12 +1,13 @@
-package com.chemcool.school.tasks.domain.representations;
+package com.chemcool.school.tasks.domain.dto;
 
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.HashMap;
 
 @Data
 @Builder
-public class FixedAnswerRepresentation implements TaskRepresentation{
+public class ComparisonDTO implements TaskDTO {
 
     private String taskId;
 
@@ -18,5 +19,5 @@ public class FixedAnswerRepresentation implements TaskRepresentation{
 
     private Short paragraphNum;
 
-    private String answer;
+    private HashMap<String, String> correctAnswers;
 }

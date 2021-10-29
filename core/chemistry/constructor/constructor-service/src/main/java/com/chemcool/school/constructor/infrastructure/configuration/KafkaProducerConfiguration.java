@@ -37,6 +37,7 @@ public class KafkaProducerConfiguration {
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapserver);
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+
         config.put(JsonSerializer.TYPE_MAPPINGS, typeMappings);
         return new DefaultKafkaProducerFactory<>(config);
     }
