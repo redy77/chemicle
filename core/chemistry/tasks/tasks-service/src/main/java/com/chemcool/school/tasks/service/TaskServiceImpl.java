@@ -1,8 +1,13 @@
 package com.chemcool.school.tasks.service;
 
 import com.chemcool.school.tasks.domain.AbstractTask;
+import com.chemcool.school.tasks.domain.Comparison;
+import com.chemcool.school.tasks.domain.FixedAnswerTask;
 import com.chemcool.school.tasks.domain.SingleSelectTask;
+import com.chemcool.school.tasks.domain.representations.ComparisonRepresentation;
+import com.chemcool.school.tasks.domain.representations.FixedAnswerRepresentation;
 import com.chemcool.school.tasks.domain.representations.SingleSelectRepresentation;
+import com.chemcool.school.tasks.domain.representations.TaskRepresentation;
 import com.chemcool.school.tasks.infrastructure.storage.TaskRepository;
 import com.chemcool.school.tasks.statuses.TaskStatus;
 import com.chemcool.school.tasks.statuses.TaskType;
@@ -34,18 +39,18 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<AbstractTask> findAllByTaskType(TaskType taskType) {
-        return taskRepository.findAllByTaskType(taskType);
+    public List<AbstractTask> findAllByTaskType(TaskType taskType) throws TaskOfTypeNotFound {
+        List<AbstractTask> tasks = taskRepository.findAllByTaskType(taskType);
+        if (tasks.size() == 0) {
+            throw new TaskOfTypeNotFound(taskType);
+        }
+        return tasks;
     }
 
     @Override
-    public AbstractTask findById(String taskId) {
+    public AbstractTask findById(String taskId) throws TaskNotFoundException {
         AbstractTask task = null;
-        try {
-            task = taskRepository.findById(taskId).orElseThrow(()-> new TaskNotFoundException("taskId"));
-        } catch (TaskNotFoundException e) {
-            e.printStackTrace();
-        }
+        task = taskRepository.findById(taskId).orElseThrow(()-> new TaskNotFoundException("taskId"));
         return task;
     }
 
@@ -55,21 +60,34 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public String updateSingleSelect(String taskId, SingleSelectRepresentation representation) {
-        SingleSelectTask dbTask = (SingleSelectTask) findById(taskId);
-        SingleSelectTask updatedTask = SingleSelectTask.builder()
-                .taskId(dbTask.getTaskId())
-                .conditionOfTask(representation.getConditionOfTask())
-                .classNum(representation.getClassNum())
-                .chapterNum(representation.getChapterNum())
-                .paragraphNum(representation.getParagraphNum())
-                .rightAnswer(representation.getRightAnswer())
-                .answers(representation.getAnswers())
-                .status(TaskStatus.UPDATE)
-                .type(dbTask.getTaskType())
-                .isHidden(dbTask.getIsHidden())
-                .build();
+    public AbstractTask update(String taskId, TaskRepresentation representation) throws TaskNotFoundException {
+        AbstractTask dbTask = findById(taskId);
+        dbTask.setTaskId(representation.getTaskId());
+        dbTask.setConditionOfTask(representation.getConditionOfTask());
+        dbTask.setClassNum(representation.getClassNum());
+        dbTask.setChapterNum(representation.getChapterNum());
+        dbTask.setParagraphNum(representation.getParagraphNum());
 
-        return taskRepository.save(updatedTask).getTaskId();
+        if (dbTask instanceof SingleSelectTask) {
+            SingleSelectTask updatedTask = (SingleSelectTask) dbTask;
+            SingleSelectRepresentation singleSelectRepresentation = (SingleSelectRepresentation) representation;
+            updatedTask.setRightAnswer(singleSelectRepresentation.getRightAnswer());
+            updatedTask.setAnswers(singleSelectRepresentation.getAnswers());
+            taskRepository.save(updatedTask);
+            return updatedTask;
+
+        } else if(dbTask instanceof FixedAnswerTask) {
+            FixedAnswerTask updatedTask = (FixedAnswerTask) dbTask;
+            FixedAnswerRepresentation fixedAnswerRepresentation = (FixedAnswerRepresentation) representation;
+            updatedTask.setAnswer(fixedAnswerRepresentation.getAnswer());
+            taskRepository.save(updatedTask);
+            return updatedTask;
+
+        } else if(dbTask instanceof Comparison) {
+            //todo
+
+            return null;
+        }
+        return dbTask;
     }
 }

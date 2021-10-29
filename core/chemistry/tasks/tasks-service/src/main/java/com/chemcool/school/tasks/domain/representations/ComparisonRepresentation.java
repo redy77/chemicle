@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 @Data
 @NoArgsConstructor
-public class ComparisonRepresentation {
+public class ComparisonRepresentation implements TaskRepresentation{
 
     private String taskId;
 

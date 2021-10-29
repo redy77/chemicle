@@ -10,7 +10,7 @@ import java.util.List;
 
 @Data
 @Builder
-public class SingleSelectRepresentation {
+public class SingleSelectRepresentation implements TaskRepresentation{
 
     private String taskId;
 

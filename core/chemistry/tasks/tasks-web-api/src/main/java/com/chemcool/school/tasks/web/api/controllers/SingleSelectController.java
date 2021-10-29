@@ -3,6 +3,8 @@ package com.chemcool.school.tasks.web.api.controllers;
 import com.chemcool.school.tasks.domain.AbstractTask;
 import com.chemcool.school.tasks.domain.SingleSelectTask;
 import com.chemcool.school.tasks.domain.representations.SingleSelectRepresentation;
+import com.chemcool.school.tasks.service.TaskNotFoundException;
+import com.chemcool.school.tasks.service.TaskOfTypeNotFound;
 import com.chemcool.school.tasks.service.TaskService;
 import com.chemcool.school.tasks.statuses.TaskType;
 import com.chemcool.school.tasks.web.api.dto.SingleSelectDto;
@@ -32,7 +34,7 @@ public class SingleSelectController {
 
     @GetMapping("/task/{taskId}")
     @ApiOperation(value = "Returns task by task id")
-    public SingleSelectDto findById(@PathVariable String taskId) {
+    public SingleSelectDto findById(@PathVariable String taskId) throws TaskNotFoundException {
         SingleSelectTask task = (SingleSelectTask) taskService.findById(taskId);
         SingleSelectDto dto = taskToDtoConverter.singleSelectDto(task);
         return dto;
@@ -40,7 +42,7 @@ public class SingleSelectController {
 
     @GetMapping("/tasks")
     @ApiOperation(value = "Returns all single select tasks")
-    public List<SingleSelectDto> findAll() {
+    public List<SingleSelectDto> findAll() throws TaskOfTypeNotFound {
         List<AbstractTask> tasks = taskService.findAllByTaskType(TaskType.SINGLE_SELECT);
         return tasks.stream()
                 .map(task -> (SingleSelectTask) task)
@@ -50,9 +52,9 @@ public class SingleSelectController {
 
     @PutMapping("/update/{taskId}")
     @ApiOperation(value = "Updates task and returns task id")
-    public String update(@PathVariable String taskId, @RequestBody @Valid SingleSelectDto dto) {
+    public AbstractTask update(@PathVariable String taskId, @RequestBody @Valid SingleSelectDto dto) throws TaskNotFoundException {
         SingleSelectRepresentation representation = dtoToRepresentationConverter.toRepresentation(dto);
-        return taskService.updateSingleSelect(taskId, representation);
+        return taskService.update(taskId, representation);
 
     }
 

@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class FixedAnswerRepresentation {
+public class FixedAnswerRepresentation implements TaskRepresentation{
 
     private String taskId;
 
