@@ -83,7 +83,6 @@
     <modules>
         <module>tasks-application</module>
         <module>tasks-service</module>
-        <module>tasks-web-api</module>
     </modules>
 
 </project>

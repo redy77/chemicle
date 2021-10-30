@@ -9,11 +9,6 @@ import com.chemcool.school.constructor.service.TheoryTaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-/**
- * @Author : Constantine Lee
- * @Date : 26.10.2021
- * @e-mail : rhowbn@gmail.com
- */
 @Service
 @RequiredArgsConstructor
 public class TheoryTaskServiceImpl implements TheoryTaskService {

@@ -9,11 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
-/**
- * @Author : Constantine Lee
- * @Date : 26.10.2021
- * @e-mail : rhowbn@gmail.com
- */
 @Service
 public class TheoryTaskConverterImpl implements TheoryTaskConverter {
 

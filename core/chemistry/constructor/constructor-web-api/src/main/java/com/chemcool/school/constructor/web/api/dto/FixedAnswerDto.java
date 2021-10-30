@@ -3,7 +3,6 @@ package com.chemcool.school.constructor.web.api.dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Range;
-
 import javax.validation.constraints.NotBlank;
 
 @Data

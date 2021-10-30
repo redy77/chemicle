@@ -4,14 +4,8 @@ package com.chemcool.school.tasks.service;
 import com.chemcool.school.tasks.domain.exceptions.TaskNotFoundException;
 import com.chemcool.school.tasks.domain.exceptions.TaskOfTypeNotFoundException;
 import org.springframework.dao.EmptyResultDataAccessException;
-
 import java.util.List;
 
-/**
- * @Author : Constantine Lee
- * @Date : 26.10.2021
- * @e-mail : rhowbn@gmail.com
- */
 public interface TaskService<Task, DTO> {
     void save(Task task);
 

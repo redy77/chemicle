@@ -1,15 +1,12 @@
 package com.chemcool.school.constructor.web.api.controllers;
 
-
 import com.chemcool.school.constructor.domain.representation.FixedAnswerDtoRepresentation;
 import com.chemcool.school.constructor.service.impls.FixedAnswerServiceLayer;
 import com.chemcool.school.constructor.web.api.dto.FixedAnswerDto;
 import com.chemcool.school.constructor.web.api.service.FixedAnswerDtoConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
-
 
 @RequiredArgsConstructor
 @RestController

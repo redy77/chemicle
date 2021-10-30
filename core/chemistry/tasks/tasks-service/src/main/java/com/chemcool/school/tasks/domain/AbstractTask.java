@@ -6,14 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-
 import javax.persistence.*;
 
-/**
- * @Author : Constantine Lee
- * @Date : 27.10.2021
- * @e-mail : rhowbn@gmail.com
- */
 @Data
 @Entity
 @NoArgsConstructor

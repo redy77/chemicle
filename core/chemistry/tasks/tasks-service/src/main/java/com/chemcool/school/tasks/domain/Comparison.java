@@ -1,8 +1,6 @@
 package com.chemcool.school.tasks.domain;
 
-import com.chemcool.school.tasks.statuses.TaskType;
 import lombok.*;
-
 import javax.persistence.*;
 import java.util.List;
 

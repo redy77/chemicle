@@ -1,13 +1,9 @@
 package com.chemcool.school.constructor.domain;
-/**
- * @Author Constantine Lee
- */
 
 import com.chemcool.school.tasks.models.Task;
 import com.chemcool.school.tasks.statuses.TaskStatus;
 import com.chemcool.school.tasks.statuses.TaskType;
 import lombok.*;
-
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;

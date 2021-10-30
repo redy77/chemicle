@@ -1,7 +1,4 @@
 package com.chemcool.school.constructor.domain.representation;
-/**
- * @Author Constantine Lee
- */
 
 import lombok.Builder;
 import lombok.Data;

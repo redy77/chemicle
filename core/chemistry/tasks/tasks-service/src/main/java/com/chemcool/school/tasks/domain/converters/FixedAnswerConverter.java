@@ -4,11 +4,6 @@ import com.chemcool.school.tasks.domain.FixedAnswerTask;
 import com.chemcool.school.tasks.domain.dto.FixedAnswerDTO;
 import org.springframework.stereotype.Component;
 
-/**
- * @Author : Constantine Lee
- * @Date : 30.10.2021
- * @e-mail : rhowbn@gmail.com
- */
 @Component("fixedAnswer")
 public class FixedAnswerConverter implements DTOConverter<FixedAnswerTask, FixedAnswerDTO> {
 

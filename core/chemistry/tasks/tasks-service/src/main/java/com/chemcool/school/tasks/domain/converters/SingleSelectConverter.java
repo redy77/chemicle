@@ -4,11 +4,6 @@ import com.chemcool.school.tasks.domain.SingleSelectTask;
 import com.chemcool.school.tasks.domain.dto.SingleSelectDTO;
 import org.springframework.stereotype.Component;
 
-/**
- * @Author : Constantine Lee
- * @Date : 27.10.2021
- * @e-mail : rhowbn@gmail.com
- */
 @Component("singleSelect")
 public class SingleSelectConverter implements DTOConverter<SingleSelectTask, SingleSelectDTO> {
 

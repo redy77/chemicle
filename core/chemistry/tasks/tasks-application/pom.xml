@@ -66,16 +66,17 @@
             <version>1.15.2</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.chemcool.school.tasks</groupId>
+            <artifactId>tasks-service</artifactId>
+            <scope>compile</scope>
+        </dependency>
 
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.chemcool.school.tasks</groupId>
-            <artifactId>tasks-web-api</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+
     </dependencies>
 
 

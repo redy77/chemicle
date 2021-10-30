@@ -1,7 +1,6 @@
 package com.chemcool.school.constructor.web.api.exceptions;
 
 import lombok.Data;
-
 import java.time.LocalDateTime;
 import java.util.List;
 

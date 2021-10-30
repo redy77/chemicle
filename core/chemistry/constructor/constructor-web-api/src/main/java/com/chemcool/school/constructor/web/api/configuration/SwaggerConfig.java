@@ -1,7 +1,4 @@
 package com.chemcool.school.constructor.web.api.configuration;
-/**
- * @Author Constantine Lee
- */
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

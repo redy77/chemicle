@@ -7,11 +7,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-/**
- * @Author : Constantine Lee
- * @Date : 26.10.2021
- * @e-mail : rhowbn@gmail.com
- */
 @Service
 @RequiredArgsConstructor
 @Slf4j

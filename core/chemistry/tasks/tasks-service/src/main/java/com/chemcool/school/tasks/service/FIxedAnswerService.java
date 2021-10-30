@@ -4,14 +4,8 @@ import com.chemcool.school.tasks.domain.FixedAnswerTask;
 import com.chemcool.school.tasks.domain.dto.FixedAnswerDTO;
 import com.chemcool.school.tasks.domain.exceptions.TaskNotFoundException;
 import com.chemcool.school.tasks.domain.exceptions.TaskOfTypeNotFoundException;
-
 import java.util.List;
 
-/**
- * @Author : Constantine Lee
- * @Date : 30.10.2021
- * @e-mail : rhowbn@gmail.com
- */
 public class FIxedAnswerService implements TaskService<FixedAnswerTask, FixedAnswerDTO> {
     @Override
     public void save(FixedAnswerTask fixedAnswerTask) {

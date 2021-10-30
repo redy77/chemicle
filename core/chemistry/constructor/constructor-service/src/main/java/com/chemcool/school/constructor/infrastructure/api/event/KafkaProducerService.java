@@ -9,10 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
-/**
- * @Author Constantine Lee
- * @Date 23.10.2021
- */
 @Service
 @RequiredArgsConstructor
 @Slf4j

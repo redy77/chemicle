@@ -4,16 +4,9 @@ import com.chemcool.school.tasks.models.Task;
 import com.chemcool.school.tasks.statuses.TaskStatus;
 import com.chemcool.school.tasks.statuses.TaskType;
 import lombok.*;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import java.util.List;
 
-/**
- * @Author : Constantine Lee
- * @Date : 26.10.2021
- * @e-mail : rhowbn@gmail.com
- */
 @Data
 @Entity
 @NoArgsConstructor

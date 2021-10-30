@@ -6,12 +6,8 @@ import com.chemcool.school.constructor.domain.representation.ComparisonPresentat
 import com.chemcool.school.constructor.infrastructure.api.event.KafkaProducerService;
 import com.chemcool.school.constructor.infrastructure.storage.ComparisonRepository;
 import com.chemcool.school.constructor.service.ComparisonService;
-import com.chemcool.school.tasks.statuses.TaskStatus;
-import com.chemcool.school.tasks.statuses.TaskType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.UUID;
 
 @Service
 public class ComparisonServiceImpl implements ComparisonService {

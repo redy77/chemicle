@@ -2,7 +2,6 @@ package com.chemcool.school.tasks.domain.dto;
 
 import lombok.Builder;
 import lombok.Data;
-
 import java.util.HashMap;
 
 @Data

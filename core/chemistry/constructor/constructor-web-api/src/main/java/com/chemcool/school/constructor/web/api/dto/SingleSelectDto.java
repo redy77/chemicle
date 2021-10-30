@@ -1,12 +1,7 @@
 package com.chemcool.school.constructor.web.api.dto;
 
-/**
- * @Author Constantine Lee
- */
-
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

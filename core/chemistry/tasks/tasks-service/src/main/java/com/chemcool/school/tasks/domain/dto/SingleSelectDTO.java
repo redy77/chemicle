@@ -1,9 +1,5 @@
 package com.chemcool.school.tasks.domain.dto;
 
-/**
- * @Author Constantine Lee
- */
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

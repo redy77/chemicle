@@ -3,7 +3,6 @@ package com.chemcool.school.constructor.web.api.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.hibernate.validator.constraints.Range;
-
 import javax.validation.constraints.NotNull;
 import java.util.HashMap;
 

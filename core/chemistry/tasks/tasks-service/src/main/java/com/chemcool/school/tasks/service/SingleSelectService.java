@@ -12,15 +12,9 @@ import com.chemcool.school.tasks.statuses.TaskType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * @Author : Constantine Lee
- * @Date : 29.10.2021
- * @e-mail : rhowbn@gmail.com
- */
 @Service("singleSelectService")
 @RequiredArgsConstructor
 public class SingleSelectService implements TaskService<SingleSelectTask, SingleSelectDTO>{

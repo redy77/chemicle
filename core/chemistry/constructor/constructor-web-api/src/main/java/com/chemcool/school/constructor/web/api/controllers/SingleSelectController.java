@@ -1,7 +1,4 @@
 package com.chemcool.school.constructor.web.api.controllers;
-/**
- * @Author Constantine Lee
- */
 
 import com.chemcool.school.constructor.service.SingleSelectService;
 import com.chemcool.school.constructor.web.api.dto.SingleSelectDto;

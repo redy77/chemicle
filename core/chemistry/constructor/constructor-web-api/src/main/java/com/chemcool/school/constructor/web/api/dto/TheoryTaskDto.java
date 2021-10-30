@@ -2,14 +2,8 @@ package com.chemcool.school.constructor.web.api.dto;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
-
 import javax.validation.constraints.NotBlank;
 
-/**
- * @Author : Constantine Lee
- * @Date : 26.10.2021
- * @e-mail : rhowbn@gmail.com
- */
 @Data
 public class TheoryTaskDto {
     @NotBlank

@@ -1,7 +1,4 @@
 package com.chemcool.school.constructor.domain.converters.impls;
-/**
- * @Author Constantine Lee
- */
 
 import com.chemcool.school.constructor.domain.SingleSelectTask;
 import com.chemcool.school.constructor.domain.converters.SingleSelectConverter;
