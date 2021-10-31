@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @Service("singleSelectService")
 @RequiredArgsConstructor
-public class SingleSelectService implements TaskService<SingleSelectTask, SingleSelectDTO>{
+public class SingleSelectService implements TaskService<SingleSelectTask>{
 
     private final TaskRepository<SingleSelectTask> repository;
     private final DTOConverter<SingleSelectTask, SingleSelectDTO> dtoConverter;
@@ -31,46 +31,4 @@ public class SingleSelectService implements TaskService<SingleSelectTask, Single
         repository.save(task);
     }
 
-    @Override
-    public List<SingleSelectDTO> findAllByTaskType() throws TaskOfTypeNotFoundException {
-        List<SingleSelectTask> tasks = repository.findAllByTaskType(taskType);
-        if (tasks.isEmpty()) {
-            throw new TaskOfTypeNotFoundException(taskType);
-        }
-        return tasks.stream()
-                .map(dtoConverter::taskToDto)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public SingleSelectDTO findById(String taskId) throws TaskNotFoundException, ClassCastException {
-        SingleSelectTask task = repository.findById(taskId).orElseThrow(()-> new TaskNotFoundException(taskId));
-        return dtoConverter.taskToDto((SingleSelectTask) task);
-    }
-
-    @Override
-    public void deleteById(String taskId) throws EmptyResultDataAccessException {
-        repository.deleteById(taskId);
-    }
-
-    @Override
-    public SingleSelectDTO update(String taskId, SingleSelectDTO dto) throws TaskNotFoundException, ClassCastException {
-        AbstractTask dbTask = repository.findById(taskId).orElseThrow(()-> new TaskNotFoundException(taskId));
-        SingleSelectTask updatedTask = SingleSelectTask.builder()
-                .taskId(dbTask.getTaskId())
-                .type(dbTask.getTaskType())
-                .status(TaskStatus.UPDATE)
-                .isHidden(dbTask.getIsHidden())
-                .taskNumber(dbTask.getTaskNumber())
-                .conditionOfTask(dto.getConditionOfTask())
-                .chapterNum(dto.getChapterNum())
-                .classNum(dto.getClassNum())
-                .paragraphNum(dto.getParagraphNum())
-                .rightAnswer(dto.getRightAnswer())
-                .answers(dto.getAnswers())
-                .build();
-
-        repository.save(updatedTask);
-        return dtoConverter.taskToDto(updatedTask);
-    }
 }
