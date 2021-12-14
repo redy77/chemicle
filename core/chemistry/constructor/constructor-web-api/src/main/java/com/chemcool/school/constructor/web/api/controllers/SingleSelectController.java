@@ -13,7 +13,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/v1.0/single-select")
 @RequiredArgsConstructor
-public class SingleSelectController {
+public class    SingleSelectController {
 
     private final SingleSelectService service;
     private final SingleSelectDtoConverter converter;

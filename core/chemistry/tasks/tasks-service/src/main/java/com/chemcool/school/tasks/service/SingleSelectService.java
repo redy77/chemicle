@@ -15,7 +15,8 @@ public class SingleSelectService implements TaskService<SingleSelectTask>{
     public void save(SingleSelectTask task) {
         //counts quantity of tasks with given chapter number
         int numberOfTask = repository.findAllByChapterNum(task.getChapterNum()).size();
-        task.setTaskNumber(++numberOfTask);
+            task.setTaskNumber(++numberOfTask);
+
         repository.save(task);
     }
 
